@@ -1,7 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
-import { FeaturedPosts } from "@/components/FeaturedPosts";
-import { Categories } from "@/components/Categories";
+import { ExploreGuide } from "@/components/ExploreGuide";
+import { QuickLinks } from "@/components/QuickLinks";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 
@@ -11,8 +11,8 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <Hero />
-        <FeaturedPosts />
-        <Categories />
+        <ExploreGuide />
+        <QuickLinks />
         <Newsletter />
       </main>
       <Footer />
