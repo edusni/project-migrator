@@ -1,13 +1,25 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Calendar, AlertTriangle, Sun, Cloud, Snowflake, Leaf, Plane, Train, Bus, Car, FileText, Wallet, Map, CreditCard, Users, Heart, Palette, Baby } from "lucide-react";
+import { Calendar, AlertTriangle, Sun, Cloud, Snowflake, Leaf, Plane, Train, Bus, Car, FileText, Wallet, Map, CreditCard, Users, Heart, Palette, Baby, Calculator, Shield, Smartphone, Euro } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useState } from "react";
 
 const Planejamento = () => {
   const { language } = useLanguage();
+  const [baseDiaria, setBaseDiaria] = useState(150);
+
+  // Calculadora de custos 2026
+  const calcularCusto2026 = (diaria: number) => {
+    const vat = diaria * 0.21;
+    const taxaTuristica = diaria * 0.125;
+    const total = diaria + vat + taxaTuristica;
+    return { vat, taxaTuristica, total };
+  };
+
+  const custos = calcularCusto2026(baseDiaria);
 
   const seasons = [
     { 
@@ -24,13 +36,13 @@ const Planejamento = () => {
         : "The world's LARGEST flower garden! 7 MILLION bulbs. A unique color explosion.",
       keukenhofDetails: [
         language === "pt" ? "Onde: Lisse (40km de Amsterdam)" : "Where: Lisse (40km from Amsterdam)",
-        language === "pt" ? "Quando: Apenas 8 semanas/ano! (Meados de Março a Maio)" : "When: Only 8 weeks/year! (Mid-March to May)",
+        language === "pt" ? "2026: 19 de março a 10 de maio (curto, por isso LOTA!)" : "2026: March 19 to May 10 (short, that's why it FILLS UP!)",
         language === "pt" ? "Dica do Du: O pico das tulipas é em Meados de Abril" : "Du's Tip: Peak tulips in Mid-April",
-        language === "pt" ? "Ingresso: €21-23. Reserve ONLINE com antecedência" : "Ticket: €21-23. Book ONLINE in advance",
+        language === "pt" ? "Ingresso: €21-23. Reserve ONLINE com antecedência (esgota horário!)" : "Ticket: €21-23. Book ONLINE in advance (times sell out!)",
       ],
       koningsdag: language === "pt"
-        ? "O DIA mais louco da Holanda. A cidade vira um festival laranja gigante. Cidade INSUPORTAVELMENTE lotada. Preços de hotel TRIPLICAM. Reserve com 6+ meses de antecedência."
-        : "The CRAZIEST day in Netherlands. City becomes a giant orange festival. UNBEARABLY crowded. Hotel prices TRIPLE. Book 6+ months ahead.",
+        ? "Em 2026 cai em SEGUNDA, 27 de abril. A cidade vira um festival laranja gigante. INSUPORTAVELMENTE lotada. Preços de hotel TRIPLICAM. Reserve com 6+ meses. Bom se você quer festa, RUIM se quer paz."
+        : "In 2026 falls on MONDAY, April 27. City becomes a giant orange festival. UNBEARABLY crowded. Hotel prices TRIPLE. Book 6+ months ahead. Good if you want party, BAD if you want peace.",
       climate: language === "pt" ? "8-15°C (ainda é fresco). Leve camadas! Jaqueta impermeável é obrigatória." : "8-15°C (still cool). Layer up! Waterproof jacket is mandatory.",
       color: "bg-green-500" 
     },
@@ -50,6 +62,7 @@ const Planejamento = () => {
         language === "pt" ? "Preços no Teto: Época mais CARA do ano para hotéis" : "Peak Prices: MOST EXPENSIVE time for hotels",
         language === "pt" ? "Multidões Absurdas: Filas para tudo" : "Absurd Crowds: Lines for everything",
         language === "pt" ? "Reservas: Museus (Anne Frank, Van Gogh) esgotam com meses de antecedência" : "Bookings: Museums sell out months ahead",
+        language === "pt" ? "O 'custo real' do verão: você paga em dinheiro E em tempo (filas)" : "The 'real cost' of summer: you pay in money AND time (queues)",
       ],
       color: "bg-yellow-500" 
     },
@@ -60,8 +73,8 @@ const Planejamento = () => {
       tagline: language === "pt" ? "O segredo dos insiders • Museus tranquilos" : "Insider's secret • Quiet museums",
       highlight: language === "pt" ? "PULO DO GATO" : "INSIDER TIP",
       masterTip: language === "pt"
-        ? "Setembro e início de Outubro são os MELHORES períodos. Clima ameno, folhas coloridas e ZERO multidões. Museus vazios e preços justos."
-        : "September and early October are the BEST periods. Mild weather, colorful leaves and ZERO crowds. Empty museums and fair prices.",
+        ? "Setembro e início de Outubro são os MELHORES períodos. Clima ameno, folhas coloridas e ZERO multidões. Museus vazios e preços justos. Para muita gente, é o melhor equilíbrio: acabou o pico do verão, mas o inverno ainda não apertou."
+        : "September and early October are the BEST periods. Mild weather, colorful leaves and ZERO crowds. Empty museums and fair prices. For many, it's the best balance: summer peak is over, but winter hasn't hit yet.",
       events: [
         language === "pt" ? "IDFA (Nov): Maior festival de documentários do mundo" : "IDFA (Nov): World's largest documentary festival",
         language === "pt" ? "ADE (Out): Amsterdam Dance Event (eletrônica)" : "ADE (Oct): Amsterdam Dance Event (electronic)",
@@ -76,6 +89,9 @@ const Planejamento = () => {
       period: language === "pt" ? "Dezembro - Fevereiro" : "December - February", 
       tagline: language === "pt" ? "Natal • Luzes • Gezelligheid (Aconchego)" : "Christmas • Lights • Gezelligheid (Coziness)",
       highlight: "GEZELLIGHEID",
+      lightFestival: language === "pt"
+        ? "Amsterdam Light Festival 2025/2026: 27 de novembro a 18 de janeiro. Arte de luz espetacular pelos canais!"
+        : "Amsterdam Light Festival 2025/2026: November 27 to January 18. Spectacular light art on the canals!",
       pros: [
         language === "pt" ? "Amsterdam Light Festival (Nov-Jan): Arte de luz pelos canais" : "Amsterdam Light Festival (Nov-Jan): Light art on canals",
         language === "pt" ? "Mercados de Natal: Pistas de patinação, vinho quente" : "Christmas Markets: Ice skating, mulled wine",
@@ -98,24 +114,25 @@ const Planejamento = () => {
     {
       icon: "✈️",
       title: language === "pt" ? "Aeroporto Schiphol" : "Schiphol Airport",
-      subtitle: language === "pt" ? "15 MINUTOS de trem do centro!" : "15 MINUTES by train from center!",
+      subtitle: language === "pt" ? "~17 MINUTOS de trem do centro!" : "~17 MINUTES by train from center!",
       options: [
         {
           name: language === "pt" ? "Trem NS (RECOMENDADO!)" : "NS Train (RECOMMENDED!)",
           details: [
             language === "pt" ? "Destino: Amsterdam Centraal Station" : "Destination: Amsterdam Centraal Station",
-            language === "pt" ? "Tempo: 15-20 min direto" : "Time: 15-20 min direct",
+            language === "pt" ? "Tempo: ~17 min direto" : "Time: ~17 min direct",
             language === "pt" ? "Frequência: A cada 10-15 min (24/7!)" : "Frequency: Every 10-15 min (24/7!)",
-            language === "pt" ? "Preço: €5.40 (OVpay)" : "Price: €5.40 (OVpay)",
+            language === "pt" ? "Preço: a partir de €5,20 (OVpay)" : "Price: from €5.20 (OVpay)",
           ],
           tip: language === "pt" ? "Baixe app 'NS' para horários em tempo real" : "Download 'NS' app for real-time schedules",
         },
         {
           name: language === "pt" ? "Ônibus 397 (Airport Express)" : "Bus 397 (Airport Express)",
           details: [
-            language === "pt" ? "Para: Amsterdam Zuid, RAI, Museumplein, Leidseplein" : "To: Amsterdam Zuid, RAI, Museumplein, Leidseplein",
+            language === "pt" ? "Para: Museumplein, Leidseplein, Zuid, RAI" : "To: Museumplein, Leidseplein, Zuid, RAI",
             language === "pt" ? "Tempo: 30-40 min" : "Time: 30-40 min",
-            language === "pt" ? "Preço: €6.50 (OVpay)" : "Price: €6.50 (OVpay)",
+            language === "pt" ? "Preço 2026: €6,50 ida / €11,75 ida e volta" : "Price 2026: €6.50 one-way / €11.75 round-trip",
+            language === "pt" ? "⚠️ Sem dinheiro vivo no ônibus!" : "⚠️ No cash on the bus!",
           ],
         },
         {
@@ -188,7 +205,7 @@ const Planejamento = () => {
       icon: "💰",
       title: language === "pt" ? "Comprovação Financeira" : "Financial Proof",
       items: [
-        language === "pt" ? "Ref: €55-65/dia" : "Ref: €55-65/day",
+        language === "pt" ? "Ref oficial Holanda: €55/pessoa/dia" : "Official NL ref: €55/person/day",
         language === "pt" ? "Cartão de crédito, extrato ou dinheiro" : "Credit card, statement or cash",
       ],
     },
@@ -198,31 +215,31 @@ const Planejamento = () => {
     {
       icon: "🎒",
       name: "Backpacking",
-      range: "€40-70/" + (language === "pt" ? "dia" : "day"),
+      range: "€50-80/" + (language === "pt" ? "dia" : "day"),
       breakdown: [
-        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€20-35" },
-        { label: language === "pt" ? "Comida" : "Food", value: "€15-20" },
-        { label: language === "pt" ? "Atrações" : "Attractions", value: "€5-10" },
+        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€25-40" },
+        { label: language === "pt" ? "Comida" : "Food", value: "€15-25" },
+        { label: language === "pt" ? "Atrações" : "Attractions", value: "€10-15" },
       ],
     },
     {
       icon: "😊",
       name: "Comfort",
-      range: "€100-180/" + (language === "pt" ? "dia" : "day"),
+      range: "€120-200/" + (language === "pt" ? "dia" : "day"),
       breakdown: [
-        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€70-120" },
-        { label: language === "pt" ? "Comida" : "Food", value: "€30-40" },
+        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€80-130" },
+        { label: language === "pt" ? "Comida" : "Food", value: "€30-45" },
         { label: language === "pt" ? "Atrações" : "Attractions", value: "€20-30" },
       ],
     },
     {
       icon: "💎",
       name: "Luxury",
-      range: "€250+/" + (language === "pt" ? "dia" : "day"),
+      range: "€300+/" + (language === "pt" ? "dia" : "day"),
       breakdown: [
-        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€150-300+" },
-        { label: language === "pt" ? "Comida" : "Food", value: "€60-100" },
-        { label: language === "pt" ? "Atrações" : "Attractions", value: "€40-60" },
+        { label: language === "pt" ? "Hospedagem" : "Accommodation", value: "€180-350+" },
+        { label: language === "pt" ? "Comida" : "Food", value: "€70-120" },
+        { label: language === "pt" ? "Atrações" : "Attractions", value: "€50-80" },
       ],
     },
   ];
@@ -233,6 +250,7 @@ const Planejamento = () => {
     { icon: "🛒", title: language === "pt" ? "Supermercados" : "Supermarkets", desc: language === "pt" ? "Albert Heijn tem sanduíches baratos" : "Albert Heijn has cheap sandwiches" },
     { icon: "🍟", title: "FEBO", desc: language === "pt" ? "Snacks de parede a €2-3" : "Wall snacks for €2-3" },
     { icon: "🎫", title: language === "pt" ? "Museus < 18" : "Museums < 18", desc: language === "pt" ? "Grátis para menores de 18" : "Free for under 18" },
+    { icon: "👶", title: language === "pt" ? "Crianças 4-11" : "Kids 4-11", desc: language === "pt" ? "Transporte GRÁTIS até 3 jan 2027!" : "FREE transport until Jan 3 2027!" },
   ];
 
   const itineraries = [
@@ -319,10 +337,9 @@ const Planejamento = () => {
       language === "pt" ? "Aluguel de bike 24h" : "24h bike rental",
     ],
     prices: [
-      { duration: "24h", price: "€65" },
-      { duration: "48h", price: "€85" },
-      { duration: "72h", price: "€100" },
-      { duration: "96h", price: "€115" },
+      { duration: "48h", price: "€90" },
+      { duration: "72h", price: "€110" },
+      { duration: "96h", price: "€125" },
     ],
     worthIt: [
       language === "pt" ? "Visitar 3+ museus" : "Visit 3+ museums",
@@ -330,14 +347,15 @@ const Planejamento = () => {
       language === "pt" ? "Gostar de conveniência" : "Like convenience",
     ],
     notWorthIt: [
-      language === "pt" ? "Visitar só 1 museu" : "Visit only 1 museum",
+      language === "pt" ? "Visitar só 1-2 atrações" : "Visit only 1-2 attractions",
       language === "pt" ? "Preferir caminhar" : "Prefer walking",
       language === "pt" ? "Foco em coffeeshops" : "Focus on coffeeshops",
     ],
     notIncluded: [
-      language === "pt" ? "Casa de Anne Frank" : "Anne Frank House",
-      language === "pt" ? "Trens NS (aeroporto)" : "NS Trains (airport)",
-      language === "pt" ? "Keukenhof (só desconto)" : "Keukenhof (discount only)",
+      language === "pt" ? "❌ Casa de Anne Frank" : "❌ Anne Frank House",
+      language === "pt" ? "❌ Van Gogh Museum" : "❌ Van Gogh Museum",
+      language === "pt" ? "❌ Trens NS (aeroporto)" : "❌ NS Trains (airport)",
+      language === "pt" ? "❌ Keukenhof (só desconto)" : "❌ Keukenhof (discount only)",
     ],
   };
 
@@ -345,23 +363,134 @@ const Planejamento = () => {
     <PageLayout>
       <PageHero
         icon={Calendar}
-        title={language === "pt" ? "Planejando Amsterdam" : "Planning Amsterdam"}
+        title={language === "pt" ? "Planejando Amsterdam 2026" : "Planning Amsterdam 2026"}
         description={language === "pt" 
-          ? "O Que Você PRECISA Saber" 
-          : "What You NEED to Know"}
+          ? "O Guia Atualizado (Impostos, Regras e Custos Reais)" 
+          : "The Updated Guide (Taxes, Rules & Real Costs)"}
       />
 
-      {/* Warning */}
-      <section className="py-8 bg-amber-50 dark:bg-amber-950/30 border-y border-amber-200 dark:border-amber-800">
+      {/* 2026 Cost Reality */}
+      <section className="py-8 bg-red-50 dark:bg-red-950/30 border-y border-red-200 dark:border-red-800">
         <div className="container">
-          <div className="flex items-center gap-4 max-w-4xl mx-auto">
-            <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0" />
-            <p className="text-amber-800 dark:text-amber-200">
-              <strong>{language === "pt" ? "Realidade:" : "Reality:"}</strong>{" "}
-              {language === "pt" 
-                ? "Amsterdam em 2025/2026 vai ser CARÍSSIMA e com regras novas. Se você não planejar direito, vai gastar uma fortuna pra uma experiência meia-boca."
-                : "Amsterdam in 2025/2026 will be VERY EXPENSIVE with new rules. If you don't plan properly, you'll spend a fortune for a mediocre experience."}
-            </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="flex items-start gap-4 mb-6">
+              <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0 mt-1" />
+              <div>
+                <h3 className="font-bold text-lg text-red-800 dark:text-red-200 mb-2">
+                  🚨 {language === "pt" ? "Por que Amsterdam 2026 vai ser mais CARA?" : "Why will Amsterdam 2026 be more EXPENSIVE?"}
+                </h3>
+                <p className="text-red-700 dark:text-red-300 mb-4">
+                  {language === "pt" 
+                    ? "A combinação de impostos novos faz a 'mesma diária' custar MUITO mais:"
+                    : "The combination of new taxes makes the 'same rate' cost MUCH more:"}
+                </p>
+                <div className="grid md:grid-cols-2 gap-4 mb-4">
+                  <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
+                    <p className="font-bold text-red-800 dark:text-red-200">📈 VAT/IVA: 9% → 21%</p>
+                    <p className="text-sm text-red-600 dark:text-red-400">
+                      {language === "pt" 
+                        ? "A Holanda elevou o VAT de hospedagem para 21% em 2026"
+                        : "Netherlands raised accommodation VAT to 21% in 2026"}
+                    </p>
+                  </div>
+                  <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
+                    <p className="font-bold text-red-800 dark:text-red-200">🏨 {language === "pt" ? "Taxa Turística" : "Tourist Tax"}: 12,5%</p>
+                    <p className="text-sm text-red-600 dark:text-red-400">
+                      {language === "pt" 
+                        ? "Cobrada sobre a diária (sem VAT) em toda hospedagem"
+                        : "Charged on the rate (without VAT) for all accommodation"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Interactive Calculator */}
+            <Card className="bg-white dark:bg-black/40 border-red-200 dark:border-red-800">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Calculator className="w-5 h-5 text-red-600" />
+                  <h4 className="font-bold">{language === "pt" ? "Calculadora de Custo Real 2026" : "2026 Real Cost Calculator"}</h4>
+                </div>
+                
+                <div className="mb-6">
+                  <label className="block text-sm font-medium mb-2">
+                    {language === "pt" ? "Diária base (sem impostos):" : "Base rate (without taxes):"}
+                  </label>
+                  <div className="flex items-center gap-4">
+                    <span className="text-2xl">€</span>
+                    <input
+                      type="range"
+                      min="50"
+                      max="400"
+                      step="10"
+                      value={baseDiaria}
+                      onChange={(e) => setBaseDiaria(Number(e.target.value))}
+                      className="flex-1 h-3 bg-red-200 rounded-lg appearance-none cursor-pointer"
+                    />
+                    <span className="text-2xl font-bold min-w-[80px]">€{baseDiaria}</span>
+                  </div>
+                </div>
+
+                <div className="grid md:grid-cols-4 gap-4">
+                  <div className="text-center p-3 bg-muted/50 rounded-lg">
+                    <p className="text-xs text-muted-foreground mb-1">{language === "pt" ? "Diária Base" : "Base Rate"}</p>
+                    <p className="text-xl font-bold">€{baseDiaria.toFixed(2)}</p>
+                  </div>
+                  <div className="text-center p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
+                    <p className="text-xs text-muted-foreground mb-1">+ VAT 21%</p>
+                    <p className="text-xl font-bold text-yellow-700 dark:text-yellow-400">€{custos.vat.toFixed(2)}</p>
+                  </div>
+                  <div className="text-center p-3 bg-orange-100 dark:bg-orange-900/30 rounded-lg">
+                    <p className="text-xs text-muted-foreground mb-1">+ {language === "pt" ? "Taxa Turística" : "Tourist Tax"} 12,5%</p>
+                    <p className="text-xl font-bold text-orange-700 dark:text-orange-400">€{custos.taxaTuristica.toFixed(2)}</p>
+                  </div>
+                  <div className="text-center p-3 bg-red-100 dark:bg-red-900/30 rounded-lg border-2 border-red-300 dark:border-red-700">
+                    <p className="text-xs font-medium mb-1">{language === "pt" ? "TOTAL REAL" : "REAL TOTAL"}</p>
+                    <p className="text-2xl font-bold text-red-700 dark:text-red-400">€{custos.total.toFixed(2)}</p>
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground mt-4 text-center">
+                  {language === "pt" 
+                    ? "⚠️ Exemplo: Uma diária de €150 passa para ~€200 com todos os impostos!"
+                    : "⚠️ Example: A €150 rate becomes ~€200 with all taxes!"}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Airbnb Rules 2026 */}
+      <section className="py-8 bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800">
+        <div className="container">
+          <div className="flex items-start gap-4 max-w-4xl mx-auto">
+            <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
+            <div>
+              <h3 className="font-bold text-lg text-amber-800 dark:text-amber-200 mb-2">
+                🏠 {language === "pt" ? "Aluguel de Temporada (Airbnb) em 2026" : "Short-term Rental (Airbnb) in 2026"}
+              </h3>
+              <div className="space-y-2 text-amber-700 dark:text-amber-300">
+                <p>
+                  <strong>{language === "pt" ? "Regra Geral:" : "General Rule:"}</strong>{" "}
+                  {language === "pt" 
+                    ? "Máximo de 30 noites/ano por imóvel (com registro obrigatório)"
+                    : "Maximum 30 nights/year per property (with mandatory registration)"}
+                </p>
+                <p>
+                  <strong>{language === "pt" ? "Proposta Centro/De Pijp:" : "Centro/De Pijp Proposal:"}</strong>{" "}
+                  {language === "pt" 
+                    ? "Limite pode cair para 15 noites/ano a partir de 1º de abril de 2026"
+                    : "Limit may drop to 15 nights/year from April 1, 2026"}
+                </p>
+                <p className="text-sm bg-amber-100 dark:bg-amber-900/30 p-3 rounded-lg">
+                  💡 {language === "pt" 
+                    ? "O que isso significa para você: Menos oferta legal = preços mais altos + risco de anúncios irregulares (cancelamento, problemas, multas). Se for Airbnb, confira registro e tenha plano B."
+                    : "What this means for you: Less legal supply = higher prices + risk of irregular listings (cancellation, problems, fines). If using Airbnb, check registration and have plan B."}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -370,12 +499,12 @@ const Planejamento = () => {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            📅 {language === "pt" ? "Quando Visitar (A Real)" : "When to Visit (The Truth)"}
+            📅 {language === "pt" ? "Quando Visitar (O Jeito Prático)" : "When to Visit (The Practical Way)"}
           </h2>
           <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
             {language === "pt" 
-              ? "O guia honesto das estações: tulipas com multidão, ou museus sem fila?"
-              : "The honest seasons guide: tulips with crowds, or museums without lines?"}
+              ? "A melhor época depende do que você busca. Tulipas com multidão ou museus sem fila?"
+              : "The best time depends on what you seek. Tulips with crowds or museums without lines?"}
           </p>
           
           <Card className="max-w-3xl mx-auto mb-12 bg-amsterdam-blue/5 border-amsterdam-blue/20">
@@ -384,8 +513,8 @@ const Planejamento = () => {
                 <span className="text-2xl">🌍</span>{" "}
                 <strong>{language === "pt" ? "O 'Mito' do Clima Holandês:" : "The Dutch Weather 'Myth':"}</strong>{" "}
                 {language === "pt" 
-                  ? "Amsterdam não é uma cidade de sol garantido. É uma cidade de atmosfera garantida. O clima é imprevisível. A melhor época depende do que você busca."
-                  : "Amsterdam isn't a city of guaranteed sun. It's a city of guaranteed atmosphere. Weather is unpredictable. Best time depends on what you seek."}
+                  ? "Amsterdam não é cidade de sol garantido. O clima é imprevisível. Mas a atmosfera? Essa é garantida."
+                  : "Amsterdam isn't a city of guaranteed sun. Weather is unpredictable. But atmosphere? That's guaranteed."}
               </p>
             </CardContent>
           </Card>
@@ -434,7 +563,7 @@ const Planejamento = () => {
                     </div>
                     
                     <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-2">🎉 27 de Abril: Koningsdag</h4>
+                      <h4 className="font-bold text-lg mb-2">🎉 Koningsdag 2026</h4>
                       <p className="text-muted-foreground">{seasons[0].koningsdag}</p>
                     </div>
                     
@@ -523,7 +652,12 @@ const Planejamento = () => {
                     <Badge className="bg-blue-400">{seasons[3].highlight}</Badge>
                     <span className="text-muted-foreground">{seasons[3].period}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6">{seasons[3].tagline}</h3>
+                  <h3 className="text-2xl font-heading font-bold mb-4">{seasons[3].tagline}</h3>
+                  
+                  <div className="bg-purple-50 dark:bg-purple-950/30 p-4 rounded-lg mb-6">
+                    <h4 className="font-bold text-lg mb-2">✨ Amsterdam Light Festival 2025/2026</h4>
+                    <p className="text-muted-foreground">{seasons[3].lightFestival}</p>
+                  </div>
                   
                   <div className="grid md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
@@ -559,11 +693,14 @@ const Planejamento = () => {
       {/* How to Get There */}
       <section className="py-16 md:py-24">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-            ✈️ {language === "pt" ? "Como Chegar" : "How to Get There"}
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+            ✈️ {language === "pt" ? "Como Chegar e Locomover" : "How to Get There & Around"}
           </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            {language === "pt" ? "Sem errar no básico" : "Without messing up the basics"}
+          </p>
           
-          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
             {/* Schiphol */}
             <Card className="lg:col-span-2">
               <CardHeader>
@@ -642,6 +779,39 @@ const Planejamento = () => {
               </Card>
             </div>
           </div>
+
+          {/* OVpay & Transport in Amsterdam */}
+          <Card className="max-w-4xl mx-auto bg-amsterdam-blue/5 border-amsterdam-blue/20">
+            <CardContent className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <Smartphone className="w-6 h-6 text-amsterdam-blue" />
+                <h3 className="font-bold text-lg">{language === "pt" ? "Transporte DENTRO de Amsterdam (2026)" : "Transport WITHIN Amsterdam (2026)"}</h3>
+              </div>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-bold mb-2">📱 OVpay</h4>
+                  <p className="text-sm text-muted-foreground mb-3">
+                    {language === "pt" 
+                      ? "O padrão em 2026: encosta cartão/celular para entrar e sair (check-in/check-out). Reduz atrito e evita comprar bilhete."
+                      : "The 2026 standard: tap card/phone to enter and exit (check-in/check-out). Reduces friction and avoids buying tickets."}
+                  </p>
+                </div>
+                <div>
+                  <h4 className="font-bold mb-2">💰 {language === "pt" ? "Cuidado com o Custo" : "Watch the Cost"}</h4>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    {language === "pt" 
+                      ? "Passe diário GVB 2026: €20 (1 dia). Se você anda bem a pé, caminhar economiza MUITO."
+                      : "GVB day pass 2026: €20 (1 day). If you walk well, walking saves A LOT."}
+                  </p>
+                  <p className="text-sm font-medium text-green-700 dark:text-green-400">
+                    👶 {language === "pt" 
+                      ? "Crianças 4-11: transporte GRÁTIS com adulto até 3 jan 2027!"
+                      : "Kids 4-11: FREE transport with adult until Jan 3 2027!"}
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
@@ -649,20 +819,20 @@ const Planejamento = () => {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            📄 {language === "pt" ? "A Burocracia (Sem Perrengue)" : "The Paperwork (No Hassle)"}
+            📄 {language === "pt" ? "Documentos e Entrada em 2026" : "Documents & Entry in 2026"}
           </h2>
           <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {language === "pt" ? "Documentos, vistos e regras para entrar na Holanda" : "Documents, visas and rules to enter the Netherlands"}
+            {language === "pt" ? "O essencial, sem drama" : "The essentials, no drama"}
           </p>
           
           <Card className="max-w-2xl mx-auto mb-8 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800">
             <CardContent className="p-6">
               <p className="text-center text-green-800 dark:text-green-200">
                 <span className="text-2xl">🇧🇷</span>{" "}
-                <strong>{language === "pt" ? "Boa Notícia para Brasileiros:" : "Good News for Brazilians:"}</strong>{" "}
+                <strong>{language === "pt" ? "Brasileiros:" : "Brazilians:"}</strong>{" "}
                 {language === "pt" 
-                  ? "Brasileiros NÃO precisam de visto para turismo! Se você é um turista genuíno, o processo é rápido."
-                  : "Brazilians DO NOT need a visa for tourism! If you're a genuine tourist, the process is quick."}
+                  ? "Isentos de visto para turismo! Regra Schengen: 90 dias dentro de 180 dias."
+                  : "Visa-exempt for tourism! Schengen rule: 90 days within 180 days."}
               </p>
             </CardContent>
           </Card>
@@ -683,7 +853,7 @@ const Planejamento = () => {
             ))}
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
             <Card className="bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800">
               <CardContent className="p-4">
                 <h4 className="font-bold mb-2">⚠️ {language === "pt" ? "Regra dos 90 dias" : "90-day Rule"}</h4>
@@ -697,11 +867,11 @@ const Planejamento = () => {
             
             <Card className="bg-blue-50 dark:bg-blue-950/30 border-blue-200 dark:border-blue-800">
               <CardContent className="p-4">
-                <h4 className="font-bold mb-2">🆕 ETIAS (2025/2026)</h4>
+                <h4 className="font-bold mb-2">🆕 EES & ETIAS 2026</h4>
                 <p className="text-sm text-muted-foreground">
                   {language === "pt" 
-                    ? "Autorização eletrônica (NÃO é visto). Implementação ADIADA. Verifique antes de viajar."
-                    : "Electronic authorization (NOT a visa). Implementation DELAYED. Check before traveling."}
+                    ? "EES: Registro digital de entradas/saídas (pode aumentar tempo na imigração). ETIAS: Previsto para último trimestre de 2026. Verifique ANTES de comprar passagem!"
+                    : "EES: Digital entry/exit registration (may increase immigration time). ETIAS: Expected last quarter 2026. Check BEFORE buying tickets!"}
                 </p>
               </CardContent>
             </Card>
@@ -711,8 +881,8 @@ const Planejamento = () => {
                 <h4 className="font-bold mb-2">🏥 {language === "pt" ? "Seguro Viagem" : "Travel Insurance"}</h4>
                 <p className="text-sm text-muted-foreground">
                   {language === "pt" 
-                    ? "OBRIGATÓRIO! Cobertura mínima de €30.000. Imprima a apólice!"
-                    : "MANDATORY! Minimum €30,000 coverage. Print the policy!"}
+                    ? "Padrão Schengen: cobertura mínima de €30.000 para assistência médica e repatriação. Imprima a apólice!"
+                    : "Schengen standard: minimum €30,000 coverage for medical assistance and repatriation. Print the policy!"}
                 </p>
               </CardContent>
             </Card>
@@ -720,33 +890,38 @@ const Planejamento = () => {
         </div>
       </section>
 
-      {/* Budget */}
+      {/* Budget & Payment */}
       <section className="py-16 md:py-24">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            💰 {language === "pt" ? "Dinheiro & Orçamento" : "Money & Budget"}
+            💰 {language === "pt" ? "Dinheiro & Orçamento 2026" : "Money & Budget 2026"}
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            {language === "pt" ? "Quanto custa Amsterdam (e como economizar)" : "How much Amsterdam costs (and how to save)"}
+            {language === "pt" ? "O 'problema do cartão' e quanto custa de verdade" : "The 'card problem' and what it really costs"}
           </p>
 
           {/* Payment Info */}
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-bold text-lg mb-4">💶 {language === "pt" ? "Moeda & Pagamento" : "Currency & Payment"}</h3>
+                <h3 className="font-bold text-lg mb-4">💳 {language === "pt" ? "Pagamento em 2026" : "Payment in 2026"}</h3>
                 <p className="mb-4"><strong>{language === "pt" ? "Moeda:" : "Currency:"}</strong> Euro (€)</p>
-                <div className="bg-red-50 dark:bg-red-950/30 p-3 rounded-lg mb-4">
-                  <p className="text-sm font-medium text-red-700 dark:text-red-300">
-                    🚨 {language === "pt" ? "O 'PROBLEMA' do PIN:" : "The PIN 'PROBLEM':"}
+                <div className="bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg mb-4">
+                  <p className="text-sm font-medium text-amber-700 dark:text-amber-300 mb-2">
+                    🚨 {language === "pt" ? "O 'Problema' do Cartão:" : "The Card 'Problem':"}
                   </p>
                   <p className="text-sm text-muted-foreground">
                     {language === "pt" 
-                      ? "Muitos locais só aceitam cartão de débito holandês (Maestro). Visa/Mastercard crédito pode ser recusado."
-                      : "Many places only accept Dutch debit card (Maestro). Visa/Mastercard credit may be refused."}
+                      ? "A Holanda migrou forte para Visa Debit e Debit Mastercard. Ainda pode acontecer de um lugar aceitar débito e recusar crédito tradicional."
+                      : "Netherlands has strongly moved to Visa Debit and Debit Mastercard. Some places may accept debit but refuse traditional credit."}
                   </p>
                 </div>
-                <p className="text-sm"><strong>{language === "pt" ? "Soluções:" : "Solutions:"}</strong> {language === "pt" ? "Dinheiro, Wise, Nomad" : "Cash, Wise, Nomad"}</p>
+                <p className="text-sm">
+                  <strong>{language === "pt" ? "Solução:" : "Solution:"}</strong>{" "}
+                  {language === "pt" 
+                    ? "Leve pelo menos 1 cartão com função débito internacional + um pouco de cash para emergência."
+                    : "Bring at least 1 card with international debit function + some cash for emergencies."}
+                </p>
               </CardContent>
             </Card>
 
@@ -768,7 +943,7 @@ const Planejamento = () => {
           </div>
 
           {/* Budget Levels */}
-          <h3 className="text-xl font-bold text-center mb-6">📊 {language === "pt" ? "Orçamento Diário Estimado" : "Estimated Daily Budget"}</h3>
+          <h3 className="text-xl font-bold text-center mb-6">📊 {language === "pt" ? "Orçamento Diário Estimado (2026)" : "Estimated Daily Budget (2026)"}</h3>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             {budgetLevels.map((level) => (
               <Card key={level.name} className="text-center">
@@ -884,10 +1059,10 @@ const Planejamento = () => {
       <section className="py-16 md:py-24">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            🎫 {language === "pt" ? "Cartões Turísticos" : "Tourist Cards"}
+            🎫 I Amsterdam City Card 2026
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            {language === "pt" ? "Vale a pena? Guia completo dos passes" : "Worth it? Complete guide to passes"}
+            {language === "pt" ? "Vale a pena? O guia honesto" : "Worth it? The honest guide"}
           </p>
 
           <Card className="max-w-3xl mx-auto">
@@ -905,8 +1080,8 @@ const Planejamento = () => {
                   </ul>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-3">{language === "pt" ? "Preços:" : "Prices:"}</h4>
-                  <div className="grid grid-cols-2 gap-2">
+                  <h4 className="font-bold mb-3">{language === "pt" ? "Preços 2026:" : "2026 Prices:"}</h4>
+                  <div className="grid grid-cols-3 gap-2">
                     {cityCard.prices.map((p) => (
                       <div key={p.duration} className="bg-muted/50 p-2 rounded text-center">
                         <p className="font-bold">{p.duration}</p>
@@ -938,10 +1113,18 @@ const Planejamento = () => {
                   <h4 className="font-bold text-sm mb-2">⚠️ {language === "pt" ? "NÃO Inclui:" : "NOT Included:"}</h4>
                   <ul className="text-xs space-y-1">
                     {cityCard.notIncluded.map((item, i) => (
-                      <li key={i}>• {item}</li>
+                      <li key={i}>{item}</li>
                     ))}
                   </ul>
                 </div>
+              </div>
+
+              <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg text-center">
+                <p className="text-sm">
+                  💡 {language === "pt" 
+                    ? "Dica: O site oficial recomenda planejar reservas com antecedência para atrações concorridas. Se seu foco é 1-2 atrações grandes FORA do passe, você paga caro e não 'recupera' no uso."
+                    : "Tip: The official site recommends planning reservations ahead for popular attractions. If your focus is 1-2 big attractions NOT in the pass, you pay a lot and don't 'recover' the value."}
+                </p>
               </div>
             </CardContent>
           </Card>
