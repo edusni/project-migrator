@@ -57,6 +57,13 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Amsterdam custom colors
+        "amsterdam-orange": "hsl(24 95% 53%)",
+        "amsterdam-blue": "hsl(200 45% 25%)",
+      },
+      fontFamily: {
+        heading: ["Playfair Display", "serif"],
+        body: ["DM Sans", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
