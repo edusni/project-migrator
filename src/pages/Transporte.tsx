@@ -1,145 +1,163 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Train, Bike, Bus, CreditCard } from "lucide-react";
+import { Train, Bike, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-
-const transportOptions = [
-  {
-    icon: Bike,
-    name: "Bicicleta",
-    description: "A forma mais autêntica de explorar Amsterdam. A cidade é feita para bikes!",
-    cost: "€12-15/dia",
-    pros: ["Liberdade total", "Mais rápido que carro", "Experiência local"],
-    tips: "Alugue em lojas locais, não nas estações. Cuidado com os trilhos do tram!",
-  },
-  {
-    icon: Train,
-    name: "Tram & Metrô",
-    description: "Rede de transporte público excelente. Trams são icônicos da cidade.",
-    cost: "€3,40/viagem ou €8,50/dia",
-    pros: ["Cobre toda cidade", "Frequente", "Fácil de usar"],
-    tips: "Compre o cartão OV-chipkaart para economizar. GVB é a empresa local.",
-  },
-  {
-    icon: Bus,
-    name: "Ônibus & Ferry",
-    description: "Ônibus para áreas mais distantes. Ferry para Noord é grátis e lindo!",
-    cost: "Mesmo preço do tram / Ferry grátis",
-    pros: ["Complementa tram/metrô", "Ferry é experiência única"],
-    tips: "Ferry sai da Estação Central para NDSM e Noord. Imperdível!",
-  },
-];
-
-const cards = [
-  {
-    name: "I amsterdam City Card",
-    price: "€65/24h - €115/72h",
-    includes: ["Transporte ilimitado", "60+ museus", "Passeio de barco"],
-    worth: "Só vale se você for visitar 2-3 museus por dia. Faça as contas!",
-  },
-  {
-    name: "GVB Day Pass",
-    price: "€8,50/dia",
-    includes: ["Tram ilimitado", "Metrô ilimitado", "Ônibus GVB"],
-    worth: "Vale se usar 3+ vezes no dia. Ótimo custo-benefício.",
-  },
-  {
-    name: "OV-chipkaart",
-    price: "€7,50 + crédito",
-    includes: ["Cartão recarregável", "Desconto por viagem", "Uso em toda Holanda"],
-    worth: "Ideal para estadias longas ou viagens pelo país.",
-  },
-];
 
 const Transporte = () => {
   return (
     <PageLayout>
       <PageHero
         icon={Train}
-        title="Transporte em Amsterdam"
-        description="Como se locomover pela cidade de forma fácil, barata e autêntica."
+        title="🚴 Getting Around Amsterdam"
+        description="The complete guide so you do not get lost, do not get fined, and do not get run over."
         gradient="from-amsterdam-blue to-[#1a3a4a]"
       />
 
-      {/* Transport Options */}
-      <section className="py-16 md:py-24">
+      {/* Golden Rule */}
+      <section className="py-8 bg-red-50 border-y border-red-200">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            Opções de Transporte
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Esqueça o carro. Amsterdam é feita para bicicletas e transporte público.
-          </p>
-          
-          <div className="grid md:grid-cols-3 gap-6">
-            {transportOptions.map((option) => (
-              <Card key={option.name} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 rounded-xl bg-amsterdam-orange/10 text-amsterdam-orange group-hover:bg-amsterdam-orange group-hover:text-white transition-colors">
-                      <option.icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h3 className="font-heading font-bold text-xl">{option.name}</h3>
-                      <Badge className="bg-amsterdam-blue/10 text-amsterdam-blue">{option.cost}</Badge>
-                    </div>
-                  </div>
-                  
-                  <p className="text-muted-foreground text-sm mb-4">{option.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {option.pros.map((pro) => (
-                      <span key={pro} className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded">
-                        {pro}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="bg-muted/50 p-3 rounded-lg">
-                    <p className="text-xs">
-                      <span className="font-semibold text-amsterdam-orange">Dica:</span> {option.tips}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="max-w-4xl mx-auto text-center">
+            <h3 className="font-bold text-red-800 text-xl mb-4">🚨 Amsterdam Traffic Hierarchy (Golden Rule):</h3>
+            <div className="flex flex-wrap justify-center items-center gap-4 text-2xl font-bold">
+              <span className="text-green-600">🚴 Bicycle</span>
+              <span className="text-muted-foreground">&gt;</span>
+              <span className="text-blue-600">🚊 Tram</span>
+              <span className="text-muted-foreground">&gt;</span>
+              <span className="text-orange-600">🚶 Pedestrian</span>
+              <span className="text-muted-foreground">&gt;</span>
+              <span className="text-gray-600">🚗 Car</span>
+            </div>
+            <p className="text-red-700 mt-4">
+              Understanding this is VITAL for your survival. Tourists who ignore this rule cause accidents!
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Cards & Passes */}
+      {/* Priority Pyramid */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+            🔺 The Priority Pyramid
+          </h2>
+          
+          <div className="max-w-3xl mx-auto space-y-4">
+            <Card className="bg-green-50 border-green-300">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">🚴</span>
+                  <div>
+                    <h3 className="font-bold text-green-800 text-lg">Top: BICYCLE</h3>
+                    <p className="text-green-700">Absolute king of the streets. Has priority over EVERYONE else. 880,000 bikes for 900,000 inhabitants is no joke!</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-blue-50 border-blue-300">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">🚊</span>
+                  <div>
+                    <h3 className="font-bold text-blue-800 text-lg">Second Level: TRAM</h3>
+                    <p className="text-blue-700">30+ tons on rails. CANNOT swerve. CANNOT stop quickly. Priority guaranteed by physics, not just law!</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-orange-50 border-orange-300">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">🚶</span>
+                  <div>
+                    <h3 className="font-bold text-orange-800 text-lg">Third Level: PEDESTRIAN</h3>
+                    <p className="text-orange-700">You (tourist) are HERE. Vulnerable but protected by law at crosswalks. Your weapon: constant attention and respect for the hierarchy.</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gray-50 border-gray-300">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <span className="text-4xl">🚗</span>
+                  <div>
+                    <h3 className="font-bold text-gray-800 text-lg">Base: CAR</h3>
+                    <p className="text-gray-700">Lowest priority. Seen as "tolerated visitor" on the streets. Amsterdam was REDESIGNED for bikes, not cars!</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Transport Options */}
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            Cartões & Passes
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
+            🚌 Transport Options
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Qual cartão vale mais a pena para você?
-          </p>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            {cards.map((card) => (
-              <Card key={card.name} className="hover:shadow-xl transition-all duration-300">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                icon: "🚴",
+                name: "Bike Rental",
+                cost: "€12-15/day",
+                tips: ["Rent from local shops, NOT tourist traps", "Watch out for tram tracks!", "ALWAYS use hand signals", "Lock BOTH wheels"],
+              },
+              {
+                icon: "🚊",
+                name: "Tram & Metro",
+                cost: "€3.40/trip or €8.50/day",
+                tips: ["Use OVpay (contactless) - cheapest!", "Tram 2, 11, 12 cover most tourist spots", "Metro for Noord and Oost", "Check-in AND check-out required"],
+              },
+              {
+                icon: "⛴️",
+                name: "Free Ferries",
+                cost: "FREE!",
+                tips: ["Central Station to Noord", "Runs 24/7", "Takes bikes", "Best views of Amsterdam"],
+              },
+              {
+                icon: "🚌",
+                name: "Bus",
+                cost: "Same as tram",
+                tips: ["Good for reaching outskirts", "Night buses (nachtbus) after midnight", "Less frequent than tram"],
+              },
+              {
+                icon: "🚕",
+                name: "Taxi/Uber",
+                cost: "€15-25 in center",
+                tips: ["Use Uber or Bolt app", "Official taxis are expensive", "Avoid during rush hour", "Bikes are often faster!"],
+              },
+              {
+                icon: "✈️",
+                name: "Schiphol <> City",
+                cost: "€5.50 train",
+                tips: ["Train is fastest (15-20min)", "Avoid taxi (€50+)", "Night bus N97 when trains stop", "Sprinter trains are fine"],
+              },
+            ].map((option) => (
+              <Card key={option.name} className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <CreditCard className="w-5 h-5 text-amsterdam-orange" />
-                    <h3 className="font-heading font-bold text-lg">{card.name}</h3>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="text-3xl">{option.icon}</span>
+                    <div>
+                      <h3 className="font-heading font-bold text-lg">{option.name}</h3>
+                      <Badge className="bg-amsterdam-orange text-white">{option.cost}</Badge>
+                    </div>
                   </div>
                   
-                  <p className="text-2xl font-bold text-amsterdam-orange mb-4">{card.price}</p>
-                  
-                  <ul className="space-y-2 mb-4">
-                    {card.includes.map((item) => (
-                      <li key={item} className="text-sm flex items-center gap-2">
-                        <span className="text-green-500">✓</span> {item}
+                  <ul className="space-y-2">
+                    {option.tips.map((tip) => (
+                      <li key={tip} className="text-sm text-muted-foreground flex items-start gap-2">
+                        <span className="text-amsterdam-orange">→</span>
+                        {tip}
                       </li>
                     ))}
                   </ul>
-                  
-                  <div className="bg-amsterdam-orange/10 p-3 rounded-lg">
-                    <p className="text-xs text-amsterdam-orange font-medium">{card.worth}</p>
-                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -153,27 +171,35 @@ const Transporte = () => {
           <Card className="max-w-4xl mx-auto bg-gradient-to-br from-amsterdam-blue to-amsterdam-blue/80 text-white">
             <CardContent className="p-8 md:p-12">
               <h2 className="text-2xl font-heading font-bold text-center mb-8">
-                🚴 Dicas Essenciais
+                ⚠️ Survival Tips
               </h2>
               <div className="grid md:grid-cols-2 gap-6 text-white/90">
                 <div className="space-y-4">
                   <p className="flex items-start gap-2">
-                    <span className="text-amsterdam-orange">→</span>
-                    <span><strong>Nunca ande na ciclovia!</strong> Holandeses ficam irritados (com razão).</span>
+                    <span className="text-amsterdam-orange font-bold">1.</span>
+                    <span><strong>NEVER walk in the bike lane!</strong> Red/brown pavement = bike territory. Locals WILL yell at you.</span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <span className="text-amsterdam-orange">→</span>
-                    <span>Olhe para os dois lados antes de atravessar — bikes vêm rápido!</span>
+                    <span className="text-amsterdam-orange font-bold">2.</span>
+                    <span><strong>Look BOTH ways</strong> before crossing anything. Bikes come fast and silent.</span>
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-amsterdam-orange font-bold">3.</span>
+                    <span><strong>Tram tracks are slippery</strong> when wet. Cross at 90° angles to avoid falls.</span>
                   </p>
                 </div>
                 <div className="space-y-4">
                   <p className="flex items-start gap-2">
-                    <span className="text-amsterdam-orange">→</span>
-                    <span>Do aeroporto: trem é mais rápido e barato que táxi (20 min, €5,50).</span>
+                    <span className="text-amsterdam-orange font-bold">4.</span>
+                    <span><strong>OVpay is magic:</strong> Just tap your contactless card. No need to buy tickets. Automatically caps daily spending.</span>
                   </p>
                   <p className="flex items-start gap-2">
-                    <span className="text-amsterdam-orange">→</span>
-                    <span>Uber funciona bem, mas táxi regular é mais caro que no Brasil.</span>
+                    <span className="text-amsterdam-orange font-bold">5.</span>
+                    <span><strong>From airport:</strong> Train is fastest (20min) and cheapest (€5.50). Taxi = €50+.</span>
+                  </p>
+                  <p className="flex items-start gap-2">
+                    <span className="text-amsterdam-orange font-bold">6.</span>
+                    <span><strong>Uber works</strong> but often bikes are faster in the center!</span>
                   </p>
                 </div>
               </div>

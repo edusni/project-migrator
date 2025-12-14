@@ -1,80 +1,80 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Star, Clock, Euro, MapPin } from "lucide-react";
+import { Star, Clock, AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
 const attractions = [
   {
     name: "Rijksmuseum",
-    category: "Museu",
-    description: "O maior museu da Holanda com obras-primas de Rembrandt e Vermeer.",
-    duration: "3-4 horas",
-    price: "€22,50",
-    tip: "Vá logo cedo ou após 16h para evitar filas.",
+    category: "Museum",
+    description: "The Netherlands' national museum. Rembrandt's Night Watch, Vermeer's Milkmaid. Massive collection spanning 800 years.",
+    duration: "3-4 hours",
+    price: "€22.50",
+    tip: "Go early (before 10am) or after 4pm. Skip the audioguide - use the free app.",
     mustSee: true,
   },
   {
     name: "Van Gogh Museum",
-    category: "Museu",
-    description: "Maior coleção de Van Gogh do mundo. Emocionante e educativo.",
-    duration: "2-3 horas",
+    category: "Museum",
+    description: "World's largest Van Gogh collection. 200+ paintings, 500 drawings. Chronological journey through his life.",
+    duration: "2-3 hours",
     price: "€22",
-    tip: "Reserve online com antecedência — sempre esgota!",
+    tip: "BOOK WEEKS IN ADVANCE. Always sells out. Left I amsterdam Card in 2024!",
     mustSee: true,
   },
   {
-    name: "Anne Frank Huis",
-    category: "Histórico",
-    description: "A casa onde Anne Frank se escondeu. Experiência profunda.",
-    duration: "1-2 horas",
+    name: "Anne Frank House",
+    category: "Historic",
+    description: "The actual annex where Anne Frank hid. Profoundly moving. The original diary is here.",
+    duration: "1-2 hours",
     price: "€16",
-    tip: "Ingressos liberados 6 semanas antes. Seja rápido!",
+    tip: "Tickets release 6 weeks ahead at 10am CET. Set an alarm. They sell out in MINUTES.",
     mustSee: true,
   },
   {
     name: "Vondelpark",
-    category: "Parque",
-    description: "O Central Park de Amsterdam. Perfeito para piquenique e relaxar.",
-    duration: "1-3 horas",
-    price: "Grátis",
-    tip: "Leve uma toalha e aproveite o sol quando aparecer!",
+    category: "Park",
+    description: "Amsterdam's Central Park. 47 hectares of green. Free concerts in summer, locals picnicking, joggers, cafes.",
+    duration: "1-3 hours",
+    price: "Free",
+    tip: "Best on sunny days. Bring a blanket, buy cheese and wine, join the locals.",
     mustSee: false,
   },
   {
     name: "Heineken Experience",
-    category: "Experiência",
-    description: "Tour interativo na antiga fábrica da Heineken. Divertido!",
-    duration: "1,5 horas",
+    category: "Experience",
+    description: "Interactive tour of the original Heineken brewery. Beer tasting, VR experiences, history.",
+    duration: "1.5 hours",
     price: "€23",
-    tip: "Inclui 2 cervejas. Reserve online para desconto.",
+    tip: "Skip if you're not into beer culture. Better brewery tours exist (Brouwerij 't IJ).",
     mustSee: false,
   },
   {
     name: "Canal Cruise",
-    category: "Passeio",
-    description: "Ver Amsterdam da água é obrigatório. Melhor no fim da tarde.",
-    duration: "1 hora",
+    category: "Tour",
+    description: "See Amsterdam from the water. The canals are UNESCO World Heritage. Best at sunset or night.",
+    duration: "1 hour",
     price: "€15-25",
-    tip: "Pegue um barco menor para experiência mais íntima.",
+    tip: "Small boats > large boats. Avoid Those Dam Boat Guys (tourist trap). Try Flagship or local operators.",
     mustSee: true,
   },
   {
     name: "Albert Cuyp Market",
-    category: "Mercado",
-    description: "O maior mercado de rua da Holanda. Comida, roupas, de tudo!",
-    duration: "1-2 horas",
-    price: "Grátis",
-    tip: "Experimente o stroopwafel fresquinho. Melhor da cidade!",
-    mustSee: false,
+    category: "Market",
+    description: "The Netherlands' largest street market. 260+ stalls. Food, clothes, flowers, everything. Since 1905.",
+    duration: "1-2 hours",
+    price: "Free",
+    tip: "Best street food: fresh stroopwafel, haring, kibbeling. Go hungry!",
+    mustSee: true,
   },
   {
-    name: "NEMO Science Museum",
-    category: "Museu",
-    description: "Museu de ciências interativo. Ótimo para famílias e curiosos.",
-    duration: "2-3 horas",
-    price: "€17,50",
-    tip: "O terraço no topo tem vista incrível — e é grátis!",
+    name: "NDSM Wharf (Noord)",
+    category: "Culture",
+    description: "Former shipyard turned creative hub. Street art, festivals, bars in shipping containers. Different Amsterdam.",
+    duration: "2-3 hours",
+    price: "Free",
+    tip: "Take the free ferry from Central Station. Visit Pllek for food with a view.",
     mustSee: false,
   },
 ];
@@ -84,9 +84,27 @@ const Atracoes = () => {
     <PageLayout>
       <PageHero
         icon={Star}
-        title="O que Fazer em Amsterdam"
-        description="As melhores atrações, museus e experiências para aproveitar ao máximo sua visita."
+        title="What to Do in Amsterdam: The REAL Guide"
+        description="Forget those generic guides. Amsterdam has changed - it is no longer just 'Canals + Red Light'. I will show you EXACTLY how to enjoy every corner."
       />
+
+      {/* Reality Check */}
+      <section className="py-8 bg-amber-50 border-y border-amber-200">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <h3 className="font-bold text-amber-800 text-lg mb-4 flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              💣 What Changed in 2025:
+            </h3>
+            <ul className="grid md:grid-cols-2 gap-2 text-amber-700 text-sm">
+              <li>• Van Gogh Museum left the I amsterdam Card - changes pass calculations</li>
+              <li>• Noord, Oost, West became destinations themselves</li>
+              <li>• Everything got more expensive and "premium"</li>
+              <li>• SAIL Amsterdam returns August 2025 - city will be PACKED</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       {/* Must See */}
       <section className="py-16 md:py-24">
@@ -94,11 +112,11 @@ const Atracoes = () => {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Star className="w-6 h-6 text-amsterdam-orange fill-amsterdam-orange" />
             <h2 className="text-3xl md:text-4xl font-heading font-bold">
-              Imperdíveis
+              The Essentials
             </h2>
           </div>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Se você só tem alguns dias, não deixe de visitar estes lugares.
+            If you only have a few days, do NOT miss these.
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -120,15 +138,14 @@ const Atracoes = () => {
                       <Clock className="w-4 h-4 text-muted-foreground" />
                       {attraction.duration}
                     </span>
-                    <span className="flex items-center gap-1 text-amsterdam-orange font-semibold">
-                      <Euro className="w-4 h-4" />
+                    <span className="text-amsterdam-orange font-semibold">
                       {attraction.price}
                     </span>
                   </div>
                   
                   <div className="bg-muted/50 p-3 rounded-lg">
                     <p className="text-xs">
-                      <span className="font-semibold text-amsterdam-orange">Dica:</span> {attraction.tip}
+                      <span className="font-semibold text-amsterdam-orange">💡 Tip:</span> {attraction.tip}
                     </p>
                   </div>
                 </CardContent>
@@ -142,10 +159,10 @@ const Atracoes = () => {
       <section className="py-16 md:py-24 bg-muted/30">
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            Mais para Explorar
+            Worth Your Time
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            Outras experiências incríveis que vale a pena considerar.
+            Beyond the obvious - what 99% of tourists miss.
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -166,15 +183,14 @@ const Atracoes = () => {
                       <Clock className="w-4 h-4 text-muted-foreground" />
                       {attraction.duration}
                     </span>
-                    <span className="flex items-center gap-1 text-amsterdam-orange font-semibold">
-                      <Euro className="w-4 h-4" />
+                    <span className="text-amsterdam-orange font-semibold">
                       {attraction.price}
                     </span>
                   </div>
                   
                   <div className="bg-muted/50 p-3 rounded-lg">
                     <p className="text-xs">
-                      <span className="font-semibold text-amsterdam-orange">Dica:</span> {attraction.tip}
+                      <span className="font-semibold text-amsterdam-orange">💡 Tip:</span> {attraction.tip}
                     </p>
                   </div>
                 </CardContent>

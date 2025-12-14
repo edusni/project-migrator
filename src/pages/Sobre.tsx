@@ -1,16 +1,18 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { ContentCard } from "@/components/ContentCard";
-import { User, Heart, MapPin, Camera, Lightbulb, Target } from "lucide-react";
+import { User, Heart, MapPin, Lightbulb, Target, CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const Sobre = () => {
   return (
     <PageLayout>
       <PageHero
         icon={User}
-        title="Quem é o Du?"
-        description="Conheça a história por trás do Amsterdu e a paixão por Amsterdam que deu origem a este projeto."
+        title="Who is Du?"
+        description="And why Amsterdu exists"
       />
 
       <section className="py-16 md:py-24">
@@ -25,66 +27,93 @@ const Sobre = () => {
                   </div>
                   <div className="flex-1 text-center md:text-left">
                     <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-                      Olá! Eu sou o Du
+                      Hi, I am Du.
                     </h2>
                     <p className="text-lg text-muted-foreground leading-relaxed">
-                      Brasileiro apaixonado por Amsterdam, moro na cidade desde 2019 e decidi criar este blog para compartilhar tudo o que aprendi vivendo aqui. Nada de guias genéricos — aqui você encontra a visão de quem realmente vive a cidade.
+                      If there is one thing you need to know about me right away: <strong>I am in love with Amsterdam.</strong>
                     </p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Mission */}
-            <div className="grid gap-6 mb-12">
-              <h2 className="text-3xl font-heading font-bold text-center mb-4">Por que criei o Amsterdu?</h2>
-              
-              <div className="grid md:grid-cols-2 gap-6">
-                <ContentCard
-                  icon={Target}
-                  title="Informação Real"
-                  description="Cansei de ver blogs com informações desatualizadas ou copiadas. Aqui você encontra dicas testadas por quem mora na cidade."
-                />
-                <ContentCard
-                  icon={Heart}
-                  title="Paixão Genuína"
-                  description="Amsterdam me conquistou com seus canais, bicicletas e cultura única. Quero transmitir essa paixão para você."
-                />
-                <ContentCard
-                  icon={Lightbulb}
-                  title="Dicas Práticas"
-                  description="Desde como usar o transporte público até onde encontrar o melhor stroopwafel — tudo que você precisa saber."
-                />
-                <ContentCard
-                  icon={MapPin}
-                  title="Exploração Local"
-                  description="Conheço cada cantinho da cidade e os melhores bate-voltas. Vou te levar além dos pontos turísticos."
-                />
-              </div>
+            {/* Story */}
+            <div className="prose prose-lg max-w-none mb-12">
+              <Card className="mb-8">
+                <CardContent className="p-8">
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    My history with the city is not about a quick weekend visit. I have been there many times, built true friendships with locals, and with each trip, I discover a new layer of this incredible city.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    Soon, Amsterdam will stop being just my favorite destination and officially become my home.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    But while the final move does not happen, I live in constant "research mode". I am not a traditional, distant tour guide. I am someone like you, but who decided to dive deep: I talk to people who live there, study the history, understand the struggles, and test each recommendation before sharing it here.
+                  </p>
+                </CardContent>
+              </Card>
             </div>
 
-            {/* Values */}
-            <Card className="bg-gradient-to-br from-amsterdam-blue/5 to-amsterdam-orange/5 border-2 border-amsterdam-orange/20">
+            {/* What you will find */}
+            <Card className="mb-12 bg-gradient-to-br from-amsterdam-orange/5 to-amsterdam-blue/5 border-2 border-amsterdam-orange/20">
               <CardContent className="p-8 md:p-12">
                 <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
-                  O que você encontra aqui
+                  What will you find at Amsterdu?
                 </h2>
-                <div className="grid sm:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <span className="text-4xl mb-4 block">🎯</span>
-                    <h3 className="font-bold mb-2">Honestidade</h3>
-                    <p className="text-sm text-muted-foreground">Se algo não vale a pena, eu digo. Sem jabá.</p>
+                <p className="text-center text-muted-foreground mb-8">
+                  The result of my relentless search to discover what is truly worth it.
+                </p>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <CheckCircle className="w-10 h-10 text-amsterdam-orange mx-auto mb-3" />
+                    <h3 className="font-bold mb-2">Validated Tips</h3>
+                    <p className="text-sm text-muted-foreground">By me and my Dutch friends.</p>
                   </div>
-                  <div>
-                    <span className="text-4xl mb-4 block">🧠</span>
-                    <h3 className="font-bold mb-2">Profundidade</h3>
-                    <p className="text-sm text-muted-foreground">Contexto cultural e histórico em cada dica.</p>
+                  <div className="text-center">
+                    <Lightbulb className="w-10 h-10 text-amsterdam-orange mx-auto mb-3" />
+                    <h3 className="font-bold mb-2">Curious Perspective</h3>
+                    <p className="text-sm text-muted-foreground">That goes far beyond the tourist obvious.</p>
                   </div>
-                  <div>
-                    <span className="text-4xl mb-4 block">🗺️</span>
-                    <h3 className="font-bold mb-2">Visão Local</h3>
-                    <p className="text-sm text-muted-foreground">Segredos que só quem mora aqui conhece.</p>
+                  <div className="text-center">
+                    <MapPin className="w-10 h-10 text-amsterdam-orange mx-auto mb-3" />
+                    <h3 className="font-bold mb-2">Real Preparation</h3>
+                    <p className="text-sm text-muted-foreground">Of someone who is packing their bags.</p>
                   </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* CTA */}
+            <Card className="text-center">
+              <CardContent className="p-8">
+                <p className="text-lg text-muted-foreground mb-6">
+                  Amsterdu is my invitation for you to discover the city alongside me, learning from my successes and avoiding the traps.
+                </p>
+                <p className="text-xl font-heading font-bold text-amsterdam-orange mb-6">
+                  Welcome to my future home.
+                </p>
+                <p className="text-muted-foreground mb-8">- Du</p>
+                
+                <h3 className="font-heading font-bold text-xl mb-6">Ready to Start?</h3>
+                <div className="grid sm:grid-cols-3 gap-4">
+                  <Link to="/planejamento">
+                    <Button variant="outline" className="w-full h-auto py-4 flex flex-col">
+                      <span className="font-bold">📅 Planning</span>
+                      <span className="text-xs text-muted-foreground">Pain-Free</span>
+                    </Button>
+                  </Link>
+                  <Link to="/hospedagem">
+                    <Button variant="outline" className="w-full h-auto py-4 flex flex-col">
+                      <span className="font-bold">🏨 Where to Stay</span>
+                      <span className="text-xs text-muted-foreground">The Real Deal</span>
+                    </Button>
+                  </Link>
+                  <Link to="/atracoes">
+                    <Button variant="outline" className="w-full h-auto py-4 flex flex-col">
+                      <span className="font-bold">🎨 What to Do</span>
+                      <span className="text-xs text-muted-foreground">The Essentials</span>
+                    </Button>
+                  </Link>
                 </div>
               </CardContent>
             </Card>
