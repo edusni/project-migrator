@@ -1,117 +1,130 @@
 import { Link } from "react-router-dom";
-import { Instagram, Twitter, Youtube } from "lucide-react";
+import { Instagram, Youtube, Mail, Heart } from "lucide-react";
+import { useLanguage } from "@/hooks/useLanguage";
 
 const footerLinks = {
-  explorar: [
-    { label: "Artigos", href: "#" },
-    { label: "Categorias", href: "#" },
-    { label: "Guias", href: "#" },
-    { label: "Newsletter", href: "#" },
+  explore: [
+    { href: "/planejamento", labelKey: "nav.planning" },
+    { href: "/hospedagem", labelKey: "nav.accommodation" },
+    { href: "/atracoes", labelKey: "nav.attractions" },
+    { href: "/transporte", labelKey: "nav.transport" },
   ],
-  sobre: [
-    { label: "Sobre nós", href: "#" },
-    { label: "Contato", href: "#" },
-    { label: "Parcerias", href: "#" },
-    { label: "Trabalhe conosco", href: "#" },
+  experience: [
+    { href: "/gastronomia", labelKey: "nav.food" },
+    { href: "/coffeeshops", labelKey: "nav.coffeeshops" },
+    { href: "/arredores", labelKey: "nav.daytrips" },
+    { href: "/galeria", labelKey: "nav.gallery" },
   ],
-  legal: [
-    { label: "Privacidade", href: "#" },
-    { label: "Termos de uso", href: "#" },
-    { label: "Cookies", href: "#" },
+  about: [
+    { href: "/sobre", labelKey: "nav.about" },
   ],
 };
 
 const socialLinks = [
   { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
   { icon: Youtube, href: "#", label: "YouTube" },
+  { icon: Mail, href: "#", label: "Email" },
 ];
 
 export function Footer() {
+  const { t, language } = useLanguage();
+
   return (
-    <footer className="border-t border-border bg-muted/30">
-      <div className="container px-4 md:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+    <footer className="bg-amsterdam-blue text-white">
+      <div className="container py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
-              <span className="text-2xl font-bold" style={{ fontFamily: 'var(--font-heading)' }}>
-                Amsterd<span className="text-primary">u</span>
+              <span className="text-2xl font-heading font-black">
+                Amster<span className="text-amsterdam-orange">du</span>
               </span>
             </Link>
-            <p className="text-muted-foreground text-sm mb-6">
-              Seu guia definitivo para descobrir, viver e amar Amsterdam.
+            <p className="text-white/70 text-sm mb-4">
+              {language === "pt" 
+                ? "O guia brutalmente honesto de Amsterdam. Sem filtro, sem jabá."
+                : "The brutally honest Amsterdam guide. No filter, no BS."
+              }
             </p>
             <div className="flex gap-3">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
                   aria-label={social.label}
+                  className="p-2 rounded-full bg-white/10 hover:bg-amsterdam-orange transition-colors"
                 >
-                  <social.icon className="h-5 w-5" />
+                  <social.icon className="w-5 h-5" />
                 </a>
               ))}
             </div>
           </div>
 
-          {/* Links */}
+          {/* Explore */}
           <div>
-            <h4 className="font-semibold mb-4">Explorar</h4>
-            <ul className="space-y-3">
-              {footerLinks.explorar.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {language === "pt" ? "Explorar" : "Explore"}
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.explore.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-amsterdam-orange transition-colors text-sm"
                   >
-                    {link.label}
-                  </a>
+                    {t(link.labelKey)}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Experience */}
           <div>
-            <h4 className="font-semibold mb-4">Sobre</h4>
-            <ul className="space-y-3">
-              {footerLinks.sobre.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {language === "pt" ? "Experiências" : "Experience"}
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.experience.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-amsterdam-orange transition-colors text-sm"
                   >
-                    {link.label}
-                  </a>
+                    {t(link.labelKey)}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* About */}
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+            <h3 className="font-heading font-bold text-lg mb-4">
+              {language === "pt" ? "Sobre" : "About"}
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.about.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className="text-white/70 hover:text-amsterdam-orange transition-colors text-sm"
                   >
-                    {link.label}
-                  </a>
+                    {t(link.labelKey)}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Amsterdu. Todos os direitos reservados.
+        {/* Bottom */}
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/50 text-sm">
+            © {new Date().getFullYear()} Amsterdu. {t("footer.rights")}.
           </p>
-          <p className="text-sm text-muted-foreground">
-            Feito com 🧡 em Amsterdam
+          <p className="text-white/50 text-sm flex items-center gap-1">
+            {t("footer.madeWith")} <Heart className="w-4 h-4 text-amsterdam-orange fill-amsterdam-orange" /> in Amsterdam
           </p>
         </div>
       </div>
