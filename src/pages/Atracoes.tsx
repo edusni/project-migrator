@@ -14,6 +14,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLanguage } from "@/hooks/useLanguage";
 import { attractions2026, events2026, prices2026 } from "@/data/attractions2026";
+import { AttractionsMap } from "@/components/AttractionsMap";
 
 const Atracoes = () => {
   const { t, language } = useLanguage();
@@ -259,18 +260,11 @@ const Atracoes = () => {
               {filteredAttractions.length} {language === "pt" ? "atrações encontradas" : "attractions found"}
             </div>
 
-            {/* Map View Placeholder */}
+            {/* Map View */}
             {viewMode === "map" && (
-              <Card className="mb-6 bg-muted/30">
-                <CardContent className="p-12 text-center">
-                  <Map className="w-16 h-16 mx-auto text-muted-foreground mb-4" />
-                  <p className="text-muted-foreground">
-                    {language === "pt" 
-                      ? "Mapa interativo em breve. Por enquanto, use a lista abaixo." 
-                      : "Interactive map coming soon. For now, use the list below."}
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="mb-6 relative">
+                <AttractionsMap attractions={filteredAttractions} />
+              </div>
             )}
 
             {/* Attractions Grid */}
