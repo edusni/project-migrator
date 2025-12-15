@@ -16,7 +16,7 @@ export const TouristsAllowedSection = ({ title, yes, desc, requirements }: Touri
         <Card className="max-w-4xl mx-auto bg-green-500/10 border-green-500/30">
           <CardContent className="p-8 md:p-10 text-center">
             <CheckCircle className="w-12 h-12 md:w-14 md:h-14 text-green-600 mx-auto mb-4" />
-            <h3 className="text-2xl md:text-3xl font-bold text-green-700 dark:text-green-400 mb-4">✅ {yes}</h3>
+            <h3 className="text-2xl md:text-3xl font-heading font-bold text-green-700 dark:text-green-400 mb-4">✅ {yes}</h3>
             <p className="text-green-800 dark:text-green-300 mb-4 text-base md:text-lg">{desc}</p>
             <Badge variant="secondary" className="text-sm md:text-base">{requirements}</Badge>
           </CardContent>
