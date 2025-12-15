@@ -36,7 +36,7 @@ export function Newsletter() {
               />
               <Button 
                 size="lg" 
-                className="h-12 px-8 shrink-0 bg-white text-amsterdam-orange hover:bg-white/90"
+                className="h-12 px-8 shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold"
               >
                 {language === "pt" ? "Inscrever" : "Subscribe"}
               </Button>

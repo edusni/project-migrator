@@ -25,12 +25,13 @@ export function HeroSection() {
         style={{ y: backgroundY }}
         className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/85" 
       />
+      {/* Optimized background image using CSS instead of external URL */}
       <motion.div 
         style={{ y: backgroundY }}
         initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.15 }}
+        animate={{ scale: 1, opacity: 0.12 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1920')] bg-cover bg-center" 
+        className="absolute inset-0 bg-[url('/amsterdam-hero.webp')] bg-cover bg-center" 
       />
       
       {/* Noise texture overlay */}

@@ -16,12 +16,12 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 12%;
     
-    /* Dutch Orange - refined */
-    --primary: 24 90% 50%;
+    /* Dutch Orange - refined with better contrast */
+    --primary: 24 90% 42%;
     --primary-foreground: 0 0% 100%;
     
     /* Canal blue - deeper */
-    --secondary: 210 55% 22%;
+    --secondary: 210 55% 18%;
     --secondary-foreground: 0 0% 100%;
     
     --muted: 40 15% 94%;
@@ -39,13 +39,13 @@
     
     --radius: 0.625rem;
     
-    /* Custom Amsterdam colors */
-    --amsterdam-orange: 24 90% 50%;
-    --amsterdam-blue: 210 55% 22%;
-    --amsterdam-blue-light: 210 45% 35%;
+    /* Custom Amsterdam colors with better contrast */
+    --amsterdam-orange: 24 90% 42%;
+    --amsterdam-blue: 210 55% 18%;
+    --amsterdam-blue-light: 210 45% 30%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(24 90% 50%) 0%, hsl(24 85% 45%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(24 90% 42%) 0%, hsl(24 85% 38%) 100%);
     --gradient-secondary: linear-gradient(135deg, hsl(210 55% 22%) 0%, hsl(210 45% 30%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(40 25% 98%) 0%, hsl(40 20% 96%) 100%);
     
