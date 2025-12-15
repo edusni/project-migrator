@@ -6,3 +6,4 @@ export { ExplorerSection } from "./ExplorerSection";
 export { MainTabsSection } from "./MainTabsSection";
 export { GlossarySection } from "./GlossarySection";
 export { FAQSection } from "./FAQSection";
+export { FamousGallerySection } from "./FamousGallerySection";
