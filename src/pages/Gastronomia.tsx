@@ -1,78 +1,610 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { UtensilsCrossed } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { UtensilsCrossed, AlertTriangle, Check, X, Coffee, Beer, MapPin, Clock, CreditCard, Droplets, Info } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLanguage } from "@/hooks/useLanguage";
 
 const Gastronomia = () => {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
 
-  const streetFood = language === "pt"
-    ? [
-        { emoji: "🧇", name: "Stroopwafel", right: "FRESCO e QUENTE de uma barraca de mercado", wrong: "Embalado do supermercado", where: "Albert Cuyp Market, feiras de rua" },
-        { emoji: "🐟", name: "Haring", right: "Cru com cebola, incline a cabeça estilo holandês", wrong: "Em sanduíche (isso é para iniciantes)", where: "Stubbe's Haring, qualquer haringhandel" },
-        { emoji: "🍟", name: "Patat", right: "Com maionese, molho satay, ou molho de amendoim", wrong: "Só ketchup (muito sem graça)", where: "Vlaams Friteshuis Vleminckx" },
-        { emoji: "🧀", name: "Gouda", right: "Maturado (oude) com mostarda em uma queijaria", wrong: "Queijo jovem de lojas turísticas", where: "Qualquer kaaswinkel, não Dam Square" },
-        { emoji: "🥧", name: "Appeltaart", right: "Com slagroom (chantilly) em um café marrom", wrong: "Em restaurante turístico", where: "Café Winkel 43, Café Papeneiland" },
-        { emoji: "🍩", name: "Bitterballen", right: "Quente e crocante com mostarda e cerveja", wrong: "Frio ou murcho", where: "Qualquer café marrom (bruine kroeg)" },
+  const content = language === "pt" ? {
+    title: "Gastronomia em Amsterdam",
+    description: "Onde comer em Amsterdam: o guia sem papo furado",
+    intro: "Amsterdam não é só batata e queijo. A cidade tem um ecossistema de comida bem específico: mercados de rua, cafés históricos, herança indonésia e uma cena moderna que valoriza ingredientes locais e sazonalidade.",
+    goldenRule: {
+      title: "A regra que evita 80% das decepções",
+      text: "Se o lugar precisa te convencer na porta (foto plastificada do prato, alguém chamando na rua, cardápio em 8 idiomas na Damrak), quase sempre você paga caro por comida mediana. Anda 2 ruas para dentro do bairro e a média de qualidade sobe."
+    },
+    strategy: {
+      title: "Como comer bem sem gastar à toa",
+      tips: [
+        { title: "Almoço forte, jantar mais leve", desc: "Muitos restaurantes têm menu do dia no almoço com melhor custo-benefício." },
+        { title: "Mercado e padaria para 'comida boa de verdade'", desc: "Grande parte do que é icônico em Amsterdam funciona melhor em feira de rua e padaria." },
+        { title: "Reserva para jantar sério", desc: "Restaurantes disputados lotam com facilidade, então planejar evita perder tempo tentando 'dar sorte'." }
       ]
-    : [
-        { emoji: "🧇", name: "Stroopwafel", right: "FRESH and HOT from a market stall", wrong: "Pre-packaged from supermarkets", where: "Albert Cuyp Market, street fairs" },
-        { emoji: "🐟", name: "Haring", right: "Raw with onions, tilt head back Dutch style", wrong: "In a sandwich (that is for beginners)", where: "Stubbe's Haring, any haringhandel" },
-        { emoji: "🍟", name: "Patat", right: "With mayo, satay sauce, or peanut sauce", wrong: "Just ketchup (too boring)", where: "Vlaams Friteshuis Vleminckx" },
-        { emoji: "🧀", name: "Gouda", right: "Aged (oude) with mustard at a cheese shop", wrong: "Young cheese from tourist shops", where: "Any kaaswinkel, not Dam Square" },
-        { emoji: "🥧", name: "Appeltaart", right: "With slagroom (whipped cream) at a brown café", wrong: "At a tourist restaurant", where: "Café Winkel 43, Café Papeneiland" },
-        { emoji: "🍩", name: "Bitterballen", right: "Hot and crispy with mustard and a beer", wrong: "Cold or soggy", where: "Any brown café (bruine kroeg)" },
-      ];
+    },
+    tabs: {
+      street: "Comida de Rua",
+      dinner: "Jantar Sério",
+      drinks: "Bebidas",
+      foodhalls: "Food Halls"
+    },
+    streetFood: [
+      {
+        emoji: "🧇",
+        name: "Stroopwafel Autêntico",
+        what: "Dois waffles finos prensados com caramelo quente e especiarias.",
+        trap: "Comer stroopwafel de pacote na hora. Ele perde textura porque o caramelo endurece quando esfria.",
+        right: "Compre fresco e quente em mercado ou padaria. Para 'reviver' depois: apoie sobre uma xícara de café quente por 2 minutos.",
+        where: "Albert Cuypmarkt é o cenário clássico."
+      },
+      {
+        emoji: "🐟",
+        name: "Haring (Arenque Curado)",
+        what: "Arenque curado, com textura bem macia quando está bom. Temporada do Hollandse Nieuwe (maio a julho) valorizada por ter mais gordura (mínimo 16%).",
+        trap: "Comer sem saber o que esperar e não gostar da textura.",
+        right: "Peça cortado (partjes) com cebola e picles. É o modo mais amigável para iniciantes.",
+        where: "Qualquer haringhandel de boa reputação."
+      },
+      {
+        emoji: "🍟",
+        name: "Frites Holandesas",
+        what: "Batata realmente crocante vem de fritura em duas etapas: primeiro cozinha por dentro, depois doura por fora (reação de Maillard).",
+        trap: "Comprar só pelo visual da fila sem avaliar se a batata sai crocante.",
+        right: "Patatje oorlog (maionese + satay + cebola). Parece caos, mas funciona por contraste de gordura, sal e aromáticos.",
+        where: "Vlaams Friteshuis Vleminckx"
+      },
+      {
+        emoji: "🍩",
+        name: "Bitterballen",
+        what: "Bolinha empanada com ragu. O recheio vira 'lava' porque é uma emulsão espessa com amido e gelatina.",
+        trap: "Morder logo e queimar a boca. Isso não é frescura, é física do calor.",
+        right: "Espere alguns minutos, morda de leve e use mostarda.",
+        where: "Qualquer brown café (bruine kroeg)"
+      },
+      {
+        emoji: "🥞",
+        name: "Poffertjes",
+        what: "Mini panquecas bem aeradas. A graça é a combinação de manteiga derretida com açúcar.",
+        trap: "Versões muito carregadas de toppings que escondem o sabor original.",
+        right: "Clássica com manteiga e açúcar de confeiteiro.",
+        where: "Mercados de rua e feiras"
+      },
+      {
+        emoji: "🤖",
+        name: "FEBO (Automat)",
+        what: "A 'parede de comida' onde você pega croquete em compartimentos. Nasceu em Amsterdam como padaria em 1941, primeiro automatiek nos anos 1960.",
+        trap: "Esperar refeição gastronômica. É fast food.",
+        right: "Vá pela experiência cultural: rápido, barato e bem holandês. Kroket e kaassouflé são os clássicos.",
+        where: "Várias unidades pela cidade"
+      }
+    ],
+    dinner: {
+      rijsttafel: {
+        name: "Rijsttafel Indonésio",
+        why: "A relação histórica Holanda-Indonésia deixou marca real no paladar local. O rijsttafel virou forma popular de provar muitos preparos na mesma refeição, equilibrando picante, doce, ácido, crocante e cremoso.",
+        how: "Procure casas com boa reputação em cozinha indonésia e reserve, porque é jantar demorado e concorrido.",
+        tip: "Se você não gosta de ardor, avise antes. Não é vergonha, é ajuste de experiência."
+      },
+      brownCafe: {
+        name: "Brown Cafés",
+        what: "Bares antigos, madeira escura, clima de 'conversa e cerveja'. São o lugar certo para um borrel (fim de tarde com petiscos).",
+        examples: "Café Hoppe (Spui) e De Drie Fleschjes são dos mais conhecidos e históricos.",
+        order: "Bitterballen + cerveja é o combo clássico."
+      }
+    },
+    drinks: {
+      jenever: {
+        name: "Jenever",
+        what: "Destilado holandês que antecede o gin em popularidade histórica.",
+        where: "Wynand Fockink é um proeflokaal histórico tradicional no centro.",
+        tip: "Peça com respeito ao ritual da casa."
+      },
+      beer: {
+        name: "Cerveja Artesanal",
+        places: [
+          { name: "Brouwerij 't IJ", desc: "Cervejaria famosa perto do moinho De Gooyer. Costuma fechar cedo (por volta de 20:00)." },
+          { name: "Oedipus (Noord)", desc: "Ambiente mais moderno e experimental." }
+        ]
+      }
+    },
+    foodhalls: {
+      foodhallen: {
+        name: "Foodhallen",
+        what: "Mercado interno de comida dentro do complexo De Hallen. Cerca de 20 bancas.",
+        tip: "Fim de semana fica cheio. Vá cedo ou em horários fora do pico.",
+        bonus: "Combine com o Ten Katemarkt (logo perto) para compras com preços mais 'de bairro'."
+      },
+      worldOfFood: {
+        name: "World of Food",
+        warning: "Esse lugar foi muito recomendado por anos, mas teve fechamento e processo de demolição/reconstrução. Trate como 'talvez indisponível' ao montar roteiro.",
+        alt: "Explore mercados e áreas de bairros com forte presença de imigração usando avaliação recente no Google Maps."
+      }
+    },
+    traps: {
+      title: "Zonas de Perigo: Armadilhas Turísticas",
+      items: [
+        { icon: "🧇", text: "Waffle gigante com Nutella e montanha de doce — fotogênico, caro e raramente memorável." },
+        { icon: "🍽️", text: "Restaurante genérico colado na Damrak e Leidseplein — alta chance de preço inflado e cozinha sem cuidado." },
+        { icon: "📋", text: "Cardápio com foto plastificada e alguém te puxando para entrar — sinal clássico de armadilha." }
+      ]
+    },
+    rules: {
+      title: "Regras Práticas (Que Salvam Viagem)",
+      items: [
+        { icon: "💰", title: "Gorjeta", text: "Não é obrigatória na cultura local, mas é bem-vinda. Arredondar em cafés e deixar 5% a 10% em restaurante é visto como generoso." },
+        { icon: "💳", title: "Cartão x Dinheiro", text: "A Holanda caminha forte para pagamentos digitais. 'Pin only' é comum. Tenha cartão contactless funcionando e um plano B." },
+        { icon: "💧", title: "Água", text: "Pedir água de torneira (kraanwater) costuma ser normal, mas alguns lugares cobram pequena taxa. Varia por casa." }
+      ]
+    },
+    faq: {
+      title: "Perguntas Frequentes",
+      items: [
+        { q: "O que eu preciso comer em Amsterdam se tenho poucos dias?", a: "Se você fizer só 4 coisas: stroopwafel fresco, frites com um molho clássico, bitterballen num brown café e um jantar indonésio. Isso cobre rua, bar e 'jantar de verdade'." },
+        { q: "Onde comer barato sem cair em cilada?", a: "Mercados de rua, padarias e lanchonetes sem 'show para turista'. Foodhallen funciona, mas não é 'barato'; é prático e variado." },
+        { q: "Foodhallen vale a pena?", a: "Vale quando você está em grupo ou indeciso e quer variedade no mesmo lugar. Só alinhe expectativa: é cheio, e a conta pode subir porque você compra em várias bancas." },
+        { q: "O que é brown café e por que eu deveria ir?", a: "É o bar tradicional, ótimo para 'fim de tarde', cerveja, petiscos e clima local. Não é para alta gastronomia; é para viver o ritmo da cidade." },
+        { q: "Vale fazer tour gastronômico?", a: "Vale se você quer contexto histórico e não quer gastar energia pesquisando. Não vale se você topa fazer roteiro próprio e testar 2 ou 3 lugares por dia." },
+        { q: "Amsterdam é boa para vegetariano e vegano?", a: "Sim. É comum encontrar opções bem pensadas, não só 'tirar a carne do prato'. Você não fica refém de salada." },
+        { q: "Gorjeta é obrigatória?", a: "Não. Arredondar é comum; 5% a 10% em restaurante é visto como gesto generoso." },
+        { q: "Restaurantes aceitam cartão?", a: "A maioria sim, e muitos preferem cartão (pin). Tenha cartão contactless e um segundo cartão, porque 'pin only' existe." },
+        { q: "Dá para pedir água da torneira?", a: "Em muitos lugares, sim. Alguns cobram taxa pequena, então depende do restaurante." },
+        { q: "O World of Food está funcionando?", a: "Houve fechamento e processo de reconstrução divulgado. Verifique status recente antes de ir." },
+        { q: "Qual cervejaria eu não deveria perder?", a: "Se você quer 'ícone', Brouwerij 't IJ. Só não deixe para tarde, porque costuma fechar cedo." },
+        { q: "FEBO vale como experiência?", a: "Vale como 'folclore urbano': rápido, barato e bem holandês. Só não espere refeição gastronômica." }
+      ]
+    }
+  } : {
+    title: "Food in Amsterdam",
+    description: "Where to eat in Amsterdam: the no-nonsense guide",
+    intro: "Amsterdam isn't just fries and cheese. The city has a specific food ecosystem: street markets, historic cafés, Indonesian heritage, and a modern scene that values local ingredients and seasonality.",
+    goldenRule: {
+      title: "The rule that avoids 80% of disappointments",
+      text: "If the place needs to convince you at the door (laminated food photos, someone calling you from the street, menu in 8 languages on Damrak), you almost always pay too much for mediocre food. Walk 2 streets into the neighborhood and quality average rises."
+    },
+    strategy: {
+      title: "How to eat well without overspending",
+      tips: [
+        { title: "Heavy lunch, lighter dinner", desc: "Many restaurants have lunch specials with better value." },
+        { title: "Markets and bakeries for 'real good food'", desc: "Much of what's iconic in Amsterdam works better at street fairs and bakeries." },
+        { title: "Reservations for serious dinner", desc: "Popular restaurants fill up easily, so planning avoids wasting time hoping to 'get lucky'." }
+      ]
+    },
+    tabs: {
+      street: "Street Food",
+      dinner: "Serious Dinner",
+      drinks: "Drinks",
+      foodhalls: "Food Halls"
+    },
+    streetFood: [
+      {
+        emoji: "🧇",
+        name: "Authentic Stroopwafel",
+        what: "Two thin waffles pressed with hot caramel and spices.",
+        trap: "Eating packaged stroopwafel right away. It loses texture because caramel hardens when cold.",
+        right: "Buy fresh and hot at a market or bakery. To 'revive' later: rest it over a hot coffee cup for 2 minutes.",
+        where: "Albert Cuypmarkt is the classic spot."
+      },
+      {
+        emoji: "🐟",
+        name: "Haring (Cured Herring)",
+        what: "Cured herring with soft texture when good. Hollandse Nieuwe season (May-July) is prized for higher fat content (minimum 16%).",
+        trap: "Eating without knowing what to expect and not liking the texture.",
+        right: "Order cut (partjes) with onions and pickles. Most beginner-friendly way.",
+        where: "Any reputable haringhandel."
+      },
+      {
+        emoji: "🍟",
+        name: "Dutch Frites",
+        what: "Really crispy fries come from double frying: first cook inside, then brown outside (Maillard reaction).",
+        trap: "Buying just because of the queue without checking if fries are actually crispy.",
+        right: "Patatje oorlog (mayo + satay + onion). Looks like chaos but works through fat, salt and aromatic contrast.",
+        where: "Vlaams Friteshuis Vleminckx"
+      },
+      {
+        emoji: "🍩",
+        name: "Bitterballen",
+        what: "Breaded ball with ragout. Filling becomes 'lava' because it's a thick emulsion with starch and gelatin.",
+        trap: "Biting immediately and burning your mouth. This isn't fussiness, it's heat physics.",
+        right: "Wait a few minutes, bite gently and use mustard.",
+        where: "Any brown café (bruine kroeg)"
+      },
+      {
+        emoji: "🥞",
+        name: "Poffertjes",
+        what: "Airy mini pancakes. The charm is the combo of melted butter with powdered sugar.",
+        trap: "Versions too loaded with toppings that hide the original flavor.",
+        right: "Classic with butter and powdered sugar.",
+        where: "Street markets and fairs"
+      },
+      {
+        emoji: "🤖",
+        name: "FEBO (Automat)",
+        what: "The 'food wall' where you grab croquettes from compartments. Started as bakery in Amsterdam 1941, first automatiek in the 1960s.",
+        trap: "Expecting gourmet meal. It's fast food.",
+        right: "Go for the cultural experience: fast, cheap and very Dutch. Kroket and kaassouflé are classics.",
+        where: "Multiple locations around the city"
+      }
+    ],
+    dinner: {
+      rijsttafel: {
+        name: "Indonesian Rijsttafel",
+        why: "The historical Dutch-Indonesian relationship left real mark on local palate. Rijsttafel became popular way to try many dishes in one meal, balancing spicy, sweet, sour, crunchy and creamy.",
+        how: "Look for places with good Indonesian reputation and book ahead, as it's a long and busy dinner.",
+        tip: "If you don't like spice, say so beforehand. It's not embarrassing, it's adjusting the experience."
+      },
+      brownCafe: {
+        name: "Brown Cafés",
+        what: "Old bars, dark wood, 'conversation and beer' atmosphere. The right place for borrel (late afternoon with snacks).",
+        examples: "Café Hoppe (Spui) and De Drie Fleschjes are among the most famous and historic.",
+        order: "Bitterballen + beer is the classic combo."
+      }
+    },
+    drinks: {
+      jenever: {
+        name: "Jenever",
+        what: "Dutch spirit that predates gin in historical popularity.",
+        where: "Wynand Fockink is a traditional historic proeflokaal downtown.",
+        tip: "Order with respect for the house ritual."
+      },
+      beer: {
+        name: "Craft Beer",
+        places: [
+          { name: "Brouwerij 't IJ", desc: "Famous brewery near De Gooyer windmill. Usually closes early (around 8 PM)." },
+          { name: "Oedipus (Noord)", desc: "More modern and experimental atmosphere." }
+        ]
+      }
+    },
+    foodhalls: {
+      foodhallen: {
+        name: "Foodhallen",
+        what: "Indoor food market inside De Hallen complex. About 20 stalls.",
+        tip: "Weekends get crowded. Go early or off-peak hours.",
+        bonus: "Combine with Ten Katemarkt (nearby) for more 'neighborhood' prices."
+      },
+      worldOfFood: {
+        name: "World of Food",
+        warning: "This place was highly recommended for years, but had closure and demolition/reconstruction process. Treat as 'possibly unavailable' when planning.",
+        alt: "Explore markets and neighborhoods with strong immigrant presence using recent Google Maps reviews."
+      }
+    },
+    traps: {
+      title: "Danger Zones: Tourist Traps",
+      items: [
+        { icon: "🧇", text: "Giant waffle with Nutella and mountain of toppings — photogenic, expensive and rarely memorable." },
+        { icon: "🍽️", text: "Generic restaurant on Damrak and Leidseplein — high chance of inflated prices and careless cooking." },
+        { icon: "📋", text: "Laminated menu photos and someone pulling you in — classic trap sign." }
+      ]
+    },
+    rules: {
+      title: "Practical Rules (That Save Your Trip)",
+      items: [
+        { icon: "💰", title: "Tipping", text: "Not mandatory in local culture, but welcome. Rounding up at cafés and leaving 5-10% at restaurants is seen as generous." },
+        { icon: "💳", title: "Card vs Cash", text: "Netherlands is going strong on digital payments. 'Pin only' is common. Have working contactless card and a backup." },
+        { icon: "💧", title: "Water", text: "Asking for tap water (kraanwater) is usually normal, but some places charge small fee. Varies by place." }
+      ]
+    },
+    faq: {
+      title: "Frequently Asked Questions",
+      items: [
+        { q: "What must I eat in Amsterdam if I have few days?", a: "If you do only 4 things: fresh stroopwafel, frites with classic sauce, bitterballen at a brown café and Indonesian dinner. This covers street, bar and 'real dinner'." },
+        { q: "Where to eat cheap without getting trapped?", a: "Street markets, bakeries and eateries without 'tourist show'. Foodhallen works but isn't 'cheap'; it's practical and varied." },
+        { q: "Is Foodhallen worth it?", a: "Worth it when you're in a group or undecided and want variety in one place. Just align expectations: it's crowded, and bill can rise since you buy from multiple stalls." },
+        { q: "What's a brown café and why should I go?", a: "It's the traditional bar, great for 'late afternoon', beer, snacks and local vibe. Not for fine dining; it's for living the city rhythm." },
+        { q: "Is a food tour worth it?", a: "Worth it if you want historical context and don't want to spend energy researching. Not worth it if you're okay making your own route and testing 2-3 places per day." },
+        { q: "Is Amsterdam good for vegetarians and vegans?", a: "Yes. Common to find well-thought options, not just 'remove the meat'. You won't be stuck with salads." },
+        { q: "Is tipping mandatory?", a: "No. Rounding up is common; 5-10% at restaurants is seen as generous gesture." },
+        { q: "Do restaurants accept cards?", a: "Most do, and many prefer card (pin). Have contactless card and second card, as 'pin only' exists." },
+        { q: "Can I ask for tap water?", a: "In many places, yes. Some charge small fee, so it depends on the restaurant." },
+        { q: "Is World of Food open?", a: "There was closure and reconstruction process announced. Check recent status before going." },
+        { q: "Which brewery shouldn't I miss?", a: "If you want 'iconic', Brouwerij 't IJ. Just don't leave it too late, as it usually closes early." },
+        { q: "Is FEBO worth it as an experience?", a: "Worth it as 'urban folklore': fast, cheap and very Dutch. Just don't expect gourmet meal." }
+      ]
+    }
+  };
 
   return (
     <PageLayout>
       <PageHero
         icon={UtensilsCrossed}
-        title={t("food.title")}
-        description={t("food.description")}
+        title={content.title}
+        description={content.description}
         gradient="from-[#8B4513] to-[#D2691E]"
       />
 
-      <section className="py-8 bg-green-50 border-y border-green-200">
-        <div className="container text-center">
-          <p className="text-green-800">
-            <span className="text-2xl">💣</span> <strong>{t("food.realDeal")}</strong>
-          </p>
+      {/* Intro */}
+      <section className="py-8 bg-accent/30 border-y border-border">
+        <div className="container">
+          <p className="text-lg text-center max-w-3xl mx-auto">{content.intro}</p>
         </div>
       </section>
 
-      <section className="py-16 md:py-24">
+      {/* Golden Rule */}
+      <section className="py-8 bg-destructive/10 border-b border-destructive/20">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-12">
-            🍽️ {t("food.streetFood")}
-          </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {streetFood.map((food) => (
-              <Card key={food.name} className="group hover:shadow-xl transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="text-center mb-4">
-                    <span className="text-5xl">{food.emoji}</span>
-                    <h3 className="font-heading font-bold text-xl mt-2">{food.name}</h3>
+          <div className="flex items-start gap-4 max-w-3xl mx-auto">
+            <AlertTriangle className="h-8 w-8 text-destructive flex-shrink-0 mt-1" />
+            <div>
+              <h2 className="text-xl font-heading font-bold text-destructive mb-2">{content.goldenRule.title}</h2>
+              <p className="text-foreground/80">{content.goldenRule.text}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Strategy */}
+      <section className="py-12">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.strategy.title}</h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {content.strategy.tips.map((tip, i) => (
+              <Card key={i} className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">{i === 0 ? "🍽️" : i === 1 ? "🥖" : "📅"}</span>
                   </div>
-                  
-                  <div className="space-y-3">
-                    <div className="bg-green-50 p-3 rounded-lg">
-                      <p className="text-xs font-semibold text-green-700 mb-1">✅ {t("food.howToDoItRight")}</p>
-                      <p className="text-sm text-green-800">{food.right}</p>
+                  <h3 className="font-bold mb-2">{tip.title}</h3>
+                  <p className="text-sm text-muted-foreground">{tip.desc}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content Tabs */}
+      <section className="py-12 bg-muted/30">
+        <div className="container">
+          <Tabs defaultValue="street" className="w-full">
+            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
+              <TabsTrigger value="street">{content.tabs.street}</TabsTrigger>
+              <TabsTrigger value="dinner">{content.tabs.dinner}</TabsTrigger>
+              <TabsTrigger value="drinks">{content.tabs.drinks}</TabsTrigger>
+              <TabsTrigger value="foodhalls">{content.tabs.foodhalls}</TabsTrigger>
+            </TabsList>
+
+            {/* Street Food */}
+            <TabsContent value="street">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {content.streetFood.map((food) => (
+                  <Card key={food.name} className="group hover:shadow-xl transition-all duration-300">
+                    <CardHeader className="pb-2">
+                      <div className="text-center">
+                        <span className="text-5xl">{food.emoji}</span>
+                        <CardTitle className="mt-2">{food.name}</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      <p className="text-sm text-muted-foreground">{food.what}</p>
+                      
+                      <div className="bg-destructive/10 p-3 rounded-lg">
+                        <p className="text-xs font-semibold text-destructive mb-1 flex items-center gap-1">
+                          <X className="h-3 w-3" /> {language === "pt" ? "Cilada" : "Trap"}
+                        </p>
+                        <p className="text-sm text-destructive/80">{food.trap}</p>
+                      </div>
+                      
+                      <div className="bg-green-500/10 p-3 rounded-lg">
+                        <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-1 flex items-center gap-1">
+                          <Check className="h-3 w-3" /> {language === "pt" ? "Faça certo" : "Do it right"}
+                        </p>
+                        <p className="text-sm text-green-800 dark:text-green-300">{food.right}</p>
+                      </div>
+                      
+                      <Badge variant="secondary" className="text-xs">
+                        <MapPin className="h-3 w-3 mr-1" /> {food.where}
+                      </Badge>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </TabsContent>
+
+            {/* Serious Dinner */}
+            <TabsContent value="dinner">
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <span className="text-3xl">🍛</span>
+                      {content.dinner.rijsttafel.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                        {language === "pt" ? "Por que existe na Holanda" : "Why it exists in Netherlands"}
+                      </h4>
+                      <p className="text-sm">{content.dinner.rijsttafel.why}</p>
                     </div>
-                    <div className="bg-red-50 p-3 rounded-lg">
-                      <p className="text-xs font-semibold text-red-700 mb-1">🚫 {t("food.touristTrap")}</p>
-                      <p className="text-sm text-red-800">{food.wrong}</p>
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                        {language === "pt" ? "Como escolher bem" : "How to choose well"}
+                      </h4>
+                      <p className="text-sm">{content.dinner.rijsttafel.how}</p>
                     </div>
-                    <Badge variant="secondary" className="text-xs">📍 {food.where}</Badge>
+                    <div className="bg-amber-500/10 p-3 rounded-lg">
+                      <p className="text-sm text-amber-800 dark:text-amber-300">
+                        <strong>💡 Dica:</strong> {content.dinner.rijsttafel.tip}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Coffee className="h-6 w-6" />
+                      {content.dinner.brownCafe.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                        {language === "pt" ? "O que são" : "What they are"}
+                      </h4>
+                      <p className="text-sm">{content.dinner.brownCafe.what}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                        {language === "pt" ? "Exemplos clássicos" : "Classic examples"}
+                      </h4>
+                      <p className="text-sm">{content.dinner.brownCafe.examples}</p>
+                    </div>
+                    <div className="bg-primary/10 p-3 rounded-lg">
+                      <p className="text-sm">
+                        <strong>{language === "pt" ? "O que pedir:" : "What to order:"}</strong> {content.dinner.brownCafe.order}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Drinks */}
+            <TabsContent value="drinks">
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <span className="text-3xl">🥃</span>
+                      {content.drinks.jenever.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm">{content.drinks.jenever.what}</p>
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
+                        <MapPin className="h-3 w-3 inline mr-1" />
+                        {language === "pt" ? "Onde experimentar" : "Where to try"}
+                      </h4>
+                      <p className="text-sm">{content.drinks.jenever.where}</p>
+                    </div>
+                    <Badge variant="outline">{content.drinks.jenever.tip}</Badge>
+                  </CardContent>
+                </Card>
+
+                <Card>
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <Beer className="h-6 w-6" />
+                      {content.drinks.beer.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    {content.drinks.beer.places.map((place, i) => (
+                      <div key={i} className="p-3 bg-muted rounded-lg">
+                        <h4 className="font-bold">{place.name}</h4>
+                        <p className="text-sm text-muted-foreground">{place.desc}</p>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+
+            {/* Food Halls */}
+            <TabsContent value="foodhalls">
+              <div className="grid md:grid-cols-2 gap-8">
+                <Card>
+                  <CardHeader>
+                    <CardTitle>{content.foodhalls.foodhallen.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm">{content.foodhalls.foodhallen.what}</p>
+                    <div className="bg-amber-500/10 p-3 rounded-lg">
+                      <p className="text-sm text-amber-800 dark:text-amber-300">
+                        <Clock className="h-4 w-4 inline mr-1" />
+                        {content.foodhalls.foodhallen.tip}
+                      </p>
+                    </div>
+                    <div className="bg-green-500/10 p-3 rounded-lg">
+                      <p className="text-sm text-green-800 dark:text-green-300">
+                        <strong>Bônus:</strong> {content.foodhalls.foodhallen.bonus}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="border-destructive/50">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                      <AlertTriangle className="h-5 w-5 text-destructive" />
+                      {content.foodhalls.worldOfFood.name}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="bg-destructive/10 p-3 rounded-lg">
+                      <p className="text-sm text-destructive">{content.foodhalls.worldOfFood.warning}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-sm mb-1">{language === "pt" ? "Alternativa" : "Alternative"}</h4>
+                      <p className="text-sm text-muted-foreground">{content.foodhalls.worldOfFood.alt}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </TabsContent>
+          </Tabs>
+        </div>
+      </section>
+
+      {/* Tourist Traps */}
+      <section className="py-12 bg-destructive/5">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8 text-destructive">
+            ⚠️ {content.traps.title}
+          </h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {content.traps.items.map((trap, i) => (
+              <Card key={i} className="border-destructive/30 bg-background">
+                <CardContent className="pt-6 text-center">
+                  <span className="text-4xl mb-4 block">{trap.icon}</span>
+                  <p className="text-sm">{trap.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Practical Rules */}
+      <section className="py-12">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.rules.title}</h2>
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            {content.rules.items.map((rule, i) => (
+              <Card key={i}>
+                <CardContent className="pt-6">
+                  <div className="flex items-start gap-3">
+                    <span className="text-2xl">{rule.icon}</span>
+                    <div>
+                      <h3 className="font-bold mb-1">{rule.title}</h3>
+                      <p className="text-sm text-muted-foreground">{rule.text}</p>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-12 bg-muted/30">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.faq.title}</h2>
+          <Accordion type="single" collapsible className="max-w-3xl mx-auto">
+            {content.faq.items.map((item, i) => (
+              <AccordionItem key={i} value={`faq-${i}`}>
+                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </section>
     </PageLayout>
