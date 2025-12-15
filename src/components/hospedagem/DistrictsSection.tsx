@@ -1,8 +1,8 @@
 import { MapPin, CheckCircle2, Info } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/hooks/useLanguage";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 interface Neighborhood {
   name: string;
@@ -272,21 +272,9 @@ export function DistrictsSection() {
             {language === "pt" ? "Fonte: Amsterdam.nl (organização municipal oficial)" : "Source: Amsterdam.nl (official municipal organization)"}
           </p>
 
-          <Tabs defaultValue="centrum" className="w-full">
-            <TabsList className="flex flex-wrap justify-center gap-2 h-auto mb-10 bg-transparent">
-              {districts.map((district) => (
-                <TabsTrigger 
-                  key={district.id} 
-                  value={district.id}
-                  className="data-[state=active]:bg-amsterdam-orange data-[state=active]:text-white text-sm lg:text-base px-4 py-2"
-                >
-                  {district.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
-
-            {districts.map((district) => (
-              <TabsContent key={district.id} value={district.id}>
+          <div className="space-y-8 lg:space-y-12">
+            {districts.map((district, index) => (
+              <AnimatedSection key={district.id} direction="up" delay={index * 0.05}>
                 <Card>
                   <CardHeader className="pb-4">
                     <CardTitle className="flex flex-col sm:flex-row sm:items-center gap-3">
@@ -310,16 +298,16 @@ export function DistrictsSection() {
                             <div>
                               <span className="font-medium text-green-700 dark:text-green-400 flex items-center gap-2 text-base lg:text-lg">
                                 <CheckCircle2 className="w-4 h-4 lg:w-5 lg:h-5" />
-                                {language === "pt" ? "Para quem:" : "For who:"}
+                                {language === "pt" ? "Para quem?" : "For whom?"}
                               </span>
-                              <p className="text-base lg:text-lg text-muted-foreground ml-6 lg:ml-7">{neighborhood.forWho}</p>
+                              <p className="text-muted-foreground mt-1 text-base lg:text-lg">{neighborhood.forWho}</p>
                             </div>
                             <div>
-                              <span className={`font-medium flex items-center gap-2 text-base lg:text-lg ${neighborhood.warning ? 'text-amber-700 dark:text-amber-400' : 'text-amber-600 dark:text-amber-500'}`}>
+                              <span className="font-medium text-amber-700 dark:text-amber-400 flex items-center gap-2 text-base lg:text-lg">
                                 <Info className="w-4 h-4 lg:w-5 lg:h-5" />
-                                {language === "pt" ? "Atenção:" : "Attention:"}
+                                {language === "pt" ? "Atenção" : "Attention"}
                               </span>
-                              <p className="text-base lg:text-lg text-muted-foreground ml-6 lg:ml-7">{neighborhood.attention}</p>
+                              <p className="text-muted-foreground mt-1 text-base lg:text-lg">{neighborhood.attention}</p>
                             </div>
                           </div>
                         </div>
@@ -327,9 +315,9 @@ export function DistrictsSection() {
                     </div>
                   </CardContent>
                 </Card>
-              </TabsContent>
+              </AnimatedSection>
             ))}
-          </Tabs>
+          </div>
         </div>
       </div>
     </section>
