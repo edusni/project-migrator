@@ -16,9 +16,9 @@ const Index = () => {
         <Hero />
         
         {/* Widgets Section */}
-        <section className="py-8 bg-muted/30">
-          <div className="container px-4 md:px-8">
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <section className="section-spacing bg-muted/30">
+          <div className="container container-padding">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto stagger-animation">
               <WeatherWidget />
               <CurrencyWidget />
               <TrainSchedule />

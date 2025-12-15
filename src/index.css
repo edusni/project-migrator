@@ -39,6 +39,11 @@
     
     --radius: 0.75rem;
     
+    /* Custom Amsterdam colors */
+    --amsterdam-orange: 24 95% 53%;
+    --amsterdam-blue: 200 45% 25%;
+    --amsterdam-blue-light: 200 45% 35%;
+    
     /* Sidebar */
     --sidebar-background: 45 25% 96%;
     --sidebar-foreground: 220 25% 15%;
@@ -79,6 +84,11 @@
     --input: 220 20% 18%;
     --ring: 24 95% 55%;
     
+    /* Custom Amsterdam colors for dark mode */
+    --amsterdam-orange: 24 95% 55%;
+    --amsterdam-blue: 200 45% 35%;
+    --amsterdam-blue-light: 200 45% 45%;
+    
     --sidebar-background: 220 25% 10%;
     --sidebar-foreground: 45 25% 95%;
     --sidebar-primary: 24 95% 55%;
@@ -103,4 +113,55 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Playfair Display', serif;
   }
+}
+
+@layer components {
+  /* Consistent section spacing */
+  .section-spacing {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+  
+  /* Container with responsive padding */
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Card hover effect */
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  /* Text gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+  }
+  
+  /* Smooth fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Stagger animation for lists */
+  .stagger-animation > * {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+  
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.15s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.25s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 0.35s; }
 }

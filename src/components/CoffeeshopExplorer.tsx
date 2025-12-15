@@ -84,14 +84,14 @@ const CoffeeshopExplorer = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* How to Use */}
       <Card className="bg-primary/5 border-primary/20">
-        <CardContent className="p-6">
-          <h3 className="font-bold mb-3">{content.howToUse.title}</h3>
-          <ul className="space-y-2">
+        <CardContent className="p-4 sm:p-6">
+          <h3 className="font-bold mb-2 sm:mb-3 text-sm sm:text-base">{content.howToUse.title}</h3>
+          <ul className="space-y-1.5 sm:space-y-2">
             {content.howToUse.tips.map((tip, i) => (
-              <li key={i} className="text-sm flex items-start gap-2">
+              <li key={i} className="text-xs sm:text-sm flex items-start gap-2">
                 <span className="text-primary">•</span>
                 {tip}
               </li>
@@ -101,19 +101,19 @@ const CoffeeshopExplorer = () => {
       </Card>
 
       {/* Filters */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="relative">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="relative sm:col-span-2 lg:col-span-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder={content.searchPlaceholder}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10"
+            className="pl-10 text-sm"
           />
         </div>
         
         <Select value={selectedNeighborhood} onValueChange={setSelectedNeighborhood}>
-          <SelectTrigger>
+          <SelectTrigger className="text-sm">
             <SelectValue placeholder={content.allNeighborhoods} />
           </SelectTrigger>
           <SelectContent>
@@ -127,7 +127,7 @@ const CoffeeshopExplorer = () => {
         </Select>
 
         <Select value={selectedProfile} onValueChange={setSelectedProfile}>
-          <SelectTrigger>
+          <SelectTrigger className="text-sm">
             <SelectValue placeholder={content.allProfiles} />
           </SelectTrigger>
           <SelectContent>
@@ -141,7 +141,7 @@ const CoffeeshopExplorer = () => {
         </Select>
 
         <Select value={selectedPriceTier} onValueChange={setSelectedPriceTier}>
-          <SelectTrigger>
+          <SelectTrigger className="text-sm">
             <SelectValue placeholder={content.allPrices} />
           </SelectTrigger>
           <SelectContent>
@@ -155,38 +155,38 @@ const CoffeeshopExplorer = () => {
       </div>
 
       {/* Results count */}
-      <p className="text-sm text-muted-foreground">
+      <p className="text-xs sm:text-sm text-muted-foreground">
         {filteredShops.length} coffeeshops {content.found}
       </p>
 
       {/* Results by neighborhood */}
       {Object.keys(groupedByNeighborhood).length === 0 ? (
         <Card>
-          <CardContent className="p-8 text-center text-muted-foreground">
+          <CardContent className="p-6 sm:p-8 text-center text-muted-foreground text-sm">
             {content.noResults}
           </CardContent>
         </Card>
       ) : (
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {Object.entries(groupedByNeighborhood).map(([neighborhoodKey, shops]) => (
-            <div key={neighborhoodKey}>
-              <div className="mb-4">
-                <h3 className="text-xl font-heading font-bold flex items-center gap-2">
-                  <MapPin className="h-5 w-5 text-primary" />
+            <div key={neighborhoodKey} className="animate-fade-in">
+              <div className="mb-3 sm:mb-4">
+                <h3 className="text-lg sm:text-xl font-heading font-bold flex items-center gap-2">
+                  <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                   {neighborhoods[neighborhoodKey as keyof typeof neighborhoods]?.[language === "pt" ? "pt" : "en"] || neighborhoodKey}
                 </h3>
-                <p className="text-sm text-muted-foreground mt-1">
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">
                   {neighborhoodDescriptions[neighborhoodKey as keyof typeof neighborhoodDescriptions]?.[language === "pt" ? "pt" : "en"]}
                 </p>
               </div>
               
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                 {shops.map((shop) => (
-                  <Card key={shop.id} className="hover:shadow-lg transition-shadow">
-                    <CardHeader className="pb-2">
+                  <Card key={shop.id} className="card-hover">
+                    <CardHeader className="pb-2 p-3 sm:p-4 sm:pb-2">
                       <CardTitle className="flex items-start justify-between gap-2">
-                        <span className="text-lg">{shop.name}</span>
-                        <Badge variant="outline" className="flex-shrink-0">
+                        <span className="text-base sm:text-lg">{shop.name}</span>
+                        <Badge variant="outline" className="flex-shrink-0 text-xs">
                           {renderPriceTier(shop.priceTier)}
                         </Badge>
                       </CardTitle>
@@ -195,13 +195,13 @@ const CoffeeshopExplorer = () => {
                         {shop.address}
                       </p>
                     </CardHeader>
-                    <CardContent className="space-y-3">
-                      <p className="text-sm">
+                    <CardContent className="space-y-2 sm:space-y-3 p-3 sm:p-4 pt-0 sm:pt-0">
+                      <p className="text-xs sm:text-sm">
                         {language === "pt" ? shop.highlight : shop.highlightEn}
                       </p>
                       
                       <div className="flex flex-wrap gap-1">
-                        <Badge className={`${profiles[shop.profile].color} text-white text-xs`}>
+                        <Badge className={`${profiles[shop.profile].color} text-primary-foreground text-xs`}>
                           {profiles[shop.profile][language === "pt" ? "pt" : "en"]}
                         </Badge>
                         {shop.tags.slice(0, 2).map((tag) => (
@@ -212,7 +212,7 @@ const CoffeeshopExplorer = () => {
                       </div>
                       
                       {(shop.note || shop.noteEn) && (
-                        <div className="bg-amber-500/10 p-2 rounded text-xs text-amber-800 dark:text-amber-300 flex items-start gap-1">
+                        <div className="bg-destructive/10 p-2 rounded text-xs text-destructive flex items-start gap-1">
                           <AlertTriangle className="h-3 w-3 mt-0.5 flex-shrink-0" />
                           {language === "pt" ? shop.note : shop.noteEn}
                         </div>
