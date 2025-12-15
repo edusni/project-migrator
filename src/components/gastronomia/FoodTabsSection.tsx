@@ -1,7 +1,7 @@
 import { Check, X, MapPin, Clock, Coffee, Beer, AlertTriangle } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 interface StreetFood {
   emoji: string;
@@ -72,17 +72,13 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
   return (
     <section className="py-14 lg:py-20 bg-muted/30">
       <div className="container">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <Tabs defaultValue="street" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 lg:mb-10">
-            <TabsTrigger value="street" className="text-sm lg:text-base">{tabs.street}</TabsTrigger>
-            <TabsTrigger value="dinner" className="text-sm lg:text-base">{tabs.dinner}</TabsTrigger>
-            <TabsTrigger value="drinks" className="text-sm lg:text-base">{tabs.drinks}</TabsTrigger>
-            <TabsTrigger value="foodhalls" className="text-sm lg:text-base">{tabs.foodhalls}</TabsTrigger>
-          </TabsList>
-
-          {/* Street Food */}
-          <TabsContent value="street">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 space-y-16 md:space-y-24">
+          
+          {/* Section 1: Street Food */}
+          <AnimatedSection direction="up">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              🍟 {tabs.street}
+            </h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
               {streetFood.map((food) => (
                 <Card key={food.name} className="group hover:shadow-xl transition-all duration-300">
@@ -116,10 +112,13 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 </Card>
               ))}
             </div>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Serious Dinner */}
-          <TabsContent value="dinner">
+          {/* Section 2: Serious Dinner */}
+          <AnimatedSection direction="up">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              🍽️ {tabs.dinner}
+            </h2>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <Card>
                 <CardHeader>
@@ -177,10 +176,13 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 </CardContent>
               </Card>
             </div>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Drinks */}
-          <TabsContent value="drinks">
+          {/* Section 3: Drinks */}
+          <AnimatedSection direction="up">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              🍺 {tabs.drinks}
+            </h2>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <Card>
                 <CardHeader>
@@ -219,10 +221,13 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 </CardContent>
               </Card>
             </div>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Food Halls */}
-          <TabsContent value="foodhalls">
+          {/* Section 4: Food Halls */}
+          <AnimatedSection direction="up">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">
+              🏬 {tabs.foodhalls}
+            </h2>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
               <Card>
                 <CardHeader>
@@ -262,8 +267,7 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 </CardContent>
               </Card>
             </div>
-          </TabsContent>
-        </Tabs>
+          </AnimatedSection>
         </div>
       </div>
     </section>
