@@ -2,6 +2,7 @@ import { AlertTriangle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 export function TrapsSection() {
   const { language } = useLanguage();
@@ -86,10 +87,20 @@ export function TrapsSection() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection>
             <div className="text-center mb-10">
-              <div className="inline-flex items-center gap-2 mb-4">
+              <motion.div 
+                className="inline-flex items-center gap-2 mb-4"
+                animate={{ 
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{ 
+                  duration: 2, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+              >
                 <AlertTriangle className="w-6 h-6 text-destructive" />
                 <span className="text-destructive font-semibold">{language === "pt" ? "Sem filtro" : "No filter"}</span>
-              </div>
+              </motion.div>
               <h2 className="text-3xl lg:text-5xl font-heading font-bold text-destructive mb-2">
                 {language === "pt" 
                   ? "As 7 armadilhas que mais pegam brasileiro"
@@ -101,13 +112,28 @@ export function TrapsSection() {
           <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {traps.map((trap, i) => (
               <StaggerItem key={i}>
-                <Card className={`h-full border-destructive/20 bg-background ${i === 6 ? "lg:col-span-1 xl:col-span-1" : ""}`}>
-                  <CardContent className="p-5">
-                    <span className="text-3xl mb-3 block">{trap.emoji}</span>
-                    <h3 className="font-heading font-bold text-base lg:text-lg mb-2 text-destructive">{trap.title}</h3>
-                    <p className="text-muted-foreground text-sm">{trap.desc}</p>
-                  </CardContent>
-                </Card>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -4,
+                    transition: { type: "spring", stiffness: 400, damping: 17 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Card className={`h-full border-destructive/20 bg-background hover:border-destructive/40 transition-colors ${i === 6 ? "lg:col-span-1 xl:col-span-1" : ""}`}>
+                    <CardContent className="p-5">
+                      <motion.span 
+                        className="text-3xl mb-3 block"
+                        whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        {trap.emoji}
+                      </motion.span>
+                      <h3 className="font-heading font-bold text-base lg:text-lg mb-2 text-destructive">{trap.title}</h3>
+                      <p className="text-muted-foreground text-sm">{trap.desc}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
