@@ -13,7 +13,6 @@ import siberieImg from "@/assets/coffeeshop-siberie.png";
 import tweedeKamerImg from "@/assets/coffeeshop-tweede-kamer.png";
 import ibizaImg from "@/assets/coffeeshop-ibiza.png";
 import amsterdamImg from "@/assets/coffeeshop-amsterdam.png";
-import neonImg from "@/assets/coffeeshop-neon.png";
 
 interface FamousCoffeeshop {
   id: string;
@@ -106,15 +105,6 @@ const famousCoffeeshops: FamousCoffeeshop[] = [
     tagline: { pt: "Bom para iniciantes", en: "Good for beginners" },
     highlight: { pt: "Atendimento acolhedor, menu acessível", en: "Welcoming service, accessible menu" },
     profile: "beginner"
-  },
-  {
-    id: "neon",
-    name: "Coffeeshop (Neon District)",
-    image: neonImg,
-    neighborhood: { pt: "Centrum", en: "Centrum" },
-    tagline: { pt: "Vibe noturna", en: "Nightlife vibe" },
-    highlight: { pt: "Atmosfera vibrante e iluminação característica", en: "Vibrant atmosphere and characteristic lighting" },
-    profile: "hype"
   }
 ];
 

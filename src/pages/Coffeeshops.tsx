@@ -2,7 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Leaf } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import coffeeshopHeroImg from "@/assets/coffeeshop-bulldog.png";
+import coffeeshopHeroImg from "@/assets/coffeeshop-neon.png";
 import {
   IntroSection,
   WhatIsSection,
