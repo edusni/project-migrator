@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -18,12 +17,12 @@ L.Icon.Default.mergeOptions({
 // Custom marker icons by category
 const getCategoryColor = (category: string) => {
   switch (category) {
-    case "museum": return "#dc2626"; // red
-    case "park": return "#16a34a"; // green
-    case "market": return "#ca8a04"; // yellow
-    case "experience": return "#9333ea"; // purple
-    case "landmark": return "#0284c7"; // blue
-    default: return "#6b7280"; // gray
+    case "museum": return "#dc2626";
+    case "park": return "#16a34a";
+    case "market": return "#ca8a04";
+    case "experience": return "#9333ea";
+    case "landmark": return "#0284c7";
+    default: return "#6b7280";
   }
 };
 
@@ -58,7 +57,6 @@ const getPriceBadgeColor = (tier: string) => {
 
 export const AttractionsMap = ({ attractions }: AttractionsMapProps) => {
   const { language } = useLanguage();
-  const mapRef = useRef<L.Map | null>(null);
 
   // Filter attractions with valid coordinates
   const validAttractions = attractions.filter(
@@ -69,12 +67,12 @@ export const AttractionsMap = ({ attractions }: AttractionsMapProps) => {
   const center: [number, number] = [52.3676, 4.9041];
 
   return (
-    <div className="w-full h-[500px] rounded-lg overflow-hidden border shadow-lg">
+    <div className="w-full h-[500px] rounded-lg overflow-hidden border shadow-lg relative">
       <MapContainer
         center={center}
         zoom={12}
-        className="w-full h-full"
-        ref={mapRef}
+        style={{ height: "100%", width: "100%" }}
+        scrollWheelZoom={true}
       >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
