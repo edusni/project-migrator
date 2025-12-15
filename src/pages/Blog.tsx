@@ -5,6 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import duPhoto from "@/assets/du-amsterdam.jpg";
@@ -12,6 +13,7 @@ import blogHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Blog = () => {
   const { language } = useLanguage();
+  const seo = seoData.blog[language];
 
   const content = language === "pt" ? {
     heroTitle: "Blog do Du",
@@ -51,6 +53,7 @@ const Blog = () => {
 
   return (
     <PageLayout>
+      <SEOHead title={seo.title} description={seo.description} keywords={seo.keywords} type="article" />
       <PageHero
         icon={PenLine}
         title={content.heroTitle}

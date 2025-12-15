@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Train } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import {
   ThreeRulesSection,
   GoldenRuleSection,
@@ -14,9 +15,20 @@ import amsterdamBikesImg from "@/assets/amsterdam-bikes.webp";
 
 const Transporte = () => {
   const { language } = useLanguage();
+  const seo = seoData.transporte[language];
 
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: language === "pt" ? "Transporte" : "Transport", url: "https://amsterdu.com/transporte" }
+        ]}
+      />
       <PageHero 
         icon={Train} 
         title={language === "pt" ? "Como se Locomover em Amsterdam (2026)" : "Getting Around Amsterdam (2026)"} 

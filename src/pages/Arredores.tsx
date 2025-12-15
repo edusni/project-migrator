@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import {
   IntroSection,
   QuickPickSection,
@@ -385,8 +386,22 @@ const Arredores = () => {
     }
   };
 
+  const seo = seoData.arredores[language];
+  const faqItems = content.faq.items.map(item => ({ question: item.q, answer: item.a }));
+
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        faqItems={faqItems}
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: language === "pt" ? "Arredores" : "Day Trips", url: "https://amsterdu.com/arredores" }
+        ]}
+      />
       <PageHero 
         icon={MapPin} 
         title={content.title} 

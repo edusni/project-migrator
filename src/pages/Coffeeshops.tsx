@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Leaf } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import coffeeshopHeroImg from "@/assets/coffeeshop-neon.png";
 import {
   IntroSection,
@@ -436,8 +437,22 @@ const Coffeeshops = () => {
     }
   };
 
+  const seo = seoData.coffeeshops[language];
+  const faqItems = content.faq.items.map(item => ({ question: item.q, answer: item.a }));
+
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        faqItems={faqItems}
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: "Coffeeshops", url: "https://amsterdu.com/coffeeshops" }
+        ]}
+      />
       <PageHero
         icon={Leaf}
         title={content.title}
