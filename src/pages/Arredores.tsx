@@ -1,12 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { MapPin, Train, Clock, AlertTriangle, Check, Bike, Camera, Building2, Flower2, Castle, Waves, Star, Info, Calendar, Map } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import DayTripsMap from "@/components/DayTripsMap";
+import {
+  IntroSection,
+  QuickPickSection,
+  MapSection,
+  DestinationTabsSection,
+  TipsSection,
+  RankingSection,
+  FAQSection
+} from "@/components/arredores";
 
 const Arredores = () => {
   const { language } = useLanguage();
@@ -388,350 +392,38 @@ const Arredores = () => {
         gradient="from-[#1E90FF] to-[#4169E1]"
       />
 
-      {/* Intro */}
-      <section className="py-8 bg-accent/30 border-y border-border">
-        <div className="container">
-          <p className="text-lg text-center max-w-3xl mx-auto">{content.intro}</p>
-        </div>
-      </section>
-
-      {/* Quick Pick */}
-      <section className="py-8 bg-primary/5">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-6">{content.quickPick.title}</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {content.quickPick.items.map((item, i) => (
-              <Card key={i} className="bg-background">
-                <CardContent className="p-4">
-                  <p className="text-sm text-muted-foreground mb-2">{item.condition}</p>
-                  <p className="font-bold text-primary">{item.dest}</p>
-                  {item.reason && <p className="text-xs text-muted-foreground mt-1">({item.reason})</p>}
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Interactive Map */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-2 flex items-center justify-center gap-2">
-            <Map className="h-6 w-6" />
-            {language === "pt" ? "Mapa dos Destinos" : "Destinations Map"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-8">
-            {language === "pt" 
-              ? "Visualize todos os destinos e seus tempos de viagem desde Amsterdam"
-              : "Visualize all destinations and their travel times from Amsterdam"}
-          </p>
-          <DayTripsMap />
-        </div>
-      </section>
-
-      {/* Main Tabs */}
-      <section className="py-12">
-        <div className="container">
-          <Tabs defaultValue="classics" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-              <TabsTrigger value="classics">{content.tabs.classics}</TabsTrigger>
-              <TabsTrigger value="miniAms">{content.tabs.miniAms}</TabsTrigger>
-              <TabsTrigger value="modern">{content.tabs.modern}</TabsTrigger>
-              <TabsTrigger value="bike">{content.tabs.bike}</TabsTrigger>
-            </TabsList>
-
-            {/* Classics */}
-            <TabsContent value="classics">
-              <div className="space-y-2 mb-8 text-center">
-                <h3 className="text-2xl font-heading font-bold">{content.classics.title}</h3>
-                <p className="text-muted-foreground">{content.classics.subtitle}</p>
-              </div>
-              <div className="space-y-6">
-                {content.classics.items.map((item) => (
-                  <Card key={item.name} className={item.mustSee ? "border-2 border-primary/30" : ""}>
-                    <CardHeader>
-                      <CardTitle className="flex items-center justify-between flex-wrap gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-3xl">{item.emoji}</span>
-                          <div>
-                            <span className="text-xl">{item.name}</span>
-                            <Badge variant="secondary" className="ml-2">{item.subtitle}</Badge>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Badge variant="outline" className="flex items-center gap-1">
-                            <Train className="h-3 w-3" />
-                            {item.time}
-                          </Badge>
-                          {item.mustSee && <Badge className="bg-primary">{language === "pt" ? "Imperdível" : "Must See"}</Badge>}
-                        </div>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p>{item.what}</p>
-                      
-                      {item.seasonal && (
-                        <div className="bg-amber-500/10 p-4 rounded-lg border border-amber-500/30">
-                          <p className="text-amber-800 dark:text-amber-300 flex items-center gap-2">
-                            <Calendar className="h-5 w-5" />
-                            {item.seasonal}
-                          </p>
-                        </div>
-                      )}
-                      
-                      {item.reality && (
-                        <div className="bg-muted p-4 rounded-lg">
-                          <p className="text-sm"><strong>{language === "pt" ? "A Realidade Honesta:" : "The Honest Reality:"}</strong> {item.reality}</p>
-                        </div>
-                      )}
-                      
-                      {item.strategy && (
-                        <div>
-                          <h4 className="font-semibold mb-2 flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-600" />
-                            {language === "pt" ? "Estratégia Anti-Multidão:" : "Anti-Crowd Strategy:"}
-                          </h4>
-                          <ul className="space-y-1">
-                            {item.strategy.map((s, i) => (
-                              <li key={i} className="text-sm flex items-start gap-2">
-                                <Check className="h-3 w-3 text-green-600 mt-1 flex-shrink-0" />
-                                {s}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      {item.practical && (
-                        <div className="bg-blue-500/10 p-4 rounded-lg">
-                          <h4 className="font-semibold mb-2">{language === "pt" ? "Detalhes Práticos:" : "Practical Details:"}</h4>
-                          <ul className="space-y-1">
-                            {item.practical.map((p, i) => (
-                              <li key={i} className="text-sm">• {p}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      {item.warning2026 && (
-                        <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/30">
-                          <p className="text-destructive text-sm flex items-start gap-2">
-                            <AlertTriangle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                            <span><strong>2026:</strong> {item.warning2026}</span>
-                          </p>
-                        </div>
-                      )}
-                      
-                      {item.alternative && (
-                        <div className="bg-green-500/10 p-4 rounded-lg">
-                          <p className="text-sm text-green-800 dark:text-green-300">
-                            <strong>{language === "pt" ? "Alternativa Mais Eficiente:" : "More Efficient Alternative:"}</strong> {item.alternative}
-                          </p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            {/* Mini-Amsterdams */}
-            <TabsContent value="miniAms">
-              <div className="space-y-2 mb-8 text-center">
-                <h3 className="text-2xl font-heading font-bold">{content.miniAms.title}</h3>
-                <p className="text-muted-foreground">{content.miniAms.subtitle}</p>
-              </div>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {content.miniAms.items.map((item) => (
-                  <Card key={item.name} className={item.mustSee ? "border-2 border-primary/30" : ""}>
-                    <CardHeader>
-                      <CardTitle>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-2">
-                            <span className="text-3xl">{item.emoji}</span>
-                            <span>{item.name}</span>
-                          </div>
-                          {item.mustSee && <Star className="h-5 w-5 text-primary fill-primary" />}
-                        </div>
-                        <Badge variant="secondary" className="mt-2">{item.subtitle}</Badge>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <Badge variant="outline" className="flex items-center gap-1 w-fit">
-                        <Train className="h-3 w-3" />
-                        {item.time}
-                      </Badge>
-                      
-                      <p className="text-sm">{item.why}</p>
-                      
-                      {item.todo && (
-                        <div>
-                          <h4 className="text-sm font-semibold mb-2">{language === "pt" ? "O que fazer:" : "What to do:"}</h4>
-                          <ul className="space-y-1">
-                            {item.todo.map((t, i) => (
-                              <li key={i} className="text-sm flex items-start gap-2">
-                                <Check className="h-3 w-3 text-primary mt-1" />
-                                {t}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      {item.combo && (
-                        <div className="bg-primary/10 p-3 rounded-lg">
-                          <p className="text-sm"><strong>💡 Combo:</strong> {item.combo}</p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            {/* Modern */}
-            <TabsContent value="modern">
-              <div className="space-y-2 mb-8 text-center">
-                <h3 className="text-2xl font-heading font-bold">{content.modern.title}</h3>
-                <p className="text-muted-foreground">{content.modern.subtitle}</p>
-              </div>
-              <Card className="max-w-2xl mx-auto border-2 border-primary/30">
-                <CardHeader>
-                  <CardTitle>
-                    <div className="flex items-center gap-3">
-                      <span className="text-4xl">{content.modern.item.emoji}</span>
-                      <div>
-                        <span className="text-2xl">{content.modern.item.name}</span>
-                        <Badge variant="secondary" className="ml-2">{content.modern.item.subtitle}</Badge>
-                      </div>
-                    </div>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <Badge variant="outline" className="flex items-center gap-1 w-fit">
-                    <Train className="h-3 w-3" />
-                    {content.modern.item.time}
-                  </Badge>
-                  
-                  <p>{content.modern.item.why}</p>
-                  
-                  <div>
-                    <h4 className="font-semibold mb-2">{language === "pt" ? "Roteiro Curto (Alto Impacto):" : "Short Route (High Impact):"}</h4>
-                    <ul className="space-y-2">
-                      {content.modern.item.todo.map((t, i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <Building2 className="h-4 w-4 text-primary mt-1" />
-                          <span>{t}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Bike */}
-            <TabsContent value="bike">
-              <div className="space-y-2 mb-8 text-center">
-                <h3 className="text-2xl font-heading font-bold">{content.bike.title}</h3>
-                <p className="text-muted-foreground">{content.bike.subtitle}</p>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                {content.bike.items.map((item) => (
-                  <Card key={item.name}>
-                    <CardHeader>
-                      <CardTitle>
-                        <div className="flex items-center gap-2">
-                          <span className="text-3xl">{item.emoji}</span>
-                          <div>
-                            <span>{item.name}</span>
-                            <Badge variant="secondary" className="ml-2">{item.subtitle}</Badge>
-                          </div>
-                        </div>
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-sm">{item.why}</p>
-                      
-                      {item.howTo && (
-                        <div>
-                          <h4 className="text-sm font-semibold mb-2">{language === "pt" ? "Como fazer:" : "How to do it:"}</h4>
-                          <ul className="space-y-2">
-                            {item.howTo.map((h, i) => (
-                              <li key={i} className="text-sm flex items-start gap-2">
-                                <span className="bg-primary text-primary-foreground w-5 h-5 rounded-full flex items-center justify-center text-xs flex-shrink-0">{i + 1}</span>
-                                {h}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      
-                      {item.tip && (
-                        <div className="bg-amber-500/10 p-3 rounded-lg">
-                          <p className="text-sm text-amber-800 dark:text-amber-300">💡 {item.tip}</p>
-                        </div>
-                      )}
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Tips */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-8">{content.tips.title}</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {content.tips.items.map((tip, i) => (
-              <Card key={i}>
-                <CardContent className="p-4 text-center">
-                  <span className="text-3xl mb-2 block">{tip.icon}</span>
-                  <h3 className="font-bold mb-1">{tip.title}</h3>
-                  <p className="text-sm text-muted-foreground">{tip.text}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Ranking */}
-      <section className="py-12">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-8">{content.ranking.title}</h2>
-          <div className="max-w-2xl mx-auto">
-            <div className="space-y-3">
-              {content.ranking.items.map((item, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-muted rounded-lg">
-                  <span className="text-sm">{item.condition}</span>
-                  <Badge variant={i === content.ranking.items.length - 1 ? "destructive" : "default"}>
-                    {item.dest}
-                  </Badge>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-8">{content.faq.title}</h2>
-          <Accordion type="single" collapsible className="max-w-3xl mx-auto">
-            {content.faq.items.map((item, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <IntroSection intro={content.intro} />
+      
+      <QuickPickSection 
+        title={content.quickPick.title}
+        items={content.quickPick.items}
+      />
+      
+      <MapSection language={language} />
+      
+      <DestinationTabsSection
+        tabs={content.tabs}
+        classics={content.classics}
+        miniAms={content.miniAms}
+        modern={content.modern}
+        bike={content.bike}
+        language={language}
+      />
+      
+      <TipsSection 
+        title={content.tips.title}
+        items={content.tips.items}
+      />
+      
+      <RankingSection 
+        title={content.ranking.title}
+        items={content.ranking.items}
+      />
+      
+      <FAQSection 
+        title={content.faq.title}
+        items={content.faq.items}
+      />
     </PageLayout>
   );
 };
