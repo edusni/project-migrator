@@ -1,12 +1,17 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Leaf, AlertTriangle, CheckCircle, X, Check, MapPin, Clock, CreditCard, Info, Scale, Coffee, Beer, Sparkles, Users, Ban, FileText, Store } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Leaf } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import CoffeeshopExplorer from "@/components/CoffeeshopExplorer";
+import {
+  IntroSection,
+  WhatIsSection,
+  TouristsAllowedSection,
+  StreetRuleSection,
+  ExplorerSection,
+  MainTabsSection,
+  GlossarySection,
+  FAQSection
+} from "@/components/coffeeshops";
 
 const Coffeeshops = () => {
   const { language } = useLanguage();
@@ -438,510 +443,56 @@ const Coffeeshops = () => {
         gradient="from-[#228B22] to-[#2E8B57]"
       />
 
-      {/* Intro */}
-      <section className="py-8 bg-accent/30 border-y border-border">
-        <div className="container">
-          <p className="text-lg text-center max-w-3xl mx-auto">{content.intro}</p>
-        </div>
-      </section>
-
-      {/* What Is + Warning */}
-      <section className="py-8">
-        <div className="container">
-          <Card className="max-w-3xl mx-auto">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Info className="h-5 w-5" />
-                {content.whatIs.title}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <p>{content.whatIs.text}</p>
-              <div className="bg-destructive/10 p-4 rounded-lg border border-destructive/30">
-                <p className="text-destructive font-semibold flex items-center gap-2">
-                  <AlertTriangle className="h-5 w-5" />
-                  {content.whatIs.warning}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Tourists Allowed */}
-      <section className="py-8 bg-green-500/10">
-        <div className="container">
-          <Card className="max-w-3xl mx-auto bg-green-500/10 border-green-500/30">
-            <CardContent className="p-8 text-center">
-              <CheckCircle className="w-12 h-12 text-green-600 mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-green-700 dark:text-green-400 mb-4">✅ {content.tourists.yes}</h3>
-              <p className="text-green-800 dark:text-green-300 mb-4">{content.tourists.desc}</p>
-              <Badge variant="secondary">{content.tourists.requirements}</Badge>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Street Rule 2025 */}
-      <section className="py-8 bg-destructive/10">
-        <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl font-heading font-bold text-center mb-6 text-destructive flex items-center justify-center gap-2">
-              <Ban className="h-6 w-6" />
-              {content.streetRule.title}
-            </h2>
-            <Card className="border-destructive/30">
-              <CardContent className="p-6 space-y-4">
-                <p>{content.streetRule.text}</p>
-                <div className="bg-destructive/20 p-4 rounded-lg text-center">
-                  <p className="text-xl font-bold text-destructive">{content.streetRule.fine}</p>
-                </div>
-                <div>
-                  <p className="font-semibold mb-2">{language === "pt" ? "Zonas Proibidas:" : "Forbidden Zones:"}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {content.streetRule.zones.map((zone, i) => (
-                      <Badge key={i} variant="destructive">{zone}</Badge>
-                    ))}
-                  </div>
-                </div>
-                <div className="bg-amber-500/10 p-4 rounded-lg">
-                  <p className="text-amber-800 dark:text-amber-300">{content.streetRule.implication}</p>
-                </div>
-                <div className="space-y-2">
-                  {content.streetRule.checklist.map((item, i) => (
-                    <div key={i} className="flex items-center gap-2">
-                      <Check className="h-4 w-4 text-green-600" />
-                      <span className="text-sm">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Coffeeshop Explorer */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-2 flex items-center justify-center gap-2">
-            <Store className="h-6 w-6" />
-            {language === "pt" ? "Coffeeshops por Bairro" : "Coffeeshops by Neighborhood"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {language === "pt" 
-              ? "27 coffeeshops organizados por bairro com filtros de preço, perfil e especialidade"
-              : "27 coffeeshops organized by neighborhood with price, profile and specialty filters"}
-          </p>
-          <CoffeeshopExplorer />
-        </div>
-      </section>
-
-      {/* Main Tabs */}
-      <section className="py-12">
-        <div className="container">
-          <Tabs defaultValue="gedoogbeleid" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-              <TabsTrigger value="gedoogbeleid">{language === "pt" ? "A Lei" : "The Law"}</TabsTrigger>
-              <TabsTrigger value="etiquette">{language === "pt" ? "Etiqueta" : "Etiquette"}</TabsTrigger>
-              <TabsTrigger value="menu">{language === "pt" ? "Menu" : "Menu"}</TabsTrigger>
-              <TabsTrigger value="neighborhoods">{language === "pt" ? "Bairros" : "Neighborhoods"}</TabsTrigger>
-            </TabsList>
-
-            {/* Gedoogbeleid */}
-            <TabsContent value="gedoogbeleid">
-              <div className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Scale className="h-5 w-5" />
-                      {content.gedoogbeleid.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div className="bg-muted p-4 rounded-lg">
-                      <p className="font-semibold">{content.gedoogbeleid.definition}</p>
-                    </div>
-                    <p>{content.gedoogbeleid.objective}</p>
-                    
-                    <div>
-                      <h4 className="font-bold mb-4">{content.gedoogbeleid.rules.title}</h4>
-                      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
-                        {content.gedoogbeleid.rules.items.map((rule) => (
-                          <Card key={rule.letter} className="bg-muted/50">
-                            <CardContent className="p-4">
-                              <div className="flex items-start gap-3">
-                                <Badge variant="outline" className="text-lg font-bold">{rule.letter}</Badge>
-                                <div>
-                                  <p className="font-semibold text-sm">{rule.rule}</p>
-                                  <p className="text-xs text-muted-foreground">{rule.desc}</p>
-                                </div>
-                              </div>
-                            </CardContent>
-                          </Card>
-                        ))}
-                      </div>
-                    </div>
-
-                    <Card className="border-amber-500/50 bg-amber-500/5">
-                      <CardHeader>
-                        <CardTitle className="text-lg">{content.gedoogbeleid.paradox.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm">{content.gedoogbeleid.paradox.text}</p>
-                      </CardContent>
-                    </Card>
-
-                    <Card className="border-blue-500/50 bg-blue-500/5">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <Sparkles className="h-4 w-4" />
-                          {content.gedoogbeleid.experiment.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm">{content.gedoogbeleid.experiment.text}</p>
-                      </CardContent>
-                    </Card>
-                  </CardContent>
-                </Card>
-
-                {/* Terminology */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{content.terminology.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="bg-amber-500/10 p-3 rounded-lg mb-4">
-                      <p className="text-amber-800 dark:text-amber-300 text-sm font-semibold">
-                        ⚠️ {content.terminology.warning}
-                      </p>
-                    </div>
-                    <div className="grid md:grid-cols-3 gap-4">
-                      {content.terminology.items.map((item) => (
-                        <div key={item.name} className="text-center p-4 bg-muted rounded-lg">
-                          <span className="text-3xl mb-2 block">{item.emoji}</span>
-                          <h4 className="font-bold">{item.name}</h4>
-                          <p className="text-sm text-muted-foreground">{item.desc}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Etiquette */}
-            <TabsContent value="etiquette">
-              <div className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{content.etiquette.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {content.etiquette.steps.map((step) => (
-                        <div key={step.num} className="flex gap-4 items-start">
-                          <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold flex-shrink-0">
-                            {step.num}
-                          </div>
-                          <div>
-                            <h4 className="font-bold">{step.title}</h4>
-                            <p className="text-sm text-muted-foreground">{step.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="border-green-500/30">
-                    <CardHeader>
-                      <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-2">
-                        <Check className="h-5 w-5" />
-                        {language === "pt" ? "FAÇA" : "DO"}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {content.etiquette.dos.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <Check className="h-4 w-4 text-green-600 mt-1 flex-shrink-0" />
-                            <span className="text-sm">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="border-destructive/30">
-                    <CardHeader>
-                      <CardTitle className="text-destructive flex items-center gap-2">
-                        <X className="h-5 w-5" />
-                        {language === "pt" ? "NÃO FAÇA" : "DON'T"}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                      <ul className="space-y-2">
-                        {content.etiquette.donts.map((item, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <X className="h-4 w-4 text-destructive mt-1 flex-shrink-0" />
-                            <span className="text-sm">{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Tobacco Warning */}
-                <Card className="border-destructive/50 bg-destructive/5">
-                  <CardHeader>
-                    <CardTitle className="text-destructive">{content.tobacco.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="mb-4">{content.tobacco.text}</p>
-                    <Badge variant="outline">{content.tobacco.tip}</Badge>
-                  </CardContent>
-                </Card>
-
-                {/* Edibles Warning */}
-                <Card className="border-amber-500/50 bg-amber-500/5">
-                  <CardHeader>
-                    <CardTitle className="text-amber-700 dark:text-amber-400 flex items-center gap-2">
-                      <AlertTriangle className="h-5 w-5" />
-                      {content.edibles.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="bg-destructive/10 p-4 rounded-lg">
-                      <p className="text-destructive font-semibold">{content.edibles.warning}</p>
-                    </div>
-                    <div className="bg-muted p-4 rounded-lg">
-                      <p className="text-sm"><strong>{language === "pt" ? "O Problema:" : "The Problem:"}</strong> {content.edibles.problem}</p>
-                    </div>
-                    <div className="bg-destructive/10 p-4 rounded-lg">
-                      <p className="text-sm text-destructive"><strong>{language === "pt" ? "O Erro Clássico:" : "Classic Mistake:"}</strong> {content.edibles.mistake}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-bold mb-2">{language === "pt" ? "Regras de Ouro:" : "Golden Rules:"}</h4>
-                      <ul className="space-y-2">
-                        {content.edibles.rules.map((rule, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <Check className="h-4 w-4 text-green-600 mt-1" />
-                            <span className="text-sm">{rule}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <Card className="bg-blue-500/10 border-blue-500/30">
-                      <CardHeader>
-                        <CardTitle className="text-sm">{content.edibles.badTrip.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <ul className="space-y-1">
-                          {content.edibles.badTrip.tips.map((tip, i) => (
-                            <li key={i} className="text-sm">• {tip}</li>
-                          ))}
-                        </ul>
-                      </CardContent>
-                    </Card>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Menu */}
-            <TabsContent value="menu">
-              <div className="space-y-6">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{content.menu.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {content.menu.basics.map((item) => (
-                        <div key={item.name} className="flex items-start gap-3 p-3 bg-muted rounded-lg">
-                          <span className="text-2xl">{item.emoji}</span>
-                          <div>
-                            <h4 className="font-bold">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{content.menu.effects.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">{content.menu.effects.note}</p>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="p-4 bg-amber-500/10 rounded-lg border border-amber-500/30">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-2xl">☀️</span>
-                          <h4 className="font-bold">{content.menu.effects.sativa.name}</h4>
-                        </div>
-                        <p className="text-sm">{content.menu.effects.sativa.desc}</p>
-                      </div>
-                      <div className="p-4 bg-indigo-500/10 rounded-lg border border-indigo-500/30">
-                        <div className="flex items-center gap-2 mb-2">
-                          <span className="text-2xl">🌙</span>
-                          <h4 className="font-bold">{content.menu.effects.indica.name}</h4>
-                        </div>
-                        <p className="text-sm">{content.menu.effects.indica.desc}</p>
-                      </div>
-                    </div>
-                    <p className="text-sm text-muted-foreground italic">{content.menu.effects.hybrid}</p>
-                  </CardContent>
-                </Card>
-
-                {/* Prices */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <CreditCard className="h-5 w-5" />
-                      {content.prices.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="text-sm text-muted-foreground mb-4">{content.prices.note}</p>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                      {content.prices.items.map((item) => (
-                        <div key={item.name} className="text-center p-4 bg-muted rounded-lg">
-                          <p className="font-bold">{item.name}</p>
-                          <p className="text-lg text-primary">{item.range}</p>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="text-xs text-muted-foreground">{content.prices.factors}</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Neighborhoods */}
-            <TabsContent value="neighborhoods">
-              <div className="space-y-6">
-                <div className="bg-primary/10 p-4 rounded-lg max-w-3xl mx-auto text-center mb-8">
-                  <p className="font-semibold">💡 {content.neighborhoods.goldenRule}</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {content.neighborhoods.areas.map((area) => (
-                    <Card key={area.name}>
-                      <CardHeader>
-                        <CardTitle>
-                          <span className="text-xl">{area.name}</span>
-                          <Badge variant="secondary" className="ml-2">{area.subtitle}</Badge>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-sm">{area.vibe}</p>
-                        {area.warning && (
-                          <div className="bg-amber-500/10 p-3 rounded-lg">
-                            <p className="text-xs text-amber-800 dark:text-amber-300 flex items-center gap-1">
-                              <AlertTriangle className="h-3 w-3" />
-                              {area.warning}
-                            </p>
-                          </div>
-                        )}
-                        <div>
-                          <p className="text-xs font-semibold mb-2">{language === "pt" ? "Lojas Notáveis:" : "Notable Shops:"}</p>
-                          <div className="flex flex-wrap gap-1">
-                            {area.shops.map((shop, i) => (
-                              <Badge key={i} variant="outline" className="text-xs">{shop}</Badge>
-                            ))}
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                </div>
-
-                {/* Smoker's Bars */}
-                <Card className="border-primary/30">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Beer className="h-5 w-5" />
-                      {content.smokerBars.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm"><strong>{language === "pt" ? "O Problema:" : "The Problem:"}</strong> {content.smokerBars.problem}</p>
-                    <p className="text-sm"><strong>{language === "pt" ? "A Solução:" : "The Solution:"}</strong> {content.smokerBars.solution}</p>
-                    <div className="flex flex-wrap gap-2">
-                      {content.smokerBars.examples.map((ex, i) => (
-                        <Badge key={i} variant="secondary">{ex}</Badge>
-                      ))}
-                    </div>
-                    <p className="text-xs text-muted-foreground italic">{content.smokerBars.note}</p>
-                  </CardContent>
-                </Card>
-
-                {/* History */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Clock className="h-5 w-5" />
-                      {content.history.title}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {content.history.items.map((item) => (
-                        <div key={item.name} className="flex items-start gap-4">
-                          <Badge variant="outline" className="font-mono">{item.year}</Badge>
-                          <div>
-                            <h4 className="font-bold">{item.name}</h4>
-                            <p className="text-sm text-muted-foreground">{item.desc}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Glossary */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-8">{content.glossary.title}</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {content.glossary.items.map((item) => (
-              <Card key={item.term}>
-                <CardContent className="p-4">
-                  <p className="font-bold text-primary">{item.term}</p>
-                  <p className="text-sm text-muted-foreground">{item.def}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-12">
-        <div className="container">
-          <h2 className="text-2xl font-heading font-bold text-center mb-8">{content.faq.title}</h2>
-          <Accordion type="single" collapsible className="max-w-3xl mx-auto">
-            {content.faq.items.map((item, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <IntroSection intro={content.intro} />
+      
+      <WhatIsSection 
+        title={content.whatIs.title}
+        text={content.whatIs.text}
+        warning={content.whatIs.warning}
+      />
+      
+      <TouristsAllowedSection 
+        title={content.tourists.title}
+        yes={content.tourists.yes}
+        desc={content.tourists.desc}
+        requirements={content.tourists.requirements}
+      />
+      
+      <StreetRuleSection 
+        title={content.streetRule.title}
+        text={content.streetRule.text}
+        fine={content.streetRule.fine}
+        zones={content.streetRule.zones}
+        implication={content.streetRule.implication}
+        checklist={content.streetRule.checklist}
+        language={language}
+      />
+      
+      <ExplorerSection language={language} />
+      
+      <MainTabsSection
+        gedoogbeleid={content.gedoogbeleid}
+        terminology={content.terminology}
+        etiquette={content.etiquette}
+        tobacco={content.tobacco}
+        edibles={content.edibles}
+        menu={content.menu}
+        prices={content.prices}
+        neighborhoods={content.neighborhoods}
+        smokerBars={content.smokerBars}
+        history={content.history}
+        language={language}
+      />
+      
+      <GlossarySection 
+        title={content.glossary.title}
+        items={content.glossary.items}
+      />
+      
+      <FAQSection 
+        title={content.faq.title}
+        items={content.faq.items}
+      />
     </PageLayout>
   );
 };
