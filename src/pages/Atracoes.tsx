@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import {
   Changes2026Section,
   Calendar2026Section,
@@ -50,6 +51,11 @@ const Atracoes = () => {
       <FreeActivitiesSection />
       <ItinerariesSection />
       <FAQSection />
+      
+      <RelatedPagesSection 
+        currentPath="/atracoes"
+        suggestedPaths={["/arredores", "/transporte", "/gastronomia", "/coffeeshops"]}
+      />
     </PageLayout>
   );
 };

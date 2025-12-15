@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { UtensilsCrossed } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import foodHeroImg from "@/assets/food-stroopwafel.png";
 import {
   IntroSection,
@@ -373,6 +374,11 @@ const Gastronomia = () => {
       <FAQSection 
         title={content.faq.title} 
         items={content.faq.items} 
+      />
+      
+      <RelatedPagesSection 
+        currentPath="/gastronomia"
+        suggestedPaths={["/coffeeshops", "/hospedagem", "/arredores", "/atracoes"]}
       />
     </PageLayout>
   );

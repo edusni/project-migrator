@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Leaf } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import coffeeshopHeroImg from "@/assets/coffeeshop-neon.png";
 import {
   IntroSection,
@@ -511,6 +512,11 @@ const Coffeeshops = () => {
       <FAQSection 
         title={content.faq.title}
         items={content.faq.items}
+      />
+      
+      <RelatedPagesSection 
+        currentPath="/coffeeshops"
+        suggestedPaths={["/gastronomia", "/transporte", "/hospedagem", "/atracoes"]}
       />
     </PageLayout>
   );

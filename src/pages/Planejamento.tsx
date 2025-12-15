@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Calendar } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { useState, useEffect, useRef } from "react";
 import {
   CostCalculator,
@@ -120,6 +121,11 @@ const Planejamento = () => {
       <div id="citycard" ref={(el) => (sectionRefs.current["citycard"] = el)}>
         <CityCardSection language={language} />
       </div>
+      
+      <RelatedPagesSection 
+        currentPath="/planejamento"
+        suggestedPaths={["/hospedagem", "/transporte", "/atracoes", "/arredores"]}
+      />
     </PageLayout>
   );
 };

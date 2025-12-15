@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Hotel } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import {
   TaxChangesSection,
   HowToChooseSection,
@@ -11,7 +12,6 @@ import {
   GoldenRulesSection,
   MarketNumbersSection,
   FAQSection,
-  ContinuePlanningSection,
 } from "@/components/hospedagem";
 import hofjeImg from "@/assets/hofje-amsterdam.jpg";
 
@@ -45,7 +45,11 @@ const Hospedagem = () => {
       <GoldenRulesSection />
       <MarketNumbersSection />
       <FAQSection />
-      <ContinuePlanningSection />
+      
+      <RelatedPagesSection 
+        currentPath="/hospedagem"
+        suggestedPaths={["/transporte", "/atracoes", "/planejamento", "/arredores"]}
+      />
     </PageLayout>
   );
 };
