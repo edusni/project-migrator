@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, Camera, User } from "lucide-react";
+import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -16,7 +16,7 @@ const navItems = [
   { titleKey: "nav.food", url: "/gastronomia", icon: UtensilsCrossed },
   { titleKey: "nav.coffeeshops", url: "/coffeeshops", icon: Leaf },
   { titleKey: "nav.daytrips", url: "/arredores", icon: MapPin },
-  { titleKey: "nav.gallery", url: "/galeria", icon: Camera },
+  { titleKey: "nav.blog", url: "/blog", icon: PenLine },
 ];
 
 export function Header() {

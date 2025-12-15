@@ -14,7 +14,7 @@ const footerLinks = {
     { href: "/gastronomia", labelKey: "nav.food" },
     { href: "/coffeeshops", labelKey: "nav.coffeeshops" },
     { href: "/arredores", labelKey: "nav.daytrips" },
-    { href: "/galeria", labelKey: "nav.gallery" },
+    { href: "/blog", labelKey: "nav.blog" },
   ],
   about: [
     { href: "/sobre", labelKey: "nav.about" },

@@ -21,6 +21,7 @@ const translations: Translations = {
   "nav.coffeeshops": { pt: "Coffeeshops", en: "Coffeeshops" },
   "nav.daytrips": { pt: "Arredores", en: "Day Trips" },
   "nav.gallery": { pt: "Galeria", en: "Gallery" },
+  "nav.blog": { pt: "Blog", en: "Blog" },
   
   // Hero
   "hero.title": { pt: "Guia Completo de Amsterdam 2025", en: "Complete Amsterdam Guide 2025" },
