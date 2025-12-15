@@ -1,11 +1,16 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { UtensilsCrossed, AlertTriangle, Check, X, Coffee, Beer, MapPin, Clock, CreditCard, Droplets, Info } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { UtensilsCrossed } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import {
+  IntroSection,
+  GoldenRuleSection,
+  StrategySection,
+  FoodTabsSection,
+  TouristTrapsSection,
+  PracticalRulesSection,
+  FAQSection
+} from "@/components/gastronomia";
 
 const Gastronomia = () => {
   const { language } = useLanguage();
@@ -315,298 +320,41 @@ const Gastronomia = () => {
         gradient="from-[#8B4513] to-[#D2691E]"
       />
 
-      {/* Intro */}
-      <section className="py-8 bg-accent/30 border-y border-border">
-        <div className="container">
-          <p className="text-lg text-center max-w-3xl mx-auto">{content.intro}</p>
-        </div>
-      </section>
-
-      {/* Golden Rule */}
-      <section className="py-8 bg-destructive/10 border-b border-destructive/20">
-        <div className="container">
-          <div className="flex items-start gap-4 max-w-3xl mx-auto">
-            <AlertTriangle className="h-8 w-8 text-destructive flex-shrink-0 mt-1" />
-            <div>
-              <h2 className="text-xl font-heading font-bold text-destructive mb-2">{content.goldenRule.title}</h2>
-              <p className="text-foreground/80">{content.goldenRule.text}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Strategy */}
-      <section className="py-12">
-        <div className="container">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.strategy.title}</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {content.strategy.tips.map((tip, i) => (
-              <Card key={i} className="text-center">
-                <CardContent className="pt-6">
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl">{i === 0 ? "🍽️" : i === 1 ? "🥖" : "📅"}</span>
-                  </div>
-                  <h3 className="font-bold mb-2">{tip.title}</h3>
-                  <p className="text-sm text-muted-foreground">{tip.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content Tabs */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <Tabs defaultValue="street" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8">
-              <TabsTrigger value="street">{content.tabs.street}</TabsTrigger>
-              <TabsTrigger value="dinner">{content.tabs.dinner}</TabsTrigger>
-              <TabsTrigger value="drinks">{content.tabs.drinks}</TabsTrigger>
-              <TabsTrigger value="foodhalls">{content.tabs.foodhalls}</TabsTrigger>
-            </TabsList>
-
-            {/* Street Food */}
-            <TabsContent value="street">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {content.streetFood.map((food) => (
-                  <Card key={food.name} className="group hover:shadow-xl transition-all duration-300">
-                    <CardHeader className="pb-2">
-                      <div className="text-center">
-                        <span className="text-5xl">{food.emoji}</span>
-                        <CardTitle className="mt-2">{food.name}</CardTitle>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      <p className="text-sm text-muted-foreground">{food.what}</p>
-                      
-                      <div className="bg-destructive/10 p-3 rounded-lg">
-                        <p className="text-xs font-semibold text-destructive mb-1 flex items-center gap-1">
-                          <X className="h-3 w-3" /> {language === "pt" ? "Cilada" : "Trap"}
-                        </p>
-                        <p className="text-sm text-destructive/80">{food.trap}</p>
-                      </div>
-                      
-                      <div className="bg-green-500/10 p-3 rounded-lg">
-                        <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-1 flex items-center gap-1">
-                          <Check className="h-3 w-3" /> {language === "pt" ? "Faça certo" : "Do it right"}
-                        </p>
-                        <p className="text-sm text-green-800 dark:text-green-300">{food.right}</p>
-                      </div>
-                      
-                      <Badge variant="secondary" className="text-xs">
-                        <MapPin className="h-3 w-3 mr-1" /> {food.where}
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </TabsContent>
-
-            {/* Serious Dinner */}
-            <TabsContent value="dinner">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <span className="text-3xl">🍛</span>
-                      {content.dinner.rijsttafel.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
-                        {language === "pt" ? "Por que existe na Holanda" : "Why it exists in Netherlands"}
-                      </h4>
-                      <p className="text-sm">{content.dinner.rijsttafel.why}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
-                        {language === "pt" ? "Como escolher bem" : "How to choose well"}
-                      </h4>
-                      <p className="text-sm">{content.dinner.rijsttafel.how}</p>
-                    </div>
-                    <div className="bg-amber-500/10 p-3 rounded-lg">
-                      <p className="text-sm text-amber-800 dark:text-amber-300">
-                        <strong>💡 Dica:</strong> {content.dinner.rijsttafel.tip}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Coffee className="h-6 w-6" />
-                      {content.dinner.brownCafe.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
-                        {language === "pt" ? "O que são" : "What they are"}
-                      </h4>
-                      <p className="text-sm">{content.dinner.brownCafe.what}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
-                        {language === "pt" ? "Exemplos clássicos" : "Classic examples"}
-                      </h4>
-                      <p className="text-sm">{content.dinner.brownCafe.examples}</p>
-                    </div>
-                    <div className="bg-primary/10 p-3 rounded-lg">
-                      <p className="text-sm">
-                        <strong>{language === "pt" ? "O que pedir:" : "What to order:"}</strong> {content.dinner.brownCafe.order}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Drinks */}
-            <TabsContent value="drinks">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <span className="text-3xl">🥃</span>
-                      {content.drinks.jenever.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm">{content.drinks.jenever.what}</p>
-                    <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-1">
-                        <MapPin className="h-3 w-3 inline mr-1" />
-                        {language === "pt" ? "Onde experimentar" : "Where to try"}
-                      </h4>
-                      <p className="text-sm">{content.drinks.jenever.where}</p>
-                    </div>
-                    <Badge variant="outline">{content.drinks.jenever.tip}</Badge>
-                  </CardContent>
-                </Card>
-
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <Beer className="h-6 w-6" />
-                      {content.drinks.beer.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    {content.drinks.beer.places.map((place, i) => (
-                      <div key={i} className="p-3 bg-muted rounded-lg">
-                        <h4 className="font-bold">{place.name}</h4>
-                        <p className="text-sm text-muted-foreground">{place.desc}</p>
-                      </div>
-                    ))}
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-
-            {/* Food Halls */}
-            <TabsContent value="foodhalls">
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card>
-                  <CardHeader>
-                    <CardTitle>{content.foodhalls.foodhallen.name}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm">{content.foodhalls.foodhallen.what}</p>
-                    <div className="bg-amber-500/10 p-3 rounded-lg">
-                      <p className="text-sm text-amber-800 dark:text-amber-300">
-                        <Clock className="h-4 w-4 inline mr-1" />
-                        {content.foodhalls.foodhallen.tip}
-                      </p>
-                    </div>
-                    <div className="bg-green-500/10 p-3 rounded-lg">
-                      <p className="text-sm text-green-800 dark:text-green-300">
-                        <strong>Bônus:</strong> {content.foodhalls.foodhallen.bonus}
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="border-destructive/50">
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      <AlertTriangle className="h-5 w-5 text-destructive" />
-                      {content.foodhalls.worldOfFood.name}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="bg-destructive/10 p-3 rounded-lg">
-                      <p className="text-sm text-destructive">{content.foodhalls.worldOfFood.warning}</p>
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-sm mb-1">{language === "pt" ? "Alternativa" : "Alternative"}</h4>
-                      <p className="text-sm text-muted-foreground">{content.foodhalls.worldOfFood.alt}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
-        </div>
-      </section>
-
-      {/* Tourist Traps */}
-      <section className="py-12 bg-destructive/5">
-        <div className="container">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8 text-destructive">
-            ⚠️ {content.traps.title}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {content.traps.items.map((trap, i) => (
-              <Card key={i} className="border-destructive/30 bg-background">
-                <CardContent className="pt-6 text-center">
-                  <span className="text-4xl mb-4 block">{trap.icon}</span>
-                  <p className="text-sm">{trap.text}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Practical Rules */}
-      <section className="py-12">
-        <div className="container">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.rules.title}</h2>
-          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {content.rules.items.map((rule, i) => (
-              <Card key={i}>
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">{rule.icon}</span>
-                    <div>
-                      <h3 className="font-bold mb-1">{rule.title}</h3>
-                      <p className="text-sm text-muted-foreground">{rule.text}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="py-12 bg-muted/30">
-        <div className="container">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-8">{content.faq.title}</h2>
-          <Accordion type="single" collapsible className="max-w-3xl mx-auto">
-            {content.faq.items.map((item, i) => (
-              <AccordionItem key={i} value={`faq-${i}`}>
-                <AccordionTrigger className="text-left">{item.q}</AccordionTrigger>
-                <AccordionContent className="text-muted-foreground">{item.a}</AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+      <IntroSection intro={content.intro} />
+      
+      <GoldenRuleSection 
+        title={content.goldenRule.title} 
+        text={content.goldenRule.text} 
+      />
+      
+      <StrategySection 
+        title={content.strategy.title} 
+        tips={content.strategy.tips} 
+      />
+      
+      <FoodTabsSection
+        tabs={content.tabs}
+        streetFood={content.streetFood}
+        dinner={content.dinner}
+        drinks={content.drinks}
+        foodhalls={content.foodhalls}
+        language={language}
+      />
+      
+      <TouristTrapsSection 
+        title={content.traps.title} 
+        items={content.traps.items} 
+      />
+      
+      <PracticalRulesSection 
+        title={content.rules.title} 
+        items={content.rules.items} 
+      />
+      
+      <FAQSection 
+        title={content.faq.title} 
+        items={content.faq.items} 
+      />
     </PageLayout>
   );
 };
