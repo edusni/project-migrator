@@ -4,9 +4,11 @@ interface IntroSectionProps {
 
 export const IntroSection = ({ intro }: IntroSectionProps) => {
   return (
-    <section className="py-10 md:py-12 bg-accent/30 border-y border-border">
-      <div className="container max-w-5xl">
-        <p className="text-lg md:text-xl text-center">{intro}</p>
+    <section className="py-10 lg:py-14 bg-accent/30 border-y border-border">
+      <div className="container">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+          <p className="text-lg lg:text-xl text-center">{intro}</p>
+        </div>
       </div>
     </section>
   );

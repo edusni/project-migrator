@@ -18,7 +18,7 @@ export function ItinerariesSection() {
           <div className="grid md:grid-cols-3 gap-6">
             <Card className="border-amsterdam-orange/30">
               <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl">{language === "pt" ? "3 Dias (Primeira Vez)" : "3 Days (First Time)"}</CardTitle>
+                <CardTitle className="text-xl lg:text-2xl font-heading">{language === "pt" ? "3 Dias (Primeira Vez)" : "3 Days (First Time)"}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -38,7 +38,7 @@ export function ItinerariesSection() {
 
             <Card className="border-amsterdam-orange/30">
               <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl">{language === "pt" ? "5 Dias (Ver o Real)" : "5 Days (See the Real)"}</CardTitle>
+                <CardTitle className="text-xl lg:text-2xl font-heading">{language === "pt" ? "5 Dias (Ver o Real)" : "5 Days (See the Real)"}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -58,7 +58,7 @@ export function ItinerariesSection() {
 
             <Card className="border-amsterdam-orange/30">
               <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl">{language === "pt" ? "7 Dias (Com Respiro)" : "7 Days (With Breathing Room)"}</CardTitle>
+                <CardTitle className="text-xl lg:text-2xl font-heading">{language === "pt" ? "7 Dias (Com Respiro)" : "7 Days (With Breathing Room)"}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">

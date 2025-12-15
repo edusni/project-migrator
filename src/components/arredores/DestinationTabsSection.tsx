@@ -79,14 +79,15 @@ interface DestinationTabsSectionProps {
 
 export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, language }: DestinationTabsSectionProps) => {
   return (
-    <section className="py-12 md:py-16">
-      <div className="container max-w-6xl">
+    <section className="py-14 lg:py-20">
+      <div className="container">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <Tabs defaultValue="classics" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 md:mb-10">
-            <TabsTrigger value="classics" className="text-sm md:text-base">{tabs.classics}</TabsTrigger>
-            <TabsTrigger value="miniAms" className="text-sm md:text-base">{tabs.miniAms}</TabsTrigger>
-            <TabsTrigger value="modern" className="text-sm md:text-base">{tabs.modern}</TabsTrigger>
-            <TabsTrigger value="bike" className="text-sm md:text-base">{tabs.bike}</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 lg:mb-10">
+            <TabsTrigger value="classics" className="text-sm lg:text-base">{tabs.classics}</TabsTrigger>
+            <TabsTrigger value="miniAms" className="text-sm lg:text-base">{tabs.miniAms}</TabsTrigger>
+            <TabsTrigger value="modern" className="text-sm lg:text-base">{tabs.modern}</TabsTrigger>
+            <TabsTrigger value="bike" className="text-sm lg:text-base">{tabs.bike}</TabsTrigger>
           </TabsList>
 
           {/* Classics */}
@@ -327,6 +328,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
             </div>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
     </section>
   );
