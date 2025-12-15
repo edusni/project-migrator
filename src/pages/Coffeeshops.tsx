@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Leaf } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import coffeeshopHeroImg from "@/assets/coffeeshop-bulldog.png";
 import {
   IntroSection,
   WhatIsSection,
@@ -440,7 +441,7 @@ const Coffeeshops = () => {
         icon={Leaf}
         title={content.title}
         description={content.description}
-        gradient="from-[#228B22] to-[#2E8B57]"
+        backgroundImage={coffeeshopHeroImg}
       />
 
       <IntroSection intro={content.intro} />
