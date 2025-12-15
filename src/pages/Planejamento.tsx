@@ -5,7 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/hooks/useLanguage";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const Planejamento = () => {
   const { language } = useLanguage();
@@ -359,6 +360,53 @@ const Planejamento = () => {
     ],
   };
 
+  const sections = [
+    { id: "costs", icon: "💰", label: language === "pt" ? "Custos 2026" : "2026 Costs" },
+    { id: "seasons", icon: "📅", label: language === "pt" ? "Quando Ir" : "When to Go" },
+    { id: "transport", icon: "✈️", label: language === "pt" ? "Como Chegar" : "How to Get" },
+    { id: "documents", icon: "📄", label: language === "pt" ? "Documentos" : "Documents" },
+    { id: "budget", icon: "💳", label: language === "pt" ? "Orçamento" : "Budget" },
+    { id: "itineraries", icon: "🗺️", label: language === "pt" ? "Roteiros" : "Itineraries" },
+    { id: "citycard", icon: "🎫", label: "City Card" },
+  ];
+
+  const [activeSection, setActiveSection] = useState("costs");
+  const [showNav, setShowNav] = useState(false);
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show nav after scrolling past hero
+      setShowNav(window.scrollY > 400);
+      
+      // Determine active section
+      const scrollPosition = window.scrollY + 150;
+      
+      for (const section of sections) {
+        const element = sectionRefs.current[section.id];
+        if (element) {
+          const { offsetTop, offsetHeight } = element;
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section.id);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [sections]);
+
+  const scrollToSection = (id: string) => {
+    const element = sectionRefs.current[id];
+    if (element) {
+      const offset = 120;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
+    }
+  };
+
   return (
     <PageLayout>
       <PageHero
@@ -369,8 +417,40 @@ const Planejamento = () => {
           : "The Updated Guide (Taxes, Rules & Real Costs)"}
       />
 
+      {/* Sticky Section Navigation */}
+      <nav 
+        className={cn(
+          "sticky top-16 z-40 bg-background/95 backdrop-blur-xl border-b border-border/50 transition-all duration-300",
+          showNav ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-full pointer-events-none"
+        )}
+      >
+        <div className="container container-padding">
+          <div className="flex items-center gap-1 sm:gap-2 py-3 overflow-x-auto scrollbar-hide">
+            {sections.map((section) => (
+              <button
+                key={section.id}
+                onClick={() => scrollToSection(section.id)}
+                className={cn(
+                  "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200",
+                  activeSection === section.id
+                    ? "bg-primary/10 text-primary"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                )}
+              >
+                <span className="text-base">{section.icon}</span>
+                <span className="hidden sm:inline">{section.label}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+
       {/* 2026 Cost Reality */}
-      <section className="py-8 bg-red-50 dark:bg-red-950/30 border-y border-red-200 dark:border-red-800">
+      <section 
+        id="costs" 
+        ref={(el) => (sectionRefs.current["costs"] = el)}
+        className="py-12 bg-red-50 dark:bg-red-950/30 border-y border-red-200 dark:border-red-800"
+      >
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="flex items-start gap-4 mb-6">
@@ -463,7 +543,7 @@ const Planejamento = () => {
       </section>
 
       {/* Airbnb Rules 2026 */}
-      <section className="py-8 bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800">
+      <section className="py-12 bg-amber-50 dark:bg-amber-950/30 border-b border-amber-200 dark:border-amber-800">
         <div className="container">
           <div className="flex items-start gap-4 max-w-4xl mx-auto">
             <AlertTriangle className="w-8 h-8 text-amber-600 flex-shrink-0 mt-1" />
@@ -496,7 +576,11 @@ const Planejamento = () => {
       </section>
 
       {/* When to Visit */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section 
+        id="seasons" 
+        ref={(el) => (sectionRefs.current["seasons"] = el)}
+        className="section-spacing bg-muted/30"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             📅 {language === "pt" ? "Quando Visitar (O Jeito Prático)" : "When to Visit (The Practical Way)"}
@@ -691,7 +775,11 @@ const Planejamento = () => {
       </section>
 
       {/* How to Get There */}
-      <section className="py-16 md:py-24">
+      <section 
+        id="transport" 
+        ref={(el) => (sectionRefs.current["transport"] = el)}
+        className="section-spacing"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             ✈️ {language === "pt" ? "Como Chegar e Locomover" : "How to Get There & Around"}
@@ -816,7 +904,11 @@ const Planejamento = () => {
       </section>
 
       {/* Documentation */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section 
+        id="documents" 
+        ref={(el) => (sectionRefs.current["documents"] = el)}
+        className="section-spacing bg-muted/30"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             📄 {language === "pt" ? "Documentos e Entrada em 2026" : "Documents & Entry in 2026"}
@@ -891,7 +983,11 @@ const Planejamento = () => {
       </section>
 
       {/* Budget & Payment */}
-      <section className="py-16 md:py-24">
+      <section 
+        id="budget" 
+        ref={(el) => (sectionRefs.current["budget"] = el)}
+        className="section-spacing"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             💰 {language === "pt" ? "Dinheiro & Orçamento 2026" : "Money & Budget 2026"}
@@ -980,7 +1076,11 @@ const Planejamento = () => {
       </section>
 
       {/* Itineraries */}
-      <section className="py-16 md:py-24 bg-muted/30">
+      <section 
+        id="itineraries" 
+        ref={(el) => (sectionRefs.current["itineraries"] = el)}
+        className="section-spacing bg-muted/30"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             🗺️ {language === "pt" ? "Roteiros (Sem Perrengue)" : "Itineraries (No Hassle)"}
@@ -1056,7 +1156,11 @@ const Planejamento = () => {
       </section>
 
       {/* City Card */}
-      <section className="py-16 md:py-24">
+      <section 
+        id="citycard" 
+        ref={(el) => (sectionRefs.current["citycard"] = el)}
+        className="section-spacing"
+      >
         <div className="container">
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
             🎫 I Amsterdam City Card 2026
