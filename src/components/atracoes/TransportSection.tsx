@@ -18,7 +18,7 @@ export function TransportSection() {
           <div className="grid md:grid-cols-2 gap-6 mb-10">
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl flex items-center gap-3">
+                <CardTitle className="text-xl lg:text-2xl font-heading flex items-center gap-3">
                   <MapPin className="w-6 h-6 lg:w-7 lg:h-7 text-amsterdam-orange" />
                   {language === "pt" ? "Estratégia A: Dias Compactos por Bairro" : "Strategy A: Compact Days by Area"}
                 </CardTitle>
@@ -33,7 +33,7 @@ export function TransportSection() {
             </Card>
             <Card>
               <CardHeader>
-                <CardTitle className="text-xl lg:text-2xl flex items-center gap-3">
+                <CardTitle className="text-xl lg:text-2xl font-heading flex items-center gap-3">
                   <CreditCard className="w-6 h-6 lg:w-7 lg:h-7 text-amsterdam-orange" />
                   {language === "pt" ? "Estratégia B: Passe Quando Rodar Muito" : "Strategy B: Pass When Moving Around"}
                 </CardTitle>

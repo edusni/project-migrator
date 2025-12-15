@@ -27,7 +27,7 @@ export function PassesSection() {
                 <CardContent className="p-6 lg:p-8">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
-                      <h3 className="font-bold text-xl lg:text-2xl mb-5">{language === "pt" ? "Preços 2026" : "2026 Prices"}</h3>
+                      <h3 className="font-heading font-bold text-xl lg:text-2xl mb-5">{language === "pt" ? "Preços 2026" : "2026 Prices"}</h3>
                       <div className="space-y-3">
                         <div className="flex justify-between py-3 border-b text-base lg:text-lg">
                           <span>24h</span>
@@ -52,7 +52,7 @@ export function PassesSection() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-xl lg:text-2xl mb-5 text-red-600">⚠️ {language === "pt" ? "NÃO Inclui" : "Does NOT Include"}</h3>
+                      <h3 className="font-heading font-bold text-xl lg:text-2xl mb-5 text-red-600">⚠️ {language === "pt" ? "NÃO Inclui" : "Does NOT Include"}</h3>
                       <div className="space-y-3">
                         <div className="flex items-center gap-3 text-red-600 text-base lg:text-lg">
                           <X className="w-5 h-5" />
@@ -68,7 +68,7 @@ export function PassesSection() {
                         </div>
                       </div>
                       
-                      <h3 className="font-bold text-xl lg:text-2xl mt-8 mb-5 text-green-600">✓ {language === "pt" ? "Quando Vale" : "When It's Worth It"}</h3>
+                      <h3 className="font-heading font-bold text-xl lg:text-2xl mt-8 mb-5 text-green-600">✓ {language === "pt" ? "Quando Vale" : "When It's Worth It"}</h3>
                       <div className="space-y-3 text-base lg:text-lg text-muted-foreground">
                         <div className="flex items-start gap-3">
                           <Check className="w-5 h-5 text-green-600 mt-1" />

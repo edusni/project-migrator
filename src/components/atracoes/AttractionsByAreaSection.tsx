@@ -39,8 +39,8 @@ export function AttractionsByAreaSection() {
             {areaConfigs.map(area => (
               <TabsContent key={area.value} value={area.value}>
                 <Card>
-                  <CardHeader>
-                    <CardTitle className="text-xl lg:text-2xl">{area.title}</CardTitle>
+                <CardHeader>
+                    <CardTitle className="text-xl lg:text-2xl font-heading">{area.title}</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="grid md:grid-cols-2 gap-5">

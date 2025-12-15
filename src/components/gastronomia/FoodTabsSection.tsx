@@ -70,14 +70,15 @@ interface FoodTabsSectionProps {
 
 export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, language }: FoodTabsSectionProps) => {
   return (
-    <section className="py-12 md:py-16 bg-muted/30">
-      <div className="container max-w-6xl">
+    <section className="py-14 lg:py-20 bg-muted/30">
+      <div className="container">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <Tabs defaultValue="street" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 mb-8 md:mb-10">
-            <TabsTrigger value="street" className="text-sm md:text-base">{tabs.street}</TabsTrigger>
-            <TabsTrigger value="dinner" className="text-sm md:text-base">{tabs.dinner}</TabsTrigger>
-            <TabsTrigger value="drinks" className="text-sm md:text-base">{tabs.drinks}</TabsTrigger>
-            <TabsTrigger value="foodhalls" className="text-sm md:text-base">{tabs.foodhalls}</TabsTrigger>
+          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 lg:mb-10">
+            <TabsTrigger value="street" className="text-sm lg:text-base">{tabs.street}</TabsTrigger>
+            <TabsTrigger value="dinner" className="text-sm lg:text-base">{tabs.dinner}</TabsTrigger>
+            <TabsTrigger value="drinks" className="text-sm lg:text-base">{tabs.drinks}</TabsTrigger>
+            <TabsTrigger value="foodhalls" className="text-sm lg:text-base">{tabs.foodhalls}</TabsTrigger>
           </TabsList>
 
           {/* Street Food */}
@@ -263,6 +264,7 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
             </div>
           </TabsContent>
         </Tabs>
+        </div>
       </div>
     </section>
   );
