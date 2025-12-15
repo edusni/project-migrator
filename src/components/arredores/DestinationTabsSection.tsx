@@ -1,7 +1,7 @@
 import { Train, Check, AlertTriangle, Calendar, Star, Building2 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AnimatedSection } from "@/components/ui/animated-section";
 
 interface ClassicItem {
   name: string;
@@ -81,19 +81,12 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
   return (
     <section className="py-14 lg:py-20">
       <div className="container">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
-        <Tabs defaultValue="classics" className="w-full">
-          <TabsList className="grid w-full grid-cols-2 lg:grid-cols-4 mb-8 lg:mb-10">
-            <TabsTrigger value="classics" className="text-sm lg:text-base">{tabs.classics}</TabsTrigger>
-            <TabsTrigger value="miniAms" className="text-sm lg:text-base">{tabs.miniAms}</TabsTrigger>
-            <TabsTrigger value="modern" className="text-sm lg:text-base">{tabs.modern}</TabsTrigger>
-            <TabsTrigger value="bike" className="text-sm lg:text-base">{tabs.bike}</TabsTrigger>
-          </TabsList>
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 space-y-16 md:space-y-24">
 
-          {/* Classics */}
-          <TabsContent value="classics">
+          {/* Section 1: Classics */}
+          <AnimatedSection direction="up">
             <div className="space-y-2 mb-8 text-center">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold">{classics.title}</h3>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">🏛️ {classics.title}</h2>
               <p className="text-muted-foreground text-base md:text-lg">{classics.subtitle}</p>
             </div>
             <div className="space-y-6 md:space-y-8">
@@ -183,12 +176,12 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                 </Card>
               ))}
             </div>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Mini-Amsterdams */}
-          <TabsContent value="miniAms">
+          {/* Section 2: Mini-Amsterdams */}
+          <AnimatedSection direction="up">
             <div className="space-y-2 mb-8 text-center">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold">{miniAms.title}</h3>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">🏘️ {miniAms.title}</h2>
               <p className="text-muted-foreground text-base md:text-lg">{miniAms.subtitle}</p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -237,12 +230,12 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                 </Card>
               ))}
             </div>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Modern */}
-          <TabsContent value="modern">
+          {/* Section 3: Modern */}
+          <AnimatedSection direction="up">
             <div className="space-y-2 mb-8 text-center">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold">{modern.title}</h3>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">🏙️ {modern.title}</h2>
               <p className="text-muted-foreground text-base md:text-lg">{modern.subtitle}</p>
             </div>
             <Card className="max-w-3xl mx-auto border-2 border-primary/30">
@@ -278,12 +271,12 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                 </div>
               </CardContent>
             </Card>
-          </TabsContent>
+          </AnimatedSection>
 
-          {/* Bike */}
-          <TabsContent value="bike">
+          {/* Section 4: Bike */}
+          <AnimatedSection direction="up">
             <div className="space-y-2 mb-8 text-center">
-              <h3 className="text-2xl md:text-3xl font-heading font-bold">{bike.title}</h3>
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">🚴 {bike.title}</h2>
               <p className="text-muted-foreground text-base md:text-lg">{bike.subtitle}</p>
             </div>
             <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
@@ -326,8 +319,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                 </Card>
               ))}
             </div>
-          </TabsContent>
-        </Tabs>
+          </AnimatedSection>
         </div>
       </div>
     </section>
