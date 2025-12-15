@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 interface QuickPickSectionProps {
   title: string;
@@ -17,13 +18,19 @@ export const QuickPickSection = ({ title, items }: QuickPickSectionProps) => {
           <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
             {items.map((item, i) => (
               <StaggerItem key={i}>
-                <Card className="bg-background h-full">
-                  <CardContent className="p-4 lg:p-5">
-                    <p className="text-sm lg:text-base text-muted-foreground mb-2">{item.condition}</p>
-                    <p className="font-heading font-bold text-primary text-lg lg:text-xl">{item.dest}</p>
-                    {item.reason && <p className="text-xs lg:text-sm text-muted-foreground mt-1">({item.reason})</p>}
-                  </CardContent>
-                </Card>
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -4 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  className="h-full"
+                >
+                  <Card className="bg-background h-full hover:shadow-lg transition-shadow">
+                    <CardContent className="p-4 lg:p-5">
+                      <p className="text-sm lg:text-base text-muted-foreground mb-2">{item.condition}</p>
+                      <p className="font-heading font-bold text-primary text-lg lg:text-xl">{item.dest}</p>
+                      {item.reason && <p className="text-xs lg:text-sm text-muted-foreground mt-1">({item.reason})</p>}
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>
