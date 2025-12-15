@@ -2,11 +2,13 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { UtensilsCrossed } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import foodHeroImg from "@/assets/food-stroopwafel.png";
 import {
   IntroSection,
   GoldenRuleSection,
   StrategySection,
   FoodTabsSection,
+  FoodGallerySection,
   TouristTrapsSection,
   PracticalRulesSection,
   FAQSection
@@ -318,7 +320,10 @@ const Gastronomia = () => {
         title={content.title}
         description={content.description}
         gradient="from-[#8B4513] to-[#D2691E]"
+        backgroundImage={foodHeroImg}
       />
+
+      <FoodGallerySection language={language} />
 
       <IntroSection intro={content.intro} />
       
