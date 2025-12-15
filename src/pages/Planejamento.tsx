@@ -7,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { AnimateOnScroll } from "@/hooks/useInView";
 
 const Planejamento = () => {
   const { language } = useLanguage();
@@ -452,7 +453,7 @@ const Planejamento = () => {
         className="py-12 bg-red-50 dark:bg-red-950/30 border-y border-red-200 dark:border-red-800"
       >
         <div className="container">
-          <div className="max-w-4xl mx-auto">
+          <AnimateOnScroll className="max-w-4xl mx-auto">
             <div className="flex items-start gap-4 mb-6">
               <AlertTriangle className="w-8 h-8 text-red-600 flex-shrink-0 mt-1" />
               <div>
@@ -465,28 +466,33 @@ const Planejamento = () => {
                     : "The combination of new taxes makes the 'same rate' cost MUCH more:"}
                 </p>
                 <div className="grid md:grid-cols-2 gap-4 mb-4">
-                  <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
-                    <p className="font-bold text-red-800 dark:text-red-200">📈 VAT/IVA: 9% → 21%</p>
-                    <p className="text-sm text-red-600 dark:text-red-400">
-                      {language === "pt" 
-                        ? "A Holanda elevou o VAT de hospedagem para 21% em 2026"
-                        : "Netherlands raised accommodation VAT to 21% in 2026"}
-                    </p>
-                  </div>
-                  <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
-                    <p className="font-bold text-red-800 dark:text-red-200">🏨 {language === "pt" ? "Taxa Turística" : "Tourist Tax"}: 12,5%</p>
-                    <p className="text-sm text-red-600 dark:text-red-400">
-                      {language === "pt" 
-                        ? "Cobrada sobre a diária (sem VAT) em toda hospedagem"
-                        : "Charged on the rate (without VAT) for all accommodation"}
-                    </p>
-                  </div>
+                  <AnimateOnScroll delay={100}>
+                    <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
+                      <p className="font-bold text-red-800 dark:text-red-200">📈 VAT/IVA: 9% → 21%</p>
+                      <p className="text-sm text-red-600 dark:text-red-400">
+                        {language === "pt" 
+                          ? "A Holanda elevou o VAT de hospedagem para 21% em 2026"
+                          : "Netherlands raised accommodation VAT to 21% in 2026"}
+                      </p>
+                    </div>
+                  </AnimateOnScroll>
+                  <AnimateOnScroll delay={200}>
+                    <div className="bg-white/80 dark:bg-black/20 p-4 rounded-lg">
+                      <p className="font-bold text-red-800 dark:text-red-200">🏨 {language === "pt" ? "Taxa Turística" : "Tourist Tax"}: 12,5%</p>
+                      <p className="text-sm text-red-600 dark:text-red-400">
+                        {language === "pt" 
+                          ? "Cobrada sobre a diária (sem VAT) em toda hospedagem"
+                          : "Charged on the rate (without VAT) for all accommodation"}
+                      </p>
+                    </div>
+                  </AnimateOnScroll>
                 </div>
               </div>
             </div>
 
             {/* Interactive Calculator */}
-            <Card className="bg-white dark:bg-black/40 border-red-200 dark:border-red-800">
+            <AnimateOnScroll delay={300}>
+              <Card className="bg-white dark:bg-black/40 border-red-200 dark:border-red-800">
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <Calculator className="w-5 h-5 text-red-600" />
@@ -538,7 +544,8 @@ const Planejamento = () => {
                 </p>
               </CardContent>
             </Card>
-          </div>
+            </AnimateOnScroll>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -582,28 +589,33 @@ const Planejamento = () => {
         className="section-spacing bg-muted/30"
       >
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            📅 {language === "pt" ? "Quando Visitar (O Jeito Prático)" : "When to Visit (The Practical Way)"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
-            {language === "pt" 
-              ? "A melhor época depende do que você busca. Tulipas com multidão ou museus sem fila?"
-              : "The best time depends on what you seek. Tulips with crowds or museums without lines?"}
-          </p>
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+              📅 {language === "pt" ? "Quando Visitar (O Jeito Prático)" : "When to Visit (The Practical Way)"}
+            </h2>
+            <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
+              {language === "pt" 
+                ? "A melhor época depende do que você busca. Tulipas com multidão ou museus sem fila?"
+                : "The best time depends on what you seek. Tulips with crowds or museums without lines?"}
+            </p>
+          </AnimateOnScroll>
           
-          <Card className="max-w-3xl mx-auto mb-12 bg-amsterdam-blue/5 border-amsterdam-blue/20">
-            <CardContent className="p-6">
-              <p className="text-center">
-                <span className="text-2xl">🌍</span>{" "}
-                <strong>{language === "pt" ? "O 'Mito' do Clima Holandês:" : "The Dutch Weather 'Myth':"}</strong>{" "}
-                {language === "pt" 
-                  ? "Amsterdam não é cidade de sol garantido. O clima é imprevisível. Mas a atmosfera? Essa é garantida."
-                  : "Amsterdam isn't a city of guaranteed sun. Weather is unpredictable. But atmosphere? That's guaranteed."}
-              </p>
-            </CardContent>
-          </Card>
+          <AnimateOnScroll delay={100}>
+            <Card className="max-w-3xl mx-auto mb-12 bg-amsterdam-blue/5 border-amsterdam-blue/20">
+              <CardContent className="p-6">
+                <p className="text-center">
+                  <span className="text-2xl">🌍</span>{" "}
+                  <strong>{language === "pt" ? "O 'Mito' do Clima Holandês:" : "The Dutch Weather 'Myth':"}</strong>{" "}
+                  {language === "pt" 
+                    ? "Amsterdam não é cidade de sol garantido. O clima é imprevisível. Mas a atmosfera? Essa é garantida."
+                    : "Amsterdam isn't a city of guaranteed sun. Weather is unpredictable. But atmosphere? That's guaranteed."}
+                </p>
+              </CardContent>
+            </Card>
+          </AnimateOnScroll>
           
-          <Tabs defaultValue="spring" className="max-w-5xl mx-auto">
+          <AnimateOnScroll delay={200}>
+            <Tabs defaultValue="spring" className="max-w-5xl mx-auto">
             <TabsList className="grid grid-cols-4 mb-8">
               <TabsTrigger value="spring" className="flex items-center gap-2">
                 <Leaf className="w-4 h-4" />
@@ -771,6 +783,7 @@ const Planejamento = () => {
               </Card>
             </TabsContent>
           </Tabs>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -781,14 +794,17 @@ const Planejamento = () => {
         className="section-spacing"
       >
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            ✈️ {language === "pt" ? "Como Chegar e Locomover" : "How to Get There & Around"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            {language === "pt" ? "Sem errar no básico" : "Without messing up the basics"}
-          </p>
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+              ✈️ {language === "pt" ? "Como Chegar e Locomover" : "How to Get There & Around"}
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              {language === "pt" ? "Sem errar no básico" : "Without messing up the basics"}
+            </p>
+          </AnimateOnScroll>
           
-          <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+          <AnimateOnScroll delay={100}>
+            <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
             {/* Schiphol */}
             <Card className="lg:col-span-2">
               <CardHeader>
@@ -866,10 +882,12 @@ const Planejamento = () => {
                 </CardContent>
               </Card>
             </div>
-          </div>
+            </div>
+          </AnimateOnScroll>
 
           {/* OVpay & Transport in Amsterdam */}
-          <Card className="max-w-4xl mx-auto bg-amsterdam-blue/5 border-amsterdam-blue/20">
+          <AnimateOnScroll delay={200}>
+            <Card className="max-w-4xl mx-auto bg-amsterdam-blue/5 border-amsterdam-blue/20">
             <CardContent className="p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Smartphone className="w-6 h-6 text-amsterdam-blue" />
@@ -900,6 +918,7 @@ const Planejamento = () => {
               </div>
             </CardContent>
           </Card>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -910,14 +929,17 @@ const Planejamento = () => {
         className="section-spacing bg-muted/30"
       >
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            📄 {language === "pt" ? "Documentos e Entrada em 2026" : "Documents & Entry in 2026"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
-            {language === "pt" ? "O essencial, sem drama" : "The essentials, no drama"}
-          </p>
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+              📄 {language === "pt" ? "Documentos e Entrada em 2026" : "Documents & Entry in 2026"}
+            </h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              {language === "pt" ? "O essencial, sem drama" : "The essentials, no drama"}
+            </p>
+          </AnimateOnScroll>
           
-          <Card className="max-w-2xl mx-auto mb-8 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800">
+          <AnimateOnScroll delay={100}>
+            <Card className="max-w-2xl mx-auto mb-8 bg-green-50 dark:bg-green-950/30 border-green-200 dark:border-green-800">
             <CardContent className="p-6">
               <p className="text-center text-green-800 dark:text-green-200">
                 <span className="text-2xl">🇧🇷</span>{" "}
@@ -928,8 +950,10 @@ const Planejamento = () => {
               </p>
             </CardContent>
           </Card>
+          </AnimateOnScroll>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-8">
+          <AnimateOnScroll delay={200}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto mb-8">
             {documents.map((doc) => (
               <Card key={doc.title}>
                 <CardContent className="p-4">
@@ -943,9 +967,11 @@ const Planejamento = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+            </div>
+          </AnimateOnScroll>
 
-          <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
+          <AnimateOnScroll delay={300}>
+            <div className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto mb-8">
             <Card className="bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-800">
               <CardContent className="p-4">
                 <h4 className="font-bold mb-2">⚠️ {language === "pt" ? "Regra dos 90 dias" : "90-day Rule"}</h4>
@@ -978,7 +1004,8 @@ const Planejamento = () => {
                 </p>
               </CardContent>
             </Card>
-          </div>
+            </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
@@ -989,15 +1016,18 @@ const Planejamento = () => {
         className="section-spacing"
       >
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
-            💰 {language === "pt" ? "Dinheiro & Orçamento 2026" : "Money & Budget 2026"}
-          </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-            {language === "pt" ? "O 'problema do cartão' e quanto custa de verdade" : "The 'card problem' and what it really costs"}
-          </p>
+          <AnimateOnScroll>
+            <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+              💰 {language === "pt" ? "Dinheiro & Orçamento 2026" : "Money & Budget 2026"}
+            </h2>
+            <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+              {language === "pt" ? "O 'problema do cartão' e quanto custa de verdade" : "The 'card problem' and what it really costs"}
+            </p>
+          </AnimateOnScroll>
 
           {/* Payment Info */}
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+          <AnimateOnScroll delay={100}>
+            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
             <Card>
               <CardContent className="p-6">
                 <h3 className="font-bold text-lg mb-4">💳 {language === "pt" ? "Pagamento em 2026" : "Payment in 2026"}</h3>
@@ -1036,10 +1066,12 @@ const Planejamento = () => {
                 </div>
               </CardContent>
             </Card>
-          </div>
+            </div>
+          </AnimateOnScroll>
 
           {/* Budget Levels */}
-          <h3 className="text-xl font-bold text-center mb-6">📊 {language === "pt" ? "Orçamento Diário Estimado (2026)" : "Estimated Daily Budget (2026)"}</h3>
+          <AnimateOnScroll delay={200}>
+            <h3 className="text-xl font-bold text-center mb-6">📊 {language === "pt" ? "Orçamento Diário Estimado (2026)" : "Estimated Daily Budget (2026)"}</h3>
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
             {budgetLevels.map((level) => (
               <Card key={level.name} className="text-center">
@@ -1072,6 +1104,7 @@ const Planejamento = () => {
               </Card>
             ))}
           </div>
+          </AnimateOnScroll>
         </div>
       </section>
 
