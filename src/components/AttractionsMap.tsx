@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useEffect, useState, useRef } from "react";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -26,90 +26,117 @@ const getCategoryColor = (category: string) => {
   }
 };
 
-const createCustomIcon = (category: string) => {
-  const color = getCategoryColor(category);
-  return L.divIcon({
-    html: `<div style="
-      background-color: ${color};
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      border: 3px solid white;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    "></div>`,
-    className: "custom-marker",
-    iconSize: [24, 24],
-    iconAnchor: [12, 12],
-    popupAnchor: [0, -12],
-  });
-};
-
 interface AttractionsMapProps {
   attractions: Attraction[];
 }
 
 const getPriceBadgeColor = (tier: string) => {
-  if (tier === "free") return "bg-green-100 text-green-800 border-green-200";
-  if (tier === "€") return "bg-blue-100 text-blue-800 border-blue-200";
-  if (tier === "€€") return "bg-amber-100 text-amber-800 border-amber-200";
-  return "bg-red-100 text-red-800 border-red-200";
+  if (tier === "free") return "bg-green-100 text-green-800";
+  if (tier === "€") return "bg-blue-100 text-blue-800";
+  if (tier === "€€") return "bg-amber-100 text-amber-800";
+  return "bg-red-100 text-red-800";
 };
 
 export const AttractionsMap = ({ attractions }: AttractionsMapProps) => {
   const { language } = useLanguage();
+  const mapRef = useRef<L.Map | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [isReady, setIsReady] = useState(false);
 
   // Filter attractions with valid coordinates
   const validAttractions = attractions.filter(
     (a) => a.map.lat !== null && a.map.lng !== null
   );
 
-  // Amsterdam center
-  const center: [number, number] = [52.3676, 4.9041];
+  useEffect(() => {
+    if (!containerRef.current || mapRef.current) return;
+
+    // Initialize map using plain Leaflet
+    const map = L.map(containerRef.current).setView([52.3676, 4.9041], 12);
+    
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    }).addTo(map);
+
+    mapRef.current = map;
+    setIsReady(true);
+
+    return () => {
+      if (mapRef.current) {
+        mapRef.current.remove();
+        mapRef.current = null;
+      }
+    };
+  }, []);
+
+  // Add markers when map is ready or attractions change
+  useEffect(() => {
+    if (!mapRef.current || !isReady) return;
+
+    // Clear existing markers
+    mapRef.current.eachLayer((layer) => {
+      if (layer instanceof L.Marker) {
+        mapRef.current?.removeLayer(layer);
+      }
+    });
+
+    // Add new markers
+    validAttractions.forEach((attraction) => {
+      const color = getCategoryColor(attraction.category);
+      
+      const customIcon = L.divIcon({
+        html: `<div style="
+          background-color: ${color};
+          width: 24px;
+          height: 24px;
+          border-radius: 50%;
+          border: 3px solid white;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        "></div>`,
+        className: "custom-marker",
+        iconSize: [24, 24],
+        iconAnchor: [12, 12],
+        popupAnchor: [0, -12],
+      });
+
+      const marker = L.marker([attraction.map.lat!, attraction.map.lng!], {
+        icon: customIcon,
+      }).addTo(mapRef.current!);
+
+      const priceText = attraction.price_tier === "free" 
+        ? (language === "pt" ? "Grátis" : "Free") 
+        : attraction.price_tier;
+      
+      const desc = language === "pt" ? attraction.short_desc : attraction.short_desc_en;
+
+      marker.bindPopup(`
+        <div style="min-width: 200px;">
+          <span style="
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            background: ${attraction.price_tier === 'free' ? '#dcfce7' : attraction.price_tier === '€' ? '#dbeafe' : attraction.price_tier === '€€' ? '#fef3c7' : '#fee2e2'};
+            color: ${attraction.price_tier === 'free' ? '#166534' : attraction.price_tier === '€' ? '#1e40af' : attraction.price_tier === '€€' ? '#92400e' : '#991b1b'};
+          ">${priceText}</span>
+          <h3 style="font-weight: bold; font-size: 14px; margin: 4px 0;">${attraction.name}</h3>
+          <div style="font-size: 12px; color: #666; margin-bottom: 4px;">
+            📍 ${attraction.area_detail}
+          </div>
+          <p style="font-size: 13px; color: #444; margin: 8px 0;">${desc}</p>
+          <div style="font-size: 12px; color: #666;">
+            🕐 ${attraction.time_suggested_hours}h
+          </div>
+        </div>
+      `);
+    });
+  }, [validAttractions, isReady, language]);
 
   return (
     <div className="w-full h-[500px] rounded-lg overflow-hidden border shadow-lg relative">
-      <MapContainer
-        center={center}
-        zoom={12}
-        style={{ height: "100%", width: "100%" }}
-        scrollWheelZoom={true}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        {validAttractions.map((attraction) => (
-          <Marker
-            key={attraction.id}
-            position={[attraction.map.lat!, attraction.map.lng!]}
-            icon={createCustomIcon(attraction.category)}
-          >
-            <Popup>
-              <div className="min-w-[200px]">
-                <div className="flex items-center justify-between mb-1">
-                  <Badge className={`text-xs ${getPriceBadgeColor(attraction.price_tier)}`}>
-                    {attraction.price_tier === "free" 
-                      ? (language === "pt" ? "Grátis" : "Free") 
-                      : attraction.price_tier}
-                  </Badge>
-                </div>
-                <h3 className="font-bold text-base mb-1">{attraction.name}</h3>
-                <div className="flex items-center gap-1 text-xs text-gray-500 mb-2">
-                  <MapPin className="w-3 h-3" />
-                  <span>{attraction.area_detail}</span>
-                </div>
-                <p className="text-sm text-gray-600 mb-2">
-                  {language === "pt" ? attraction.short_desc : attraction.short_desc_en}
-                </p>
-                <div className="flex items-center gap-1 text-xs text-gray-500">
-                  <Clock className="w-3 h-3" />
-                  <span>{attraction.time_suggested_hours}h</span>
-                </div>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
+      <div ref={containerRef} className="w-full h-full" />
       
       {/* Legend */}
       <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-800/95 p-3 rounded-lg shadow-lg z-[1000] text-xs">
