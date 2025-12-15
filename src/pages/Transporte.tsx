@@ -10,6 +10,7 @@ import {
   ChecklistSection,
   FAQSection,
 } from "@/components/transporte";
+import amsterdamBikesImg from "@/assets/amsterdam-bikes.webp";
 
 const Transporte = () => {
   const { language } = useLanguage();
@@ -19,7 +20,8 @@ const Transporte = () => {
       <PageHero 
         icon={Train} 
         title={language === "pt" ? "Como se Locomover em Amsterdam (2026)" : "Getting Around Amsterdam (2026)"} 
-        description={language === "pt" ? "O guia para não se perder, não levar multa e não ser atropelado" : "The guide to not get lost, fined, or run over"} 
+        description={language === "pt" ? "O guia para não se perder, não levar multa e não ser atropelado" : "The guide to not get lost, fined, or run over"}
+        backgroundImage={amsterdamBikesImg}
       />
 
       <ThreeRulesSection />
