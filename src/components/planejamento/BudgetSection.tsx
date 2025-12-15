@@ -50,34 +50,34 @@ export const BudgetSection = ({ language }: BudgetSectionProps) => {
 
   return (
     <section className="section-spacing">
-      <div className="container">
+      <div className="container max-w-7xl">
         <AnimateOnScroll>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-center mb-4 lg:mb-6">
             💰 {language === "pt" ? "Dinheiro & Orçamento 2026" : "Money & Budget 2026"}
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-base lg:text-lg">
             {language === "pt" ? "O 'problema do cartão' e quanto custa de verdade" : "The 'card problem' and what it really costs"}
           </p>
         </AnimateOnScroll>
 
         {/* Payment Info */}
         <AnimateOnScroll delay={100}>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+          <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto mb-14">
             <Card>
-              <CardContent className="p-6">
-                <h3 className="font-bold text-lg mb-4">💳 {language === "pt" ? "Pagamento em 2026" : "Payment in 2026"}</h3>
-                <p className="mb-4"><strong>{language === "pt" ? "Moeda:" : "Currency:"}</strong> Euro (€)</p>
-                <div className="bg-amber-50 dark:bg-amber-950/30 p-3 rounded-lg mb-4">
-                  <p className="text-sm font-medium text-amber-700 dark:text-amber-300 mb-2">
+              <CardContent className="p-6 lg:p-8">
+                <h3 className="font-bold text-lg lg:text-xl mb-4 lg:mb-5">💳 {language === "pt" ? "Pagamento em 2026" : "Payment in 2026"}</h3>
+                <p className="mb-4 text-base lg:text-lg"><strong>{language === "pt" ? "Moeda:" : "Currency:"}</strong> Euro (€)</p>
+                <div className="bg-amber-50 dark:bg-amber-950/30 p-4 lg:p-5 rounded-lg mb-4">
+                  <p className="text-sm lg:text-base font-medium text-amber-700 dark:text-amber-300 mb-2">
                     🚨 {language === "pt" ? "O 'Problema' do Cartão:" : "The Card 'Problem':"}
                   </p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm lg:text-base text-muted-foreground">
                     {language === "pt" 
                       ? "A Holanda migrou forte para Visa Debit e Debit Mastercard. Ainda pode acontecer de um lugar aceitar débito e recusar crédito tradicional."
                       : "Netherlands has strongly moved to Visa Debit and Debit Mastercard. Some places may accept debit but refuse traditional credit."}
                   </p>
                 </div>
-                <p className="text-sm">
+                <p className="text-sm lg:text-base">
                   <strong>{language === "pt" ? "Solução:" : "Solution:"}</strong>{" "}
                   {language === "pt" 
                     ? "Leve pelo menos 1 cartão com função débito internacional + um pouco de cash para emergência."
@@ -87,36 +87,36 @@ export const BudgetSection = ({ language }: BudgetSectionProps) => {
             </Card>
 
             <Card>
-              <CardContent className="p-6">
-                <h3 className="font-bold text-lg mb-4">💱 {language === "pt" ? "Onde Trocar Dinheiro" : "Where to Exchange"}</h3>
-                <div className="space-y-3 text-sm">
-                  <div className="flex items-start gap-2">
-                    <span className="text-green-600">✅</span>
+              <CardContent className="p-6 lg:p-8">
+                <h3 className="font-bold text-lg lg:text-xl mb-4 lg:mb-5">💱 {language === "pt" ? "Onde Trocar Dinheiro" : "Where to Exchange"}</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <span className="text-green-600 text-lg">✅</span>
                     <div>
-                      <p className="font-medium">{language === "pt" ? "ATMs (Caixas)" : "ATMs"}</p>
-                      <p className="text-muted-foreground">
+                      <p className="font-medium text-base lg:text-lg">{language === "pt" ? "ATMs (Caixas)" : "ATMs"}</p>
+                      <p className="text-sm lg:text-base text-muted-foreground">
                         {language === "pt" 
                           ? "Saque em Euro. Rede ING, ABN AMRO, Rabobank são confiáveis."
                           : "Withdraw in Euro. ING, ABN AMRO, Rabobank networks are reliable."}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-red-600">❌</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-red-600 text-lg">❌</span>
                     <div>
-                      <p className="font-medium">{language === "pt" ? "Câmbios 'sem taxa'" : "'No fee' exchanges"}</p>
-                      <p className="text-muted-foreground">
+                      <p className="font-medium text-base lg:text-lg">{language === "pt" ? "Câmbios 'sem taxa'" : "'No fee' exchanges"}</p>
+                      <p className="text-sm lg:text-base text-muted-foreground">
                         {language === "pt" 
                           ? "Evite os quiosques de aeroporto e turísticos. Taxas embutidas."
                           : "Avoid airport and tourist kiosks. Hidden fees."}
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-start gap-2">
-                    <span className="text-blue-600">💡</span>
+                  <div className="flex items-start gap-3">
+                    <span className="text-blue-600 text-lg">💡</span>
                     <div>
-                      <p className="font-medium">Wise / Revolut</p>
-                      <p className="text-muted-foreground">
+                      <p className="font-medium text-base lg:text-lg">Wise / Revolut</p>
+                      <p className="text-sm lg:text-base text-muted-foreground">
                         {language === "pt" 
                           ? "Excelentes taxas, cartão aceito em (quase) todo lugar."
                           : "Excellent rates, card accepted (almost) everywhere."}
@@ -131,19 +131,19 @@ export const BudgetSection = ({ language }: BudgetSectionProps) => {
 
         {/* Budget Levels */}
         <AnimateOnScroll delay={200}>
-          <h3 className="text-2xl font-bold text-center mb-8">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center mb-8 lg:mb-10">
             📊 {language === "pt" ? "Quanto Custa (Por Perfil)" : "How Much It Costs (By Profile)"}
           </h3>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
+          <div className="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto mb-14">
             {budgetLevels.map((level) => (
               <Card key={level.name} className="text-center">
-                <CardContent className="p-6">
-                  <div className="text-4xl mb-3">{level.icon}</div>
-                  <h4 className="font-bold text-lg mb-2">{level.name}</h4>
-                  <p className="text-2xl font-bold text-amsterdam-orange mb-4">{level.range}</p>
-                  <div className="space-y-2">
+                <CardContent className="p-6 lg:p-8">
+                  <div className="text-4xl lg:text-5xl mb-4">{level.icon}</div>
+                  <h4 className="font-bold text-lg lg:text-xl mb-3">{level.name}</h4>
+                  <p className="text-2xl lg:text-3xl font-bold text-amsterdam-orange mb-5">{level.range}</p>
+                  <div className="space-y-3">
                     {level.breakdown.map((item) => (
-                      <div key={item.label} className="flex justify-between text-sm">
+                      <div key={item.label} className="flex justify-between text-sm lg:text-base">
                         <span className="text-muted-foreground">{item.label}</span>
                         <span className="font-medium">{item.value}</span>
                       </div>
@@ -157,18 +157,18 @@ export const BudgetSection = ({ language }: BudgetSectionProps) => {
 
         {/* Saving Tips */}
         <AnimateOnScroll delay={300}>
-          <h3 className="text-2xl font-bold text-center mb-8">
+          <h3 className="text-2xl lg:text-3xl font-bold text-center mb-8 lg:mb-10">
             💡 {language === "pt" ? "Truques para Economizar" : "Money-Saving Tricks"}
           </h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 max-w-6xl mx-auto">
             {savingTips.map((tip) => (
               <Card key={tip.title}>
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-2xl">{tip.icon}</span>
-                    <h4 className="font-bold">{tip.title}</h4>
+                <CardContent className="p-5 lg:p-6">
+                  <div className="flex items-center gap-3 mb-3">
+                    <span className="text-2xl lg:text-3xl">{tip.icon}</span>
+                    <h4 className="font-bold text-base lg:text-lg">{tip.title}</h4>
                   </div>
-                  <p className="text-xs text-muted-foreground">{tip.desc}</p>
+                  <p className="text-sm lg:text-base text-muted-foreground">{tip.desc}</p>
                 </CardContent>
               </Card>
             ))}

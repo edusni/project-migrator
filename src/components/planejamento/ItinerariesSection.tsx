@@ -83,29 +83,29 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
 
   return (
     <section className="section-spacing bg-muted/30">
-      <div className="container">
-        <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+      <div className="container max-w-7xl">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-center mb-4 lg:mb-6">
           🗺️ {language === "pt" ? "Roteiros (Sem Perrengue)" : "Itineraries (No Hassle)"}
         </h2>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-base lg:text-lg">
           {language === "pt" ? "Planos testados para 1, 3 ou mais dias" : "Tested plans for 1, 3 or more days"}
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-14">
           {/* 1 Day */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <span className="text-2xl">{itineraries[0].icon}</span>
+            <CardHeader className="pb-4 lg:pb-6">
+              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+                <span className="text-2xl lg:text-3xl">{itineraries[0].icon}</span>
                 {itineraries[0].name}
               </CardTitle>
-              <p className="text-muted-foreground">{itineraries[0].subtitle}</p>
+              <p className="text-muted-foreground text-base lg:text-lg">{itineraries[0].subtitle}</p>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 lg:space-y-5">
               {itineraries[0].schedule?.map((s) => (
-                <div key={s.period} className="bg-muted/50 p-4 rounded-lg">
-                  <h4 className="font-bold mb-2">{s.period}</h4>
-                  <ul className="text-sm text-muted-foreground space-y-1">
+                <div key={s.period} className="bg-muted/50 p-4 lg:p-5 rounded-lg">
+                  <h4 className="font-bold mb-2 lg:mb-3 text-base lg:text-lg">{s.period}</h4>
+                  <ul className="text-sm lg:text-base text-muted-foreground space-y-1.5">
                     {s.items.map((item, i) => (
                       <li key={i}>• {item}</li>
                     ))}
@@ -117,18 +117,18 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
 
           {/* 3 Days */}
           <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-3">
-                <span className="text-2xl">{itineraries[1].icon}</span>
+            <CardHeader className="pb-4 lg:pb-6">
+              <CardTitle className="flex items-center gap-3 text-xl lg:text-2xl">
+                <span className="text-2xl lg:text-3xl">{itineraries[1].icon}</span>
                 {itineraries[1].name}
               </CardTitle>
-              <p className="text-muted-foreground">{itineraries[1].subtitle}</p>
+              <p className="text-muted-foreground text-base lg:text-lg">{itineraries[1].subtitle}</p>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 lg:space-y-5">
               {itineraries[1].days?.map((d) => (
-                <div key={d.day} className="bg-muted/50 p-4 rounded-lg">
-                  <h4 className="font-bold mb-2">{d.day}</h4>
-                  <p className="text-sm text-muted-foreground">{d.items.join(" → ")}</p>
+                <div key={d.day} className="bg-muted/50 p-4 lg:p-5 rounded-lg">
+                  <h4 className="font-bold mb-2 lg:mb-3 text-base lg:text-lg">{d.day}</h4>
+                  <p className="text-sm lg:text-base text-muted-foreground">{d.items.join(" → ")}</p>
                 </div>
               ))}
             </CardContent>
@@ -136,16 +136,16 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
         </div>
 
         {/* Thematic */}
-        <h3 className="text-xl font-bold text-center mb-6">🎯 {language === "pt" ? "Roteiros Temáticos" : "Thematic Itineraries"}</h3>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
+        <h3 className="text-xl lg:text-2xl font-bold text-center mb-8">🎯 {language === "pt" ? "Roteiros Temáticos" : "Thematic Itineraries"}</h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto">
           {thematicItineraries.map((it) => (
             <Card key={it.name}>
-              <CardContent className="p-4">
-                <div className="flex items-center gap-2 mb-3">
-                  <it.icon className="w-5 h-5" />
-                  <h4 className="font-bold">{it.name}</h4>
+              <CardContent className="p-5 lg:p-6">
+                <div className="flex items-center gap-3 mb-3">
+                  <it.icon className="w-5 h-5 lg:w-6 lg:h-6" />
+                  <h4 className="font-bold text-base lg:text-lg">{it.name}</h4>
                 </div>
-                <ul className="text-sm text-muted-foreground space-y-1">
+                <ul className="text-sm lg:text-base text-muted-foreground space-y-1.5">
                   {it.items.map((item, i) => (
                     <li key={i}>• {item}</li>
                   ))}

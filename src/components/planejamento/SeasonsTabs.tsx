@@ -187,29 +187,29 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
             {/* Summer */}
             <TabsContent value="summer">
               <Card>
-                <div className="h-2 bg-yellow-500" />
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-yellow-500">{seasons[1].highlight}</Badge>
-                    <span className="text-muted-foreground">{seasons[1].period}</span>
+                <div className="h-2 lg:h-3 bg-yellow-500" />
+                <CardContent className="p-6 md:p-8 lg:p-10">
+                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                    <Badge className="bg-yellow-500 text-sm lg:text-base px-3 py-1">{seasons[1].highlight}</Badge>
+                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[1].period}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6">{seasons[1].tagline}</h3>
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-6 lg:mb-8">{seasons[1].tagline}</h3>
                   
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="bg-green-50 dark:bg-green-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-3">✅ {language === "pt" ? "Prós" : "Pros"}</h4>
-                      <ul className="space-y-2">
+                  <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+                    <div className="bg-green-50 dark:bg-green-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós" : "Pros"}</h4>
+                      <ul className="space-y-2 lg:space-y-3">
                         {seasons[1].pros?.map((pro, i) => (
-                          <li key={i} className="text-sm">• {pro}</li>
+                          <li key={i} className="text-sm lg:text-base">• {pro}</li>
                         ))}
                       </ul>
                     </div>
                     
-                    <div className="bg-red-50 dark:bg-red-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-3">❌ {language === "pt" ? "Contras" : "Cons"}</h4>
-                      <ul className="space-y-2">
+                    <div className="bg-red-50 dark:bg-red-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras" : "Cons"}</h4>
+                      <ul className="space-y-2 lg:space-y-3">
                         {seasons[1].cons?.map((con, i) => (
-                          <li key={i} className="text-sm">• {con}</li>
+                          <li key={i} className="text-sm lg:text-base">• {con}</li>
                         ))}
                       </ul>
                     </div>
@@ -221,28 +221,28 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
             {/* Autumn */}
             <TabsContent value="autumn">
               <Card>
-                <div className="h-2 bg-orange-500" />
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-orange-500">{seasons[2].highlight}</Badge>
-                    <span className="text-muted-foreground">{seasons[2].period}</span>
+                <div className="h-2 lg:h-3 bg-orange-500" />
+                <CardContent className="p-6 md:p-8 lg:p-10">
+                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                    <Badge className="bg-orange-500 text-sm lg:text-base px-3 py-1">{seasons[2].highlight}</Badge>
+                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[2].period}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-6">{seasons[2].tagline}</h3>
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-6 lg:mb-8">{seasons[2].tagline}</h3>
                   
-                  <div className="bg-amber-50 dark:bg-amber-950/30 p-4 rounded-lg mb-6">
-                    <h4 className="font-bold text-lg mb-2">💡 {language === "pt" ? "Dica de Mestre (O Pulo do Gato)" : "Master Tip (The Insider Secret)"}</h4>
-                    <p className="text-muted-foreground">{seasons[2].masterTip}</p>
+                  <div className="bg-amber-50 dark:bg-amber-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
+                    <h4 className="font-bold text-lg lg:text-xl mb-3">💡 {language === "pt" ? "Dica de Mestre (O Pulo do Gato)" : "Master Tip (The Insider Secret)"}</h4>
+                    <p className="text-muted-foreground text-base lg:text-lg">{seasons[2].masterTip}</p>
                   </div>
                   
-                  <div className="space-y-4">
-                    <h4 className="font-bold">🎭 {language === "pt" ? "Eventos Culturais" : "Cultural Events"}</h4>
-                    <ul className="space-y-2">
+                  <div className="space-y-4 lg:space-y-5">
+                    <h4 className="font-bold text-base lg:text-lg">🎭 {language === "pt" ? "Eventos Culturais" : "Cultural Events"}</h4>
+                    <ul className="space-y-2 lg:space-y-3">
                       {seasons[2].events?.map((event, i) => (
-                        <li key={i} className="text-sm">• {event}</li>
+                        <li key={i} className="text-sm lg:text-base">• {event}</li>
                       ))}
                     </ul>
                     
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mt-4">
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground mt-4">
                       <span>🌦️</span>
                       <span>{seasons[2].climate}</span>
                     </div>
@@ -254,42 +254,42 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
             {/* Winter */}
             <TabsContent value="winter">
               <Card>
-                <div className="h-2 bg-blue-400" />
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-blue-400">{seasons[3].highlight}</Badge>
-                    <span className="text-muted-foreground">{seasons[3].period}</span>
+                <div className="h-2 lg:h-3 bg-blue-400" />
+                <CardContent className="p-6 md:p-8 lg:p-10">
+                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                    <Badge className="bg-blue-400 text-sm lg:text-base px-3 py-1">{seasons[3].highlight}</Badge>
+                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[3].period}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-4">{seasons[3].tagline}</h3>
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-4 lg:mb-6">{seasons[3].tagline}</h3>
                   
-                  <div className="bg-purple-50 dark:bg-purple-950/30 p-4 rounded-lg mb-6">
-                    <h4 className="font-bold text-lg mb-2">✨ Amsterdam Light Festival 2025/2026</h4>
-                    <p className="text-muted-foreground">{seasons[3].lightFestival}</p>
+                  <div className="bg-purple-50 dark:bg-purple-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
+                    <h4 className="font-bold text-lg lg:text-xl mb-3">✨ Amsterdam Light Festival 2025/2026</h4>
+                    <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].lightFestival}</p>
                   </div>
                   
-                  <div className="grid md:grid-cols-2 gap-6 mb-6">
-                    <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-3">✅ {language === "pt" ? "Prós: A Magia do 'Gezelligheid'" : "Pros: The 'Gezelligheid' Magic"}</h4>
-                      <ul className="space-y-2">
+                  <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
+                    <div className="bg-blue-50 dark:bg-blue-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós: A Magia do 'Gezelligheid'" : "Pros: The 'Gezelligheid' Magic"}</h4>
+                      <ul className="space-y-2 lg:space-y-3">
                         {seasons[3].pros?.map((pro, i) => (
-                          <li key={i} className="text-sm">• {pro}</li>
+                          <li key={i} className="text-sm lg:text-base">• {pro}</li>
                         ))}
                       </ul>
                     </div>
                     
-                    <div className="bg-gray-50 dark:bg-gray-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-3">❌ {language === "pt" ? "Contras (A Realidade Fria)" : "Cons (The Cold Reality)"}</h4>
-                      <ul className="space-y-2">
+                    <div className="bg-gray-50 dark:bg-gray-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras (A Realidade Fria)" : "Cons (The Cold Reality)"}</h4>
+                      <ul className="space-y-2 lg:space-y-3">
                         {seasons[3].cons?.map((con, i) => (
-                          <li key={i} className="text-sm">• {con}</li>
+                          <li key={i} className="text-sm lg:text-base">• {con}</li>
                         ))}
                       </ul>
                     </div>
                   </div>
                   
-                  <div className="bg-cyan-50 dark:bg-cyan-950/30 p-4 rounded-lg">
-                    <h4 className="font-bold mb-2">⛸️ {language === "pt" ? "E se o canal congelar?" : "What if the canal freezes?"}</h4>
-                    <p className="text-sm text-muted-foreground">{seasons[3].frozen}</p>
+                  <div className="bg-cyan-50 dark:bg-cyan-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold mb-3 text-base lg:text-lg">⛸️ {language === "pt" ? "E se o canal congelar?" : "What if the canal freezes?"}</h4>
+                    <p className="text-sm lg:text-base text-muted-foreground">{seasons[3].frozen}</p>
                   </div>
                 </CardContent>
               </Card>
