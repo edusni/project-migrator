@@ -5,12 +5,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import duPhoto from "@/assets/du-amsterdam.jpg";
 import sobreHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Sobre = () => {
   const { language } = useLanguage();
+  const seo = seoData.sobre[language];
 
   const content = language === "pt" ? {
     heroTitle: "Quem é o Du",
@@ -62,6 +64,7 @@ const Sobre = () => {
 
   return (
     <PageLayout>
+      <SEOHead title={seo.title} description={seo.description} keywords={seo.keywords} />
       <PageHero
         icon={User}
         title={content.heroTitle}

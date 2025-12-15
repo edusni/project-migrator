@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Star } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import {
   Changes2026Section,
   Calendar2026Section,
@@ -17,9 +18,20 @@ import adamLookoutImg from "@/assets/adam-lookout.webp";
 
 const Atracoes = () => {
   const { language } = useLanguage();
+  const seo = seoData.atracoes[language];
 
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: language === "pt" ? "Atrações" : "Attractions", url: "https://amsterdu.com/atracoes" }
+        ]}
+      />
       <PageHero
         icon={Star}
         title={language === "pt" ? "O Que Fazer em Amsterdam 2026" : "What to Do in Amsterdam 2026"}

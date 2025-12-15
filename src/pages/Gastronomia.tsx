@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { UtensilsCrossed } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import foodHeroImg from "@/assets/food-stroopwafel.png";
 import {
   IntroSection,
@@ -312,9 +313,22 @@ const Gastronomia = () => {
       ]
     }
   };
+  const seo = seoData.gastronomia[language];
+  const faqItems = content.faq.items.map(item => ({ question: item.q, answer: item.a }));
 
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        faqItems={faqItems}
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: language === "pt" ? "Gastronomia" : "Food", url: "https://amsterdu.com/gastronomia" }
+        ]}
+      />
       <PageHero
         icon={UtensilsCrossed}
         title={content.title}

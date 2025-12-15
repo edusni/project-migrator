@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Calendar } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { SEOHead, seoData } from "@/components/SEOHead";
 import { useState, useEffect, useRef } from "react";
 import {
   CostCalculator,
@@ -62,9 +63,20 @@ const Planejamento = () => {
       window.scrollTo({ top: elementPosition - offset, behavior: "smooth" });
     }
   };
+  const seo = seoData.planejamento[language];
 
   return (
     <PageLayout>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        keywords={seo.keywords}
+        type="article"
+        breadcrumbs={[
+          { name: "Home", url: "https://amsterdu.com" },
+          { name: language === "pt" ? "Planejamento" : "Planning", url: "https://amsterdu.com/planejamento" }
+        ]}
+      />
       <PageHero
         icon={Calendar}
         title={language === "pt" ? "Planejando Amsterdam 2026" : "Planning Amsterdam 2026"}
