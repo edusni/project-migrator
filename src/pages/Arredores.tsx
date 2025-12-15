@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { MapPin } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import {
   IntroSection,
   QuickPickSection,
@@ -425,6 +426,11 @@ const Arredores = () => {
       <TipsSection title={content.tips.title} items={content.tips.items} />
       <RankingSection title={content.ranking.title} items={content.ranking.items} />
       <FAQSection title={content.faq.title} items={content.faq.items} />
+      
+      <RelatedPagesSection 
+        currentPath="/arredores"
+        suggestedPaths={["/transporte", "/planejamento", "/atracoes", "/gastronomia"]}
+      />
     </PageLayout>
   );
 };

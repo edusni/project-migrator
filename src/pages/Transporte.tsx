@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Train } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
+import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import {
   ThreeRulesSection,
   GoldenRuleSection,
@@ -42,6 +43,11 @@ const Transporte = () => {
       <AppsSection />
       <ChecklistSection />
       <FAQSection />
+      
+      <RelatedPagesSection 
+        currentPath="/transporte"
+        suggestedPaths={["/planejamento", "/atracoes", "/arredores", "/hospedagem"]}
+      />
     </PageLayout>
   );
 };
