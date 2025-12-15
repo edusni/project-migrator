@@ -7,11 +7,12 @@ import {
   QuickPickSection,
   MapSection,
   DestinationTabsSection,
+  DestinationsGallerySection,
   TipsSection,
   RankingSection,
   FAQSection
 } from "@/components/arredores";
-import eyeFilmImg from "@/assets/eye-film-museum.jpg";
+import zaanseSchansImg from "@/assets/daytrip-zaanse-schans.png";
 
 const Arredores = () => {
   const { language } = useLanguage();
@@ -390,8 +391,10 @@ const Arredores = () => {
         icon={MapPin} 
         title={content.title} 
         description={content.description}
-        backgroundImage={eyeFilmImg}
+        backgroundImage={zaanseSchansImg}
       />
+
+      <DestinationsGallerySection language={language} />
 
       <IntroSection intro={content.intro} />
       <QuickPickSection title={content.quickPick.title} items={content.quickPick.items} />
