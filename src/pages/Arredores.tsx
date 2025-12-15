@@ -11,6 +11,7 @@ import {
   RankingSection,
   FAQSection
 } from "@/components/arredores";
+import eyeFilmImg from "@/assets/eye-film-museum.jpg";
 
 const Arredores = () => {
   const { language } = useLanguage();
@@ -375,33 +376,27 @@ const Arredores = () => {
         { q: "Is Keukenhof worth it?", a: "Yes, if you go in spring (March-May), on a weekday and arriving early. Outside this window, it doesn't work." },
         { q: "Is Zaanse Schans a 'tourist trap'?", a: "It can be, if you go at the wrong time. Go very early or late afternoon and the experience changes completely." },
         { q: "Is Giethoorn worth the travel?", a: "Only if you have days to spare. It's 2h there, 2h back. For beautiful canals, Utrecht delivers more in less time." },
-        { q: "How does transport work for day trips?", a: "NS train is standard. Use OVpay (contactless card) or buy ticket in NS app. Keukenhof has special bus." },
+        { q: "How does transport work for day trips?", a: "NS train is standard. Use OVpay (contactless card) or buy tickets in NS app. Keukenhof has special bus." },
         { q: "Can I combine two destinations in one day?", a: "Delft + The Hague works well. Rotterdam + Delft is possible but rushed. Avoid combining distant destinations." },
         { q: "Do I need to book anything in advance?", a: "Keukenhof: YES, ticket required. City museums: recommended. Zaanse Schans: in 2026 may require ticket." },
-        { q: "What's the best season for each destination?", a: "Keukenhof: spring. Waterland by bike: summer. Others work year-round, but avoid Zaanse Schans on holidays." }
+        { q: "What's the best time for each destination?", a: "Keukenhof: spring. Waterland by bike: summer. Others work year-round, but avoid Zaanse Schans on holidays." }
       ]
     }
   };
 
   return (
     <PageLayout>
-      <PageHero
-        icon={MapPin}
-        title={content.title}
+      <PageHero 
+        icon={MapPin} 
+        title={content.title} 
         description={content.description}
-        gradient="from-[#1E90FF] to-[#4169E1]"
+        backgroundImage={eyeFilmImg}
       />
 
       <IntroSection intro={content.intro} />
-      
-      <QuickPickSection 
-        title={content.quickPick.title}
-        items={content.quickPick.items}
-      />
-      
+      <QuickPickSection title={content.quickPick.title} items={content.quickPick.items} />
       <MapSection language={language} />
-      
-      <DestinationTabsSection
+      <DestinationTabsSection 
         tabs={content.tabs}
         classics={content.classics}
         miniAms={content.miniAms}
@@ -409,21 +404,9 @@ const Arredores = () => {
         bike={content.bike}
         language={language}
       />
-      
-      <TipsSection 
-        title={content.tips.title}
-        items={content.tips.items}
-      />
-      
-      <RankingSection 
-        title={content.ranking.title}
-        items={content.ranking.items}
-      />
-      
-      <FAQSection 
-        title={content.faq.title}
-        items={content.faq.items}
-      />
+      <TipsSection title={content.tips.title} items={content.tips.items} />
+      <RankingSection title={content.ranking.title} items={content.ranking.items} />
+      <FAQSection title={content.faq.title} items={content.faq.items} />
     </PageLayout>
   );
 };

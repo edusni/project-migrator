@@ -12,6 +12,7 @@ import {
   FAQSection,
   ContinuePlanningSection,
 } from "@/components/hospedagem";
+import hofjeImg from "@/assets/hofje-amsterdam.jpg";
 
 const Hospedagem = () => {
   const { language } = useLanguage();
@@ -21,7 +22,8 @@ const Hospedagem = () => {
       <PageHero 
         icon={Hotel} 
         title={language === "pt" ? "Guia de Hospedagem 2026" : "2026 Accommodation Guide"} 
-        description={language === "pt" ? "Tudo o que muda e o que você precisa saber" : "Everything that's changing and what you need to know"} 
+        description={language === "pt" ? "Tudo o que muda e o que você precisa saber" : "Everything that's changing and what you need to know"}
+        backgroundImage={hofjeImg}
       />
 
       <TaxChangesSection />

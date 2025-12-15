@@ -13,6 +13,7 @@ import {
   ItinerariesSection,
   FAQSection,
 } from "@/components/atracoes";
+import adamLookoutImg from "@/assets/adam-lookout.webp";
 
 const Atracoes = () => {
   const { language } = useLanguage();
@@ -25,6 +26,7 @@ const Atracoes = () => {
         description={language === "pt" 
           ? "Guia real com mapa, filtros e dicas de quem entende a cidade. Sem enrolação." 
           : "Real guide with map, filters and tips from those who know the city. No fluff."}
+        backgroundImage={adamLookoutImg}
       />
 
       <Changes2026Section />

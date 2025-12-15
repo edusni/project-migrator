@@ -13,6 +13,7 @@ import {
   CityCardSection,
   SectionNav,
 } from "@/components/planejamento";
+import oosterparkImg from "@/assets/oosterpark-summer.jpg";
 
 const Planejamento = () => {
   const { language } = useLanguage();
@@ -70,6 +71,7 @@ const Planejamento = () => {
         description={language === "pt" 
           ? "O Guia Atualizado (Impostos, Regras e Custos Reais)" 
           : "The Updated Guide (Taxes, Rules & Real Costs)"}
+        backgroundImage={oosterparkImg}
       />
 
       <SectionNav
