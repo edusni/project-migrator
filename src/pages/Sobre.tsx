@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import duPhoto from "@/assets/du-amsterdam.jpg";
+import sobreHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Sobre = () => {
   const { language } = useLanguage();
@@ -65,6 +66,7 @@ const Sobre = () => {
         icon={User}
         title={content.heroTitle}
         description={content.heroSubtitle}
+        backgroundImage={sobreHeroImg}
       />
 
       <section className="py-14 lg:py-20">
