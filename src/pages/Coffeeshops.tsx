@@ -1,11 +1,12 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Leaf, AlertTriangle, CheckCircle, X, Check, MapPin, Clock, CreditCard, Info, Scale, Coffee, Beer, Sparkles, Users, Ban, FileText } from "lucide-react";
+import { Leaf, AlertTriangle, CheckCircle, X, Check, MapPin, Clock, CreditCard, Info, Scale, Coffee, Beer, Sparkles, Users, Ban, FileText, Store } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLanguage } from "@/hooks/useLanguage";
+import CoffeeshopExplorer from "@/components/CoffeeshopExplorer";
 
 const Coffeeshops = () => {
   const { language } = useLanguage();
@@ -517,6 +518,22 @@ const Coffeeshops = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
+      </section>
+
+      {/* Coffeeshop Explorer */}
+      <section className="py-12 bg-muted/30">
+        <div className="container">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold text-center mb-2 flex items-center justify-center gap-2">
+            <Store className="h-6 w-6" />
+            {language === "pt" ? "Coffeeshops por Bairro" : "Coffeeshops by Neighborhood"}
+          </h2>
+          <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+            {language === "pt" 
+              ? "27 coffeeshops organizados por bairro com filtros de preço, perfil e especialidade"
+              : "27 coffeeshops organized by neighborhood with price, profile and specialty filters"}
+          </p>
+          <CoffeeshopExplorer />
         </div>
       </section>
 
