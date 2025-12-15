@@ -1,11 +1,12 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { MapPin, Train, Clock, AlertTriangle, Check, Bike, Camera, Building2, Flower2, Castle, Waves, Star, Info, Calendar } from "lucide-react";
+import { MapPin, Train, Clock, AlertTriangle, Check, Bike, Camera, Building2, Flower2, Castle, Waves, Star, Info, Calendar, Map } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useLanguage } from "@/hooks/useLanguage";
+import DayTripsMap from "@/components/DayTripsMap";
 
 const Arredores = () => {
   const { language } = useLanguage();
@@ -409,6 +410,22 @@ const Arredores = () => {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Interactive Map */}
+      <section className="py-12 bg-muted/30">
+        <div className="container">
+          <h2 className="text-2xl font-heading font-bold text-center mb-2 flex items-center justify-center gap-2">
+            <Map className="h-6 w-6" />
+            {language === "pt" ? "Mapa dos Destinos" : "Destinations Map"}
+          </h2>
+          <p className="text-center text-muted-foreground mb-8">
+            {language === "pt" 
+              ? "Visualize todos os destinos e seus tempos de viagem desde Amsterdam"
+              : "Visualize all destinations and their travel times from Amsterdam"}
+          </p>
+          <DayTripsMap />
         </div>
       </section>
 
