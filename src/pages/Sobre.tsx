@@ -75,11 +75,11 @@ const Sobre = () => {
               <Card className="mb-12 overflow-hidden">
                 <CardContent className="p-6 lg:p-10">
                   <div className="flex flex-col lg:flex-row gap-8 items-center">
-                    <div className="w-40 h-40 lg:w-52 lg:h-52 rounded-2xl overflow-hidden flex-shrink-0 shadow-xl">
+                    <div className="rounded-2xl overflow-hidden flex-shrink-0 shadow-xl">
                       <img 
                         src={duPhoto} 
                         alt="Du - criador do AmsterDu" 
-                        className="w-full h-full object-cover"
+                        className="w-auto h-auto max-w-xs lg:max-w-sm"
                       />
                     </div>
                     <div className="flex-1 text-center lg:text-left">
