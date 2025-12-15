@@ -1,7 +1,7 @@
 import { Sun, Cloud, Snowflake, Leaf } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AnimatedSection } from "@/components/ui/animated-section";
 import { AnimateOnScroll } from "@/hooks/useInView";
 
 interface SeasonsTabsProps {
@@ -126,176 +126,163 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
           </Card>
         </AnimateOnScroll>
         
-        <AnimateOnScroll delay={200}>
-          <Tabs defaultValue="spring" className="max-w-6xl mx-auto">
-            <TabsList className="grid grid-cols-4 mb-8 lg:mb-10 h-auto p-1.5">
-              <TabsTrigger value="spring" className="flex items-center gap-2 py-3 text-base">
-                <Leaf className="w-5 h-5" />
-                <span className="hidden sm:inline">{language === "pt" ? "Primavera" : "Spring"}</span>
-              </TabsTrigger>
-              <TabsTrigger value="summer" className="flex items-center gap-2 py-3 text-base">
-                <Sun className="w-5 h-5" />
-                <span className="hidden sm:inline">{language === "pt" ? "Verão" : "Summer"}</span>
-              </TabsTrigger>
-              <TabsTrigger value="autumn" className="flex items-center gap-2 py-3 text-base">
-                <Cloud className="w-5 h-5" />
-                <span className="hidden sm:inline">{language === "pt" ? "Outono" : "Autumn"}</span>
-              </TabsTrigger>
-              <TabsTrigger value="winter" className="flex items-center gap-2 py-3 text-base">
-                <Snowflake className="w-5 h-5" />
-                <span className="hidden sm:inline">{language === "pt" ? "Inverno" : "Winter"}</span>
-              </TabsTrigger>
-            </TabsList>
-
-            {/* Spring */}
-            <TabsContent value="spring">
-              <Card>
-                <div className="h-2 lg:h-3 bg-green-500" />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
-                    <Badge className="bg-green-500 text-sm lg:text-base px-3 py-1">{seasons[0].highlight}</Badge>
-                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[0].period}</span>
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-3">{seasons[0].tagline}</h3>
-                  <p className="text-muted-foreground mb-6 lg:mb-8 text-base lg:text-lg">{seasons[0].description}</p>
-                  
-                  <div className="space-y-6 lg:space-y-8">
-                    <div className="bg-pink-50 dark:bg-pink-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-3">🌷 {language === "pt" ? "O Grande Protagonista: KEUKENHOF" : "The Star: KEUKENHOF"}</h4>
-                      <p className="text-muted-foreground mb-4 text-base lg:text-lg">{seasons[0].keukenhof}</p>
-                      <ul className="space-y-2 text-sm lg:text-base">
-                        {seasons[0].keukenhofDetails.map((detail, i) => (
-                          <li key={i}>• {detail}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-orange-50 dark:bg-orange-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-3">🎉 Koningsdag 2026</h4>
-                      <p className="text-muted-foreground text-base lg:text-lg">{seasons[0].koningsdag}</p>
-                    </div>
-                    
-                    <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground">
-                      <span>🌦️</span>
-                      <span>{seasons[0].climate}</span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Summer */}
-            <TabsContent value="summer">
-              <Card>
-                <div className="h-2 lg:h-3 bg-yellow-500" />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
-                    <Badge className="bg-yellow-500 text-sm lg:text-base px-3 py-1">{seasons[1].highlight}</Badge>
-                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[1].period}</span>
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-6 lg:mb-8">{seasons[1].tagline}</h3>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-                    <div className="bg-green-50 dark:bg-green-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós" : "Pros"}</h4>
-                      <ul className="space-y-2 lg:space-y-3">
-                        {seasons[1].pros?.map((pro, i) => (
-                          <li key={i} className="text-sm lg:text-base">• {pro}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-red-50 dark:bg-red-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras" : "Cons"}</h4>
-                      <ul className="space-y-2 lg:space-y-3">
-                        {seasons[1].cons?.map((con, i) => (
-                          <li key={i} className="text-sm lg:text-base">• {con}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-
-            {/* Autumn */}
-            <TabsContent value="autumn">
-              <Card>
-                <div className="h-2 lg:h-3 bg-orange-500" />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
-                    <Badge className="bg-orange-500 text-sm lg:text-base px-3 py-1">{seasons[2].highlight}</Badge>
-                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[2].period}</span>
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-6 lg:mb-8">{seasons[2].tagline}</h3>
-                  
-                  <div className="bg-amber-50 dark:bg-amber-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
-                    <h4 className="font-bold text-lg lg:text-xl mb-3">💡 {language === "pt" ? "Dica de Mestre (O Pulo do Gato)" : "Master Tip (The Insider Secret)"}</h4>
-                    <p className="text-muted-foreground text-base lg:text-lg">{seasons[2].masterTip}</p>
-                  </div>
-                  
-                  <div className="space-y-4 lg:space-y-5">
-                    <h4 className="font-bold text-base lg:text-lg">🎭 {language === "pt" ? "Eventos Culturais" : "Cultural Events"}</h4>
-                    <ul className="space-y-2 lg:space-y-3">
-                      {seasons[2].events?.map((event, i) => (
-                        <li key={i} className="text-sm lg:text-base">• {event}</li>
+        <div className="space-y-8 lg:space-y-12 max-w-6xl mx-auto">
+          {/* Spring */}
+          <AnimatedSection direction="up">
+            <Card>
+              <div className="h-2 lg:h-3 bg-green-500" />
+              <CardContent className="p-6 md:p-8 lg:p-10">
+                <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                  <Leaf className="w-8 h-8 text-green-600" />
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[0].name}</h3>
+                  <Badge className="bg-green-500 text-sm lg:text-base px-3 py-1">{seasons[0].highlight}</Badge>
+                  <span className="text-muted-foreground text-base lg:text-lg">{seasons[0].period}</span>
+                </div>
+                <p className="text-lg lg:text-xl mb-3">{seasons[0].tagline}</p>
+                <p className="text-muted-foreground mb-6 lg:mb-8 text-base lg:text-lg">{seasons[0].description}</p>
+                
+                <div className="space-y-6 lg:space-y-8">
+                  <div className="bg-pink-50 dark:bg-pink-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-3">🌷 {language === "pt" ? "O Grande Protagonista: KEUKENHOF" : "The Star: KEUKENHOF"}</h4>
+                    <p className="text-muted-foreground mb-4 text-base lg:text-lg">{seasons[0].keukenhof}</p>
+                    <ul className="space-y-2 text-sm lg:text-base">
+                      {seasons[0].keukenhofDetails.map((detail, i) => (
+                        <li key={i}>• {detail}</li>
                       ))}
                     </ul>
-                    
-                    <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground mt-4">
-                      <span>🌦️</span>
-                      <span>{seasons[2].climate}</span>
-                    </div>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
+                  
+                  <div className="bg-orange-50 dark:bg-orange-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-3">🎉 Koningsdag 2026</h4>
+                    <p className="text-muted-foreground text-base lg:text-lg">{seasons[0].koningsdag}</p>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground">
+                    <span>🌦️</span>
+                    <span>{seasons[0].climate}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
 
-            {/* Winter */}
-            <TabsContent value="winter">
-              <Card>
-                <div className="h-2 lg:h-3 bg-blue-400" />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
-                    <Badge className="bg-blue-400 text-sm lg:text-base px-3 py-1">{seasons[3].highlight}</Badge>
-                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[3].period}</span>
-                  </div>
-                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-4 lg:mb-6">{seasons[3].tagline}</h3>
-                  
-                  <div className="bg-purple-50 dark:bg-purple-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
-                    <h4 className="font-bold text-lg lg:text-xl mb-3">✨ Amsterdam Light Festival 2025/2026</h4>
-                    <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].lightFestival}</p>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
-                    <div className="bg-blue-50 dark:bg-blue-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós: A Magia do 'Gezelligheid'" : "Pros: The 'Gezelligheid' Magic"}</h4>
-                      <ul className="space-y-2 lg:space-y-3">
-                        {seasons[3].pros?.map((pro, i) => (
-                          <li key={i} className="text-sm lg:text-base">• {pro}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    <div className="bg-gray-50 dark:bg-gray-950/30 p-5 lg:p-6 rounded-lg">
-                      <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras (A Realidade Fria)" : "Cons (The Cold Reality)"}</h4>
-                      <ul className="space-y-2 lg:space-y-3">
-                        {seasons[3].cons?.map((con, i) => (
-                          <li key={i} className="text-sm lg:text-base">• {con}</li>
-                        ))}
-                      </ul>
-                    </div>
+          {/* Summer */}
+          <AnimatedSection direction="up">
+            <Card>
+              <div className="h-2 lg:h-3 bg-yellow-500" />
+              <CardContent className="p-6 md:p-8 lg:p-10">
+                <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                  <Sun className="w-8 h-8 text-yellow-600" />
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[1].name}</h3>
+                  <Badge className="bg-yellow-500 text-sm lg:text-base px-3 py-1">{seasons[1].highlight}</Badge>
+                  <span className="text-muted-foreground text-base lg:text-lg">{seasons[1].period}</span>
+                </div>
+                <p className="text-lg lg:text-xl mb-6 lg:mb-8">{seasons[1].tagline}</p>
+                
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
+                  <div className="bg-green-50 dark:bg-green-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós" : "Pros"}</h4>
+                    <ul className="space-y-2 lg:space-y-3">
+                      {seasons[1].pros?.map((pro, i) => (
+                        <li key={i} className="text-sm lg:text-base">• {pro}</li>
+                      ))}
+                    </ul>
                   </div>
                   
-                  <div className="bg-cyan-50 dark:bg-cyan-950/30 p-5 lg:p-6 rounded-lg">
-                    <h4 className="font-bold mb-3 text-base lg:text-lg">⛸️ {language === "pt" ? "E se o canal congelar?" : "What if the canal freezes?"}</h4>
-                    <p className="text-sm lg:text-base text-muted-foreground">{seasons[3].frozen}</p>
+                  <div className="bg-red-50 dark:bg-red-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras" : "Cons"}</h4>
+                    <ul className="space-y-2 lg:space-y-3">
+                      {seasons[1].cons?.map((con, i) => (
+                        <li key={i} className="text-sm lg:text-base">• {con}</li>
+                      ))}
+                    </ul>
                   </div>
-                </CardContent>
-              </Card>
-            </TabsContent>
-          </Tabs>
-        </AnimateOnScroll>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+
+          {/* Autumn */}
+          <AnimatedSection direction="up">
+            <Card>
+              <div className="h-2 lg:h-3 bg-orange-500" />
+              <CardContent className="p-6 md:p-8 lg:p-10">
+                <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                  <Cloud className="w-8 h-8 text-orange-600" />
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[2].name}</h3>
+                  <Badge className="bg-orange-500 text-sm lg:text-base px-3 py-1">{seasons[2].highlight}</Badge>
+                  <span className="text-muted-foreground text-base lg:text-lg">{seasons[2].period}</span>
+                </div>
+                <p className="text-lg lg:text-xl mb-6 lg:mb-8">{seasons[2].tagline}</p>
+                
+                <div className="bg-amber-50 dark:bg-amber-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
+                  <h4 className="font-bold text-lg lg:text-xl mb-3">💡 {language === "pt" ? "Dica de Mestre (O Pulo do Gato)" : "Master Tip (The Insider Secret)"}</h4>
+                  <p className="text-muted-foreground text-base lg:text-lg">{seasons[2].masterTip}</p>
+                </div>
+                
+                <div className="space-y-4 lg:space-y-5">
+                  <h4 className="font-bold text-base lg:text-lg">🎭 {language === "pt" ? "Eventos Culturais" : "Cultural Events"}</h4>
+                  <ul className="space-y-2 lg:space-y-3">
+                    {seasons[2].events?.map((event, i) => (
+                      <li key={i} className="text-sm lg:text-base">• {event}</li>
+                    ))}
+                  </ul>
+                  
+                  <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground mt-4">
+                    <span>🌦️</span>
+                    <span>{seasons[2].climate}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+
+          {/* Winter */}
+          <AnimatedSection direction="up">
+            <Card>
+              <div className="h-2 lg:h-3 bg-blue-400" />
+              <CardContent className="p-6 md:p-8 lg:p-10">
+                <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                  <Snowflake className="w-8 h-8 text-blue-500" />
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[3].name}</h3>
+                  <Badge className="bg-blue-400 text-sm lg:text-base px-3 py-1">{seasons[3].highlight}</Badge>
+                  <span className="text-muted-foreground text-base lg:text-lg">{seasons[3].period}</span>
+                </div>
+                <p className="text-lg lg:text-xl mb-4 lg:mb-6">{seasons[3].tagline}</p>
+                
+                <div className="bg-purple-50 dark:bg-purple-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
+                  <h4 className="font-bold text-lg lg:text-xl mb-3">✨ Amsterdam Light Festival 2025/2026</h4>
+                  <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].lightFestival}</p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6 lg:gap-8 mb-6 lg:mb-8">
+                  <div className="bg-blue-50 dark:bg-blue-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-4">✅ {language === "pt" ? "Prós: A Magia do 'Gezelligheid'" : "Pros: The 'Gezelligheid' Magic"}</h4>
+                    <ul className="space-y-2 lg:space-y-3">
+                      {seasons[3].pros?.map((pro, i) => (
+                        <li key={i} className="text-sm lg:text-base">• {pro}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-50 dark:bg-gray-950/30 p-5 lg:p-6 rounded-lg">
+                    <h4 className="font-bold text-lg lg:text-xl mb-4">❌ {language === "pt" ? "Contras (A Realidade Fria)" : "Cons (The Cold Reality)"}</h4>
+                    <ul className="space-y-2 lg:space-y-3">
+                      {seasons[3].cons?.map((con, i) => (
+                        <li key={i} className="text-sm lg:text-base">• {con}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="bg-cyan-50 dark:bg-cyan-950/30 p-5 lg:p-6 rounded-lg">
+                  <h4 className="font-bold text-lg lg:text-xl mb-3">⛸️ {language === "pt" ? "Canais Congelados?" : "Frozen Canals?"}</h4>
+                  <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].frozen}</p>
+                </div>
+              </CardContent>
+            </Card>
+          </AnimatedSection>
+        </div>
       </div>
     </section>
   );
