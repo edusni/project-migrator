@@ -7,7 +7,9 @@ interface QuickPickSectionProps {
   items: Array<{ condition: string; dest: string; reason: string }>;
 }
 
-export const QuickPickSection = ({ title, items }: QuickPickSectionProps) => {
+export const QuickPickSection = ({ title, items = [] }: QuickPickSectionProps) => {
+  if (!items || items.length === 0) return null;
+  
   return (
     <section className="py-14 lg:py-20 bg-primary/5">
       <div className="container">
