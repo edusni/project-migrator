@@ -11,7 +11,8 @@ import {
   ExplorerSection,
   MainTabsSection,
   GlossarySection,
-  FAQSection
+  FAQSection,
+  FamousGallerySection
 } from "@/components/coffeeshops";
 
 const Coffeeshops = () => {
@@ -489,6 +490,8 @@ const Coffeeshops = () => {
         title={content.glossary.title}
         items={content.glossary.items}
       />
+
+      <FamousGallerySection />
       
       <FAQSection 
         title={content.faq.title}
