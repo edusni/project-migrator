@@ -13,7 +13,7 @@ export const WhatIsSection = ({ title, text, warning }: WhatIsSectionProps) => {
       <div className="container max-w-5xl">
         <Card className="max-w-4xl mx-auto">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-xl md:text-2xl">
+            <CardTitle className="flex items-center gap-2 text-xl md:text-2xl font-heading">
               <Info className="h-5 w-5 md:h-6 md:w-6" />
               {title}
             </CardTitle>

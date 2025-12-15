@@ -132,7 +132,7 @@ export const MainTabsSection = ({
             <div className="space-y-6 md:space-y-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl md:text-2xl">
+                  <CardTitle className="flex items-center gap-2 text-xl md:text-2xl font-heading">
                     <Scale className="h-5 w-5 md:h-6 md:w-6" />
                     {gedoogbeleid.title}
                   </CardTitle>
@@ -144,7 +144,7 @@ export const MainTabsSection = ({
                   <p className="text-base md:text-lg">{gedoogbeleid.objective}</p>
                   
                   <div>
-                    <h4 className="font-bold mb-4 text-lg md:text-xl">{gedoogbeleid.rules.title}</h4>
+                    <h4 className="font-heading font-bold mb-4 text-lg md:text-xl">{gedoogbeleid.rules.title}</h4>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                       {gedoogbeleid.rules.items.map((rule) => (
                         <Card key={rule.letter} className="bg-muted/50">
@@ -164,7 +164,7 @@ export const MainTabsSection = ({
 
                   <Card className="border-amber-500/50 bg-amber-500/5">
                     <CardHeader>
-                      <CardTitle className="text-lg md:text-xl">{gedoogbeleid.paradox.title}</CardTitle>
+                      <CardTitle className="text-lg md:text-xl font-heading">{gedoogbeleid.paradox.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <p className="text-sm md:text-base">{gedoogbeleid.paradox.text}</p>
@@ -173,7 +173,7 @@ export const MainTabsSection = ({
 
                   <Card className="border-blue-500/50 bg-blue-500/5">
                     <CardHeader>
-                      <CardTitle className="text-lg md:text-xl flex items-center gap-2">
+                      <CardTitle className="text-lg md:text-xl font-heading flex items-center gap-2">
                         <Sparkles className="h-4 w-4 md:h-5 md:w-5" />
                         {gedoogbeleid.experiment.title}
                       </CardTitle>
@@ -188,7 +188,7 @@ export const MainTabsSection = ({
               {/* Terminology */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl">{terminology.title}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl font-heading">{terminology.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="bg-amber-500/10 p-3 rounded-lg mb-4">
@@ -215,7 +215,7 @@ export const MainTabsSection = ({
             <div className="space-y-6 md:space-y-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl">{etiquette.title}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl font-heading">{etiquette.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4 md:space-y-5">
@@ -237,7 +237,7 @@ export const MainTabsSection = ({
               <div className="grid md:grid-cols-2 gap-6 md:gap-8">
                 <Card className="border-green-500/30">
                   <CardHeader>
-                    <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-2 text-lg md:text-xl">
+                    <CardTitle className="text-green-700 dark:text-green-400 flex items-center gap-2 text-lg md:text-xl font-heading">
                       <Check className="h-5 w-5" />
                       {language === "pt" ? "FAÇA" : "DO"}
                     </CardTitle>
@@ -256,7 +256,7 @@ export const MainTabsSection = ({
 
                 <Card className="border-destructive/30">
                   <CardHeader>
-                    <CardTitle className="text-destructive flex items-center gap-2 text-lg md:text-xl">
+                    <CardTitle className="text-destructive flex items-center gap-2 text-lg md:text-xl font-heading">
                       <X className="h-5 w-5" />
                       {language === "pt" ? "NÃO FAÇA" : "DON'T"}
                     </CardTitle>
@@ -277,7 +277,7 @@ export const MainTabsSection = ({
               {/* Tobacco Warning */}
               <Card className="border-destructive/50 bg-destructive/5">
                 <CardHeader>
-                  <CardTitle className="text-destructive text-lg md:text-xl">{tobacco.title}</CardTitle>
+                  <CardTitle className="text-destructive text-lg md:text-xl font-heading">{tobacco.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <p className="mb-4 text-sm md:text-base">{tobacco.text}</p>
@@ -288,7 +288,7 @@ export const MainTabsSection = ({
               {/* Edibles Warning */}
               <Card className="border-amber-500/50 bg-amber-500/5">
                 <CardHeader>
-                  <CardTitle className="text-amber-700 dark:text-amber-400 flex items-center gap-2 text-lg md:text-xl">
+                  <CardTitle className="text-amber-700 dark:text-amber-400 flex items-center gap-2 text-lg md:text-xl font-heading">
                     <AlertTriangle className="h-5 w-5" />
                     {edibles.title}
                   </CardTitle>
@@ -316,7 +316,7 @@ export const MainTabsSection = ({
                   </div>
                   <Card className="bg-blue-500/10 border-blue-500/30">
                     <CardHeader>
-                      <CardTitle className="text-sm md:text-base">{edibles.badTrip.title}</CardTitle>
+                      <CardTitle className="text-sm md:text-base font-heading">{edibles.badTrip.title}</CardTitle>
                     </CardHeader>
                     <CardContent>
                       <ul className="space-y-1">
@@ -336,7 +336,7 @@ export const MainTabsSection = ({
             <div className="space-y-6 md:space-y-8">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl">{menu.title}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl font-heading">{menu.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-4 md:gap-6">
@@ -355,7 +355,7 @@ export const MainTabsSection = ({
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl md:text-2xl">{menu.effects.title}</CardTitle>
+                  <CardTitle className="text-xl md:text-2xl font-heading">{menu.effects.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-sm md:text-base text-muted-foreground">{menu.effects.note}</p>
@@ -382,7 +382,7 @@ export const MainTabsSection = ({
               {/* Prices */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-xl md:text-2xl">
+                  <CardTitle className="flex items-center gap-2 text-xl md:text-2xl font-heading">
                     <CreditCard className="h-5 w-5 md:h-6 md:w-6" />
                     {prices.title}
                   </CardTitle>
@@ -414,7 +414,7 @@ export const MainTabsSection = ({
                 {neighborhoods.areas.map((area) => (
                   <Card key={area.name}>
                     <CardHeader>
-                      <CardTitle className="text-lg md:text-xl">
+                      <CardTitle className="text-lg md:text-xl font-heading">
                         <span>{area.name}</span>
                         <Badge variant="secondary" className="ml-2 text-sm">{area.subtitle}</Badge>
                       </CardTitle>
@@ -445,7 +445,7 @@ export const MainTabsSection = ({
               {/* Smoker's Bars */}
               <Card className="border-primary/30">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <CardTitle className="flex items-center gap-2 text-lg md:text-xl font-heading">
                     <Beer className="h-5 w-5" />
                     {smokerBars.title}
                   </CardTitle>
@@ -465,7 +465,7 @@ export const MainTabsSection = ({
               {/* History */}
               <Card>
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <CardTitle className="flex items-center gap-2 text-lg md:text-xl font-heading">
                     <Clock className="h-5 w-5" />
                     {history.title}
                   </CardTitle>
