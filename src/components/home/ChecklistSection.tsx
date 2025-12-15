@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 export function ChecklistSection() {
   const { language } = useLanguage();
@@ -69,30 +70,48 @@ export function ChecklistSection() {
           <StaggerContainer className="grid lg:grid-cols-3 gap-6">
             {checklist.sections.map((section, i) => (
               <StaggerItem key={i}>
-                <Card className="h-full">
-                  <CardHeader>
-                    <CardTitle className="text-lg lg:text-xl font-heading">{section.question}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {section.options ? (
-                      <div className="space-y-4">
-                        {section.options.map((opt, j) => (
-                          <div key={j} className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                              <Check className="w-4 h-4 text-primary" />
-                            </div>
-                            <div>
-                              <span className="font-semibold text-primary">{opt.range}:</span>
-                              <span className="text-muted-foreground text-sm lg:text-base ml-1">{opt.tip}</span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ) : (
-                      <p className="text-muted-foreground text-sm lg:text-base">{section.tip}</p>
-                    )}
-                  </CardContent>
-                </Card>
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.02, 
+                    y: -4,
+                    transition: { type: "spring", stiffness: 400, damping: 17 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
+                  className="h-full"
+                >
+                  <Card className="h-full hover:shadow-xl transition-shadow hover:border-primary/30">
+                    <CardHeader>
+                      <CardTitle className="text-lg lg:text-xl font-heading">{section.question}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      {section.options ? (
+                        <div className="space-y-4">
+                          {section.options.map((opt, j) => (
+                            <motion.div 
+                              key={j} 
+                              className="flex items-start gap-3"
+                              whileHover={{ x: 4 }}
+                              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                            >
+                              <motion.div 
+                                className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5"
+                                whileHover={{ scale: 1.1, backgroundColor: "hsl(var(--primary) / 0.2)" }}
+                              >
+                                <Check className="w-4 h-4 text-primary" />
+                              </motion.div>
+                              <div>
+                                <span className="font-semibold text-primary">{opt.range}:</span>
+                                <span className="text-muted-foreground text-sm lg:text-base ml-1">{opt.tip}</span>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-muted-foreground text-sm lg:text-base">{section.tip}</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </StaggerItem>
             ))}
           </StaggerContainer>

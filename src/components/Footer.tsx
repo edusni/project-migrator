@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, Mail, Heart } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import { motion } from "framer-motion";
 
 const footerLinks = {
   explore: [
@@ -26,15 +27,41 @@ const socialLinks = [
   { icon: Mail, href: "#", label: "Email" },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" as const }
+  }
+};
+
 export function Footer() {
   const { t, language } = useLanguage();
 
   return (
     <footer className="bg-secondary text-secondary-foreground">
       <div className="container container-padding py-10 sm:py-12 md:py-16">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          variants={containerVariants}
+          className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8"
+        >
           {/* Brand */}
-          <div className="col-span-2 sm:col-span-2 lg:col-span-1">
+          <motion.div variants={itemVariants} className="col-span-2 sm:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4">
               <span className="text-xl sm:text-2xl font-heading font-black">
                 Amster<span className="text-primary">du</span>
@@ -48,20 +75,22 @@ export function Footer() {
             </p>
             <div className="flex gap-2 sm:gap-3">
               {socialLinks.map((social) => (
-                <a
+                <motion.a
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
                   className="p-2 rounded-full bg-secondary-foreground/10 hover:bg-primary transition-colors duration-200"
                 >
                   <social.icon className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
+                </motion.a>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Explore */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "pt" ? "Explorar" : "Explore"}
             </h3>
@@ -70,17 +99,17 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm"
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Experience */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "pt" ? "Experiências" : "Experience"}
             </h3>
@@ -89,17 +118,17 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm"
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* About */}
-          <div className="col-span-2 sm:col-span-1">
+          <motion.div variants={itemVariants} className="col-span-2 sm:col-span-1">
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "pt" ? "Sobre" : "About"}
             </h3>
@@ -108,25 +137,40 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm"
+                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Bottom */}
-        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-secondary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.5 }}
+          className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-secondary-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4"
+        >
           <p className="text-secondary-foreground/50 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} Amsterdu. {t("footer.rights")}.
           </p>
-          <p className="text-secondary-foreground/50 text-xs sm:text-sm flex items-center gap-1">
-            {t("footer.madeWith")} <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" /> in Amsterdam
-          </p>
-        </div>
+          <motion.p 
+            className="text-secondary-foreground/50 text-xs sm:text-sm flex items-center gap-1"
+          >
+            {t("footer.madeWith")} 
+            <motion.span
+              animate={{ scale: [1, 1.2, 1] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-primary fill-primary" />
+            </motion.span>
+            in Amsterdam
+          </motion.p>
+        </motion.div>
       </div>
     </footer>
   );

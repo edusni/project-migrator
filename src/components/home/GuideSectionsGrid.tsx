@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { motion } from "framer-motion";
 
 export function GuideSectionsGrid() {
   const { language } = useLanguage();
@@ -137,17 +138,32 @@ export function GuideSectionsGrid() {
             {sections.map((section) => (
               <StaggerItem key={section.link}>
                 <Link to={section.link}>
-                  <Card className="h-full group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border/50 hover:border-primary/30">
-                    <CardContent className="p-6">
-                      <span className="text-4xl mb-4 block">{section.emoji}</span>
-                      <h3 className="font-heading font-bold text-xl mb-2 group-hover:text-primary transition-colors">
-                        {section.title}
-                      </h3>
-                      <p className="text-muted-foreground text-sm lg:text-base">
-                        {section.desc}
-                      </p>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    whileHover={{ 
+                      scale: 1.02, 
+                      y: -4,
+                      transition: { type: "spring", stiffness: 400, damping: 17 }
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30">
+                      <CardContent className="p-6">
+                        <motion.span 
+                          className="text-4xl mb-4 block"
+                          whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                          transition={{ duration: 0.4 }}
+                        >
+                          {section.emoji}
+                        </motion.span>
+                        <h3 className="font-heading font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                          {section.title}
+                        </h3>
+                        <p className="text-muted-foreground text-sm lg:text-base">
+                          {section.desc}
+                        </p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
                 </Link>
               </StaggerItem>
             ))}
