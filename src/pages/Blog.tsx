@@ -8,6 +8,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import duPhoto from "@/assets/du-amsterdam.jpg";
+import blogHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Blog = () => {
   const { language } = useLanguage();
@@ -55,6 +56,7 @@ const Blog = () => {
         title={content.heroTitle}
         description={content.heroSubtitle}
         gradient="from-primary/90 via-primary to-primary/80"
+        backgroundImage={blogHeroImg}
       />
 
       {/* Intro Section */}
