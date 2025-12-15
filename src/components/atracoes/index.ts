@@ -1,0 +1,9 @@
+export { Changes2026Section } from "./Changes2026Section";
+export { Calendar2026Section } from "./Calendar2026Section";
+export { AttractionsFiltersSection } from "./AttractionsFiltersSection";
+export { TransportSection } from "./TransportSection";
+export { PassesSection } from "./PassesSection";
+export { AttractionsByAreaSection } from "./AttractionsByAreaSection";
+export { FreeActivitiesSection } from "./FreeActivitiesSection";
+export { ItinerariesSection } from "./ItinerariesSection";
+export { FAQSection } from "./FAQSection";
