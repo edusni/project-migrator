@@ -11,14 +11,15 @@ export default {
         DEFAULT: "1rem",
         sm: "1.5rem",
         lg: "2rem",
-        xl: "3rem",
+        xl: "2.5rem",
+        "2xl": "3rem",
       },
       screens: {
         sm: "640px",
         md: "768px",
         lg: "1024px",
-        xl: "1280px",
-        "2xl": "1400px",
+        xl: "1400px",
+        "2xl": "1600px",
       },
     },
     extend: {
@@ -76,12 +77,12 @@ export default {
         body: ["Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        // Refined responsive typography
-        "display-2xl": ["clamp(3rem, 6vw, 5rem)", { lineHeight: "1.05", fontWeight: "800", letterSpacing: "-0.02em" }],
-        "display-xl": ["clamp(2.25rem, 4.5vw, 3.75rem)", { lineHeight: "1.1", fontWeight: "700", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(1.875rem, 3.5vw, 3rem)", { lineHeight: "1.15", fontWeight: "700", letterSpacing: "-0.02em" }],
-        "display-md": ["clamp(1.5rem, 2.5vw, 2.25rem)", { lineHeight: "1.2", fontWeight: "600", letterSpacing: "-0.01em" }],
-        "display-sm": ["clamp(1.25rem, 2vw, 1.75rem)", { lineHeight: "1.25", fontWeight: "600", letterSpacing: "-0.01em" }],
+        // Refined responsive typography - larger base sizes
+        "display-2xl": ["clamp(3.5rem, 7vw, 6rem)", { lineHeight: "1.05", fontWeight: "800", letterSpacing: "-0.02em" }],
+        "display-xl": ["clamp(2.5rem, 5vw, 4.5rem)", { lineHeight: "1.1", fontWeight: "700", letterSpacing: "-0.02em" }],
+        "display-lg": ["clamp(2rem, 4vw, 3.5rem)", { lineHeight: "1.15", fontWeight: "700", letterSpacing: "-0.02em" }],
+        "display-md": ["clamp(1.625rem, 3vw, 2.5rem)", { lineHeight: "1.2", fontWeight: "600", letterSpacing: "-0.01em" }],
+        "display-sm": ["clamp(1.375rem, 2.5vw, 2rem)", { lineHeight: "1.25", fontWeight: "600", letterSpacing: "-0.01em" }],
       },
       spacing: {
         "section-sm": "4rem",

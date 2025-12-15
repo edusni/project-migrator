@@ -100,12 +100,12 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
 
   return (
     <section className="section-spacing bg-muted/30">
-      <div className="container">
+      <div className="container max-w-7xl">
         <AnimateOnScroll>
-          <h2 className="text-3xl md:text-4xl font-heading font-bold text-center mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-center mb-4 lg:mb-6">
             📅 {language === "pt" ? "Quando Visitar (O Jeito Prático)" : "When to Visit (The Practical Way)"}
           </h2>
-          <p className="text-center text-muted-foreground mb-4 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-4 max-w-3xl mx-auto text-base lg:text-lg">
             {language === "pt" 
               ? "A melhor época depende do que você busca. Tulipas com multidão ou museus sem fila?"
               : "The best time depends on what you seek. Tulips with crowds or museums without lines?"}
@@ -113,10 +113,10 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
         </AnimateOnScroll>
         
         <AnimateOnScroll delay={100}>
-          <Card className="max-w-3xl mx-auto mb-12 bg-amsterdam-blue/5 border-amsterdam-blue/20">
-            <CardContent className="p-6">
-              <p className="text-center">
-                <span className="text-2xl">🌍</span>{" "}
+          <Card className="max-w-4xl mx-auto mb-12 bg-amsterdam-blue/5 border-amsterdam-blue/20">
+            <CardContent className="p-6 lg:p-8">
+              <p className="text-center text-base lg:text-lg">
+                <span className="text-2xl lg:text-3xl">🌍</span>{" "}
                 <strong>{language === "pt" ? "O 'Mito' do Clima Holandês:" : "The Dutch Weather 'Myth':"}</strong>{" "}
                 {language === "pt" 
                   ? "Amsterdam não é cidade de sol garantido. O clima é imprevisível. Mas a atmosfera? Essa é garantida."
@@ -127,22 +127,22 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
         </AnimateOnScroll>
         
         <AnimateOnScroll delay={200}>
-          <Tabs defaultValue="spring" className="max-w-5xl mx-auto">
-            <TabsList className="grid grid-cols-4 mb-8">
-              <TabsTrigger value="spring" className="flex items-center gap-2">
-                <Leaf className="w-4 h-4" />
+          <Tabs defaultValue="spring" className="max-w-6xl mx-auto">
+            <TabsList className="grid grid-cols-4 mb-8 lg:mb-10 h-auto p-1.5">
+              <TabsTrigger value="spring" className="flex items-center gap-2 py-3 text-base">
+                <Leaf className="w-5 h-5" />
                 <span className="hidden sm:inline">{language === "pt" ? "Primavera" : "Spring"}</span>
               </TabsTrigger>
-              <TabsTrigger value="summer" className="flex items-center gap-2">
-                <Sun className="w-4 h-4" />
+              <TabsTrigger value="summer" className="flex items-center gap-2 py-3 text-base">
+                <Sun className="w-5 h-5" />
                 <span className="hidden sm:inline">{language === "pt" ? "Verão" : "Summer"}</span>
               </TabsTrigger>
-              <TabsTrigger value="autumn" className="flex items-center gap-2">
-                <Cloud className="w-4 h-4" />
+              <TabsTrigger value="autumn" className="flex items-center gap-2 py-3 text-base">
+                <Cloud className="w-5 h-5" />
                 <span className="hidden sm:inline">{language === "pt" ? "Outono" : "Autumn"}</span>
               </TabsTrigger>
-              <TabsTrigger value="winter" className="flex items-center gap-2">
-                <Snowflake className="w-4 h-4" />
+              <TabsTrigger value="winter" className="flex items-center gap-2 py-3 text-base">
+                <Snowflake className="w-5 h-5" />
                 <span className="hidden sm:inline">{language === "pt" ? "Inverno" : "Winter"}</span>
               </TabsTrigger>
             </TabsList>
@@ -150,32 +150,32 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
             {/* Spring */}
             <TabsContent value="spring">
               <Card>
-                <div className="h-2 bg-green-500" />
-                <CardContent className="p-6 md:p-8">
-                  <div className="flex items-center gap-3 mb-4">
-                    <Badge className="bg-green-500">{seasons[0].highlight}</Badge>
-                    <span className="text-muted-foreground">{seasons[0].period}</span>
+                <div className="h-2 lg:h-3 bg-green-500" />
+                <CardContent className="p-6 md:p-8 lg:p-10">
+                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+                    <Badge className="bg-green-500 text-sm lg:text-base px-3 py-1">{seasons[0].highlight}</Badge>
+                    <span className="text-muted-foreground text-base lg:text-lg">{seasons[0].period}</span>
                   </div>
-                  <h3 className="text-2xl font-heading font-bold mb-2">{seasons[0].tagline}</h3>
-                  <p className="text-muted-foreground mb-6">{seasons[0].description}</p>
+                  <h3 className="text-2xl lg:text-3xl font-heading font-bold mb-3">{seasons[0].tagline}</h3>
+                  <p className="text-muted-foreground mb-6 lg:mb-8 text-base lg:text-lg">{seasons[0].description}</p>
                   
-                  <div className="space-y-6">
-                    <div className="bg-pink-50 dark:bg-pink-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-2">🌷 {language === "pt" ? "O Grande Protagonista: KEUKENHOF" : "The Star: KEUKENHOF"}</h4>
-                      <p className="text-muted-foreground mb-3">{seasons[0].keukenhof}</p>
-                      <ul className="space-y-1 text-sm">
+                  <div className="space-y-6 lg:space-y-8">
+                    <div className="bg-pink-50 dark:bg-pink-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-3">🌷 {language === "pt" ? "O Grande Protagonista: KEUKENHOF" : "The Star: KEUKENHOF"}</h4>
+                      <p className="text-muted-foreground mb-4 text-base lg:text-lg">{seasons[0].keukenhof}</p>
+                      <ul className="space-y-2 text-sm lg:text-base">
                         {seasons[0].keukenhofDetails.map((detail, i) => (
                           <li key={i}>• {detail}</li>
                         ))}
                       </ul>
                     </div>
                     
-                    <div className="bg-orange-50 dark:bg-orange-950/30 p-4 rounded-lg">
-                      <h4 className="font-bold text-lg mb-2">🎉 Koningsdag 2026</h4>
-                      <p className="text-muted-foreground">{seasons[0].koningsdag}</p>
+                    <div className="bg-orange-50 dark:bg-orange-950/30 p-5 lg:p-6 rounded-lg">
+                      <h4 className="font-bold text-lg lg:text-xl mb-3">🎉 Koningsdag 2026</h4>
+                      <p className="text-muted-foreground text-base lg:text-lg">{seasons[0].koningsdag}</p>
                     </div>
                     
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-sm lg:text-base text-muted-foreground">
                       <span>🌦️</span>
                       <span>{seasons[0].climate}</span>
                     </div>
