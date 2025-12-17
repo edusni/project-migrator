@@ -9,11 +9,14 @@ import {
   ChecklistSection,
   GuideSectionsGrid,
   TrapsSection,
+  FAQSection,
+  getHomeFaqItems,
 } from "@/components/home";
 
 const Index = () => {
   const { language } = useLanguage();
   const seo = seoData.home[language];
+  const faqItems = getHomeFaqItems(language);
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -21,6 +24,7 @@ const Index = () => {
         title={seo.title}
         description={seo.description}
         keywords={seo.keywords}
+        faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" }
         ]}
@@ -32,6 +36,7 @@ const Index = () => {
         <ChecklistSection />
         <GuideSectionsGrid />
         <TrapsSection />
+        <FAQSection />
         <Newsletter />
       </main>
       <Footer />
