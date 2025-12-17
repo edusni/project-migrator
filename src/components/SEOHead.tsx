@@ -229,125 +229,126 @@ function injectArticleSchema(data: {
 }
 
 // Export helper for generating page-specific SEO data
+// Optimized for CTR with priority keywords from Search Console
 export const seoData = {
   home: {
     pt: {
-      title: "Amsterdu - O Guia Brutalmente Honesto de Amsterdam 2026",
-      description: "Guia completo de Amsterdam para 2026: evite armadilhas turísticas, economize dinheiro e viva experiências autênticas. Dicas reais de quem conhece a cidade.",
-      keywords: "guia amsterdam 2026, viagem amsterdam, dicas amsterdam, roteiro amsterdam, amsterdam turismo, o que fazer amsterdam, hospedagem amsterdam, coffeeshops amsterdam, museus amsterdam, transporte amsterdam",
+      title: "Guia Amsterdam 2026: Dicas, Roteiros e Como Economizar | Amsterdu",
+      description: "O guia brutalmente honesto de Amsterdam. Evite armadilhas turísticas, economize até 40% e viva experiências autênticas. Por quem conhece a cidade de verdade.",
+      keywords: "guia amsterdam 2026, viagem amsterdam, dicas amsterdam, roteiro amsterdam, amsterdam turismo, o que fazer amsterdam, onde ficar amsterdam, coffeeshops amsterdam, museus amsterdam, transporte amsterdam, custo de vida amsterdam",
     },
     en: {
-      title: "Amsterdu - The Brutally Honest Amsterdam Guide 2026",
-      description: "Complete Amsterdam guide for 2026: avoid tourist traps, save money and have authentic experiences. Real tips from someone who knows the city.",
-      keywords: "amsterdam guide 2026, amsterdam travel, amsterdam tips, amsterdam itinerary, amsterdam tourism, what to do amsterdam, amsterdam hotels, amsterdam coffeeshops, amsterdam museums, amsterdam transport",
+      title: "Amsterdam Guide 2026: Tips, Itineraries & How to Save | Amsterdu",
+      description: "The brutally honest Amsterdam guide. Avoid tourist traps, save up to 40% and have authentic experiences. From someone who really knows the city.",
+      keywords: "amsterdam guide 2026, amsterdam travel, amsterdam tips, amsterdam itinerary, amsterdam tourism, what to do amsterdam, where to stay amsterdam, amsterdam coffeeshops, amsterdam museums, amsterdam transport, cost of living amsterdam",
     },
   },
   planejamento: {
     pt: {
-      title: "Planejamento de Viagem para Amsterdam 2026 - Guia Completo",
-      description: "Planeje sua viagem para Amsterdam em 2026: melhor época, documentos, orçamento, roteiros e tudo que você precisa saber antes de ir. Sem perrengue!",
-      keywords: "planejar viagem amsterdam, quando ir amsterdam, quanto custa amsterdam, documentos amsterdam, roteiro amsterdam, orçamento amsterdam 2026",
+      title: "Como Planejar Viagem para Amsterdam 2026 (Passo a Passo)",
+      description: "Planeje Amsterdam sem erro: melhor época, documentos, orçamento real, roteiros testados. Tudo que você precisa saber antes de ir. Guia atualizado 2026.",
+      keywords: "planejar viagem amsterdam, quando ir amsterdam, quanto custa amsterdam, documentos amsterdam, roteiro amsterdam, orçamento amsterdam 2026, viagem holanda",
     },
     en: {
-      title: "Amsterdam Travel Planning 2026 - Complete Guide",
-      description: "Plan your Amsterdam trip in 2026: best time to visit, documents, budget, itineraries and everything you need to know. Stress-free planning!",
-      keywords: "amsterdam trip planning, when to visit amsterdam, amsterdam cost, amsterdam documents, amsterdam itinerary, amsterdam budget 2026",
+      title: "How to Plan Your Amsterdam Trip 2026 (Step by Step)",
+      description: "Plan Amsterdam without mistakes: best time, documents, real budget, tested itineraries. Everything you need to know. Updated guide 2026.",
+      keywords: "amsterdam trip planning, when to visit amsterdam, amsterdam cost, amsterdam documents, amsterdam itinerary, amsterdam budget 2026, netherlands travel",
     },
   },
   hospedagem: {
     pt: {
-      title: "Onde Ficar em Amsterdam 2026 - Melhores Bairros e Hotéis",
-      description: "Guia de hospedagem em Amsterdam: melhores bairros, tipos de acomodação, preços reais e dicas para não cair em cilada. Atualizado para 2026.",
-      keywords: "onde ficar amsterdam, melhores bairros amsterdam, hotéis amsterdam, airbnb amsterdam, hospedagem amsterdam 2026, jordaan, de pijp, amsterdam noord",
+      title: "Onde Ficar em Amsterdam 2026: Melhores Bairros + Preços Reais",
+      description: "Descubra os melhores bairros para se hospedar em Amsterdam. Jordaan, De Pijp, Noord: qual escolher? Preços atualizados, dicas de economia e erros a evitar.",
+      keywords: "onde ficar em amsterdam, melhores bairros amsterdam, onde se hospedar em amsterdam, hotéis amsterdam, airbnb amsterdam, hospedagem amsterdam 2026, jordaan, de pijp, amsterdam noord, melhores bairros para se hospedar em amsterdam",
     },
     en: {
-      title: "Where to Stay in Amsterdam 2026 - Best Areas & Hotels",
-      description: "Amsterdam accommodation guide: best neighborhoods, accommodation types, real prices and tips to avoid traps. Updated for 2026.",
-      keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord",
+      title: "Where to Stay in Amsterdam 2026: Best Areas + Real Prices",
+      description: "Discover the best neighborhoods to stay in Amsterdam. Jordaan, De Pijp, Noord: which to choose? Updated prices, money-saving tips and mistakes to avoid.",
+      keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord, best neighborhoods amsterdam",
     },
   },
   gastronomia: {
     pt: {
-      title: "Onde Comer em Amsterdam 2026 - Guia de Gastronomia",
-      description: "Guia gastronômico de Amsterdam: stroopwafel, bitterballen, rijsttafel e mais. Onde comer bem sem cair em armadilha turística.",
-      keywords: "onde comer amsterdam, comida holandesa, stroopwafel, bitterballen, rijsttafel, restaurantes amsterdam, gastronomia amsterdam 2026",
+      title: "O Que Comer em Amsterdam 2026: Guia de Comida Holandesa",
+      description: "Onde comer em Amsterdam sem cair em armadilha turística. Stroopwafel, bitterballen, rijsttafel: o que provar e onde encontrar. Preços e dicas locais.",
+      keywords: "onde comer amsterdam, o que comer em amsterdam, comida holandesa, stroopwafel, bitterballen, rijsttafel, restaurantes amsterdam, gastronomia amsterdam 2026, foodhallen",
     },
     en: {
-      title: "Where to Eat in Amsterdam 2026 - Food Guide",
-      description: "Amsterdam food guide: stroopwafel, bitterballen, rijsttafel and more. Where to eat well without falling into tourist traps.",
-      keywords: "where to eat amsterdam, dutch food, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam food 2026",
+      title: "What to Eat in Amsterdam 2026: Dutch Food Guide",
+      description: "Where to eat in Amsterdam without falling into tourist traps. Stroopwafel, bitterballen, rijsttafel: what to try and where to find it. Prices and local tips.",
+      keywords: "where to eat amsterdam, what to eat amsterdam, dutch food, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam food 2026, foodhallen",
     },
   },
   atracoes: {
     pt: {
-      title: "Atrações de Amsterdam 2026 - O Que Fazer e Ver",
-      description: "Guia de atrações de Amsterdam: museus, parques, experiências e tudo que vale a pena. Com filtros e mapa interativo.",
-      keywords: "atrações amsterdam, o que fazer amsterdam, museus amsterdam, van gogh museum, rijksmuseum, anne frank house, parques amsterdam 2026",
+      title: "Atrações Amsterdam 2026: O Que Fazer + Mapa Interativo",
+      description: "Guia completo de atrações em Amsterdam. Museus, parques, experiências: descubra o que vale a pena. Com filtros por preço, área e tipo. Mapa interativo incluso.",
+      keywords: "atrações amsterdam, o que fazer em amsterdam, atrações em amsterdam, museus amsterdam, van gogh museum, rijksmuseum, anne frank house, parques amsterdam 2026, atividades amsterdam, coisas para fazer em amsterdam",
     },
     en: {
-      title: "Amsterdam Attractions 2026 - What to Do and See",
-      description: "Amsterdam attractions guide: museums, parks, experiences and everything worth seeing. With filters and interactive map.",
-      keywords: "amsterdam attractions, what to do amsterdam, amsterdam museums, van gogh museum, rijksmuseum, anne frank house, amsterdam parks 2026",
+      title: "Amsterdam Attractions 2026: What to Do + Interactive Map",
+      description: "Complete Amsterdam attractions guide. Museums, parks, experiences: discover what's worth it. With filters by price, area and type. Interactive map included.",
+      keywords: "amsterdam attractions, what to do amsterdam, amsterdam museums, van gogh museum, rijksmuseum, anne frank house, amsterdam parks 2026, amsterdam activities, things to do amsterdam",
     },
   },
   transporte: {
     pt: {
-      title: "Transporte em Amsterdam 2026 - Como se Locomover",
-      description: "Guia de transporte em Amsterdam: metrô, tram, bike, ferry e OVpay. Como ir do aeroporto ao centro e se locomover na cidade.",
-      keywords: "transporte amsterdam, como andar amsterdam, ovpay, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro 2026",
+      title: "Como se Locomover em Amsterdam 2026: Guia de Transporte",
+      description: "Transporte em Amsterdam explicado: metrô, tram, bike, ferry e OVpay. Como ir de Schiphol ao centro, quanto custa e os erros que custam caro. Guia completo.",
+      keywords: "transporte amsterdam, como se locomover em amsterdam, como andar amsterdam, ovpay, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro 2026, amsterdam transporte público",
     },
     en: {
-      title: "Amsterdam Transport 2026 - How to Get Around",
-      description: "Amsterdam transport guide: metro, tram, bike, ferry and OVpay. How to get from airport to center and move around the city.",
-      keywords: "amsterdam transport, getting around amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam bike, schiphol center 2026",
+      title: "How to Get Around Amsterdam 2026: Transport Guide",
+      description: "Amsterdam transport explained: metro, tram, bike, ferry and OVpay. How to get from Schiphol to center, costs and expensive mistakes to avoid. Complete guide.",
+      keywords: "amsterdam transport, getting around amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam bike, schiphol center 2026, amsterdam public transport",
     },
   },
   coffeeshops: {
     pt: {
-      title: "Coffeeshops em Amsterdam 2026 - Guia Completo para Turistas",
-      description: "Guia de coffeeshops em Amsterdam: como funcionam, regras, melhores opções e o que você precisa saber. Atualizado para 2026.",
-      keywords: "coffeeshops amsterdam, como funciona coffeeshop, regras coffeeshop, melhores coffeeshops amsterdam, bulldog, dampkring 2026",
+      title: "Coffeeshops Amsterdam 2026: Guia Completo + Regras e Preços",
+      description: "Tudo sobre coffeeshops em Amsterdam: como funcionam, regras 2026, preços de cannabis, melhores opções e o que turistas precisam saber. Guia sem julgamento.",
+      keywords: "coffeeshops amsterdam, coffeeshop guide, como funciona coffeeshop, regras coffeeshop 2026, melhores coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2025, maconha em amsterdam, amsterdam coffeeshop cannabis prices 2025",
     },
     en: {
-      title: "Amsterdam Coffeeshops 2026 - Complete Tourist Guide",
-      description: "Amsterdam coffeeshops guide: how they work, rules, best options and what you need to know. Updated for 2026.",
-      keywords: "amsterdam coffeeshops, how coffeeshops work, coffeeshop rules, best coffeeshops amsterdam, bulldog, dampkring 2026",
+      title: "Amsterdam Coffeeshops 2026: Complete Guide + Rules & Prices",
+      description: "Everything about Amsterdam coffeeshops: how they work, 2026 rules, cannabis prices, best options and what tourists need to know. Judgment-free guide.",
+      keywords: "amsterdam coffeeshops, coffeeshop guide, how coffeeshops work, coffeeshop rules 2026, best coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2025, amsterdam coffeeshop cannabis prices 2025",
     },
   },
   arredores: {
     pt: {
-      title: "Bate-Voltas de Amsterdam 2026 - Melhores Passeios",
-      description: "Melhores bate-voltas de Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Utrecht, Rotterdam e mais. Como ir e o que esperar.",
-      keywords: "bate volta amsterdam, passeios amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+      title: "Bate-Volta Amsterdam 2026: 10 Melhores Passeios de 1 Dia",
+      description: "Melhores bate-voltas de Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. Como ir, quanto custa e se vale a pena. Guia prático testado.",
+      keywords: "bate volta amsterdam, bate e volta de amsterdam, bate volta de amsterdam, passeios amsterdam, cidades perto de amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
     },
     en: {
-      title: "Day Trips from Amsterdam 2026 - Best Excursions",
-      description: "Best day trips from Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Utrecht, Rotterdam and more. How to go and what to expect.",
-      keywords: "amsterdam day trips, amsterdam excursions, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+      title: "Amsterdam Day Trips 2026: 10 Best One-Day Excursions",
+      description: "Best day trips from Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. How to go, costs and if it's worth it. Tested practical guide.",
+      keywords: "amsterdam day trips, day trips from amsterdam, amsterdam excursions, cities near amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
     },
   },
   blog: {
     pt: {
-      title: "Blog do Du - Histórias da Minha Futura Vida em Amsterdam",
-      description: "Blog pessoal do Du: histórias sobre morar em Amsterdam, mudança do Brasil, dicas exclusivas e reflexões sobre a vida na Holanda.",
-      keywords: "blog amsterdam, morar amsterdam, brasileiros amsterdam, vida holanda, mudança amsterdam, experiência amsterdam",
+      title: "Blog do Du: Vida em Amsterdam e Dicas de Brasileiro",
+      description: "Blog pessoal do Du: histórias reais sobre morar em Amsterdam, mudança do Brasil, dicas exclusivas e reflexões sobre a vida holandesa. Sem filtro.",
+      keywords: "blog amsterdam, morar amsterdam, brasileiros amsterdam, vida holanda, mudança amsterdam, custo de vida em amsterdam, experiência amsterdam",
     },
     en: {
-      title: "Du's Blog - Stories from My Future Life in Amsterdam",
-      description: "Du's personal blog: stories about living in Amsterdam, moving from Brazil, exclusive tips and reflections on life in the Netherlands.",
-      keywords: "amsterdam blog, living amsterdam, brazilians amsterdam, netherlands life, moving amsterdam, amsterdam experience",
+      title: "Du's Blog: Life in Amsterdam & Brazilian Tips",
+      description: "Du's personal blog: real stories about living in Amsterdam, moving from Brazil, exclusive tips and reflections on Dutch life. No filter.",
+      keywords: "amsterdam blog, living amsterdam, brazilians amsterdam, netherlands life, moving amsterdam, cost of living amsterdam, amsterdam experience",
     },
   },
   sobre: {
     pt: {
-      title: "Sobre o Amsterdu - Quem é o Du",
-      description: "Conheça o Du, criador do Amsterdu. Descubra por que este guia existe e como ele pode transformar sua viagem para Amsterdam.",
-      keywords: "sobre amsterdu, quem é du, criador amsterdu, guia amsterdam brasileiro",
+      title: "Quem é o Du? A História por Trás do Amsterdu",
+      description: "Conheça o Du, brasileiro apaixonado por Amsterdam. Descubra por que criei este guia brutalmente honesto e como ele pode transformar sua viagem.",
+      keywords: "sobre amsterdu, quem é du, quem e o du, criador amsterdu, guia amsterdam brasileiro, amsterdu blog",
     },
     en: {
-      title: "About Amsterdu - Who is Du",
-      description: "Meet Du, creator of Amsterdu. Discover why this guide exists and how it can transform your Amsterdam trip.",
-      keywords: "about amsterdu, who is du, amsterdu creator, amsterdam brazilian guide",
+      title: "Who is Du? The Story Behind Amsterdu",
+      description: "Meet Du, a Brazilian passionate about Amsterdam. Discover why I created this brutally honest guide and how it can transform your trip.",
+      keywords: "about amsterdu, who is du, amsterdu creator, amsterdam brazilian guide, amsterdu blog",
     },
   },
 };
