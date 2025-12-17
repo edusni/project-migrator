@@ -40,6 +40,25 @@ User-agent: Yandex
 Allow: /
 Crawl-delay: 2
 
+# AI Crawlers - see llms.txt for structured content
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Cohere-ai
+Allow: /
+
 # Social Media Bots
 User-agent: Twitterbot
 Allow: /
@@ -77,3 +96,6 @@ Disallow: /
 
 # Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml
+
+# AI Crawlers info file (https://llmstxt.org/)
+# For structured content overview see: https://amsterdu.com/llms.txt

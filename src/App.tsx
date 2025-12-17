@@ -2,8 +2,9 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/hooks/useLanguage";
+import { LocaleRouter } from "@/components/LocaleRouter";
 import { RedirectHandler } from "@/components/RedirectHandler";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
@@ -20,6 +21,24 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+// Locale-aware page wrapper component
+const LocalePageRoutes = () => (
+  <Routes>
+    <Route index element={<Index />} />
+    <Route path="sobre" element={<Sobre />} />
+    <Route path="planejamento" element={<Planejamento />} />
+    <Route path="hospedagem" element={<Hospedagem />} />
+    <Route path="atracoes" element={<Atracoes />} />
+    <Route path="transporte" element={<Transporte />} />
+    <Route path="gastronomia" element={<Gastronomia />} />
+    <Route path="coffeeshops" element={<Coffeeshops />} />
+    <Route path="arredores" element={<Arredores />} />
+    <Route path="blog" element={<Blog />} />
+    <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
+    <Route path="*" element={<NotFound />} />
+  </Routes>
+);
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <LanguageProvider>
@@ -29,18 +48,33 @@ const App = () => (
         <BrowserRouter>
           <RedirectHandler />
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/sobre" element={<Sobre />} />
-            <Route path="/planejamento" element={<Planejamento />} />
-            <Route path="/hospedagem" element={<Hospedagem />} />
-            <Route path="/atracoes" element={<Atracoes />} />
-            <Route path="/transporte" element={<Transporte />} />
-            <Route path="/gastronomia" element={<Gastronomia />} />
-            <Route path="/coffeeshops" element={<Coffeeshops />} />
-            <Route path="/arredores" element={<Arredores />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/custo-vida-amsterdam" element={<CustoDeVida />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            {/* Root redirect to locale-prefixed route */}
+            <Route path="/" element={<LocaleRouter />} />
+            
+            {/* Locale-prefixed routes */}
+            <Route path="/pt/*" element={<LocaleRouter />}>
+              <Route path="*" element={<LocalePageRoutes />} />
+            </Route>
+            <Route path="/en/*" element={<LocaleRouter />}>
+              <Route path="*" element={<LocalePageRoutes />} />
+            </Route>
+            <Route path="/nl/*" element={<LocaleRouter />}>
+              <Route path="*" element={<LocalePageRoutes />} />
+            </Route>
+            
+            {/* Legacy routes - redirect to PT locale */}
+            <Route path="/sobre" element={<Navigate to="/pt/sobre" replace />} />
+            <Route path="/planejamento" element={<Navigate to="/pt/planejamento" replace />} />
+            <Route path="/hospedagem" element={<Navigate to="/pt/hospedagem" replace />} />
+            <Route path="/atracoes" element={<Navigate to="/pt/atracoes" replace />} />
+            <Route path="/transporte" element={<Navigate to="/pt/transporte" replace />} />
+            <Route path="/gastronomia" element={<Navigate to="/pt/gastronomia" replace />} />
+            <Route path="/coffeeshops" element={<Navigate to="/pt/coffeeshops" replace />} />
+            <Route path="/arredores" element={<Navigate to="/pt/arredores" replace />} />
+            <Route path="/blog" element={<Navigate to="/pt/blog" replace />} />
+            <Route path="/custo-vida-amsterdam" element={<Navigate to="/pt/custo-vida-amsterdam" replace />} />
+            
+            {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
