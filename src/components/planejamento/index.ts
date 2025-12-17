@@ -6,3 +6,4 @@ export { BudgetSection } from "./BudgetSection";
 export { ItinerariesSection } from "./ItinerariesSection";
 export { CityCardSection } from "./CityCardSection";
 export { SectionNav } from "./SectionNav";
+export { FAQSection, getPlanejamentoFaqItems } from "./FAQSection";

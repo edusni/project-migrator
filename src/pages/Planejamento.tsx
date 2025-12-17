@@ -14,6 +14,8 @@ import {
   ItinerariesSection,
   CityCardSection,
   SectionNav,
+  FAQSection as PlanejamentoFAQSection,
+  getPlanejamentoFaqItems,
 } from "@/components/planejamento";
 import oosterparkImg from "@/assets/oosterpark-summer.jpg";
 
@@ -71,6 +73,7 @@ const Planejamento = () => {
     }
   };
   const seo = seoData.planejamento[language];
+  const faqItems = getPlanejamentoFaqItems(language);
 
   return (
     <PageLayout>
@@ -79,6 +82,7 @@ const Planejamento = () => {
         description={seo.description}
         keywords={seo.keywords}
         type="article"
+        faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
           { name: t("Planejamento", "Planning", "Planning"), url: "https://amsterdu.com/planejamento" }
@@ -129,6 +133,8 @@ const Planejamento = () => {
       <div id="citycard" ref={(el) => (sectionRefs.current["citycard"] = el)}>
         <CityCardSection language={language} />
       </div>
+
+      <PlanejamentoFAQSection />
       
       <RelatedPagesSection 
         currentPath="/planejamento"

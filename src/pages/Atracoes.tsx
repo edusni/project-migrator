@@ -14,12 +14,14 @@ import {
   FreeActivitiesSection,
   ItinerariesSection,
   FAQSection,
+  getAtracoesFaqItems,
 } from "@/components/atracoes";
 import adamLookoutImg from "@/assets/adam-lookout.webp";
 
 const Atracoes = () => {
   const { language } = useLanguage();
   const seo = seoData.atracoes[language];
+  const faqItems = getAtracoesFaqItems(language);
 
   return (
     <PageLayout>
@@ -28,6 +30,7 @@ const Atracoes = () => {
         description={seo.description}
         keywords={seo.keywords}
         type="article"
+        faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
           { name: language === "nl" ? "Attracties" : language === "pt" ? "Atrações" : "Attractions", url: "https://amsterdu.com/atracoes" }

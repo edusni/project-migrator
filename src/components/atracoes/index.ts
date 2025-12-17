@@ -6,4 +6,4 @@ export { PassesSection } from "./PassesSection";
 export { AttractionsByAreaSection } from "./AttractionsByAreaSection";
 export { FreeActivitiesSection } from "./FreeActivitiesSection";
 export { ItinerariesSection } from "./ItinerariesSection";
-export { FAQSection } from "./FAQSection";
+export { FAQSection, getAtracoesFaqItems } from "./FAQSection";
