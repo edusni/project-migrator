@@ -45,7 +45,27 @@ const CoffeeshopExplorer = () => {
     return "€".repeat(tier);
   };
 
-  const content = language === "pt" ? {
+  const getLangKey = () => language === "nl" ? "nl" : language === "pt" ? "pt" : "en";
+
+  const content = language === "nl" ? {
+    title: "Coffeeshop Verkenner",
+    subtitle: "Vind de ideale coffeeshop voor jou per wijk",
+    searchPlaceholder: "Zoek op naam, tag of beschrijving...",
+    allNeighborhoods: "Alle Wijken",
+    allProfiles: "Alle Profielen",
+    allPrices: "Alle Prijzen",
+    found: "gevonden",
+    noResults: "Geen coffeeshops gevonden met deze filters",
+    howToUse: {
+      title: "Hoe gebruik je deze gids",
+      tips: [
+        "Wil je minder rijen en betere prijzen: prioriteer West, Oost, Noord, Nieuw-West",
+        "Wil je 'rustige lounge': zoek profiel Relaxed",
+        "Wil je premium hasj: focus op premium hash tags",
+        "Wil je alleen kopen en gaan: zoek profiel Snel"
+      ]
+    }
+  } : language === "pt" ? {
     title: "Explorador de Coffeeshops",
     subtitle: "Encontre o coffeeshop ideal para você por bairro",
     searchPlaceholder: "Buscar por nome, tag ou descrição...",
@@ -120,7 +140,7 @@ const CoffeeshopExplorer = () => {
             <SelectItem value="all">{content.allNeighborhoods}</SelectItem>
             {Object.entries(neighborhoods).map(([key, value]) => (
               <SelectItem key={key} value={key}>
-                {language === "pt" ? value.pt : value.en}
+                {value[getLangKey()] || value.en}
               </SelectItem>
             ))}
           </SelectContent>
@@ -134,7 +154,7 @@ const CoffeeshopExplorer = () => {
             <SelectItem value="all">{content.allProfiles}</SelectItem>
             {Object.entries(profiles).map(([key, value]) => (
               <SelectItem key={key} value={key}>
-                {language === "pt" ? value.pt : value.en}
+                {value[getLangKey()] || value.en}
               </SelectItem>
             ))}
           </SelectContent>
@@ -173,10 +193,10 @@ const CoffeeshopExplorer = () => {
               <div className="mb-3 sm:mb-4">
                 <h3 className="text-lg sm:text-xl font-heading font-bold flex items-center gap-2">
                   <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                  {neighborhoods[neighborhoodKey as keyof typeof neighborhoods]?.[language === "pt" ? "pt" : "en"] || neighborhoodKey}
+                  {neighborhoods[neighborhoodKey as keyof typeof neighborhoods]?.[getLangKey()] || neighborhoods[neighborhoodKey as keyof typeof neighborhoods]?.en || neighborhoodKey}
                 </h3>
                 <p className="text-xs sm:text-sm text-muted-foreground mt-1">
-                  {neighborhoodDescriptions[neighborhoodKey as keyof typeof neighborhoodDescriptions]?.[language === "pt" ? "pt" : "en"]}
+                  {neighborhoodDescriptions[neighborhoodKey as keyof typeof neighborhoodDescriptions]?.[getLangKey()] || neighborhoodDescriptions[neighborhoodKey as keyof typeof neighborhoodDescriptions]?.en}
                 </p>
               </div>
               
@@ -202,7 +222,7 @@ const CoffeeshopExplorer = () => {
                       
                       <div className="flex flex-wrap gap-1">
                         <Badge className={`${profiles[shop.profile].color} text-primary-foreground text-xs`}>
-                          {profiles[shop.profile][language === "pt" ? "pt" : "en"]}
+                          {profiles[shop.profile][getLangKey()] || profiles[shop.profile].en}
                         </Badge>
                         {shop.tags.slice(0, 2).map((tag) => (
                           <Badge key={tag} variant="secondary" className="text-xs">

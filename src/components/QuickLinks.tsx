@@ -5,7 +5,13 @@ import { useLanguage } from "@/hooks/useLanguage";
 export function QuickLinks() {
   const { language } = useLanguage();
 
-  const planningLinks = language === "pt"
+  const planningLinks = language === "nl"
+    ? [
+        { icon: Calendar, label: "Wanneer Bezoeken", link: "/planejamento" },
+        { icon: Hotel, label: "Waar Verblijven", link: "/hospedagem" },
+        { icon: Train, label: "Vervoer", link: "/transporte" },
+      ]
+    : language === "pt"
     ? [
         { icon: Calendar, label: "Quando Visitar", link: "/planejamento" },
         { icon: Hotel, label: "Onde Ficar", link: "/hospedagem" },
@@ -17,7 +23,15 @@ export function QuickLinks() {
         { icon: Train, label: "Getting Around", link: "/transporte" },
       ];
 
-  const experienceLinks = language === "pt"
+  const experienceLinks = language === "nl"
+    ? [
+        { icon: Star, label: "Attracties & Musea", link: "/atracoes" },
+        { icon: UtensilsCrossed, label: "Eten & Drinken", link: "/gastronomia" },
+        { icon: Leaf, label: "Coffeeshops", link: "/coffeeshops" },
+        { icon: MapPin, label: "Dagtrips", link: "/arredores" },
+        { icon: Camera, label: "Fotogalerij", link: "/galeria" },
+      ]
+    : language === "pt"
     ? [
         { icon: Star, label: "Atrações & Museus", link: "/atracoes" },
         { icon: UtensilsCrossed, label: "Gastronomia", link: "/gastronomia" },
@@ -40,7 +54,7 @@ export function QuickLinks() {
           {/* Planning */}
           <div className="bg-background rounded-2xl p-6 border border-border/50">
             <h3 className="font-heading font-bold text-xl mb-6">
-              {language === "pt" ? "Planejamento" : "Planning"}
+              {language === "nl" ? "Planning" : language === "pt" ? "Planejamento" : "Planning"}
             </h3>
             <div className="space-y-4">
               {planningLinks.map((item) => (
@@ -63,7 +77,7 @@ export function QuickLinks() {
           {/* Experiences */}
           <div className="bg-background rounded-2xl p-6 border border-border/50">
             <h3 className="font-heading font-bold text-xl mb-6">
-              {language === "pt" ? "Experiências" : "Experiences"}
+              {language === "nl" ? "Ervaringen" : language === "pt" ? "Experiências" : "Experiences"}
             </h3>
             <div className="space-y-4">
               {experienceLinks.map((item) => (

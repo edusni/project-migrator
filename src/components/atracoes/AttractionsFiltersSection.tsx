@@ -16,25 +16,28 @@ export function AttractionsFiltersSection() {
   const [selectedArea, setSelectedArea] = useState<string>("all");
   const [viewMode, setViewMode] = useState<"list" | "map">("list");
 
+  const t = (pt: string, en: string, nl: string) => 
+    language === "nl" ? nl : language === "pt" ? pt : en;
+
   const categories = [
-    { value: "all", label: language === "pt" ? "Todos" : "All" },
-    { value: "museum", label: language === "pt" ? "Museus" : "Museums" },
-    { value: "park", label: language === "pt" ? "Parques" : "Parks" },
-    { value: "market", label: language === "pt" ? "Mercados" : "Markets" },
-    { value: "experience", label: language === "pt" ? "Experiências" : "Experiences" },
-    { value: "landmark", label: language === "pt" ? "Pontos Históricos" : "Landmarks" }
+    { value: "all", label: t("Todos", "All", "Alle") },
+    { value: "museum", label: t("Museus", "Museums", "Musea") },
+    { value: "park", label: t("Parques", "Parks", "Parken") },
+    { value: "market", label: t("Mercados", "Markets", "Markten") },
+    { value: "experience", label: t("Experiências", "Experiences", "Ervaringen") },
+    { value: "landmark", label: t("Pontos Históricos", "Landmarks", "Bezienswaardigheden") }
   ];
 
   const priceTiers = [
-    { value: "all", label: language === "pt" ? "Todos" : "All" },
-    { value: "free", label: language === "pt" ? "Grátis" : "Free" },
+    { value: "all", label: t("Todos", "All", "Alle") },
+    { value: "free", label: t("Grátis", "Free", "Gratis") },
     { value: "€", label: "€" },
     { value: "€€", label: "€€" },
     { value: "€€€", label: "€€€" }
   ];
 
   const areas = [
-    { value: "all", label: language === "pt" ? "Todos os Bairros" : "All Areas" },
+    { value: "all", label: t("Todos os Bairros", "All Areas", "Alle Wijken") },
     { value: "Centrum", label: "Centrum" },
     { value: "Jordaan", label: "Jordaan" },
     { value: "Zuid", label: "Zuid" },
@@ -60,10 +63,10 @@ export function AttractionsFiltersSection() {
 
   const getBookingBadge = (booking: string) => {
     if (booking === "required") {
-      return <Badge variant="destructive" className="text-xs lg:text-sm">{language === "pt" ? "Reserva Obrigatória" : "Booking Required"}</Badge>;
+      return <Badge variant="destructive" className="text-xs lg:text-sm">{t("Reserva Obrigatória", "Booking Required", "Reservering Verplicht")}</Badge>;
     }
     if (booking === "recommended") {
-      return <Badge variant="secondary" className="text-xs lg:text-sm">{language === "pt" ? "Reserva Recomendada" : "Booking Recommended"}</Badge>;
+      return <Badge variant="secondary" className="text-xs lg:text-sm">{t("Reserva Recomendada", "Booking Recommended", "Reservering Aanbevolen")}</Badge>;
     }
     return null;
   };
@@ -82,7 +85,7 @@ export function AttractionsFiltersSection() {
           <div className="flex items-center justify-between mb-8">
             <h2 className="text-3xl lg:text-5xl font-heading font-bold flex items-center gap-3">
               <Filter className="w-8 h-8 lg:w-10 lg:h-10 text-amsterdam-orange" />
-              {language === "pt" ? "Mapa + Filtros Inteligentes" : "Map + Smart Filters"}
+              {t("Mapa + Filtros Inteligentes", "Map + Smart Filters", "Kaart + Slimme Filters")}
             </h2>
             <div className="flex gap-2">
               <Button
@@ -91,7 +94,7 @@ export function AttractionsFiltersSection() {
                 onClick={() => setViewMode("list")}
                 className="text-base"
               >
-                <List className="w-5 h-5 mr-2" /> {language === "pt" ? "Lista" : "List"}
+                <List className="w-5 h-5 mr-2" /> {t("Lista", "List", "Lijst")}
               </Button>
               <Button
                 variant={viewMode === "map" ? "default" : "outline"}
@@ -99,7 +102,7 @@ export function AttractionsFiltersSection() {
                 onClick={() => setViewMode("map")}
                 className="text-base"
               >
-                <Map className="w-5 h-5 mr-2" /> {language === "pt" ? "Mapa" : "Map"}
+                <Map className="w-5 h-5 mr-2" /> {t("Mapa", "Map", "Kaart")}
               </Button>
             </div>
           </div>
@@ -109,7 +112,7 @@ export function AttractionsFiltersSection() {
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-muted-foreground" />
             <Input
               type="text"
-              placeholder={language === "pt" ? "Buscar por nome, tema ou vibe (arte, história, comida, vista, parques)..." : "Search by name, theme or vibe (art, history, food, views, parks)..."}
+              placeholder={t("Buscar por nome, tema ou vibe (arte, história, comida, vista, parques)...", "Search by name, theme or vibe (art, history, food, views, parks)...", "Zoek op naam, thema of sfeer (kunst, geschiedenis, eten, uitzicht, parken)...")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-12 py-6 text-base lg:text-lg"
@@ -119,7 +122,7 @@ export function AttractionsFiltersSection() {
           {/* Filter Chips */}
           <div className="space-y-5 mb-8">
             <div>
-              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{language === "pt" ? "Categoria:" : "Category:"}</span>
+              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{t("Categoria:", "Category:", "Categorie:")}</span>
               <div className="flex flex-wrap gap-3">
                 {categories.map(cat => (
                   <Button
@@ -135,7 +138,7 @@ export function AttractionsFiltersSection() {
               </div>
             </div>
             <div>
-              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{language === "pt" ? "Preço:" : "Price:"}</span>
+              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{t("Preço:", "Price:", "Prijs:")}</span>
               <div className="flex flex-wrap gap-3">
                 {priceTiers.map(tier => (
                   <Button
@@ -151,7 +154,7 @@ export function AttractionsFiltersSection() {
               </div>
             </div>
             <div>
-              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{language === "pt" ? "Bairro:" : "Area:"}</span>
+              <span className="text-base lg:text-lg font-medium text-muted-foreground mb-3 block">{t("Bairro:", "Area:", "Wijk:")}</span>
               <div className="flex flex-wrap gap-3">
                 {areas.map(area => (
                   <Button
@@ -170,7 +173,7 @@ export function AttractionsFiltersSection() {
 
           {/* Results Count */}
           <div className="text-base lg:text-lg text-muted-foreground mb-6">
-            {filteredAttractions.length} {language === "pt" ? "atrações encontradas" : "attractions found"}
+            {filteredAttractions.length} {t("atrações encontradas", "attractions found", "attracties gevonden")}
           </div>
 
           {/* Map View */}
@@ -187,7 +190,7 @@ export function AttractionsFiltersSection() {
                 <CardContent className="p-5 lg:p-6">
                   <div className="flex items-start justify-between mb-3">
                     <Badge className={`${getPriceBadgeColor(attraction.price_tier)} text-sm`}>
-                      {attraction.price_tier === "free" ? (language === "pt" ? "Grátis" : "Free") : attraction.price_tier}
+                      {attraction.price_tier === "free" ? t("Grátis", "Free", "Gratis") : attraction.price_tier}
                     </Badge>
                     {mustSeeAttractions.includes(attraction.slug) && (
                       <Star className="w-5 h-5 text-amsterdam-orange fill-amsterdam-orange" />

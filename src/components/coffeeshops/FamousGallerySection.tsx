@@ -18,9 +18,9 @@ interface FamousCoffeeshop {
   id: string;
   name: string;
   image: string;
-  neighborhood: { pt: string; en: string };
-  tagline: { pt: string; en: string };
-  highlight: { pt: string; en: string };
+  neighborhood: { pt: string; en: string; nl: string };
+  tagline: { pt: string; en: string; nl: string };
+  highlight: { pt: string; en: string; nl: string };
   profile: "beginner" | "chill" | "hype" | "premium";
 }
 
@@ -29,81 +29,81 @@ const famousCoffeeshops: FamousCoffeeshop[] = [
     id: "bulldog",
     name: "The Bulldog",
     image: bulldogImg,
-    neighborhood: { pt: "Centrum", en: "Centrum" },
-    tagline: { pt: "O primeiro império", en: "The first empire" },
-    highlight: { pt: "Histórico desde 1975, antiga delegacia transformada em ícone", en: "Historic since 1975, former police station turned icon" },
+    neighborhood: { pt: "Centrum", en: "Centrum", nl: "Centrum" },
+    tagline: { pt: "O primeiro império", en: "The first empire", nl: "Het eerste imperium" },
+    highlight: { pt: "Histórico desde 1975, antiga delegacia transformada em ícone", en: "Historic since 1975, former police station turned icon", nl: "Historisch sinds 1975, voormalig politiebureau werd icoon" },
     profile: "hype"
   },
   {
     id: "grey-area",
     name: "Grey Area",
     image: greyAreaImg,
-    neighborhood: { pt: "Centrum", en: "Centrum" },
-    tagline: { pt: "Culto & exclusivo", en: "Cult & exclusive" },
-    highlight: { pt: "Pequeno, famoso por strains americanas e filas longas", en: "Small, famous for American strains and long queues" },
+    neighborhood: { pt: "Centrum", en: "Centrum", nl: "Centrum" },
+    tagline: { pt: "Culto & exclusivo", en: "Cult & exclusive", nl: "Cult & exclusief" },
+    highlight: { pt: "Pequeno, famoso por strains americanas e filas longas", en: "Small, famous for American strains and long queues", nl: "Klein, bekend om Amerikaanse strains en lange rijen" },
     profile: "premium"
   },
   {
     id: "dampkring",
     name: "Dampkring",
     image: dampkringImg,
-    neighborhood: { pt: "Centrum", en: "Centrum" },
-    tagline: { pt: "Cinematográfico", en: "Cinematic" },
-    highlight: { pt: "Apareceu no filme Ocean's 12, hash premium", en: "Featured in Ocean's 12 movie, premium hash" },
+    neighborhood: { pt: "Centrum", en: "Centrum", nl: "Centrum" },
+    tagline: { pt: "Cinematográfico", en: "Cinematic", nl: "Cinematografisch" },
+    highlight: { pt: "Apareceu no filme Ocean's 12, hash premium", en: "Featured in Ocean's 12 movie, premium hash", nl: "Te zien in Ocean's 12 film, premium hasj" },
     profile: "premium"
   },
   {
     id: "katsu",
     name: "Katsu",
     image: katsuImg,
-    neighborhood: { pt: "De Pijp", en: "De Pijp" },
-    tagline: { pt: "Favorito dos locais", en: "Local favorite" },
-    highlight: { pt: "Identidade artística, comunidade autêntica", en: "Artistic identity, authentic community" },
+    neighborhood: { pt: "De Pijp", en: "De Pijp", nl: "De Pijp" },
+    tagline: { pt: "Favorito dos locais", en: "Local favorite", nl: "Favoriet bij locals" },
+    highlight: { pt: "Identidade artística, comunidade autêntica", en: "Artistic identity, authentic community", nl: "Artistieke identiteit, authentieke gemeenschap" },
     profile: "chill"
   },
   {
     id: "paradox",
     name: "Paradox",
     image: paradoxImg,
-    neighborhood: { pt: "Jordaan", en: "Jordaan" },
-    tagline: { pt: "Simples e direto", en: "Simple and straightforward" },
-    highlight: { pt: "Famoso pelos space cakes potentes", en: "Famous for potent space cakes" },
+    neighborhood: { pt: "Jordaan", en: "Jordaan", nl: "Jordaan" },
+    tagline: { pt: "Simples e direto", en: "Simple and straightforward", nl: "Simpel en direct" },
+    highlight: { pt: "Famoso pelos space cakes potentes", en: "Famous for potent space cakes", nl: "Bekend om krachtige space cakes" },
     profile: "beginner"
   },
   {
     id: "siberie",
     name: "Siberië",
     image: siberieImg,
-    neighborhood: { pt: "Jordaan", en: "Jordaan" },
-    tagline: { pt: "Arte & conversa", en: "Art & conversation" },
-    highlight: { pt: "Mistura de coffeeshop com galeria", en: "Mix of coffeeshop and gallery" },
+    neighborhood: { pt: "Jordaan", en: "Jordaan", nl: "Jordaan" },
+    tagline: { pt: "Arte & conversa", en: "Art & conversation", nl: "Kunst & gesprek" },
+    highlight: { pt: "Mistura de coffeeshop com galeria", en: "Mix of coffeeshop and gallery", nl: "Mix van coffeeshop en galerie" },
     profile: "chill"
   },
   {
     id: "tweede-kamer",
     name: "Tweede Kamer",
     image: tweedeKamerImg,
-    neighborhood: { pt: "Jordaan", en: "Jordaan" },
-    tagline: { pt: "Clássico intimista", en: "Intimate classic" },
-    highlight: { pt: "Ambiente acolhedor e menu bem curado", en: "Cozy atmosphere and well-curated menu" },
+    neighborhood: { pt: "Jordaan", en: "Jordaan", nl: "Jordaan" },
+    tagline: { pt: "Clássico intimista", en: "Intimate classic", nl: "Intieme klassieker" },
+    highlight: { pt: "Ambiente acolhedor e menu bem curado", en: "Cozy atmosphere and well-curated menu", nl: "Gezellige sfeer en goed samengesteld menu" },
     profile: "chill"
   },
   {
     id: "ibiza",
     name: "Coffeeshop IBIZA",
     image: ibizaImg,
-    neighborhood: { pt: "De Pijp", en: "De Pijp" },
-    tagline: { pt: "O maior de Amsterdam", en: "The biggest in Amsterdam" },
-    highlight: { pt: "Dois andares, espaço amplo", en: "Two floors, spacious" },
+    neighborhood: { pt: "De Pijp", en: "De Pijp", nl: "De Pijp" },
+    tagline: { pt: "O maior de Amsterdam", en: "The biggest in Amsterdam", nl: "De grootste van Amsterdam" },
+    highlight: { pt: "Dois andares, espaço amplo", en: "Two floors, spacious", nl: "Twee verdiepingen, ruim" },
     profile: "hype"
   },
   {
     id: "amsterdam",
     name: "Coffeeshop Amsterdam",
     image: amsterdamImg,
-    neighborhood: { pt: "Centrum", en: "Centrum" },
-    tagline: { pt: "Bom para iniciantes", en: "Good for beginners" },
-    highlight: { pt: "Atendimento acolhedor, menu acessível", en: "Welcoming service, accessible menu" },
+    neighborhood: { pt: "Centrum", en: "Centrum", nl: "Centrum" },
+    tagline: { pt: "Bom para iniciantes", en: "Good for beginners", nl: "Goed voor beginners" },
+    highlight: { pt: "Atendimento acolhedor, menu acessível", en: "Welcoming service, accessible menu", nl: "Gastvrije service, toegankelijk menu" },
     profile: "beginner"
   }
 ];
@@ -116,16 +116,19 @@ const profileStyles = {
 };
 
 const profileLabels = {
-  beginner: { pt: "Iniciantes", en: "Beginners" },
-  chill: { pt: "Relaxar", en: "Chill" },
-  hype: { pt: "Hype", en: "Hype" },
-  premium: { pt: "Premium", en: "Premium" }
+  beginner: { pt: "Iniciantes", en: "Beginners", nl: "Beginners" },
+  chill: { pt: "Relaxar", en: "Chill", nl: "Relaxed" },
+  hype: { pt: "Hype", en: "Hype", nl: "Hype" },
+  premium: { pt: "Premium", en: "Premium", nl: "Premium" }
 };
 
 export function FamousGallerySection() {
   const { language } = useLanguage();
 
-  const content = language === "pt" ? {
+  const content = language === "nl" ? {
+    title: "Galerij: Beroemde Coffeeshops van Amsterdam",
+    subtitle: "Ontdek visueel de meest iconische etablissementen van de stad"
+  } : language === "pt" ? {
     title: "Galeria: Coffeeshops Famosos de Amsterdam",
     subtitle: "Conheça visualmente os estabelecimentos mais icônicos da cidade"
   } : {
