@@ -15,7 +15,24 @@ const Blog = () => {
   const { language } = useLanguage();
   const seo = seoData.blog[language];
 
-  const content = language === "pt" ? {
+  const content = language === "nl" ? {
+    heroTitle: "Du's Blog",
+    heroSubtitle: "Verhalen over mijn toekomstige leven in Amsterdam",
+    intro: "Hier deel ik mijn echte reis: de verhuizing, ontdekkingen, tegenslagen en overwinningen van iemand die Amsterdam van favoriete bestemming in thuis verandert.",
+    comingSoon: "Binnenkort: eerste posts",
+    comingSoonDesc: "De blog wordt zorgvuldig voorbereid. Binnenkort vind je hier persoonlijke verhalen, AmsterDu behind-the-scenes, exclusieve tips en reflecties over leven in Nederland.",
+    categories: [
+      { emoji: "✈️", title: "Verhuizen", desc: "Het proces van Brazilië verlaten en opnieuw beginnen" },
+      { emoji: "🏠", title: "Wonen", desc: "Een appartement vinden, bureaucratie, tegenslagen" },
+      { emoji: "🌧️", title: "Aanpassing", desc: "Weer, cultuur, taal en realiteitscheck" },
+      { emoji: "💼", title: "Werk", desc: "Nederlandse markt, netwerken, kansen" },
+      { emoji: "🚴", title: "Lokaal Leven", desc: "Supermarkt, dokter, bank, echt dagelijks leven" },
+      { emoji: "❤️", title: "Reflecties", desc: "Wat ik leerde, wat veranderde, wat me verraste" },
+    ],
+    followJourney: "Volg de reis",
+    followJourneyDesc: "De eerste posts worden binnenkort gepubliceerd. In de tussentijd kun je de complete Amsterdam-gids verkennen.",
+    exploreGuide: "Verken de Gids",
+  } : language === "pt" ? {
     heroTitle: "Blog do Du",
     heroSubtitle: "Histórias da minha futura vida em Amsterdam",
     intro: "Aqui vou compartilhar minha jornada real: a mudança, as descobertas, os perrengues e as conquistas de alguém que está transformando Amsterdam de destino favorito em casa.",
@@ -89,12 +106,14 @@ const Blog = () => {
           <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
               <h2 className="text-2xl lg:text-4xl font-heading font-bold text-center mb-4">
-                {language === "pt" ? "O que você vai encontrar aqui" : "What you'll find here"}
+                {language === "nl" ? "Wat je hier vindt" : language === "pt" ? "O que você vai encontrar aqui" : "What you'll find here"}
               </h2>
               <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
-                {language === "pt" 
-                  ? "Temas que vou explorar na minha jornada de mudança e adaptação"
-                  : "Topics I'll explore in my moving and adaptation journey"}
+                {language === "nl" 
+                  ? "Onderwerpen die ik verken in mijn verhuis- en aanpassingsreis"
+                  : language === "pt" 
+                    ? "Temas que vou explorar na minha jornada de mudança e adaptação"
+                    : "Topics I'll explore in my moving and adaptation journey"}
               </p>
             </AnimatedSection>
 
@@ -156,7 +175,7 @@ const Blog = () => {
                       </Badge>
                       <Badge variant="outline" className="text-sm">
                         <Clock className="w-3 h-3 mr-1" />
-                        {language === "pt" ? "Em breve" : "Coming soon"}
+                        {language === "nl" ? "Binnenkort" : language === "pt" ? "Em breve" : "Coming soon"}
                       </Badge>
                     </div>
                   </CardContent>

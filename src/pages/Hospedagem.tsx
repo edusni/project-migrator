@@ -19,7 +19,15 @@ const Hospedagem = () => {
   const { language } = useLanguage();
   const seo = seoData.hospedagem[language];
 
-  const faqItems = language === "pt" ? [
+  const faqItems = language === "nl" ? [
+    { question: "Hoeveel belasting betaal ik voor accommodatie in 2026?", answer: "In 2026: 21% BTW over het tarief + 12,5% toeristenbelasting over de basiswaarde. Totaal: ongeveer 33% aan belastingen. Voorbeeld: €180 basistarief = ~€240 eindprijs." },
+    { question: "Wat verandert er voor Airbnb in 2026?", answer: "Algemene regel: maximaal 30 nachten/jaar en maximaal 4 gasten per verblijf. Er is een voorstel om dit te verlagen naar 15 nachten/jaar in Centrum en De Pijp vanaf april 2026." },
+    { question: "Wat is de beste wijk voor een eerste reis?", answer: "Jordaan of Grachtengordel voor de klassieke ervaring. Oud-West voor de beste prijs-kwaliteit. De Pijp voor foodies en alternatief nachtleven." },
+    { question: "Is het de moeite waard om buiten het centrum te verblijven?", answer: "Ja! 15-25 min verder verblijven verlaagt de prijs aanzienlijk. Oost, West en Noord bieden uitstekende waarde." },
+    { question: "Wat is de €15 'dagtoerist' belasting?", answer: "Vanaf 2026 betalen bezoekers die niet overnachten €15 per persoon. Geldt niet als je in de stad verblijft." },
+    { question: "Hoeveel hotelkamers heeft Amsterdam?", answer: "Amsterdam heeft ongeveer 42.000 hotelkamers. De stad wil geen nieuwe hotels als maatregel tegen overtoerisme." },
+    { question: "Hoe kom ik van de luchthaven naar het centrum?", answer: "Trein Schiphol → Amsterdam Centraal: ongeveer 17 minuten, de meest efficiënte manier." }
+  ] : language === "pt" ? [
     { question: "Quanto vou pagar de imposto na hospedagem em 2026?", answer: "Em 2026: VAT de 21% sobre a diária + imposto turístico de 12,5% sobre o valor base. Total: aproximadamente 33% de impostos. Exemplo: diária de €180 base = ~€240 final." },
     { question: "O que muda no Airbnb em 2026?", answer: "Regra geral: máximo 30 noites/ano e até 4 pessoas por estadia. Há proposta para reduzir para 15 noites/ano no Centro e De Pijp a partir de abril 2026." },
     { question: "Qual o melhor bairro para primeira viagem?", answer: "Jordaan ou Cinturão de Canais para experiência clássica. Oud-West para melhor custo-benefício. De Pijp para foodies e vida noturna alternativa." },
@@ -47,13 +55,13 @@ const Hospedagem = () => {
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
-          { name: language === "pt" ? "Hospedagem" : "Accommodation", url: "https://amsterdu.com/hospedagem" }
+          { name: language === "nl" ? "Accommodatie" : language === "pt" ? "Hospedagem" : "Accommodation", url: "https://amsterdu.com/hospedagem" }
         ]}
       />
       <PageHero 
         icon={Hotel} 
-        title={language === "pt" ? "Guia de Hospedagem 2026" : "2026 Accommodation Guide"} 
-        description={language === "pt" ? "Tudo o que muda e o que você precisa saber" : "Everything that's changing and what you need to know"}
+        title={language === "nl" ? "Accommodatiegids 2026" : language === "pt" ? "Guia de Hospedagem 2026" : "2026 Accommodation Guide"} 
+        description={language === "nl" ? "Alles wat verandert en wat je moet weten" : language === "pt" ? "Tudo o que muda e o que você precisa saber" : "Everything that's changing and what you need to know"}
         backgroundImage={hofjeImg}
       />
 

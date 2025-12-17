@@ -6,7 +6,12 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/
 export function Changes2026Section() {
   const { language } = useLanguage();
 
-  const changes2026 = language === "pt" ? [
+  const changes2026 = language === "nl" ? [
+    "21% BTW + 12,5% toeristenbelasting = veel duurdere verblijven",
+    "Van Gogh €25 in 2026 en NIET in I amsterdam City Card",
+    "Anne Frank: tickets open dinsdag 10u, 6 weken van tevoren",
+    "WorldPride 2026: 25 jul - 8 aug (Canal Parade 1 aug)"
+  ] : language === "pt" ? [
     "IVA de 21% + taxa turística 12,5% = diárias bem mais caras",
     "Van Gogh €25 em 2026 e NÃO está no I amsterdam City Card",
     "Anne Frank: ingressos abrem terça 10h, 6 semanas antes",
@@ -29,7 +34,7 @@ export function Changes2026Section() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <AlertTriangle className="w-6 h-6 lg:w-8 lg:h-8" />
-              💣 {language === "pt" ? "O que mudou para 2026" : "What changed for 2026"}
+              💣 {language === "nl" ? "Wat verandert in 2026" : language === "pt" ? "O que mudou para 2026" : "What changed for 2026"}
             </motion.h3>
           </AnimatedSection>
 
