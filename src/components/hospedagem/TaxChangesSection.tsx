@@ -5,6 +5,12 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 
+const t = (pt: string, en: string, nl: string, language: string) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 export function TaxChangesSection() {
   const { language } = useLanguage();
   const [basePrice, setBasePrice] = useState(180);
@@ -28,7 +34,7 @@ export function TaxChangesSection() {
               </motion.div>
               <div>
                 <h2 className="font-bold text-2xl lg:text-3xl text-amber-800 dark:text-amber-200 mb-2">
-                  📅 {language === "pt" ? "O Que Muda em 2026 (e Por Que Isso Importa no Seu Orçamento)" : "What Changes in 2026 (and Why It Matters for Your Budget)"}
+                  📅 {t("O Que Muda em 2026 (e Por Que Isso Importa no Seu Orçamento)", "What Changes in 2026 (and Why It Matters for Your Budget)", "Wat Verandert in 2026 (en Waarom Het Uitmaakt voor Je Budget)", language)}
                 </h2>
               </div>
             </div>
@@ -44,13 +50,13 @@ export function TaxChangesSection() {
                   <CardContent className="p-6">
                     <h4 className="font-bold text-lg lg:text-xl mb-3 flex items-center gap-2">
                       <Calculator className="w-5 h-5 lg:w-6 lg:h-6" />
-                      {language === "pt" ? "Imposto Turístico" : "Tourist Tax"}
+                      {t("Imposto Turístico", "Tourist Tax", "Toeristenbelasting", language)}
                     </h4>
                     <p className="text-base lg:text-lg text-muted-foreground mb-3">
-                      <strong>12,5%</strong> {language === "pt" ? "sobre o valor da diária (sem VAT)" : "on rate value (without VAT)"}
+                      <strong>12,5%</strong> {t("sobre o valor da diária (sem VAT)", "on rate value (without VAT)", "over tariefwaarde (zonder BTW)", language)}
                     </p>
                     <p className="text-sm lg:text-base text-amber-600 dark:text-amber-400">
-                      + {language === "pt" ? "Taxa de visitante 'bate-volta': €15/pessoa" : "Day tourist tax: €15/person"}
+                      + {t("Taxa de visitante 'bate-volta': €15/pessoa", "Day tourist tax: €15/person", "Dagbezoeker belasting: €15/persoon", language)}
                     </p>
                   </CardContent>
                 </Card>
@@ -66,13 +72,13 @@ export function TaxChangesSection() {
                   <CardContent className="p-6">
                     <h4 className="font-bold text-lg lg:text-xl mb-3 flex items-center gap-2">
                       <Building2 className="w-5 h-5 lg:w-6 lg:h-6" />
-                      VAT/IVA
+                      VAT/BTW
                     </h4>
                     <p className="text-base lg:text-lg text-muted-foreground mb-3">
-                      <strong>21%</strong> {language === "pt" ? "(subiu de 9% para 21% em 2026)" : "(increased from 9% to 21% in 2026)"}
+                      <strong>21%</strong> {t("(subiu de 9% para 21% em 2026)", "(increased from 9% to 21% in 2026)", "(verhoogd van 9% naar 21% in 2026)", language)}
                     </p>
                     <p className="text-sm lg:text-base text-amber-600 dark:text-amber-400">
-                      {language === "pt" ? "Aparece em 'taxes & fees' ou na diária" : "Appears in 'taxes & fees' or in rate"}
+                      {t("Aparece em 'taxes & fees' ou na diária", "Appears in 'taxes & fees' or in rate", "Verschijnt in 'belastingen & kosten' of in tarief", language)}
                     </p>
                   </CardContent>
                 </Card>
@@ -88,13 +94,13 @@ export function TaxChangesSection() {
                   <CardContent className="p-6">
                     <h4 className="font-bold text-lg lg:text-xl mb-3 flex items-center gap-2">
                       <Home className="w-5 h-5 lg:w-6 lg:h-6" />
-                      {language === "pt" ? "Airbnb/Curta duração" : "Airbnb/Short-term"}
+                      {t("Airbnb/Curta duração", "Airbnb/Short-term", "Airbnb/Korte termijn", language)}
                     </h4>
                     <p className="text-base lg:text-lg text-muted-foreground mb-3">
-                      <strong>{language === "pt" ? "Máx 30 noites/ano" : "Max 30 nights/year"}</strong> {language === "pt" ? "(pode cair pra 15 no Centro/De Pijp)" : "(may drop to 15 in Center/De Pijp)"}
+                      <strong>{t("Máx 30 noites/ano", "Max 30 nights/year", "Max 30 nachten/jaar", language)}</strong> {t("(pode cair pra 15 no Centro/De Pijp)", "(may drop to 15 in Center/De Pijp)", "(kan dalen naar 15 in Centrum/De Pijp)", language)}
                     </p>
                     <p className="text-sm lg:text-base text-amber-600 dark:text-amber-400">
-                      {language === "pt" ? "Fiscalização mais rígida em 2026" : "Stricter enforcement in 2026"}
+                      {t("Fiscalização mais rígida em 2026", "Stricter enforcement in 2026", "Strengere handhaving in 2026", language)}
                     </p>
                   </CardContent>
                 </Card>
@@ -112,14 +118,14 @@ export function TaxChangesSection() {
                 <CardHeader className="pb-3">
                   <CardTitle className="text-xl lg:text-2xl flex items-center gap-3">
                     <Calculator className="w-6 h-6 lg:w-7 lg:h-7" />
-                    {language === "pt" ? "Calculadora de Preço Real 2026" : "2026 Real Price Calculator"}
+                    {t("Calculadora de Preço Real 2026", "2026 Real Price Calculator", "2026 Echte Prijs Calculator", language)}
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="grid md:grid-cols-2 gap-8">
                     <div>
                       <label className="text-base lg:text-lg font-medium mb-3 block">
-                        {language === "pt" ? "Preço base por noite (sem impostos)" : "Base price per night (without taxes)"}
+                        {t("Preço base por noite (sem impostos)", "Base price per night (without taxes)", "Basisprijs per nacht (zonder belastingen)", language)}
                       </label>
                       <div className="flex items-center gap-3">
                         <span className="text-xl lg:text-2xl">€</span>
@@ -134,15 +140,15 @@ export function TaxChangesSection() {
                     </div>
                     <div className="space-y-3">
                       <div className="flex justify-between text-base lg:text-lg">
-                        <span>{language === "pt" ? "Preço base" : "Base price"}:</span>
+                        <span>{t("Preço base", "Base price", "Basisprijs", language)}:</span>
                         <span>€{basePrice.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-base lg:text-lg text-muted-foreground">
-                        <span>+ VAT 21%:</span>
+                        <span>+ VAT/BTW 21%:</span>
                         <span>€{vat21.toFixed(2)}</span>
                       </div>
                       <div className="flex justify-between text-base lg:text-lg text-muted-foreground">
-                        <span>+ {language === "pt" ? "Imposto turístico" : "Tourist tax"} 12,5%:</span>
+                        <span>+ {t("Imposto turístico", "Tourist tax", "Toeristenbelasting", language)} 12,5%:</span>
                         <span>€{touristTax.toFixed(2)}</span>
                       </div>
                       <motion.div 
@@ -150,13 +156,15 @@ export function TaxChangesSection() {
                         animate={{ scale: [1, 1.02, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       >
-                        <span>{language === "pt" ? "TOTAL POR NOITE" : "TOTAL PER NIGHT"}:</span>
+                        <span>{t("TOTAL POR NOITE", "TOTAL PER NIGHT", "TOTAAL PER NACHT", language)}:</span>
                         <span className="text-amber-600 dark:text-amber-400">€{totalPrice.toFixed(2)}</span>
                       </motion.div>
                       <p className="text-sm lg:text-base text-muted-foreground mt-3">
-                        {language === "pt" 
-                          ? `Você paga ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% a mais do que o preço anunciado` 
-                          : `You pay ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% more than the advertised price`}
+                        {t(
+                          `Você paga ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% a mais do que o preço anunciado`,
+                          `You pay ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% more than the advertised price`,
+                          `Je betaalt ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% meer dan de geadverteerde prijs`
+                        , language)}
                       </p>
                     </div>
                   </div>
