@@ -351,4 +351,16 @@ export const seoData = {
       keywords: "about amsterdu, who is du, amsterdu creator, amsterdam brazilian guide, amsterdu blog",
     },
   },
+  custoDeVida: {
+    pt: {
+      title: "Custo de Vida em Amsterdam 2026: Quanto Custa Morar na Holanda?",
+      description: "Descubra quanto custa morar em Amsterdam em 2026. Aluguel, contas, impostos, mercado e transporte. Calculadora interativa + orçamentos reais para solteiros e casais.",
+      keywords: "custo de vida amsterdam 2026, quanto custa morar em amsterdam, aluguel amsterdam, morar na holanda, custo de vida holanda, salário amsterdam, apartamento amsterdam preço, expat amsterdam",
+    },
+    en: {
+      title: "Cost of Living in Amsterdam 2026: How Much Does it Cost to Live?",
+      description: "Discover how much it costs to live in Amsterdam in 2026. Rent, bills, taxes, groceries and transport. Interactive calculator + real budgets for singles and couples.",
+      keywords: "cost of living amsterdam 2026, how much to live amsterdam, rent amsterdam, living in netherlands, netherlands cost of living, amsterdam salary, amsterdam apartment price, expat amsterdam",
+    },
+  },
 };
