@@ -97,6 +97,8 @@ Disallow: /
 # Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml
 
-# AI Crawlers - Static HTML version with full content
-# For crawlers that don't execute JavaScript: https://amsterdu.com/llm.html
+# AI Crawlers - Static HTML versions with full content (no JavaScript required)
+# Portuguese: https://amsterdu.com/llm.html
+# English: https://amsterdu.com/llm-en.html
+# Dutch: https://amsterdu.com/llm-nl.html
 # Structured content overview: https://amsterdu.com/llms.txt

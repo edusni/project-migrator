@@ -3,102 +3,339 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Homepage -->
+  <!-- Static HTML for AI Crawlers -->
   <url>
-    <loc>https://amsterdu.com/</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/"/>
+    <loc>https://amsterdu.com/llm.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/llm.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/llm-en.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/llm-nl.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/llm.html"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/llm-en.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/llm.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/llm-en.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/llm-nl.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/llm.html"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/llm-nl.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/llm.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/llm-en.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/llm-nl.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/llm.html"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Portuguese Pages -->
+  <url>
+    <loc>https://amsterdu.com/pt</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  
-  <!-- Planejamento (antiga: /planejamento-viagem) -->
   <url>
-    <loc>https://amsterdu.com/planejamento</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/planejamento"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/planejamento"/>
+    <loc>https://amsterdu.com/pt/planejamento</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/planejamento"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Hospedagem (antiga: /onde-ficar-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/hospedagem</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/hospedagem"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/hospedagem"/>
+    <loc>https://amsterdu.com/pt/hospedagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/hospedagem"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Gastronomia (antiga: /onde-comer-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/gastronomia</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/gastronomia"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/gastronomia"/>
+    <loc>https://amsterdu.com/pt/gastronomia</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/gastronomia"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Atrações (antiga: /o-que-fazer-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/atracoes</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/atracoes"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/atracoes"/>
+    <loc>https://amsterdu.com/pt/atracoes</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/atracoes"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Transporte (antiga: /transporte-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/transporte</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/transporte"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/transporte"/>
+    <loc>https://amsterdu.com/pt/transporte</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/transporte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/transporte"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/transporte"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Coffeeshops (antiga: /coffeeshops-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/coffeeshops</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/coffeeshops"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/coffeeshops"/>
+    <loc>https://amsterdu.com/pt/coffeeshops</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/coffeeshops"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Arredores (antiga: /bate-volta-amsterdam) -->
   <url>
-    <loc>https://amsterdu.com/arredores</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/arredores"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/arredores"/>
+    <loc>https://amsterdu.com/pt/arredores</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/arredores"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/arredores"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/arredores"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  
-  <!-- Blog -->
   <url>
-    <loc>https://amsterdu.com/blog</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/blog"/>
+    <loc>https://amsterdu.com/pt/custo-vida-amsterdam</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/custo-vida-amsterdam"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/pt/blog</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  
-  <!-- Sobre (antiga: /quem-e-o-du) -->
   <url>
-    <loc>https://amsterdu.com/sobre</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/sobre"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/sobre"/>
+    <loc>https://amsterdu.com/pt/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/sobre"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/sobre"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/sobre"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- English Pages -->
+  <url>
+    <loc>https://amsterdu.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/planejamento</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/planejamento"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/hospedagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/hospedagem"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/gastronomia</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/gastronomia"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/atracoes</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/atracoes"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/transporte</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/transporte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/transporte"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/transporte"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/coffeeshops</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/coffeeshops"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/arredores</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/arredores"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/arredores"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/arredores"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/custo-vida-amsterdam</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/custo-vida-amsterdam"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/blog</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/sobre"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/sobre"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/sobre"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Dutch Pages -->
+  <url>
+    <loc>https://amsterdu.com/nl</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/planejamento</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/planejamento"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/hospedagem</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/hospedagem"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/gastronomia</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/gastronomia"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/atracoes</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/atracoes"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/atracoes"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/transporte</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/transporte"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/transporte"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/transporte"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/coffeeshops</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/coffeeshops"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/arredores</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/arredores"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/arredores"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/arredores"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/custo-vida-amsterdam</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/custo-vida-amsterdam"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/custo-vida-amsterdam"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/blog</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog"/>
+    <lastmod>2025-12-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/sobre</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/sobre"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/sobre"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/sobre"/>
     <lastmod>2025-12-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
