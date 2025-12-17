@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { useLanguage, Language } from "@/hooks/useLanguage";
 
 interface FAQItem {
   question: string;
@@ -21,6 +22,37 @@ interface SEOHeadProps {
   noindex?: boolean;
 }
 
+// Get locale from path
+function getLocaleFromPath(pathname: string): Language {
+  const match = pathname.match(/^\/(pt|en|nl)/);
+  return (match?.[1] as Language) || "pt";
+}
+
+// Get path without locale prefix
+function getPathWithoutLocale(pathname: string): string {
+  return pathname.replace(/^\/(pt|en|nl)/, "") || "";
+}
+
+// Get alternate URLs for hreflang
+function getAlternateUrls(pathname: string) {
+  const cleanPath = getPathWithoutLocale(pathname);
+  return {
+    pt: `https://amsterdu.com/pt${cleanPath}`,
+    en: `https://amsterdu.com/en${cleanPath}`,
+    nl: `https://amsterdu.com/nl${cleanPath}`,
+  };
+}
+
+// Get HTML lang code
+function getHtmlLang(locale: Language): string {
+  switch (locale) {
+    case "pt": return "pt-BR";
+    case "nl": return "nl-NL";
+    case "en": 
+    default: return "en";
+  }
+}
+
 export function SEOHead({
   title,
   description,
@@ -36,12 +68,20 @@ export function SEOHead({
   noindex = false,
 }: SEOHeadProps) {
   const location = useLocation();
+  const { language } = useLanguage();
+  const locale = getLocaleFromPath(location.pathname);
   const canonicalUrl = `https://amsterdu.com${location.pathname}`;
   const fullTitle = title.includes("Amsterdu") ? title : `${title} | Amsterdu`;
+  const alternateUrls = getAlternateUrls(location.pathname);
+  const htmlLang = getHtmlLang(locale);
+  const inLanguage = htmlLang;
 
   useEffect(() => {
     // Update document title
     document.title = fullTitle;
+    
+    // Update html lang attribute
+    document.documentElement.lang = htmlLang;
 
     // Update meta tags
     updateMetaTag("description", description);
@@ -54,6 +94,14 @@ export function SEOHead({
     updateMetaTag("og:url", canonicalUrl, "property");
     updateMetaTag("og:image", image, "property");
     updateMetaTag("og:type", type, "property");
+    updateMetaTag("og:locale", htmlLang.replace("-", "_"), "property");
+    
+    // OG alternate locales
+    const otherLocales = Object.entries(alternateUrls).filter(([l]) => l !== locale);
+    otherLocales.forEach(([l]) => {
+      const altLang = getHtmlLang(l as Language).replace("-", "_");
+      updateMetaTag(`og:locale:alternate`, altLang, "property", `og-locale-${l}`);
+    });
 
     // Twitter
     updateMetaTag("twitter:title", fullTitle);
@@ -62,6 +110,9 @@ export function SEOHead({
 
     // Canonical
     updateCanonicalLink(canonicalUrl);
+    
+    // Hreflang alternates
+    updateHreflangLinks(alternateUrls);
 
     // Article-specific meta tags
     if (type === "article") {
@@ -71,9 +122,14 @@ export function SEOHead({
       if (section) updateMetaTag("article:section", section, "property");
     }
 
+    // Structured Data - Organization (always inject on homepage)
+    if (location.pathname === `/${locale}` || location.pathname === `/${locale}/`) {
+      injectOrganizationSchema();
+    }
+
     // Structured Data - FAQ
     if (faqItems && faqItems.length > 0) {
-      injectFAQSchema(faqItems);
+      injectFAQSchema(faqItems, inLanguage);
     }
 
     // Structured Data - Breadcrumbs
@@ -91,6 +147,17 @@ export function SEOHead({
         publishedTime,
         modifiedTime,
         author,
+        inLanguage,
+      });
+    }
+    
+    // Structured Data - WebPage (for non-article pages)
+    if (type === "website") {
+      injectWebPageSchema({
+        title: fullTitle,
+        description,
+        url: canonicalUrl,
+        inLanguage,
       });
     }
 
@@ -99,20 +166,29 @@ export function SEOHead({
       removeSchemaById("faq-schema");
       removeSchemaById("breadcrumb-schema");
       removeSchemaById("article-schema");
+      removeSchemaById("organization-schema");
+      removeSchemaById("webpage-schema");
+      removeHreflangLinks();
     };
-  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, breadcrumbs, noindex, canonicalUrl, fullTitle]);
+  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, breadcrumbs, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
 
   return null;
 }
 
-function updateMetaTag(name: string, content: string, type: "name" | "property" = "name") {
+function updateMetaTag(name: string, content: string, type: "name" | "property" = "name", id?: string) {
   if (!content) return;
   
-  const selector = type === "property" ? `meta[property="${name}"]` : `meta[name="${name}"]`;
-  let element = document.querySelector(selector) as HTMLMetaElement;
+  const elementId = id || `meta-${type}-${name}`;
+  let element = document.getElementById(elementId) as HTMLMetaElement;
+  
+  if (!element) {
+    const selector = type === "property" ? `meta[property="${name}"]` : `meta[name="${name}"]`;
+    element = document.querySelector(selector) as HTMLMetaElement;
+  }
   
   if (!element) {
     element = document.createElement("meta");
+    element.id = elementId;
     element.setAttribute(type, name);
     document.head.appendChild(element);
   }
@@ -132,17 +208,104 @@ function updateCanonicalLink(url: string) {
   link.setAttribute("href", url);
 }
 
+function updateHreflangLinks(alternateUrls: { pt: string; en: string; nl: string }) {
+  // Remove existing hreflang links
+  removeHreflangLinks();
+  
+  // Add hreflang for each language
+  const hreflangMap: { hreflang: string; href: string }[] = [
+    { hreflang: "pt-BR", href: alternateUrls.pt },
+    { hreflang: "en", href: alternateUrls.en },
+    { hreflang: "nl-NL", href: alternateUrls.nl },
+    { hreflang: "x-default", href: alternateUrls.pt }, // Portuguese as default
+  ];
+  
+  hreflangMap.forEach(({ hreflang, href }) => {
+    const link = document.createElement("link");
+    link.setAttribute("rel", "alternate");
+    link.setAttribute("hreflang", hreflang);
+    link.setAttribute("href", href);
+    link.setAttribute("data-hreflang", "true");
+    document.head.appendChild(link);
+  });
+}
+
+function removeHreflangLinks() {
+  const existingLinks = document.querySelectorAll('link[data-hreflang="true"]');
+  existingLinks.forEach(link => link.remove());
+}
+
 function removeSchemaById(id: string) {
   const existing = document.getElementById(id);
   if (existing) existing.remove();
 }
 
-function injectFAQSchema(faqItems: FAQItem[]) {
+function injectOrganizationSchema() {
+  removeSchemaById("organization-schema");
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Amsterdu",
+    url: "https://amsterdu.com",
+    logo: "https://amsterdu.com/logo.png",
+    description: "The brutally honest Amsterdam guide. Practical tips, real costs, and local secrets.",
+    sameAs: [],
+    founder: {
+      "@type": "Person",
+      name: "Du",
+      url: "https://amsterdu.com/pt/sobre",
+    },
+  };
+
+  const script = document.createElement("script");
+  script.id = "organization-schema";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function injectWebPageSchema(data: {
+  title: string;
+  description: string;
+  url: string;
+  inLanguage: string;
+}) {
+  removeSchemaById("webpage-schema");
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: data.title,
+    description: data.description,
+    url: data.url,
+    inLanguage: data.inLanguage,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Amsterdu",
+      url: "https://amsterdu.com",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Amsterdu",
+      url: "https://amsterdu.com",
+    },
+  };
+
+  const script = document.createElement("script");
+  script.id = "webpage-schema";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function injectFAQSchema(faqItems: FAQItem[], inLanguage: string) {
   removeSchemaById("faq-schema");
   
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage,
     mainEntity: faqItems.map((item) => ({
       "@type": "Question",
       name: item.question,
@@ -189,6 +352,7 @@ function injectArticleSchema(data: {
   publishedTime?: string;
   modifiedTime?: string;
   author: string;
+  inLanguage: string;
 }) {
   removeSchemaById("article-schema");
   
@@ -199,12 +363,13 @@ function injectArticleSchema(data: {
     description: data.description,
     url: data.url,
     image: data.image,
+    inLanguage: data.inLanguage,
     datePublished: data.publishedTime || new Date().toISOString(),
     dateModified: data.modifiedTime || new Date().toISOString(),
     author: {
       "@type": "Person",
       name: data.author,
-      url: "https://amsterdu.com/sobre",
+      url: "https://amsterdu.com/pt/sobre",
     },
     publisher: {
       "@type": "Organization",
@@ -371,51 +536,51 @@ export const seoData = {
     pt: {
       title: "Blog do Du: Vida em Amsterdam e Dicas de Brasileiro",
       description: "Blog pessoal do Du: histórias reais sobre morar em Amsterdam, mudança do Brasil, dicas exclusivas e reflexões sobre a vida holandesa. Sem filtro.",
-      keywords: "blog amsterdam, morar amsterdam, brasileiros amsterdam, vida holanda, mudança amsterdam, custo de vida em amsterdam, experiência amsterdam",
+      keywords: "blog amsterdam, brasileiro em amsterdam, morar em amsterdam, vida holandesa, dicas amsterdam, experiências amsterdam",
     },
     en: {
-      title: "Du's Blog: Life in Amsterdam & Brazilian Tips",
+      title: "Du's Blog: Life in Amsterdam and Brazilian Tips",
       description: "Du's personal blog: real stories about living in Amsterdam, moving from Brazil, exclusive tips and reflections on Dutch life. No filter.",
-      keywords: "amsterdam blog, living amsterdam, brazilians amsterdam, netherlands life, moving amsterdam, cost of living amsterdam, amsterdam experience",
+      keywords: "amsterdam blog, brazilian in amsterdam, living in amsterdam, dutch life, amsterdam tips, amsterdam experiences",
     },
     nl: {
-      title: "Du's Blog: Leven in Amsterdam & Braziliaanse Tips",
-      description: "Du's persoonlijke blog: echte verhalen over wonen in Amsterdam, verhuizen vanuit Brazilië, exclusieve tips en reflecties over het Nederlandse leven. Zonder filter.",
-      keywords: "amsterdam blog, wonen amsterdam, brazilianen amsterdam, nederland leven, verhuizen amsterdam, kosten levensonderhoud amsterdam, amsterdam ervaring",
+      title: "Du's Blog: Leven in Amsterdam en Braziliaanse Tips",
+      description: "Du's persoonlijke blog: echte verhalen over wonen in Amsterdam, verhuizen uit Brazilië, exclusieve tips en reflecties over het Nederlandse leven. Geen filter.",
+      keywords: "amsterdam blog, braziliaan in amsterdam, wonen in amsterdam, nederlands leven, amsterdam tips, amsterdam ervaringen",
     },
   },
   sobre: {
     pt: {
-      title: "Quem é o Du? A História por Trás do Amsterdu",
-      description: "Conheça o Du, brasileiro apaixonado por Amsterdam. Descubra por que criei este guia brutalmente honesto e como ele pode transformar sua viagem.",
-      keywords: "sobre amsterdu, quem é du, quem e o du, criador amsterdu, guia amsterdam brasileiro, amsterdu blog",
+      title: "Quem é o Du? | A História por trás do Amsterdu",
+      description: "Conheça o Du: brasileiro apaixonado por Amsterdam, futuro morador da cidade. Descubra por que o Amsterdu existe e como ele pode ajudar sua viagem.",
+      keywords: "quem é du, amsterdu, sobre amsterdu, guia amsterdam, brasileiro amsterdam",
     },
     en: {
-      title: "Who is Du? The Story Behind Amsterdu",
-      description: "Meet Du, a Brazilian passionate about Amsterdam. Discover why I created this brutally honest guide and how it can transform your trip.",
-      keywords: "about amsterdu, who is du, amsterdu creator, amsterdam brazilian guide, amsterdu blog",
+      title: "Who is Du? | The Story Behind Amsterdu",
+      description: "Meet Du: a Brazilian passionate about Amsterdam, future city resident. Discover why Amsterdu exists and how it can help your trip.",
+      keywords: "who is du, amsterdu, about amsterdu, amsterdam guide, brazilian amsterdam",
     },
     nl: {
-      title: "Wie is Du? Het Verhaal Achter Amsterdu",
-      description: "Ontmoet Du, een Braziliaan met een passie voor Amsterdam. Ontdek waarom ik deze brutaal eerlijke gids heb gemaakt en hoe het je reis kan transformeren.",
-      keywords: "over amsterdu, wie is du, amsterdu maker, amsterdam braziliaanse gids, amsterdu blog",
+      title: "Wie is Du? | Het Verhaal Achter Amsterdu",
+      description: "Maak kennis met Du: een Braziliaan met passie voor Amsterdam, toekomstig inwoner. Ontdek waarom Amsterdu bestaat en hoe het je reis kan helpen.",
+      keywords: "wie is du, amsterdu, over amsterdu, amsterdam gids, braziliaan amsterdam",
     },
   },
   custoDeVida: {
     pt: {
-      title: "Custo de Vida em Amsterdam 2026: Quanto Custa Morar na Holanda?",
-      description: "Descubra quanto custa morar em Amsterdam em 2026. Aluguel, contas, impostos, mercado e transporte. Calculadora interativa + orçamentos reais para solteiros e casais.",
-      keywords: "custo de vida amsterdam 2026, quanto custa morar em amsterdam, aluguel amsterdam, morar na holanda, custo de vida holanda, salário amsterdam, apartamento amsterdam preço, expat amsterdam",
+      title: "Custo de Vida em Amsterdam 2026: Quanto Custa Morar?",
+      description: "Custo de vida real em Amsterdam 2026: aluguel, seguro saúde, supermercado, transporte. Orçamento mensal detalhado para singles e casais. Sem ilusões.",
+      keywords: "custo de vida amsterdam, quanto custa morar em amsterdam, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam",
     },
     en: {
-      title: "Cost of Living in Amsterdam 2026: How Much Does it Cost to Live?",
-      description: "Discover how much it costs to live in Amsterdam in 2026. Rent, bills, taxes, groceries and transport. Interactive calculator + real budgets for singles and couples.",
-      keywords: "cost of living amsterdam 2026, how much to live amsterdam, rent amsterdam, living in netherlands, netherlands cost of living, amsterdam salary, amsterdam apartment price, expat amsterdam",
+      title: "Cost of Living in Amsterdam 2026: How Much to Live?",
+      description: "Real cost of living in Amsterdam 2026: rent, health insurance, groceries, transport. Detailed monthly budget for singles and couples. No illusions.",
+      keywords: "cost of living amsterdam, how much to live amsterdam, amsterdam rent, amsterdam salary, living netherlands 2026, amsterdam budget",
     },
     nl: {
-      title: "Kosten van Levensonderhoud in Amsterdam 2026: Hoeveel Kost Het om te Wonen?",
-      description: "Ontdek hoeveel het kost om te wonen in Amsterdam in 2026. Huur, rekeningen, belastingen, boodschappen en vervoer. Interactieve calculator + echte budgetten voor alleenstaanden en stellen.",
-      keywords: "kosten levensonderhoud amsterdam 2026, hoeveel kost wonen amsterdam, huur amsterdam, wonen in nederland, nederland kosten levensonderhoud, amsterdam salaris, amsterdam appartement prijs, expat amsterdam",
+      title: "Kosten van Levensonderhoud Amsterdam 2026: Hoeveel om te Wonen?",
+      description: "Echte kosten van levensonderhoud in Amsterdam 2026: huur, zorgverzekering, boodschappen, vervoer. Gedetailleerd maandelijks budget voor singles en stellen. Geen illusies.",
+      keywords: "kosten levensonderhoud amsterdam, hoeveel kost wonen amsterdam, amsterdam huur, amsterdam salaris, wonen nederland 2026, amsterdam budget",
     },
   },
 };
