@@ -7,17 +7,18 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-const routeLabels: Record<string, { pt: string; en: string }> = {
-  "/": { pt: "Início", en: "Home" },
-  "/planejamento": { pt: "Planejamento", en: "Planning" },
-  "/hospedagem": { pt: "Hospedagem", en: "Accommodation" },
-  "/transporte": { pt: "Transporte", en: "Transport" },
-  "/atracoes": { pt: "Atrações", en: "Attractions" },
-  "/gastronomia": { pt: "Gastronomia", en: "Food & Drink" },
-  "/coffeeshops": { pt: "Coffeeshops", en: "Coffeeshops" },
-  "/arredores": { pt: "Bate-voltas", en: "Day Trips" },
-  "/blog": { pt: "Blog", en: "Blog" },
-  "/sobre": { pt: "Sobre", en: "About" },
+const routeLabels: Record<string, { pt: string; en: string; nl: string }> = {
+  "/": { pt: "Início", en: "Home", nl: "Home" },
+  "/planejamento": { pt: "Planejamento", en: "Planning", nl: "Planning" },
+  "/hospedagem": { pt: "Hospedagem", en: "Accommodation", nl: "Accommodatie" },
+  "/transporte": { pt: "Transporte", en: "Transport", nl: "Vervoer" },
+  "/atracoes": { pt: "Atrações", en: "Attractions", nl: "Attracties" },
+  "/gastronomia": { pt: "Gastronomia", en: "Food & Drink", nl: "Eten & Drinken" },
+  "/coffeeshops": { pt: "Coffeeshops", en: "Coffeeshops", nl: "Coffeeshops" },
+  "/arredores": { pt: "Bate-voltas", en: "Day Trips", nl: "Dagtrips" },
+  "/blog": { pt: "Blog", en: "Blog", nl: "Blog" },
+  "/sobre": { pt: "Sobre", en: "About", nl: "Over" },
+  "/custo-vida-amsterdam": { pt: "Custo de Vida", en: "Cost of Living", nl: "Kosten Levensonderhoud" },
 };
 
 export function Breadcrumbs() {
@@ -30,8 +31,10 @@ export function Breadcrumbs() {
   const currentRoute = routeLabels[location.pathname];
   if (!currentRoute) return null;
 
+  const homeLabel = language === "nl" ? "Home" : language === "pt" ? "Início" : "Home";
+
   const breadcrumbs: BreadcrumbItem[] = [
-    { label: language === "pt" ? "Início" : "Home", href: "/" },
+    { label: homeLabel, href: "/" },
     { label: currentRoute[language] }
   ];
 

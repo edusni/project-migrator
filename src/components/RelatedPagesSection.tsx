@@ -9,8 +9,10 @@ interface RelatedPage {
   emoji: string;
   titlePt: string;
   titleEn: string;
+  titleNl: string;
   descPt: string;
   descEn: string;
+  descNl: string;
 }
 
 const allPages: RelatedPage[] = [
@@ -19,64 +21,80 @@ const allPages: RelatedPage[] = [
     emoji: "📅",
     titlePt: "Planejamento",
     titleEn: "Planning",
+    titleNl: "Planning",
     descPt: "Quando ir, orçamento e documentos",
-    descEn: "When to go, budget and documents"
+    descEn: "When to go, budget and documents",
+    descNl: "Wanneer gaan, budget en documenten"
   },
   {
     href: "/hospedagem",
     emoji: "🏨",
     titlePt: "Hospedagem",
     titleEn: "Accommodation",
+    titleNl: "Accommodatie",
     descPt: "Bairros, hotéis e taxas 2026",
-    descEn: "Neighborhoods, hotels and 2026 taxes"
+    descEn: "Neighborhoods, hotels and 2026 taxes",
+    descNl: "Wijken, hotels en belastingen 2026"
   },
   {
     href: "/transporte",
     emoji: "🚊",
     titlePt: "Transporte",
     titleEn: "Transport",
+    titleNl: "Vervoer",
     descPt: "OVpay, trams, bikes e multas",
-    descEn: "OVpay, trams, bikes and fines"
+    descEn: "OVpay, trams, bikes and fines",
+    descNl: "OVpay, trams, fietsen en boetes"
   },
   {
     href: "/atracoes",
     emoji: "🎨",
     titlePt: "Atrações",
     titleEn: "Attractions",
+    titleNl: "Attracties",
     descPt: "Museus, parques e experiências",
-    descEn: "Museums, parks and experiences"
+    descEn: "Museums, parks and experiences",
+    descNl: "Musea, parken en ervaringen"
   },
   {
     href: "/gastronomia",
     emoji: "🍽️",
     titlePt: "Gastronomia",
     titleEn: "Food & Drink",
+    titleNl: "Eten & Drinken",
     descPt: "Onde comer sem armadilha",
-    descEn: "Where to eat without traps"
+    descEn: "Where to eat without traps",
+    descNl: "Waar eten zonder valkuilen"
   },
   {
     href: "/coffeeshops",
     emoji: "🌿",
     titlePt: "Coffeeshops",
     titleEn: "Coffeeshops",
+    titleNl: "Coffeeshops",
     descPt: "Regras, etiqueta e bairros",
-    descEn: "Rules, etiquette and neighborhoods"
+    descEn: "Rules, etiquette and neighborhoods",
+    descNl: "Regels, etiquette en wijken"
   },
   {
     href: "/arredores",
     emoji: "🚂",
     titlePt: "Bate-voltas",
     titleEn: "Day Trips",
+    titleNl: "Dagtrips",
     descPt: "Zaanse Schans, Haarlem e mais",
-    descEn: "Zaanse Schans, Haarlem and more"
+    descEn: "Zaanse Schans, Haarlem and more",
+    descNl: "Zaanse Schans, Haarlem en meer"
   },
   {
     href: "/sobre",
     emoji: "👤",
     titlePt: "Sobre a Du",
     titleEn: "About Du",
+    titleNl: "Over Du",
     descPt: "Quem criou o AmsterDu",
-    descEn: "Who created AmsterDu"
+    descEn: "Who created AmsterDu",
+    descNl: "Wie maakte AmsterDu"
   }
 ];
 
@@ -106,17 +124,31 @@ export function RelatedPagesSection({
       .slice(0, maxItems);
   }
 
+  const getTitle = (page: RelatedPage) => {
+    if (language === "nl") return page.titleNl;
+    if (language === "pt") return page.titlePt;
+    return page.titleEn;
+  };
+
+  const getDesc = (page: RelatedPage) => {
+    if (language === "nl") return page.descNl;
+    if (language === "pt") return page.descPt;
+    return page.descEn;
+  };
+
   return (
     <section className="py-14 lg:py-20 bg-muted/30">
       <div className="container">
         <div className="max-w-6xl mx-auto px-4 lg:px-8">
           <h2 className="text-2xl lg:text-4xl font-heading font-bold text-center mb-3">
-            {language === "pt" ? "Continue Explorando" : "Keep Exploring"}
+            {language === "nl" ? "Blijf Ontdekken" : language === "pt" ? "Continue Explorando" : "Keep Exploring"}
           </h2>
           <p className="text-muted-foreground text-center text-base lg:text-lg mb-8 max-w-2xl mx-auto">
-            {language === "pt" 
-              ? "Outras seções do guia que combinam com o que você está planejando"
-              : "Other guide sections that match what you're planning"}
+            {language === "nl" 
+              ? "Andere gidssecties die passen bij wat je plant"
+              : language === "pt" 
+                ? "Outras seções do guia que combinam com o que você está planejando"
+                : "Other guide sections that match what you're planning"}
           </p>
           
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -134,11 +166,11 @@ export function RelatedPagesSection({
                     <CardContent className="p-5">
                       <span className="text-3xl mb-3 block">{page.emoji}</span>
                       <h3 className="font-heading font-bold text-lg mb-1 group-hover:text-primary transition-colors flex items-center gap-2">
-                        {language === "pt" ? page.titlePt : page.titleEn}
+                        {getTitle(page)}
                         <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0" />
                       </h3>
                       <p className="text-muted-foreground text-sm">
-                        {language === "pt" ? page.descPt : page.descEn}
+                        {getDesc(page)}
                       </p>
                     </CardContent>
                   </Card>

@@ -8,14 +8,17 @@ import { attractions2026 } from "@/data/attractions2026";
 export function AttractionsByAreaSection() {
   const { language } = useLanguage();
 
+  const t = (pt: string, en: string, nl: string) => 
+    language === "nl" ? nl : language === "pt" ? pt : en;
+
   const areaConfigs = [
-    { value: "centrum", name: "Centrum", title: language === "pt" ? "Centrum: História Densa, Muita Gente" : "Centrum: Dense History, Lots of People" },
-    { value: "jordaan", name: "Jordaan", title: language === "pt" ? "Jordaan: Charme, Canais e Mercados" : "Jordaan: Charm, Canals and Markets" },
-    { value: "zuid", name: "Zuid", title: language === "pt" ? "Zuid: Museus Grandes + De Pijp" : "Zuid: Big Museums + De Pijp" },
-    { value: "noord", name: "Noord", title: language === "pt" ? "Noord: O Bairro que Separa Turista de Visitante" : "Noord: The Area that Separates Tourist from Visitor" },
-    { value: "oost", name: "Oost", title: language === "pt" ? "Oost: Parques, Multiculturalismo e Contexto" : "Oost: Parks, Multiculturalism and Context" },
-    { value: "west", name: "West", title: language === "pt" ? "West: Comida, Cultura e Contraste" : "West: Food, Culture and Contrast" },
-    { value: "amstelveen", name: "Amstelveen", title: language === "pt" ? "Amstelveen: Quando Você Quer Respirar" : "Amstelveen: When You Want to Breathe" },
+    { value: "centrum", name: "Centrum", title: t("Centrum: História Densa, Muita Gente", "Centrum: Dense History, Lots of People", "Centrum: Rijke Geschiedenis, Veel Mensen") },
+    { value: "jordaan", name: "Jordaan", title: t("Jordaan: Charme, Canais e Mercados", "Jordaan: Charm, Canals and Markets", "Jordaan: Charme, Grachten en Markten") },
+    { value: "zuid", name: "Zuid", title: t("Zuid: Museus Grandes + De Pijp", "Zuid: Big Museums + De Pijp", "Zuid: Grote Musea + De Pijp") },
+    { value: "noord", name: "Noord", title: t("Noord: O Bairro que Separa Turista de Visitante", "Noord: The Area that Separates Tourist from Visitor", "Noord: De Wijk die Toerist van Bezoeker Scheidt") },
+    { value: "oost", name: "Oost", title: t("Oost: Parques, Multiculturalismo e Contexto", "Oost: Parks, Multiculturalism and Context", "Oost: Parken, Multiculturalisme en Context") },
+    { value: "west", name: "West", title: t("West: Comida, Cultura e Contraste", "West: Food, Culture and Contrast", "West: Eten, Cultuur en Contrast") },
+    { value: "amstelveen", name: "Amstelveen", title: t("Amstelveen: Quando Você Quer Respirar", "Amstelveen: When You Want to Breathe", "Amstelveen: Als Je Wilt Ademhalen") },
   ];
 
   return (
@@ -24,7 +27,7 @@ export function AttractionsByAreaSection() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-heading font-bold mb-10 flex items-center gap-3">
             <MapPin className="w-8 h-8 lg:w-10 lg:h-10 text-amsterdam-orange" />
-            {language === "pt" ? "Atrações por Bairro (Roteiro 2026)" : "Attractions by Area (2026 Itinerary)"}
+            {t("Atrações por Bairro (Roteiro 2026)", "Attractions by Area (2026 Itinerary)", "Attracties per Wijk (Route 2026)")}
           </h2>
 
           <Tabs defaultValue="centrum" className="w-full">
@@ -48,7 +51,7 @@ export function AttractionsByAreaSection() {
                         <div key={a.id} className="p-4 lg:p-5 bg-muted/50 rounded-lg">
                           <div className="flex items-center justify-between mb-2">
                             <span className="font-bold text-lg lg:text-xl">{a.name}</span>
-                            <Badge variant="outline" className="text-sm">{a.price_tier === "free" ? (language === "pt" ? "Grátis" : "Free") : a.price_tier}</Badge>
+                            <Badge variant="outline" className="text-sm">{a.price_tier === "free" ? t("Grátis", "Free", "Gratis") : a.price_tier}</Badge>
                           </div>
                           <p className="text-sm lg:text-base text-muted-foreground">{language === "pt" ? a.short_desc : a.short_desc_en}</p>
                         </div>
