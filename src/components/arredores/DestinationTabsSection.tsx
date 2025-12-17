@@ -106,7 +106,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                           <Train className="h-3 w-3" />
                           {item.time}
                         </Badge>
-                        {item.mustSee && <Badge className="bg-primary text-sm">{language === "pt" ? "Imperdível" : "Must See"}</Badge>}
+                        {item.mustSee && <Badge className="bg-primary text-sm">{language === "pt" ? "Imperdível" : language === "nl" ? "Must-see" : "Must See"}</Badge>}
                       </div>
                     </CardTitle>
                   </CardHeader>
@@ -124,7 +124,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                     
                     {item.reality && (
                       <div className="bg-muted p-4 rounded-lg">
-                        <p className="text-sm md:text-base"><strong>{language === "pt" ? "A Realidade Honesta:" : "The Honest Reality:"}</strong> {item.reality}</p>
+                        <p className="text-sm md:text-base"><strong>{language === "pt" ? "A Realidade Honesta:" : language === "nl" ? "De Eerlijke Realiteit:" : "The Honest Reality:"}</strong> {item.reality}</p>
                       </div>
                     )}
                     
@@ -132,7 +132,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                       <div>
                         <h4 className="font-semibold mb-2 flex items-center gap-2 text-base md:text-lg">
                           <Check className="h-4 w-4 text-green-600" />
-                          {language === "pt" ? "Estratégia Anti-Multidão:" : "Anti-Crowd Strategy:"}
+                          {language === "pt" ? "Estratégia Anti-Multidão:" : language === "nl" ? "Anti-Drukte Strategie:" : "Anti-Crowd Strategy:"}
                         </h4>
                         <ul className="space-y-1">
                           {item.strategy.map((s, i) => (
@@ -147,7 +147,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                     
                     {item.practical && (
                       <div className="bg-blue-500/10 p-4 rounded-lg">
-                        <h4 className="font-semibold mb-2 text-base md:text-lg">{language === "pt" ? "Detalhes Práticos:" : "Practical Details:"}</h4>
+                        <h4 className="font-semibold mb-2 text-base md:text-lg">{language === "pt" ? "Detalhes Práticos:" : language === "nl" ? "Praktische Details:" : "Practical Details:"}</h4>
                         <ul className="space-y-1">
                           {item.practical.map((p, i) => (
                             <li key={i} className="text-sm md:text-base">• {p}</li>
@@ -168,7 +168,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                     {item.alternative && (
                       <div className="bg-green-500/10 p-4 rounded-lg">
                         <p className="text-sm md:text-base text-green-800 dark:text-green-300">
-                          <strong>{language === "pt" ? "Alternativa Mais Eficiente:" : "More Efficient Alternative:"}</strong> {item.alternative}
+                          <strong>{language === "pt" ? "Alternativa Mais Eficiente:" : language === "nl" ? "Efficiënter Alternatief:" : "More Efficient Alternative:"}</strong> {item.alternative}
                         </p>
                       </div>
                     )}
@@ -209,7 +209,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                     
                     {item.todo && (
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold mb-2">{language === "pt" ? "O que fazer:" : "What to do:"}</h4>
+                        <h4 className="text-sm md:text-base font-semibold mb-2">{language === "pt" ? "O que fazer:" : language === "nl" ? "Wat te doen:" : "What to do:"}</h4>
                         <ul className="space-y-1">
                           {item.todo.map((t, i) => (
                             <li key={i} className="text-sm md:text-base flex items-start gap-2">
@@ -259,7 +259,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                 <p className="text-base md:text-lg">{modern.item.why}</p>
                 
                 <div>
-                  <h4 className="font-semibold mb-2 text-base md:text-lg">{language === "pt" ? "Roteiro Curto (Alto Impacto):" : "Short Route (High Impact):"}</h4>
+                  <h4 className="font-semibold mb-2 text-base md:text-lg">{language === "pt" ? "Roteiro Curto (Alto Impacto):" : language === "nl" ? "Korte Route (Hoge Impact):" : "Short Route (High Impact):"}</h4>
                   <ul className="space-y-2">
                     {modern.item.todo.map((t, i) => (
                       <li key={i} className="flex items-start gap-2 text-base md:text-lg">
@@ -298,7 +298,7 @@ export const DestinationTabsSection = ({ tabs, classics, miniAms, modern, bike, 
                     
                     {item.howTo && (
                       <div>
-                        <h4 className="text-sm md:text-base font-semibold mb-2">{language === "pt" ? "Como fazer:" : "How to do it:"}</h4>
+                        <h4 className="text-sm md:text-base font-semibold mb-2">{language === "pt" ? "Como fazer:" : language === "nl" ? "Hoe te doen:" : "How to do it:"}</h4>
                         <ul className="space-y-2">
                           {item.howTo.map((h, i) => (
                             <li key={i} className="text-sm md:text-base flex items-start gap-2">
