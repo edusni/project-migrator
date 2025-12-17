@@ -7,7 +7,62 @@ import { motion } from "framer-motion";
 export function GuideSectionsGrid() {
   const { language } = useLanguage();
 
-  const sections = language === "pt" ? [
+  const sections = language === "nl" ? [
+    {
+      emoji: "📅",
+      title: "Planning",
+      desc: "Wanneer gaan, hoeveel dagen, hoeveel meenemen, wat van tevoren boeken en wat niet de moeite waard is.",
+      link: "/planejamento"
+    },
+    {
+      emoji: "🏨",
+      title: "Waar Verblijven",
+      desc: "Wijken met eerlijk oordeel: voor eerste reis, voor nachtleven, voor goede nachtrust, voor foodies.",
+      link: "/hospedagem"
+    },
+    {
+      emoji: "🚴",
+      title: "Vervoer",
+      desc: "OVpay, treinen, GVB, fietsen zonder boetes en hoe je check-in/check-out niet verknoeit.",
+      link: "/transporte"
+    },
+    {
+      emoji: "🎨",
+      title: "Wat te Doen",
+      desc: "Musea, grachten, hofjes en wat de moeite waard is zonder een marathon te worden.",
+      link: "/atracoes"
+    },
+    {
+      emoji: "🍽️",
+      title: "Eten & Drinken",
+      desc: "Streetfood die de moeite waard is, goed Indonesisch, bruine kroegen, klassieke valkuilen.",
+      link: "/gastronomia"
+    },
+    {
+      emoji: "🌿",
+      title: "Coffeeshops",
+      desc: "Gedoogbeleid duidelijk uitgelegd, huidige regels, etiquette, edibles zonder problemen.",
+      link: "/coffeeshops"
+    },
+    {
+      emoji: "🚂",
+      title: "Dagtochten",
+      desc: "Zaanse Schans, Haarlem, Utrecht, Rotterdam en fietsroutes gerangschikt op beschikbare tijd.",
+      link: "/arredores"
+    },
+    {
+      emoji: "💸",
+      title: "Geld",
+      desc: "Waar budget ontploft (accommodatie en attracties), waar besparen zonder de reis te missen.",
+      link: "/planejamento#orcamento"
+    },
+    {
+      emoji: "🚨",
+      title: "Ongemakken & Boetes",
+      desc: "Een korte, directe sectie met de meest voorkomende boetes en hoe je geen statistiek wordt.",
+      link: "/transporte#multas"
+    }
+  ] : language === "pt" ? [
     {
       emoji: "📅",
       title: "Planejamento",
@@ -125,12 +180,14 @@ export function GuideSectionsGrid() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection>
             <h2 className="text-3xl lg:text-5xl font-heading font-bold text-center mb-4">
-              {language === "pt" ? "As 9 seções do guia" : "The 9 guide sections"}
+              {language === "nl" ? "De 9 gidssecties" : language === "pt" ? "As 9 seções do guia" : "The 9 guide sections"}
             </h2>
             <p className="text-muted-foreground text-center text-lg mb-10 max-w-2xl mx-auto">
-              {language === "pt" 
-                ? "Tudo que você precisa saber, organizado por tema" 
-                : "Everything you need to know, organized by topic"}
+              {language === "nl" 
+                ? "Alles wat je moet weten, georganiseerd per onderwerp" 
+                : language === "pt" 
+                  ? "Tudo que você precisa saber, organizado por tema" 
+                  : "Everything you need to know, organized by topic"}
             </p>
           </AnimatedSection>
 

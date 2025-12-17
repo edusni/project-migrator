@@ -83,9 +83,11 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="text-xl sm:text-2xl lg:text-3xl text-primary font-semibold mb-6 max-w-4xl mx-auto leading-tight"
         >
-          {language === "pt" 
-            ? "O guia brutalmente honesto para não gastar à toa, não cair em armadilha turística e não tomar multa"
-            : "The brutally honest guide to not waste money, avoid tourist traps and not get fined"}
+          {language === "nl" 
+            ? "De brutaal eerlijke gids om geen geld te verspillen, toeristenvalkuilen te vermijden en geen boetes te krijgen"
+            : language === "pt" 
+              ? "O guia brutalmente honesto para não gastar à toa, não cair em armadilha turística e não tomar multa"
+              : "The brutally honest guide to not waste money, avoid tourist traps and not get fined"}
         </motion.p>
 
         <motion.p 
@@ -94,9 +96,11 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
           className="text-base sm:text-lg lg:text-xl text-primary-foreground/80 max-w-3xl mx-auto mb-10 leading-relaxed"
         >
-          {language === "pt"
-            ? 'Amsterdam em 2026 continua sendo uma cidade incrível, mas está mais "regulada" e mais cara por causa de pressão contra turismo de massa. Se você chega sem plano, você paga caro para ver o básico e ainda corre risco de perrengue bobo.'
-            : 'Amsterdam in 2026 remains an incredible city, but it\'s more "regulated" and expensive due to pressure against mass tourism. If you arrive without a plan, you pay a lot to see the basics and risk silly mishaps.'}
+          {language === "nl"
+            ? 'Amsterdam in 2026 blijft een geweldige stad, maar is meer "gereguleerd" en duurder door druk tegen massatoerisme. Als je zonder plan komt, betaal je veel voor de basis en riskeer je domme ongemakken.'
+            : language === "pt"
+              ? 'Amsterdam em 2026 continua sendo uma cidade incrível, mas está mais "regulada" e mais cara por causa de pressão contra turismo de massa. Se você chega sem plano, você paga caro para ver o básico e ainda corre risco de perrengue bobo.'
+              : 'Amsterdam in 2026 remains an incredible city, but it\'s more "regulated" and expensive due to pressure against mass tourism. If you arrive without a plan, you pay a lot to see the basics and risk silly mishaps.'}
         </motion.p>
 
         <motion.p 
@@ -105,9 +109,11 @@ export function HeroSection() {
           transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="text-lg text-primary-foreground/70 mb-10"
         >
-          {language === "pt"
-            ? "A ideia aqui é simples: te dar decisões práticas antes da viagem e atalhos práticos durante a viagem."
-            : "The idea here is simple: give you practical decisions before the trip and practical shortcuts during the trip."}
+          {language === "nl"
+            ? "Het idee hier is simpel: je praktische beslissingen geven vóór de reis en praktische shortcuts tijdens de reis."
+            : language === "pt"
+              ? "A ideia aqui é simples: te dar decisões práticas antes da viagem e atalhos práticos durante a viagem."
+              : "The idea here is simple: give you practical decisions before the trip and practical shortcuts during the trip."}
         </motion.p>
 
         {/* Animated CTA Button */}
@@ -126,7 +132,7 @@ export function HeroSection() {
                 size="lg" 
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl shadow-glow hover:shadow-xl transition-all duration-300"
               >
-                {language === "pt" ? "Comece a Planejar" : "Start Planning"}
+                {language === "nl" ? "Begin met Plannen" : language === "pt" ? "Comece a Planejar" : "Start Planning"}
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>
