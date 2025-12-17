@@ -17,67 +17,69 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
   const transportOptions = [
     {
       icon: "✈️",
-      title: language === "pt" ? "Aeroporto Schiphol" : "Schiphol Airport",
-      subtitle: language === "pt" ? "~17 MINUTOS de trem do centro!" : "~17 MINUTES by train from center!",
+      title: t("Aeroporto Schiphol", "Schiphol Airport", "Luchthaven Schiphol", language),
+      subtitle: t("~17 MINUTOS de trem do centro!", "~17 MINUTES by train from center!", "~17 MINUTEN met de trein van het centrum!", language),
       options: [
         {
-          name: language === "pt" ? "Trem NS (RECOMENDADO!)" : "NS Train (RECOMMENDED!)",
+          name: t("Trem NS (RECOMENDADO!)", "NS Train (RECOMMENDED!)", "NS Trein (AANBEVOLEN!)", language),
           details: [
-            language === "pt" ? "Destino: Amsterdam Centraal Station" : "Destination: Amsterdam Centraal Station",
-            language === "pt" ? "Tempo: ~17 min direto" : "Time: ~17 min direct",
-            language === "pt" ? "Frequência: A cada 10-15 min (24/7!)" : "Frequency: Every 10-15 min (24/7!)",
-            language === "pt" ? "Preço: a partir de €5,20 (OVpay)" : "Price: from €5.20 (OVpay)",
+            t("Destino: Amsterdam Centraal Station", "Destination: Amsterdam Centraal Station", "Bestemming: Amsterdam Centraal Station", language),
+            t("Tempo: ~17 min direto", "Time: ~17 min direct", "Tijd: ~17 min direct", language),
+            t("Frequência: A cada 10-15 min (24/7!)", "Frequency: Every 10-15 min (24/7!)", "Frequentie: Elke 10-15 min (24/7!)", language),
+            t("Preço: a partir de €5,20 (OVpay)", "Price: from €5.20 (OVpay)", "Prijs: vanaf €5,20 (OVpay)", language),
           ],
-          tip: language === "pt" ? "Baixe app 'NS' para horários em tempo real" : "Download 'NS' app for real-time schedules",
+          tip: t("Baixe app 'NS' para horários em tempo real", "Download 'NS' app for real-time schedules", "Download 'NS' app voor realtime dienstregeling", language),
         },
         {
-          name: language === "pt" ? "Ônibus 397 (Airport Express)" : "Bus 397 (Airport Express)",
+          name: t("Ônibus 397 (Airport Express)", "Bus 397 (Airport Express)", "Bus 397 (Airport Express)", language),
           details: [
-            language === "pt" ? "Para: Museumplein, Leidseplein, Zuid, RAI" : "To: Museumplein, Leidseplein, Zuid, RAI",
-            language === "pt" ? "Tempo: 30-40 min" : "Time: 30-40 min",
-            language === "pt" ? "Preço 2026: €6,50 ida / €11,75 ida e volta" : "Price 2026: €6.50 one-way / €11.75 round-trip",
-            language === "pt" ? "⚠️ Sem dinheiro vivo no ônibus!" : "⚠️ No cash on the bus!",
+            t("Para: Museumplein, Leidseplein, Zuid, RAI", "To: Museumplein, Leidseplein, Zuid, RAI", "Naar: Museumplein, Leidseplein, Zuid, RAI", language),
+            t("Tempo: 30-40 min", "Time: 30-40 min", "Tijd: 30-40 min", language),
+            t("Preço 2026: €6,50 ida / €11,75 ida e volta", "Price 2026: €6.50 one-way / €11.75 round-trip", "Prijs 2026: €6,50 enkele reis / €11,75 retour", language),
+            t("⚠️ Sem dinheiro vivo no ônibus!", "⚠️ No cash on the bus!", "⚠️ Geen contant geld in de bus!", language),
           ],
         },
         {
-          name: language === "pt" ? "Táxi/Uber" : "Taxi/Uber",
+          name: t("Táxi/Uber", "Taxi/Uber", "Taxi/Uber", language),
           details: [
-            language === "pt" ? "Preço fixo: €40-55 para centro (30-45 min)" : "Fixed price: €40-55 to center (30-45 min)",
-            language === "pt" ? "Vale para: Grupo de 3-4 pessoas com bagagem" : "Worth it for: Group of 3-4 with luggage",
+            t("Preço fixo: €40-55 para centro (30-45 min)", "Fixed price: €40-55 to center (30-45 min)", "Vaste prijs: €40-55 naar centrum (30-45 min)", language),
+            t("Vale para: Grupo de 3-4 pessoas com bagagem", "Worth it for: Group of 3-4 with luggage", "Waardevol voor: Groep van 3-4 met bagage", language),
           ],
         },
       ],
-      warning: language === "pt" 
-        ? "NÃO RECOMENDO aluguel de carro para Amsterdam! Estacionamento CARO (€5-7/hora), trânsito difícil."
-        : "DO NOT RECOMMEND car rental for Amsterdam! Parking EXPENSIVE (€5-7/hour), difficult traffic.",
+      warning: t(
+        "NÃO RECOMENDO aluguel de carro para Amsterdam! Estacionamento CARO (€5-7/hora), trânsito difícil.",
+        "DO NOT RECOMMEND car rental for Amsterdam! Parking EXPENSIVE (€5-7/hour), difficult traffic.",
+        "NIET AANBEVOLEN auto huren voor Amsterdam! Parkeren DUUR (€5-7/uur), moeilijk verkeer."
+      , language),
     },
     {
       icon: "🚄",
-      title: language === "pt" ? "Trens Internacionais" : "International Trains",
+      title: t("Trens Internacionais", "International Trains", "Internationale Treinen", language),
       connections: [
         "Thalys/Eurostar: Paris (3h20), Bruxelas (2h), Londres (4h)",
         "ICE: Berlim (6h20), Frankfurt (4h)",
-        language === "pt" ? "NS International: Toda a Holanda + Bélgica" : "NS International: All of Netherlands + Belgium",
+        t("NS International: Toda a Holanda + Bélgica", "NS International: All of Netherlands + Belgium", "NS International: Heel Nederland + België", language),
       ],
       tips: [
-        language === "pt" ? "Reserve com 2-3 meses de antecedência" : "Book 2-3 months in advance",
-        language === "pt" ? "Use Omio, Trainline ou NS International para comparar" : "Use Omio, Trainline or NS International to compare",
-        language === "pt" ? "Thalys/Eurostar = preços dinâmicos (como avião)" : "Thalys/Eurostar = dynamic pricing (like flights)",
+        t("Reserve com 2-3 meses de antecedência", "Book 2-3 months in advance", "Boek 2-3 maanden van tevoren", language),
+        t("Use Omio, Trainline ou NS International para comparar", "Use Omio, Trainline or NS International to compare", "Gebruik Omio, Trainline of NS International om te vergelijken", language),
+        t("Thalys/Eurostar = preços dinâmicos (como avião)", "Thalys/Eurostar = dynamic pricing (like flights)", "Thalys/Eurostar = dynamische prijzen (zoals vluchten)", language),
       ],
     },
     {
       icon: "🚌",
-      title: language === "pt" ? "Ônibus (Opção Econômica)" : "Bus (Budget Option)",
+      title: t("Ônibus (Opção Econômica)", "Bus (Budget Option)", "Bus (Budgetoptie)", language),
       operators: ["FlixBus", "Eurolines", "BlaBlaBus"],
       pros: [
-        language === "pt" ? "BARATO (€10-30)" : "CHEAP (€10-30)",
-        language === "pt" ? "WiFi e tomadas" : "WiFi and outlets",
-        language === "pt" ? "Bagagem incluída" : "Luggage included",
+        t("BARATO (€10-30)", "CHEAP (€10-30)", "GOEDKOOP (€10-30)", language),
+        t("WiFi e tomadas", "WiFi and outlets", "WiFi en stopcontacten", language),
+        t("Bagagem incluída", "Luggage included", "Bagage inbegrepen", language),
       ],
       cons: [
-        language === "pt" ? "LENTO (2-3× mais tempo)" : "SLOW (2-3× longer)",
-        language === "pt" ? "Menos confortável" : "Less comfortable",
-        language === "pt" ? "Pode atrasar" : "May be delayed",
+        t("LENTO (2-3× mais tempo)", "SLOW (2-3× longer)", "LANGZAAM (2-3× langer)", language),
+        t("Menos confortável", "Less comfortable", "Minder comfortabel", language),
+        t("Pode atrasar", "May be delayed", "Kan vertraging hebben", language),
       ],
     },
   ];
@@ -87,10 +89,10 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
       <div className="container max-w-7xl">
         <AnimateOnScroll>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-center mb-4 lg:mb-6">
-            ✈️ {language === "pt" ? "Como Chegar e Locomover" : "How to Get There & Around"}
+            ✈️ {t("Como Chegar e Locomover", "How to Get There & Around", "Hoe Te Komen en Rond Te Reizen", language)}
           </h2>
           <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-base lg:text-lg">
-            {language === "pt" ? "Sem errar no básico" : "Without messing up the basics"}
+            {t("Sem errar no básico", "Without messing up the basics", "Zonder de basis te verprutsen", language)}
           </p>
         </AnimateOnScroll>
         
@@ -141,9 +143,9 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
                     ))}
                   </div>
                   <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-lg">
-                    <p className="text-sm lg:text-base font-medium mb-2">💡 {language === "pt" ? "Dicas:" : "Tips:"}</p>
-                    {transportOptions[1].tips?.map((t, i) => (
-                      <p key={i} className="text-sm lg:text-base text-muted-foreground">• {t}</p>
+                    <p className="text-sm lg:text-base font-medium mb-2">💡 {t("Dicas:", "Tips:", "Tips:", language)}</p>
+                    {transportOptions[1].tips?.map((tip, i) => (
+                      <p key={i} className="text-sm lg:text-base text-muted-foreground">• {tip}</p>
                     ))}
                   </div>
                 </CardContent>
@@ -182,28 +184,34 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
             <CardContent className="p-6 lg:p-8">
               <div className="flex items-center gap-3 mb-5">
                 <Smartphone className="w-6 h-6 lg:w-8 lg:h-8 text-amsterdam-blue" />
-                <h3 className="font-bold text-lg lg:text-xl">{language === "pt" ? "Transporte DENTRO de Amsterdam (2026)" : "Transport WITHIN Amsterdam (2026)"}</h3>
+                <h3 className="font-bold text-lg lg:text-xl">{t("Transporte DENTRO de Amsterdam (2026)", "Transport WITHIN Amsterdam (2026)", "Vervoer BINNEN Amsterdam (2026)", language)}</h3>
               </div>
               <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
                 <div>
                   <h4 className="font-bold mb-3 text-base lg:text-lg">📱 OVpay</h4>
                   <p className="text-sm lg:text-base text-muted-foreground">
-                    {language === "pt" 
-                      ? "O padrão em 2026: encosta cartão/celular para entrar e sair (check-in/check-out). Reduz atrito e evita comprar bilhete."
-                      : "The 2026 standard: tap card/phone to enter and exit (check-in/check-out). Reduces friction and avoids buying tickets."}
+                    {t(
+                      "O padrão em 2026: encosta cartão/celular para entrar e sair (check-in/check-out). Reduz atrito e evita comprar bilhete.",
+                      "The 2026 standard: tap card/phone to enter and exit (check-in/check-out). Reduces friction and avoids buying tickets.",
+                      "De standaard in 2026: tik kaart/telefoon om in en uit te checken. Vermindert gedoe en voorkomt kaartjes kopen."
+                    , language)}
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-bold mb-3 text-base lg:text-lg">💰 {language === "pt" ? "Cuidado com o Custo" : "Watch the Cost"}</h4>
+                  <h4 className="font-bold mb-3 text-base lg:text-lg">💰 {t("Cuidado com o Custo", "Watch the Cost", "Let op de Kosten", language)}</h4>
                   <p className="text-sm lg:text-base text-muted-foreground mb-3">
-                    {language === "pt" 
-                      ? "Passe diário GVB 2026: €20 (1 dia). Se você anda bem a pé, caminhar economiza MUITO."
-                      : "GVB day pass 2026: €20 (1 day). If you walk well, walking saves A LOT."}
+                    {t(
+                      "Passe diário GVB 2026: €20 (1 dia). Se você anda bem a pé, caminhar economiza MUITO.",
+                      "GVB day pass 2026: €20 (1 day). If you walk well, walking saves A LOT.",
+                      "GVB dagkaart 2026: €20 (1 dag). Als je goed kunt lopen, bespaar je VEEL door te wandelen."
+                    , language)}
                   </p>
                   <p className="text-sm lg:text-base font-medium text-green-700 dark:text-green-400">
-                    👶 {language === "pt" 
-                      ? "Crianças 4-11: transporte GRÁTIS com adulto até 3 jan 2027!"
-                      : "Kids 4-11: FREE transport with adult until Jan 3 2027!"}
+                    👶 {t(
+                      "Crianças 4-11: transporte GRÁTIS com adulto até 3 jan 2027!",
+                      "Kids 4-11: FREE transport with adult until Jan 3 2027!",
+                      "Kinderen 4-11: GRATIS vervoer met volwassene t/m 3 jan 2027!"
+                    , language)}
                   </p>
                 </div>
               </div>

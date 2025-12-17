@@ -16,50 +16,50 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
   const itineraries = [
     {
       icon: "⚡",
-      name: language === "pt" ? "'A Conexão' - 1 Dia" : "'The Connection' - 1 Day",
-      subtitle: language === "pt" ? "Para quem tem pouco tempo" : "For those with little time",
+      name: t("'A Conexão' - 1 Dia", "'The Connection' - 1 Day", "'De Connectie' - 1 Dag", language),
+      subtitle: t("Para quem tem pouco tempo", "For those with little time", "Voor wie weinig tijd heeft", language),
       schedule: [
         { 
-          period: language === "pt" ? "Manhã" : "Morning", 
+          period: t("Manhã", "Morning", "Ochtend", language), 
           items: [
             "Trem para Centraal",
-            language === "pt" ? "Passeio de Barco (1h)" : "Boat Tour (1h)",
+            t("Passeio de Barco (1h)", "Boat Tour (1h)", "Rondvaart (1u)", language),
             "Praça Dam",
           ]
         },
         { 
-          period: language === "pt" ? "Tarde" : "Afternoon", 
+          period: t("Tarde", "Afternoon", "Middag", language), 
           items: [
-            language === "pt" ? "Almoço no Jordaan" : "Lunch in Jordaan",
-            language === "pt" ? "Casa de Anne Frank" : "Anne Frank House",
-            language === "pt" ? "9 Ruas" : "9 Streets",
-            language === "pt" ? "De Wallen (Luz Vermelha)" : "De Wallen (Red Light)",
+            t("Almoço no Jordaan", "Lunch in Jordaan", "Lunch in de Jordaan", language),
+            t("Casa de Anne Frank", "Anne Frank House", "Anne Frank Huis", language),
+            t("9 Ruas", "9 Streets", "9 Straatjes", language),
+            t("De Wallen (Luz Vermelha)", "De Wallen (Red Light)", "De Wallen (Rosse Buurt)", language),
           ]
         },
         { 
-          period: language === "pt" ? "Noite" : "Evening", 
+          period: t("Noite", "Evening", "Avond", language), 
           items: [
-            language === "pt" ? "Jantar rápido e volta ao aeroporto" : "Quick dinner and back to airport",
+            t("Jantar rápido e volta ao aeroporto", "Quick dinner and back to airport", "Snel diner en terug naar luchthaven", language),
           ]
         },
       ],
     },
     {
       icon: "⭐",
-      name: language === "pt" ? "'O Essencial' - 3 Dias" : "'The Essential' - 3 Days",
-      subtitle: language === "pt" ? "O roteiro completo" : "The complete itinerary",
+      name: t("'O Essencial' - 3 Dias", "'The Essential' - 3 Days", "'De Essentie' - 3 Dagen", language),
+      subtitle: t("O roteiro completo", "The complete itinerary", "De complete route", language),
       days: [
         {
-          day: language === "pt" ? "Dia 1: História" : "Day 1: History",
-          items: ["Praça Dam", "Begijnhof", language === "pt" ? "Casa de Anne Frank" : "Anne Frank House", language === "pt" ? "Passeio de Barco Noturno" : "Night Boat Tour"],
+          day: t("Dia 1: História", "Day 1: History", "Dag 1: Geschiedenis", language),
+          items: ["Praça Dam", "Begijnhof", t("Casa de Anne Frank", "Anne Frank House", "Anne Frank Huis", language), t("Passeio de Barco Noturno", "Night Boat Tour", "Avond Rondvaart", language)],
         },
         {
-          day: language === "pt" ? "Dia 2: Arte" : "Day 2: Art",
-          items: [language === "pt" ? "Rijksmuseum (manhã)" : "Rijksmuseum (morning)", language === "pt" ? "Van Gogh Museum (tarde)" : "Van Gogh Museum (afternoon)", "Vondelpark", language === "pt" ? "De Pijp (jantar)" : "De Pijp (dinner)"],
+          day: t("Dia 2: Arte", "Day 2: Art", "Dag 2: Kunst", language),
+          items: [t("Rijksmuseum (manhã)", "Rijksmuseum (morning)", "Rijksmuseum (ochtend)", language), t("Van Gogh Museum (tarde)", "Van Gogh Museum (afternoon)", "Van Gogh Museum (middag)", language), "Vondelpark", t("De Pijp (jantar)", "De Pijp (dinner)", "De Pijp (diner)", language)],
         },
         {
-          day: language === "pt" ? "Dia 3: Cultura" : "Day 3: Culture",
-          items: ["Mercado Albert Cuyp", "Heineken Experience", language === "pt" ? "Balsa para Noord" : "Ferry to Noord", "A'DAM Lookout"],
+          day: t("Dia 3: Cultura", "Day 3: Culture", "Dag 3: Cultuur", language),
+          items: ["Mercado Albert Cuyp", "Heineken Experience", t("Balsa para Noord", "Ferry to Noord", "Veer naar Noord", language), "A'DAM Lookout"],
         },
       ],
     },
@@ -68,22 +68,22 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
   const thematicItineraries = [
     { 
       icon: Baby, 
-      name: language === "pt" ? "Com Crianças" : "With Kids", 
+      name: t("Com Crianças", "With Kids", "Met Kinderen", language), 
       items: ["NEMO Science", "ARTIS Zoo", "Vondelpark"] 
     },
     { 
       icon: Heart, 
-      name: language === "pt" ? "Romântico" : "Romantic", 
-      items: ["Magere Brug", language === "pt" ? "Barco noturno" : "Night boat", language === "pt" ? "Jantar 9 Ruas" : "9 Streets dinner"] 
+      name: t("Romântico", "Romantic", "Romantisch", language), 
+      items: ["Magere Brug", t("Barco noturno", "Night boat", "Avondboot", language), t("Jantar 9 Ruas", "9 Streets dinner", "Diner 9 Straatjes", language)] 
     },
     { 
       icon: Users, 
-      name: language === "pt" ? "2ª Guerra" : "WWII", 
-      items: ["Anne Frank", language === "pt" ? "Bairro Judeu" : "Jewish Quarter", language === "pt" ? "Museu Resistência" : "Resistance Museum"] 
+      name: t("2ª Guerra", "WWII", "WOII", language), 
+      items: ["Anne Frank", t("Bairro Judeu", "Jewish Quarter", "Joodse Wijk", language), t("Museu Resistência", "Resistance Museum", "Verzetsmuseum", language)] 
     },
     { 
       icon: Palette, 
-      name: language === "pt" ? "Arte" : "Art", 
+      name: t("Arte", "Art", "Kunst", language), 
       items: ["Rijksmuseum", "Van Gogh", "Stedelijk", "Moco"] 
     },
   ];
@@ -92,10 +92,10 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
     <section className="section-spacing bg-muted/30">
       <div className="container max-w-7xl">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-center mb-4 lg:mb-6">
-          🗺️ {language === "pt" ? "Roteiros (Sem Perrengue)" : "Itineraries (No Hassle)"}
+          🗺️ {t("Roteiros (Sem Perrengue)", "Itineraries (No Hassle)", "Routes (Zonder Gedoe)", language)}
         </h2>
         <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto text-base lg:text-lg">
-          {language === "pt" ? "Planos testados para 1, 3 ou mais dias" : "Tested plans for 1, 3 or more days"}
+          {t("Planos testados para 1, 3 ou mais dias", "Tested plans for 1, 3 or more days", "Geteste plannen voor 1, 3 of meer dagen", language)}
         </p>
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto mb-14">
@@ -143,7 +143,7 @@ export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
         </div>
 
         {/* Thematic */}
-        <h3 className="text-xl lg:text-2xl font-bold text-center mb-8">🎯 {language === "pt" ? "Roteiros Temáticos" : "Thematic Itineraries"}</h3>
+        <h3 className="text-xl lg:text-2xl font-bold text-center mb-8">🎯 {t("Roteiros Temáticos", "Thematic Itineraries", "Thematische Routes", language)}</h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 max-w-6xl mx-auto">
           {thematicItineraries.map((it) => (
             <Card key={it.name}>
