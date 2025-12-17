@@ -11,44 +11,60 @@ interface GoldenRule {
   description: string;
 }
 
+const t = (pt: string, en: string, nl: string, language: string) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 export function GoldenRulesSection() {
   const { language } = useLanguage();
 
   const goldenRules: GoldenRule[] = [
     {
       icon: Calculator,
-      title: language === "pt" ? "Compare o preço FINAL" : "Compare the FINAL price",
-      description: language === "pt" 
-        ? "Diária + VAT 21% + imposto turístico 12,5% + taxas do site. Não se engane com o preço base." 
-        : "Rate + VAT 21% + tourist tax 12.5% + site fees. Don't be fooled by the base price."
+      title: t("Compare o preço FINAL", "Compare the FINAL price", "Vergelijk de EINDPRIJS", language),
+      description: t(
+        "Diária + VAT 21% + imposto turístico 12,5% + taxas do site. Não se engane com o preço base.",
+        "Rate + VAT 21% + tourist tax 12.5% + site fees. Don't be fooled by the base price.",
+        "Tarief + BTW 21% + toeristenbelasting 12,5% + sitekosten. Laat je niet misleiden door de basisprijs."
+      , language)
     },
     {
       icon: AlertTriangle,
-      title: language === "pt" ? "Desconfie de preços muito baixos" : "Beware of very low prices",
-      description: language === "pt" 
-        ? "Em apartamento no Centro/De Pijp, preço muito abaixo do mercado pode indicar anúncio irregular. Em 2026 a fiscalização é mais rígida." 
-        : "For apartments in Center/De Pijp, prices well below market may indicate irregular listings. In 2026 enforcement is stricter."
+      title: t("Desconfie de preços muito baixos", "Beware of very low prices", "Wees voorzichtig met zeer lage prijzen", language),
+      description: t(
+        "Em apartamento no Centro/De Pijp, preço muito abaixo do mercado pode indicar anúncio irregular. Em 2026 a fiscalização é mais rígida.",
+        "For apartments in Center/De Pijp, prices well below market may indicate irregular listings. In 2026 enforcement is stricter.",
+        "Voor appartementen in Centrum/De Pijp kunnen prijzen ver onder de markt onregelmatige advertenties aangeven. In 2026 is handhaving strenger."
+      , language)
     },
     {
       icon: Train,
-      title: language === "pt" ? "Priorize transporte" : "Prioritize transport",
-      description: language === "pt" 
-        ? "Estar a poucos minutos de metrô/trem costuma valer mais do que 'estar no centro' e pagar caro." 
-        : "Being a few minutes from metro/train is usually worth more than 'being in the center' and paying a lot."
+      title: t("Priorize transporte", "Prioritize transport", "Prioriteer vervoer", language),
+      description: t(
+        "Estar a poucos minutos de metrô/trem costuma valer mais do que 'estar no centro' e pagar caro.",
+        "Being a few minutes from metro/train is usually worth more than 'being in the center' and paying a lot.",
+        "Een paar minuten van metro/trein zijn is meestal meer waard dan 'in het centrum zijn' en veel betalen."
+      , language)
     },
     {
       icon: VolumeX,
-      title: language === "pt" ? "Se você dorme leve..." : "If you're a light sleeper...",
-      description: language === "pt" 
-        ? "Evite miolo do Centrum e escolha ruas residenciais (Plantage, partes de Oost/West, Rivierenbuurt, Watergraafsmeer)." 
-        : "Avoid core of Centrum and choose residential streets (Plantage, parts of Oost/West, Rivierenbuurt, Watergraafsmeer)."
+      title: t("Se você dorme leve...", "If you're a light sleeper...", "Als je een lichte slaper bent...", language),
+      description: t(
+        "Evite miolo do Centrum e escolha ruas residenciais (Plantage, partes de Oost/West, Rivierenbuurt, Watergraafsmeer).",
+        "Avoid core of Centrum and choose residential streets (Plantage, parts of Oost/West, Rivierenbuurt, Watergraafsmeer).",
+        "Vermijd de kern van Centrum en kies residentiële straten (Plantage, delen van Oost/West, Rivierenbuurt, Watergraafsmeer)."
+      , language)
     },
     {
       icon: Clock,
-      title: language === "pt" ? "Chegada/saída cedo?" : "Early arrival/departure?",
-      description: language === "pt" 
-        ? "Se seu voo é cedo, fique perto de uma estação com conexão fácil. Trem Schiphol–Centraal é muito frequente (~17 min)." 
-        : "If your flight is early, stay near a station with easy connection. Schiphol–Centraal train is very frequent (~17 min)."
+      title: t("Chegada/saída cedo?", "Early arrival/departure?", "Vroege aankomst/vertrek?", language),
+      description: t(
+        "Se seu voo é cedo, fique perto de uma estação com conexão fácil. Trem Schiphol–Centraal é muito frequente (~17 min).",
+        "If your flight is early, stay near a station with easy connection. Schiphol–Centraal train is very frequent (~17 min).",
+        "Als je vlucht vroeg is, verblijf dicht bij een station met makkelijke verbinding. Trein Schiphol–Centraal is zeer frequent (~17 min)."
+      , language)
     },
   ];
 
@@ -58,12 +74,14 @@ export function GoldenRulesSection() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <AnimatedSection>
             <h2 className="text-3xl lg:text-5xl font-heading font-bold text-center mb-6">
-              ✨ {language === "pt" ? "Regras de Ouro Para Reservar em 2026" : "Golden Rules for Booking in 2026"}
+              ✨ {t("Regras de Ouro Para Reservar em 2026", "Golden Rules for Booking in 2026", "Gouden Regels voor Boeken in 2026", language)}
             </h2>
             <p className="text-center text-lg lg:text-xl text-muted-foreground mb-10">
-              {language === "pt" 
-                ? "Siga essas dicas para não cair em armadilhas" 
-                : "Follow these tips to avoid traps"}
+              {t(
+                "Siga essas dicas para não cair em armadilhas",
+                "Follow these tips to avoid traps",
+                "Volg deze tips om valkuilen te vermijden"
+              , language)}
             </p>
           </AnimatedSection>
 

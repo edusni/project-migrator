@@ -4,6 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { useLanguage } from "@/hooks/useLanguage";
 import { AnimatedSection } from "@/components/ui/animated-section";
 
+const t = (pt: string, en: string, nl: string, language: string) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 interface Neighborhood {
   name: string;
   forWho: string;
@@ -261,15 +267,17 @@ export function DistrictsSection() {
       <div className="container">
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-heading font-bold text-center mb-6">
-            🗺️ {language === "pt" ? "Todos os Bairros de Amsterdam" : "All Amsterdam Neighborhoods"}
+            🗺️ {t("Todos os Bairros de Amsterdam", "All Amsterdam Neighborhoods", "Alle Amsterdamse Wijken", language)}
           </h2>
           <p className="text-center text-lg lg:text-xl text-muted-foreground mb-4 max-w-4xl mx-auto">
-            {language === "pt" 
-              ? "Amsterdam é organizada em 7 stadsdelen (distritos) + Weesp. Aqui estão os bairros mais úteis para hospedagem em cada um." 
-              : "Amsterdam is organized in 7 stadsdelen (districts) + Weesp. Here are the most useful neighborhoods for accommodation in each."}
+            {t(
+              "Amsterdam é organizada em 7 stadsdelen (distritos) + Weesp. Aqui estão os bairros mais úteis para hospedagem em cada um.",
+              "Amsterdam is organized in 7 stadsdelen (districts) + Weesp. Here are the most useful neighborhoods for accommodation in each.",
+              "Amsterdam is georganiseerd in 7 stadsdelen + Weesp. Hier zijn de nuttigste wijken voor accommodatie in elk."
+            , language)}
           </p>
           <p className="text-center text-sm lg:text-base text-muted-foreground mb-10">
-            {language === "pt" ? "Fonte: Amsterdam.nl (organização municipal oficial)" : "Source: Amsterdam.nl (official municipal organization)"}
+            {t("Fonte: Amsterdam.nl (organização municipal oficial)", "Source: Amsterdam.nl (official municipal organization)", "Bron: Amsterdam.nl (officiële gemeentelijke organisatie)", language)}
           </p>
 
           <div className="space-y-8 lg:space-y-12">
@@ -298,14 +306,14 @@ export function DistrictsSection() {
                             <div>
                               <span className="font-medium text-green-700 dark:text-green-400 flex items-center gap-2 text-base lg:text-lg">
                                 <CheckCircle2 className="w-4 h-4 lg:w-5 lg:h-5" />
-                                {language === "pt" ? "Para quem?" : "For whom?"}
+                                {t("Para quem?", "For whom?", "Voor wie?", language)}
                               </span>
                               <p className="text-muted-foreground mt-1 text-base lg:text-lg">{neighborhood.forWho}</p>
                             </div>
                             <div>
                               <span className="font-medium text-amber-700 dark:text-amber-400 flex items-center gap-2 text-base lg:text-lg">
                                 <Info className="w-4 h-4 lg:w-5 lg:h-5" />
-                                {language === "pt" ? "Atenção" : "Attention"}
+                                {t("Atenção", "Attention", "Let op", language)}
                               </span>
                               <p className="text-muted-foreground mt-1 text-base lg:text-lg">{neighborhood.attention}</p>
                             </div>
