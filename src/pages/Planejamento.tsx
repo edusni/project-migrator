@@ -20,13 +20,19 @@ import oosterparkImg from "@/assets/oosterpark-summer.jpg";
 const Planejamento = () => {
   const { language } = useLanguage();
 
+  const t = (pt: string, en: string, nl: string) => {
+    if (language === "nl") return nl;
+    if (language === "en") return en;
+    return pt;
+  };
+
   const sections = [
-    { id: "costs", icon: "💰", label: language === "pt" ? "Custos 2026" : "2026 Costs" },
-    { id: "seasons", icon: "📅", label: language === "pt" ? "Quando Ir" : "When to Go" },
-    { id: "transport", icon: "✈️", label: language === "pt" ? "Como Chegar" : "How to Get" },
-    { id: "documents", icon: "📄", label: language === "pt" ? "Documentos" : "Documents" },
-    { id: "budget", icon: "💳", label: language === "pt" ? "Orçamento" : "Budget" },
-    { id: "itineraries", icon: "🗺️", label: language === "pt" ? "Roteiros" : "Itineraries" },
+    { id: "costs", icon: "💰", label: t("Custos 2026", "2026 Costs", "Kosten 2026") },
+    { id: "seasons", icon: "📅", label: t("Quando Ir", "When to Go", "Wanneer Gaan") },
+    { id: "transport", icon: "✈️", label: t("Como Chegar", "How to Get", "Hoe Komen") },
+    { id: "documents", icon: "📄", label: t("Documentos", "Documents", "Documenten") },
+    { id: "budget", icon: "💳", label: t("Orçamento", "Budget", "Budget") },
+    { id: "itineraries", icon: "🗺️", label: t("Roteiros", "Itineraries", "Routes") },
     { id: "citycard", icon: "🎫", label: "City Card" },
   ];
 
@@ -75,15 +81,17 @@ const Planejamento = () => {
         type="article"
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
-          { name: language === "pt" ? "Planejamento" : "Planning", url: "https://amsterdu.com/planejamento" }
+          { name: t("Planejamento", "Planning", "Planning"), url: "https://amsterdu.com/planejamento" }
         ]}
       />
       <PageHero
         icon={Calendar}
-        title={language === "pt" ? "Planejando Amsterdam 2026" : "Planning Amsterdam 2026"}
-        description={language === "pt" 
-          ? "O Guia Atualizado (Impostos, Regras e Custos Reais)" 
-          : "The Updated Guide (Taxes, Rules & Real Costs)"}
+        title={t("Planejando Amsterdam 2026", "Planning Amsterdam 2026", "Amsterdam Plannen 2026")}
+        description={t(
+          "O Guia Atualizado (Impostos, Regras e Custos Reais)", 
+          "The Updated Guide (Taxes, Rules & Real Costs)",
+          "De Bijgewerkte Gids (Belastingen, Regels & Echte Kosten)"
+        )}
         backgroundImage={oosterparkImg}
       />
 

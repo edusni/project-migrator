@@ -3,6 +3,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { useLanguage } from "@/hooks/useLanguage";
 
+const t = (pt: string, en: string, nl: string, language: string) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 export function TransportTabsSection() {
   const { language } = useLanguage();
 
@@ -11,7 +17,7 @@ export function TransportTabsSection() {
       <div className="container">
         <div className="max-w-7xl mx-auto px-4 lg:px-8 space-y-16 md:space-y-24">
           <h2 className="text-3xl lg:text-5xl font-heading font-bold text-center mb-12">
-            🚌 {language === "pt" ? "Meios de Transporte" : "Transport Options"}
+            🚌 {t("Meios de Transporte", "Transport Options", "Vervoersmiddelen", language)}
           </h2>
 
           {/* Section 1: OVpay */}

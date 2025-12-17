@@ -18,7 +18,22 @@ const Transporte = () => {
   const { language } = useLanguage();
   const seo = seoData.transporte[language];
 
-  const faqItems = language === "pt" ? [
+  const t = (pt: string, en: string, nl: string) => {
+    if (language === "nl") return nl;
+    if (language === "en") return en;
+    return pt;
+  };
+
+  const faqItems = language === "nl" ? [
+    { question: "Hoe reis je door Amsterdam zonder problemen?", answer: "Beste combo voor toeristen: lopen + tram/metro als je moe bent + veerboten om het IJ over te steken. Voorspelbaarheid zonder auto-afhankelijkheid." },
+    { question: "Hoeveel kost openbaar vervoer in Amsterdam in 2026?", answer: "GVB Dagkaart 24u €10. GVB Max (dagelijkse limiet met OVpay): €10,50/dag sinds januari 2026." },
+    { question: "Wat is OVpay en hoe werkt het?", answer: "OVpay is betalen voor vervoer met contactloze kaart: tik om in te checken en tik opnieuw om uit te checken. Eén kaart = één persoon." },
+    { question: "Wat gebeurt er als ik vergeet uit te checken?", answer: "Je betaalt correctietarief: meestal €20 bij treinen (NS) en €4 bij andere modaliteiten. Met OVpay kun je het in de geschiedenis aanpassen." },
+    { question: "Is het Amsterdam Travel Ticket de moeite waard?", answer: "De moeite waard als je Schiphol + stadsvervoer in één pakket wilt. Prijzen 2026: 1 dag €20 | 2 dagen €27 | 3 dagen €34." },
+    { question: "Hoe kom je van Schiphol naar het centrum?", answer: "Trein (NS) naar Amsterdam Centraal: ~17 min, vanaf €5,20. Meest efficiënte manier." },
+    { question: "Zijn de veerboten echt gratis?", answer: "Ja! De GVB-veerboten die het IJ oversteken zijn gratis. Geen inchecken of ticket nodig." },
+    { question: "Is het veilig om een fiets te huren in Amsterdam?", answer: "Veilig als je al goed fietst in stadsverkeer. Fietspaden werken als 'snelwegen' met intens verkeer." }
+  ] : language === "pt" ? [
     { question: "Como se locomover em Amsterdam sem se complicar?", answer: "O combo ideal para turista é: caminhar + tram/metrô quando cansar + ferries para cruzar o IJ. Previsibilidade sem depender de carro." },
     { question: "Quanto custa o transporte público em Amsterdam em 2026?", answer: "GVB Day Ticket 24h €10. GVB Max (teto diário com OVpay): €10,50/dia desde janeiro 2026." },
     { question: "O que é OVpay e como funciona?", answer: "OVpay é pagar transporte com cartão contactless: encosta para check-in e encosta de novo para check-out. Um cartão = uma pessoa." },
@@ -48,13 +63,13 @@ const Transporte = () => {
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
-          { name: language === "pt" ? "Transporte" : "Transport", url: "https://amsterdu.com/transporte" }
+          { name: t("Transporte", "Transport", "Vervoer"), url: "https://amsterdu.com/transporte" }
         ]}
       />
       <PageHero 
         icon={Train} 
-        title={language === "pt" ? "Como se Locomover em Amsterdam (2026)" : "Getting Around Amsterdam (2026)"} 
-        description={language === "pt" ? "O guia para não se perder, não levar multa e não ser atropelado" : "The guide to not get lost, fined, or run over"}
+        title={t("Como se Locomover em Amsterdam (2026)", "Getting Around Amsterdam (2026)", "Vervoer in Amsterdam (2026)")} 
+        description={t("O guia para não se perder, não levar multa e não ser atropelado", "The guide to not get lost, fined, or run over", "De gids om niet te verdwalen, geen boete te krijgen en niet aangereden te worden")}
         backgroundImage={amsterdamBikesImg}
       />
 
