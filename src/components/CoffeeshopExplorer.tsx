@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Search, DollarSign, AlertTriangle } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
-import { coffeeshops, neighborhoods, neighborhoodDescriptions, profiles, type Coffeeshop } from "@/data/coffeeshops";
+import { coffeeshops, neighborhoods, neighborhoodDescriptions, profiles, tagTranslations, type Coffeeshop } from "@/data/coffeeshops";
 
 const CoffeeshopExplorer = () => {
   const { language } = useLanguage();
@@ -226,7 +226,7 @@ const CoffeeshopExplorer = () => {
                         </Badge>
                         {shop.tags.slice(0, 2).map((tag) => (
                           <Badge key={tag} variant="secondary" className="text-xs">
-                            {tag}
+                            {tagTranslations[tag]?.[getLangKey()] || tag}
                           </Badge>
                         ))}
                       </div>

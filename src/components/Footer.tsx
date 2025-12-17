@@ -68,7 +68,9 @@ export function Footer() {
               </span>
             </Link>
             <p className="text-secondary-foreground/70 text-sm mb-4">
-              {language === "pt" 
+              {language === "nl"
+                ? "De brutaal eerlijke Amsterdam-gids. Geen filter, geen onzin."
+                : language === "pt" 
                 ? "O guia brutalmente honesto de Amsterdam. Sem filtro, sem jabá."
                 : "The brutally honest Amsterdam guide. No filter, no BS."
               }
@@ -92,7 +94,7 @@ export function Footer() {
           {/* Explore */}
           <motion.div variants={itemVariants}>
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
-              {language === "pt" ? "Explorar" : "Explore"}
+              {language === "nl" ? "Ontdekken" : language === "pt" ? "Explorar" : "Explore"}
             </h3>
             <ul className="space-y-1.5 sm:space-y-2">
               {footerLinks.explore.map((link) => (
@@ -111,7 +113,7 @@ export function Footer() {
           {/* Experience */}
           <motion.div variants={itemVariants}>
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
-              {language === "pt" ? "Experiências" : "Experience"}
+              {language === "nl" ? "Beleving" : language === "pt" ? "Experiências" : "Experience"}
             </h3>
             <ul className="space-y-1.5 sm:space-y-2">
               {footerLinks.experience.map((link) => (
@@ -130,7 +132,7 @@ export function Footer() {
           {/* About */}
           <motion.div variants={itemVariants} className="col-span-2 sm:col-span-1">
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
-              {language === "pt" ? "Sobre" : "About"}
+              {language === "nl" ? "Over" : language === "pt" ? "Sobre" : "About"}
             </h3>
             <ul className="space-y-1.5 sm:space-y-2">
               {footerLinks.about.map((link) => (

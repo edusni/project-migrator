@@ -53,13 +53,15 @@ export function Newsletter() {
               
               <AnimatedSection delay={0.2}>
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  {language === "pt" ? "Receba novidades toda semana" : "Get weekly updates"}
+                  {language === "nl" ? "Ontvang wekelijkse updates" : language === "pt" ? "Receba novidades toda semana" : "Get weekly updates"}
                 </h2>
               </AnimatedSection>
               
               <AnimatedSection delay={0.3}>
                 <p className="text-white/80 mb-8 text-lg">
-                  {language === "pt" 
+                  {language === "nl"
+                    ? "Abonneer je op onze nieuwsbrief en ontvang de beste Amsterdam-tips direct in je inbox. Geen spam, beloofd!"
+                    : language === "pt" 
                     ? "Assine nossa newsletter e receba as melhores dicas sobre Amsterdam diretamente no seu email. Sem spam, prometemos!"
                     : "Subscribe to our newsletter and receive the best Amsterdam tips directly in your email. No spam, we promise!"}
                 </p>
@@ -69,7 +71,7 @@ export function Newsletter() {
                 <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
                   <Input
                     type="email"
-                    placeholder={language === "pt" ? "Seu melhor email" : "Your best email"}
+                    placeholder={language === "nl" ? "Je beste e-mail" : language === "pt" ? "Seu melhor email" : "Your best email"}
                     className="h-12 bg-white/20 border-white/30 text-white placeholder:text-white/60 focus-visible:ring-white"
                   />
                   <motion.div
@@ -80,7 +82,7 @@ export function Newsletter() {
                       size="lg" 
                       className="h-12 px-8 shrink-0 bg-secondary text-secondary-foreground hover:bg-secondary/90 font-semibold w-full sm:w-auto"
                     >
-                      {language === "pt" ? "Inscrever" : "Subscribe"}
+                      {language === "nl" ? "Abonneren" : language === "pt" ? "Inscrever" : "Subscribe"}
                     </Button>
                   </motion.div>
                 </form>
@@ -88,7 +90,9 @@ export function Newsletter() {
               
               <AnimatedSection delay={0.5}>
                 <p className="text-white/60 text-sm mt-4">
-                  {language === "pt" 
+                  {language === "nl"
+                    ? "Meer dan 2.500 abonnees maken al deel uit van de community"
+                    : language === "pt" 
                     ? "Mais de 2.500 assinantes já fazem parte da comunidade"
                     : "More than 2,500 subscribers are already part of the community"}
                 </p>
