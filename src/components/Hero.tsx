@@ -47,7 +47,7 @@ export function Hero() {
           {[
             { emoji: "🗺️", text: t("hero.sections") },
             { emoji: "🚨", text: t("hero.noFilter") },
-            { emoji: "🎯", text: "2025" },
+            { emoji: "🎯", text: "2026" },
           ].map((stat, i) => (
             <div 
               key={i}

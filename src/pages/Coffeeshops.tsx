@@ -21,7 +21,7 @@ const Coffeeshops = () => {
   const { language } = useLanguage();
 
   const content = language === "pt" ? {
-    title: "Coffeeshops em Amsterdam 2025",
+    title: "Coffeeshops em Amsterdam 2026",
     description: "Guia responsável para entender regras, etiqueta e como evitar multa e dor de cabeça",
     intro: "A cultura de coffeeshops é MUITO mais complexa, matizada e burocrática do que a maioria imagina. É uma cultura enraizada num pragmatismo holandês único, numa história de redução de danos.",
     whatIs: {
@@ -36,7 +36,7 @@ const Coffeeshops = () => {
       requirements: "Idade mínima: 18 anos. Leve documento com foto (passaporte resolve)."
     },
     streetRule: {
-      title: "A Regra Mais Importante de 2025: Onde Você NÃO Pode Fumar",
+      title: "A Regra Mais Importante de 2026: Onde Você NÃO Pode Fumar",
       text: "Desde maio de 2023, Amsterdam apertou o consumo em áreas centrais, começando pelo Red Light District.",
       fine: "Multa: até €100!",
       zones: ["Red Light District (De Wallen)", "Praça Dam", "Damrak", "Nieuwmarkt"],
@@ -65,7 +65,7 @@ const Coffeeshops = () => {
         text: "A 'porta da frente' (vender 5g ao turista) é TOLERADA. MAS a 'porta dos fundos' (o dono comprar do produtor) continua 100% ILEGAL. Isso força os donos a comprarem de produtores ilegais."
       },
       experiment: {
-        title: "Wietexperiment (2025)",
+        title: "Wietexperiment (2026)",
         text: "A Holanda vem testando uma cadeia mais regulada em cidades participantes, com fases e expansão. Isso é relevante para entender por que o tema muda com o tempo, mas não é uma regra 'igual para Amsterdam inteira'."
       }
     },
@@ -125,7 +125,7 @@ const Coffeeshops = () => {
       }
     },
     prices: {
-      title: "Preços em 2025 (Médias Realistas)",
+      title: "Preços em 2026 (Médias Realistas)",
       note: "Varia DRASTICAMENTE. No centro é mais caro. A publicidade é ilegal, então preços não são padronizados.",
       items: [
         { name: "Weed (1g)", range: "€8 - €20" },
@@ -229,7 +229,7 @@ const Coffeeshops = () => {
       ]
     }
   } : {
-    title: "Coffeeshops in Amsterdam 2025",
+    title: "Coffeeshops in Amsterdam 2026",
     description: "Responsible guide to understanding rules, etiquette and how to avoid fines and headaches",
     intro: "Coffeeshop culture is MUCH more complex, nuanced and bureaucratic than most imagine. It's a culture rooted in unique Dutch pragmatism, in a history of harm reduction.",
     whatIs: {
@@ -244,7 +244,7 @@ const Coffeeshops = () => {
       requirements: "Minimum age: 18. Bring photo ID (passport works)."
     },
     streetRule: {
-      title: "The Most Important Rule of 2025: Where You CAN'T Smoke",
+      title: "The Most Important Rule of 2026: Where You CAN'T Smoke",
       text: "Since May 2023, Amsterdam tightened consumption in central areas, starting with the Red Light District.",
       fine: "Fine: up to €100!",
       zones: ["Red Light District (De Wallen)", "Dam Square", "Damrak", "Nieuwmarkt"],
@@ -273,7 +273,7 @@ const Coffeeshops = () => {
         text: "The 'front door' (selling 5g to tourist) is TOLERATED. BUT the 'back door' (owner buying from producer) remains 100% ILLEGAL. This forces owners to buy from illegal producers."
       },
       experiment: {
-        title: "Wietexperiment (2025)",
+        title: "Wietexperiment (2026)",
         text: "The Netherlands has been testing a more regulated chain in participating cities, with phases and expansion. This is relevant to understand why the topic changes over time, but it's not a rule 'equal for all of Amsterdam'."
       }
     },
@@ -333,7 +333,7 @@ const Coffeeshops = () => {
       }
     },
     prices: {
-      title: "Prices in 2025 (Realistic Averages)",
+      title: "Prices in 2026 (Realistic Averages)",
       note: "Varies DRASTICALLY. Center is more expensive. Advertising is illegal, so prices aren't standardized.",
       items: [
         { name: "Weed (1g)", range: "€8 - €20" },
