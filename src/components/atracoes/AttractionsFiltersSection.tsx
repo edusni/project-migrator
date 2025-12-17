@@ -207,7 +207,7 @@ export function AttractionsFiltersSection() {
                   </div>
                   
                   <p className="text-base lg:text-lg text-muted-foreground mb-4">
-                    {language === "pt" ? attraction.short_desc : attraction.short_desc_en}
+                    {language === "nl" ? attraction.short_desc_nl : language === "pt" ? attraction.short_desc : attraction.short_desc_en}
                   </p>
                   
                   <div className="flex items-center justify-between">

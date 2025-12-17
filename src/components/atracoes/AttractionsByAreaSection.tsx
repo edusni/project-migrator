@@ -53,7 +53,7 @@ export function AttractionsByAreaSection() {
                             <span className="font-bold text-lg lg:text-xl">{a.name}</span>
                             <Badge variant="outline" className="text-sm">{a.price_tier === "free" ? t("Grátis", "Free", "Gratis") : a.price_tier}</Badge>
                           </div>
-                          <p className="text-sm lg:text-base text-muted-foreground">{language === "pt" ? a.short_desc : a.short_desc_en}</p>
+                          <p className="text-sm lg:text-base text-muted-foreground">{language === "nl" ? a.short_desc_nl : language === "pt" ? a.short_desc : a.short_desc_en}</p>
                         </div>
                       ))}
                     </div>

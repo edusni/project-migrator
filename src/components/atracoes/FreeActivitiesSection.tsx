@@ -28,7 +28,7 @@ export function FreeActivitiesSection() {
                     <span className="text-sm lg:text-base text-muted-foreground">{a.area_group}</span>
                   </div>
                   <h3 className="font-bold text-lg lg:text-xl">{a.name}</h3>
-                  <p className="text-sm lg:text-base text-muted-foreground mt-2">{language === "pt" ? a.short_desc : a.short_desc_en}</p>
+                  <p className="text-sm lg:text-base text-muted-foreground mt-2">{language === "nl" ? a.short_desc_nl : language === "pt" ? a.short_desc : a.short_desc_en}</p>
                 </CardContent>
               </Card>
             ))}
