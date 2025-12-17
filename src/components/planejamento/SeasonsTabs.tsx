@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { AnimateOnScroll } from "@/hooks/useInView";
 import { Language } from "@/hooks/useLanguage";
-import { OptimizedImage } from "@/components/ui/optimized-image";
 
 // Season images
 import springImg from "@/assets/season-spring.webp";
@@ -159,18 +158,19 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
         <div className="space-y-8 lg:space-y-12 max-w-6xl mx-auto">
           {/* Spring */}
           <AnimatedSection direction="up">
-            <Card>
+            <Card className="overflow-hidden">
               <div className="h-2 lg:h-3 bg-green-500" />
-              <div className="grid lg:grid-cols-[300px_1fr] gap-0">
-                <OptimizedImage 
-                  src={springImg} 
-                  alt="Amsterdam na primavera com tulipas" 
-                  aspectRatio="4/3"
-                  rounded="none"
-                  className="hidden lg:block h-full"
-                />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+              <div className="flex flex-col lg:flex-row">
+                <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
+                  <img 
+                    src={springImg} 
+                    alt="Amsterdam na primavera com tulipas" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6 md:p-8 lg:p-10 flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-4 lg:mb-6">
                     <Leaf className="w-8 h-8 text-green-600" />
                     <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[0].name}</h3>
                     <Badge className="bg-green-500 text-sm lg:text-base px-3 py-1">{seasons[0].highlight}</Badge>
@@ -207,11 +207,19 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
 
           {/* Summer */}
           <AnimatedSection direction="up">
-            <Card>
+            <Card className="overflow-hidden">
               <div className="h-2 lg:h-3 bg-yellow-500" />
-              <div className="grid lg:grid-cols-[1fr_300px] gap-0">
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+              <div className="flex flex-col lg:flex-row-reverse">
+                <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
+                  <img 
+                    src={summerImg} 
+                    alt="Amsterdam no verão com terraços" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6 md:p-8 lg:p-10 flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-4 lg:mb-6">
                     <Sun className="w-8 h-8 text-yellow-600" />
                     <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[1].name}</h3>
                     <Badge className="bg-yellow-500 text-sm lg:text-base px-3 py-1">{seasons[1].highlight}</Badge>
@@ -239,31 +247,25 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
                     </div>
                   </div>
                 </CardContent>
-                <OptimizedImage 
-                  src={summerImg} 
-                  alt="Amsterdam no verão com terraços" 
-                  aspectRatio="4/3"
-                  rounded="none"
-                  className="hidden lg:block h-full"
-                />
               </div>
             </Card>
           </AnimatedSection>
 
           {/* Autumn */}
           <AnimatedSection direction="up">
-            <Card>
+            <Card className="overflow-hidden">
               <div className="h-2 lg:h-3 bg-orange-500" />
-              <div className="grid lg:grid-cols-[300px_1fr] gap-0">
-                <OptimizedImage 
-                  src={autumnImg} 
-                  alt="Amsterdam no outono com folhas douradas" 
-                  aspectRatio="4/3"
-                  rounded="none"
-                  className="hidden lg:block h-full"
-                />
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+              <div className="flex flex-col lg:flex-row">
+                <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
+                  <img 
+                    src={autumnImg} 
+                    alt="Amsterdam no outono com folhas douradas" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6 md:p-8 lg:p-10 flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-4 lg:mb-6">
                     <Cloud className="w-8 h-8 text-orange-600" />
                     <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[2].name}</h3>
                     <Badge className="bg-orange-500 text-sm lg:text-base px-3 py-1">{seasons[2].highlight}</Badge>
@@ -296,11 +298,19 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
 
           {/* Winter */}
           <AnimatedSection direction="up">
-            <Card>
+            <Card className="overflow-hidden">
               <div className="h-2 lg:h-3 bg-blue-400" />
-              <div className="grid lg:grid-cols-[1fr_300px] gap-0">
-                <CardContent className="p-6 md:p-8 lg:p-10">
-                  <div className="flex items-center gap-3 mb-4 lg:mb-6">
+              <div className="flex flex-col lg:flex-row-reverse">
+                <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
+                  <img 
+                    src={winterImg} 
+                    alt="Amsterdam no inverno com luzes de Natal" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <CardContent className="p-6 md:p-8 lg:p-10 flex-1">
+                  <div className="flex flex-wrap items-center gap-3 mb-4 lg:mb-6">
                     <Snowflake className="w-8 h-8 text-blue-500" />
                     <h3 className="text-2xl lg:text-3xl font-heading font-bold">{seasons[3].name}</h3>
                     <Badge className="bg-blue-400 text-sm lg:text-base px-3 py-1">{seasons[3].highlight}</Badge>
@@ -338,13 +348,6 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
                     <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].frozen}</p>
                   </div>
                 </CardContent>
-                <OptimizedImage 
-                  src={winterImg} 
-                  alt="Amsterdam no inverno com luzes de Natal" 
-                  aspectRatio="4/3"
-                  rounded="none"
-                  className="hidden lg:block h-full"
-                />
               </div>
             </Card>
           </AnimatedSection>
