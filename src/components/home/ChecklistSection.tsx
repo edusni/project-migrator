@@ -7,7 +7,31 @@ import { motion } from "framer-motion";
 export function ChecklistSection() {
   const { language } = useLanguage();
 
-  const checklist = language === "pt" ? {
+  const checklist = language === "nl" ? {
+    title: "Begin hier: de checklist die 80% van de fouten voorkomt",
+    sections: [
+      {
+        question: "1) Hoeveel dagen heb je echt?",
+        options: [
+          { range: "2 tot 3 dagen", tip: "focus op de basis en goede wijken, zonder te proberen 'alles te zien'" },
+          { range: "4 tot 5 dagen", tip: "musea + korte dagtocht + goed eten" },
+          { range: "6 tot 8 dagen", tip: "complete ervaring met wijken buiten de toeristische kern" },
+        ]
+      },
+      {
+        question: "2) Wat is jouw reisstijl?",
+        options: [
+          { range: "Eerste keer", tip: "compact programma, veilige keuzes" },
+          { range: "Terugkeer", tip: "minder voor de hand liggende plekken, Noord, Oost, andere dagtochten" },
+          { range: "\"Foodie\"", tip: "markten, Indonesisch, bruine kroegen, plekken met reservering" },
+        ]
+      },
+      {
+        question: "3) Waar ga je verblijven?",
+        tip: "In dit deel van de gids kies je wijk op basis van reistype en vermijd je 'geweldige locatie' valkuilen die alleen geweldig zijn voor verdwaalde toeristen."
+      }
+    ]
+  } : language === "pt" ? {
     title: "Comece por aqui: o checklist que evita 80% dos erros",
     sections: [
       {

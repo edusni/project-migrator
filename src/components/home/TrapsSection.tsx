@@ -7,7 +7,43 @@ import { motion } from "framer-motion";
 export function TrapsSection() {
   const { language } = useLanguage();
 
-  const traps = language === "pt" ? [
+  const traps = language === "nl" ? [
+    {
+      emoji: "📍",
+      title: "Verblijven in de toeristische kern denkend dat je 'reistijd bespaart'",
+      desc: "Meestal ruil je reistijd voor lawaai, rijen en slechte restaurants."
+    },
+    {
+      emoji: "📅",
+      title: "Gaan zonder reservering naar populaire plekken",
+      desc: "In Amsterdam zijn reserveringen de regel geworden bij veel goede plekken."
+    },
+    {
+      emoji: "☕",
+      title: "Coffeeshop verwarren met café",
+      desc: "Coffeeshop is cannabis. Koffiehuis/café is koffie. Lijkt basic, maar leidt tot echte gênante situaties."
+    },
+    {
+      emoji: "🚭",
+      title: "Roken op straat in het centrum 'omdat iedereen het doet'",
+      desc: "Geen goed idee meer in verschillende zones, en boetes bestaan."
+    },
+    {
+      emoji: "🚴",
+      title: "Fietsen zonder voorrang en rijstroken te begrijpen",
+      desc: "Boetes en schrikken komen snel."
+    },
+    {
+      emoji: "🧇",
+      title: "'Instagrammable' wafels eten met bergen topping",
+      desc: "Je betaalt veel voor een toeristenproduct dat Nederlanders niet eten."
+    },
+    {
+      emoji: "💰",
+      title: "Toeristenbelasting op accommodatie onderschatten",
+      desc: "12,5% verandert het totaal, vooral bij langere verblijven."
+    }
+  ] : language === "pt" ? [
     {
       emoji: "📍",
       title: 'Ficar no miolo turístico achando que vai "economizar deslocamento"',
@@ -81,6 +117,14 @@ export function TrapsSection() {
     }
   ];
 
+  const sectionTitle = language === "nl" 
+    ? "De 7 valkuilen waar toeristen het meest intrappen" 
+    : language === "pt" 
+      ? "As 7 armadilhas que mais pegam brasileiro" 
+      : "The 7 traps that catch tourists most";
+
+  const filterText = language === "nl" ? "Zonder filter" : language === "pt" ? "Sem filtro" : "No filter";
+
   return (
     <section className="py-14 lg:py-20 bg-destructive/5">
       <div className="container">
@@ -99,12 +143,10 @@ export function TrapsSection() {
                 }}
               >
                 <AlertTriangle className="w-6 h-6 text-destructive" />
-                <span className="text-destructive font-semibold">{language === "pt" ? "Sem filtro" : "No filter"}</span>
+                <span className="text-destructive font-semibold">{filterText}</span>
               </motion.div>
               <h2 className="text-3xl lg:text-5xl font-heading font-bold text-destructive mb-2">
-                {language === "pt" 
-                  ? "As 7 armadilhas que mais pegam brasileiro"
-                  : "The 7 traps that catch tourists most"}
+                {sectionTitle}
               </h2>
             </div>
           </AnimatedSection>

@@ -7,7 +7,23 @@ import { motion } from "framer-motion";
 export function Changes2026Section() {
   const { language } = useLanguage();
 
-  const changes = language === "pt" ? [
+  const changes = language === "nl" ? [
+    {
+      emoji: "💰",
+      title: "Accommodatiekosten wegen zwaarder",
+      desc: "Amsterdam heft 12,5% toeristenbelasting op accommodatie. Dit heeft directe impact op je budget."
+    },
+    {
+      emoji: "🚭",
+      title: "Cannabis roken op straat kan boete geven",
+      desc: "De stad heeft regels voor openbaar gebruik in centrale zones aangescherpt, met boetes rond €100. Dit verandert de logica: 'kopen en rokend rondlopen' in het centrum gaat fout."
+    },
+    {
+      emoji: "🚢",
+      title: "Minder stimulans voor massatoerisme",
+      desc: "Een voorbeeld is het beleid om cruiseshipaanleggen te verminderen en de terminal op lange termijn uit het centrum te verplaatsen, met lagere jaarlijkse limieten vanaf 2026."
+    }
+  ] : language === "pt" ? [
     {
       emoji: "💰",
       title: "Custo de hospedagem pesa mais",
@@ -41,6 +57,12 @@ export function Changes2026Section() {
     }
   ];
 
+  const sectionTitle = language === "nl" 
+    ? "2026 in 60 seconden: wat verandert er in de praktijk" 
+    : language === "pt" 
+      ? "2026 em 60 segundos: o que muda na prática" 
+      : "2026 in 60 seconds: what changes in practice";
+
   return (
     <section className="py-14 lg:py-20 bg-amber-50 dark:bg-amber-950/20">
       <div className="container">
@@ -62,7 +84,7 @@ export function Changes2026Section() {
                 <span className="text-amber-600 font-semibold text-lg">2026</span>
               </motion.div>
               <h2 className="text-3xl lg:text-5xl font-heading font-bold mb-4">
-                {language === "pt" ? "2026 em 60 segundos: o que muda na prática" : "2026 in 60 seconds: what changes in practice"}
+                {sectionTitle}
               </h2>
             </div>
           </AnimatedSection>

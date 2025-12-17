@@ -2,24 +2,30 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 
+const t = (pt: string, en: string, nl: string, language: string) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 export function ThreeRulesSection() {
   const { language } = useLanguage();
 
   const rules = [
     {
       emoji: "🚊",
-      title: language === "pt" ? "Tram não negocia." : "Tram doesn't negotiate.",
-      desc: language === "pt" ? "30+ toneladas, não desvia, não para rápido." : "30+ tons, doesn't swerve, doesn't stop fast."
+      title: t("Tram não negocia.", "Tram doesn't negotiate.", "Tram onderhandelt niet.", language),
+      desc: t("30+ toneladas, não desvia, não para rápido.", "30+ tons, doesn't swerve, doesn't stop fast.", "30+ ton, wijkt niet uit, stopt niet snel.", language)
     },
     {
       emoji: "🚴",
-      title: language === "pt" ? "Bike não desacelera por educação." : "Bike won't slow down for politeness.",
-      desc: language === "pt" ? "O fluxo é intenso e rápido." : "The flow is intense and fast."
+      title: t("Bike não desacelera por educação.", "Bike won't slow down for politeness.", "Fiets vertraagt niet uit beleefdheid.", language),
+      desc: t("O fluxo é intenso e rápido.", "The flow is intense and fast.", "De stroom is intens en snel.", language)
     },
     {
       emoji: "💳",
-      title: language === "pt" ? "Check-in e check-out são parte do pagamento." : "Check-in and check-out are part of payment.",
-      desc: language === "pt" ? "Esquecer = multa/cobrança extra." : "Forget = fine/extra charge."
+      title: t("Check-in e check-out são parte do pagamento.", "Check-in and check-out are part of payment.", "In- en uitchecken is onderdeel van betaling.", language),
+      desc: t("Esquecer = multa/cobrança extra.", "Forget = fine/extra charge.", "Vergeten = boete/extra kosten.", language)
     }
   ];
 
@@ -33,7 +39,7 @@ export function ThreeRulesSection() {
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              🚨 {language === "pt" ? "3 Regras que Evitam 90% dos Problemas" : "3 Rules That Prevent 90% of Problems"}
+              🚨 {t("3 Regras que Evitam 90% dos Problemas", "3 Rules That Prevent 90% of Problems", "3 Regels die 90% van de Problemen Voorkomen", language)}
             </motion.h3>
           </AnimatedSection>
 
