@@ -8,12 +8,15 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 import duPhoto from "@/assets/du-amsterdam.jpg";
 import blogHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Blog = () => {
   const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
   const seo = seoData.blog[language];
+  const locale = getCurrentLocale();
 
   const content = language === "nl" ? {
     heroTitle: "Du's Blog",
@@ -191,7 +194,7 @@ const Blog = () => {
                   whileTap={{ scale: 0.98 }}
                 >
                   <Button asChild size="lg" className="group">
-                    <a href="/planejamento">
+                    <a href={getLocalizedPath(locale, "/planejamento")}>
                       {content.exploreGuide}
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </a>

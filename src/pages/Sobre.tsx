@@ -7,12 +7,15 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 import duPhoto from "@/assets/du-amsterdam.jpg";
 import sobreHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
 
 const Sobre = () => {
   const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
   const seo = seoData.sobre[language];
+  const locale = getCurrentLocale();
 
   const content = language === "nl" ? {
     heroTitle: "Wie is Du",
@@ -194,19 +197,19 @@ const Sobre = () => {
                 <CardContent className="p-6 lg:p-8">
                   <h3 className="font-heading font-bold text-xl lg:text-2xl mb-6">{content.readyToStart}</h3>
                   <div className="grid sm:grid-cols-3 gap-4">
-                    <Link to="/planejamento">
+                    <Link to={getLocalizedPath(locale, "/planejamento")}>
                       <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
                         <span className="font-bold">📅 {content.planning}</span>
                         <span className="text-xs text-muted-foreground">{content.planningDesc}</span>
                       </Button>
                     </Link>
-                    <Link to="/hospedagem">
+                    <Link to={getLocalizedPath(locale, "/hospedagem")}>
                       <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
                         <span className="font-bold">🏨 {content.accommodation}</span>
                         <span className="text-xs text-muted-foreground">{content.accommodationDesc}</span>
                       </Button>
                     </Link>
-                    <Link to="/atracoes">
+                    <Link to={getLocalizedPath(locale, "/atracoes")}>
                       <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
                         <span className="font-bold">🎨 {content.attractions}</span>
                         <span className="text-xs text-muted-foreground">{content.attractionsDesc}</span>
