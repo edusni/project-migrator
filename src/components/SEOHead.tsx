@@ -104,6 +104,8 @@ export function SEOHead({
     });
 
     // Twitter
+    updateMetaTag("twitter:card", "summary_large_image");
+    updateMetaTag("twitter:site", "@amsterdu");
     updateMetaTag("twitter:title", fullTitle);
     updateMetaTag("twitter:description", description);
     updateMetaTag("twitter:image", image);
@@ -134,7 +136,7 @@ export function SEOHead({
 
     // Structured Data - Breadcrumbs
     if (breadcrumbs && breadcrumbs.length > 0) {
-      injectBreadcrumbSchema(breadcrumbs);
+      injectBreadcrumbSchema(breadcrumbs, locale);
     }
 
     // Structured Data - Article
@@ -323,13 +325,23 @@ function injectFAQSchema(faqItems: FAQItem[], inLanguage: string) {
   document.head.appendChild(script);
 }
 
-function injectBreadcrumbSchema(breadcrumbs: { name: string; url: string }[]) {
+function injectBreadcrumbSchema(breadcrumbs: { name: string; url: string }[], locale: string) {
   removeSchemaById("breadcrumb-schema");
+  
+  // Auto-fix breadcrumb URLs to include locale
+  const fixedBreadcrumbs = breadcrumbs.map(item => {
+    let url = item.url;
+    // If URL doesn't have locale prefix, add it
+    if (url.includes("amsterdu.com") && !url.match(/amsterdu\.com\/(pt|en|nl)/)) {
+      url = url.replace("amsterdu.com", `amsterdu.com/${locale}`);
+    }
+    return { ...item, url };
+  });
   
   const schema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: breadcrumbs.map((item, index) => ({
+    itemListElement: fixedBreadcrumbs.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: item.name,
