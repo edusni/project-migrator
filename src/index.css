@@ -49,12 +49,12 @@
     --gradient-secondary: linear-gradient(135deg, hsl(210 55% 22%) 0%, hsl(210 45% 30%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(40 25% 98%) 0%, hsl(40 20% 96%) 100%);
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.03);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-    --shadow-glow: 0 0 20px -5px hsl(24 90% 50% / 0.25);
+    /* Shadows - enhanced for better visibility */
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.08);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.08);
+    --shadow-glow: 0 0 25px -5px hsl(24 90% 50% / 0.3);
     
     /* Sidebar */
     --sidebar-background: 0 0% 100%;
@@ -92,8 +92,8 @@
     --destructive: 0 62% 50%;
     --destructive-foreground: 0 0% 100%;
     
-    --border: 220 15% 15%;
-    --input: 220 15% 15%;
+    --border: 220 15% 20%;
+    --input: 220 15% 18%;
     --ring: 24 90% 55%;
     
     /* Custom Amsterdam colors for dark mode */
@@ -101,11 +101,12 @@
     --amsterdam-blue: 210 45% 35%;
     --amsterdam-blue-light: 210 40% 45%;
     
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.15), 0 2px 4px -2px rgb(0 0 0 / 0.15);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.15);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.2);
-    --shadow-glow: 0 0 20px -5px hsl(24 90% 55% / 0.3);
+    /* Shadows - enhanced for dark mode */
+    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.15);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.25), 0 2px 4px -2px rgb(0 0 0 / 0.2);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.25);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.35), 0 8px 10px -6px rgb(0 0 0 / 0.3);
+    --shadow-glow: 0 0 25px -5px hsl(24 90% 55% / 0.35);
     
     --sidebar-background: 220 20% 9%;
     --sidebar-foreground: 40 20% 96%;
