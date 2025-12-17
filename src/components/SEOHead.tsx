@@ -307,12 +307,12 @@ export const seoData = {
     pt: {
       title: "Coffeeshops Amsterdam 2026: Guia Completo + Regras e Preços",
       description: "Tudo sobre coffeeshops em Amsterdam: como funcionam, regras 2026, preços de cannabis, melhores opções e o que turistas precisam saber. Guia sem julgamento.",
-      keywords: "coffeeshops amsterdam, coffeeshop guide, como funciona coffeeshop, regras coffeeshop 2026, melhores coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2025, maconha em amsterdam, amsterdam coffeeshop cannabis prices 2025",
+      keywords: "coffeeshops amsterdam, coffeeshop guide, como funciona coffeeshop, regras coffeeshop 2026, melhores coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2026, maconha em amsterdam, amsterdam coffeeshop cannabis prices 2026",
     },
     en: {
       title: "Amsterdam Coffeeshops 2026: Complete Guide + Rules & Prices",
       description: "Everything about Amsterdam coffeeshops: how they work, 2026 rules, cannabis prices, best options and what tourists need to know. Judgment-free guide.",
-      keywords: "amsterdam coffeeshops, coffeeshop guide, how coffeeshops work, coffeeshop rules 2026, best coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2025, amsterdam coffeeshop cannabis prices 2025",
+      keywords: "amsterdam coffeeshops, coffeeshop guide, how coffeeshops work, coffeeshop rules 2026, best coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2026, amsterdam coffeeshop cannabis prices 2026",
     },
   },
   arredores: {

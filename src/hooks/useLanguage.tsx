@@ -25,7 +25,7 @@ const translations: Translations = {
   "nav.blog": { pt: "Blog", en: "Blog" },
   
   // Hero
-  "hero.title": { pt: "Guia Completo de Amsterdam 2025", en: "Complete Amsterdam Guide 2025" },
+  "hero.title": { pt: "Guia Completo de Amsterdam 2026", en: "Complete Amsterdam Guide 2026" },
   "hero.subtitle": { pt: "O Guia Brutalmente Honesto", en: "The Brutally Honest Guide" },
   "hero.description": { 
     pt: "Esqueça os \"contos de fada\". Aqui você encontra as dificuldades reais, multas, armadilhas e segredos locais que realmente importam para sua viagem.",
@@ -84,8 +84,8 @@ const translations: Translations = {
   // Planning Page
   "planning.title": { pt: "Planejando Amsterdam: O Que Você PRECISA Saber", en: "Planning Amsterdam: What You NEED to Know" },
   "planning.description": {
-    pt: "Amsterdam em 2025 será EXTREMAMENTE CARA com novas regras. Se você não planejar direito, vai gastar uma fortuna por uma experiência medíocre.",
-    en: "Amsterdam in 2025 will be EXTREMELY EXPENSIVE with new rules. If you do not plan properly, you will spend a fortune for a mediocre experience."
+    pt: "Amsterdam em 2026 será EXTREMAMENTE CARA com novas regras. Se você não planejar direito, vai gastar uma fortuna por uma experiência medíocre.",
+    en: "Amsterdam in 2026 will be EXTREMELY EXPENSIVE with new rules. If you do not plan properly, you will spend a fortune for a mediocre experience."
   },
   "planning.realityCheck": {
     pt: "Taxa turística agora é 12,5% em cima de tudo. IVA aumentou para 21%. Total de impostos: mais de 33% na hospedagem. Aquele hotel de €100/noite na verdade custa €133+.",
@@ -182,20 +182,20 @@ const translations: Translations = {
     pt: "Vou te dizer EXATAMENTE onde ficar baseado no seu perfil, orçamento e o que você quer fazer. Nada de papo vago de \"depende\".",
     en: "I will tell you EXACTLY where to stay based on your profile, budget and what you want to do. No vague 'it depends' talk."
   },
-  "accommodation.realityTitle": { pt: "A Verdade Sobre Hospedagem em Amsterdam 2025", en: "The Real Deal About Amsterdam Accommodation 2025" },
+  "accommodation.realityTitle": { pt: "A Verdade Sobre Hospedagem em Amsterdam 2026", en: "The Real Deal About Amsterdam Accommodation 2026" },
   "accommodation.realityIntro": {
     pt: "Antes de mostrar os bairros, você precisa entender algo: Amsterdam é MUITO CARA e é de propósito. A prefeitura QUER que você gaste mais ou não venha. Não é paranoia, é política oficial.",
     en: "Before I show you the neighborhoods, you need to understand something: Amsterdam is VERY EXPENSIVE and it is on purpose. The city council WANTS you to spend more or not come. It is not paranoia, it is official policy."
   },
   "accommodation.absurdTaxes": { pt: "Os Impostos São Absurdos", en: "The Taxes Are Absurd" },
   "accommodation.touristTax": { pt: "Taxa turística: 12,5% EM CIMA DE TUDO", en: "Tourist tax: 12.5% on TOP of EVERYTHING" },
-  "accommodation.vat": { pt: "IVA: 21% (aumentou em 2025)", en: "VAT: 21% (increased in 2025)" },
+  "accommodation.vat": { pt: "IVA: 21% (em vigor desde 2025)", en: "VAT: 21% (in effect since 2025)" },
   "accommodation.totalTax": { pt: "Total: Mais de 33% DE IMPOSTO no preço base", en: "Total: Over 33% TAX on top of base price" },
   "accommodation.airbnbDead": { pt: "Airbnb Está Morto (Quase)", en: "Airbnb Is Dead (Almost)" },
   "accommodation.airbnb1": { pt: "30 noites/ano máx (logo 15 no centro)", en: "30 nights/year max (soon 15 in center)" },
   "accommodation.airbnb2": { pt: "Precisa de licença específica", en: "Needs specific license" },
   "accommodation.airbnb3": { pt: "Inventário caiu 54% desde 2019", en: "Inventory dropped 54% since 2019" },
-  "accommodation.airbnb4": { pt: "Hotéis são mais seguros em 2025", en: "Hotels are safer in 2025" },
+  "accommodation.airbnb4": { pt: "Hotéis são mais seguros em 2026", en: "Hotels are safer in 2026" },
   "accommodation.neighborhoodsDecoded": { pt: "Bairros Decodificados", en: "Neighborhoods Decoded" },
   "accommodation.neighborhoodsIntro": {
     pt: "A boa notícia? Se você entender ONDE ficar baseado no que quer fazer, pode economizar MUITO e ter uma experiência melhor que 90% dos turistas.",
@@ -301,11 +301,11 @@ const translations: Translations = {
     pt: "Esqueça esses guias genéricos. Amsterdam mudou - não é mais só \"Canais + Luz Vermelha\". Vou te mostrar EXATAMENTE como aproveitar cada canto.",
     en: "Forget those generic guides. Amsterdam has changed - it is no longer just 'Canals + Red Light'. I will show you EXACTLY how to enjoy every corner."
   },
-  "attractions.changesTitle": { pt: "O Que Mudou em 2025:", en: "What Changed in 2025:" },
+  "attractions.changesTitle": { pt: "O Que Mudou em 2026:", en: "What Changed in 2026:" },
   "attractions.change1": { pt: "Museu Van Gogh saiu do I amsterdam Card - muda cálculos do passe", en: "Van Gogh Museum left the I amsterdam Card - changes pass calculations" },
   "attractions.change2": { pt: "Noord, Oost, West se tornaram destinos por si só", en: "Noord, Oost, West became destinations themselves" },
   "attractions.change3": { pt: "Tudo ficou mais caro e \"premium\"", en: "Everything got more expensive and \"premium\"" },
-  "attractions.change4": { pt: "SAIL Amsterdam volta em agosto 2025 - cidade vai estar LOTADA", en: "SAIL Amsterdam returns August 2025 - city will be PACKED" },
+  "attractions.change4": { pt: "WorldPride Amsterdam em agosto 2026 - cidade vai estar LOTADA", en: "WorldPride Amsterdam in August 2026 - city will be PACKED" },
   "attractions.essentials": { pt: "O Essencial", en: "The Essentials" },
   "attractions.essentialsDesc": { pt: "Se você só tem alguns dias, NÃO perca estes.", en: "If you only have a few days, do NOT miss these." },
   "attractions.worthYourTime": { pt: "Vale Seu Tempo", en: "Worth Your Time" },
@@ -327,10 +327,10 @@ const translations: Translations = {
   "food.touristTrap": { pt: "Armadilha turística:", en: "Tourist trap:" },
 
   // Coffeeshops Page
-  "coffeeshops.title": { pt: "Coffeeshops de Amsterdam 2025", en: "Amsterdam Coffeeshops 2025" },
+  "coffeeshops.title": { pt: "Coffeeshops de Amsterdam 2026", en: "Amsterdam Coffeeshops 2026" },
   "coffeeshops.description": {
-    pt: "O guia definitivo: entenda a gedoogbeleid (política de tolerância holandesa), regras de 2025, etiqueta e consumo responsável.",
-    en: "The definitive guide: understand the gedoogbeleid (Dutch tolerance policy), 2025 rules, etiquette, and responsible consumption."
+    pt: "O guia definitivo: entenda a gedoogbeleid (política de tolerância holandesa), regras de 2026, etiqueta e consumo responsável.",
+    en: "The definitive guide: understand the gedoogbeleid (Dutch tolerance policy), 2026 rules, etiquette, and responsible consumption."
   },
   "coffeeshops.intro": {
     pt: "Para muitos viajantes, Amsterdam é a capital da cannabis da Europa. Porém, a realidade da cultura das coffeeshops é MUITO mais complexa, nuançada e burocrática do que a maioria imagina. É uma cultura enraizada no pragmatismo holandês único e na redução de danos.",
@@ -382,7 +382,7 @@ const translations: Translations = {
   "common.tip": { pt: "Dica", en: "Tip" },
   "common.mustSee": { pt: "Imperdível", en: "Must See" },
   "common.free": { pt: "Grátis", en: "Free" },
-  "common.realityCheck": { pt: "Realidade 2025:", en: "2025 Reality Check:" },
+  "common.realityCheck": { pt: "Realidade 2026:", en: "2026 Reality Check:" },
   
   // Footer
   "footer.rights": { pt: "Todos os direitos reservados", en: "All rights reserved" },

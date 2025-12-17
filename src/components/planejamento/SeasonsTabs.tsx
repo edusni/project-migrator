@@ -78,8 +78,8 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
       tagline: language === "pt" ? "Natal • Luzes • Gezelligheid (Aconchego)" : "Christmas • Lights • Gezelligheid (Coziness)",
       highlight: "GEZELLIGHEID",
       lightFestival: language === "pt"
-        ? "Amsterdam Light Festival 2025/2026: 27 de novembro a 18 de janeiro. Arte de luz espetacular pelos canais!"
-        : "Amsterdam Light Festival 2025/2026: November 27 to January 18. Spectacular light art on the canals!",
+        ? "Amsterdam Light Festival 2026/2027: 26 de novembro a 17 de janeiro. Arte de luz espetacular pelos canais!"
+        : "Amsterdam Light Festival 2026/2027: November 26 to January 17. Spectacular light art on the canals!",
       pros: [
         language === "pt" ? "Amsterdam Light Festival (Nov-Jan): Arte de luz pelos canais" : "Amsterdam Light Festival (Nov-Jan): Light art on canals",
         language === "pt" ? "Mercados de Natal: Pistas de patinação, vinho quente" : "Christmas Markets: Ice skating, mulled wine",
@@ -251,7 +251,7 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
                 <p className="text-lg lg:text-xl mb-4 lg:mb-6">{seasons[3].tagline}</p>
                 
                 <div className="bg-purple-50 dark:bg-purple-950/30 p-5 lg:p-6 rounded-lg mb-6 lg:mb-8">
-                  <h4 className="font-bold text-lg lg:text-xl mb-3">✨ Amsterdam Light Festival 2025/2026</h4>
+                  <h4 className="font-bold text-lg lg:text-xl mb-3">✨ Amsterdam Light Festival 2026/2027</h4>
                   <p className="text-muted-foreground text-base lg:text-lg">{seasons[3].lightFestival}</p>
                 </div>
                 

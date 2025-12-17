@@ -93,7 +93,7 @@ export function Header() {
                       Amster<span className="text-primary">du</span>
                     </span>
                   </Link>
-                  <p className="text-xs text-muted-foreground mt-1">Amsterdam Guide 2025</p>
+                  <p className="text-xs text-muted-foreground mt-1">Amsterdam Guide 2026</p>
                 </div>
                 
                 {/* Mobile Nav Items */}
@@ -127,7 +127,7 @@ export function Header() {
                 {/* Mobile Footer */}
                 <div className="p-6 border-t border-border/50 bg-muted/30">
                   <p className="text-xs text-muted-foreground text-center">
-                    © 2025 Amsterdu. All rights reserved.
+                    © 2026 Amsterdu. All rights reserved.
                   </p>
                 </div>
               </div>
