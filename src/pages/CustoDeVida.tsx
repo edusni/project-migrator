@@ -240,7 +240,7 @@ const CustoDeVida = () => {
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
-          { name: language === "pt" ? "Custo de Vida" : "Cost of Living", url: "https://amsterdu.com/custo-de-vida" }
+          { name: language === "pt" ? "Custo de Vida" : "Cost of Living", url: "https://amsterdu.com/custo-vida-amsterdam" }
         ]}
       />
       
@@ -598,7 +598,7 @@ const CustoDeVida = () => {
       </section>
 
       <RelatedPagesSection
-        currentPath="/custo-de-vida"
+        currentPath="/custo-vida-amsterdam"
         suggestedPaths={["/hospedagem", "/planejamento", "/sobre"]}
       />
     </PageLayout>
