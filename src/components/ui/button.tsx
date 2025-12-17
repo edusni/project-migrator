@@ -9,10 +9,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-sm hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 hover:shadow-md",
+        default: "bg-primary text-primary-foreground shadow-[0_2px_8px_-2px_hsl(var(--primary)/0.4)] hover:bg-primary/90 hover:shadow-[0_4px_16px_-4px_hsl(var(--primary)/0.5)] hover:-translate-y-0.5",
+        destructive: "bg-destructive text-destructive-foreground shadow-[0_2px_8px_-2px_hsl(var(--destructive)/0.4)] hover:bg-destructive/90 hover:shadow-[0_4px_16px_-4px_hsl(var(--destructive)/0.5)]",
         outline: "border border-border bg-background hover:bg-muted hover:border-border/80 hover:text-foreground",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/90 hover:shadow-md",
+        secondary: "bg-secondary text-secondary-foreground shadow-[0_2px_8px_-2px_hsl(var(--secondary)/0.4)] hover:bg-secondary/90 hover:shadow-[0_4px_16px_-4px_hsl(var(--secondary)/0.5)]",
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         subtle: "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground",
