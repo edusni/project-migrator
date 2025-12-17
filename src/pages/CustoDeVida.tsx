@@ -14,6 +14,97 @@ const CustoDeVida = () => {
   const seo = seoData.custoDeVida[language];
 
   const content = {
+    nl: {
+      heroTitle: "Kosten van Levensonderhoud in Amsterdam 2026",
+      heroSubtitle: "Hoeveel kost het echt om in de Nederlandse hoofdstad te wonen?",
+      intro: {
+        title: "De Waarheid Over Wonen in Amsterdam",
+        text: "Veel mensen dromen ervan om aan de grachten van Amsterdam te wonen, maar financiële planning gaat veel verder dan valuta omrekenen. Voor 2026 laat het scenario energiestabilisatie zien maar hoge druk op huurprijzen. In deze Amsterdu gids openen we de \"zwarte doos\" van uitgaven: van huur tot afvalbelasting die niemand je vertelt voordat je verhuist."
+      },
+      housing: {
+        title: "De Grote Boosdoener: Huisvesting (Huur)",
+        subtitle: "Als je hoort dat Amsterdam duur is, is dit item de schuldige.",
+        price: {
+          title: "De Echte Prijs (2026)",
+          text: "Om een appartement met 1 of 2 slaapkamers (~70m²) in de vrije sector te krijgen, bereid je voor op iets rond de",
+          value: "€ 1.940",
+          suffix: "maandelijks (gemiddeld € 27,75 per m²)"
+        },
+        income: {
+          title: "De Inkomensvalkuil (3x of 4x)",
+          text: "Het huurgeld hebben is niet genoeg. Makelaars eisen dat je bruto maandinkomen 3 tot 4 keer de huurwaarde is. Dus om een appartement van € 1.900 te huren, moet je een gezinsinkomen van bijna € 6.000 bruto bewijzen."
+        },
+        tip: {
+          title: "Amsterdu Tip",
+          text: "Let op de oplevering van de woning. Veel worden \"Shell\" (geen vloer en lampen) of \"Gestoffeerd\" (met vloer en gordijnen) verhuurd. Gemeubileerd kost meer."
+        }
+      },
+      fixedCosts: {
+        title: "Verplichte Vaste Kosten",
+        subtitle: "Wat je niet kunt wegsnijden",
+        health: {
+          title: "Zorgverzekering",
+          text: "In Nederland is de verzekering privé en verplicht.",
+          value: "~€ 159/maand per volwassene",
+          warning: "Er is een verplicht eigen risico van € 385 per jaar. Je betaalt de eerste € 385 aan medische kosten uit eigen zak voordat de verzekering alles dekt (behalve huisartsbezoeken, die zijn gratis)."
+        },
+        energy: {
+          title: "Energie (Elektriciteit en Gas)",
+          value: "~€ 172/maand",
+          text: "Het gemiddelde voor een 1-2 persoons huishouden. Nieuwere huizen (met energielabel A of B) betalen minder; historische huizen in het centrum (met slechte isolatie) betalen meer."
+        },
+        internet: {
+          title: "Internet en Mobiel",
+          internet: "Snelle thuisinternet: ~€ 40/maand",
+          mobile: "Mobiel (Sim-Only): ~€ 15 tot € 20/maand"
+        }
+      },
+      taxes: {
+        title: "De 'Onzichtbare Belastingen' (Gemeentelijke Heffingen)",
+        subtitle: "Veel expats schrikken in februari als brieven van de gemeente en Waternet aankomen. Ja, huurders betalen ook belasting.",
+        waste: {
+          title: "Afvalstoffenheffing",
+          single: "~€ 352/jaar (alleenstaand)",
+          couple: "~€ 469/jaar (stel/gezin)"
+        },
+        water: {
+          title: "Zuiveringsheffing",
+          single: "~€ 280/jaar (alleenstaand)",
+          couple: "~€ 465/jaar (stel/gezin)"
+        },
+        tip: "Je kunt deze betalingen spreiden, maar ze wegen ongeveer € 60 tot € 70 per maand op het budget van een stel."
+      },
+      daily: {
+        title: "Dagelijks Leven: Boodschappen en Vervoer",
+        subtitle: "Hier is het nieuws wat beter: supermarkten in Nederland hebben eerlijke prijzen in vergelijking met inkomen.",
+        grocery: {
+          title: "Boodschappen",
+          text: "Volgens het NIBUD instituut geeft een stel gemiddeld € 771/maand uit aan voeding, schoonmaak en persoonlijke verzorging. Een alleenstaande geeft ongeveer € 443/maand uit."
+        },
+        transport: {
+          title: "Vervoer",
+          text: "De onbeperkte maandpas van Amsterdam (GVB) kost € 129.",
+          tip: "Pro Tip: Als je doet als een local en overal de fiets gebruikt, daalt deze kost naar nul (alleen fietsonderhoud)."
+        }
+      },
+      summary: {
+        title: "De Eindstand: Definitief Budget",
+        subtitle: "We hebben twee realistische scenario's voorbereid om de totale kosten van levensonderhoud in 2026 te visualiseren. Onthoud: waarden voor een comfortabele levensstijl, zonder buitensporige luxe, maar zonder te moeten worstelen.",
+        singleTitle: "Scenario A: Alleenstaand",
+        singleDesc: "Alleen wonen in een vrije sector appartement",
+        coupleTitle: "Scenario B: Stel",
+        coupleDesc: "Twee volwassenen, één appartement"
+      },
+      conclusion: {
+        title: "Amsterdu's Conclusie",
+        text: "Amsterdam is niet goedkoop, maar biedt levenskwaliteit die past bij de kosten. Het geheim om hier in 2026 te wonen is niet alleen goed verdienen, maar het begrijpen van de huurinkomensregel.",
+        cta: "Als je je verhuizing plant, begin je spreadsheet met huur en vergeet niet budget te reserveren voor jaarlijkse belastingen!"
+      },
+      calculator: {
+        title: "Kosten van Levensonderhoud Calculator",
+        subtitle: "Simuleer je maandelijks budget in Amsterdam"
+      }
+    },
     pt: {
       heroTitle: "Custo de Vida em Amsterdam 2026",
       heroSubtitle: "Quanto custa realmente morar na capital da Holanda?",
@@ -201,22 +292,28 @@ const CustoDeVida = () => {
   const c = content[language];
 
   const singleBudget = [
-    { label: language === "pt" ? "Aluguel" : "Rent", value: 1940 },
-    { label: language === "pt" ? "Contas (Luz/Net/Saúde)" : "Bills (Energy/Net/Health)", value: 390 },
-    { label: language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 450 },
-    { label: language === "pt" ? "Transporte (Bike + eventual)" : "Transport (Bike + occasional)", value: 50 },
-    { label: language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 55 },
+    { label: language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent", value: 1940 },
+    { label: language === "nl" ? "Rekeningen (Energie/Net/Zorg)" : language === "pt" ? "Contas (Luz/Net/Saúde)" : "Bills (Energy/Net/Health)", value: 390 },
+    { label: language === "nl" ? "Boodschappen/Huis" : language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 450 },
+    { label: language === "nl" ? "Vervoer (Fiets + incidenteel)" : language === "pt" ? "Transporte (Bike + eventual)" : "Transport (Bike + occasional)", value: 50 },
+    { label: language === "nl" ? "Gemeentelijke Heffingen (gem.)" : language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 55 },
   ];
 
   const coupleBudget = [
-    { label: language === "pt" ? "Aluguel" : "Rent", value: 1940 },
-    { label: language === "pt" ? "Contas (Luz/Net/2x Saúde)" : "Bills (Energy/Net/2x Health)", value: 560 },
-    { label: language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 770 },
-    { label: language === "pt" ? "Transporte (2 passes GVB)" : "Transport (2 GVB passes)", value: 258 },
-    { label: language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 80 },
+    { label: language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent", value: 1940 },
+    { label: language === "nl" ? "Rekeningen (Energie/Net/2x Zorg)" : language === "pt" ? "Contas (Luz/Net/2x Saúde)" : "Bills (Energy/Net/2x Health)", value: 560 },
+    { label: language === "nl" ? "Boodschappen/Huis" : language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 770 },
+    { label: language === "nl" ? "Vervoer (2 GVB passen)" : language === "pt" ? "Transporte (2 passes GVB)" : "Transport (2 GVB passes)", value: 258 },
+    { label: language === "nl" ? "Gemeentelijke Heffingen (gem.)" : language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 80 },
   ];
 
-  const faqItems = language === "pt" ? [
+  const faqItems = language === "nl" ? [
+    { question: "Hoeveel kost het om te wonen in Amsterdam in 2026?", answer: "Voor een alleenstaande liggen de kosten van levensonderhoud in Amsterdam rond € 2.885/maand, inclusief huur, rekeningen, eten en vervoer. Voor een stel dat kosten deelt is het totaal ongeveer € 3.608/maand." },
+    { question: "Wat is het minimumsalaris om te huren in Amsterdam?", answer: "Makelaars eisen dat je bruto inkomen 3 tot 4 keer de huurwaarde is. Voor een appartement van € 1.900 moet je een inkomen van ongeveer € 6.000 bruto per maand aantonen." },
+    { question: "Hoeveel is de huur in Amsterdam 2026?", answer: "De gemiddelde huur voor een appartement met 1-2 slaapkamers (~70m²) in de vrije sector is € 1.940 per maand, gelijk aan € 27,75 per m²." },
+    { question: "Welke belastingen betalen huurders in Amsterdam?", answer: "Huurders betalen Afvalstoffenheffing (€ 352-469/jaar) en Zuiveringsheffing (€ 280-465/jaar), totaal € 60-70 per maand voor een stel." },
+    { question: "Hoeveel kost de zorgverzekering in Nederland in 2026?", answer: "Verplichte zorgverzekering kost ongeveer € 159/maand per volwassene, plus een verplicht eigen risico van € 385 per jaar." }
+  ] : language === "pt" ? [
     { question: "Quanto custa morar em Amsterdam em 2026?", answer: "Para um solteiro, o custo de vida em Amsterdam fica em torno de € 2.885/mês, incluindo aluguel, contas, alimentação e transporte. Para um casal dividindo despesas, o total fica aproximadamente € 3.608/mês." },
     { question: "Qual o salário mínimo necessário para alugar em Amsterdam?", answer: "As imobiliárias exigem que sua renda bruta seja 3 a 4 vezes o valor do aluguel. Para um apartamento de € 1.900, você precisa comprovar renda de aproximadamente € 6.000 brutos por mês." },
     { question: "Quanto custa o aluguel em Amsterdam 2026?", answer: "O aluguel médio para um apartamento de 1-2 quartos (~70m²) no mercado livre é de € 1.940 por mês, equivalente a € 27,75 por m²." },
@@ -240,7 +337,7 @@ const CustoDeVida = () => {
         faqItems={faqItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
-          { name: language === "pt" ? "Custo de Vida" : "Cost of Living", url: "https://amsterdu.com/custo-vida-amsterdam" }
+          { name: language === "nl" ? "Kosten Levensonderhoud" : language === "pt" ? "Custo de Vida" : "Cost of Living", url: "https://amsterdu.com/custo-vida-amsterdam" }
         ]}
       />
       
@@ -401,14 +498,14 @@ const CustoDeVida = () => {
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
                       <span className="flex items-center gap-2">
                         <User className="w-4 h-4" />
-                        {language === "pt" ? "Solteiro" : "Single"}
+                        {language === "nl" ? "Alleenstaand" : language === "pt" ? "Solteiro" : "Single"}
                       </span>
                       <span className="font-semibold">{c.taxes.waste.single}</span>
                     </div>
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
                       <span className="flex items-center gap-2">
                         <Users className="w-4 h-4" />
-                        {language === "pt" ? "Casal" : "Couple"}
+                        {language === "nl" ? "Stel" : language === "pt" ? "Casal" : "Couple"}
                       </span>
                       <span className="font-semibold">{c.taxes.waste.couple}</span>
                     </div>
@@ -428,14 +525,14 @@ const CustoDeVida = () => {
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
                       <span className="flex items-center gap-2">
                         <User className="w-4 h-4" />
-                        {language === "pt" ? "Solteiro" : "Single"}
+                        {language === "nl" ? "Alleenstaand" : language === "pt" ? "Solteiro" : "Single"}
                       </span>
                       <span className="font-semibold">{c.taxes.water.single}</span>
                     </div>
                     <div className="flex justify-between items-center p-2 bg-muted/50 rounded">
                       <span className="flex items-center gap-2">
                         <Users className="w-4 h-4" />
-                        {language === "pt" ? "Casal" : "Couple"}
+                        {language === "nl" ? "Stel" : language === "pt" ? "Casal" : "Couple"}
                       </span>
                       <span className="font-semibold">{c.taxes.water.couple}</span>
                     </div>
@@ -525,7 +622,7 @@ const CustoDeVida = () => {
                     <div className="flex justify-between items-center pt-4 border-t-2 border-primary/30">
                       <span className="font-bold text-lg">TOTAL</span>
                       <span className="text-2xl font-bold text-primary">
-                        ~€ {singleBudget.reduce((a, b) => a + b.value, 0).toLocaleString()} / {language === "pt" ? "mês" : "month"}
+                        ~€ {singleBudget.reduce((a, b) => a + b.value, 0).toLocaleString()} / {language === "nl" ? "maand" : language === "pt" ? "mês" : "month"}
                       </span>
                     </div>
                   </div>
@@ -552,7 +649,7 @@ const CustoDeVida = () => {
                     <div className="flex justify-between items-center pt-4 border-t-2 border-primary/30">
                       <span className="font-bold text-lg">TOTAL</span>
                       <span className="text-2xl font-bold text-primary">
-                        ~€ {coupleBudget.reduce((a, b) => a + b.value, 0).toLocaleString()} / {language === "pt" ? "mês" : "month"}
+                        ~€ {coupleBudget.reduce((a, b) => a + b.value, 0).toLocaleString()} / {language === "nl" ? "maand" : language === "pt" ? "mês" : "month"}
                       </span>
                     </div>
                   </div>

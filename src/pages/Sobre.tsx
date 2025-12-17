@@ -14,7 +14,30 @@ const Sobre = () => {
   const { language } = useLanguage();
   const seo = seoData.sobre[language];
 
-  const content = language === "pt" ? {
+  const content = language === "nl" ? {
+    heroTitle: "Wie is Du",
+    heroSubtitle: "En waarom AmsterDu bestaat",
+    greeting: "Hoi, ik ben Du.",
+    intro: "Amsterdam kwam niet als \"weekendtripje\" mijn leven binnen. Het werd eerst een referentie, toen een gewoonte, toen een project. Ik kwam meerdere keren terug, maakte vrienden met mensen die daar wonen, en elke terugkeer liet me een ander Amsterdam zien: minder ansichtkaart, meer echte stad.",
+    important: "En er is een belangrijk punt: ik heb AmsterDu niet gemaakt om Amsterdam te romantiseren. Ik heb het gemaakt omdat de stad prachtig is, maar ook echte valkuilen heeft. Boetes voor domme dingen, restaurants gemaakt voor toeristen, routes die er op papier geweldig uitzien maar op dag twee uitputtend worden.",
+    mission: "Wat ik hier doe is risico verminderen en ervaring vergroten.",
+    threeThings: "Ik breng drie dingen samen:",
+    pillars: [
+      { icon: "🔍", title: "Nieuwsgierigheid", desc: "om verder te gaan dan het voor de hand liggende." },
+      { icon: "📊", title: "Methode", desc: "om te testen en vergelijken voordat ik aanbeveel." },
+      { icon: "💬", title: "Eerlijkheid", desc: "om te zeggen wanneer iets \"mooi is, maar je tijd niet waard\"." },
+    ],
+    purpose: "AmsterDu bestaat om de gids te zijn die ik vanaf het begin had gewild: direct, praktisch, geen gelul, en met genoeg context voor jou om het waarom achter de keuzes te begrijpen.",
+    closing: "Als je een lichter, efficiënter en authentieker Amsterdam wilt, ben je op de juiste plek.",
+    welcome: "Welkom in mijn toekomstige thuis.",
+    readyToStart: "Klaar om te beginnen?",
+    planning: "Planning",
+    planningDesc: "Geen stress",
+    accommodation: "Accommodatie",
+    accommodationDesc: "De realiteit",
+    attractions: "Attracties",
+    attractionsDesc: "Het essentiële",
+  } : language === "pt" ? {
     heroTitle: "Quem é o Du",
     heroSubtitle: "E por que o AmsterDu existe",
     greeting: "Oi, eu sou o Du.",
