@@ -3,10 +3,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
+import { Language } from "@/hooks/useLanguage";
 
 interface CostCalculatorProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const CostCalculator = ({ language }: CostCalculatorProps) => {
   const [baseDiaria, setBaseDiaria] = useState(150);

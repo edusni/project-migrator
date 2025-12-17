@@ -118,8 +118,10 @@ const destinations: Destination[] = [
   }
 ];
 
+import { Language } from "@/hooks/useLanguage";
+
 interface DestinationsGallerySectionProps {
-  language: "pt" | "en";
+  language: Language;
 }
 
 const categoryColors: Record<string, string> = {
@@ -141,18 +143,33 @@ const categoryColors: Record<string, string> = {
   "By Bike": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
 };
 
+// Helper to get text with fallback for Dutch
+const getText = (obj: { pt: string; en: string }, language: Language): string => {
+  if (language === "nl") return obj.en; // Fallback to English for Dutch
+  return obj[language];
+};
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
+
 export function DestinationsGallerySection({ language }: DestinationsGallerySectionProps) {
   return (
     <section className="py-12 md:py-16">
       <AnimatedSection>
         <div className="text-center mb-10">
           <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
-            {language === "pt" ? "🗺️ Destinos em Destaque" : "🗺️ Featured Destinations"}
+            {t("🗺️ Destinos em Destaque", "🗺️ Featured Destinations", "🗺️ Uitgelichte Bestemmingen", language)}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {language === "pt" 
-              ? "Os melhores bate-voltas a partir de Amsterdam" 
-              : "The best day trips from Amsterdam"}
+            {t(
+              "Os melhores bate-voltas a partir de Amsterdam",
+              "The best day trips from Amsterdam",
+              "De beste dagtochten vanuit Amsterdam",
+              language
+            )}
           </p>
         </div>
       </AnimatedSection>
@@ -164,31 +181,31 @@ export function DestinationsGallerySection({ language }: DestinationsGallerySect
               <div className="relative h-48 overflow-hidden">
                 <img
                   src={dest.image}
-                  alt={dest.name[language]}
+                  alt={getText(dest.name, language)}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <Badge 
-                  className={`absolute top-3 left-3 ${categoryColors[dest.category[language]] || "bg-secondary text-secondary-foreground"}`}
+                  className={`absolute top-3 left-3 ${categoryColors[getText(dest.category, language)] || "bg-secondary text-secondary-foreground"}`}
                 >
-                  {dest.category[language]}
+                  {getText(dest.category, language)}
                 </Badge>
                 {dest.mustSee && (
                   <Badge className="absolute top-3 right-3 bg-primary text-primary-foreground">
-                    ⭐ {language === "pt" ? "Imperdível" : "Must See"}
+                    ⭐ {t("Imperdível", "Must See", "Niet missen", language)}
                   </Badge>
                 )}
               </div>
               <div className="p-4 flex flex-col flex-grow">
                 <h3 className="font-bold text-lg text-foreground mb-2">
-                  {dest.name[language]}
+                  {getText(dest.name, language)}
                 </h3>
                 <p className="text-muted-foreground text-sm mb-3 flex-grow">
-                  {dest.highlight[language]}
+                  {getText(dest.highlight, language)}
                 </p>
                 <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2">
                   <Train className="w-3.5 h-3.5" />
-                  <span>{dest.time[language]}</span>
+                  <span>{getText(dest.time, language)}</span>
                 </div>
               </div>
             </Card>

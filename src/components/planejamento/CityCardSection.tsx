@@ -1,8 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Language } from "@/hooks/useLanguage";
 
 interface CityCardSectionProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const CityCardSection = ({ language }: CityCardSectionProps) => {
   const cityCard = {

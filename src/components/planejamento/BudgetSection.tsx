@@ -1,9 +1,16 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimateOnScroll } from "@/hooks/useInView";
+import { Language } from "@/hooks/useLanguage";
 
 interface BudgetSectionProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const BudgetSection = ({ language }: BudgetSectionProps) => {
   const budgetLevels = [

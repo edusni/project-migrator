@@ -3,10 +3,17 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { AnimateOnScroll } from "@/hooks/useInView";
+import { Language } from "@/hooks/useLanguage";
 
 interface SeasonsTabsProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
   const seasons = [

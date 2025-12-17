@@ -1,9 +1,16 @@
 import { Baby, Heart, Users, Palette } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Language } from "@/hooks/useLanguage";
 
 interface ItinerariesSectionProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const ItinerariesSection = ({ language }: ItinerariesSectionProps) => {
   const itineraries = [
