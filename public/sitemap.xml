@@ -44,7 +44,7 @@
     <priority>0.8</priority>
   </url>
   
-  <!-- Atrações -->
+  <!-- Atrações (antiga: /o-que-fazer-amsterdam) -->
   <url>
     <loc>https://amsterdu.com/atracoes</loc>
     <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/atracoes"/>
