@@ -454,6 +454,47 @@ export const allTags = [
   "histórico"
 ];
 
+export const tagTranslations: Record<string, { pt: string; en: string; nl: string }> = {
+  "hash premium": { pt: "hash premium", en: "premium hash", nl: "premium hasj" },
+  "genéticas clássicas": { pt: "genéticas clássicas", en: "classic genetics", nl: "klassieke genetica" },
+  "cali weed": { pt: "cali weed", en: "cali weed", nl: "cali weed" },
+  "edibles": { pt: "comestíveis", en: "edibles", nl: "eetbare producten" },
+  "orgânico": { pt: "orgânico", en: "organic", nl: "biologisch" },
+  "arte e cultura": { pt: "arte e cultura", en: "art & culture", nl: "kunst & cultuur" },
+  "espaço exterior": { pt: "espaço exterior", en: "outdoor space", nl: "buitenruimte" },
+  "moonrocks": { pt: "moonrocks", en: "moonrocks", nl: "moonrocks" },
+  "lounge": { pt: "lounge", en: "lounge", nl: "lounge" },
+  "premium": { pt: "premium", en: "premium", nl: "premium" },
+  "local": { pt: "local", en: "local", nl: "lokaal" },
+  "histórico": { pt: "histórico", en: "historic", nl: "historisch" },
+  "turístico": { pt: "turístico", en: "touristy", nl: "toeristisch" },
+  "clássico": { pt: "clássico", en: "classic", nl: "klassiek" },
+  "ambiente temático": { pt: "ambiente temático", en: "themed venue", nl: "thema-omgeving" },
+  "localização central": { pt: "localização central", en: "central location", nl: "centrale locatie" },
+  "cinematográfico": { pt: "cinematográfico", en: "cinematic", nl: "filmisch" },
+  "atmosfera única": { pt: "atmosfera única", en: "unique atmosphere", nl: "unieke sfeer" },
+  "cult": { pt: "cult", en: "cult", nl: "cult" },
+  "exclusivo": { pt: "exclusivo", en: "exclusive", nl: "exclusief" },
+  "hype": { pt: "hype", en: "hype", nl: "hype" },
+  "nova guarda": { pt: "nova guarda", en: "new guard", nl: "nieuwe garde" },
+  "espaçoso": { pt: "espaçoso", en: "spacious", nl: "ruim" },
+  "acolhedor": { pt: "acolhedor", en: "welcoming", nl: "gastvrij" },
+  "simples": { pt: "simples", en: "simple", nl: "eenvoudig" },
+  "aconchegante": { pt: "aconchegante", en: "cozy", nl: "gezellig" },
+  "artístico": { pt: "artístico", en: "artistic", nl: "artistiek" },
+  "moderno": { pt: "moderno", en: "modern", nl: "modern" },
+  "discreto": { pt: "discreto", en: "discreet", nl: "discreet" },
+  "custo-benefício": { pt: "custo-benefício", en: "value for money", nl: "prijs-kwaliteit" },
+  "potência alta": { pt: "potência alta", en: "high potency", nl: "hoge potentie" },
+  "tradicional": { pt: "tradicional", en: "traditional", nl: "traditioneel" },
+  "relaxante": { pt: "relaxante", en: "relaxing", nl: "ontspannend" },
+  "hipster": { pt: "hipster", en: "hipster", nl: "hipster" },
+  "serviço bom": { pt: "serviço bom", en: "good service", nl: "goede service" },
+  "vista": { pt: "vista", en: "view", nl: "uitzicht" },
+  "tranquilo": { pt: "tranquilo", en: "peaceful", nl: "rustig" },
+  "expresso": { pt: "expresso", en: "express", nl: "express" }
+};
+
 export const profiles = {
   beginner: { pt: "Para Iniciantes", en: "For Beginners", nl: "Voor Beginners", color: "bg-green-500" },
   chill: { pt: "Relaxar", en: "Chill", nl: "Relaxed", color: "bg-blue-500" },
