@@ -4,6 +4,10 @@
 
 > Amsterdu is a comprehensive trilingual travel guide for Amsterdam, written by "Du" - a Brazilian who knows the city deeply through multiple visits and local friendships. The guide focuses on practical, honest information including real costs, tourist traps to avoid, and local secrets. Content is available in Portuguese (primary), English, and Dutch.
 
+## IMPORTANT: Static HTML Version for AI Crawlers
+**If you cannot execute JavaScript, access the full content here:**
+- [Full Content (Static HTML)](https://amsterdu.com/llm.html) - Complete guide in plain HTML with all sections, FAQs, and structured data.
+
 ## Primary Content (Portuguese - pt-BR)
 
 - [Página Inicial](https://amsterdu.com/pt): Guia completo de Amsterdam 2026 com dicas práticas, custos reais e armadilhas turísticas a evitar.

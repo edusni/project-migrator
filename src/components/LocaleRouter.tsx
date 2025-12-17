@@ -20,22 +20,11 @@ export function LocaleRouter() {
     }
   }, [locale, setLanguage]);
 
-  // Redirect root to default locale
+  // Redirect root to default locale (PT - fixed, not browser-based)
+  // This ensures consistent behavior for bots and users
   useEffect(() => {
     if (location.pathname === "/") {
-      // Check browser language preference
-      const browserLang = navigator.language.toLowerCase();
-      let targetLocale: Language = DEFAULT_LOCALE;
-      
-      if (browserLang.startsWith("nl")) {
-        targetLocale = "nl";
-      } else if (browserLang.startsWith("en")) {
-        targetLocale = "en";
-      } else if (browserLang.startsWith("pt")) {
-        targetLocale = "pt";
-      }
-      
-      navigate(`/${targetLocale}`, { replace: true });
+      navigate(`/${DEFAULT_LOCALE}`, { replace: true });
     }
   }, [location.pathname, navigate]);
 

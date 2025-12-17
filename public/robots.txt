@@ -97,5 +97,6 @@ Disallow: /
 # Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml
 
-# AI Crawlers info file (https://llmstxt.org/)
-# For structured content overview see: https://amsterdu.com/llms.txt
+# AI Crawlers - Static HTML version with full content
+# For crawlers that don't execute JavaScript: https://amsterdu.com/llm.html
+# Structured content overview: https://amsterdu.com/llms.txt
