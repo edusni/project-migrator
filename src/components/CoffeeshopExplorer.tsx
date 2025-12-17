@@ -217,7 +217,7 @@ const CoffeeshopExplorer = () => {
                     </CardHeader>
                     <CardContent className="space-y-2 sm:space-y-3 p-3 sm:p-4 pt-0 sm:pt-0">
                       <p className="text-xs sm:text-sm">
-                        {language === "pt" ? shop.highlight : shop.highlightEn}
+                        {language === "nl" ? shop.highlightNl : language === "pt" ? shop.highlight : shop.highlightEn}
                       </p>
                       
                       <div className="flex flex-wrap gap-1">
@@ -231,10 +231,10 @@ const CoffeeshopExplorer = () => {
                         ))}
                       </div>
                       
-                      {(shop.note || shop.noteEn) && (
+                      {(shop.note || shop.noteEn || shop.noteNl) && (
                         <div className="bg-destructive/10 p-2 rounded text-xs text-destructive flex items-start gap-1">
                           <AlertTriangle className="h-3 w-3 mt-0.5 flex-shrink-0" />
-                          {language === "pt" ? shop.note : shop.noteEn}
+                          {language === "nl" ? shop.noteNl : language === "pt" ? shop.note : shop.noteEn}
                         </div>
                       )}
                     </CardContent>
