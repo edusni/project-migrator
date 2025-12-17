@@ -1,0 +1,11 @@
+# 301 Redirects para preservar SEO de URLs antigas
+/onde-ficar-amsterdam /hospedagem 301
+/quem-e-o-du /sobre 301
+/bate-volta-amsterdam /arredores 301
+/coffeeshops-amsterdam /coffeeshops 301
+/transporte-amsterdam /transporte 301
+/onde-comer-amsterdam /gastronomia 301
+/planejamento-viagem /planejamento 301
+
+# SPA fallback
+/* /index.html 200
