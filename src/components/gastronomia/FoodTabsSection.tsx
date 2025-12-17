@@ -93,14 +93,14 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                     
                     <div className="bg-destructive/10 p-3 rounded-lg">
                       <p className="text-xs md:text-sm font-semibold text-destructive mb-1 flex items-center gap-1">
-                        <X className="h-3 w-3" /> {language === "pt" ? "Cilada" : "Trap"}
+                        <X className="h-3 w-3" /> {language === "pt" ? "Cilada" : language === "nl" ? "Valkuil" : "Trap"}
                       </p>
                       <p className="text-sm text-destructive/80">{food.trap}</p>
                     </div>
                     
                     <div className="bg-green-500/10 p-3 rounded-lg">
                       <p className="text-xs md:text-sm font-semibold text-green-700 dark:text-green-400 mb-1 flex items-center gap-1">
-                        <Check className="h-3 w-3" /> {language === "pt" ? "Faça certo" : "Do it right"}
+                        <Check className="h-3 w-3" /> {language === "pt" ? "Faça certo" : language === "nl" ? "Doe het goed" : "Do it right"}
                       </p>
                       <p className="text-sm text-green-800 dark:text-green-300">{food.right}</p>
                     </div>
@@ -130,13 +130,13 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-sm md:text-base text-muted-foreground mb-1">
-                      {language === "pt" ? "Por que existe na Holanda" : "Why it exists in Netherlands"}
+                      {language === "pt" ? "Por que existe na Holanda" : language === "nl" ? "Waarom het in Nederland bestaat" : "Why it exists in Netherlands"}
                     </h4>
                     <p className="text-sm md:text-base">{dinner.rijsttafel.why}</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm md:text-base text-muted-foreground mb-1">
-                      {language === "pt" ? "Como escolher bem" : "How to choose well"}
+                      {language === "pt" ? "Como escolher bem" : language === "nl" ? "Hoe goed te kiezen" : "How to choose well"}
                     </h4>
                     <p className="text-sm md:text-base">{dinner.rijsttafel.how}</p>
                   </div>
@@ -158,19 +158,19 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                 <CardContent className="space-y-4">
                   <div>
                     <h4 className="font-semibold text-sm md:text-base text-muted-foreground mb-1">
-                      {language === "pt" ? "O que são" : "What they are"}
+                      {language === "pt" ? "O que são" : language === "nl" ? "Wat ze zijn" : "What they are"}
                     </h4>
                     <p className="text-sm md:text-base">{dinner.brownCafe.what}</p>
                   </div>
                   <div>
                     <h4 className="font-semibold text-sm md:text-base text-muted-foreground mb-1">
-                      {language === "pt" ? "Exemplos clássicos" : "Classic examples"}
+                      {language === "pt" ? "Exemplos clássicos" : language === "nl" ? "Klassieke voorbeelden" : "Classic examples"}
                     </h4>
                     <p className="text-sm md:text-base">{dinner.brownCafe.examples}</p>
                   </div>
                   <div className="bg-primary/10 p-3 rounded-lg">
                     <p className="text-sm md:text-base">
-                      <strong>{language === "pt" ? "O que pedir:" : "What to order:"}</strong> {dinner.brownCafe.order}
+                      <strong>{language === "pt" ? "O que pedir:" : language === "nl" ? "Wat te bestellen:" : "What to order:"}</strong> {dinner.brownCafe.order}
                     </p>
                   </div>
                 </CardContent>
@@ -196,7 +196,7 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                   <div>
                     <h4 className="font-semibold text-sm md:text-base text-muted-foreground mb-1">
                       <MapPin className="h-3 w-3 inline mr-1" />
-                      {language === "pt" ? "Onde experimentar" : "Where to try"}
+                      {language === "pt" ? "Onde experimentar" : language === "nl" ? "Waar te proberen" : "Where to try"}
                     </h4>
                     <p className="text-sm md:text-base">{drinks.jenever.where}</p>
                   </div>
@@ -261,7 +261,7 @@ export const FoodTabsSection = ({ tabs, streetFood, dinner, drinks, foodhalls, l
                     <p className="text-sm md:text-base text-destructive">{foodhalls.worldOfFood.warning}</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-sm md:text-base mb-1">{language === "pt" ? "Alternativa" : "Alternative"}</h4>
+                    <h4 className="font-semibold text-sm md:text-base mb-1">{language === "pt" ? "Alternativa" : language === "nl" ? "Alternatief" : "Alternative"}</h4>
                     <p className="text-sm md:text-base text-muted-foreground">{foodhalls.worldOfFood.alt}</p>
                   </div>
                 </CardContent>
