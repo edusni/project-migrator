@@ -1,10 +1,17 @@
 import { Smartphone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimateOnScroll } from "@/hooks/useInView";
+import { Language } from "@/hooks/useLanguage";
 
 interface TransportSectionProps {
-  language: "pt" | "en";
+  language: Language;
 }
+
+const t = (pt: string, en: string, nl: string, language: Language) => {
+  if (language === "nl") return nl;
+  if (language === "en") return en;
+  return pt;
+};
 
 export const TransportSection = ({ language }: TransportSectionProps) => {
   const transportOptions = [

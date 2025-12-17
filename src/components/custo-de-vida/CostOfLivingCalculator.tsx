@@ -6,9 +6,10 @@ import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { User, Users, Bike, Bus, Salad, UtensilsCrossed, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
+import { Language } from "@/hooks/useLanguage";
 
 interface CostOfLivingCalculatorProps {
-  language: "pt" | "en";
+  language: Language;
 }
 
 export function CostOfLivingCalculator({ language }: CostOfLivingCalculatorProps) {
@@ -65,6 +66,30 @@ export function CostOfLivingCalculator({ language }: CostOfLivingCalculatorProps
       month: "month",
       perPerson: "per person",
       disclaimer: "* Estimated values for 2026. Actual rent may vary significantly by location."
+    },
+    nl: {
+      household: "Huishouden",
+      single: "Alleenstaand",
+      couple: "Stel",
+      transport: "Vervoer",
+      bikeLabel: "Fietsen?",
+      bikeYes: "Ja, als een local!",
+      bikeNo: "Nee, liever openbaar vervoer",
+      lifestyle: "Levensstijl",
+      economic: "Economisch",
+      medium: "Gemiddeld",
+      comfortable: "Comfortabel",
+      rent: "Geschatte Huur",
+      breakdown: "Maandelijks Overzicht",
+      rentLabel: "Huur",
+      bills: "Rekeningen (Energie/Internet/Zorg)",
+      groceries: "Boodschappen/Huis",
+      transportLabel: "Vervoer",
+      taxes: "Gemeentelijke Belastingen",
+      total: "GESCHAT TOTAAL",
+      month: "maand",
+      perPerson: "per persoon",
+      disclaimer: "* Geschatte waarden voor 2026. Werkelijke huur kan aanzienlijk variëren per locatie."
     }
   };
 
