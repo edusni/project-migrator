@@ -20,6 +20,7 @@ const translations: Translations = {
   "nav.food": { pt: "Gastronomia", en: "Eat & Drink" },
   "nav.coffeeshops": { pt: "Coffeeshops", en: "Coffeeshops" },
   "nav.daytrips": { pt: "Arredores", en: "Day Trips" },
+  "nav.costOfLiving": { pt: "Custo de Vida", en: "Cost of Living" },
   "nav.gallery": { pt: "Galeria", en: "Gallery" },
   "nav.blog": { pt: "Blog", en: "Blog" },
   
