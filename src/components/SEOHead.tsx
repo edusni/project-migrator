@@ -242,6 +242,11 @@ export const seoData = {
       description: "The brutally honest Amsterdam guide. Avoid tourist traps, save up to 40% and have authentic experiences. From someone who really knows the city.",
       keywords: "amsterdam guide 2026, amsterdam travel, amsterdam tips, amsterdam itinerary, amsterdam tourism, what to do amsterdam, where to stay amsterdam, amsterdam coffeeshops, amsterdam museums, amsterdam transport, cost of living amsterdam",
     },
+    nl: {
+      title: "Amsterdam Gids 2026: Tips, Routes & Hoe te Besparen | Amsterdu",
+      description: "De brutaal eerlijke Amsterdam gids. Vermijd toeristenvalkuilen, bespaar tot 40% en beleef authentieke ervaringen. Van iemand die de stad echt kent.",
+      keywords: "amsterdam gids 2026, amsterdam reizen, amsterdam tips, amsterdam route, amsterdam toerisme, wat te doen amsterdam, waar verblijven amsterdam, amsterdam coffeeshops, amsterdam musea, amsterdam vervoer, kosten levensonderhoud amsterdam",
+    },
   },
   planejamento: {
     pt: {
@@ -253,6 +258,11 @@ export const seoData = {
       title: "How to Plan Your Amsterdam Trip 2026 (Step by Step)",
       description: "Plan Amsterdam without mistakes: best time, documents, real budget, tested itineraries. Everything you need to know. Updated guide 2026.",
       keywords: "amsterdam trip planning, when to visit amsterdam, amsterdam cost, amsterdam documents, amsterdam itinerary, amsterdam budget 2026, netherlands travel",
+    },
+    nl: {
+      title: "Hoe Plan Je Je Amsterdam Reis 2026 (Stap voor Stap)",
+      description: "Plan Amsterdam zonder fouten: beste tijd, documenten, echt budget, geteste routes. Alles wat je moet weten. Bijgewerkte gids 2026.",
+      keywords: "amsterdam reis plannen, wanneer naar amsterdam, amsterdam kosten, amsterdam documenten, amsterdam route, amsterdam budget 2026, nederland reizen",
     },
   },
   hospedagem: {
@@ -266,6 +276,11 @@ export const seoData = {
       description: "Discover the best neighborhoods to stay in Amsterdam. Jordaan, De Pijp, Noord: which to choose? Updated prices, money-saving tips and mistakes to avoid.",
       keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord, best neighborhoods amsterdam",
     },
+    nl: {
+      title: "Waar Verblijven in Amsterdam 2026: Beste Wijken + Echte Prijzen",
+      description: "Ontdek de beste wijken om te verblijven in Amsterdam. Jordaan, De Pijp, Noord: welke kiezen? Actuele prijzen, bespaartips en fouten om te vermijden.",
+      keywords: "waar verblijven amsterdam, beste wijken amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodatie 2026, jordaan, de pijp, amsterdam noord, beste buurten amsterdam",
+    },
   },
   gastronomia: {
     pt: {
@@ -277,6 +292,11 @@ export const seoData = {
       title: "What to Eat in Amsterdam 2026: Dutch Food Guide",
       description: "Where to eat in Amsterdam without falling into tourist traps. Stroopwafel, bitterballen, rijsttafel: what to try and where to find it. Prices and local tips.",
       keywords: "where to eat amsterdam, what to eat amsterdam, dutch food, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam food 2026, foodhallen",
+    },
+    nl: {
+      title: "Wat te Eten in Amsterdam 2026: Nederlandse Eetgids",
+      description: "Waar eten in Amsterdam zonder in toeristenvallen te trappen. Stroopwafel, bitterballen, rijsttafel: wat proberen en waar te vinden. Prijzen en lokale tips.",
+      keywords: "waar eten amsterdam, wat eten amsterdam, nederlandse gerechten, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam eten 2026, foodhallen",
     },
   },
   atracoes: {
@@ -290,6 +310,11 @@ export const seoData = {
       description: "Complete Amsterdam attractions guide. Museums, parks, experiences: discover what's worth it. With filters by price, area and type. Interactive map included.",
       keywords: "amsterdam attractions, what to do amsterdam, amsterdam museums, van gogh museum, rijksmuseum, anne frank house, amsterdam parks 2026, amsterdam activities, things to do amsterdam",
     },
+    nl: {
+      title: "Amsterdam Bezienswaardigheden 2026: Wat te Doen + Interactieve Kaart",
+      description: "Complete Amsterdam attracties gids. Musea, parken, ervaringen: ontdek wat de moeite waard is. Met filters op prijs, gebied en type. Interactieve kaart inbegrepen.",
+      keywords: "amsterdam bezienswaardigheden, wat te doen amsterdam, amsterdam musea, van gogh museum, rijksmuseum, anne frank huis, amsterdam parken 2026, amsterdam activiteiten, dingen om te doen amsterdam",
+    },
   },
   transporte: {
     pt: {
@@ -301,6 +326,11 @@ export const seoData = {
       title: "How to Get Around Amsterdam 2026: Transport Guide",
       description: "Amsterdam transport explained: metro, tram, bike, ferry and OVpay. How to get from Schiphol to center, costs and expensive mistakes to avoid. Complete guide.",
       keywords: "amsterdam transport, getting around amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam bike, schiphol center 2026, amsterdam public transport",
+    },
+    nl: {
+      title: "Hoe Kom Je Rond in Amsterdam 2026: Vervoersgids",
+      description: "Amsterdam vervoer uitgelegd: metro, tram, fiets, veer en OVpay. Hoe van Schiphol naar centrum, kosten en dure fouten om te vermijden. Complete gids.",
+      keywords: "amsterdam vervoer, rondkomen amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam fiets, schiphol centrum 2026, amsterdam openbaar vervoer",
     },
   },
   coffeeshops: {
@@ -314,6 +344,11 @@ export const seoData = {
       description: "Everything about Amsterdam coffeeshops: how they work, 2026 rules, cannabis prices, best options and what tourists need to know. Judgment-free guide.",
       keywords: "amsterdam coffeeshops, coffeeshop guide, how coffeeshops work, coffeeshop rules 2026, best coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2026, amsterdam coffeeshop cannabis prices 2026",
     },
+    nl: {
+      title: "Amsterdam Coffeeshops 2026: Complete Gids + Regels & Prijzen",
+      description: "Alles over Amsterdam coffeeshops: hoe ze werken, regels 2026, cannabis prijzen, beste opties en wat toeristen moeten weten. Oordeelvrije gids.",
+      keywords: "amsterdam coffeeshops, coffeeshop gids, hoe werken coffeeshops, coffeeshop regels 2026, beste coffeeshops amsterdam, bulldog, dampkring, amsterdam wiet, amsterdam wiet prijzen 2026",
+    },
   },
   arredores: {
     pt: {
@@ -325,6 +360,11 @@ export const seoData = {
       title: "Amsterdam Day Trips 2026: 10 Best One-Day Excursions",
       description: "Best day trips from Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. How to go, costs and if it's worth it. Tested practical guide.",
       keywords: "amsterdam day trips, day trips from amsterdam, amsterdam excursions, cities near amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+    },
+    nl: {
+      title: "Amsterdam Dagtrips 2026: 10 Beste Eendaagse Uitjes",
+      description: "Beste dagtrips vanuit Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. Hoe te gaan, kosten en of het de moeite waard is. Geteste praktische gids.",
+      keywords: "amsterdam dagtrips, dagtrips vanuit amsterdam, amsterdam excursies, steden bij amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
     },
   },
   blog: {
@@ -338,6 +378,11 @@ export const seoData = {
       description: "Du's personal blog: real stories about living in Amsterdam, moving from Brazil, exclusive tips and reflections on Dutch life. No filter.",
       keywords: "amsterdam blog, living amsterdam, brazilians amsterdam, netherlands life, moving amsterdam, cost of living amsterdam, amsterdam experience",
     },
+    nl: {
+      title: "Du's Blog: Leven in Amsterdam & Braziliaanse Tips",
+      description: "Du's persoonlijke blog: echte verhalen over wonen in Amsterdam, verhuizen vanuit Brazilië, exclusieve tips en reflecties over het Nederlandse leven. Zonder filter.",
+      keywords: "amsterdam blog, wonen amsterdam, brazilianen amsterdam, nederland leven, verhuizen amsterdam, kosten levensonderhoud amsterdam, amsterdam ervaring",
+    },
   },
   sobre: {
     pt: {
@@ -350,6 +395,11 @@ export const seoData = {
       description: "Meet Du, a Brazilian passionate about Amsterdam. Discover why I created this brutally honest guide and how it can transform your trip.",
       keywords: "about amsterdu, who is du, amsterdu creator, amsterdam brazilian guide, amsterdu blog",
     },
+    nl: {
+      title: "Wie is Du? Het Verhaal Achter Amsterdu",
+      description: "Ontmoet Du, een Braziliaan met een passie voor Amsterdam. Ontdek waarom ik deze brutaal eerlijke gids heb gemaakt en hoe het je reis kan transformeren.",
+      keywords: "over amsterdu, wie is du, amsterdu maker, amsterdam braziliaanse gids, amsterdu blog",
+    },
   },
   custoDeVida: {
     pt: {
@@ -361,6 +411,11 @@ export const seoData = {
       title: "Cost of Living in Amsterdam 2026: How Much Does it Cost to Live?",
       description: "Discover how much it costs to live in Amsterdam in 2026. Rent, bills, taxes, groceries and transport. Interactive calculator + real budgets for singles and couples.",
       keywords: "cost of living amsterdam 2026, how much to live amsterdam, rent amsterdam, living in netherlands, netherlands cost of living, amsterdam salary, amsterdam apartment price, expat amsterdam",
+    },
+    nl: {
+      title: "Kosten van Levensonderhoud in Amsterdam 2026: Hoeveel Kost Het om te Wonen?",
+      description: "Ontdek hoeveel het kost om te wonen in Amsterdam in 2026. Huur, rekeningen, belastingen, boodschappen en vervoer. Interactieve calculator + echte budgetten voor alleenstaanden en stellen.",
+      keywords: "kosten levensonderhoud amsterdam 2026, hoeveel kost wonen amsterdam, huur amsterdam, wonen in nederland, nederland kosten levensonderhoud, amsterdam salaris, amsterdam appartement prijs, expat amsterdam",
     },
   },
 };
