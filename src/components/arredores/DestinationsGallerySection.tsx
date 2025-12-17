@@ -2,6 +2,7 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Train } from "lucide-react";
+import { Language } from "@/hooks/useLanguage";
 
 // Import images
 import zaanseSchansImg from "@/assets/daytrip-zaanse-schans.png";
@@ -17,108 +18,106 @@ import muiderslotImg from "@/assets/daytrip-muiderslot.png";
 
 interface Destination {
   id: string;
-  name: { pt: string; en: string };
+  name: { pt: string; en: string; nl: string };
   image: string;
-  category: { pt: string; en: string };
-  time: { pt: string; en: string };
-  highlight: { pt: string; en: string };
+  category: { pt: string; en: string; nl: string };
+  time: { pt: string; en: string; nl: string };
+  highlight: { pt: string; en: string; nl: string };
   mustSee: boolean;
 }
 
 const destinations: Destination[] = [
   {
     id: "zaanse-schans",
-    name: { pt: "Zaanse Schans", en: "Zaanse Schans" },
+    name: { pt: "Zaanse Schans", en: "Zaanse Schans", nl: "Zaanse Schans" },
     image: zaanseSchansImg,
-    category: { pt: "Clássico", en: "Classic" },
-    time: { pt: "20 min de trem", en: "20 min by train" },
-    highlight: { pt: "Moinhos icônicos e vila histórica", en: "Iconic windmills and historic village" },
+    category: { pt: "Clássico", en: "Classic", nl: "Klassiek" },
+    time: { pt: "20 min de trem", en: "20 min by train", nl: "20 min met trein" },
+    highlight: { pt: "Moinhos icônicos e vila histórica", en: "Iconic windmills and historic village", nl: "Iconische molens en historisch dorp" },
     mustSee: true
   },
   {
     id: "keukenhof",
-    name: { pt: "Keukenhof", en: "Keukenhof" },
+    name: { pt: "Keukenhof", en: "Keukenhof", nl: "Keukenhof" },
     image: keukenhofImg,
-    category: { pt: "Sazonal", en: "Seasonal" },
-    time: { pt: "1h de transporte", en: "1h transport" },
-    highlight: { pt: "Milhões de tulipas (mar-mai)", en: "Millions of tulips (Mar-May)" },
+    category: { pt: "Sazonal", en: "Seasonal", nl: "Seizoens" },
+    time: { pt: "1h de transporte", en: "1h transport", nl: "1u vervoer" },
+    highlight: { pt: "Milhões de tulipas (mar-mai)", en: "Millions of tulips (Mar-May)", nl: "Miljoenen tulpen (mrt-mei)" },
     mustSee: true
   },
   {
     id: "haarlem",
-    name: { pt: "Haarlem", en: "Haarlem" },
+    name: { pt: "Haarlem", en: "Haarlem", nl: "Haarlem" },
     image: haarlemImg,
-    category: { pt: "Mini-Amsterdam", en: "Mini-Amsterdam" },
-    time: { pt: "15 min de trem", en: "15 min by train" },
-    highlight: { pt: "A melhor vizinha de Amsterdam", en: "Amsterdam's best neighbor" },
+    category: { pt: "Mini-Amsterdam", en: "Mini-Amsterdam", nl: "Mini-Amsterdam" },
+    time: { pt: "15 min de trem", en: "15 min by train", nl: "15 min met trein" },
+    highlight: { pt: "A melhor vizinha de Amsterdam", en: "Amsterdam's best neighbor", nl: "De beste buurman van Amsterdam" },
     mustSee: true
   },
   {
     id: "utrecht",
-    name: { pt: "Utrecht", en: "Utrecht" },
+    name: { pt: "Utrecht", en: "Utrecht", nl: "Utrecht" },
     image: utrechtImg,
-    category: { pt: "Mini-Amsterdam", en: "Mini-Amsterdam" },
-    time: { pt: "25 min de trem", en: "25 min by train" },
-    highlight: { pt: "Canais únicos e vibe jovem", en: "Unique canals and young vibe" },
+    category: { pt: "Mini-Amsterdam", en: "Mini-Amsterdam", nl: "Mini-Amsterdam" },
+    time: { pt: "25 min de trem", en: "25 min by train", nl: "25 min met trein" },
+    highlight: { pt: "Canais únicos e vibe jovem", en: "Unique canals and young vibe", nl: "Unieke grachten en jonge sfeer" },
     mustSee: true
   },
   {
     id: "rotterdam",
-    name: { pt: "Rotterdam", en: "Rotterdam" },
+    name: { pt: "Rotterdam", en: "Rotterdam", nl: "Rotterdam" },
     image: rotterdamImg,
-    category: { pt: "Moderno", en: "Modern" },
-    time: { pt: "40 min de trem", en: "40 min by train" },
-    highlight: { pt: "Arquitetura futurista", en: "Futuristic architecture" },
+    category: { pt: "Moderno", en: "Modern", nl: "Modern" },
+    time: { pt: "40 min de trem", en: "40 min by train", nl: "40 min met trein" },
+    highlight: { pt: "Arquitetura futurista", en: "Futuristic architecture", nl: "Futuristische architectuur" },
     mustSee: true
   },
   {
     id: "giethoorn",
-    name: { pt: "Giethoorn", en: "Giethoorn" },
+    name: { pt: "Giethoorn", en: "Giethoorn", nl: "Giethoorn" },
     image: giethoornImg,
-    category: { pt: "Romântico", en: "Romantic" },
-    time: { pt: "2h de transporte", en: "2h transport" },
-    highlight: { pt: "A 'Veneza do Norte'", en: "The 'Venice of the North'" },
+    category: { pt: "Romântico", en: "Romantic", nl: "Romantisch" },
+    time: { pt: "2h de transporte", en: "2h transport", nl: "2u vervoer" },
+    highlight: { pt: "A 'Veneza do Norte'", en: "The 'Venice of the North'", nl: "Het 'Venetië van het Noorden'" },
     mustSee: false
   },
   {
     id: "delft",
-    name: { pt: "Delft", en: "Delft" },
+    name: { pt: "Delft", en: "Delft", nl: "Delft" },
     image: delftImg,
-    category: { pt: "Artístico", en: "Artistic" },
-    time: { pt: "1h de trem", en: "1h by train" },
-    highlight: { pt: "Cerâmica azul e charme histórico", en: "Blue ceramics and historic charm" },
+    category: { pt: "Artístico", en: "Artistic", nl: "Artistiek" },
+    time: { pt: "1h de trem", en: "1h by train", nl: "1u met trein" },
+    highlight: { pt: "Cerâmica azul e charme histórico", en: "Blue ceramics and historic charm", nl: "Delfts blauw en historische charme" },
     mustSee: false
   },
   {
     id: "marken",
-    name: { pt: "Marken", en: "Marken" },
+    name: { pt: "Marken", en: "Marken", nl: "Marken" },
     image: markenImg,
-    category: { pt: "Rural", en: "Rural" },
-    time: { pt: "30 min de bike/barco", en: "30 min by bike/boat" },
-    highlight: { pt: "Vila de pescadores tradicional", en: "Traditional fishing village" },
+    category: { pt: "Rural", en: "Rural", nl: "Landelijk" },
+    time: { pt: "30 min de bike/barco", en: "30 min by bike/boat", nl: "30 min met fiets/boot" },
+    highlight: { pt: "Vila de pescadores tradicional", en: "Traditional fishing village", nl: "Traditioneel vissersdorp" },
     mustSee: false
   },
   {
     id: "muiderslot",
-    name: { pt: "Muiderslot", en: "Muiderslot" },
+    name: { pt: "Muiderslot", en: "Muiderslot", nl: "Muiderslot" },
     image: muiderslotImg,
-    category: { pt: "Histórico", en: "Historic" },
-    time: { pt: "30 min de bike", en: "30 min by bike" },
-    highlight: { pt: "Castelo medieval de verdade", en: "Real medieval castle" },
+    category: { pt: "Histórico", en: "Historic", nl: "Historisch" },
+    time: { pt: "30 min de bike", en: "30 min by bike", nl: "30 min met fiets" },
+    highlight: { pt: "Castelo medieval de verdade", en: "Real medieval castle", nl: "Echt middeleeuws kasteel" },
     mustSee: false
   },
   {
     id: "waterland",
-    name: { pt: "Waterland", en: "Waterland" },
+    name: { pt: "Waterland", en: "Waterland", nl: "Waterland" },
     image: clogsImg,
-    category: { pt: "De Bike", en: "By Bike" },
-    time: { pt: "Balsa + bike", en: "Ferry + bike" },
-    highlight: { pt: "Holanda rural sem excursão", en: "Rural Netherlands without tour buses" },
+    category: { pt: "De Bike", en: "By Bike", nl: "Per Fiets" },
+    time: { pt: "Balsa + bike", en: "Ferry + bike", nl: "Veer + fiets" },
+    highlight: { pt: "Holanda rural sem excursão", en: "Rural Netherlands without tour buses", nl: "Landelijk Nederland zonder tourbussen" },
     mustSee: false
   }
 ];
-
-import { Language } from "@/hooks/useLanguage";
 
 interface DestinationsGallerySectionProps {
   language: Language;
@@ -127,25 +126,31 @@ interface DestinationsGallerySectionProps {
 const categoryColors: Record<string, string> = {
   "Clássico": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
   "Classic": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
+  "Klassiek": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
   "Sazonal": "bg-pink-500/20 text-pink-700 dark:text-pink-300",
   "Seasonal": "bg-pink-500/20 text-pink-700 dark:text-pink-300",
+  "Seizoens": "bg-pink-500/20 text-pink-700 dark:text-pink-300",
   "Mini-Amsterdam": "bg-blue-500/20 text-blue-700 dark:text-blue-300",
   "Moderno": "bg-purple-500/20 text-purple-700 dark:text-purple-300",
   "Modern": "bg-purple-500/20 text-purple-700 dark:text-purple-300",
   "Romântico": "bg-red-500/20 text-red-700 dark:text-red-300",
   "Romantic": "bg-red-500/20 text-red-700 dark:text-red-300",
+  "Romantisch": "bg-red-500/20 text-red-700 dark:text-red-300",
   "Artístico": "bg-indigo-500/20 text-indigo-700 dark:text-indigo-300",
   "Artistic": "bg-indigo-500/20 text-indigo-700 dark:text-indigo-300",
+  "Artistiek": "bg-indigo-500/20 text-indigo-700 dark:text-indigo-300",
   "Rural": "bg-green-500/20 text-green-700 dark:text-green-300",
+  "Landelijk": "bg-green-500/20 text-green-700 dark:text-green-300",
   "Histórico": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
   "Historic": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
+  "Historisch": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
   "De Bike": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300",
-  "By Bike": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
+  "By Bike": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300",
+  "Per Fiets": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
 };
 
-// Helper to get text with fallback for Dutch
-const getText = (obj: { pt: string; en: string }, language: Language): string => {
-  if (language === "nl") return obj.en; // Fallback to English for Dutch
+// Helper to get text
+const getText = (obj: { pt: string; en: string; nl: string }, language: Language): string => {
   return obj[language];
 };
 

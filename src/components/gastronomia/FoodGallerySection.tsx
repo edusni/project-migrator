@@ -1,6 +1,7 @@
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Language } from "@/hooks/useLanguage";
 
 // Import images
 import stroopwafelImg from "@/assets/food-stroopwafel.png";
@@ -13,73 +14,71 @@ import browncafeImg from "@/assets/food-browncafe.png";
 
 interface FoodItem {
   id: string;
-  name: { pt: string; en: string };
+  name: { pt: string; en: string; nl: string };
   image: string;
-  category: { pt: string; en: string };
-  description: { pt: string; en: string };
-  tip: { pt: string; en: string };
+  category: { pt: string; en: string; nl: string };
+  description: { pt: string; en: string; nl: string };
+  tip: { pt: string; en: string; nl: string };
 }
 
 const foodItems: FoodItem[] = [
   {
     id: "stroopwafel",
-    name: { pt: "Stroopwafel", en: "Stroopwafel" },
+    name: { pt: "Stroopwafel", en: "Stroopwafel", nl: "Stroopwafel" },
     image: stroopwafelImg,
-    category: { pt: "Doce de Rua", en: "Street Sweet" },
-    description: { pt: "Dois waffles finos com caramelo quente no meio", en: "Two thin waffles with hot caramel in between" },
-    tip: { pt: "Compre quente no mercado!", en: "Buy it hot at the market!" }
+    category: { pt: "Doce de Rua", en: "Street Sweet", nl: "Straatlekkernij" },
+    description: { pt: "Dois waffles finos com caramelo quente no meio", en: "Two thin waffles with hot caramel in between", nl: "Twee dunne wafels met warme stroop ertussen" },
+    tip: { pt: "Compre quente no mercado!", en: "Buy it hot at the market!", nl: "Koop hem warm op de markt!" }
   },
   {
     id: "haring",
-    name: { pt: "Haring (Arenque)", en: "Haring (Herring)" },
+    name: { pt: "Haring (Arenque)", en: "Haring (Herring)", nl: "Hollandse Nieuwe" },
     image: haringImg,
-    category: { pt: "Clássico Holandês", en: "Dutch Classic" },
-    description: { pt: "Arenque curado com cebola e picles", en: "Cured herring with onion and pickles" },
-    tip: { pt: "Peça cortado (partjes) se é iniciante", en: "Order cut (partjes) if you're a beginner" }
+    category: { pt: "Clássico Holandês", en: "Dutch Classic", nl: "Nederlandse Klassieker" },
+    description: { pt: "Arenque curado com cebola e picles", en: "Cured herring with onion and pickles", nl: "Gezouten haring met ui en augurk" },
+    tip: { pt: "Peça cortado (partjes) se é iniciante", en: "Order cut (partjes) if you're a beginner", nl: "Bestel in partjes als je beginner bent" }
   },
   {
     id: "bitterballen",
-    name: { pt: "Bitterballen", en: "Bitterballen" },
+    name: { pt: "Bitterballen", en: "Bitterballen", nl: "Bitterballen" },
     image: bitterballenImg,
-    category: { pt: "Petisco de Bar", en: "Bar Snack" },
-    description: { pt: "Bolinhas empanadas de ragu servidas com mostarda", en: "Breaded ragout balls served with mustard" },
-    tip: { pt: "Espere esfriar um pouco - interior é lava!", en: "Wait a bit - inside is lava!" }
+    category: { pt: "Petisco de Bar", en: "Bar Snack", nl: "Borrelhapje" },
+    description: { pt: "Bolinhas empanadas de ragu servidas com mostarda", en: "Breaded ragout balls served with mustard", nl: "Gefrituurde ragoutballetjes met mosterd" },
+    tip: { pt: "Espere esfriar um pouco - interior é lava!", en: "Wait a bit - inside is lava!", nl: "Wacht even - van binnen heet!" }
   },
   {
     id: "poffertjes",
-    name: { pt: "Poffertjes", en: "Poffertjes" },
+    name: { pt: "Poffertjes", en: "Poffertjes", nl: "Poffertjes" },
     image: poffertjesImg,
-    category: { pt: "Doce de Rua", en: "Street Sweet" },
-    description: { pt: "Mini panquecas aeradas com manteiga e açúcar", en: "Fluffy mini pancakes with butter and sugar" },
-    tip: { pt: "Versão clássica é a melhor", en: "Classic version is the best" }
+    category: { pt: "Doce de Rua", en: "Street Sweet", nl: "Straatlekkernij" },
+    description: { pt: "Mini panquecas aeradas com manteiga e açúcar", en: "Fluffy mini pancakes with butter and sugar", nl: "Kleine luchtige pannenkoekjes met boter en poedersuiker" },
+    tip: { pt: "Versão clássica é a melhor", en: "Classic version is the best", nl: "De klassieke versie is het beste" }
   },
   {
     id: "febo",
-    name: { pt: "FEBO Automat", en: "FEBO Automat" },
+    name: { pt: "FEBO Automat", en: "FEBO Automat", nl: "FEBO Automaat" },
     image: feboImg,
-    category: { pt: "Experiência Única", en: "Unique Experience" },
-    description: { pt: "A icônica 'parede de comida' com croquetes e snacks", en: "The iconic 'food wall' with croquettes and snacks" },
-    tip: { pt: "Kroket e kaassouflé são os clássicos", en: "Kroket and kaassouflé are classics" }
+    category: { pt: "Experiência Única", en: "Unique Experience", nl: "Unieke Ervaring" },
+    description: { pt: "A icônica 'parede de comida' com croquetes e snacks", en: "The iconic 'food wall' with croquettes and snacks", nl: "De iconische 'muur met eten' met kroketten en snacks" },
+    tip: { pt: "Kroket e kaassouflé são os clássicos", en: "Kroket and kaassouflé are classics", nl: "Kroket en kaassouflé zijn klassiekers" }
   },
   {
     id: "rijsttafel",
-    name: { pt: "Rijsttafel Indonésio", en: "Indonesian Rijsttafel" },
+    name: { pt: "Rijsttafel Indonésio", en: "Indonesian Rijsttafel", nl: "Indonesische Rijsttafel" },
     image: rijsttafelImg,
-    category: { pt: "Jantar Sério", en: "Serious Dinner" },
-    description: { pt: "Mesa repleta de pratos indonésios variados", en: "Table full of varied Indonesian dishes" },
-    tip: { pt: "Reserve com antecedência!", en: "Book ahead!" }
+    category: { pt: "Jantar Sério", en: "Serious Dinner", nl: "Uitgebreid Diner" },
+    description: { pt: "Mesa repleta de pratos indonésios variados", en: "Table full of varied Indonesian dishes", nl: "Tafel vol met diverse Indonesische gerechten" },
+    tip: { pt: "Reserve com antecedência!", en: "Book ahead!", nl: "Reserveer vooraf!" }
   },
   {
     id: "browncafe",
-    name: { pt: "Brown Café", en: "Brown Café" },
+    name: { pt: "Brown Café", en: "Brown Café", nl: "Bruin Café" },
     image: browncafeImg,
-    category: { pt: "Experiência Local", en: "Local Experience" },
-    description: { pt: "Bares tradicionais com madeira escura e cerveja", en: "Traditional bars with dark wood and beer" },
-    tip: { pt: "Peça bitterballen + cerveja local", en: "Order bitterballen + local beer" }
+    category: { pt: "Experiência Local", en: "Local Experience", nl: "Lokale Ervaring" },
+    description: { pt: "Bares tradicionais com madeira escura e cerveja", en: "Traditional bars with dark wood and beer", nl: "Traditionele kroegen met donker hout en bier" },
+    tip: { pt: "Peça bitterballen + cerveja local", en: "Order bitterballen + local beer", nl: "Bestel bitterballen + lokaal bier" }
   }
 ];
-
-import { Language } from "@/hooks/useLanguage";
 
 interface FoodGallerySectionProps {
   language: Language;
@@ -88,21 +87,26 @@ interface FoodGallerySectionProps {
 const categoryColors: Record<string, string> = {
   "Doce de Rua": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
   "Street Sweet": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
+  "Straatlekkernij": "bg-amber-500/20 text-amber-700 dark:text-amber-300",
   "Clássico Holandês": "bg-blue-500/20 text-blue-700 dark:text-blue-300",
   "Dutch Classic": "bg-blue-500/20 text-blue-700 dark:text-blue-300",
+  "Nederlandse Klassieker": "bg-blue-500/20 text-blue-700 dark:text-blue-300",
   "Petisco de Bar": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
   "Bar Snack": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
+  "Borrelhapje": "bg-orange-500/20 text-orange-700 dark:text-orange-300",
   "Experiência Única": "bg-purple-500/20 text-purple-700 dark:text-purple-300",
   "Unique Experience": "bg-purple-500/20 text-purple-700 dark:text-purple-300",
+  "Unieke Ervaring": "bg-purple-500/20 text-purple-700 dark:text-purple-300",
   "Jantar Sério": "bg-red-500/20 text-red-700 dark:text-red-300",
   "Serious Dinner": "bg-red-500/20 text-red-700 dark:text-red-300",
+  "Uitgebreid Diner": "bg-red-500/20 text-red-700 dark:text-red-300",
   "Experiência Local": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300",
-  "Local Experience": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
+  "Local Experience": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300",
+  "Lokale Ervaring": "bg-emerald-500/20 text-emerald-700 dark:text-emerald-300"
 };
 
-// Helper to get text with fallback for Dutch
-const getText = (obj: { pt: string; en: string }, language: Language): string => {
-  if (language === "nl") return obj.en; // Fallback to English for Dutch
+// Helper to get text
+const getText = (obj: { pt: string; en: string; nl: string }, language: Language): string => {
   return obj[language];
 };
 
