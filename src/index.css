@@ -278,4 +278,96 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+  
+  /* Blog prose styles */
+  .prose {
+    @apply text-foreground leading-relaxed;
+  }
+  
+  .prose h1 {
+    @apply font-heading text-3xl lg:text-4xl font-bold mt-12 mb-6 text-foreground;
+  }
+  
+  .prose h2 {
+    @apply font-heading text-2xl lg:text-3xl font-bold mt-10 mb-5 text-foreground pb-3 border-b border-border;
+  }
+  
+  .prose h3 {
+    @apply font-heading text-xl lg:text-2xl font-semibold mt-8 mb-4 text-foreground;
+  }
+  
+  .prose p {
+    @apply mb-6 text-base lg:text-lg leading-relaxed text-muted-foreground;
+  }
+  
+  .prose strong, .prose b {
+    @apply font-semibold text-foreground;
+  }
+  
+  .prose ul {
+    @apply mb-6 space-y-3 pl-0;
+  }
+  
+  .prose li {
+    @apply text-base lg:text-lg leading-relaxed text-muted-foreground pl-6 relative;
+  }
+  
+  .prose li::before {
+    content: '';
+    @apply absolute left-0 top-3 w-2 h-2 bg-primary rounded-full;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary bg-accent/50 rounded-r-lg py-4 px-6 my-6 italic;
+  }
+  
+  .prose blockquote p {
+    @apply mb-0 text-foreground;
+  }
+  
+  .prose a {
+    @apply text-primary hover:text-primary/80 underline underline-offset-2 transition-colors;
+  }
+  
+  .prose .highlight-box {
+    @apply bg-accent/50 border border-primary/20 rounded-xl p-5 my-6;
+  }
+  
+  .prose .highlight-box strong {
+    @apply text-primary;
+  }
+  
+  .prose .cost-table {
+    @apply w-full my-6 border-collapse;
+  }
+  
+  .prose .cost-table th,
+  .prose .cost-table td {
+    @apply border border-border px-4 py-3 text-left;
+  }
+  
+  .prose .cost-table th {
+    @apply bg-muted font-semibold;
+  }
+  
+  .prose .summary-card {
+    @apply bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl p-6 my-8;
+  }
+  
+  .prose .summary-card h3 {
+    @apply text-primary mt-0;
+  }
+  
+  .prose .tip-box {
+    @apply flex gap-4 bg-secondary/10 border border-secondary/20 rounded-xl p-5 my-6;
+  }
+  
+  .prose .tip-box::before {
+    content: '💡';
+    @apply text-2xl flex-shrink-0;
+  }
+  
+  .prose hr {
+    @apply my-10 border-border;
+  }
 }
