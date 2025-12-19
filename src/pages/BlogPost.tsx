@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
+import { BlogContent } from "@/components/blog/BlogContent";
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR, enUS, nl } from "date-fns/locale";
@@ -248,9 +249,10 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="prose prose-lg max-w-none mb-12"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+              className="mb-12"
+            >
+              <BlogContent content={post.content} />
+            </motion.div>
 
             {/* Comments Section */}
             <motion.div
