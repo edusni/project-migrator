@@ -18,12 +18,34 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       .replace(/([.!?])\s*(Cenário|Scenario|Veredito|Verdict|Resumo|Summary|Dica|Tip|Samenvatting|Scenario)/g, '$1\n\n$2');
     
     // Split into lines first to better handle the structure
-    const lines = processedContent.split('\n');
+    const rawLines = processedContent.split('\n');
+    
+    // Pre-process: combine standalone numbers with next line
+    // Some translations put "1" on one line and "The Big Villain: Housing" on the next
+    const lines: string[] = [];
+    for (let i = 0; i < rawLines.length; i++) {
+      const line = rawLines[i].trim();
+      if (!line) continue;
+      
+      // Check if this is just a number (possibly a broken heading)
+      if (/^\d+$/.test(line) && i + 1 < rawLines.length) {
+        const nextLine = rawLines[i + 1]?.trim();
+        // If next line looks like a heading (starts with capital, contains colon, etc.)
+        if (nextLine && /^[A-Z]/.test(nextLine)) {
+          // Combine them: "1" + "The Big Villain: Housing" => "1. The Big Villain: Housing"
+          lines.push(`${line}. ${nextLine}`);
+          i++; // Skip next line since we merged it
+          continue;
+        }
+      }
+      lines.push(line);
+    }
+    
     const sections: { type: string; content: string; items?: string[] }[] = [];
     let currentCenario: { title: string; items: string[] } | null = null;
     
     for (let i = 0; i < lines.length; i++) {
-      const line = lines[i].trim();
+      const line = lines[i];
       if (!line) continue;
       
       // Check if this is a Cenário/Scenario header (PT, EN, NL)
@@ -99,35 +121,42 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       const trimmed = section.content;
       if (!trimmed) return null;
       
-      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia (Aluguel)")
-      // Match number, then capture title until we hit a sentence pattern
-      const numberedHeadingMatch = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)(Se\s|Além\s|Muitos\s|[A-Z][a-z]+\s+você|[A-Z][a-z]+\s+expatriados|[A-Z][a-z]+\s+do\s+teto)/);
+      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia" or "1. The Big Villain: Housing")
+      // More flexible pattern that works for both PT and EN
+      const numberedHeadingFullMatch = trimmed.match(/^(\d+)\.\s+(.+)/);
       
-      if (numberedHeadingMatch) {
-        const [, number, title, startOfContent] = numberedHeadingMatch;
-        const fullTitle = title.trim();
-        const contentStart = trimmed.indexOf(startOfContent);
-        const restOfText = contentStart > -1 ? trimmed.substring(contentStart).trim() : '';
+      if (numberedHeadingFullMatch) {
+        const [, number, restOfLine] = numberedHeadingFullMatch;
         
-        return (
-          <div key={index} className="mb-8">
-            <h2 className="flex items-start gap-4 mb-4">
-              <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
-                {number}
-              </span>
-              <span className="pt-2 font-heading text-2xl">{formatInlineText(fullTitle)}</span>
-            </h2>
-            {restOfText && (
-              <p className="text-muted-foreground ml-16">{formatInlineText(restOfText)}</p>
-            )}
-          </div>
-        );
-      }
-      
-      // Simpler numbered heading - just the number and title with no content
-      const simpleNumberedMatch = trimmed.match(/^(\d+)\.\s+([^.]+)\.?\s*$/);
-      if (simpleNumberedMatch) {
-        const [, number, title] = simpleNumberedMatch;
+        // Try to find where the title ends and content begins
+        // Look for patterns like "If you", "Se você", "Many", "Muitos", "Beyond", "Além", etc.
+        const sentenceStartPatterns = [
+          /\s+(If\s+you|Se\s+você|Many\s|Muitos\s|Beyond\s|Além\s|The\s+market|O\s+mercado|From\s|De\s|For\s+a\s|Para\s+um|When\s|Quando\s|This\s+is|Isso\s+é)/i
+        ];
+        
+        let title = restOfLine;
+        let contentAfter = '';
+        
+        for (const pattern of sentenceStartPatterns) {
+          const match = restOfLine.match(pattern);
+          if (match && match.index !== undefined) {
+            title = restOfLine.substring(0, match.index).trim();
+            contentAfter = restOfLine.substring(match.index).trim();
+            break;
+          }
+        }
+        
+        // If no split found, check if we have a standalone title (ends with punctuation or is short)
+        if (!contentAfter && title.length > 100) {
+          // Long text without clear split - might be title + content merged
+          // Try splitting at first sentence boundary after reasonable title length
+          const firstPeriod = title.indexOf('. ');
+          if (firstPeriod > 20 && firstPeriod < 80) {
+            contentAfter = title.substring(firstPeriod + 2).trim();
+            title = title.substring(0, firstPeriod).trim();
+          }
+        }
+        
         return (
           <div key={index} className="mb-8">
             <h2 className="flex items-start gap-4 mb-4">
@@ -136,6 +165,9 @@ export const BlogContent = ({ content }: BlogContentProps) => {
               </span>
               <span className="pt-2 font-heading text-2xl">{formatInlineText(title)}</span>
             </h2>
+            {contentAfter && (
+              <p className="text-muted-foreground ml-16">{formatInlineText(contentAfter)}</p>
+            )}
           </div>
         );
       }
