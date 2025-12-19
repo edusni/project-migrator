@@ -42,13 +42,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   useEffect(() => {
     // Get initial session
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        const adminStatus = await checkAdminRole(session.user.id);
-        setIsAdmin(adminStatus);
+        // Defer admin check with setTimeout to avoid deadlock
+        setTimeout(() => {
+          checkAdminRole(session.user.id).then(setIsAdmin);
+        }, 0);
       }
       
       setIsLoading(false);
@@ -56,13 +58,15 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
     // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+      (_event, session) => {
         setSession(session);
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          const adminStatus = await checkAdminRole(session.user.id);
-          setIsAdmin(adminStatus);
+          // Defer admin check with setTimeout to avoid deadlock
+          setTimeout(() => {
+            checkAdminRole(session.user.id).then(setIsAdmin);
+          }, 0);
         } else {
           setIsAdmin(false);
         }
