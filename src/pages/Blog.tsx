@@ -11,6 +11,7 @@ import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/
 import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 import duPhoto from "@/assets/du-amsterdam.jpg";
 import blogHeroImg from "@/assets/du-pesquisando-amsterdu.jpg";
+import { PostList } from "@/components/blog/PostList";
 
 const Blog = () => {
   const { language } = useLanguage();
@@ -22,8 +23,7 @@ const Blog = () => {
     heroTitle: "Du's Blog",
     heroSubtitle: "Verhalen over mijn toekomstige leven in Amsterdam",
     intro: "Hier deel ik mijn echte reis: de verhuizing, ontdekkingen, tegenslagen en overwinningen van iemand die Amsterdam van favoriete bestemming in thuis verandert.",
-    comingSoon: "Binnenkort: eerste posts",
-    comingSoonDesc: "De blog wordt zorgvuldig voorbereid. Binnenkort vind je hier persoonlijke verhalen, AmsterDu behind-the-scenes, exclusieve tips en reflecties over leven in Nederland.",
+    postsTitle: "Laatste posts",
     categories: [
       { emoji: "✈️", title: "Verhuizen", desc: "Het proces van Brazilië verlaten en opnieuw beginnen" },
       { emoji: "🏠", title: "Wonen", desc: "Een appartement vinden, bureaucratie, tegenslagen" },
@@ -33,14 +33,13 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflecties", desc: "Wat ik leerde, wat veranderde, wat me verraste" },
     ],
     followJourney: "Volg de reis",
-    followJourneyDesc: "De eerste posts worden binnenkort gepubliceerd. In de tussentijd kun je de complete Amsterdam-gids verkennen.",
+    followJourneyDesc: "Verken de complete Amsterdam-gids terwijl ik mijn reisverhalen deel.",
     exploreGuide: "Verken de Gids",
   } : language === "pt" ? {
     heroTitle: "Blog do Du",
     heroSubtitle: "Histórias da minha futura vida em Amsterdam",
     intro: "Aqui vou compartilhar minha jornada real: a mudança, as descobertas, os perrengues e as conquistas de alguém que está transformando Amsterdam de destino favorito em casa.",
-    comingSoon: "Em breve: primeiros posts",
-    comingSoonDesc: "O blog está sendo preparado com muito carinho. Em breve você vai encontrar aqui histórias pessoais, bastidores do AmsterDu, dicas exclusivas e reflexões sobre viver na Holanda.",
+    postsTitle: "Últimos posts",
     categories: [
       { emoji: "✈️", title: "Mudança", desc: "O processo de sair do Brasil e começar vida nova" },
       { emoji: "🏠", title: "Moradia", desc: "Encontrar apartamento, burocracias, perrengues" },
@@ -50,14 +49,13 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflexões", desc: "O que aprendi, o que mudou, o que surpreendeu" },
     ],
     followJourney: "Acompanhe a jornada",
-    followJourneyDesc: "Os primeiros posts serão publicados em breve. Enquanto isso, você pode explorar o guia completo de Amsterdam.",
+    followJourneyDesc: "Explore o guia completo de Amsterdam enquanto compartilho minhas histórias.",
     exploreGuide: "Explorar o Guia",
   } : {
     heroTitle: "Du's Blog",
     heroSubtitle: "Stories from my future life in Amsterdam",
     intro: "Here I'll share my real journey: the move, discoveries, struggles and wins of someone turning Amsterdam from favorite destination into home.",
-    comingSoon: "Coming soon: first posts",
-    comingSoonDesc: "The blog is being carefully prepared. Soon you'll find personal stories here, AmsterDu behind-the-scenes, exclusive tips and reflections about living in the Netherlands.",
+    postsTitle: "Latest posts",
     categories: [
       { emoji: "✈️", title: "Moving", desc: "The process of leaving Brazil and starting fresh" },
       { emoji: "🏠", title: "Housing", desc: "Finding an apartment, bureaucracy, struggles" },
@@ -67,7 +65,7 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflections", desc: "What I learned, what changed, what surprised me" },
     ],
     followJourney: "Follow the journey",
-    followJourneyDesc: "The first posts will be published soon. In the meantime, you can explore the complete Amsterdam guide.",
+    followJourneyDesc: "Explore the complete Amsterdam guide while I share my travel stories.",
     exploreGuide: "Explore the Guide",
   };
 
@@ -103,8 +101,23 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Categories Preview */}
+      {/* Blog Posts Section */}
       <section className="py-14 lg:py-20">
+        <div className="container">
+          <div className="max-w-7xl mx-auto px-4 lg:px-8">
+            <AnimatedSection>
+              <h2 className="text-2xl lg:text-4xl font-heading font-bold text-center mb-10">
+                {content.postsTitle}
+              </h2>
+            </AnimatedSection>
+            
+            <PostList />
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Preview */}
+      <section className="py-14 lg:py-20 bg-muted/30">
         <div className="container">
           <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
@@ -148,46 +161,12 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Coming Soon */}
-      <section className="py-14 lg:py-20 bg-muted/30">
+      {/* CTA Section */}
+      <section className="py-14 lg:py-20">
         <div className="container">
           <div className="max-w-3xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
-              <motion.div
-                whileHover={{ scale: 1.01 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-              >
-                <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20 border-dashed border-2">
-                  <CardContent className="p-8 lg:p-10 text-center">
-                    <motion.div
-                      animate={{ scale: [1, 1.05, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      <PenLine className="w-12 h-12 text-primary mx-auto mb-4" />
-                    </motion.div>
-                    <h3 className="font-heading font-bold text-xl lg:text-2xl mb-3">
-                      {content.comingSoon}
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      {content.comingSoonDesc}
-                    </p>
-                    <div className="flex flex-wrap justify-center gap-2 mb-6">
-                      <Badge variant="outline" className="text-sm">
-                        <Calendar className="w-3 h-3 mr-1" />
-                        2026
-                      </Badge>
-                      <Badge variant="outline" className="text-sm">
-                        <Clock className="w-3 h-3 mr-1" />
-                        {language === "nl" ? "Binnenkort" : language === "pt" ? "Em breve" : "Coming soon"}
-                      </Badge>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </AnimatedSection>
-
-            <AnimatedSection delay={0.2}>
-              <div className="text-center mt-10">
+              <div className="text-center">
                 <p className="text-muted-foreground mb-4">{content.followJourneyDesc}</p>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
