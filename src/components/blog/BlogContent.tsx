@@ -6,31 +6,40 @@ interface BlogContentProps {
 
 export const BlogContent = ({ content }: BlogContentProps) => {
   const formattedContent = useMemo(() => {
-    // Pre-process: group Cenário sections with their expense items
-    // Look for "Cenário" followed by expense lines (Label: € value)
+    // Pre-process: handle tables and normalize line breaks
     let processedContent = content;
     
-    // Replace expense item patterns to ensure they're on separate lines within Cenário/Scenario blocks
+    // Ensure proper line breaks before numbered headings
     processedContent = processedContent
-      // Ensure proper line breaks before numbered headings
       .replace(/([.!?])\s*(\d+\.\s+[A-Z])/g, '$1\n\n$2')
-      // Ensure line breaks before Cenário/Scenario, Veredito/Verdict, Dica/Tip (PT, EN, NL)
-      .replace(/([.!?])\s*(Cenário|Scenario|Veredito|Verdict|Resumo|Summary|Dica|Tip|Samenvatting|Scenario)/g, '$1\n\n$2');
+      // Ensure line breaks before special blocks (PT, EN, NL)
+      .replace(/([.!?])\s*(Cenário|Scenario|Veredito|Verdict|Resumo|Summary|Dica|Tip|Samenvatting)/g, '$1\n\n$2');
     
     // Split into lines first to better handle the structure
     const rawLines = processedContent.split('\n');
     
     // Pre-process: combine standalone numbers with next line
-    // Some translations put "1" on one line and "The Big Villain: Housing" on the next
     const lines: string[] = [];
     for (let i = 0; i < rawLines.length; i++) {
       const line = rawLines[i].trim();
       if (!line) continue;
       
+      // Check if this is just a number with a period (possibly a broken heading)
+      if (/^\d+\.$/.test(line) && i + 1 < rawLines.length) {
+        const nextLine = rawLines[i + 1]?.trim();
+        // If next line looks like a heading (starts with capital)
+        if (nextLine && /^[A-Z]/.test(nextLine)) {
+          // Combine them: "1." + "The Big Villain: Housing" => "1. The Big Villain: Housing"
+          lines.push(`${line} ${nextLine}`);
+          i++; // Skip next line since we merged it
+          continue;
+        }
+      }
+      
       // Check if this is just a number (possibly a broken heading)
       if (/^\d+$/.test(line) && i + 1 < rawLines.length) {
         const nextLine = rawLines[i + 1]?.trim();
-        // If next line looks like a heading (starts with capital, contains colon, etc.)
+        // If next line looks like a heading (starts with capital)
         if (nextLine && /^[A-Z]/.test(nextLine)) {
           // Combine them: "1" + "The Big Villain: Housing" => "1. The Big Villain: Housing"
           lines.push(`${line}. ${nextLine}`);
@@ -41,12 +50,48 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       lines.push(line);
     }
     
-    const sections: { type: string; content: string; items?: string[] }[] = [];
+    const sections: { type: string; content: string; items?: string[]; rows?: string[][] }[] = [];
     let currentCenario: { title: string; items: string[] } | null = null;
+    let currentTable: { headers: string[]; rows: string[][] } | null = null;
     
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       if (!line) continue;
+      
+      // Check for table-like content (lines with | separators or tab-separated values)
+      const isTableRow = line.includes('|') || (line.includes('\t') && line.split('\t').length >= 3);
+      
+      if (isTableRow) {
+        const cells = line.includes('|') 
+          ? line.split('|').map(c => c.trim()).filter(c => c)
+          : line.split('\t').map(c => c.trim()).filter(c => c);
+        
+        if (cells.length >= 2) {
+          // If we have a pending cenário, save it first
+          if (currentCenario) {
+            sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
+            currentCenario = null;
+          }
+          
+          if (!currentTable) {
+            currentTable = { headers: cells, rows: [] };
+          } else {
+            currentTable.rows.push(cells);
+          }
+          continue;
+        }
+      }
+      
+      // If we have a table and hit a non-table line, save it
+      if (currentTable) {
+        sections.push({ 
+          type: 'table', 
+          content: '', 
+          items: currentTable.headers,
+          rows: currentTable.rows 
+        });
+        currentTable = null;
+      }
       
       // Check if this is a Cenário/Scenario header (PT, EN, NL)
       if (line.startsWith('Cenário') || line.startsWith('Scenario')) {
@@ -58,8 +103,7 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         continue;
       }
       
-      // Check if this is an expense item (Label: € value or Label: ~€ value or TOTAL: ~€ value)
-      // More permissive regex to catch items like "Transporte (Bike + Transporte ocasional): € 50"
+      // Check if this is an expense item (Label: € value or Label: ~€ value)
       const expenseMatch = line.match(/^([^:]+):\s*(~?€?\s*[\d.,]+.*)/);
       const isTotalLine = line.toUpperCase().startsWith('TOTAL');
       
@@ -78,13 +122,51 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       sections.push({ type: 'text', content: line });
     }
     
-    // Don't forget the last cenário
+    // Don't forget the last cenário or table
     if (currentCenario) {
       sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
+    }
+    if (currentTable) {
+      sections.push({ 
+        type: 'table', 
+        content: '', 
+        items: currentTable.headers,
+        rows: currentTable.rows 
+      });
     }
     
     // Now render the sections
     return sections.map((section, index) => {
+      // Render tables
+      if (section.type === 'table' && section.items && section.rows) {
+        return (
+          <div key={index} className="my-6 overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="bg-primary/10">
+                  {section.items.map((header, i) => (
+                    <th key={i} className="border border-border/30 px-4 py-3 text-left font-semibold text-foreground">
+                      {header}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {section.rows.map((row, rowIndex) => (
+                  <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-muted/30' : 'bg-background'}>
+                    {row.map((cell, cellIndex) => (
+                      <td key={cellIndex} className="border border-border/30 px-4 py-3 text-muted-foreground">
+                        {formatInlineText(cell)}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+      }
+      
       if (section.type === 'cenario') {
         return (
           <div key={index} className="summary-card my-6">
@@ -121,39 +203,46 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       const trimmed = section.content;
       if (!trimmed) return null;
       
-      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia" or "1. The Big Villain: Housing")
-      // More flexible pattern that works for both PT and EN
+      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia")
       const numberedHeadingFullMatch = trimmed.match(/^(\d+)\.\s+(.+)/);
       
       if (numberedHeadingFullMatch) {
         const [, number, restOfLine] = numberedHeadingFullMatch;
         
-        // Try to find where the title ends and content begins
-        // Look for patterns like "If you", "Se você", "Many", "Muitos", "Beyond", "Além", etc.
-        const sentenceStartPatterns = [
-          /\s+(If\s+you|Se\s+você|Many\s|Muitos\s|Beyond\s|Além\s|The\s+market|O\s+mercado|From\s|De\s|For\s+a\s|Para\s+um|When\s|Quando\s|This\s+is|Isso\s+é)/i
-        ];
-        
+        // Try to extract just the title (usually ends at first sentence boundary)
+        // Look for patterns that indicate content starting after title
         let title = restOfLine;
         let contentAfter = '';
         
-        for (const pattern of sentenceStartPatterns) {
+        // Check for explicit title/content separation patterns
+        const separatorPatterns = [
+          // Patterns that indicate start of explanation content
+          /^(.+?[.!?:])(\s+(?:If\s+you|Se\s+você|Many\s|Muitos\s|Beyond\s|Além\s|The\s+market|O\s+mercado|From\s|De\s|For\s+a\s|Para\s+um|When\s|Quando\s|This\s+is|Isso\s+é|You\s+|Você\s+|It\s+|É\s+|A\s+|O\s+|The\s+).+)$/i,
+          // Pattern: Title followed by explanation starting with common words
+          /^(.+?[.!?:])(\s+[A-Z][a-z].+)$/,
+        ];
+        
+        for (const pattern of separatorPatterns) {
           const match = restOfLine.match(pattern);
-          if (match && match.index !== undefined) {
-            title = restOfLine.substring(0, match.index).trim();
-            contentAfter = restOfLine.substring(match.index).trim();
-            break;
+          if (match) {
+            const potentialTitle = match[1].trim();
+            const potentialContent = match[2].trim();
+            // Only split if title is reasonable length (not too short, not too long)
+            if (potentialTitle.length >= 10 && potentialTitle.length <= 100) {
+              title = potentialTitle;
+              contentAfter = potentialContent;
+              break;
+            }
           }
         }
         
-        // If no split found, check if we have a standalone title (ends with punctuation or is short)
-        if (!contentAfter && title.length > 100) {
-          // Long text without clear split - might be title + content merged
-          // Try splitting at first sentence boundary after reasonable title length
-          const firstPeriod = title.indexOf('. ');
-          if (firstPeriod > 20 && firstPeriod < 80) {
-            contentAfter = title.substring(firstPeriod + 2).trim();
-            title = title.substring(0, firstPeriod).trim();
+        // If no split found and title is very long, try to split at reasonable boundary
+        if (!contentAfter && title.length > 80) {
+          // Find first sentence ending after reasonable title length
+          const sentenceMatch = title.match(/^(.{20,60}[.!?:])\s+(.+)$/);
+          if (sentenceMatch) {
+            title = sentenceMatch[1];
+            contentAfter = sentenceMatch[2];
           }
         }
         
@@ -171,8 +260,6 @@ export const BlogContent = ({ content }: BlogContentProps) => {
           </div>
         );
       }
-      
-      // Skip Cenário here - it's handled above in the pre-processing
       
       // Check if it starts with "Veredito/Verdict" or "Resumo/Summary" (PT, EN, NL)
       if (trimmed.startsWith("Veredito") || trimmed.startsWith("Verdict") || 
@@ -198,27 +285,6 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         );
       }
       
-      // Check for "Taxas Invisíveis" or similar quoted terms in headings
-      if (trimmed.match(/^(\d+)\.\s+As?\s+"[^"]+"/)) {
-        const match = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)([A-Z][a-z].+)?$/);
-        if (match) {
-          const [, number, title, content] = match;
-          return (
-            <div key={index} className="mb-6">
-              <h2 className="flex items-start gap-4 mb-4">
-                <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
-                  {number}
-                </span>
-                <span className="pt-2">{formatInlineText(title)}</span>
-              </h2>
-              {content && (
-                <p className="text-muted-foreground ml-16">{formatInlineText(content)}</p>
-              )}
-            </div>
-          );
-        }
-      }
-      
       // Check if it's a subheading with colon (e.g., "O Preço Real (2026):")
       if (trimmed.match(/^[A-Z][^.!?]*:/) && trimmed.split(':')[0].length < 60) {
         const colonIndex = trimmed.indexOf(':');
@@ -241,11 +307,11 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       }
       
       // Check if paragraph contains multiple items with colons (list-like content)
-      const lines = trimmed.split('\n');
-      if (lines.length > 1 && lines.every(line => line.includes(':'))) {
+      const contentLines = trimmed.split('\n');
+      if (contentLines.length > 1 && contentLines.every(line => line.includes(':'))) {
         return (
           <ul key={index} className="space-y-4 mb-8">
-            {lines.map((line, i) => {
+            {contentLines.map((line, i) => {
               const colonIndex = line.indexOf(':');
               if (colonIndex > -1) {
                 const label = line.substring(0, colonIndex);

@@ -16,9 +16,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Plus, Save, Eye, Trash2, LogOut, Image, FileText, 
   MessageSquare, Settings, Loader2, ArrowLeft, Edit,
-  Check, X
+  Check, X, PenLine
 } from "lucide-react";
 import { toast } from "sonner";
+import { BlogContent } from "@/components/blog/BlogContent";
 
 interface Category {
   id: string;
@@ -78,6 +79,8 @@ const AdminBlog = () => {
   // Post editor state
   const [editingPost, setEditingPost] = useState<Post | null>(null);
   const [isCreating, setIsCreating] = useState(false);
+  const [editorTab, setEditorTab] = useState<"edit" | "preview">("edit");
+  const [previewLang, setPreviewLang] = useState<"pt" | "en" | "nl">("pt");
   const [postForm, setPostForm] = useState({
     title: "",
     slug: "",
@@ -465,13 +468,26 @@ const AdminBlog = () => {
     );
   }
 
+  // Get preview content based on selected language
+  const getPreviewContent = () => {
+    if (previewLang === "en" && postForm.content_en) return postForm.content_en;
+    if (previewLang === "nl" && postForm.content_nl) return postForm.content_nl;
+    return postForm.content;
+  };
+
+  const getPreviewTitle = () => {
+    if (previewLang === "en" && postForm.title_en) return postForm.title_en;
+    if (previewLang === "nl" && postForm.title_nl) return postForm.title_nl;
+    return postForm.title;
+  };
+
   // Post editor view
   if (isCreating) {
     return (
       <div className="min-h-screen bg-muted/30 py-8">
-        <div className="container max-w-4xl">
+        <div className="container max-w-5xl">
           <div className="flex items-center justify-between mb-6">
-            <Button variant="ghost" onClick={() => setIsCreating(false)}>
+            <Button variant="ghost" onClick={() => { setIsCreating(false); setEditorTab("edit"); }}>
               <ArrowLeft className="mr-2 h-4 w-4" />
               {texts.back}
             </Button>
@@ -488,7 +504,22 @@ const AdminBlog = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>{editingPost ? texts.editPost : texts.newPost}</CardTitle>
+              <div className="flex items-center justify-between">
+                <CardTitle>{editingPost ? texts.editPost : texts.newPost}</CardTitle>
+                {/* Editor/Preview tabs */}
+                <Tabs value={editorTab} onValueChange={(v) => setEditorTab(v as "edit" | "preview")}>
+                  <TabsList>
+                    <TabsTrigger value="edit" className="gap-2">
+                      <PenLine className="w-4 h-4" />
+                      {language === "pt" ? "Editar" : language === "nl" ? "Bewerken" : "Edit"}
+                    </TabsTrigger>
+                    <TabsTrigger value="preview" className="gap-2">
+                      <Eye className="w-4 h-4" />
+                      Preview
+                    </TabsTrigger>
+                  </TabsList>
+                </Tabs>
+              </div>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Title & Slug */}
@@ -522,222 +553,291 @@ const AdminBlog = () => {
                 />
               </div>
 
-              {/* Content */}
-              <div className="space-y-2">
-                <Label>{texts.content}</Label>
-                <Textarea
-                  value={postForm.content}
-                  onChange={(e) => setPostForm(prev => ({ ...prev, content: e.target.value }))}
-                  placeholder="Write your post content here... (HTML supported)"
-                  rows={12}
-                  className="font-mono text-sm"
-                />
-              </div>
+              {/* Content - show editor or preview */}
+              {editorTab === "edit" ? (
+                <>
+                  <div className="space-y-2">
+                    <Label>{texts.content}</Label>
+                    <Textarea
+                      value={postForm.content}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, content: e.target.value }))}
+                      placeholder="Write your post content here..."
+                      rows={12}
+                      className="font-mono text-sm"
+                    />
+                  </div>
 
-              {/* Image */}
-              <div className="space-y-2">
-                <Label>{texts.image}</Label>
-                <div className="flex gap-2">
-                  <Input
-                    value={postForm.featured_image}
-                    onChange={(e) => setPostForm(prev => ({ ...prev, featured_image: e.target.value }))}
-                    placeholder="https://..."
-                    className="flex-1"
-                  />
-                  <Button variant="outline" asChild>
-                    <label className="cursor-pointer">
-                      <Image className="mr-2 h-4 w-4" />
-                      {texts.uploadImage}
-                      <input
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleImageUpload}
+                  {/* Image */}
+                  <div className="space-y-2">
+                    <Label>{texts.image}</Label>
+                    <div className="flex gap-2">
+                      <Input
+                        value={postForm.featured_image}
+                        onChange={(e) => setPostForm(prev => ({ ...prev, featured_image: e.target.value }))}
+                        placeholder="https://..."
+                        className="flex-1"
                       />
-                    </label>
-                  </Button>
-                </div>
-                {postForm.featured_image && (
-                  <img src={postForm.featured_image} alt="Preview" className="mt-2 max-h-40 rounded-lg" />
-                )}
-              </div>
+                      <Button variant="outline" asChild>
+                        <label className="cursor-pointer">
+                          <Image className="mr-2 h-4 w-4" />
+                          {texts.uploadImage}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={handleImageUpload}
+                          />
+                        </label>
+                      </Button>
+                    </div>
+                    {postForm.featured_image && (
+                      <img src={postForm.featured_image} alt="Preview" className="mt-2 max-h-40 rounded-lg" />
+                    )}
+                  </div>
 
-              {/* Category, Status, Featured */}
-              <div className="grid md:grid-cols-3 gap-4">
-                <div className="space-y-2">
-                  <Label>{texts.category}</Label>
-                  <Select
-                    value={postForm.category_id}
-                    onValueChange={(value) => setPostForm(prev => ({ ...prev, category_id: value }))}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select..." />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {categories.map((cat) => (
-                        <SelectItem key={cat.id} value={cat.id}>
-                          {cat.emoji} {cat.name}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                  {/* Category, Status, Featured */}
+                  <div className="grid md:grid-cols-3 gap-4">
+                    <div className="space-y-2">
+                      <Label>{texts.category}</Label>
+                      <Select
+                        value={postForm.category_id}
+                        onValueChange={(value) => setPostForm(prev => ({ ...prev, category_id: value }))}
+                      >
+                        <SelectTrigger>
+                          <SelectValue placeholder="Select..." />
+                        </SelectTrigger>
+                        <SelectContent>
+                          {categories.map((cat) => (
+                            <SelectItem key={cat.id} value={cat.id}>
+                              {cat.emoji} {cat.name}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                <div className="space-y-2">
-                  <Label>{texts.status}</Label>
-                  <Select
-                    value={postForm.status}
-                    onValueChange={(value) => setPostForm(prev => ({ ...prev, status: value }))}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="draft">{texts.draft}</SelectItem>
-                      <SelectItem value="published">{texts.published}</SelectItem>
-                      <SelectItem value="archived">{texts.archived}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+                    <div className="space-y-2">
+                      <Label>{texts.status}</Label>
+                      <Select
+                        value={postForm.status}
+                        onValueChange={(value) => setPostForm(prev => ({ ...prev, status: value }))}
+                      >
+                        <SelectTrigger>
+                          <SelectValue />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="draft">{texts.draft}</SelectItem>
+                          <SelectItem value="published">{texts.published}</SelectItem>
+                          <SelectItem value="archived">{texts.archived}</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
 
-                <div className="space-y-2">
-                  <Label>{texts.readTime}</Label>
-                  <Input
-                    type="number"
-                    value={postForm.read_time_minutes}
-                    onChange={(e) => setPostForm(prev => ({ ...prev, read_time_minutes: parseInt(e.target.value) || 5 }))}
-                    min={1}
-                  />
-                </div>
-              </div>
+                    <div className="space-y-2">
+                      <Label>{texts.readTime}</Label>
+                      <Input
+                        type="number"
+                        value={postForm.read_time_minutes}
+                        onChange={(e) => setPostForm(prev => ({ ...prev, read_time_minutes: parseInt(e.target.value) || 5 }))}
+                        min={1}
+                      />
+                    </div>
+                  </div>
 
-              {/* Featured toggle */}
-              <div className="flex items-center gap-2">
-                <Switch
-                  checked={postForm.featured}
-                  onCheckedChange={(checked) => setPostForm(prev => ({ ...prev, featured: checked }))}
-                />
-                <Label>{texts.featured}</Label>
-              </div>
+                  {/* Featured toggle */}
+                  <div className="flex items-center gap-2">
+                    <Switch
+                      checked={postForm.featured}
+                      onCheckedChange={(checked) => setPostForm(prev => ({ ...prev, featured: checked }))}
+                    />
+                    <Label>{texts.featured}</Label>
+                  </div>
 
-              {/* Translations Section */}
-              <div className="border-t pt-6 space-y-4">
-                <h3 className="font-heading font-bold flex items-center gap-2">
-                  🌐 {language === "pt" ? "Traduções Manuais" : language === "nl" ? "Handmatige Vertalingen" : "Manual Translations"}
-                </h3>
-                <p className="text-sm text-muted-foreground">
-                  {language === "pt" 
-                    ? "Preencha para evitar tradução automática. Use formatação igual ao português (ex: '1. The Big Villain: Housing')." 
-                    : language === "nl" 
-                    ? "Vul in om automatische vertaling te vermijden." 
-                    : "Fill to avoid auto-translation. Use same formatting as Portuguese (e.g., '1. The Big Villain: Housing')."}
-                </p>
-                
-                {/* English */}
-                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-4">
-                  <h4 className="font-semibold text-blue-800 dark:text-blue-300 flex items-center gap-2">
-                    🇬🇧 English
-                  </h4>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Título (EN)" : "Title (EN)"}</Label>
-                    <Input
-                      value={postForm.title_en}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, title_en: e.target.value }))}
-                      placeholder="English title..."
-                    />
+                  {/* Translations Section */}
+                  <div className="border-t pt-6 space-y-4">
+                    <h3 className="font-heading font-bold flex items-center gap-2">
+                      🌐 {language === "pt" ? "Traduções Manuais" : language === "nl" ? "Handmatige Vertalingen" : "Manual Translations"}
+                    </h3>
+                    <p className="text-sm text-muted-foreground">
+                      {language === "pt" 
+                        ? "Preencha para evitar tradução automática. Use o Preview para ver como vai ficar!" 
+                        : language === "nl" 
+                        ? "Vul in om automatische vertaling te vermijden. Gebruik Preview om te zien hoe het eruit zal zien!" 
+                        : "Fill to avoid auto-translation. Use Preview to see how it will look!"}
+                    </p>
+                    
+                    {/* English */}
+                    <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-4">
+                      <h4 className="font-semibold text-blue-800 dark:text-blue-300 flex items-center gap-2">
+                        🇬🇧 English
+                      </h4>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Título (EN)" : "Title (EN)"}</Label>
+                        <Input
+                          value={postForm.title_en}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, title_en: e.target.value }))}
+                          placeholder="English title..."
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Resumo (EN)" : "Excerpt (EN)"}</Label>
+                        <Textarea
+                          value={postForm.excerpt_en}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_en: e.target.value }))}
+                          placeholder="English excerpt..."
+                          rows={2}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Conteúdo (EN)" : "Content (EN)"}</Label>
+                        <Textarea
+                          value={postForm.content_en}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, content_en: e.target.value }))}
+                          placeholder="English content..."
+                          rows={8}
+                          className="font-mono text-sm"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Dutch */}
+                    <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-4 space-y-4">
+                      <h4 className="font-semibold text-orange-800 dark:text-orange-300 flex items-center gap-2">
+                        🇳🇱 Nederlands
+                      </h4>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Título (NL)" : "Titel (NL)"}</Label>
+                        <Input
+                          value={postForm.title_nl}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, title_nl: e.target.value }))}
+                          placeholder="Dutch title..."
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Resumo (NL)" : "Samenvatting (NL)"}</Label>
+                        <Textarea
+                          value={postForm.excerpt_nl}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_nl: e.target.value }))}
+                          placeholder="Dutch excerpt..."
+                          rows={2}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{language === "pt" ? "Conteúdo (NL)" : "Inhoud (NL)"}</Label>
+                        <Textarea
+                          value={postForm.content_nl}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, content_nl: e.target.value }))}
+                          placeholder="Dutch content..."
+                          rows={8}
+                          className="font-mono text-sm"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Resumo (EN)" : "Excerpt (EN)"}</Label>
-                    <Textarea
-                      value={postForm.excerpt_en}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_en: e.target.value }))}
-                      placeholder="English excerpt..."
-                      rows={2}
-                    />
+
+                  {/* SEO */}
+                  <div className="border-t pt-6 space-y-4">
+                    <h3 className="font-heading font-bold flex items-center gap-2">
+                      <Settings className="w-4 h-4" />
+                      {texts.seo}
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="space-y-2">
+                        <Label>{texts.metaTitle}</Label>
+                        <Input
+                          value={postForm.meta_title}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, meta_title: e.target.value }))}
+                          placeholder="SEO title (max 60 chars)"
+                          maxLength={60}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{texts.metaDesc}</Label>
+                        <Textarea
+                          value={postForm.meta_description}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, meta_description: e.target.value }))}
+                          placeholder="SEO description (max 160 chars)"
+                          maxLength={160}
+                          rows={2}
+                        />
+                      </div>
+                      <div className="space-y-2">
+                        <Label>{texts.metaKeywords}</Label>
+                        <Input
+                          value={postForm.meta_keywords}
+                          onChange={(e) => setPostForm(prev => ({ ...prev, meta_keywords: e.target.value }))}
+                          placeholder="keyword1, keyword2, keyword3"
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Conteúdo (EN)" : "Content (EN)"}</Label>
-                    <Textarea
-                      value={postForm.content_en}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, content_en: e.target.value }))}
-                      placeholder="English content... Use same structure: '1. The Big Villain: Housing'"
-                      rows={8}
-                      className="font-mono text-sm"
-                    />
+                </>
+              ) : (
+                /* Preview Mode */
+                <div className="space-y-6">
+                  {/* Language selector for preview */}
+                  <div className="flex items-center gap-4 p-4 bg-muted rounded-lg">
+                    <span className="font-medium text-sm">
+                      {language === "pt" ? "Visualizar em:" : language === "nl" ? "Bekijken in:" : "Preview in:"}
+                    </span>
+                    <div className="flex gap-2">
+                      <Button 
+                        variant={previewLang === "pt" ? "default" : "outline"} 
+                        size="sm"
+                        onClick={() => setPreviewLang("pt")}
+                      >
+                        🇧🇷 PT
+                      </Button>
+                      <Button 
+                        variant={previewLang === "en" ? "default" : "outline"} 
+                        size="sm"
+                        onClick={() => setPreviewLang("en")}
+                        className={!postForm.content_en ? "opacity-50" : ""}
+                      >
+                        🇬🇧 EN {!postForm.content_en && "(vazio)"}
+                      </Button>
+                      <Button 
+                        variant={previewLang === "nl" ? "default" : "outline"} 
+                        size="sm"
+                        onClick={() => setPreviewLang("nl")}
+                        className={!postForm.content_nl ? "opacity-50" : ""}
+                      >
+                        🇳🇱 NL {!postForm.content_nl && "(vazio)"}
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Preview content */}
+                  <div className="bg-background border rounded-lg p-6 lg:p-8">
+                    {/* Featured image */}
+                    {postForm.featured_image && (
+                      <img 
+                        src={postForm.featured_image} 
+                        alt="Preview" 
+                        className="w-full h-64 object-cover rounded-xl mb-6"
+                      />
+                    )}
+                    
+                    {/* Title */}
+                    <h1 className="font-heading text-3xl lg:text-4xl font-bold mb-6">
+                      {getPreviewTitle() || (language === "pt" ? "Título do post..." : "Post title...")}
+                    </h1>
+
+                    {/* Content */}
+                    <div className="blog-content">
+                      {getPreviewContent() ? (
+                        <BlogContent content={getPreviewContent()} />
+                      ) : (
+                        <p className="text-muted-foreground italic">
+                          {language === "pt" 
+                            ? "Nenhum conteúdo para visualizar..." 
+                            : "No content to preview..."}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </div>
-
-                {/* Dutch */}
-                <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-4 space-y-4">
-                  <h4 className="font-semibold text-orange-800 dark:text-orange-300 flex items-center gap-2">
-                    🇳🇱 Nederlands
-                  </h4>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Título (NL)" : "Titel (NL)"}</Label>
-                    <Input
-                      value={postForm.title_nl}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, title_nl: e.target.value }))}
-                      placeholder="Dutch title..."
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Resumo (NL)" : "Samenvatting (NL)"}</Label>
-                    <Textarea
-                      value={postForm.excerpt_nl}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_nl: e.target.value }))}
-                      placeholder="Dutch excerpt..."
-                      rows={2}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{language === "pt" ? "Conteúdo (NL)" : "Inhoud (NL)"}</Label>
-                    <Textarea
-                      value={postForm.content_nl}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, content_nl: e.target.value }))}
-                      placeholder="Dutch content..."
-                      rows={8}
-                      className="font-mono text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* SEO */}
-              <div className="border-t pt-6 space-y-4">
-                <h3 className="font-heading font-bold flex items-center gap-2">
-                  <Settings className="w-4 h-4" />
-                  {texts.seo}
-                </h3>
-                <div className="space-y-4">
-                  <div className="space-y-2">
-                    <Label>{texts.metaTitle}</Label>
-                    <Input
-                      value={postForm.meta_title}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_title: e.target.value }))}
-                      placeholder="SEO title (max 60 chars)"
-                      maxLength={60}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{texts.metaDesc}</Label>
-                    <Textarea
-                      value={postForm.meta_description}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_description: e.target.value }))}
-                      placeholder="SEO description (max 160 chars)"
-                      maxLength={160}
-                      rows={2}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label>{texts.metaKeywords}</Label>
-                    <Input
-                      value={postForm.meta_keywords}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_keywords: e.target.value }))}
-                      placeholder="keyword1, keyword2, keyword3"
-                    />
-                  </div>
-                </div>
-              </div>
+              )}
             </CardContent>
           </Card>
         </div>
