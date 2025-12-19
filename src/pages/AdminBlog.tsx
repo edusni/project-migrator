@@ -42,6 +42,13 @@ interface Post {
   meta_keywords: string | null;
   published_at: string | null;
   blog_categories: Category | null;
+  // Translation fields
+  title_en: string | null;
+  title_nl: string | null;
+  content_en: string | null;
+  content_nl: string | null;
+  excerpt_en: string | null;
+  excerpt_nl: string | null;
 }
 
 interface Comment {
@@ -84,6 +91,13 @@ const AdminBlog = () => {
     meta_title: "",
     meta_description: "",
     meta_keywords: "",
+    // Translation fields
+    title_en: "",
+    title_nl: "",
+    content_en: "",
+    content_nl: "",
+    excerpt_en: "",
+    excerpt_nl: "",
   });
 
   const texts = language === "nl" ? {
@@ -214,6 +228,7 @@ const AdminBlog = () => {
           id, title, slug, excerpt, content, featured_image,
           category_id, status, featured, read_time_minutes,
           meta_title, meta_description, meta_keywords, published_at,
+          title_en, title_nl, content_en, content_nl, excerpt_en, excerpt_nl,
           blog_categories (id, name, emoji)
         `)
         .order("created_at", { ascending: false });
@@ -304,6 +319,13 @@ const AdminBlog = () => {
       meta_keywords: postForm.meta_keywords || null,
       author_id: user?.id,
       published_at: publish ? new Date().toISOString() : editingPost?.published_at,
+      // Translation fields
+      title_en: postForm.title_en || null,
+      title_nl: postForm.title_nl || null,
+      content_en: postForm.content_en || null,
+      content_nl: postForm.content_nl || null,
+      excerpt_en: postForm.excerpt_en || null,
+      excerpt_nl: postForm.excerpt_nl || null,
     };
 
     let error;
@@ -334,6 +356,7 @@ const AdminBlog = () => {
           id, title, slug, excerpt, content, featured_image,
           category_id, status, featured, read_time_minutes,
           meta_title, meta_description, meta_keywords, published_at,
+          title_en, title_nl, content_en, content_nl, excerpt_en, excerpt_nl,
           blog_categories (id, name, emoji)
         `)
         .order("created_at", { ascending: false });
@@ -374,6 +397,12 @@ const AdminBlog = () => {
       meta_title: post.meta_title || "",
       meta_description: post.meta_description || "",
       meta_keywords: post.meta_keywords || "",
+      title_en: post.title_en || "",
+      title_nl: post.title_nl || "",
+      content_en: post.content_en || "",
+      content_nl: post.content_nl || "",
+      excerpt_en: post.excerpt_en || "",
+      excerpt_nl: post.excerpt_nl || "",
     });
     setIsCreating(true);
   };
@@ -393,6 +422,12 @@ const AdminBlog = () => {
       meta_title: "",
       meta_description: "",
       meta_keywords: "",
+      title_en: "",
+      title_nl: "",
+      content_en: "",
+      content_nl: "",
+      excerpt_en: "",
+      excerpt_nl: "",
     });
     setIsCreating(true);
   };
@@ -583,6 +618,88 @@ const AdminBlog = () => {
                   onCheckedChange={(checked) => setPostForm(prev => ({ ...prev, featured: checked }))}
                 />
                 <Label>{texts.featured}</Label>
+              </div>
+
+              {/* Translations Section */}
+              <div className="border-t pt-6 space-y-4">
+                <h3 className="font-heading font-bold flex items-center gap-2">
+                  🌐 {language === "pt" ? "Traduções Manuais" : language === "nl" ? "Handmatige Vertalingen" : "Manual Translations"}
+                </h3>
+                <p className="text-sm text-muted-foreground">
+                  {language === "pt" 
+                    ? "Preencha para evitar tradução automática. Use formatação igual ao português (ex: '1. The Big Villain: Housing')." 
+                    : language === "nl" 
+                    ? "Vul in om automatische vertaling te vermijden." 
+                    : "Fill to avoid auto-translation. Use same formatting as Portuguese (e.g., '1. The Big Villain: Housing')."}
+                </p>
+                
+                {/* English */}
+                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 space-y-4">
+                  <h4 className="font-semibold text-blue-800 dark:text-blue-300 flex items-center gap-2">
+                    🇬🇧 English
+                  </h4>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Título (EN)" : "Title (EN)"}</Label>
+                    <Input
+                      value={postForm.title_en}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, title_en: e.target.value }))}
+                      placeholder="English title..."
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Resumo (EN)" : "Excerpt (EN)"}</Label>
+                    <Textarea
+                      value={postForm.excerpt_en}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_en: e.target.value }))}
+                      placeholder="English excerpt..."
+                      rows={2}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Conteúdo (EN)" : "Content (EN)"}</Label>
+                    <Textarea
+                      value={postForm.content_en}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, content_en: e.target.value }))}
+                      placeholder="English content... Use same structure: '1. The Big Villain: Housing'"
+                      rows={8}
+                      className="font-mono text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Dutch */}
+                <div className="bg-orange-50 dark:bg-orange-950/20 rounded-lg p-4 space-y-4">
+                  <h4 className="font-semibold text-orange-800 dark:text-orange-300 flex items-center gap-2">
+                    🇳🇱 Nederlands
+                  </h4>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Título (NL)" : "Titel (NL)"}</Label>
+                    <Input
+                      value={postForm.title_nl}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, title_nl: e.target.value }))}
+                      placeholder="Dutch title..."
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Resumo (NL)" : "Samenvatting (NL)"}</Label>
+                    <Textarea
+                      value={postForm.excerpt_nl}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, excerpt_nl: e.target.value }))}
+                      placeholder="Dutch excerpt..."
+                      rows={2}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{language === "pt" ? "Conteúdo (NL)" : "Inhoud (NL)"}</Label>
+                    <Textarea
+                      value={postForm.content_nl}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, content_nl: e.target.value }))}
+                      placeholder="Dutch content..."
+                      rows={8}
+                      className="font-mono text-sm"
+                    />
+                  </div>
+                </div>
               </div>
 
               {/* SEO */}
