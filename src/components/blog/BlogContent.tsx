@@ -21,20 +21,23 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       const trimmed = paragraph.trim();
       if (!trimmed) return null;
       
-      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia")
-      // More flexible regex to catch various formats
-      const numberedHeadingMatch = trimmed.match(/^(\d+)\.\s+([^.]+?)(?:\s+(?=[A-Z][a-z])|\s*$)/);
+      // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia (Aluguel)")
+      // Match number, then capture title until we hit a sentence pattern
+      const numberedHeadingMatch = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)(Se\s|Além\s|Muitos\s|[A-Z][a-z]+\s+você|[A-Z][a-z]+\s+expatriados|[A-Z][a-z]+\s+do\s+teto)/);
+      
       if (numberedHeadingMatch) {
-        const [fullMatch, number, title] = numberedHeadingMatch;
-        const restOfText = trimmed.substring(fullMatch.length).trim();
+        const [, number, title, startOfContent] = numberedHeadingMatch;
+        const fullTitle = title.trim();
+        const contentStart = trimmed.indexOf(startOfContent);
+        const restOfText = contentStart > -1 ? trimmed.substring(contentStart).trim() : '';
         
         return (
-          <div key={index} className="mb-6">
+          <div key={index} className="mb-8">
             <h2 className="flex items-start gap-4 mb-4">
               <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
                 {number}
               </span>
-              <span className="pt-2">{title}</span>
+              <span className="pt-2 font-heading text-2xl">{formatInlineText(fullTitle)}</span>
             </h2>
             {restOfText && (
               <p className="text-muted-foreground ml-16">{formatInlineText(restOfText)}</p>
@@ -43,19 +46,18 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         );
       }
       
-      // Alternative: check for numbered heading with content on same line
-      const numberedWithContentMatch = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)([A-Z][a-z].+)$/);
-      if (numberedWithContentMatch) {
-        const [, number, title, content] = numberedWithContentMatch;
+      // Simpler numbered heading - just the number and title with no content
+      const simpleNumberedMatch = trimmed.match(/^(\d+)\.\s+([^.]+)\.?\s*$/);
+      if (simpleNumberedMatch) {
+        const [, number, title] = simpleNumberedMatch;
         return (
-          <div key={index} className="mb-6">
+          <div key={index} className="mb-8">
             <h2 className="flex items-start gap-4 mb-4">
               <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
                 {number}
               </span>
-              <span className="pt-2">{title}</span>
+              <span className="pt-2 font-heading text-2xl">{formatInlineText(title)}</span>
             </h2>
-            <p className="text-muted-foreground ml-16">{formatInlineText(content)}</p>
           </div>
         );
       }
