@@ -10,12 +10,12 @@ export const BlogContent = ({ content }: BlogContentProps) => {
     // Look for "Cenário" followed by expense lines (Label: € value)
     let processedContent = content;
     
-    // Replace expense item patterns to ensure they're on separate lines within Cenário blocks
+    // Replace expense item patterns to ensure they're on separate lines within Cenário/Scenario blocks
     processedContent = processedContent
       // Ensure proper line breaks before numbered headings
       .replace(/([.!?])\s*(\d+\.\s+[A-Z])/g, '$1\n\n$2')
-      // Ensure line breaks before Cenário, Veredito, Dica
-      .replace(/([.!?])\s*(Cenário|Veredito|Resumo|Dica)/g, '$1\n\n$2');
+      // Ensure line breaks before Cenário/Scenario, Veredito/Verdict, Dica/Tip (PT, EN, NL)
+      .replace(/([.!?])\s*(Cenário|Scenario|Veredito|Verdict|Resumo|Summary|Dica|Tip|Samenvatting|Scenario)/g, '$1\n\n$2');
     
     // Split into lines first to better handle the structure
     const lines = processedContent.split('\n');
@@ -26,8 +26,8 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       const line = lines[i].trim();
       if (!line) continue;
       
-      // Check if this is a Cenário header
-      if (line.startsWith('Cenário')) {
+      // Check if this is a Cenário/Scenario header (PT, EN, NL)
+      if (line.startsWith('Cenário') || line.startsWith('Scenario')) {
         // Save previous cenário if exists
         if (currentCenario) {
           sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
@@ -142,8 +142,9 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       
       // Skip Cenário here - it's handled above in the pre-processing
       
-      // Check if it starts with "Veredito" or "Resumo"
-      if (trimmed.startsWith("Veredito") || trimmed.match(/^Resumo:/)) {
+      // Check if it starts with "Veredito/Verdict" or "Resumo/Summary" (PT, EN, NL)
+      if (trimmed.startsWith("Veredito") || trimmed.startsWith("Verdict") || 
+          trimmed.match(/^Resumo:/) || trimmed.match(/^Summary:/) || trimmed.match(/^Samenvatting:/)) {
         return (
           <div key={index} className="highlight-box">
             <p className="mb-0">
@@ -154,8 +155,8 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         );
       }
       
-      // Check if it's a tip (starts with "Dica")
-      if (trimmed.match(/^Dica\s/i)) {
+      // Check if it's a tip (starts with "Dica/Tip") (PT, EN, NL)
+      if (trimmed.match(/^(Dica|Tip)\s/i)) {
         return (
           <div key={index} className="tip-box">
             <div>
