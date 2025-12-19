@@ -90,8 +90,12 @@ export type Database = {
           author_id: string | null
           category_id: string | null
           content: string
+          content_en: string | null
+          content_nl: string | null
           created_at: string
           excerpt: string | null
+          excerpt_en: string | null
+          excerpt_nl: string | null
           featured: boolean | null
           featured_image: string | null
           id: string
@@ -103,14 +107,20 @@ export type Database = {
           slug: string
           status: Database["public"]["Enums"]["post_status"]
           title: string
+          title_en: string | null
+          title_nl: string | null
           updated_at: string
         }
         Insert: {
           author_id?: string | null
           category_id?: string | null
           content: string
+          content_en?: string | null
+          content_nl?: string | null
           created_at?: string
           excerpt?: string | null
+          excerpt_en?: string | null
+          excerpt_nl?: string | null
           featured?: boolean | null
           featured_image?: string | null
           id?: string
@@ -122,14 +132,20 @@ export type Database = {
           slug: string
           status?: Database["public"]["Enums"]["post_status"]
           title: string
+          title_en?: string | null
+          title_nl?: string | null
           updated_at?: string
         }
         Update: {
           author_id?: string | null
           category_id?: string | null
           content?: string
+          content_en?: string | null
+          content_nl?: string | null
           created_at?: string
           excerpt?: string | null
+          excerpt_en?: string | null
+          excerpt_nl?: string | null
           featured?: boolean | null
           featured_image?: string | null
           id?: string
@@ -141,6 +157,8 @@ export type Database = {
           slug?: string
           status?: Database["public"]["Enums"]["post_status"]
           title?: string
+          title_en?: string | null
+          title_nl?: string | null
           updated_at?: string
         }
         Relationships: [

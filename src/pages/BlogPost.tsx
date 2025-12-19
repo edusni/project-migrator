@@ -29,6 +29,13 @@ interface Post {
   meta_title: string | null;
   meta_description: string | null;
   meta_keywords: string | null;
+  // Translation fields
+  title_en: string | null;
+  title_nl: string | null;
+  content_en: string | null;
+  content_nl: string | null;
+  excerpt_en: string | null;
+  excerpt_nl: string | null;
   blog_categories: {
     name: string;
     emoji: string | null;
@@ -52,6 +59,7 @@ const BlogPost = () => {
   } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isTranslating, setIsTranslating] = useState(false);
+  const [translationCached, setTranslationCached] = useState(false);
   const [commentRefresh, setCommentRefresh] = useState(0);
 
   const dateLocale = language === "pt" ? ptBR : language === "nl" ? nl : enUS;
@@ -100,6 +108,12 @@ const BlogPost = () => {
           meta_title,
           meta_description,
           meta_keywords,
+          title_en,
+          title_nl,
+          content_en,
+          content_nl,
+          excerpt_en,
+          excerpt_nl,
           blog_categories (
             name,
             emoji,
@@ -115,14 +129,14 @@ const BlogPost = () => {
         console.error("Error fetching post:", error);
       }
 
-      setPost(data);
+      setPost(data as Post | null);
       setIsLoading(false);
     };
 
     fetchPost();
   }, [slug]);
 
-  // Translate content when language changes
+  // Translate content when language changes - check manual translation first
   useEffect(() => {
     const translateContent = async () => {
       if (!post) return;
@@ -134,7 +148,37 @@ const BlogPost = () => {
           title: post.title,
           excerpt: post.excerpt || "",
         });
+        setTranslationCached(true);
         return;
+      }
+
+      // Check if manual translation exists
+      const manualTitle = locale === "en" ? post.title_en : post.title_nl;
+      const manualContent = locale === "en" ? post.content_en : post.content_nl;
+      const manualExcerpt = locale === "en" ? post.excerpt_en : post.excerpt_nl;
+
+      if (manualContent) {
+        // Use manual translation
+        setTranslatedContent({
+          content: manualContent,
+          title: manualTitle || post.title,
+          excerpt: manualExcerpt || post.excerpt || "",
+        });
+        setTranslationCached(true);
+        return;
+      }
+
+      // Check if we already have a cached translation for this post+locale
+      const cacheKey = `blog_translation_${post.id}_${locale}`;
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) {
+        try {
+          setTranslatedContent(JSON.parse(cached));
+          setTranslationCached(true);
+          return;
+        } catch {
+          // Invalid cache, continue with translation
+        }
       }
 
       setIsTranslating(true);
@@ -159,6 +203,9 @@ const BlogPost = () => {
           });
         } else {
           setTranslatedContent(response.data);
+          // Cache the translation in sessionStorage
+          sessionStorage.setItem(cacheKey, JSON.stringify(response.data));
+          setTranslationCached(true);
         }
       } catch (error) {
         console.error("Translation failed:", error);
