@@ -45,7 +45,13 @@ const BlogPost = () => {
   const locale = getCurrentLocale();
   
   const [post, setPost] = useState<Post | null>(null);
+  const [translatedContent, setTranslatedContent] = useState<{
+    content: string;
+    title: string;
+    excerpt: string;
+  } | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isTranslating, setIsTranslating] = useState(false);
   const [commentRefresh, setCommentRefresh] = useState(0);
 
   const dateLocale = language === "pt" ? ptBR : language === "nl" ? nl : enUS;
@@ -56,18 +62,21 @@ const BlogPost = () => {
     copied: "Link gekopieerd!",
     notFound: "Bericht niet gevonden",
     minRead: "min lezen",
+    translating: "Vertalen...",
   } : language === "pt" ? {
     back: "Voltar ao blog",
     share: "Compartilhar",
     copied: "Link copiado!",
     notFound: "Post não encontrado",
     minRead: "min de leitura",
+    translating: "Traduzindo...",
   } : {
     back: "Back to blog",
     share: "Share",
     copied: "Link copied!",
     notFound: "Post not found",
     minRead: "min read",
+    translating: "Translating...",
   };
 
   useEffect(() => {
@@ -75,6 +84,7 @@ const BlogPost = () => {
       if (!slug) return;
       
       setIsLoading(true);
+      setTranslatedContent(null);
 
       const { data, error } = await supabase
         .from("blog_posts")
@@ -111,6 +121,59 @@ const BlogPost = () => {
 
     fetchPost();
   }, [slug]);
+
+  // Translate content when language changes
+  useEffect(() => {
+    const translateContent = async () => {
+      if (!post) return;
+      
+      // If Portuguese, use original content
+      if (locale === "pt") {
+        setTranslatedContent({
+          content: post.content,
+          title: post.title,
+          excerpt: post.excerpt || "",
+        });
+        return;
+      }
+
+      setIsTranslating(true);
+
+      try {
+        const response = await supabase.functions.invoke("translate-blog", {
+          body: {
+            content: post.content,
+            title: post.title,
+            excerpt: post.excerpt || "",
+            targetLanguage: locale,
+          },
+        });
+
+        if (response.error) {
+          console.error("Translation error:", response.error);
+          // Fallback to original content
+          setTranslatedContent({
+            content: post.content,
+            title: post.title,
+            excerpt: post.excerpt || "",
+          });
+        } else {
+          setTranslatedContent(response.data);
+        }
+      } catch (error) {
+        console.error("Translation failed:", error);
+        setTranslatedContent({
+          content: post.content,
+          title: post.title,
+          excerpt: post.excerpt || "",
+        });
+      } finally {
+        setIsTranslating(false);
+      }
+    };
+
+    translateContent();
+  }, [post, locale]);
 
   const handleShare = async () => {
     try {
@@ -221,7 +284,7 @@ const BlogPost = () => {
               )}
 
               <h1 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
-                {post.title}
+                {translatedContent?.title || post.title}
               </h1>
 
               <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
@@ -251,7 +314,13 @@ const BlogPost = () => {
               transition={{ delay: 0.2 }}
               className="mb-12"
             >
-              <BlogContent content={post.content} />
+              {isTranslating ? (
+                <div className="text-center py-8 text-muted-foreground">
+                  <div className="animate-pulse">{texts.translating}</div>
+                </div>
+              ) : (
+                <BlogContent content={translatedContent?.content || post.content} />
+              )}
             </motion.div>
 
             {/* Comments Section */}
