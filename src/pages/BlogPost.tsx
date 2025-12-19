@@ -1,0 +1,275 @@
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { PageLayout } from "@/components/PageLayout";
+import { SEOHead } from "@/components/SEOHead";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
+import { CommentForm } from "@/components/blog/CommentForm";
+import { CommentsList } from "@/components/blog/CommentsList";
+import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { format } from "date-fns";
+import { ptBR, enUS, nl } from "date-fns/locale";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
+
+interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  content: string;
+  excerpt: string | null;
+  featured_image: string | null;
+  read_time_minutes: number | null;
+  published_at: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  meta_keywords: string | null;
+  blog_categories: {
+    name: string;
+    emoji: string | null;
+    color: string | null;
+    slug: string;
+  } | null;
+}
+
+const BlogPost = () => {
+  const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
+  const locale = getCurrentLocale();
+  
+  const [post, setPost] = useState<Post | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [commentRefresh, setCommentRefresh] = useState(0);
+
+  const dateLocale = language === "pt" ? ptBR : language === "nl" ? nl : enUS;
+
+  const texts = language === "nl" ? {
+    back: "Terug naar blog",
+    share: "Delen",
+    copied: "Link gekopieerd!",
+    notFound: "Bericht niet gevonden",
+    minRead: "min lezen",
+  } : language === "pt" ? {
+    back: "Voltar ao blog",
+    share: "Compartilhar",
+    copied: "Link copiado!",
+    notFound: "Post não encontrado",
+    minRead: "min de leitura",
+  } : {
+    back: "Back to blog",
+    share: "Share",
+    copied: "Link copied!",
+    notFound: "Post not found",
+    minRead: "min read",
+  };
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!slug) return;
+      
+      setIsLoading(true);
+
+      const { data, error } = await supabase
+        .from("blog_posts")
+        .select(`
+          id,
+          title,
+          slug,
+          content,
+          excerpt,
+          featured_image,
+          read_time_minutes,
+          published_at,
+          meta_title,
+          meta_description,
+          meta_keywords,
+          blog_categories (
+            name,
+            emoji,
+            color,
+            slug
+          )
+        `)
+        .eq("slug", slug)
+        .eq("status", "published")
+        .maybeSingle();
+
+      if (error) {
+        console.error("Error fetching post:", error);
+      }
+
+      setPost(data);
+      setIsLoading(false);
+    };
+
+    fetchPost();
+  }, [slug]);
+
+  const handleShare = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      toast.success(texts.copied);
+    } catch {
+      toast.error("Failed to copy");
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <PageLayout>
+        <div className="container py-12">
+          <div className="max-w-3xl mx-auto">
+            <Skeleton className="h-8 w-32 mb-8" />
+            <Skeleton className="aspect-video rounded-xl mb-8" />
+            <Skeleton className="h-12 w-3/4 mb-4" />
+            <Skeleton className="h-4 w-48 mb-8" />
+            <div className="space-y-4">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+            </div>
+          </div>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  if (!post) {
+    return (
+      <PageLayout>
+        <div className="container py-20 text-center">
+          <h1 className="font-heading text-2xl mb-4">{texts.notFound}</h1>
+          <Button onClick={() => navigate(getLocalizedPath(locale, "/blog"))}>
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {texts.back}
+          </Button>
+        </div>
+      </PageLayout>
+    );
+  }
+
+  const publishedDate = post.published_at
+    ? format(new Date(post.published_at), "d MMMM yyyy", { locale: dateLocale })
+    : null;
+
+  return (
+    <PageLayout>
+      <SEOHead
+        title={post.meta_title || post.title}
+        description={post.meta_description || post.excerpt || ""}
+        keywords={post.meta_keywords || ""}
+        image={post.featured_image || undefined}
+        type="article"
+      />
+
+      <article className="py-8 lg:py-12">
+        <div className="container">
+          <div className="max-w-3xl mx-auto">
+            {/* Back button */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="mb-6"
+            >
+              <Button
+                variant="ghost"
+                onClick={() => navigate(getLocalizedPath(locale, "/blog"))}
+                className="text-muted-foreground hover:text-foreground"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {texts.back}
+              </Button>
+            </motion.div>
+
+            {/* Featured image */}
+            {post.featured_image && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="mb-8"
+              >
+                <img
+                  src={post.featured_image}
+                  alt={post.title}
+                  className="w-full aspect-video object-cover rounded-xl shadow-lg"
+                />
+              </motion.div>
+            )}
+
+            {/* Header */}
+            <motion.header
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mb-8"
+            >
+              {/* Category */}
+              {post.blog_categories && (
+                <Badge 
+                  className="mb-4 text-white"
+                  style={{ backgroundColor: post.blog_categories.color || '#3b82f6' }}
+                >
+                  {post.blog_categories.emoji} {post.blog_categories.name}
+                </Badge>
+              )}
+
+              <h1 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
+                {post.title}
+              </h1>
+
+              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+                {publishedDate && (
+                  <span className="flex items-center gap-1">
+                    <Calendar className="w-4 h-4" />
+                    {publishedDate}
+                  </span>
+                )}
+                {post.read_time_minutes && (
+                  <span className="flex items-center gap-1">
+                    <Clock className="w-4 h-4" />
+                    {post.read_time_minutes} {texts.minRead}
+                  </span>
+                )}
+                <Button variant="ghost" size="sm" onClick={handleShare}>
+                  <Share2 className="w-4 h-4 mr-1" />
+                  {texts.share}
+                </Button>
+              </div>
+            </motion.header>
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="prose prose-lg max-w-none mb-12"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            {/* Comments Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="border-t border-border pt-8 space-y-8"
+            >
+              <CommentsList postId={post.id} refreshKey={commentRefresh} />
+              <CommentForm 
+                postId={post.id} 
+                onCommentAdded={() => setCommentRefresh(prev => prev + 1)} 
+              />
+            </motion.div>
+          </div>
+        </div>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default BlogPost;

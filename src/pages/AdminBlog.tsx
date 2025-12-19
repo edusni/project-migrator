@@ -1,0 +1,778 @@
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { useLanguage } from "@/hooks/useLanguage";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  Plus, Save, Eye, Trash2, LogOut, Image, FileText, 
+  MessageSquare, Settings, Loader2, ArrowLeft, Edit,
+  Check, X
+} from "lucide-react";
+import { toast } from "sonner";
+
+interface Category {
+  id: string;
+  name: string;
+  emoji: string | null;
+}
+
+interface Post {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content: string;
+  featured_image: string | null;
+  category_id: string | null;
+  status: string;
+  featured: boolean | null;
+  read_time_minutes: number | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  meta_keywords: string | null;
+  published_at: string | null;
+  blog_categories: Category | null;
+}
+
+interface Comment {
+  id: string;
+  author_name: string;
+  author_email: string | null;
+  content: string;
+  approved: boolean;
+  created_at: string;
+  blog_posts: { title: string } | null;
+}
+
+const AdminBlog = () => {
+  const { user, isAdmin, isLoading: authLoading, signOut } = useAuth();
+  const navigate = useNavigate();
+  const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
+  const locale = getCurrentLocale();
+
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSaving, setIsSaving] = useState(false);
+  const [activeTab, setActiveTab] = useState("posts");
+  
+  // Post editor state
+  const [editingPost, setEditingPost] = useState<Post | null>(null);
+  const [isCreating, setIsCreating] = useState(false);
+  const [postForm, setPostForm] = useState({
+    title: "",
+    slug: "",
+    excerpt: "",
+    content: "",
+    featured_image: "",
+    category_id: "",
+    status: "draft",
+    featured: false,
+    read_time_minutes: 5,
+    meta_title: "",
+    meta_description: "",
+    meta_keywords: "",
+  });
+
+  const texts = language === "nl" ? {
+    title: "Blog Beheer",
+    posts: "Berichten",
+    comments: "Reacties",
+    newPost: "Nieuw bericht",
+    editPost: "Bericht bewerken",
+    save: "Opslaan",
+    publish: "Publiceren",
+    delete: "Verwijderen",
+    logout: "Uitloggen",
+    back: "Terug",
+    postTitle: "Titel",
+    slug: "Slug",
+    excerpt: "Samenvatting",
+    content: "Inhoud",
+    image: "Afbeelding URL",
+    category: "Categorie",
+    status: "Status",
+    featured: "Uitgelicht",
+    readTime: "Leestijd (min)",
+    seo: "SEO",
+    metaTitle: "Meta titel",
+    metaDesc: "Meta beschrijving",
+    metaKeywords: "Keywords",
+    draft: "Concept",
+    published: "Gepubliceerd",
+    archived: "Gearchiveerd",
+    approve: "Goedkeuren",
+    reject: "Afwijzen",
+    noAccess: "Geen toegang",
+    saved: "Opgeslagen!",
+    deleted: "Verwijderd!",
+    uploadImage: "Afbeelding uploaden",
+    noPosts: "Nog geen berichten",
+    noComments: "Geen nieuwe reacties",
+  } : language === "pt" ? {
+    title: "Gerenciar Blog",
+    posts: "Posts",
+    comments: "Comentários",
+    newPost: "Novo post",
+    editPost: "Editar post",
+    save: "Salvar",
+    publish: "Publicar",
+    delete: "Excluir",
+    logout: "Sair",
+    back: "Voltar",
+    postTitle: "Título",
+    slug: "Slug",
+    excerpt: "Resumo",
+    content: "Conteúdo",
+    image: "URL da imagem",
+    category: "Categoria",
+    status: "Status",
+    featured: "Destaque",
+    readTime: "Tempo de leitura (min)",
+    seo: "SEO",
+    metaTitle: "Meta título",
+    metaDesc: "Meta descrição",
+    metaKeywords: "Palavras-chave",
+    draft: "Rascunho",
+    published: "Publicado",
+    archived: "Arquivado",
+    approve: "Aprovar",
+    reject: "Rejeitar",
+    noAccess: "Sem acesso",
+    saved: "Salvo!",
+    deleted: "Excluído!",
+    uploadImage: "Enviar imagem",
+    noPosts: "Nenhum post ainda",
+    noComments: "Nenhum comentário pendente",
+  } : {
+    title: "Manage Blog",
+    posts: "Posts",
+    comments: "Comments",
+    newPost: "New post",
+    editPost: "Edit post",
+    save: "Save",
+    publish: "Publish",
+    delete: "Delete",
+    logout: "Logout",
+    back: "Back",
+    postTitle: "Title",
+    slug: "Slug",
+    excerpt: "Excerpt",
+    content: "Content",
+    image: "Image URL",
+    category: "Category",
+    status: "Status",
+    featured: "Featured",
+    readTime: "Read time (min)",
+    seo: "SEO",
+    metaTitle: "Meta title",
+    metaDesc: "Meta description",
+    metaKeywords: "Keywords",
+    draft: "Draft",
+    published: "Published",
+    archived: "Archived",
+    approve: "Approve",
+    reject: "Reject",
+    noAccess: "No access",
+    saved: "Saved!",
+    deleted: "Deleted!",
+    uploadImage: "Upload image",
+    noPosts: "No posts yet",
+    noComments: "No pending comments",
+  };
+
+  // Auth check
+  useEffect(() => {
+    if (!authLoading && (!user || !isAdmin)) {
+      navigate(getLocalizedPath(locale, "/admin/login"));
+    }
+  }, [user, isAdmin, authLoading, navigate, getLocalizedPath, locale]);
+
+  // Fetch data
+  useEffect(() => {
+    if (!isAdmin) return;
+
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      // Fetch posts
+      const { data: postsData } = await supabase
+        .from("blog_posts")
+        .select(`
+          id, title, slug, excerpt, content, featured_image,
+          category_id, status, featured, read_time_minutes,
+          meta_title, meta_description, meta_keywords, published_at,
+          blog_categories (id, name, emoji)
+        `)
+        .order("created_at", { ascending: false });
+
+      // Fetch categories
+      const { data: categoriesData } = await supabase
+        .from("blog_categories")
+        .select("id, name, emoji")
+        .order("sort_order");
+
+      // Fetch pending comments
+      const { data: commentsData } = await supabase
+        .from("blog_comments")
+        .select(`
+          id, author_name, author_email, content, approved, created_at,
+          blog_posts (title)
+        `)
+        .order("created_at", { ascending: false });
+
+      setPosts(postsData || []);
+      setCategories(categoriesData || []);
+      setComments(commentsData || []);
+      setIsLoading(false);
+    };
+
+    fetchData();
+  }, [isAdmin]);
+
+  const generateSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
+
+  const handleTitleChange = (title: string) => {
+    setPostForm(prev => ({
+      ...prev,
+      title,
+      slug: generateSlug(title),
+    }));
+  };
+
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Date.now()}.${fileExt}`;
+    const filePath = `posts/${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from("blog-images")
+      .upload(filePath, file);
+
+    if (uploadError) {
+      toast.error("Upload failed");
+      return;
+    }
+
+    const { data } = supabase.storage
+      .from("blog-images")
+      .getPublicUrl(filePath);
+
+    setPostForm(prev => ({ ...prev, featured_image: data.publicUrl }));
+    toast.success("Image uploaded!");
+  };
+
+  const handleSavePost = async (publish = false) => {
+    setIsSaving(true);
+
+    const status = publish ? "published" : postForm.status;
+
+    const postData = {
+      title: postForm.title,
+      slug: postForm.slug,
+      excerpt: postForm.excerpt || null,
+      content: postForm.content,
+      featured_image: postForm.featured_image || null,
+      category_id: postForm.category_id || null,
+      status: status as "draft" | "published" | "archived",
+      featured: postForm.featured,
+      read_time_minutes: postForm.read_time_minutes,
+      meta_title: postForm.meta_title || null,
+      meta_description: postForm.meta_description || null,
+      meta_keywords: postForm.meta_keywords || null,
+      author_id: user?.id,
+      published_at: publish ? new Date().toISOString() : editingPost?.published_at,
+    };
+
+    let error;
+
+    if (editingPost) {
+      const result = await supabase
+        .from("blog_posts")
+        .update(postData)
+        .eq("id", editingPost.id);
+      error = result.error;
+    } else {
+      const result = await supabase
+        .from("blog_posts")
+        .insert([postData]);
+      error = result.error;
+    }
+
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success(texts.saved);
+      setEditingPost(null);
+      setIsCreating(false);
+      // Refresh posts
+      const { data } = await supabase
+        .from("blog_posts")
+        .select(`
+          id, title, slug, excerpt, content, featured_image,
+          category_id, status, featured, read_time_minutes,
+          meta_title, meta_description, meta_keywords, published_at,
+          blog_categories (id, name, emoji)
+        `)
+        .order("created_at", { ascending: false });
+      setPosts(data || []);
+    }
+
+    setIsSaving(false);
+  };
+
+  const handleDeletePost = async (postId: string) => {
+    if (!confirm("Delete this post?")) return;
+
+    const { error } = await supabase
+      .from("blog_posts")
+      .delete()
+      .eq("id", postId);
+
+    if (error) {
+      toast.error(error.message);
+    } else {
+      toast.success(texts.deleted);
+      setPosts(prev => prev.filter(p => p.id !== postId));
+    }
+  };
+
+  const handleEditPost = (post: Post) => {
+    setEditingPost(post);
+    setPostForm({
+      title: post.title,
+      slug: post.slug,
+      excerpt: post.excerpt || "",
+      content: post.content,
+      featured_image: post.featured_image || "",
+      category_id: post.category_id || "",
+      status: post.status,
+      featured: post.featured || false,
+      read_time_minutes: post.read_time_minutes || 5,
+      meta_title: post.meta_title || "",
+      meta_description: post.meta_description || "",
+      meta_keywords: post.meta_keywords || "",
+    });
+    setIsCreating(true);
+  };
+
+  const handleNewPost = () => {
+    setEditingPost(null);
+    setPostForm({
+      title: "",
+      slug: "",
+      excerpt: "",
+      content: "",
+      featured_image: "",
+      category_id: "",
+      status: "draft",
+      featured: false,
+      read_time_minutes: 5,
+      meta_title: "",
+      meta_description: "",
+      meta_keywords: "",
+    });
+    setIsCreating(true);
+  };
+
+  const handleCommentAction = async (commentId: string, approve: boolean) => {
+    if (approve) {
+      await supabase
+        .from("blog_comments")
+        .update({ approved: true })
+        .eq("id", commentId);
+    } else {
+      await supabase
+        .from("blog_comments")
+        .delete()
+        .eq("id", commentId);
+    }
+
+    setComments(prev => prev.filter(c => c.id !== commentId));
+    toast.success(approve ? "Approved!" : "Rejected!");
+  };
+
+  if (authLoading || isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <p>{texts.noAccess}</p>
+      </div>
+    );
+  }
+
+  // Post editor view
+  if (isCreating) {
+    return (
+      <div className="min-h-screen bg-muted/30 py-8">
+        <div className="container max-w-4xl">
+          <div className="flex items-center justify-between mb-6">
+            <Button variant="ghost" onClick={() => setIsCreating(false)}>
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              {texts.back}
+            </Button>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => handleSavePost(false)} disabled={isSaving}>
+                {isSaving ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Save className="mr-2 h-4 w-4" />}
+                {texts.save}
+              </Button>
+              <Button onClick={() => handleSavePost(true)} disabled={isSaving}>
+                {texts.publish}
+              </Button>
+            </div>
+          </div>
+
+          <Card>
+            <CardHeader>
+              <CardTitle>{editingPost ? texts.editPost : texts.newPost}</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* Title & Slug */}
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label>{texts.postTitle}</Label>
+                  <Input
+                    value={postForm.title}
+                    onChange={(e) => handleTitleChange(e.target.value)}
+                    placeholder="My awesome post"
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>{texts.slug}</Label>
+                  <Input
+                    value={postForm.slug}
+                    onChange={(e) => setPostForm(prev => ({ ...prev, slug: e.target.value }))}
+                    placeholder="my-awesome-post"
+                  />
+                </div>
+              </div>
+
+              {/* Excerpt */}
+              <div className="space-y-2">
+                <Label>{texts.excerpt}</Label>
+                <Textarea
+                  value={postForm.excerpt}
+                  onChange={(e) => setPostForm(prev => ({ ...prev, excerpt: e.target.value }))}
+                  placeholder="Brief summary..."
+                  rows={2}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="space-y-2">
+                <Label>{texts.content}</Label>
+                <Textarea
+                  value={postForm.content}
+                  onChange={(e) => setPostForm(prev => ({ ...prev, content: e.target.value }))}
+                  placeholder="Write your post content here... (HTML supported)"
+                  rows={12}
+                  className="font-mono text-sm"
+                />
+              </div>
+
+              {/* Image */}
+              <div className="space-y-2">
+                <Label>{texts.image}</Label>
+                <div className="flex gap-2">
+                  <Input
+                    value={postForm.featured_image}
+                    onChange={(e) => setPostForm(prev => ({ ...prev, featured_image: e.target.value }))}
+                    placeholder="https://..."
+                    className="flex-1"
+                  />
+                  <Button variant="outline" asChild>
+                    <label className="cursor-pointer">
+                      <Image className="mr-2 h-4 w-4" />
+                      {texts.uploadImage}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={handleImageUpload}
+                      />
+                    </label>
+                  </Button>
+                </div>
+                {postForm.featured_image && (
+                  <img src={postForm.featured_image} alt="Preview" className="mt-2 max-h-40 rounded-lg" />
+                )}
+              </div>
+
+              {/* Category, Status, Featured */}
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <Label>{texts.category}</Label>
+                  <Select
+                    value={postForm.category_id}
+                    onValueChange={(value) => setPostForm(prev => ({ ...prev, category_id: value }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {categories.map((cat) => (
+                        <SelectItem key={cat.id} value={cat.id}>
+                          {cat.emoji} {cat.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{texts.status}</Label>
+                  <Select
+                    value={postForm.status}
+                    onValueChange={(value) => setPostForm(prev => ({ ...prev, status: value }))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="draft">{texts.draft}</SelectItem>
+                      <SelectItem value="published">{texts.published}</SelectItem>
+                      <SelectItem value="archived">{texts.archived}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label>{texts.readTime}</Label>
+                  <Input
+                    type="number"
+                    value={postForm.read_time_minutes}
+                    onChange={(e) => setPostForm(prev => ({ ...prev, read_time_minutes: parseInt(e.target.value) || 5 }))}
+                    min={1}
+                  />
+                </div>
+              </div>
+
+              {/* Featured toggle */}
+              <div className="flex items-center gap-2">
+                <Switch
+                  checked={postForm.featured}
+                  onCheckedChange={(checked) => setPostForm(prev => ({ ...prev, featured: checked }))}
+                />
+                <Label>{texts.featured}</Label>
+              </div>
+
+              {/* SEO */}
+              <div className="border-t pt-6 space-y-4">
+                <h3 className="font-heading font-bold flex items-center gap-2">
+                  <Settings className="w-4 h-4" />
+                  {texts.seo}
+                </h3>
+                <div className="space-y-4">
+                  <div className="space-y-2">
+                    <Label>{texts.metaTitle}</Label>
+                    <Input
+                      value={postForm.meta_title}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_title: e.target.value }))}
+                      placeholder="SEO title (max 60 chars)"
+                      maxLength={60}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{texts.metaDesc}</Label>
+                    <Textarea
+                      value={postForm.meta_description}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_description: e.target.value }))}
+                      placeholder="SEO description (max 160 chars)"
+                      maxLength={160}
+                      rows={2}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>{texts.metaKeywords}</Label>
+                    <Input
+                      value={postForm.meta_keywords}
+                      onChange={(e) => setPostForm(prev => ({ ...prev, meta_keywords: e.target.value }))}
+                      placeholder="keyword1, keyword2, keyword3"
+                    />
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    );
+  }
+
+  // Main admin dashboard
+  return (
+    <div className="min-h-screen bg-muted/30 py-8">
+      <div className="container">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="font-heading text-2xl lg:text-3xl font-bold">{texts.title}</h1>
+          <div className="flex gap-2">
+            <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/blog"))}>
+              <Eye className="mr-2 h-4 w-4" />
+              {language === "nl" ? "Bekijk blog" : language === "pt" ? "Ver blog" : "View blog"}
+            </Button>
+            <Button variant="ghost" onClick={signOut}>
+              <LogOut className="mr-2 h-4 w-4" />
+              {texts.logout}
+            </Button>
+          </div>
+        </div>
+
+        <Tabs value={activeTab} onValueChange={setActiveTab}>
+          <TabsList className="mb-6">
+            <TabsTrigger value="posts" className="gap-2">
+              <FileText className="w-4 h-4" />
+              {texts.posts}
+            </TabsTrigger>
+            <TabsTrigger value="comments" className="gap-2">
+              <MessageSquare className="w-4 h-4" />
+              {texts.comments}
+              {comments.filter(c => !c.approved).length > 0 && (
+                <Badge variant="destructive" className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                  {comments.filter(c => !c.approved).length}
+                </Badge>
+              )}
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="posts">
+            <div className="flex justify-end mb-4">
+              <Button onClick={handleNewPost}>
+                <Plus className="mr-2 h-4 w-4" />
+                {texts.newPost}
+              </Button>
+            </div>
+
+            {posts.length === 0 ? (
+              <Card>
+                <CardContent className="py-12 text-center text-muted-foreground">
+                  {texts.noPosts}
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="space-y-3">
+                {posts.map((post) => (
+                  <Card key={post.id} className="hover:shadow-md transition-shadow">
+                    <CardContent className="p-4 flex items-center gap-4">
+                      {post.featured_image && (
+                        <img
+                          src={post.featured_image}
+                          alt={post.title}
+                          className="w-20 h-14 object-cover rounded"
+                        />
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="font-medium truncate">{post.title}</h3>
+                          <Badge variant={post.status === "published" ? "default" : "secondary"}>
+                            {post.status === "published" ? texts.published : post.status === "draft" ? texts.draft : texts.archived}
+                          </Badge>
+                          {post.featured && <Badge variant="outline">★</Badge>}
+                        </div>
+                        <p className="text-sm text-muted-foreground truncate">
+                          {post.blog_categories?.emoji} {post.blog_categories?.name || "No category"}
+                        </p>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="ghost" size="icon" onClick={() => handleEditPost(post)}>
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button variant="ghost" size="icon" onClick={() => handleDeletePost(post.id)}>
+                          <Trash2 className="w-4 h-4 text-destructive" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+
+          <TabsContent value="comments">
+            {comments.length === 0 ? (
+              <Card>
+                <CardContent className="py-12 text-center text-muted-foreground">
+                  {texts.noComments}
+                </CardContent>
+              </Card>
+            ) : (
+              <div className="space-y-3">
+                {comments.map((comment) => (
+                  <Card key={comment.id} className={!comment.approved ? "border-amber-500/50" : ""}>
+                    <CardContent className="p-4">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="font-medium">{comment.author_name}</span>
+                            {comment.author_email && (
+                              <span className="text-sm text-muted-foreground">({comment.author_email})</span>
+                            )}
+                            {!comment.approved && <Badge variant="outline">Pending</Badge>}
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-2">
+                            On: {comment.blog_posts?.title}
+                          </p>
+                          <p className="text-sm">{comment.content}</p>
+                        </div>
+                        {!comment.approved && (
+                          <div className="flex gap-2">
+                            <Button
+                              size="icon"
+                              variant="ghost"
+                              className="text-green-600 hover:text-green-700"
+                              onClick={() => handleCommentAction(comment.id, true)}
+                            >
+                              <Check className="w-4 h-4" />
+                            </Button>
+                            <Button
+                              size="icon"
+                              variant="ghost"
+                              className="text-destructive"
+                              onClick={() => handleCommentAction(comment.id, false)}
+                            >
+                              <X className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+        </Tabs>
+      </div>
+    </div>
+  );
+};
+
+export default AdminBlog;
