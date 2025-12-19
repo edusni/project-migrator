@@ -36,9 +36,12 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         continue;
       }
       
-      // Check if this is an expense item (Label: € value or Label: ~€ value)
-      const expenseMatch = line.match(/^([A-Za-zÀ-ÿ\s()0-9]+):\s*(~?€?\s*[\d.,]+.*)/);
-      if (currentCenario && expenseMatch) {
+      // Check if this is an expense item (Label: € value or Label: ~€ value or TOTAL: ~€ value)
+      // More permissive regex to catch items like "Transporte (Bike + Transporte ocasional): € 50"
+      const expenseMatch = line.match(/^([^:]+):\s*(~?€?\s*[\d.,]+.*)/);
+      const isTotalLine = line.toUpperCase().startsWith('TOTAL');
+      
+      if (currentCenario && (expenseMatch || isTotalLine)) {
         currentCenario.items.push(line);
         continue;
       }
