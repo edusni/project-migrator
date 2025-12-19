@@ -22,6 +22,11 @@ interface Post {
   featured: boolean | null;
   category_id: string | null;
   blog_categories: Category | null;
+  // Translation fields
+  title_en: string | null;
+  title_nl: string | null;
+  excerpt_en: string | null;
+  excerpt_nl: string | null;
 }
 
 interface PostListProps {
@@ -50,6 +55,10 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
           published_at,
           featured,
           category_id,
+          title_en,
+          title_nl,
+          excerpt_en,
+          excerpt_nl,
           blog_categories (
             name,
             emoji,
@@ -114,13 +123,30 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
   const featuredPost = posts.find(p => p.featured);
   const regularPosts = posts.filter(p => !p.featured);
 
+  // Get translated content based on language
+  const getLocalizedPost = (post: Post) => {
+    const title = language === 'en' && post.title_en 
+      ? post.title_en 
+      : language === 'nl' && post.title_nl 
+        ? post.title_nl 
+        : post.title;
+    
+    const excerpt = language === 'en' && post.excerpt_en 
+      ? post.excerpt_en 
+      : language === 'nl' && post.excerpt_nl 
+        ? post.excerpt_nl 
+        : post.excerpt;
+    
+    return { ...post, title, excerpt };
+  };
+
   return (
     <div className="space-y-8">
       {/* Featured post */}
       {featuredPost && (
         <PostCard 
           post={{
-            ...featuredPost,
+            ...getLocalizedPost(featuredPost),
             category: featuredPost.blog_categories
           }} 
           featured 
@@ -134,7 +160,7 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
             <StaggerItem key={post.id}>
               <PostCard 
                 post={{
-                  ...post,
+                  ...getLocalizedPost(post),
                   category: post.blog_categories
                 }} 
               />
