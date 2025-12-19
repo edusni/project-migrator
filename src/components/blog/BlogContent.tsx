@@ -6,19 +6,94 @@ interface BlogContentProps {
 
 export const BlogContent = ({ content }: BlogContentProps) => {
   const formattedContent = useMemo(() => {
-    // First, normalize line breaks and split into logical sections
-    // Look for numbered headings and ensure they're separated
-    let normalizedContent = content
-      // Add paragraph breaks before numbered headings
+    // Pre-process: group Cenário sections with their expense items
+    // Look for "Cenário" followed by expense lines (Label: € value)
+    let processedContent = content;
+    
+    // Replace expense item patterns to ensure they're on separate lines within Cenário blocks
+    processedContent = processedContent
+      // Ensure proper line breaks before numbered headings
       .replace(/([.!?])\s*(\d+\.\s+[A-Z])/g, '$1\n\n$2')
-      // Add paragraph breaks before "Cenário", "Veredito", "Dica"
+      // Ensure line breaks before Cenário, Veredito, Dica
       .replace(/([.!?])\s*(Cenário|Veredito|Resumo|Dica)/g, '$1\n\n$2');
     
-    // Split content into paragraphs
-    const paragraphs = normalizedContent.split(/\n\n+/);
+    // Split into lines first to better handle the structure
+    const lines = processedContent.split('\n');
+    const sections: { type: string; content: string; items?: string[] }[] = [];
+    let currentCenario: { title: string; items: string[] } | null = null;
     
-    return paragraphs.map((paragraph, index) => {
-      const trimmed = paragraph.trim();
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      if (!line) continue;
+      
+      // Check if this is a Cenário header
+      if (line.startsWith('Cenário')) {
+        // Save previous cenário if exists
+        if (currentCenario) {
+          sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
+        }
+        currentCenario = { title: line, items: [] };
+        continue;
+      }
+      
+      // Check if this is an expense item (Label: € value or Label: ~€ value)
+      const expenseMatch = line.match(/^([A-Za-zÀ-ÿ\s()0-9]+):\s*(~?€?\s*[\d.,]+.*)/);
+      if (currentCenario && expenseMatch) {
+        currentCenario.items.push(line);
+        continue;
+      }
+      
+      // If we hit a non-expense line and have a cenário, save it
+      if (currentCenario) {
+        sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
+        currentCenario = null;
+      }
+      
+      // Add regular content
+      sections.push({ type: 'text', content: line });
+    }
+    
+    // Don't forget the last cenário
+    if (currentCenario) {
+      sections.push({ type: 'cenario', content: currentCenario.title, items: currentCenario.items });
+    }
+    
+    // Now render the sections
+    return sections.map((section, index) => {
+      if (section.type === 'cenario') {
+        return (
+          <div key={index} className="summary-card my-6">
+            <h3 className="text-xl font-heading font-bold text-primary mb-4">{section.content}</h3>
+            {section.items && section.items.length > 0 && (
+              <div className="space-y-1">
+                {section.items.map((item, i) => {
+                  const itemMatch = item.match(/^(.+?):\s*(.+)$/);
+                  if (itemMatch) {
+                    const [, label, value] = itemMatch;
+                    const isTotal = label.toLowerCase().includes('total');
+                    return (
+                      <div 
+                        key={i} 
+                        className={`flex justify-between items-center py-3 ${isTotal ? 'border-t-2 border-primary pt-4 mt-4' : 'border-b border-border/30'}`}
+                      >
+                        <span className={isTotal ? 'font-bold text-lg' : 'text-muted-foreground'}>
+                          {label}
+                        </span>
+                        <span className={`font-mono ${isTotal ? 'text-primary font-bold text-xl' : 'font-semibold text-foreground'}`}>
+                          {value}
+                        </span>
+                      </div>
+                    );
+                  }
+                  return <p key={i} className="text-muted-foreground">{item}</p>;
+                })}
+              </div>
+            )}
+          </div>
+        );
+      }
+      
+      const trimmed = section.content;
       if (!trimmed) return null;
       
       // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia (Aluguel)")
@@ -62,39 +137,7 @@ export const BlogContent = ({ content }: BlogContentProps) => {
         );
       }
       
-      // Check if it starts with "Cenário" (scenario heading)
-      if (trimmed.startsWith("Cenário")) {
-        return (
-          <div key={index} className="summary-card">
-            <h3>{trimmed.split('\n')[0]}</h3>
-            {trimmed.includes('\n') && (
-              <div className="space-y-2 mt-4">
-                {trimmed.split('\n').slice(1).map((line, i) => {
-                  const lineMatch = line.match(/^(.+?):\s*(.+)$/);
-                  if (lineMatch) {
-                    const [, label, value] = lineMatch;
-                    const isTotal = label.toLowerCase().includes('total');
-                    return (
-                      <div 
-                        key={i} 
-                        className={`flex justify-between items-center py-2 ${isTotal ? 'border-t-2 border-primary pt-4 mt-4' : 'border-b border-border/50'}`}
-                      >
-                        <span className={isTotal ? 'font-bold text-lg' : 'text-muted-foreground'}>
-                          {label}
-                        </span>
-                        <span className={`font-mono ${isTotal ? 'text-primary font-bold text-xl' : 'font-semibold'}`}>
-                          {value}
-                        </span>
-                      </div>
-                    );
-                  }
-                  return <p key={i} className="text-muted-foreground">{line}</p>;
-                })}
-              </div>
-            )}
-          </div>
-        );
-      }
+      // Skip Cenário here - it's handled above in the pre-processing
       
       // Check if it starts with "Veredito" or "Resumo"
       if (trimmed.startsWith("Veredito") || trimmed.match(/^Resumo:/)) {
