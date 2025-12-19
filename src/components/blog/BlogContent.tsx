@@ -6,24 +6,57 @@ interface BlogContentProps {
 
 export const BlogContent = ({ content }: BlogContentProps) => {
   const formattedContent = useMemo(() => {
+    // First, normalize line breaks and split into logical sections
+    // Look for numbered headings and ensure they're separated
+    let normalizedContent = content
+      // Add paragraph breaks before numbered headings
+      .replace(/([.!?])\s*(\d+\.\s+[A-Z])/g, '$1\n\n$2')
+      // Add paragraph breaks before "Cenário", "Veredito", "Dica"
+      .replace(/([.!?])\s*(Cenário|Veredito|Resumo|Dica)/g, '$1\n\n$2');
+    
     // Split content into paragraphs
-    const paragraphs = content.split(/\n\n+/);
+    const paragraphs = normalizedContent.split(/\n\n+/);
     
     return paragraphs.map((paragraph, index) => {
       const trimmed = paragraph.trim();
       if (!trimmed) return null;
       
       // Check if it's a numbered section heading (e.g., "1. O Grande Vilão: Moradia")
-      const numberedHeadingMatch = trimmed.match(/^(\d+)\.\s+(.+)$/);
+      // More flexible regex to catch various formats
+      const numberedHeadingMatch = trimmed.match(/^(\d+)\.\s+([^.]+?)(?:\s+(?=[A-Z][a-z])|\s*$)/);
       if (numberedHeadingMatch) {
-        const [, number, title] = numberedHeadingMatch;
+        const [fullMatch, number, title] = numberedHeadingMatch;
+        const restOfText = trimmed.substring(fullMatch.length).trim();
+        
         return (
-          <h2 key={index} className="flex items-center gap-3">
-            <span className="flex items-center justify-center w-10 h-10 bg-primary text-primary-foreground rounded-full text-lg font-bold flex-shrink-0">
-              {number}
-            </span>
-            <span>{title}</span>
-          </h2>
+          <div key={index} className="mb-6">
+            <h2 className="flex items-start gap-4 mb-4">
+              <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
+                {number}
+              </span>
+              <span className="pt-2">{title}</span>
+            </h2>
+            {restOfText && (
+              <p className="text-muted-foreground ml-16">{formatInlineText(restOfText)}</p>
+            )}
+          </div>
+        );
+      }
+      
+      // Alternative: check for numbered heading with content on same line
+      const numberedWithContentMatch = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)([A-Z][a-z].+)$/);
+      if (numberedWithContentMatch) {
+        const [, number, title, content] = numberedWithContentMatch;
+        return (
+          <div key={index} className="mb-6">
+            <h2 className="flex items-start gap-4 mb-4">
+              <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
+                {number}
+              </span>
+              <span className="pt-2">{title}</span>
+            </h2>
+            <p className="text-muted-foreground ml-16">{formatInlineText(content)}</p>
+          </div>
         );
       }
       
@@ -82,6 +115,27 @@ export const BlogContent = ({ content }: BlogContentProps) => {
             </div>
           </div>
         );
+      }
+      
+      // Check for "Taxas Invisíveis" or similar quoted terms in headings
+      if (trimmed.match(/^(\d+)\.\s+As?\s+"[^"]+"/)) {
+        const match = trimmed.match(/^(\d+)\.\s+(.+?)(?:\s+)([A-Z][a-z].+)?$/);
+        if (match) {
+          const [, number, title, content] = match;
+          return (
+            <div key={index} className="mb-6">
+              <h2 className="flex items-start gap-4 mb-4">
+                <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
+                  {number}
+                </span>
+                <span className="pt-2">{formatInlineText(title)}</span>
+              </h2>
+              {content && (
+                <p className="text-muted-foreground ml-16">{formatInlineText(content)}</p>
+              )}
+            </div>
+          );
+        }
       }
       
       // Check if it's a subheading with colon (e.g., "O Preço Real (2026):")
