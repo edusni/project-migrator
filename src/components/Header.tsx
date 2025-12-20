@@ -288,6 +288,8 @@ export function Header() {
                         key={item.url}
                         to={item.url}
                         onClick={() => setIsOpen(false)}
+                        onTouchStart={() => handlePrefetch(item.url)}
+                        onMouseEnter={() => handlePrefetch(item.url)}
                         style={{ animationDelay: `${index * 0.03}s` }}
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 animate-fade-in
@@ -315,6 +317,8 @@ export function Header() {
                         key={item.url}
                         to={item.url}
                         onClick={() => setIsOpen(false)}
+                        onTouchStart={() => handlePrefetch(item.url)}
+                        onMouseEnter={() => handlePrefetch(item.url)}
                         style={{ animationDelay: `${(index + 4) * 0.03}s` }}
                         className={({ isActive }) =>
                           `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 animate-fade-in
@@ -340,6 +344,8 @@ export function Header() {
                     <NavLink
                       to="/sobre"
                       onClick={() => setIsOpen(false)}
+                      onTouchStart={() => handlePrefetch("/sobre")}
+                      onMouseEnter={() => handlePrefetch("/sobre")}
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200
                         ${isActive 
@@ -356,6 +362,8 @@ export function Header() {
                     <NavLink
                       to="/blog"
                       onClick={() => setIsOpen(false)}
+                      onTouchStart={() => handlePrefetch("/blog")}
+                      onMouseEnter={() => handlePrefetch("/blog")}
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200
                         ${isActive 
