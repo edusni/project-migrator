@@ -823,7 +823,7 @@ const AdminBlog = () => {
                     </h1>
 
                     {/* Content */}
-                    <div className="blog-content prose prose-lg max-w-none">
+                    <div className="blog-content max-w-none">
                       {getPreviewContent() ? (
                         <div dangerouslySetInnerHTML={{ __html: getPreviewContent() }} />
                       ) : (
