@@ -5,12 +5,29 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/hooks/useLanguage";
+import { usePrefetch } from "@/hooks/usePrefetch";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+
+// Route key mapping for prefetch
+type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre";
+
+const urlToRouteKey: Record<string, RouteKey> = {
+  "/planejamento": "planejamento",
+  "/hospedagem": "hospedagem",
+  "/atracoes": "atracoes",
+  "/transporte": "transporte",
+  "/gastronomia": "gastronomia",
+  "/coffeeshops": "coffeeshops",
+  "/arredores": "arredores",
+  "/blog": "blog",
+  "/sobre": "sobre",
+  "/custo-vida-amsterdam": "planejamento", // Maps to planejamento as it's related
+};
 
 // All navigation items for mobile
 const allNavItems = [
@@ -47,6 +64,15 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const { t, language } = useLanguage();
   const location = useLocation();
+  const { prefetchRoute } = usePrefetch();
+
+  // Prefetch handler for nav items
+  const handlePrefetch = (url: string) => {
+    const routeKey = urlToRouteKey[url];
+    if (routeKey) {
+      prefetchRoute(routeKey);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -110,11 +136,17 @@ export function Header() {
                 <ChevronDown className="w-3 h-3 ml-0.5" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56 bg-background border border-border shadow-lg z-50">
+            <DropdownMenuContent 
+              align="start" 
+              className="w-56 bg-background border border-border shadow-lg z-50"
+              onMouseEnter={() => planningItems.forEach(item => handlePrefetch(item.url))}
+            >
               {planningItems.map((item) => (
                 <DropdownMenuItem key={item.url} asChild>
                   <Link
                     to={item.url}
+                    onMouseEnter={() => handlePrefetch(item.url)}
+                    onFocus={() => handlePrefetch(item.url)}
                     className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
                       location.pathname === item.url ? "bg-primary/10 text-primary" : ""
                     }`}
@@ -142,11 +174,17 @@ export function Header() {
                 <ChevronDown className="w-3 h-3 ml-0.5" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56 bg-background border border-border shadow-lg z-50">
+            <DropdownMenuContent 
+              align="start" 
+              className="w-56 bg-background border border-border shadow-lg z-50"
+              onMouseEnter={() => exploreItems.forEach(item => handlePrefetch(item.url))}
+            >
               {exploreItems.map((item) => (
                 <DropdownMenuItem key={item.url} asChild>
                   <Link
                     to={item.url}
+                    onMouseEnter={() => handlePrefetch(item.url)}
+                    onFocus={() => handlePrefetch(item.url)}
                     className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
                       location.pathname === item.url ? "bg-primary/10 text-primary" : ""
                     }`}
@@ -162,9 +200,11 @@ export function Header() {
           {/* Sobre */}
           <NavLink
             to="/sobre"
+            onMouseEnter={() => handlePrefetch("/sobre")}
+            onFocus={() => handlePrefetch("/sobre")}
             className={({ isActive }) =>
               `flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-out-expo
-              ${isActive 
+              ${isActive
                 ? "bg-primary/10 text-primary" 
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`
@@ -177,9 +217,11 @@ export function Header() {
           {/* Blog */}
           <NavLink
             to="/blog"
+            onMouseEnter={() => handlePrefetch("/blog")}
+            onFocus={() => handlePrefetch("/blog")}
             className={({ isActive }) =>
               `flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-out-expo
-              ${isActive 
+              ${isActive
                 ? "bg-primary/10 text-primary" 
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`
