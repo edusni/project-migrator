@@ -118,13 +118,13 @@ const t = (pt: string, en: string, nl: string, language: Language) => {
 
 export function FoodGallerySection({ language }: FoodGallerySectionProps) {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-10 sm:py-12 md:py-16">
       <AnimatedSection>
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+        <div className="text-center mb-8 sm:mb-10">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2 sm:mb-3">
             {t("🍽️ Sabores Imperdíveis de Amsterdam", "🍽️ Must-Try Amsterdam Flavors", "🍽️ Must-Try Amsterdam Smaken", language)}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-sm sm:text-base px-4">
             {t(
               "As comidas e experiências gastronômicas que você precisa conhecer",
               "The foods and culinary experiences you need to try",
@@ -135,11 +135,11 @@ export function FoodGallerySection({ language }: FoodGallerySectionProps) {
         </div>
       </AnimatedSection>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
         {foodItems.map((item, index) => (
           <AnimatedSection key={item.id} delay={index * 0.1}>
             <Card className="overflow-hidden group hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
                   src={item.image}
                   alt={getText(item.name, language)}
@@ -147,19 +147,19 @@ export function FoodGallerySection({ language }: FoodGallerySectionProps) {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <Badge 
-                  className={`absolute top-3 left-3 ${categoryColors[getText(item.category, language)] || "bg-secondary text-secondary-foreground"}`}
+                  className={`absolute top-2 left-2 sm:top-3 sm:left-3 text-xs sm:text-sm ${categoryColors[getText(item.category, language)] || "bg-secondary text-secondary-foreground"}`}
                 >
                   {getText(item.category, language)}
                 </Badge>
               </div>
-              <div className="p-4 flex flex-col flex-grow">
-                <h3 className="font-bold text-lg text-foreground mb-2">
+              <div className="p-3 sm:p-4 flex flex-col flex-grow">
+                <h3 className="font-bold text-base sm:text-lg text-foreground mb-1.5 sm:mb-2">
                   {getText(item.name, language)}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-3 flex-grow">
+                <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 flex-grow">
                   {getText(item.description, language)}
                 </p>
-                <div className="bg-primary/10 rounded-lg p-2 mt-auto">
+                <div className="bg-primary/10 rounded-lg p-2 sm:p-2.5 mt-auto">
                   <p className="text-xs font-medium text-primary">
                     💡 {getText(item.tip, language)}
                   </p>

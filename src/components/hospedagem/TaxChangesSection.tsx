@@ -122,44 +122,44 @@ export function TaxChangesSection() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid md:grid-cols-2 gap-8">
+                  <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
                     <div>
-                      <label className="text-base lg:text-lg font-medium mb-3 block">
+                      <label className="text-sm sm:text-base lg:text-lg font-medium mb-2 sm:mb-3 block">
                         {t("Preço base por noite (sem impostos)", "Base price per night (without taxes)", "Basisprijs per nacht (zonder belastingen)", language)}
                       </label>
-                      <div className="flex items-center gap-3">
-                        <span className="text-xl lg:text-2xl">€</span>
+                      <div className="flex items-center gap-2 sm:gap-3">
+                        <span className="text-lg sm:text-xl lg:text-2xl">€</span>
                         <input
                           type="number"
                           value={basePrice}
                           onChange={(e) => setBasePrice(Number(e.target.value) || 0)}
-                          className="w-36 px-4 py-3 text-lg border rounded-md bg-background"
+                          className="w-28 sm:w-36 px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-lg border rounded-md bg-background min-h-[48px]"
                           min="0"
                         />
                       </div>
                     </div>
-                    <div className="space-y-3">
-                      <div className="flex justify-between text-base lg:text-lg">
+                    <div className="space-y-2 sm:space-y-3">
+                      <div className="flex justify-between text-sm sm:text-base lg:text-lg">
                         <span>{t("Preço base", "Base price", "Basisprijs", language)}:</span>
                         <span>€{basePrice.toFixed(2)}</span>
                       </div>
-                      <div className="flex justify-between text-base lg:text-lg text-muted-foreground">
+                      <div className="flex justify-between text-sm sm:text-base lg:text-lg text-muted-foreground">
                         <span>+ VAT/BTW 21%:</span>
                         <span>€{vat21.toFixed(2)}</span>
                       </div>
-                      <div className="flex justify-between text-base lg:text-lg text-muted-foreground">
+                      <div className="flex justify-between text-sm sm:text-base lg:text-lg text-muted-foreground">
                         <span>+ {t("Imposto turístico", "Tourist tax", "Toeristenbelasting", language)} 12,5%:</span>
                         <span>€{touristTax.toFixed(2)}</span>
                       </div>
                       <motion.div 
-                        className="flex justify-between font-bold text-xl lg:text-2xl pt-3 border-t"
+                        className="flex justify-between font-bold text-lg sm:text-xl lg:text-2xl pt-2 sm:pt-3 border-t"
                         animate={{ scale: [1, 1.02, 1] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       >
                         <span>{t("TOTAL POR NOITE", "TOTAL PER NIGHT", "TOTAAL PER NACHT", language)}:</span>
                         <span className="text-amber-600 dark:text-amber-400">€{totalPrice.toFixed(2)}</span>
                       </motion.div>
-                      <p className="text-sm lg:text-base text-muted-foreground mt-3">
+                      <p className="text-xs sm:text-sm lg:text-base text-muted-foreground mt-2 sm:mt-3">
                         {t(
                           `Você paga ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% a mais do que o preço anunciado`,
                           `You pay ${((totalPrice / basePrice - 1) * 100).toFixed(0)}% more than the advertised price`,
