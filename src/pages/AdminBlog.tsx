@@ -16,11 +16,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Plus, Save, Eye, Trash2, LogOut, Image, FileText, 
   MessageSquare, Settings, Loader2, ArrowLeft, Edit,
-  Check, X, PenLine, Bold, Italic, List, Link2, ListOrdered, Quote
+  Check, X, PenLine
 } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { toast } from "sonner";
-import { BlogContent } from "@/components/blog/BlogContent";
+import { WysiwygEditor } from "@/components/blog/WysiwygEditor";
 
 interface Category {
   id: string;
@@ -469,26 +468,6 @@ const AdminBlog = () => {
     );
   }
 
-  // Insert markdown formatting at cursor position
-  const insertMarkdown = (prefix: string, suffix: string, placeholder: string) => {
-    const textarea = document.getElementById('content-editor') as HTMLTextAreaElement;
-    if (!textarea) return;
-    
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const text = postForm.content;
-    const selectedText = text.substring(start, end) || placeholder;
-    
-    const newText = text.substring(0, start) + prefix + selectedText + suffix + text.substring(end);
-    setPostForm(prev => ({ ...prev, content: newText }));
-    
-    // Set cursor position after insert
-    setTimeout(() => {
-      textarea.focus();
-      const newCursorPos = start + prefix.length + selectedText.length + suffix.length;
-      textarea.setSelectionRange(newCursorPos, newCursorPos);
-    }, 0);
-  };
 
   // Get preview content based on selected language
   const getPreviewContent = () => {
@@ -579,103 +558,12 @@ const AdminBlog = () => {
               {editorTab === "edit" ? (
                 <>
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <Label>{texts.content}</Label>
-                      {/* Markdown toolbar */}
-                      <TooltipProvider>
-                        <div className="flex items-center gap-1 bg-muted rounded-lg p-1">
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('**', '**', 'texto em negrito')}
-                              >
-                                <Bold className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Negrito **texto**</TooltipContent>
-                          </Tooltip>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('*', '*', 'texto em itálico')}
-                              >
-                                <Italic className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Itálico *texto*</TooltipContent>
-                          </Tooltip>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('[', '](url)', 'texto do link')}
-                              >
-                                <Link2 className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Link [texto](url)</TooltipContent>
-                          </Tooltip>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('- ', '', 'item da lista')}
-                              >
-                                <List className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Lista - item</TooltipContent>
-                          </Tooltip>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('1. ', '', 'item numerado')}
-                              >
-                                <ListOrdered className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Lista numerada 1. item</TooltipContent>
-                          </Tooltip>
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button 
-                                variant="ghost" 
-                                size="icon" 
-                                className="h-8 w-8"
-                                onClick={() => insertMarkdown('> ', '', 'citação')}
-                              >
-                                <Quote className="h-4 w-4" />
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>Citação &gt; texto</TooltipContent>
-                          </Tooltip>
-                        </div>
-                      </TooltipProvider>
-                    </div>
-                    <Textarea
-                      id="content-editor"
-                      value={postForm.content}
-                      onChange={(e) => setPostForm(prev => ({ ...prev, content: e.target.value }))}
-                      placeholder="Escreva seu conteúdo aqui...&#10;&#10;Use Markdown:&#10;**negrito** *itálico*&#10;[link](url)&#10;- lista&#10;> citação"
-                      rows={14}
-                      className="font-mono text-sm"
+                    <Label>{texts.content}</Label>
+                    <WysiwygEditor
+                      content={postForm.content}
+                      onChange={(html) => setPostForm(prev => ({ ...prev, content: html }))}
+                      placeholder={language === "pt" ? "Comece a escrever seu artigo..." : "Start writing your article..."}
                     />
-                    <p className="text-xs text-muted-foreground">
-                      💡 Suporte a Markdown: **negrito**, *itálico*, [link](url), - listas, &gt; citações, | tabelas |
-                    </p>
                   </div>
 
                   {/* Image */}
@@ -935,9 +823,9 @@ const AdminBlog = () => {
                     </h1>
 
                     {/* Content */}
-                    <div className="blog-content">
+                    <div className="blog-content prose prose-lg max-w-none">
                       {getPreviewContent() ? (
-                        <BlogContent content={getPreviewContent()} />
+                        <div dangerouslySetInnerHTML={{ __html: getPreviewContent() }} />
                       ) : (
                         <p className="text-muted-foreground italic">
                           {language === "pt" 
