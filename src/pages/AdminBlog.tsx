@@ -689,12 +689,10 @@ const AdminBlog = () => {
                       </div>
                       <div className="space-y-2">
                         <Label>{language === "pt" ? "Conteúdo (EN)" : "Content (EN)"}</Label>
-                        <Textarea
-                          value={postForm.content_en}
-                          onChange={(e) => setPostForm(prev => ({ ...prev, content_en: e.target.value }))}
+                        <WysiwygEditor
+                          content={postForm.content_en}
+                          onChange={(html) => setPostForm(prev => ({ ...prev, content_en: html }))}
                           placeholder="English content..."
-                          rows={8}
-                          className="font-mono text-sm"
                         />
                       </div>
                     </div>
@@ -723,12 +721,10 @@ const AdminBlog = () => {
                       </div>
                       <div className="space-y-2">
                         <Label>{language === "pt" ? "Conteúdo (NL)" : "Inhoud (NL)"}</Label>
-                        <Textarea
-                          value={postForm.content_nl}
-                          onChange={(e) => setPostForm(prev => ({ ...prev, content_nl: e.target.value }))}
+                        <WysiwygEditor
+                          content={postForm.content_nl}
+                          onChange={(html) => setPostForm(prev => ({ ...prev, content_nl: html }))}
                           placeholder="Dutch content..."
-                          rows={8}
-                          className="font-mono text-sm"
                         />
                       </div>
                     </div>
