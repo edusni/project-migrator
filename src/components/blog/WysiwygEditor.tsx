@@ -4,11 +4,15 @@ import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
+import { Table } from '@tiptap/extension-table';
+import { TableRow } from '@tiptap/extension-table-row';
+import { TableCell } from '@tiptap/extension-table-cell';
+import { TableHeader } from '@tiptap/extension-table-header';
 import { 
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
   List, ListOrdered, Quote, Link2, Image as ImageIcon,
   AlignLeft, AlignCenter, AlignRight, Heading1, Heading2, Heading3,
-  Undo, Redo, Code, Table
+  Undo, Redo, Code, Table as TableIcon
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toggle } from '@/components/ui/toggle';
@@ -44,6 +48,15 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
         types: ['heading', 'paragraph'],
       }),
       Underline,
+      Table.configure({
+        resizable: true,
+        HTMLAttributes: {
+          class: 'border-collapse w-full',
+        },
+      }),
+      TableRow,
+      TableCell,
+      TableHeader,
     ],
     content: content,
     editorProps: {
@@ -85,25 +98,7 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
   }, [editor]);
 
   const insertTable = useCallback(() => {
-    const tableHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>Coluna 1</th>
-            <th>Coluna 2</th>
-            <th>Coluna 3</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Valor 1</td>
-            <td>Valor 2</td>
-            <td>Valor 3</td>
-          </tr>
-        </tbody>
-      </table>
-    `;
-    editor?.chain().focus().insertContent(tableHTML).run();
+    editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
   }, [editor]);
 
   if (!editor) {
@@ -271,8 +266,9 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           size="icon"
           className="h-8 w-8"
           onClick={insertTable}
+          title="Inserir tabela (também aceita colar de Excel/Sheets)"
         >
-          <Table className="h-4 w-4" />
+          <TableIcon className="h-4 w-4" />
         </Button>
       </div>
 
