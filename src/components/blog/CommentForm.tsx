@@ -85,39 +85,41 @@ export const CommentForm = ({ postId, onCommentAdded }: CommentFormProps) => {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle className="flex items-center gap-2 text-lg font-heading">
-          <MessageCircle className="w-5 h-5 text-primary" />
+      <CardHeader className="pb-4 sm:pb-6">
+        <CardTitle className="flex items-center gap-2 text-base sm:text-lg font-heading">
+          <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
           {texts.title}
         </CardTitle>
       </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="grid sm:grid-cols-2 gap-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">{texts.name}</Label>
+      <CardContent className="pt-0">
+        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
+          <div className="grid sm:grid-cols-2 gap-3 sm:gap-4">
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="name" className="text-sm">{texts.name}</Label>
               <Input
                 id="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder={texts.namePlaceholder}
                 required
+                className="min-h-[44px] text-base"
               />
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="email">{texts.email}</Label>
+            <div className="space-y-1.5 sm:space-y-2">
+              <Label htmlFor="email" className="text-sm">{texts.email}</Label>
               <Input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={texts.emailPlaceholder}
+                className="min-h-[44px] text-base"
               />
             </div>
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="content">{texts.comment}</Label>
+          <div className="space-y-1.5 sm:space-y-2">
+            <Label htmlFor="content" className="text-sm">{texts.comment}</Label>
             <Textarea
               id="content"
               value={content}
@@ -125,10 +127,11 @@ export const CommentForm = ({ postId, onCommentAdded }: CommentFormProps) => {
               placeholder={texts.commentPlaceholder}
               rows={4}
               required
+              className="text-base min-h-[120px]"
             />
           </div>
 
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" disabled={isSubmitting} className="min-h-[44px] w-full sm:w-auto">
             {isSubmitting ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />

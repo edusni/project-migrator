@@ -82,32 +82,32 @@ export const CommentsList = ({ postId, refreshKey }: CommentsListProps) => {
   }
 
   return (
-    <div className="space-y-4">
-      <h3 className="font-heading font-bold text-lg">
+    <div className="space-y-3 sm:space-y-4">
+      <h3 className="font-heading font-bold text-base sm:text-lg">
         {texts.title} ({comments.length})
       </h3>
       
       {comments.length === 0 ? (
         <p className="text-muted-foreground text-sm">{texts.noComments}</p>
       ) : (
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {comments.map((comment) => (
             <Card key={comment.id}>
-              <CardContent className="p-4">
-                <div className="flex gap-3">
-                  <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-primary/10 text-primary">
+              <CardContent className="p-3 sm:p-4">
+                <div className="flex gap-2.5 sm:gap-3">
+                  <Avatar className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0">
+                    <AvatarFallback className="bg-primary/10 text-primary text-sm sm:text-base">
                       {comment.author_name.charAt(0).toUpperCase()}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-1">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
                       <span className="font-medium text-sm">{comment.author_name}</span>
                       <span className="text-xs text-muted-foreground">
                         {format(new Date(comment.created_at), "d MMM yyyy, HH:mm", { locale: dateLocale })}
                       </span>
                     </div>
-                    <p className="text-sm text-foreground/90">{comment.content}</p>
+                    <p className="text-sm text-foreground/90 break-words">{comment.content}</p>
                   </div>
                 </div>
               </CardContent>
