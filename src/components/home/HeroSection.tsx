@@ -5,10 +5,15 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import amsterdamHero from "@/assets/amsterdam-hero-new.webp";
+import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
 
 export function HeroSection() {
   const { language } = useLanguage();
   const ref = useRef<HTMLElement>(null);
+  const { getPrefetchProps } = usePrefetch();
+  
+  // Prefetch critical routes on idle
+  usePrefetchCriticalRoutes();
   
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -131,7 +136,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <Link to="/planejamento" className="inline-block">
+          <Link to="/planejamento" className="inline-block" {...getPrefetchProps("planejamento")}>
             <motion.div
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
