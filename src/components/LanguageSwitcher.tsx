@@ -29,14 +29,14 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-0.5 bg-muted rounded-full p-1">
+    <div className="flex items-center gap-0.5 bg-muted rounded-full p-0.5 sm:p-1">
       {languages.map((lang) => (
         <Link
           key={lang.code}
           to={getLocalizedPath(lang.code)}
           onClick={() => handleClick(lang.code)}
           hrefLang={lang.hrefLang}
-          className={`rounded-full px-2.5 py-1 h-auto text-xs font-medium transition-all duration-200 inline-flex items-center justify-center ${
+          className={`rounded-full px-2 sm:px-2.5 py-1.5 sm:py-1 min-h-[36px] sm:min-h-[32px] min-w-[36px] sm:min-w-[32px] text-xs font-medium transition-all duration-200 inline-flex items-center justify-center ${
             language === lang.code 
               ? "bg-secondary text-secondary-foreground hover:bg-secondary/90" 
               : "text-muted-foreground hover:text-foreground hover:bg-muted"
