@@ -59,17 +59,18 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
           title_nl,
           excerpt_en,
           excerpt_nl,
-          blog_categories (
+          blog_categories!inner (
             name,
             emoji,
-            color
+            color,
+            slug
           )
         `)
         .eq("status", "published")
         .order("published_at", { ascending: false });
 
       if (categoryFilter) {
-        query = query.eq("category_id", categoryFilter);
+        query = query.eq("blog_categories.slug", categoryFilter);
       }
 
       if (limit) {
