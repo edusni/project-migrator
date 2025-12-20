@@ -175,14 +175,14 @@ export function GuideSectionsGrid() {
   ];
 
   return (
-    <section className="py-14 lg:py-20 bg-muted/30">
+    <section className="py-10 sm:py-14 lg:py-20 bg-muted/30">
       <div className="container">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
-            <h2 className="text-3xl lg:text-5xl font-heading font-bold text-center mb-4">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-heading font-bold text-center mb-3 sm:mb-4">
               {language === "nl" ? "De 9 gidssecties" : language === "pt" ? "As 9 seções do guia" : "The 9 guide sections"}
             </h2>
-            <p className="text-muted-foreground text-center text-lg mb-10 max-w-2xl mx-auto">
+            <p className="text-muted-foreground text-center text-base sm:text-lg mb-8 sm:mb-10 max-w-2xl mx-auto">
               {language === "nl" 
                 ? "Alles wat je moet weten, georganiseerd per onderwerp" 
                 : language === "pt" 
@@ -191,10 +191,10 @@ export function GuideSectionsGrid() {
             </p>
           </AnimatedSection>
 
-          <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {sections.map((section) => (
               <StaggerItem key={section.link}>
-                <Link to={section.link}>
+                <Link to={section.link} className="block">
                   <motion.div
                     whileHover={{ 
                       scale: 1.02, 
@@ -203,19 +203,19 @@ export function GuideSectionsGrid() {
                     }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30">
-                      <CardContent className="p-6">
+                    <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30 active:bg-muted/50">
+                      <CardContent className="p-5 sm:p-6">
                         <motion.span 
-                          className="text-4xl mb-4 block"
+                          className="text-3xl sm:text-4xl mb-3 sm:mb-4 block"
                           whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
                           transition={{ duration: 0.4 }}
                         >
                           {section.emoji}
                         </motion.span>
-                        <h3 className="font-heading font-bold text-xl mb-2 group-hover:text-primary transition-colors">
+                        <h3 className="font-heading font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
                           {section.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm lg:text-base">
+                        <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                           {section.desc}
                         </p>
                       </CardContent>

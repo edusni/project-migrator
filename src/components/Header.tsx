@@ -93,11 +93,11 @@ export function Header() {
           : "bg-background/80 backdrop-blur-md border-b border-transparent"
       }`}
     >
-      <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
+      <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
+        {/* Logo - touch-friendly */}
+        <Link to="/" className="flex items-center gap-2 group min-h-[44px] min-w-[44px]">
           <div className="relative">
-            <span className="text-xl sm:text-2xl font-heading font-bold text-foreground tracking-tight">
+            <span className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-foreground tracking-tight">
               Amster<span className="text-primary">du</span>
             </span>
             <span className="absolute -bottom-0.5 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/50 group-hover:w-full transition-all duration-500 ease-out-expo"></span>
@@ -233,13 +233,13 @@ export function Header() {
         </nav>
 
         {/* Language Switcher + Mobile Menu */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <LanguageSwitcher />
           
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - touch-friendly button */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="lg:hidden">
-              <Button variant="ghost" size="icon" className="h-10 w-10 rounded-lg">
+              <Button variant="ghost" size="icon" className="h-11 w-11 sm:h-10 sm:w-10 rounded-lg min-h-[44px] min-w-[44px]">
                 <Menu className="h-5 w-5" />
                 <span className="sr-only">Open menu</span>
               </Button>
