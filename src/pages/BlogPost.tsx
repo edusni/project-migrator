@@ -9,7 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
 
-import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, ChevronLeft, ChevronRight } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR, enUS, nl } from "date-fns/locale";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -44,6 +44,14 @@ interface Post {
   } | null;
 }
 
+interface AdjacentPost {
+  slug: string;
+  title: string;
+  title_en: string | null;
+  title_nl: string | null;
+  featured_image: string | null;
+}
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
@@ -61,6 +69,8 @@ const BlogPost = () => {
   const [isTranslating, setIsTranslating] = useState(false);
   const [translationCached, setTranslationCached] = useState(false);
   const [commentRefresh, setCommentRefresh] = useState(0);
+  const [prevPost, setPrevPost] = useState<AdjacentPost | null>(null);
+  const [nextPost, setNextPost] = useState<AdjacentPost | null>(null);
 
   const dateLocale = language === "pt" ? ptBR : language === "nl" ? nl : enUS;
 
@@ -71,6 +81,8 @@ const BlogPost = () => {
     notFound: "Bericht niet gevonden",
     minRead: "min lezen",
     translating: "Vertalen...",
+    prevPost: "Vorige post",
+    nextPost: "Volgende post",
   } : language === "pt" ? {
     back: "Voltar ao blog",
     share: "Compartilhar",
@@ -78,6 +90,8 @@ const BlogPost = () => {
     notFound: "Post não encontrado",
     minRead: "min de leitura",
     translating: "Traduzindo...",
+    prevPost: "Post anterior",
+    nextPost: "Próximo post",
   } : {
     back: "Back to blog",
     share: "Share",
@@ -85,6 +99,8 @@ const BlogPost = () => {
     notFound: "Post not found",
     minRead: "min read",
     translating: "Translating...",
+    prevPost: "Previous post",
+    nextPost: "Next post",
   };
 
   useEffect(() => {
@@ -131,6 +147,31 @@ const BlogPost = () => {
 
       setPost(data as Post | null);
       setIsLoading(false);
+
+      // Fetch adjacent posts for navigation
+      if (data?.published_at) {
+        const [prevResult, nextResult] = await Promise.all([
+          supabase
+            .from("blog_posts")
+            .select("slug, title, title_en, title_nl, featured_image")
+            .eq("status", "published")
+            .lt("published_at", data.published_at)
+            .order("published_at", { ascending: false })
+            .limit(1)
+            .maybeSingle(),
+          supabase
+            .from("blog_posts")
+            .select("slug, title, title_en, title_nl, featured_image")
+            .eq("status", "published")
+            .gt("published_at", data.published_at)
+            .order("published_at", { ascending: true })
+            .limit(1)
+            .maybeSingle()
+        ]);
+
+        setPrevPost(prevResult.data as AdjacentPost | null);
+        setNextPost(nextResult.data as AdjacentPost | null);
+      }
     };
 
     fetchPost();
@@ -373,6 +414,58 @@ const BlogPost = () => {
                 />
               )}
             </motion.div>
+
+            {/* Post Navigation */}
+            {(prevPost || nextPost) && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.25 }}
+                className="mb-12"
+              >
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Previous Post */}
+                  {prevPost ? (
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
+                      onClick={() => navigate(getLocalizedPath(locale, `/blog/${prevPost.slug}`))}
+                    >
+                      <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                        <ChevronLeft className="w-3 h-3" />
+                        {texts.prevPost}
+                      </span>
+                      <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                        {locale === "en" && prevPost.title_en ? prevPost.title_en : 
+                         locale === "nl" && prevPost.title_nl ? prevPost.title_nl : 
+                         prevPost.title}
+                      </span>
+                    </Button>
+                  ) : (
+                    <div className="hidden sm:block" />
+                  )}
+                  
+                  {/* Next Post */}
+                  {nextPost && (
+                    <Button
+                      variant="outline"
+                      className="h-auto p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all sm:col-start-2"
+                      onClick={() => navigate(getLocalizedPath(locale, `/blog/${nextPost.slug}`))}
+                    >
+                      <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                        {texts.nextPost}
+                        <ChevronRight className="w-3 h-3" />
+                      </span>
+                      <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                        {locale === "en" && nextPost.title_en ? nextPost.title_en : 
+                         locale === "nl" && nextPost.title_nl ? nextPost.title_nl : 
+                         nextPost.title}
+                      </span>
+                    </Button>
+                  )}
+                </div>
+              </motion.div>
+            )}
 
             {/* Comments Section */}
             <motion.div
