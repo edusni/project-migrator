@@ -162,13 +162,13 @@ const t = (pt: string, en: string, nl: string, language: Language) => {
 
 export function DestinationsGallerySection({ language }: DestinationsGallerySectionProps) {
   return (
-    <section className="py-12 md:py-16">
+    <section className="py-8 sm:py-12 md:py-16">
       <AnimatedSection>
-        <div className="text-center mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-3">
+        <div className="text-center mb-6 sm:mb-8 lg:mb-10">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2 sm:mb-3">
             {t("🗺️ Destinos em Destaque", "🗺️ Featured Destinations", "🗺️ Uitgelichte Bestemmingen", language)}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground max-w-2xl mx-auto px-4">
             {t(
               "Os melhores bate-voltas a partir de Amsterdam",
               "The best day trips from Amsterdam",
@@ -179,11 +179,11 @@ export function DestinationsGallerySection({ language }: DestinationsGallerySect
         </div>
       </AnimatedSection>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
         {destinations.map((dest, index) => (
           <AnimatedSection key={dest.id} delay={index * 0.08}>
             <Card className="overflow-hidden group hover:shadow-xl transition-all duration-300 h-full flex flex-col">
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-40 sm:h-44 lg:h-48 overflow-hidden">
                 <img
                   src={dest.image}
                   alt={getText(dest.name, language)}
@@ -191,25 +191,25 @@ export function DestinationsGallerySection({ language }: DestinationsGallerySect
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                 <Badge 
-                  className={`absolute top-3 left-3 ${categoryColors[getText(dest.category, language)] || "bg-secondary text-secondary-foreground"}`}
+                  className={`absolute top-2 sm:top-3 left-2 sm:left-3 text-[10px] sm:text-xs ${categoryColors[getText(dest.category, language)] || "bg-secondary text-secondary-foreground"}`}
                 >
                   {getText(dest.category, language)}
                 </Badge>
                 {dest.mustSee && (
-                  <Badge className="absolute top-3 right-3 bg-primary text-primary-foreground">
+                  <Badge className="absolute top-2 sm:top-3 right-2 sm:right-3 bg-primary text-primary-foreground text-[10px] sm:text-xs">
                     ⭐ {t("Imperdível", "Must See", "Niet missen", language)}
                   </Badge>
                 )}
               </div>
-              <div className="p-4 flex flex-col flex-grow">
-                <h3 className="font-bold text-lg text-foreground mb-2">
+              <div className="p-3 sm:p-4 flex flex-col flex-grow">
+                <h3 className="font-bold text-base sm:text-lg text-foreground mb-1.5 sm:mb-2">
                   {getText(dest.name, language)}
                 </h3>
-                <p className="text-muted-foreground text-sm mb-3 flex-grow">
+                <p className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 flex-grow">
                   {getText(dest.highlight, language)}
                 </p>
-                <div className="flex items-center gap-2 text-xs text-muted-foreground bg-muted/50 rounded-lg px-3 py-2">
-                  <Train className="w-3.5 h-3.5" />
+                <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-muted-foreground bg-muted/50 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2">
+                  <Train className="w-3 h-3 sm:w-3.5 sm:h-3.5 flex-shrink-0" />
                   <span>{getText(dest.time, language)}</span>
                 </div>
               </div>
