@@ -98,26 +98,26 @@ const Sobre = () => {
         backgroundImage={sobreHeroImg}
       />
 
-      <section className="py-14 lg:py-20">
-        <div className="container">
-          <div className="max-w-4xl mx-auto px-4 lg:px-8">
+      <section className="py-8 sm:py-12 lg:py-20">
+        <div className="container px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
             {/* Intro with Photo */}
             <AnimatedSection>
-              <Card className="mb-12 overflow-hidden">
-                <CardContent className="p-6 lg:p-10">
-                  <div className="flex flex-col lg:flex-row gap-8 items-center">
-                    <div className="rounded-2xl overflow-hidden flex-shrink-0 shadow-xl">
+              <Card className="mb-8 sm:mb-10 lg:mb-12 overflow-hidden">
+                <CardContent className="p-4 sm:p-6 lg:p-10">
+                  <div className="flex flex-col lg:flex-row gap-5 sm:gap-6 lg:gap-8 items-center">
+                    <div className="rounded-xl sm:rounded-2xl overflow-hidden flex-shrink-0 shadow-lg sm:shadow-xl">
                       <img 
                         src={duPhoto} 
                         alt="Du - criador do AmsterDu" 
-                        className="w-auto h-auto max-w-xs lg:max-w-sm"
+                        className="w-full max-w-[200px] sm:max-w-xs lg:max-w-sm h-auto"
                       />
                     </div>
                     <div className="flex-1 text-center lg:text-left">
-                      <h2 className="text-2xl lg:text-3xl font-heading font-bold mb-4">
+                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold mb-3 sm:mb-4">
                         {content.greeting}
                       </h2>
-                      <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+                      <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                         {content.intro}
                       </p>
                     </div>
@@ -128,9 +128,9 @@ const Sobre = () => {
 
             {/* Important Point */}
             <AnimatedSection delay={0.1}>
-              <Card className="mb-8 border-primary/20 bg-primary/5">
-                <CardContent className="p-6 lg:p-8">
-                  <p className="text-base lg:text-lg leading-relaxed">
+              <Card className="mb-6 sm:mb-8 border-primary/20 bg-primary/5">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <p className="text-sm sm:text-base lg:text-lg leading-relaxed">
                     {content.important}
                   </p>
                 </CardContent>
@@ -139,8 +139,8 @@ const Sobre = () => {
 
             {/* Mission */}
             <AnimatedSection delay={0.15}>
-              <div className="text-center mb-10">
-                <p className="text-xl lg:text-2xl font-heading font-bold text-primary">
+              <div className="text-center mb-6 sm:mb-8 lg:mb-10">
+                <p className="text-lg sm:text-xl lg:text-2xl font-heading font-bold text-primary">
                   {content.mission}
                 </p>
               </div>
@@ -148,19 +148,19 @@ const Sobre = () => {
 
             {/* Three Pillars */}
             <AnimatedSection delay={0.2}>
-              <p className="text-center text-lg text-muted-foreground mb-6">
+              <p className="text-center text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
                 {content.threeThings}
               </p>
             </AnimatedSection>
 
-            <StaggerContainer className="grid md:grid-cols-3 gap-6 mb-12">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 lg:gap-6 mb-8 sm:mb-10 lg:mb-12">
               {content.pillars.map((pillar, i) => (
                 <StaggerItem key={i}>
                   <Card className="h-full text-center">
-                    <CardContent className="p-6">
-                      <span className="text-4xl mb-4 block">{pillar.icon}</span>
-                      <h3 className="font-heading font-bold text-lg mb-2">{pillar.title}</h3>
-                      <p className="text-muted-foreground text-sm lg:text-base">{pillar.desc}</p>
+                    <CardContent className="p-4 sm:p-5 lg:p-6">
+                      <span className="text-3xl sm:text-4xl mb-3 sm:mb-4 block">{pillar.icon}</span>
+                      <h3 className="font-heading font-bold text-base sm:text-lg mb-1.5 sm:mb-2">{pillar.title}</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm lg:text-base">{pillar.desc}</p>
                     </CardContent>
                   </Card>
                 </StaggerItem>
@@ -169,9 +169,9 @@ const Sobre = () => {
 
             {/* Purpose */}
             <AnimatedSection delay={0.25}>
-              <Card className="mb-8">
-                <CardContent className="p-6 lg:p-8">
-                  <p className="text-base lg:text-lg text-muted-foreground leading-relaxed">
+              <Card className="mb-6 sm:mb-8">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <p className="text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed">
                     {content.purpose}
                   </p>
                 </CardContent>
@@ -180,39 +180,39 @@ const Sobre = () => {
 
             {/* Closing */}
             <AnimatedSection delay={0.3}>
-              <div className="text-center mb-12">
-                <p className="text-lg text-muted-foreground mb-6">
+              <div className="text-center mb-8 sm:mb-10 lg:mb-12">
+                <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6">
                   {content.closing}
                 </p>
-                <p className="text-2xl lg:text-3xl font-heading font-bold text-primary mb-4">
+                <p className="text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-primary mb-3 sm:mb-4">
                   {content.welcome}
                 </p>
-                <p className="text-muted-foreground">— Du</p>
+                <p className="text-sm sm:text-base text-muted-foreground">— Du</p>
               </div>
             </AnimatedSection>
 
             {/* CTA */}
             <AnimatedSection delay={0.35}>
               <Card className="text-center">
-                <CardContent className="p-6 lg:p-8">
-                  <h3 className="font-heading font-bold text-xl lg:text-2xl mb-6">{content.readyToStart}</h3>
-                  <div className="grid sm:grid-cols-3 gap-4">
+                <CardContent className="p-4 sm:p-6 lg:p-8">
+                  <h3 className="font-heading font-bold text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6">{content.readyToStart}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                     <Link to={getLocalizedPath(locale, "/planejamento")}>
-                      <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
-                        <span className="font-bold">📅 {content.planning}</span>
-                        <span className="text-xs text-muted-foreground">{content.planningDesc}</span>
+                      <Button variant="outline" className="w-full h-auto min-h-[60px] py-3 sm:py-4 flex flex-col hover:border-primary hover:bg-primary/5">
+                        <span className="font-bold text-sm sm:text-base">📅 {content.planning}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{content.planningDesc}</span>
                       </Button>
                     </Link>
                     <Link to={getLocalizedPath(locale, "/hospedagem")}>
-                      <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
-                        <span className="font-bold">🏨 {content.accommodation}</span>
-                        <span className="text-xs text-muted-foreground">{content.accommodationDesc}</span>
+                      <Button variant="outline" className="w-full h-auto min-h-[60px] py-3 sm:py-4 flex flex-col hover:border-primary hover:bg-primary/5">
+                        <span className="font-bold text-sm sm:text-base">🏨 {content.accommodation}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{content.accommodationDesc}</span>
                       </Button>
                     </Link>
                     <Link to={getLocalizedPath(locale, "/atracoes")}>
-                      <Button variant="outline" className="w-full h-auto py-4 flex flex-col hover:border-primary hover:bg-primary/5">
-                        <span className="font-bold">🎨 {content.attractions}</span>
-                        <span className="text-xs text-muted-foreground">{content.attractionsDesc}</span>
+                      <Button variant="outline" className="w-full h-auto min-h-[60px] py-3 sm:py-4 flex flex-col hover:border-primary hover:bg-primary/5">
+                        <span className="font-bold text-sm sm:text-base">🎨 {content.attractions}</span>
+                        <span className="text-[10px] sm:text-xs text-muted-foreground">{content.attractionsDesc}</span>
                       </Button>
                     </Link>
                   </div>
