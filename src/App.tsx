@@ -8,43 +8,58 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { LocaleRouter } from "@/components/LocaleRouter";
 import { RedirectHandler } from "@/components/RedirectHandler";
 import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
-import Index from "./pages/Index";
-import Sobre from "./pages/Sobre";
-import Planejamento from "./pages/Planejamento";
-import Hospedagem from "./pages/Hospedagem";
-import Atracoes from "./pages/Atracoes";
-import Transporte from "./pages/Transporte";
-import Gastronomia from "./pages/Gastronomia";
-import Coffeeshops from "./pages/Coffeeshops";
-import Arredores from "./pages/Arredores";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import AdminLogin from "./pages/AdminLogin";
-import AdminBlog from "./pages/AdminBlog";
-import CustoDeVida from "./pages/CustoDeVida";
-import NotFound from "./pages/NotFound";
+import { lazy, Suspense } from "react";
+
+// Lazy load all pages for code splitting
+const Index = lazy(() => import("./pages/Index"));
+const Sobre = lazy(() => import("./pages/Sobre"));
+const Planejamento = lazy(() => import("./pages/Planejamento"));
+const Hospedagem = lazy(() => import("./pages/Hospedagem"));
+const Atracoes = lazy(() => import("./pages/Atracoes"));
+const Transporte = lazy(() => import("./pages/Transporte"));
+const Gastronomia = lazy(() => import("./pages/Gastronomia"));
+const Coffeeshops = lazy(() => import("./pages/Coffeeshops"));
+const Arredores = lazy(() => import("./pages/Arredores"));
+const Blog = lazy(() => import("./pages/Blog"));
+const BlogPost = lazy(() => import("./pages/BlogPost"));
+const AdminLogin = lazy(() => import("./pages/AdminLogin"));
+const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const CustoDeVida = lazy(() => import("./pages/CustoDeVida"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
 
-// Locale-aware page wrapper component
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="animate-pulse flex flex-col items-center gap-4">
+      <div className="w-12 h-12 rounded-full bg-primary/20" />
+      <div className="h-4 w-32 bg-muted rounded" />
+    </div>
+  </div>
+);
+
+// Locale-aware page wrapper component with Suspense
 const LocalePageRoutes = () => (
-  <Routes>
-    <Route index element={<Index />} />
-    <Route path="sobre" element={<Sobre />} />
-    <Route path="planejamento" element={<Planejamento />} />
-    <Route path="hospedagem" element={<Hospedagem />} />
-    <Route path="atracoes" element={<Atracoes />} />
-    <Route path="transporte" element={<Transporte />} />
-    <Route path="gastronomia" element={<Gastronomia />} />
-    <Route path="coffeeshops" element={<Coffeeshops />} />
-    <Route path="arredores" element={<Arredores />} />
-    <Route path="blog" element={<Blog />} />
-    <Route path="blog/:slug" element={<BlogPost />} />
-    <Route path="admin/login" element={<AdminLogin />} />
-    <Route path="admin/blog" element={<AdminBlog />} />
-    <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
-    <Route path="*" element={<NotFound />} />
-  </Routes>
+  <Suspense fallback={<PageLoader />}>
+    <Routes>
+      <Route index element={<Index />} />
+      <Route path="sobre" element={<Sobre />} />
+      <Route path="planejamento" element={<Planejamento />} />
+      <Route path="hospedagem" element={<Hospedagem />} />
+      <Route path="atracoes" element={<Atracoes />} />
+      <Route path="transporte" element={<Transporte />} />
+      <Route path="gastronomia" element={<Gastronomia />} />
+      <Route path="coffeeshops" element={<Coffeeshops />} />
+      <Route path="arredores" element={<Arredores />} />
+      <Route path="blog" element={<Blog />} />
+      <Route path="blog/:slug" element={<BlogPost />} />
+      <Route path="admin/login" element={<AdminLogin />} />
+      <Route path="admin/blog" element={<AdminBlog />} />
+      <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </Suspense>
 );
 
 const App = () => (

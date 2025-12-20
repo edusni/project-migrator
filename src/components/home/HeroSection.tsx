@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import amsterdamHero from "@/assets/amsterdam-hero-new.webp";
 
 export function HeroSection() {
   const { language } = useLanguage();
@@ -31,14 +32,14 @@ export function HeroSection() {
         className="absolute inset-0"
       >
         <img
-          src="/amsterdam-hero.webp"
-          alt="Amsterdam cityscape"
+          src={amsterdamHero}
+          alt="Amsterdam canal with traditional Dutch houses, bicycles and tulips"
           width={1920}
           height={1080}
           loading="eager"
           decoding="sync"
           fetchPriority="high"
-          className="w-full h-full object-cover opacity-[0.12]"
+          className="w-full h-full object-cover opacity-20"
         />
       </motion.div>
       
