@@ -7,3 +7,4 @@ export { MainTabsSection } from "./MainTabsSection";
 export { GlossarySection } from "./GlossarySection";
 export { FAQSection } from "./FAQSection";
 export { FamousGallerySection } from "./FamousGallerySection";
+export { BlogPostsSection } from "./BlogPostsSection";

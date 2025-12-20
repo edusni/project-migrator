@@ -14,7 +14,8 @@ import {
   MainTabsSection,
   GlossarySection,
   FAQSection,
-  FamousGallerySection
+  FamousGallerySection,
+  BlogPostsSection
 } from "@/components/coffeeshops";
 
 // Helper function for trilingual content
@@ -726,6 +727,8 @@ const Coffeeshops = () => {
       />
 
       <FamousGallerySection />
+
+      <BlogPostsSection language={language} />
       
       <FAQSection 
         title={content.faq.title}
