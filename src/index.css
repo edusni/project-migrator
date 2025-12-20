@@ -305,16 +305,15 @@
   }
   
   .prose ul {
-    @apply mb-6 space-y-3 pl-0;
+    @apply mb-6 space-y-3 pl-6 list-disc;
+  }
+  
+  .prose ol {
+    @apply mb-6 space-y-3 pl-6 list-decimal;
   }
   
   .prose li {
-    @apply text-base lg:text-lg leading-relaxed text-muted-foreground pl-6 relative;
-  }
-  
-  .prose li::before {
-    content: '';
-    @apply absolute left-0 top-3 w-2 h-2 bg-primary rounded-full;
+    @apply text-base lg:text-lg leading-relaxed text-muted-foreground;
   }
   
   .prose blockquote {
@@ -393,15 +392,20 @@
   }
   
   .blog-content ul {
-    @apply list-disc list-inside space-y-2 my-4 ml-4 text-muted-foreground;
+    @apply list-disc pl-6 space-y-2 my-4 text-muted-foreground;
   }
   
   .blog-content ol {
-    @apply list-decimal list-inside space-y-2 my-4 ml-4 text-muted-foreground;
+    @apply list-decimal pl-6 space-y-2 my-4 text-muted-foreground;
   }
   
   .blog-content li {
     @apply text-muted-foreground;
+  }
+  
+  /* Remove bullets from non-list elements */
+  .blog-content li::before {
+    display: none;
   }
   
   .blog-content blockquote {
