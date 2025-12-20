@@ -341,4 +341,100 @@
     <priority>0.5</priority>
   </url>
 
+  <!-- Blog Posts - Portuguese -->
+  <url>
+    <loc>https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Posts - English -->
+  <url>
+    <loc>https://amsterdu.com/en/blog/onde-ficar-amsterdam-guia-bairros-honesto</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/blog/custo-vida-amsterdam-2026</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Blog Posts - Dutch -->
+  <url>
+    <loc>https://amsterdu.com/nl/blog/onde-ficar-amsterdam-guia-bairros-honesto</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/onde-ficar-amsterdam-guia-bairros-honesto"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/blog/custo-vida-amsterdam-2026</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/custo-vida-amsterdam-2026"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/custo-vida-amsterdam-2026"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/blog/cursos-de-holandes-em-amsterdam-em-2026-como-escolher-sem-perder-tempo-nem-dinheiro"/>
+    <lastmod>2025-12-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

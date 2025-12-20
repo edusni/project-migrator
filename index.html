@@ -4,20 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
+    <!-- DNS Prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//lguwbgthckwsixmuvurx.supabase.co" />
+    
     <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://lguwbgthckwsixmuvurx.supabase.co" crossorigin />
     
     <!-- Preload critical assets for LCP -->
     <link rel="preload" href="/amsterdam-hero.webp" as="image" type="image/webp" fetchpriority="high" />
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqU.woff2" as="font" type="font/woff2" crossorigin />
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
     <!-- Primary Meta Tags - Dynamic values injected by SEOHead component -->
     <title>Amsterdu - Guia de Amsterdam 2026</title>
     <meta name="author" content="Amsterdu" />
-    <meta name="googlebot" content="index, follow" />
+    <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="revisit-after" content="7 days" />
     <meta name="rating" content="general" />
+    
+    <!-- Mobile-specific meta tags -->
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon.png" />

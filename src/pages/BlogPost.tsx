@@ -310,14 +310,26 @@ const BlogPost = () => {
     ? format(new Date(post.published_at), "d MMMM yyyy", { locale: dateLocale })
     : null;
 
+  // Generate breadcrumbs for SEO
+  const breadcrumbs = [
+    { name: language === "nl" ? "Home" : language === "en" ? "Home" : "Início", url: `https://amsterdu.com/${locale}` },
+    { name: "Blog", url: `https://amsterdu.com/${locale}/blog` },
+    { name: translatedContent?.title || post.title, url: `https://amsterdu.com/${locale}/blog/${post.slug}` },
+  ];
+
   return (
     <PageLayout>
       <SEOHead
-        title={post.meta_title || post.title}
-        description={post.meta_description || post.excerpt || ""}
-        keywords={post.meta_keywords || ""}
-        image={post.featured_image || undefined}
+        title={translatedContent?.title || post.meta_title || post.title}
+        description={translatedContent?.excerpt || post.meta_description || post.excerpt || ""}
+        keywords={post.meta_keywords || "amsterdam, blog, travel, viagem"}
+        image={post.featured_image || "https://amsterdu.com/og-image.jpg"}
         type="article"
+        publishedTime={post.published_at || undefined}
+        modifiedTime={post.published_at || undefined}
+        author="Du"
+        section={post.blog_categories?.name}
+        breadcrumbs={breadcrumbs}
       />
 
       <article className="py-6 lg:py-12">
@@ -349,7 +361,12 @@ const BlogPost = () => {
               >
                 <img
                   src={post.featured_image}
-                  alt={post.title}
+                  alt={translatedContent?.title || post.title}
+                  width={1200}
+                  height={675}
+                  loading="eager"
+                  // @ts-ignore - fetchpriority is valid HTML attribute
+                  fetchpriority="high"
                   className="w-full aspect-video object-cover sm:rounded-xl shadow-lg"
                 />
               </motion.div>

@@ -11,6 +11,12 @@ interface OptimizedImageProps {
   rounded?: "none" | "sm" | "md" | "lg" | "xl" | "full";
   objectFit?: "cover" | "contain" | "fill";
   onClick?: () => void;
+  /** Explicit width for CLS prevention */
+  width?: number;
+  /** Explicit height for CLS prevention */
+  height?: number;
+  /** fetchpriority for LCP optimization */
+  fetchPriority?: "high" | "low" | "auto";
 }
 
 export function OptimizedImage({
@@ -23,6 +29,9 @@ export function OptimizedImage({
   rounded = "lg",
   objectFit = "cover",
   onClick,
+  width,
+  height,
+  fetchPriority = "auto",
 }: OptimizedImageProps) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(priority);
@@ -101,8 +110,12 @@ export function OptimizedImage({
         <img
           src={src}
           alt={alt}
+          width={width}
+          height={height}
           loading={priority ? "eager" : "lazy"}
           decoding={priority ? "sync" : "async"}
+          // @ts-ignore - fetchpriority is valid HTML attribute
+          fetchpriority={priority ? "high" : fetchPriority}
           onLoad={() => setIsLoaded(true)}
           className={cn(
             "absolute inset-0 w-full h-full transition-opacity duration-500",
