@@ -8,7 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
-import { BlogContent } from "@/components/blog/BlogContent";
+
 import { ArrowLeft, Calendar, Clock, Share2 } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR, enUS, nl } from "date-fns/locale";
@@ -366,7 +366,10 @@ const BlogPost = () => {
                   <div className="animate-pulse">{texts.translating}</div>
                 </div>
               ) : (
-                <BlogContent content={translatedContent?.content || post.content} />
+                <div 
+                  className="prose prose-lg max-w-none"
+                  dangerouslySetInnerHTML={{ __html: translatedContent?.content || post.content }}
+                />
               )}
             </motion.div>
 
