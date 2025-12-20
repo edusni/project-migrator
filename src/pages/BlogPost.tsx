@@ -279,19 +279,20 @@ const BlogPost = () => {
         type="article"
       />
 
-      <article className="py-8 lg:py-12">
-        <div className="container">
+      <article className="py-6 lg:py-12">
+        <div className="container px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             {/* Back button */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="mb-6"
+              className="mb-4 lg:mb-6"
             >
               <Button
                 variant="ghost"
+                size="sm"
                 onClick={() => navigate(getLocalizedPath(locale, "/blog"))}
-                className="text-muted-foreground hover:text-foreground"
+                className="text-muted-foreground hover:text-foreground -ml-2"
               >
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 {texts.back}
@@ -303,12 +304,12 @@ const BlogPost = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-8"
+                className="mb-6 lg:mb-8 -mx-4 sm:mx-0"
               >
                 <img
                   src={post.featured_image}
                   alt={post.title}
-                  className="w-full aspect-video object-cover rounded-xl shadow-lg"
+                  className="w-full aspect-video object-cover sm:rounded-xl shadow-lg"
                 />
               </motion.div>
             )}
@@ -330,25 +331,25 @@ const BlogPost = () => {
                 </Badge>
               )}
 
-              <h1 className="font-heading text-3xl lg:text-4xl font-bold mb-4">
+              <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 leading-tight">
                 {translatedContent?.title || post.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
                 {publishedDate && (
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
+                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {publishedDate}
                   </span>
                 )}
                 {post.read_time_minutes && (
                   <span className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
+                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     {post.read_time_minutes} {texts.minRead}
                   </span>
                 )}
-                <Button variant="ghost" size="sm" onClick={handleShare}>
-                  <Share2 className="w-4 h-4 mr-1" />
+                <Button variant="ghost" size="sm" onClick={handleShare} className="h-8 px-2 sm:px-3">
+                  <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
                   {texts.share}
                 </Button>
               </div>

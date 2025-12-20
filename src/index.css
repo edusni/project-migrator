@@ -337,12 +337,12 @@
   }
   
   .prose .cost-table {
-    @apply w-full my-6 border-collapse;
+    @apply w-full my-6 border-collapse text-sm sm:text-base overflow-x-auto block;
   }
   
   .prose .cost-table th,
   .prose .cost-table td {
-    @apply border border-border px-4 py-3 text-left;
+    @apply border border-border px-2 py-2 sm:px-4 sm:py-3 text-left whitespace-nowrap sm:whitespace-normal;
   }
   
   .prose .cost-table th {
@@ -417,12 +417,12 @@
   }
   
   .blog-content table {
-    @apply w-full border-collapse my-6;
+    @apply w-full border-collapse my-6 text-sm sm:text-base;
   }
   
   .blog-content th,
   .blog-content td {
-    @apply border border-border px-4 py-3 text-left;
+    @apply border border-border px-2 py-2 sm:px-4 sm:py-3 text-left;
   }
   
   .blog-content th {
