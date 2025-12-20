@@ -66,7 +66,7 @@ export const PostCard = ({ post, featured = false }: PostCardProps) => {
             {/* Category badge on image */}
             {post.category && (
               <Badge 
-                className="absolute top-3 left-3 text-white"
+                className="absolute top-2 left-2 sm:top-3 sm:left-3 text-white text-xs sm:text-sm px-2 sm:px-2.5 py-0.5 sm:py-1"
                 style={{ backgroundColor: post.category.color || '#3b82f6' }}
               >
                 {post.category.emoji} {post.category.name}
@@ -75,33 +75,33 @@ export const PostCard = ({ post, featured = false }: PostCardProps) => {
           </div>
 
           {/* Content */}
-          <CardContent className={`p-5 ${featured ? 'md:w-1/2 md:flex md:flex-col md:justify-center' : ''}`}>
-            <h3 className={`font-heading font-bold mb-2 group-hover:text-primary transition-colors ${featured ? 'text-xl lg:text-2xl' : 'text-lg'}`}>
+          <CardContent className={`p-4 sm:p-5 ${featured ? 'md:w-1/2 md:flex md:flex-col md:justify-center' : ''}`}>
+            <h3 className={`font-heading font-bold mb-1.5 sm:mb-2 group-hover:text-primary transition-colors ${featured ? 'text-lg sm:text-xl lg:text-2xl' : 'text-base sm:text-lg'}`}>
               {post.title}
             </h3>
             
             {post.excerpt && (
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+              <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
                 {post.excerpt}
               </p>
             )}
 
-            <div className="flex items-center gap-4 text-xs text-muted-foreground">
+            <div className="flex items-center gap-3 sm:gap-4 text-xs text-muted-foreground">
               {publishedDate && (
                 <span className="flex items-center gap-1">
-                  <Calendar className="w-3 h-3" />
+                  <Calendar className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                   {publishedDate}
                 </span>
               )}
               {post.read_time_minutes && (
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3 h-3" />
+                  <Clock className="w-3.5 h-3.5 sm:w-3 sm:h-3" />
                   {readTimeText}
                 </span>
               )}
             </div>
 
-            <div className="mt-4 flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="mt-3 sm:mt-4 flex items-center text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-opacity min-h-[44px] sm:min-h-0 items-center">
               {language === "nl" ? "Lees meer" : language === "pt" ? "Ler mais" : "Read more"}
               <ArrowRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </div>

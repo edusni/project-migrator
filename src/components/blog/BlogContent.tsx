@@ -179,12 +179,12 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       // Render tables
       if (section.type === 'table' && section.items && section.rows) {
         return (
-          <div key={index} className="my-6 overflow-x-auto">
-            <table className="w-full border-collapse">
+          <div key={index} className="my-4 sm:my-6 -mx-4 sm:mx-0 overflow-x-auto">
+            <table className="w-full border-collapse min-w-[400px]">
               <thead>
                 <tr className="bg-primary/10">
                   {section.items.map((header, i) => (
-                    <th key={i} className="border border-border/30 px-4 py-3 text-left font-semibold text-foreground">
+                    <th key={i} className="border border-border/30 px-3 sm:px-4 py-2.5 sm:py-3 text-left font-semibold text-foreground text-sm sm:text-base">
                       {header}
                     </th>
                   ))}
@@ -194,7 +194,7 @@ export const BlogContent = ({ content }: BlogContentProps) => {
                 {section.rows.map((row, rowIndex) => (
                   <tr key={rowIndex} className={rowIndex % 2 === 0 ? 'bg-muted/30' : 'bg-background'}>
                     {row.map((cell, cellIndex) => (
-                      <td key={cellIndex} className="border border-border/30 px-4 py-3 text-muted-foreground">
+                      <td key={cellIndex} className="border border-border/30 px-3 sm:px-4 py-2.5 sm:py-3 text-muted-foreground text-sm sm:text-base">
                         <ReactMarkdown remarkPlugins={[remarkGfm]}>{cell}</ReactMarkdown>
                       </td>
                     ))}
@@ -209,8 +209,8 @@ export const BlogContent = ({ content }: BlogContentProps) => {
       // Render cenário blocks
       if (section.type === 'cenario') {
         return (
-          <div key={index} className="summary-card my-6">
-            <h3 className="text-xl font-heading font-bold text-primary mb-4">{section.content}</h3>
+          <div key={index} className="summary-card my-4 sm:my-6">
+            <h3 className="text-lg sm:text-xl font-heading font-bold text-primary mb-3 sm:mb-4">{section.content}</h3>
             {section.items && section.items.length > 0 && (
               <div className="space-y-1">
                 {section.items.map((item, i) => {
@@ -221,18 +221,18 @@ export const BlogContent = ({ content }: BlogContentProps) => {
                     return (
                       <div 
                         key={i} 
-                        className={`flex justify-between items-center py-3 ${isTotal ? 'border-t-2 border-primary pt-4 mt-4' : 'border-b border-border/30'}`}
+                        className={`flex justify-between items-center py-2.5 sm:py-3 gap-2 ${isTotal ? 'border-t-2 border-primary pt-3 sm:pt-4 mt-3 sm:mt-4' : 'border-b border-border/30'}`}
                       >
-                        <span className={isTotal ? 'font-bold text-lg' : 'text-muted-foreground'}>
+                        <span className={`text-sm sm:text-base ${isTotal ? 'font-bold' : 'text-muted-foreground'}`}>
                           {label}
                         </span>
-                        <span className={`font-mono ${isTotal ? 'text-primary font-bold text-xl' : 'font-semibold text-foreground'}`}>
+                        <span className={`font-mono text-right ${isTotal ? 'text-primary font-bold text-lg sm:text-xl' : 'font-semibold text-foreground text-sm sm:text-base'}`}>
                           {value}
                         </span>
                       </div>
                     );
                   }
-                  return <p key={i} className="text-muted-foreground">{item}</p>;
+                  return <p key={i} className="text-muted-foreground text-sm sm:text-base">{item}</p>;
                 })}
               </div>
             )}
@@ -277,12 +277,12 @@ export const BlogContent = ({ content }: BlogContentProps) => {
           }
           
           return (
-            <div key={index} className="mb-8">
-              <h2 className="flex items-start gap-4 mb-4">
-                <span className="flex items-center justify-center w-12 h-12 bg-primary text-primary-foreground rounded-full text-xl font-bold flex-shrink-0 shadow-lg">
+            <div key={index} className="mb-6 sm:mb-8">
+              <h2 className="flex items-start gap-3 sm:gap-4 mb-3 sm:mb-4">
+                <span className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 bg-primary text-primary-foreground rounded-full text-lg sm:text-xl font-bold flex-shrink-0 shadow-lg">
                   {number}
                 </span>
-                <span className="pt-2 font-heading text-2xl">
+                <span className="pt-1.5 sm:pt-2 font-heading text-xl sm:text-2xl">
                   <ReactMarkdown 
                     remarkPlugins={[remarkGfm]} 
                     components={{ p: ({ children }) => <>{children}</> }}
@@ -292,7 +292,7 @@ export const BlogContent = ({ content }: BlogContentProps) => {
                 </span>
               </h2>
               {contentAfter && (
-                <div className="text-muted-foreground ml-16">
+                <div className="text-muted-foreground ml-[52px] sm:ml-16 text-sm sm:text-base">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>{contentAfter}</ReactMarkdown>
                 </div>
               )}
@@ -358,13 +358,13 @@ export const BlogContent = ({ content }: BlogContentProps) => {
                 ),
                 // Style headings
                 h1: ({ children }) => (
-                  <h1 className="font-heading text-3xl font-bold mt-8 mb-4">{children}</h1>
+                  <h1 className="font-heading text-2xl sm:text-3xl font-bold mt-6 sm:mt-8 mb-3 sm:mb-4">{children}</h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="font-heading text-2xl font-bold mt-6 mb-3">{children}</h2>
+                  <h2 className="font-heading text-xl sm:text-2xl font-bold mt-5 sm:mt-6 mb-2 sm:mb-3">{children}</h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="font-heading text-xl font-semibold mt-4 mb-2">{children}</h3>
+                  <h3 className="font-heading text-lg sm:text-xl font-semibold mt-3 sm:mt-4 mb-2">{children}</h3>
                 ),
                 // Style paragraphs
                 p: ({ children }) => (

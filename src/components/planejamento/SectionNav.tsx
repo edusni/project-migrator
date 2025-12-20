@@ -28,13 +28,13 @@ export const SectionNav = ({ sections, activeSection, showNav, onSectionClick }:
               key={section.id}
               onClick={() => onSectionClick(section.id)}
               className={cn(
-                "flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200",
+                "flex items-center gap-1.5 px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all duration-200 min-h-[44px] min-w-[44px] justify-center sm:justify-start",
                 activeSection === section.id
                   ? "bg-primary/10 text-primary"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               )}
             >
-              <span className="text-base">{section.icon}</span>
+              <span className="text-lg sm:text-base">{section.icon}</span>
               <span className="hidden sm:inline">{section.label}</span>
             </button>
           ))}
