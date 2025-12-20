@@ -25,14 +25,22 @@ export function HeroSection() {
         style={{ y: backgroundY }}
         className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/85" 
       />
-      {/* Optimized background image using CSS instead of external URL */}
+      {/* LCP-optimized hero image as real img element */}
       <motion.div 
         style={{ y: backgroundY }}
-        initial={{ scale: 1.1, opacity: 0 }}
-        animate={{ scale: 1, opacity: 0.12 }}
-        transition={{ duration: 1.2, ease: "easeOut" }}
-        className="absolute inset-0 bg-[url('/amsterdam-hero.webp')] bg-cover bg-center" 
-      />
+        className="absolute inset-0"
+      >
+        <img
+          src="/amsterdam-hero.webp"
+          alt="Amsterdam cityscape"
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
+          className="w-full h-full object-cover opacity-[0.12]"
+        />
+      </motion.div>
       
       {/* Noise texture overlay */}
       <div className="absolute inset-0 opacity-[0.02] mix-blend-overlay bg-noise" />
