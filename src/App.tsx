@@ -7,6 +7,7 @@ import { LanguageProvider } from "@/hooks/useLanguage";
 import { AuthProvider } from "@/hooks/useAuth";
 import { LocaleRouter } from "@/components/LocaleRouter";
 import { RedirectHandler } from "@/components/RedirectHandler";
+import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
 import Index from "./pages/Index";
 import Sobre from "./pages/Sobre";
 import Planejamento from "./pages/Planejamento";
@@ -54,6 +55,7 @@ const App = () => (
           <Toaster />
           <Sonner />
         <BrowserRouter>
+          <ScrollToTopOnNavigate />
           <RedirectHandler />
           <Routes>
             {/* Root redirect to locale-prefixed route */}
