@@ -43,18 +43,18 @@ export function ThreeRulesSection() {
             </motion.h3>
           </AnimatedSection>
 
-          <StaggerContainer className="grid sm:grid-cols-3 gap-5 text-left">
+          <StaggerContainer className="grid sm:grid-cols-3 gap-4 sm:gap-5 text-left">
             {rules.map((rule, i) => (
               <StaggerItem key={i}>
                 <motion.div 
-                  className="bg-white dark:bg-black/20 p-5 lg:p-6 rounded-lg h-full"
+                  className="bg-white dark:bg-black/20 p-4 sm:p-5 lg:p-6 rounded-lg h-full"
                   whileHover={{ scale: 1.02, y: -4 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <p className="font-bold text-red-700 dark:text-red-300 text-lg lg:text-xl">
+                  <p className="font-bold text-red-700 dark:text-red-300 text-base sm:text-lg lg:text-xl">
                     {rule.emoji} {rule.title}
                   </p>
-                  <p className="text-base lg:text-lg text-muted-foreground mt-2">
+                  <p className="text-sm sm:text-base lg:text-lg text-muted-foreground mt-1.5 sm:mt-2">
                     {rule.desc}
                   </p>
                 </motion.div>
