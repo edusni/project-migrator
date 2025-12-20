@@ -332,22 +332,22 @@ const BlogPost = () => {
         breadcrumbs={breadcrumbs}
       />
 
-      <article className="py-6 lg:py-12">
+      <article className="py-4 sm:py-6 lg:py-12">
         <div className="container px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
             {/* Back button */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
-              className="mb-4 lg:mb-6"
+              className="mb-3 sm:mb-4 lg:mb-6"
             >
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => navigate(getLocalizedPath(locale, "/blog"))}
-                className="text-muted-foreground hover:text-foreground -ml-2"
+                className="text-muted-foreground hover:text-foreground -ml-2 min-h-[44px] text-sm sm:text-base"
               >
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 {texts.back}
               </Button>
             </motion.div>
@@ -357,7 +357,7 @@ const BlogPost = () => {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="mb-6 lg:mb-8 -mx-4 sm:mx-0"
+                className="mb-4 sm:mb-6 lg:mb-8 -mx-4 sm:mx-0"
               >
                 <img
                   src={post.featured_image}
@@ -377,36 +377,41 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-8"
+              className="mb-6 sm:mb-8"
             >
               {/* Category */}
               {post.blog_categories && (
                 <Badge 
-                  className="mb-4 text-white"
+                  className="mb-3 sm:mb-4 text-white text-xs sm:text-sm px-2.5 py-1"
                   style={{ backgroundColor: post.blog_categories.color || '#3b82f6' }}
                 >
                   {post.blog_categories.emoji} {post.blog_categories.name}
                 </Badge>
               )}
 
-              <h1 className="font-heading text-2xl sm:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 leading-tight">
+              <h1 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 leading-tight">
                 {translatedContent?.title || post.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm text-muted-foreground">
                 {publishedDate && (
                   <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    {publishedDate}
+                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="whitespace-nowrap">{publishedDate}</span>
                   </span>
                 )}
                 {post.read_time_minutes && (
                   <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                    {post.read_time_minutes} {texts.minRead}
+                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                    <span className="whitespace-nowrap">{post.read_time_minutes} {texts.minRead}</span>
                   </span>
                 )}
-                <Button variant="ghost" size="sm" onClick={handleShare} className="h-8 px-2 sm:px-3">
+                <Button 
+                  variant="ghost" 
+                  size="sm" 
+                  onClick={handleShare} 
+                  className="h-8 sm:h-9 px-2 sm:px-3 min-h-[36px] text-xs sm:text-sm"
+                >
                   <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
                   {texts.share}
                 </Button>
@@ -418,15 +423,15 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-12"
+              className="mb-8 sm:mb-10 lg:mb-12"
             >
               {isTranslating ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-6 sm:py-8 text-muted-foreground text-sm sm:text-base">
                   <div className="animate-pulse">{texts.translating}</div>
                 </div>
               ) : (
                 <div 
-                  className="prose prose-lg max-w-none"
+                  className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:scroll-mt-20"
                   dangerouslySetInnerHTML={{ __html: translatedContent?.content || post.content }}
                 />
               )}
@@ -438,21 +443,21 @@ const BlogPost = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="mb-12"
+                className="mb-8 sm:mb-10 lg:mb-12"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {/* Previous Post */}
                   {prevPost ? (
                     <Button
                       variant="outline"
-                      className="h-auto p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
+                      className="h-auto min-h-[60px] p-3 sm:p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
                       onClick={() => navigate(getLocalizedPath(locale, `/blog/${prevPost.slug}`))}
                     >
-                      <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                      <span className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1 mb-1.5 sm:mb-2">
                         <ChevronLeft className="w-3 h-3" />
                         {texts.prevPost}
                       </span>
-                      <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                      <span className="font-medium text-xs sm:text-sm line-clamp-2 group-hover:text-primary transition-colors">
                         {locale === "en" && prevPost.title_en ? prevPost.title_en : 
                          locale === "nl" && prevPost.title_nl ? prevPost.title_nl : 
                          prevPost.title}
@@ -466,14 +471,14 @@ const BlogPost = () => {
                   {nextPost && (
                     <Button
                       variant="outline"
-                      className="h-auto p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all sm:col-start-2"
+                      className="h-auto min-h-[60px] p-3 sm:p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all sm:col-start-2"
                       onClick={() => navigate(getLocalizedPath(locale, `/blog/${nextPost.slug}`))}
                     >
-                      <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                      <span className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1 mb-1.5 sm:mb-2">
                         {texts.nextPost}
                         <ChevronRight className="w-3 h-3" />
                       </span>
-                      <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                      <span className="font-medium text-xs sm:text-sm line-clamp-2 group-hover:text-primary transition-colors">
                         {locale === "en" && nextPost.title_en ? nextPost.title_en : 
                          locale === "nl" && nextPost.title_nl ? nextPost.title_nl : 
                          nextPost.title}
@@ -489,7 +494,7 @@ const BlogPost = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="border-t border-border pt-8 space-y-8"
+              className="border-t border-border pt-6 sm:pt-8 space-y-6 sm:space-y-8"
             >
               <CommentsList postId={post.id} refreshKey={commentRefresh} />
               <CommentForm 
