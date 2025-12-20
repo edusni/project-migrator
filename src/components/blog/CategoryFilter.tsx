@@ -44,6 +44,7 @@ export const CategoryFilter = ({ selected, onSelect }: CategoryFilterProps) => {
         variant={selected === null ? "default" : "outline"}
         size="sm"
         onClick={() => onSelect(null)}
+        className="min-h-[40px] px-3 sm:px-4"
       >
         {allLabel}
       </Button>
@@ -54,6 +55,7 @@ export const CategoryFilter = ({ selected, onSelect }: CategoryFilterProps) => {
           variant={selected === cat.id ? "default" : "outline"}
           size="sm"
           onClick={() => onSelect(cat.id)}
+          className="min-h-[40px] px-3 sm:px-4"
         >
           {cat.emoji} {cat.name}
         </Button>

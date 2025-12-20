@@ -102,11 +102,11 @@ const Blog = () => {
       </section>
 
       {/* Blog Posts Section */}
-      <section className="py-14 lg:py-20">
+      <section className="py-10 sm:py-14 lg:py-20">
         <div className="container">
           <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
-              <h2 className="text-2xl lg:text-4xl font-heading font-bold text-center mb-10">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-heading font-bold text-center mb-8 sm:mb-10">
                 {content.postsTitle}
               </h2>
             </AnimatedSection>
@@ -117,14 +117,14 @@ const Blog = () => {
       </section>
 
       {/* Categories Preview */}
-      <section className="py-14 lg:py-20 bg-muted/30">
+      <section className="py-10 sm:py-14 lg:py-20 bg-muted/30">
         <div className="container">
           <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
-              <h2 className="text-2xl lg:text-4xl font-heading font-bold text-center mb-4">
+              <h2 className="text-xl sm:text-2xl lg:text-4xl font-heading font-bold text-center mb-3 sm:mb-4">
                 {language === "nl" ? "Wat je hier vindt" : language === "pt" ? "O que você vai encontrar aqui" : "What you'll find here"}
               </h2>
-              <p className="text-muted-foreground text-center mb-10 max-w-2xl mx-auto">
+              <p className="text-muted-foreground text-center mb-8 sm:mb-10 max-w-2xl mx-auto text-sm sm:text-base">
                 {language === "nl" 
                   ? "Onderwerpen die ik verken in mijn verhuis- en aanpassingsreis"
                   : language === "pt" 
@@ -133,7 +133,7 @@ const Blog = () => {
               </p>
             </AnimatedSection>
 
-            <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
               {content.categories.map((cat, i) => (
                 <StaggerItem key={i}>
                   <motion.div
@@ -141,16 +141,16 @@ const Blog = () => {
                     transition={{ type: "spring", stiffness: 400, damping: 17 }}
                   >
                     <Card className="h-full hover:shadow-lg transition-shadow hover:border-primary/30">
-                      <CardContent className="p-5">
+                      <CardContent className="p-4 sm:p-5">
                         <motion.span 
-                          className="text-3xl mb-3 block"
+                          className="text-2xl sm:text-3xl mb-2 sm:mb-3 block"
                           whileHover={{ scale: 1.2, rotate: [0, -5, 5, 0] }}
                           transition={{ duration: 0.3 }}
                         >
                           {cat.emoji}
                         </motion.span>
-                        <h3 className="font-heading font-bold text-lg mb-1">{cat.title}</h3>
-                        <p className="text-muted-foreground text-sm">{cat.desc}</p>
+                        <h3 className="font-heading font-bold text-base sm:text-lg mb-1">{cat.title}</h3>
+                        <p className="text-muted-foreground text-xs sm:text-sm">{cat.desc}</p>
                       </CardContent>
                     </Card>
                   </motion.div>

@@ -99,13 +99,13 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
 
   if (isLoading) {
     return (
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {[1, 2, 3].map((i) => (
-          <div key={i} className="space-y-3">
+          <div key={i} className="space-y-2 sm:space-y-3">
             <Skeleton className="aspect-video rounded-lg" />
-            <Skeleton className="h-6 w-3/4" />
-            <Skeleton className="h-4 w-full" />
-            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-5 sm:h-6 w-3/4" />
+            <Skeleton className="h-3 sm:h-4 w-full" />
+            <Skeleton className="h-3 sm:h-4 w-1/2" />
           </div>
         ))}
       </div>
@@ -156,7 +156,7 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
 
       {/* Regular posts grid */}
       {regularPosts.length > 0 && (
-        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {regularPosts.map((post) => (
             <StaggerItem key={post.id}>
               <PostCard 
