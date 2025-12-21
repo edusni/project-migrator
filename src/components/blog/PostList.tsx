@@ -59,7 +59,7 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
           title_nl,
           excerpt_en,
           excerpt_nl,
-          blog_categories!inner (
+          blog_categories (
             name,
             emoji,
             color,
