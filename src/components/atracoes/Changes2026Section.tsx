@@ -24,29 +24,29 @@ export function Changes2026Section() {
   ];
 
   return (
-    <section className="py-10 lg:py-14 bg-amber-50 dark:bg-amber-950/30 border-y border-amber-200 dark:border-amber-800">
-      <div className="container">
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+    <section className="py-6 sm:py-8 lg:py-14 bg-amber-50 dark:bg-amber-950/30 border-y border-amber-200 dark:border-amber-800">
+      <div className="container px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <AnimatedSection>
             <motion.h3 
-              className="font-bold text-amber-800 dark:text-amber-200 text-xl lg:text-2xl mb-6 flex items-center gap-3"
+              className="font-bold text-amber-800 dark:text-amber-200 text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3"
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <AlertTriangle className="w-6 h-6 lg:w-8 lg:h-8" />
+              <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0" />
               💣 {language === "nl" ? "Wat verandert in 2026" : language === "pt" ? "O que mudou para 2026" : "What changed for 2026"}
             </motion.h3>
           </AnimatedSection>
 
-          <StaggerContainer className="grid md:grid-cols-2 gap-4">
+          <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
             {changes2026.map((change, i) => (
               <StaggerItem key={i}>
                 <motion.div 
-                  className="flex items-start gap-3 text-amber-700 dark:text-amber-300 text-base lg:text-lg bg-white/50 dark:bg-black/20 p-4 lg:p-5 rounded-lg h-full"
+                  className="flex items-start gap-2 sm:gap-3 text-amber-700 dark:text-amber-300 text-sm sm:text-base lg:text-lg bg-white/50 dark:bg-black/20 p-3 sm:p-4 lg:p-5 rounded-lg h-full"
                   whileHover={{ scale: 1.02, x: 4 }}
                   transition={{ type: "spring", stiffness: 400, damping: 17 }}
                 >
-                  <AlertTriangle className="w-5 h-5 lg:w-6 lg:h-6 mt-0.5 flex-shrink-0" />
+                  <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 mt-0.5 flex-shrink-0" />
                   <span>{change}</span>
                 </motion.div>
               </StaggerItem>
