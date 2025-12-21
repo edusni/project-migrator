@@ -96,12 +96,12 @@ export function Footer() {
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "nl" ? "Ontdekken" : language === "pt" ? "Explorar" : "Explore"}
             </h3>
-            <ul className="space-y-1.5 sm:space-y-2">
+            <ul className="space-y-1 sm:space-y-2">
               {footerLinks.explore.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
+                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
@@ -115,12 +115,12 @@ export function Footer() {
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "nl" ? "Beleving" : language === "pt" ? "Experiências" : "Experience"}
             </h3>
-            <ul className="space-y-1.5 sm:space-y-2">
+            <ul className="space-y-1 sm:space-y-2">
               {footerLinks.experience.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
+                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
@@ -134,12 +134,12 @@ export function Footer() {
             <h3 className="font-heading font-bold text-base sm:text-lg mb-3 sm:mb-4">
               {language === "nl" ? "Over" : language === "pt" ? "Sobre" : "About"}
             </h3>
-            <ul className="space-y-1.5 sm:space-y-2">
+            <ul className="space-y-1 sm:space-y-2">
               {footerLinks.about.map((link) => (
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-secondary-foreground/70 hover:text-primary transition-colors duration-200 text-sm inline-block hover:translate-x-1 transform transition-transform"
+                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
                   >
                     {t(link.labelKey)}
                   </Link>
