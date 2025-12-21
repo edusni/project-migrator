@@ -7,5 +7,11 @@
 /onde-comer-amsterdam /gastronomia 301
 /planejamento-viagem /planejamento 301
 
+# Static HTML pages for SEO (accessible directly)
+/en/index.html /en/index.html 200
+/en/planning.html /en/planning.html 200
+/en/coffeeshops.html /en/coffeeshops.html 200
+/en/accommodation.html /en/accommodation.html 200
+
 # SPA fallback
 /* /index.html 200
