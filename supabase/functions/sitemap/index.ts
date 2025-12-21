@@ -111,13 +111,34 @@ serve(async (req) => {
     <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/coffeeshops"/>
   </url>
   <url>
-    <loc>${baseUrl}/en/accommodation.html</loc>
+    <loc>${baseUrl}/en/attractions.html</loc>
     <lastmod>${today}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/accommodation.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/hospedagem"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/hospedagem"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/transport.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/food.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/daytrips.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/about.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 `;
 
