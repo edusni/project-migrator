@@ -445,46 +445,48 @@ const BlogPost = () => {
                 transition={{ delay: 0.25 }}
                 className="mb-8 sm:mb-10 lg:mb-12"
               >
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 gap-4">
                   {/* Previous Post */}
-                  {prevPost ? (
-                    <Button
-                      variant="outline"
-                      className="h-auto min-h-[60px] p-3 sm:p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
-                      onClick={() => navigate(getLocalizedPath(locale, `/blog/${prevPost.slug}`))}
-                    >
-                      <span className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1 mb-1.5 sm:mb-2">
-                        <ChevronLeft className="w-3 h-3" />
-                        {texts.prevPost}
-                      </span>
-                      <span className="font-medium text-xs sm:text-sm line-clamp-2 group-hover:text-primary transition-colors">
-                        {locale === "en" && prevPost.title_en ? prevPost.title_en : 
-                         locale === "nl" && prevPost.title_nl ? prevPost.title_nl : 
-                         prevPost.title}
-                      </span>
-                    </Button>
-                  ) : (
-                    <div className="hidden sm:block" />
-                  )}
+                  <div className="col-span-1">
+                    {prevPost && (
+                      <Button
+                        variant="outline"
+                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
+                        onClick={() => navigate(getLocalizedPath(locale, `/blog/${prevPost.slug}`))}
+                      >
+                        <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                          <ChevronLeft className="w-3 h-3" />
+                          {texts.prevPost}
+                        </span>
+                        <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                          {locale === "en" && prevPost.title_en ? prevPost.title_en : 
+                           locale === "nl" && prevPost.title_nl ? prevPost.title_nl : 
+                           prevPost.title}
+                        </span>
+                      </Button>
+                    )}
+                  </div>
                   
                   {/* Next Post */}
-                  {nextPost && (
-                    <Button
-                      variant="outline"
-                      className="h-auto min-h-[60px] p-3 sm:p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all sm:col-start-2"
-                      onClick={() => navigate(getLocalizedPath(locale, `/blog/${nextPost.slug}`))}
-                    >
-                      <span className="text-[10px] sm:text-xs text-muted-foreground flex items-center gap-1 mb-1.5 sm:mb-2">
-                        {texts.nextPost}
-                        <ChevronRight className="w-3 h-3" />
-                      </span>
-                      <span className="font-medium text-xs sm:text-sm line-clamp-2 group-hover:text-primary transition-colors">
-                        {locale === "en" && nextPost.title_en ? nextPost.title_en : 
-                         locale === "nl" && nextPost.title_nl ? nextPost.title_nl : 
-                         nextPost.title}
-                      </span>
-                    </Button>
-                  )}
+                  <div className="col-span-1">
+                    {nextPost && (
+                      <Button
+                        variant="outline"
+                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all"
+                        onClick={() => navigate(getLocalizedPath(locale, `/blog/${nextPost.slug}`))}
+                      >
+                        <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                          {texts.nextPost}
+                          <ChevronRight className="w-3 h-3" />
+                        </span>
+                        <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
+                          {locale === "en" && nextPost.title_en ? nextPost.title_en : 
+                           locale === "nl" && nextPost.title_nl ? nextPost.title_nl : 
+                           nextPost.title}
+                        </span>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             )}
