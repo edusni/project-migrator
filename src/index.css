@@ -143,6 +143,11 @@
     letter-spacing: -0.02em;
   }
   
+  /* Display text sizes for heroes */
+  .text-display-xl {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+  
   /* Better focus styles */
   :focus-visible {
     @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
