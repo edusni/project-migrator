@@ -1,1 +1,10 @@
 project_id = "lguwbgthckwsixmuvurx"
+
+[functions.sitemap]
+verify_jwt = false
+
+[functions.prerender]
+verify_jwt = false
+
+[functions.translate-blog]
+verify_jwt = true

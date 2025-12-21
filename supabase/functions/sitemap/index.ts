@@ -81,6 +81,44 @@ serve(async (req) => {
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
   </url>
+
+  <!-- Prerendered English Static Pages for SEO -->
+  <url>
+    <loc>${baseUrl}/en/index.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/index.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/planning.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/planning.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/planejamento"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/planejamento"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/coffeeshops.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/coffeeshops.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/coffeeshops"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/coffeeshops"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/accommodation.html</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/accommodation.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/hospedagem"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/hospedagem"/>
+  </url>
 `;
 
     // Add static pages for each locale
