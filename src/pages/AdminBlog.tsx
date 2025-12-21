@@ -281,6 +281,18 @@ const AdminBlog = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      toast.error(language === "pt" ? "Apenas imagens são permitidas" : language === "nl" ? "Alleen afbeeldingen toegestaan" : "Only images are allowed");
+      return;
+    }
+
+    // Validate file size (max 5MB)
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error(language === "pt" ? "Imagem muito grande (máx 5MB)" : language === "nl" ? "Afbeelding te groot (max 5MB)" : "Image too large (max 5MB)");
+      return;
+    }
+
     const fileExt = file.name.split('.').pop();
     const fileName = `${Date.now()}.${fileExt}`;
     const filePath = `posts/${fileName}`;
