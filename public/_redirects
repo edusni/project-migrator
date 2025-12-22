@@ -1,14 +1,15 @@
-# 301 Redirects para preservar SEO de URLs antigas
-/onde-ficar-amsterdam /hospedagem 301
-/quem-e-o-du /sobre 301
-/bate-volta-amsterdam /arredores 301
-/coffeeshops-amsterdam /coffeeshops 301
-/transporte-amsterdam /transporte 301
-/onde-comer-amsterdam /gastronomia 301
-/planejamento-viagem /planejamento 301
+# 301 Redirects para preservar SEO de URLs antigas (slugs PT antigos)
+/onde-ficar-amsterdam /pt/hospedagem.html 301
+/quem-e-o-du /pt/sobre.html 301
+/bate-volta-amsterdam /pt/arredores.html 301
+/coffeeshops-amsterdam /pt/coffeeshops.html 301
+/transporte-amsterdam /pt/transporte.html 301
+/onde-comer-amsterdam /pt/gastronomia.html 301
+/planejamento-viagem /pt/planejamento.html 301
 
 # PT URLs sem .html -> com .html (padronização SEO)
 /pt /pt/index.html 301
+/pt/ /pt/index.html 301
 /pt/planejamento /pt/planejamento.html 301
 /pt/hospedagem /pt/hospedagem.html 301
 /pt/atracoes /pt/atracoes.html 301
@@ -17,43 +18,48 @@
 /pt/coffeeshops /pt/coffeeshops.html 301
 /pt/arredores /pt/arredores.html 301
 /pt/sobre /pt/sobre.html 301
-/pt/custo-vida-amsterdam /pt/custo-vida-amsterdam.html 301
 
-# EN/NL home redirects
+# EN URLs sem .html -> com .html (slugs nativos)
 /en /en/index.html 301
+/en/ /en/index.html 301
+/en/planning /en/planning.html 301
+/en/accommodation /en/accommodation.html 301
+/en/transport /en/transport.html 301
+/en/attractions /en/attractions.html 301
+/en/food /en/food.html 301
+/en/coffeeshops /en/coffeeshops.html 301
+/en/daytrips /en/daytrips.html 301
+/en/about /en/about.html 301
+
+# EN URLs antigas com slugs PT -> slugs nativos .html
+/en/planejamento /en/planning.html 301
+/en/hospedagem /en/accommodation.html 301
+/en/transporte /en/transport.html 301
+/en/atracoes /en/attractions.html 301
+/en/gastronomia /en/food.html 301
+/en/arredores /en/daytrips.html 301
+/en/sobre /en/about.html 301
+
+# NL URLs sem .html -> com .html (slugs nativos)
 /nl /nl/index.html 301
+/nl/ /nl/index.html 301
+/nl/planning /nl/planning.html 301
+/nl/accommodation /nl/accommodation.html 301
+/nl/transport /nl/transport.html 301
+/nl/attractions /nl/attractions.html 301
+/nl/food /nl/food.html 301
+/nl/coffeeshops /nl/coffeeshops.html 301
+/nl/daytrips /nl/daytrips.html 301
+/nl/about /nl/about.html 301
 
-# Static HTML pages for SEO (accessible directly)
-/en/index.html /en/index.html 200
-/en/planning.html /en/planning.html 200
-/en/coffeeshops.html /en/coffeeshops.html 200
-/en/accommodation.html /en/accommodation.html 200
-/en/transport.html /en/transport.html 200
-/en/attractions.html /en/attractions.html 200
-/en/food.html /en/food.html 200
-/en/daytrips.html /en/daytrips.html 200
-/en/about.html /en/about.html 200
-/nl/index.html /nl/index.html 200
-/nl/planning.html /nl/planning.html 200
-/nl/coffeeshops.html /nl/coffeeshops.html 200
-/nl/accommodation.html /nl/accommodation.html 200
-/nl/transport.html /nl/transport.html 200
-/nl/attractions.html /nl/attractions.html 200
-/nl/food.html /nl/food.html 200
-/nl/daytrips.html /nl/daytrips.html 200
-/nl/about.html /nl/about.html 200
+# NL URLs antigas com slugs PT -> slugs nativos .html
+/nl/planejamento /nl/planning.html 301
+/nl/hospedagem /nl/accommodation.html 301
+/nl/transporte /nl/transport.html 301
+/nl/atracoes /nl/attractions.html 301
+/nl/gastronomia /nl/food.html 301
+/nl/arredores /nl/daytrips.html 301
+/nl/sobre /nl/about.html 301
 
-# PT static pages
-/pt/index.html /pt/index.html 200
-/pt/planejamento.html /pt/planejamento.html 200
-/pt/hospedagem.html /pt/hospedagem.html 200
-/pt/atracoes.html /pt/atracoes.html 200
-/pt/transporte.html /pt/transporte.html 200
-/pt/gastronomia.html /pt/gastronomia.html 200
-/pt/coffeeshops.html /pt/coffeeshops.html 200
-/pt/arredores.html /pt/arredores.html 200
-/pt/sobre.html /pt/sobre.html 200
-/pt/custo-vida-amsterdam.html /pt/custo-vida-amsterdam.html 200
-
-# SPA fallback
+# SPA fallback (React app para rotas dinâmicas como /blog)
 /* /index.html 200
