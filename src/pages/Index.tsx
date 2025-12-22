@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { Newsletter } from "@/components/Newsletter";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
+import { GetYourGuideWidget } from "@/components/GetYourGuideWidget";
 import {
   HeroSection,
   Changes2026Section,
@@ -36,6 +37,17 @@ const Index = () => {
         <ChecklistSection />
         <GuideSectionsGrid />
         <TrapsSection />
+        
+        {/* GetYourGuide Widget */}
+        <section className="py-12 lg:py-16 bg-muted/30">
+          <div className="container max-w-6xl">
+            <h2 className="text-2xl lg:text-3xl font-heading font-bold text-center mb-6">
+              {language === "nl" ? "Populaire Tours & Activiteiten" : language === "en" ? "Popular Tours & Activities" : "Tours e Atividades Populares"}
+            </h2>
+            <GetYourGuideWidget />
+          </div>
+        </section>
+        
         <FAQSection />
         <Newsletter />
       </main>

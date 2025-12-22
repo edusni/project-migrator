@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { GetYourGuideWidget } from "@/components/GetYourGuideWidget";
 import {
   ArtCulture2026Section,
   Changes2026Section,
@@ -58,6 +59,17 @@ const Atracoes = () => {
       <AttractionsByAreaSection />
       <FreeActivitiesSection />
       <ItinerariesSection />
+      
+      {/* GetYourGuide Widget */}
+      <section className="py-12 lg:py-16 bg-muted/30">
+        <div className="container max-w-6xl">
+          <h2 className="text-2xl lg:text-3xl font-heading font-bold text-center mb-6">
+            {language === "nl" ? "Boek Tours & Tickets" : language === "en" ? "Book Tours & Tickets" : "Reserve Tours e Ingressos"}
+          </h2>
+          <GetYourGuideWidget />
+        </div>
+      </section>
+      
       <FAQSection />
       
       <RelatedBlogPostsSection currentPath="/atracoes" />
