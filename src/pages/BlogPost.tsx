@@ -576,17 +576,20 @@ const BlogPost = () => {
                 transition={{ delay: 0.25 }}
                 className="mb-8 sm:mb-10 lg:mb-12"
               >
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Previous Post */}
-                  <div className="col-span-1">
+                  <div className="col-span-1 min-w-0">
                     {prevPost && (
                       <Button
                         variant="outline"
-                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
+                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-start text-left min-w-0 overflow-hidden whitespace-normal group hover:border-primary/50 transition-all"
                         onClick={() => {
-                          const prevSlug = locale === "en" && prevPost.slug_en ? prevPost.slug_en : 
-                                           locale === "nl" && prevPost.slug_nl ? prevPost.slug_nl : 
-                                           prevPost.slug;
+                          const prevSlug =
+                            locale === "en" && prevPost.slug_en
+                              ? prevPost.slug_en
+                              : locale === "nl" && prevPost.slug_nl
+                                ? prevPost.slug_nl
+                                : prevPost.slug;
                           navigate(getLocalizedPath(locale, `/blog/${prevSlug}`));
                         }}
                       >
@@ -594,25 +597,30 @@ const BlogPost = () => {
                           <ChevronLeft className="w-3 h-3" />
                           {texts.prevPost}
                         </span>
-                        <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
-                          {locale === "en" && prevPost.title_en ? prevPost.title_en : 
-                           locale === "nl" && prevPost.title_nl ? prevPost.title_nl : 
-                           prevPost.title}
+                        <span className="font-medium text-sm leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
+                          {locale === "en" && prevPost.title_en
+                            ? prevPost.title_en
+                            : locale === "nl" && prevPost.title_nl
+                              ? prevPost.title_nl
+                              : prevPost.title}
                         </span>
                       </Button>
                     )}
                   </div>
-                  
+
                   {/* Next Post */}
-                  <div className="col-span-1">
+                  <div className="col-span-1 min-w-0">
                     {nextPost && (
                       <Button
                         variant="outline"
-                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all"
+                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-end text-right min-w-0 overflow-hidden whitespace-normal group hover:border-primary/50 transition-all"
                         onClick={() => {
-                          const nextSlug = locale === "en" && nextPost.slug_en ? nextPost.slug_en : 
-                                           locale === "nl" && nextPost.slug_nl ? nextPost.slug_nl : 
-                                           nextPost.slug;
+                          const nextSlug =
+                            locale === "en" && nextPost.slug_en
+                              ? nextPost.slug_en
+                              : locale === "nl" && nextPost.slug_nl
+                                ? nextPost.slug_nl
+                                : nextPost.slug;
                           navigate(getLocalizedPath(locale, `/blog/${nextSlug}`));
                         }}
                       >
@@ -620,10 +628,12 @@ const BlogPost = () => {
                           {texts.nextPost}
                           <ChevronRight className="w-3 h-3" />
                         </span>
-                        <span className="font-medium text-sm line-clamp-2 group-hover:text-primary transition-colors">
-                          {locale === "en" && nextPost.title_en ? nextPost.title_en : 
-                           locale === "nl" && nextPost.title_nl ? nextPost.title_nl : 
-                           nextPost.title}
+                        <span className="font-medium text-sm leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
+                          {locale === "en" && nextPost.title_en
+                            ? nextPost.title_en
+                            : locale === "nl" && nextPost.title_nl
+                              ? nextPost.title_nl
+                              : nextPost.title}
                         </span>
                       </Button>
                     )}
