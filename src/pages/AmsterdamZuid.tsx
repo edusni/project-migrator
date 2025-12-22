@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { SEOHead } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
+import heroAmsterdamZuid from "@/assets/hero-amsterdam-zuid.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -555,6 +556,7 @@ const AmsterdamZuid = () => {
         icon={Building2}
         title={c.title}
         description={c.subtitle}
+        backgroundImage={heroAmsterdamZuid}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

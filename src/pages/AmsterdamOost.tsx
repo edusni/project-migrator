@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import heroAmsterdamOost from "@/assets/hero-amsterdam-oost.webp";
 import { Badge } from "@/components/ui/badge";
 import { 
   MapPin, Train, Home, TrendingUp, AlertTriangle, 
@@ -257,6 +258,7 @@ const AmsterdamOost = () => {
           "Van de kunstmatige eilanden van IJburg tot historische dokken: de definitieve gids voor het veranderende Oosten"
         )}
         icon={Waves}
+        backgroundImage={heroAmsterdamOost}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

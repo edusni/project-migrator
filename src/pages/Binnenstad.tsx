@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import heroBinnenstad from "@/assets/hero-binnenstad.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -134,6 +135,7 @@ const Binnenstad = () => {
           "Amsterdam's historic center: Dam, Central Station, Kalverstraat and Spui - complete analysis for residents and investors",
           "Het historische centrum van Amsterdam: Dam, Centraal Station, Kalverstraat en Spui - complete analyse voor bewoners en investeerders"
         )}
+        backgroundImage={heroBinnenstad}
       />
 
       <div className="container mx-auto px-4 py-12">
