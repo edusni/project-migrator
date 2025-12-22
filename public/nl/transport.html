@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vervoer in Amsterdam 2026: OV, Fiets & Tips | Amsterdu</title>
-    <meta name="description" content="Complete gids voor vervoer in Amsterdam. Tram, metro, bus, fiets huren, GVB-passen en veelgemaakte fouten. Prijzen en routes voor 2026.">
+    <title>Vervoer in Amsterdam 2026: Complete Gids OV, Fiets & Tips | Amsterdu</title>
+    <meta name="description" content="Definitieve gids voor vervoer in Amsterdam 2026. Tram, metro, gratis pont, OVpay, fiets huren, GVB-passen en regionale tickets. Actuele prijzen, bespaartips en kritieke fouten.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Du">
     
@@ -15,7 +15,7 @@
     <link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/transporte.html">
     
     <meta property="og:title" content="Vervoer in Amsterdam 2026 | Amsterdu">
-    <meta property="og:description" content="Complete gids voor openbaar vervoer in Amsterdam: tram, metro, bus, fiets en passen.">
+    <meta property="og:description" content="Definitieve vervoersgids: tram, metro, pont, fiets en hoe je echt geld bespaart.">
     <meta property="og:url" content="https://amsterdu.com/nl/transport.html">
     <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
     <meta property="og:type" content="article">
@@ -26,31 +26,45 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1a1a1a; background: #fff; }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #1a1a1a; background: #fff; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 0; text-align: center; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #F97316; }
+        .lead { font-size: 1.15rem; font-style: italic; color: #ccc; max-width: 700px; margin: 0 auto; }
         .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
         .breadcrumb a { color: #F97316; }
         main { padding: 40px 0; }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1rem; border-left: 4px solid #F97316; padding-left: 15px; }
-        h3 { font-size: 1.25rem; color: #F97316; margin: 20px 0 10px; }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1.5rem; border-left: 4px solid #F97316; padding-left: 15px; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -8px; left: 15px; width: 60px; height: 3px; background: linear-gradient(90deg, #F97316, transparent); }
+        h3 { font-size: 1.25rem; color: #F97316; margin: 25px 0 12px; display: flex; align-items: center; gap: 8px; }
+        h4 { font-size: 1.1rem; color: #1a1a1a; margin: 20px 0 10px; border-left: 3px solid #F97316; padding-left: 12px; }
         p { margin-bottom: 1rem; color: #444; }
-        ul { margin-left: 20px; margin-bottom: 1rem; }
+        ul, ol { margin-left: 20px; margin-bottom: 1rem; }
         li { padding: 5px 0; color: #444; }
         a { color: #F97316; }
         .card { background: #f9f9f9; padding: 25px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px; }
-        .highlight { background: #fff3e6; border-left: 4px solid #F97316; padding: 15px 20px; margin: 20px 0; }
-        .danger { background: #fee; border-left: 4px solid #e53e3e; padding: 15px 20px; margin: 20px 0; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #f9f9f9; font-weight: bold; }
-        .badge { display: inline-block; background: #F97316; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; }
+        .highlight { background: linear-gradient(135deg, #fff3e6, #fff9f0); border-left: 4px solid #F97316; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .danger { background: linear-gradient(135deg, #fee, #fff5f5); border-left: 4px solid #e53e3e; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .tip { background: linear-gradient(135deg, #e6f7ff, #f0faff); border-left: 4px solid #0284c7; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; font-weight: 600; }
+        tr:hover { background: #fafafa; }
+        .badge { display: inline-block; background: #F97316; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 12px; }
+        .badge-green { background: #10b981; }
+        .badge-blue { background: #0284c7; }
+        .toc { background: #f9f9f9; padding: 25px 30px; border-radius: 12px; margin-bottom: 40px; }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .toc li:last-child { border-bottom: none; }
+        .toc a { text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
         footer { background: #1a1a1a; color: white; padding: 30px 0; text-align: center; margin-top: 60px; }
         footer a { color: #F97316; }
-        @media (max-width: 768px) { h1 { font-size: 1.75rem; } }
+        @media (max-width: 768px) { h1 { font-size: 1.75rem; } table { font-size: 0.85rem; } th, td { padding: 10px 12px; } .lead { font-size: 1rem; } }
     </style>
     
     <script type="application/ld+json">
@@ -60,34 +74,34 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "Wat is de beste manier om door Amsterdam te reizen?",
+                "name": "Hoe werkt OVpay in Amsterdam?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Lopen is het beste voor het centrum (compact en autovrij). Tram voor langere afstanden. Fiets voor echte Amsterdamse ervaring. Metro voor Noord en Zuidoost. De meeste toeristen hebben geen auto nodig."
+                    "text": "OVpay laat je je contactloze bankpas direct gebruiken bij de validators. Check in bij het instappen en check uit bij het uitstappen. Het systeem brengt alle ritten in één keer in rekening, 's nachts."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Hoeveel kost openbaar vervoer in Amsterdam 2026?",
+                "name": "Wat is de beste OV-pas in Amsterdam 2026?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Enkele reis: €3,40. 24-uurs pas: €9. 48-uurs: €15. 72-uurs: €21. GVB-passen zijn alleen voor Amsterdam; voor Schiphol heb je een NS-treinticket nodig (€5,80 enkele reis)."
+                    "text": "Voor stedelijke toeristen: GVB 72-uurs pas (€21,50) bij 3+ ritten/dag. Voor regionale verkenning (molens, tulpen, stranden): Amsterdam & Region Travel Ticket (€40,50 voor 3 dagen). Voor 1-2 ritten/dag: OVpay per rit is goedkoper."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Moet ik een fiets huren in Amsterdam?",
+                "name": "Zijn de ponten in Amsterdam echt gratis?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Geweldig voor ervaren fietsers, maar het verkeer is intensief. Begin in rustige gebieden (Vondelpark, Noord). Huurprijzen: €10-15/dag. Altijd op slot zetten en in het fietspad blijven."
+                    "text": "Ja! De ponten die achter Centraal Station vertrekken zijn 100% gratis voor voetgangers, fietsers en scooters. De F3 pont naar Buiksloterweg vaart 24 uur."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Hoe kom ik van Schiphol naar Amsterdam Centraal?",
+                "name": "Wat is de boete voor fietsen zonder licht in Amsterdam?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Trein is de beste optie: 15-20 minuten, €5,80 enkele reis, elke 10 minuten. Taxi kost €45-50 vast tarief. Bus 397 is goedkoper (€6,50) maar duurt 30-45 minuten."
+                    "text": "De boete voor fietsen zonder verlichting 's nachts is €60-70. Bellen terwijl je fietst kost €140. De politie voert regelmatig controles uit, vooral in de herfst en winter."
                 }
             }
         ]
@@ -99,150 +113,535 @@
         <div class="container">
             <p class="breadcrumb"><a href="/nl/index.html">Home</a> → Vervoer</p>
             <h1>Vervoer in Amsterdam 2026</h1>
-            <p>Tram, metro, fiets, GVB-passen en hoe je je verplaatst zonder fouten te maken.</p>
+            <p class="lead">Alles over trams, metro, gratis ponten, OVpay, fietsen en regionale passen. Een gids die verder gaat dan de basis — omdat je verdient te weten wat locals weten.</p>
         </div>
     </header>
     
     <main class="container">
+        <nav class="toc">
+            <h3>📍 In Deze Gids</h3>
+            <ul>
+                <li><a href="#filosofie">1. De Mobiliteitsfilosofie van Amsterdam</a></li>
+                <li><a href="#gvb">2. GVB-Netwerk: Tram, Metro & Bus</a></li>
+                <li><a href="#ponten">3. Gratis Ponten: Het Open Geheim</a></li>
+                <li><a href="#ovpay">4. OVpay & Kaartverkoop: Het Complete Systeem</a></li>
+                <li><a href="#schiphol">5. Van Schiphol naar het Centrum</a></li>
+                <li><a href="#fiets">6. Fietsen: De Cultuur en de Regels</a></li>
+                <li><a href="#regionaal">7. Regionale Passen: Molens, Tulpen & Stranden</a></li>
+                <li><a href="#pr">8. Park and Ride: Voor Wie Met de Auto Komt</a></li>
+                <li><a href="#conclusie">9. Financiële Conclusie: Welke Pas Kiezen?</a></li>
+            </ul>
+        </nav>
+
         <div class="highlight">
-            <strong>De Drie Regels:</strong> 1) Lopen is genoeg voor het centrum. 2) Blijf uit de fietspaden. 3) Check in EN uit met je OV-chipkaart.
+            <strong>🎯 De Gouden Regel:</strong> Amsterdam is geen autostad. De stad is bewust ontworpen met voetgangers en fietsers bovenaan de mobiliteitshiërarchie, gevolgd door openbaar vervoer. Proberen te navigeren met de auto is hier duur, stressvol en onnodig. Omarm het systeem — het werkt.
         </div>
         
-        <section>
-            <h2>Van Schiphol naar Amsterdam</h2>
+        <section id="filosofie">
+            <h2>1. De Mobiliteitsfilosofie van Amsterdam</h2>
             
-            <div class="card">
-                <span class="badge">Aangeraden</span>
-                <h3>🚆 Trein</h3>
-                <p><strong>Prijs:</strong> €5,80 | <strong>Duur:</strong> 15-20 min | <strong>Frequentie:</strong> Elke 10 min</p>
-                <p>Beste optie voor de meeste reizigers. Koop kaartjes bij NS-automaten of via de NS-app. Direct naar Centraal Station.</p>
-            </div>
+            <p>Voordat we tramlijnen en ticketprijzen bespreken, moet je iets fundamenteels begrijpen: vervoer in Amsterdam is niet alleen logistiek. Het is het resultaat van decennia stadsplanning gericht op <strong>het deprioriteren van de particuliere auto</strong>.</p>
             
-            <div class="grid">
-                <div class="card">
-                    <h3>🚌 Bus 397</h3>
-                    <p><strong>€6,50</strong> | 30-45 min</p>
-                    <p>Stopt bij meerdere hotels en Leidseplein. Goede optie als je hotel dichtbij een halte ligt.</p>
-                </div>
-                
-                <div class="card">
-                    <h3>🚕 Taxi</h3>
-                    <p><strong>€45-50</strong> vast tarief | 25-40 min</p>
-                    <p>Alleen vooruit boeken of officiële taxistandplaats. Vermijd aanbiedingen in de aankomsthal.</p>
-                </div>
+            <p>De stad opereert onder een duidelijke hiërarchie:</p>
+            <ol>
+                <li><strong>Voetgangers en fietsers</strong> — bovenaan de piramide</li>
+                <li><strong>Openbaar massavervoer</strong> — tram en metro</li>
+                <li><strong>Particuliere motorvoertuigen</strong> — perifere rol, beperkt door agressief beleid</li>
+            </ol>
+            
+            <p>Bezoekers die proberen te navigeren met een autogerichte mentaliteit zullen opzettelijk opgelegde fysieke en financiële barrières tegenkomen (parkeren voor €7,50/uur in het centrum, afgesloten straten, milieuzones). Daarentegen ontdekken degenen die het GVB-beheerde openbare systeem en de fietscultuur omarmen een vloeiendheid van beweging die zelden wordt bereikt in steden met vergelijkbare dichtheid.</p>
+            
+            <div class="tip">
+                <strong>💡 Wat Veranderde in 2025/2026:</strong> De volledige implementatie van OVpay (directe contactloze betaling) en de complete elektrificatie van de bus- en pontvloot hebben de reiservaring getransformeerd in een continue stroom, waarbij grenzen tussen verschillende vervoerswijzen worden geminimaliseerd door technologie.
             </div>
         </section>
         
-        <section>
-            <h2>Openbaar Vervoer (GVB)</h2>
+        <section id="gvb">
+            <h2>2. Het GVB-Netwerk: Tram, Metro & Bus</h2>
+            
+            <p>GVB (Gemeentelijk Vervoerbedrijf) exploiteert het openbaarvervoermonopolie binnen de gemeentegrenzen van Amsterdam. Het netwerk is geïntegreerd: tram, metro, bus en pont werken met hetzelfde kaartje.</p>
+            
+            <h3>🚃 Tramsysteem (Elektrische Trams)</h3>
+            
+            <p>Trams zijn Amsterdam's meest iconische en <em>functionele</em> vervoersmiddel. In tegenstelling tot tramsystemen in andere steden die toeristische attracties werden, zijn ze hier het belangrijkste bovengrondse vervoer — vooral in de grachtengordel en 19e-eeuwse wijken waar metrotunnels graven geologisch onmogelijk is.</p>
+            
+            <h4>Infrastructuur & Operatie</h4>
+            <ul>
+                <li><strong>Vloot:</strong> Moderne lagevloervoertuigen (Siemens Combino en CAF 15G)</li>
+                <li><strong>Frequentie:</strong> 4 tot 10 minuten overdag</li>
+                <li><strong>Uren:</strong> ~06:00 tot ~00:30</li>
+                <li><strong>Lijnen:</strong> 15 lijnen die de hele stad bestrijken</li>
+            </ul>
+            
+            <div class="danger">
+                <strong>⚠️ Kritieke Instapregels:</strong> Bij de meeste trams is instappen alleen toegestaan via de deuren aan beide uiteinden (voor bij de bestuurder, achter waar een conducteur is). Middendeuren zijn uitsluitend voor uitstappen — sensoren en fysieke barrières voorkomen instappen. Proberen in te stappen via de verkeerde deur resulteert in hoorbare berispingen en vertragingen.
+            </div>
+            
+            <h4>Strategische Lijnen voor Toeristen</h4>
+            <div class="card">
+                <p><strong>Lijn 2:</strong> De culturele slagader. Vertrekt van Centraal Station, kruist de Dam, loopt langs de grachten, passeert het Museumplein (Rijksmuseum, Van Gogh) en gaat verder door het Vondelpark. Vaak genoemd als een van Europa's mooiste tramlijnen.</p>
+            </div>
+            <div class="card">
+                <p><strong>Lijn 5:</strong> Verbindt Centraal met de Jordaan en Leidseplein (uitgaanscentrum), doorlopend naar Amstelveen.</p>
+            </div>
+            <div class="card">
+                <p><strong>Lijn 26:</strong> De enige "sneltram"-lijn die het centrum verbindt met IJburg (kunstmatige eilanden). Uitzicht op moderne woonarchitectuur.</p>
+            </div>
+            
+            <h3>🚇 De Amsterdamse Metro</h3>
+            
+            <p>Historisch secundair aan trams, onderging de metro een radicale transformatie met de Noord-Zuidlijn (M52). Het is nu de ruggengraat voor snelle verplaatsingen tussen districten.</p>
+            
+            <h4>De Lijn 52 Revolutie</h4>
+            <p>Voor de M52 was Amsterdam Noord geïsoleerd door het IJ. Nu verbindt de lijn Amsterdam Zuid (financieel district Zuidas) met Amsterdam Noord in ongeveer 15 minuten, onder het historische centrum door. Voor toeristen die in Noord verblijven is deze lijn de navelstreng naar de attracties.</p>
+            
+            <p><strong>Compleet systeem:</strong> 5 lijnen (M50, M51, M52, M53, M54). Buiten de centrale ring rijdt de metro voornamelijk bovengronds.</p>
+            
+            <div class="tip">
+                <strong>💡 Belangrijk:</strong> Alle metrostations hebben toegangspoortjes die validatie vereisen bij zowel in- als uitstappen.
+            </div>
+            
+            <h3>🚌 Busnetwerk</h3>
+            
+            <p>GVB-bussen dienen twee rollen: overdag als feeders voor tangentiële routes en 's nachts als bewakers van de mobiliteit.</p>
+            
+            <h4>Nachtnetwerk (Nachtbus)</h4>
+            <p>Na 00:30, wanneer trams en metro stoppen, neemt het nachtbusnetwerk (lijnen met voorvoegsel 'N') het over. Rijdt tot ~07:00.</p>
+            
+            <div class="highlight">
+                <strong>Update 2025:</strong> GVB dag- en meerdaagse passen (24u tot 168u) omvatten nu onbeperkte toegang tot nachtbussen, waardoor extra kaartjes overbodig zijn. Voor losse ritten is het nachttarief vast op €5,60 per rit.
+            </div>
+        </section>
+        
+        <section id="ponten">
+            <h2>3. Gratis Ponten: Het Open Geheim</h2>
+            
+            <p>De ponten van Amsterdam zijn een positieve anomalie in Europees vervoer: hoogfrequente verbindingen, <strong>100% gratis</strong> voor voetgangers, fietsers en scooters. Ze functioneren als beweegbare bruggen over het IJ.</p>
+            
+            <h3>⛴️ Essentiële Routes</h3>
+            
+            <p>Ponten vertrekken van de terminal direct achter Centraal Station (IJ-zijde). Geen poortjes of kaartcontroles — instappen is gratis.</p>
+            
+            <table>
+                <tr>
+                    <th>Lijn</th>
+                    <th>Bestemming</th>
+                    <th>Frequentie (Piek)</th>
+                    <th>Tijd</th>
+                    <th>Operatie</th>
+                </tr>
+                <tr>
+                    <td><strong>F3</strong></td>
+                    <td>Buiksloterweg (EYE, A'DAM)</td>
+                    <td>4-6 min</td>
+                    <td>~5 min</td>
+                    <td><span class="badge badge-green">24 Uur</span></td>
+                </tr>
+                <tr>
+                    <td><strong>F4</strong></td>
+                    <td>NDSM Werf</td>
+                    <td>15-30 min</td>
+                    <td>~14 min</td>
+                    <td>07:00 - 00:00</td>
+                </tr>
+                <tr>
+                    <td><strong>F2</strong></td>
+                    <td>IJplein</td>
+                    <td>7-15 min</td>
+                    <td>~5 min</td>
+                    <td>06:00 - 00:00</td>
+                </tr>
+            </table>
             
             <div class="card">
-                <h3>🚋 Tram</h3>
-                <p>16 lijnen door de stad. Beste voor: Museumplein, Jordaan, De Pijp, Leidseplein. Frequentie: elke 5-10 minuten.</p>
-                <p><strong>Belangrijke lijnen:</strong></p>
+                <h4>🎯 Gouden Tip: F4 als Gratis Rondvaart</h4>
+                <p>De F4-route naar NDSM is langer (~14 min) en werkt als een gratis mini-cruise door de haven, met panoramisch uitzicht op de skyline. De bestemming is een voormalige scheepswerf omgevormd tot post-industriële culturele hub, met street art, kunstenaarsstudio's en restaurants.</p>
+            </div>
+        </section>
+        
+        <section id="ovpay">
+            <h2>4. OVpay & Kaartverkoop: Het Complete Systeem</h2>
+            
+            <p>2025 markeert de consolidatie van OVpay als dominante standaard, naast het verouderde OV-chipkaart-systeem. De complexiteit zit in de absolute vereiste voor dubbele validatie (in- en uitchecken).</p>
+            
+            <h3>💳 OVpay: Directe Contactloze Betaling</h3>
+            
+            <p>Het systeem elimineert barrières voor toeristen, waardoor direct gebruik van betaalpassen (Maestro, V PAY, Mastercard, Visa), creditcards en digitale portemonnees (Apple Pay, Google Wallet) mogelijk is.</p>
+            
+            <h4>Hoe Het Werkt</h4>
+            <ol>
+                <li><strong>Inchecken:</strong> Houd je kaart tegen de validator bij het instappen. Piep + groen licht bevestigen.</li>
+                <li><strong>Uitchecken:</strong> Houd dezelfde kaart tegen bij het uitstappen. Twee piepjes bevestigen en het scherm toont de kosten.</li>
+                <li><strong>Afschrijving:</strong> Het systeem verzamelt alle ritten en schrijft 's nachts af (zoek naar "NLOV"-code op je afschrift).</li>
+            </ol>
+            
+            <div class="danger">
+                <strong>⚠️ Kritieke OVpay Risico's:</strong>
                 <ul>
-                    <li>Lijn 2, 11, 12: Centraal → Museumplein</li>
-                    <li>Lijn 13, 17: Centraal → Jordaan</li>
-                    <li>Lijn 24: Centraal → De Pijp</li>
+                    <li><strong>Onvolledige Reis:</strong> Vergeten uit te checken = maximale "instaptarief" afschrijving (€4,00 stedelijk, €20,00 bij treinen).</li>
+                    <li><strong>Fysieke vs. Digitale Kaart:</strong> Het systeem behandelt je plastic kaart en dezelfde kaart in Apple Pay als APARTE identiteiten. Inchecken met fysiek en uitchecken met telefoon = twee boetetarieven.</li>
+                    <li><strong>Card Clash:</strong> Je hele portemonnee scannen kan ertoe leiden dat één kaart incheckt en een andere uitcheckt = dubbele afschrijvingen.</li>
                 </ul>
             </div>
             
-            <div class="card">
-                <h3>🚇 Metro</h3>
-                <p>5 lijnen. Beste voor: Noord (52), Zuidoost/Arena (50, 54), RAI (52). Minder nuttig voor centrum.</p>
-                <p><strong>Noord-Zuidlijn (52):</strong> Centraal → Noord (2 min), Centraal → Zuid (12 min)</p>
-            </div>
+            <h3>📊 Losse Tarieven 2025/2026</h3>
             
-            <div class="card">
-                <h3>⛴️ Pont (Gratis!)</h3>
-                <p>Gratis veerboten achter Centraal Station naar Noord. Elke 5-10 minuten. Neem de pont naar EYE, NDSM, of A'DAM Toren.</p>
-            </div>
-            
-            <h3>Prijzen 2026</h3>
             <table>
                 <tr>
-                    <th>Type</th>
-                    <th>Prijs</th>
-                    <th>Opmerkingen</th>
+                    <th>Component</th>
+                    <th>Bedrag</th>
                 </tr>
                 <tr>
-                    <td>Enkele reis</td>
+                    <td>Basistarief (vast per rit)</td>
+                    <td>€1,12</td>
+                </tr>
+                <tr>
+                    <td>Tarief per km</td>
+                    <td>€0,207</td>
+                </tr>
+                <tr>
+                    <td>1-uur kaartje (met overstappen)</td>
                     <td>€3,40</td>
-                    <td>1 uur geldig (incl. overstappen)</td>
                 </tr>
                 <tr>
-                    <td>24-uurs pas</td>
-                    <td>€9,00</td>
-                    <td>Rendabel na 3 ritten</td>
-                </tr>
-                <tr>
-                    <td>48-uurs pas</td>
-                    <td>€15,00</td>
-                    <td>Beste waarde voor 2 dagen</td>
-                </tr>
-                <tr>
-                    <td>72-uurs pas</td>
-                    <td>€21,00</td>
-                    <td>Voor intensief gebruik</td>
-                </tr>
-                <tr>
-                    <td>OV-chipkaart</td>
-                    <td>€7,50 + saldo</td>
-                    <td>Anonieme kaart, voor frequent gebruik</td>
+                    <td>Nachtbus (los)</td>
+                    <td>€5,60</td>
                 </tr>
             </table>
+            
+            <h3>🎫 GVB Meerdaagse Passen (2025)</h3>
+            
+            <p>Voor bezoekers zijn tijdpassen de meest rationele optie, die de angst voor kosten per rit elimineren. Geldig op GVB trams, bussen (dag en nacht) en metro. <strong>Niet geldig</strong> op regionale treinen (NS) of regionale bussen (Connexxion/EBS).</p>
+            
+            <table>
+                <tr>
+                    <th>Duur</th>
+                    <th>Prijs</th>
+                    <th>Kosten/Dag</th>
+                    <th>Geldigheid</th>
+                </tr>
+                <tr>
+                    <td>24 uur</td>
+                    <td>€9,50</td>
+                    <td>€9,50</td>
+                    <td>Opeenvolgende uren vanaf 1e check-in</td>
+                </tr>
+                <tr>
+                    <td>48 uur</td>
+                    <td>€15,50</td>
+                    <td>€7,75</td>
+                    <td>Opeenvolgende uren</td>
+                </tr>
+                <tr>
+                    <td>72 uur</td>
+                    <td>€21,50</td>
+                    <td>€7,17</td>
+                    <td>Opeenvolgende uren</td>
+                </tr>
+                <tr>
+                    <td>96 uur</td>
+                    <td>€27,00</td>
+                    <td>€6,75</td>
+                    <td>Opeenvolgende uren</td>
+                </tr>
+                <tr>
+                    <td>120 uur</td>
+                    <td>€34,00</td>
+                    <td>€6,80</td>
+                    <td>Opeenvolgende uren</td>
+                </tr>
+                <tr>
+                    <td>168 uur (7 dagen)</td>
+                    <td>€42,50</td>
+                    <td>€6,07</td>
+                    <td>Opeenvolgende uren</td>
+                </tr>
+            </table>
+            
+            <div class="tip">
+                <strong>💡 Kinderen (4-11 jaar):</strong> Specifiek dagkaartje ("Dagkaart kind") voor €5,00. De 34% korting via OVpay vereist complexe registratie met foto — het papieren kaartje is de praktische oplossing.
+            </div>
         </section>
         
-        <section>
-            <h2>Fietsen in Amsterdam</h2>
+        <section id="schiphol">
+            <h2>5. Van Schiphol naar het Centrum</h2>
+            
+            <p>Schiphol ligt ~17 km van het centrum. De keuze van vervoer moet gebaseerd zijn op de locatie van je hotel, aangezien de opties verschillende assen van de stad bedienen.</p>
+            
+            <h3>🚆 Trein (NS - Nederlandse Spoorwegen)</h3>
             
             <div class="card">
-                <span class="badge">Lokale Ervaring</span>
-                <h3>🚲 Fiets Huren</h3>
-                <p><strong>Prijs:</strong> €10-15/dag | <strong>Borg:</strong> €50-100</p>
-                <p>De meest Amsterdamse manier om te verplaatsen. Maar: het verkeer is intens en chaotisch voor beginners.</p>
-                
-                <div class="danger">
-                    <strong>Eerlijk advies:</strong> Als je niet gewend bent aan stadsfietsen, begin dan in rustige gebieden (Vondelpark, Amstel, Noord) voordat je het centrum probeert.
+                <span class="badge">Aanbevolen</span>
+                <p><strong>Voor:</strong> Centrum, Red Light District, Jordaan, gebied rond Centraal Station</p>
+                <ul>
+                    <li><strong>Waar:</strong> Station in de kelder van Schiphol Plaza</li>
+                    <li><strong>Frequentie:</strong> Elke 4-10 minuten</li>
+                    <li><strong>Tijd:</strong> 14 tot 17 minuten</li>
+                    <li><strong>Kosten:</strong> ~€5,20 (2e klas) + €1,00 toeslag als je een wegwerpkaartje koopt bij de automaat</li>
+                </ul>
+                <p><strong>Tip:</strong> Gebruik OVpay direct bij het poortje om de €1,00 toeslag te vermijden.</p>
+            </div>
+            
+            <h3>🚌 Amsterdam Airport Express (Bus 397)</h3>
+            
+            <div class="card">
+                <p><strong>Voor:</strong> Museumplein, Leidseplein, Rijksmuseum, zuid/west zone</p>
+                <ul>
+                    <li><strong>Waar:</strong> Platform B17, voor Schiphol Plaza</li>
+                    <li><strong>Kosten:</strong> €6,50 (enkele reis) of €11,75 (retour)</li>
+                    <li><strong>Tijd:</strong> 30-40 minuten (afhankelijk van verkeer)</li>
+                    <li><strong>Betaling:</strong> Kaart aan boord (geen contant)</li>
+                </ul>
+                <p><strong>Niet inbegrepen</strong> in reguliere GVB-pas.</p>
+            </div>
+            
+            <h3>🚕 Taxi en Apps</h3>
+            
+            <table>
+                <tr>
+                    <th>Optie</th>
+                    <th>Kosten</th>
+                    <th>Tijd</th>
+                    <th>Opmerking</th>
+                </tr>
+                <tr>
+                    <td>TCA (Officieel)</td>
+                    <td>€45-60</td>
+                    <td>25-40 min</td>
+                    <td>Officiële rij buiten Schiphol Plaza</td>
+                </tr>
+                <tr>
+                    <td>Uber/Bolt</td>
+                    <td>€35-50</td>
+                    <td>25-40 min</td>
+                    <td>Specifiek ophaalspunt (uitgang B of parkeergarages)</td>
+                </tr>
+            </table>
+            
+            <div class="danger">
+                <strong>⚠️ Vermijd:</strong> Taxichauffeurs die je BINNEN de terminal benaderen zijn vaak illegaal en rekenen woekerprijzen.
+            </div>
+        </section>
+        
+        <section id="fiets">
+            <h2>6. Fietsen: De Cultuur en de Regels</h2>
+            
+            <p>Amsterdam heeft meer fietsen dan inwoners. De infrastructuur weerspiegelt deze prioriteit — maar voor toeristen vereist fietsen kennis van de impliciete en expliciete regels.</p>
+            
+            <h3>🚲 Infrastructuur en Hiërarchie</h3>
+            
+            <p>Fietspaden zijn fysiek gescheiden van autowegen en trottoirs. Het zijn <strong>snelwegen met hoge snelheid</strong>, geen rustige wandelpaden.</p>
+            
+            <ul>
+                <li><strong>Voorrang:</strong> Fietsers hebben voorrang op auto's bij kruispunten wanneer ze rechtsaf slaan</li>
+                <li><strong>Voorrang verlenen:</strong> Altijd aan trams en voetgangers op zebrapaden</li>
+                <li><strong>Richting aangeven:</strong> Verplicht met je arm voordat je afslaat. Plotseling stoppen zonder waarschuwing = kettingbotsingen</li>
+            </ul>
+            
+            <div class="danger">
+                <strong>⚠️ Boetes die Pijn Doen:</strong>
+                <ul>
+                    <li><strong>Zonder verlichting 's nachts:</strong> €60-70 (wit licht voor, rood licht achter is verplicht)</li>
+                    <li><strong>Telefoon gebruiken:</strong> €140</li>
+                    <li><strong>Fietsen in voetgangersgebied:</strong> €60+</li>
+                </ul>
+                <p>De politie voert regelmatig controles uit, vooral in de herfst/winter.</p>
+            </div>
+            
+            <h3>⚡ Kritiek Gevaar: Tramrails</h3>
+            
+            <p>Tramrails oversteken moet <strong>altijd in een rechte hoek (90°)</strong> gebeuren. Schuin oversteken zorgt ervoor dat het fietswiel (vooral dunne banden) vast komt te zitten in de groef, wat resulteert in directe en gevaarlijke valpartijen.</p>
+            
+            <h3>🔒 Huur en Verzekering</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>MacBike</h4>
+                    <p>Rode fietsen met reclameborden. Geven aan dat je toerist bent (locals zullen voorzichtiger zijn). Overal te vinden.</p>
+                    <p><strong>Kosten:</strong> ~€17,50/dag</p>
+                </div>
+                <div class="card">
+                    <h4>Black Bikes</h4>
+                    <p>Zwarte fietsen in traditionele Nederlandse stijl, zonder reclame. Ophalen/inleveren op verschillende locaties mogelijk.</p>
+                    <p><strong>Kosten:</strong> ~€17,50/dag (online kortingen)</p>
                 </div>
             </div>
             
-            <h3>Fietsregels</h3>
-            <ul>
-                <li><strong>Blijf in het fietspad:</strong> Rode of geschilderde paden zijn alleen voor fietsen</li>
-                <li><strong>Hand uitsteken:</strong> Geef aan voordat je afslaat</li>
-                <li><strong>Geen telefoon:</strong> €140 boete voor fietsen met telefoon</li>
-                <li><strong>Licht aan:</strong> 's Avonds verplicht, €60 boete</li>
-                <li><strong>Altijd op slot:</strong> Diefstal is enorm, gebruik het slot ALTIJD</li>
-            </ul>
+            <div class="highlight">
+                <strong>Over Diefstal:</strong> Fietsdiefstal is endemisch. Verhuurders vereisen borg (€50-150) en identificatie. Verzekering tegen diefstal is optioneel (~€3-5/dag) maar <strong>sterk aanbevolen</strong>. Zelfs met verzekering, als de fiets wordt gestolen en je kunt niet beide sleutels van het slot tonen (bewijs dat hij op slot stond), wordt het volledige bedrag (~€450+) in rekening gebracht.
+            </div>
             
-            <h3>Fietsverhuur Tips</h3>
+            <h3>🅿️ Parkeren en Verwijdering</h3>
+            
+            <p>De gemeente verwijdert fietsen die buiten rekken in aangewezen gebieden zijn geparkeerd (vooral Centraal Station en Leidseplein). Ophalen bij het Fietsdepot kost €22,50+ en vereist sleutel + identificatie.</p>
+            
+            <p><strong>Tip:</strong> Ondergrondse garages (bijv. onder Centraal Station) zijn <strong>gratis de eerste 24 uur</strong>.</p>
+        </section>
+        
+        <section id="regionaal">
+            <h2>7. Regionale Passen: Molens, Tulpen & Stranden</h2>
+            
+            <p>Om molens, tulpenvelden of stranden te bezoeken is de stedelijke GVB-pas onvoldoende. Je hebt passen nodig die meerdere vervoerders combineren.</p>
+            
+            <h3>🎫 Amsterdam & Region Travel Ticket (ARTT)</h3>
+            
+            <div class="card">
+                <span class="badge badge-blue">De Super-Pas</span>
+                <p><strong>Dekking:</strong> GVB (Amsterdam) + Connexxion + EBS + NS (regionale treinen)</p>
+                <p><strong>Bestemmingen inbegrepen:</strong></p>
+                <ul>
+                    <li>Schiphol Airport</li>
+                    <li>Zaanse Schans (Molens)</li>
+                    <li>Keukenhof (Tulpen - bus 852/858/850)</li>
+                    <li>Haarlem</li>
+                    <li>Zandvoort (Strand)</li>
+                    <li>Volendam, Edam en Marken</li>
+                </ul>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Duur</th>
+                    <th>Prijs</th>
+                </tr>
+                <tr>
+                    <td>1 dag</td>
+                    <td>€21,00</td>
+                </tr>
+                <tr>
+                    <td>2 dagen</td>
+                    <td>€31,50</td>
+                </tr>
+                <tr>
+                    <td>3 dagen</td>
+                    <td>€40,50</td>
+                </tr>
+            </table>
+            
+            <p><strong>De moeite waard?</strong> Een retour naar Keukenhof of Zaanse Schans rechtvaardigt al een groot deel van de dagpas.</p>
+            
+            <h3>🎫 Amsterdam Travel Ticket (ATT)</h3>
+            
+            <div class="card">
+                <p><strong>Dekking:</strong> Trein Schiphol-Centraal + Bus 397 + heel GVB-netwerk</p>
+                <p><strong>Dekt niet:</strong> Regionale bussen naar molens of stranden</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Duur</th>
+                    <th>Prijs</th>
+                </tr>
+                <tr>
+                    <td>1 dag</td>
+                    <td>€18,00</td>
+                </tr>
+                <tr>
+                    <td>2 dagen</td>
+                    <td>€24,00</td>
+                </tr>
+                <tr>
+                    <td>3 dagen</td>
+                    <td>€30,00</td>
+                </tr>
+            </table>
+            
+            <p>Ideaal voor wie een paar dagen bezoekt en de luchthaven-transfer wil dekken zonder de duurdere ARTT.</p>
+            
+            <h3>📍 Logistiek van Specifieke Bestemmingen</h3>
+            
             <ul>
-                <li><strong>MacBike:</strong> Grootste verhuurder, meerdere locaties, betrouwbaar</li>
-                <li><strong>Black Bikes:</strong> Goedkoper, locals' keuze, minder opvallend</li>
-                <li><strong>Swapfiets:</strong> Abonnement, €19/maand, alleen voor langere verblijven</li>
-                <li><strong>Vermijd:</strong> Fietsen van straatverkopers (vaak gestolen)</li>
+                <li><strong>Zaanse Schans:</strong> Bus 391 (Connexxion) vanaf Centraal Station of trein naar Zaandijk Zaanse Schans. GVB-pas niet geldig; ARTT wel geldig.</li>
+                <li><strong>Keukenhof (lente):</strong> Speciale expressbussen. ARTT dekt lijnen 852 (vanaf RAI), 858 (vanaf Schiphol), 850 (vanaf Haarlem). Toegang tot het park is apart.</li>
+                <li><strong>Waterland (Volendam/Edam):</strong> EBS-bussen (312, 314, 316) vanaf station Noord of Centraal. Gedekt door ARTT, niet door GVB.</li>
             </ul>
         </section>
         
-        <section>
-            <h2>Apps die Je Nodig Hebt</h2>
-            <ul>
-                <li><strong>9292:</strong> Beste voor OV-routes in heel Nederland</li>
-                <li><strong>GVB:</strong> Officiële app voor Amsterdam OV, kaarten kopen</li>
-                <li><strong>NS:</strong> Voor treinen (Schiphol, dagtrips)</li>
-                <li><strong>Google Maps:</strong> Werkt goed voor fietsen en wandelen</li>
-            </ul>
+        <section id="pr">
+            <h2>8. Park and Ride (P+R): Voor Wie Met de Auto Komt</h2>
+            
+            <p>Het centrum inrijden met de auto is prohibitief — straatparkeren kan €7,50/uur kosten. De slimme oplossing is het P+R-systeem.</p>
+            
+            <h3>Hoe Het Werkt</h3>
+            
+            <ol>
+                <li>Parkeer in perifere garages (RAI, Johan Cruijff ArenA, Zeeburg, Sloterdijk)</li>
+                <li>Neem OV naar het centrum</li>
+                <li>Valideer de retourrit in het centrum</li>
+                <li>Betaal het parkeren bij de automaat met dezelfde kaart</li>
+            </ol>
+            
+            <table>
+                <tr>
+                    <th>Voorwaarde</th>
+                    <th>Kosten (24u)</th>
+                </tr>
+                <tr>
+                    <td>Aankomst voor 10:00 (doordeweeks)</td>
+                    <td>€6,00</td>
+                </tr>
+                <tr>
+                    <td>Aankomst na 10:00 of weekenden</td>
+                    <td>€1,00</td>
+                </tr>
+            </table>
+            
+            <div class="highlight">
+                <strong>Gouden Regel P+R:</strong> De laatste retourvalidatie MOET in het stadscentrum zijn om de parkeerkorting te valideren.
+            </div>
+        </section>
+        
+        <section id="conclusie">
+            <h2>9. Financiële Conclusie: Welke Pas Kiezen?</h2>
+            
+            <p>De keuze van je kaartje bepaalt je vervoersbudget. Hier is de analyse per profiel:</p>
+            
+            <table>
+                <tr>
+                    <th>Profiel</th>
+                    <th>Aanbeveling</th>
+                    <th>Kosten (3 dagen)</th>
+                    <th>Motivatie</th>
+                </tr>
+                <tr>
+                    <td><strong>Intensief Cultureel</strong></td>
+                    <td>I amsterdam City Card</td>
+                    <td>€108,00</td>
+                    <td>Inclusief dure musea (€20+) + GVB-vervoer. Loont als je 3+ betaalde attracties/dag bezoekt.</td>
+                </tr>
+                <tr>
+                    <td><strong>Regionale Ontdekker</strong></td>
+                    <td>Amsterdam & Region Travel Ticket</td>
+                    <td>€40,50</td>
+                    <td>Dekt luchthaven, molens, tulpen, stranden en stad. Beste geografische flexibiliteit.</td>
+                </tr>
+                <tr>
+                    <td><strong>Stedelijk Zuinig</strong></td>
+                    <td>GVB Multi-Day + Losse Trein</td>
+                    <td>~€27,00</td>
+                    <td>GVB 72u (€21,50) + trein Schiphol (€5,20). Goedkoper als je de stad niet verlaat.</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimalist</strong></td>
+                    <td>OVpay (pay-as-you-go)</td>
+                    <td>Variabel</td>
+                    <td>Voor 1-2 ritten/dag. Kosten per rit (~€1,50-€2,50) kunnen lager zijn dan dagpas.</td>
+                </tr>
+            </table>
+            
+            <div class="highlight">
+                <strong>🎯 Eindconclusie:</strong> Mobiliteit in Amsterdam in 2025/2026 is een volwassen, technologisch geavanceerd en diep geïntegreerd systeem. Het geheim is de auto loslaten, OVpay omarmen voor korte ritten, en strategisch regionale passen gebruiken om buiten de centrale grachten te verkennen.
+            </div>
         </section>
         
         <section>
-            <h2>Veelgemaakte Fouten</h2>
+            <h2>📱 Essentiële Apps</h2>
             <ul>
-                <li><strong>In de fietsstroken lopen:</strong> Levensgevaarlijk en irritant voor locals</li>
-                <li><strong>Niet inchecken/uitchecken:</strong> Boete €50+ als je betrapt wordt</li>
-                <li><strong>Taxi van straat pakken:</strong> Vaak oplichters, altijd vooraf boeken of officiële standplaats</li>
-                <li><strong>Auto huren:</strong> Onnodig, parkeren kost €7,50/uur in centrum</li>
-                <li><strong>Uber aannemen dat het goedkoop is:</strong> Prijzen vergelijkbaar met taxi in Amsterdam</li>
+                <li><strong>9292:</strong> Officiële Nederlandse OV-planner. Beste voor routes en dienstregelingen.</li>
+                <li><strong>GVB:</strong> Kaartjes kopen, realtime aankomsttijden. Essentieel voor tram/metro.</li>
+                <li><strong>NS:</strong> Nederlandse Spoorwegen. Voor treinen naar Schiphol en daguitstappen.</li>
+                <li><strong>Uber/Bolt:</strong> Ritten via app. Meestal goedkoper dan officiële taxi's.</li>
+                <li><strong>Donkey Republic:</strong> Fiets delen. Ontgrendel via app, lever in bij elk station.</li>
             </ul>
         </section>
         
@@ -250,9 +649,10 @@
             <h2>Verder Lezen</h2>
             <ul>
                 <li><a href="/nl/index.html">Amsterdam Gids Home</a></li>
+                <li><a href="/nl/planning.html">Reisplanning</a></li>
                 <li><a href="/nl/accommodation.html">Waar Overnachten</a></li>
                 <li><a href="/nl/attractions.html">Bezienswaardigheden</a></li>
-                <li><a href="/nl/daytrips.html">Dagtrips</a></li>
+                <li><a href="/nl/daytrips.html">Dagtrips vanaf Amsterdam</a></li>
             </ul>
         </section>
     </main>
