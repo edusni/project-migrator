@@ -4,6 +4,7 @@ import { Calendar } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import { useState, useEffect, useRef } from "react";
 import {
   CostCalculator,
@@ -135,6 +136,8 @@ const Planejamento = () => {
       </div>
 
       <PlanejamentoFAQSection />
+      
+      <RelatedBlogPostsSection currentPath="/planejamento" />
       
       <RelatedPagesSection 
         currentPath="/planejamento"
