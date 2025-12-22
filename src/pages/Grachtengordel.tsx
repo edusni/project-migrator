@@ -1,4 +1,5 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,6 +30,7 @@ import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 
 const Grachtengordel = () => {
   const { language } = useLanguage();
+  const heroImage = useSiteImage("hero-grachtengordel", heroGrachtengordel);
 
   const t = (pt: string, en: string, nl: string) => {
     if (language === 'en') return en;
@@ -120,7 +122,7 @@ const Grachtengordel = () => {
           "Strategisch Stedelijk en Vastgoed Inlichtingenrapport – Scenario 2026"
         )}
         icon={Landmark}
-        backgroundImage={heroGrachtengordel}
+        backgroundImage={heroImage}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">
