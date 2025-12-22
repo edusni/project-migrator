@@ -254,6 +254,18 @@
     <priority>0.7</priority>
   </url>
 
+  <!-- De Pijp Neighborhood Guide -->
+  <url>
+    <loc>https://amsterdu.com/pt/de-pijp.html</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/de-pijp.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/de-pijp.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/de-pijp.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/de-pijp.html"/>
+    <lastmod>2025-12-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- LLM Static Pages -->
   <url>
     <loc>https://amsterdu.com/llm.html</loc>
