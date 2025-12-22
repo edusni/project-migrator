@@ -19,6 +19,9 @@ const routeImports = {
   "amsterdam-oost": () => import("@/pages/AmsterdamOost"),
   "amsterdam-noord": () => import("@/pages/AmsterdamNoord"),
   "amsterdam-zuid": () => import("@/pages/AmsterdamZuid"),
+  "nieuw-west": () => import("@/pages/NieuwWest"),
+  "zuidoost": () => import("@/pages/Zuidoost"),
+  "weesp": () => import("@/pages/Weesp"),
 } as const;
 
 type RouteKey = keyof typeof routeImports;

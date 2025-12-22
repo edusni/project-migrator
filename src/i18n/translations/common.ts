@@ -20,6 +20,9 @@ export const commonTranslations: TranslationModule = {
   "nav.amsterdamOost": { pt: "Amsterdam Oost", en: "Amsterdam East", nl: "Amsterdam Oost" },
   "nav.amsterdamNoord": { pt: "Amsterdam Noord", en: "Amsterdam North", nl: "Amsterdam Noord" },
   "nav.amsterdamZuid": { pt: "Amsterdam Zuid", en: "Amsterdam South", nl: "Amsterdam Zuid" },
+  "nav.nieuwWest": { pt: "Nieuw-West", en: "Nieuw-West", nl: "Nieuw-West" },
+  "nav.zuidoost": { pt: "Zuidoost", en: "Southeast", nl: "Zuidoost" },
+  "nav.weesp": { pt: "Weesp", en: "Weesp", nl: "Weesp" },
   "nav.gallery": { pt: "Galeria", en: "Gallery", nl: "Galerij" },
   "nav.blog": { pt: "Blog", en: "Blog", nl: "Blog" },
 
