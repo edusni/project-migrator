@@ -9,6 +9,7 @@ import {
   ThreeRulesSection,
   GoldenRuleSection,
   TransportTabsSection,
+  TransportCalculator,
   AppsSection,
   ChecklistSection,
   FAQSection,
@@ -82,6 +83,7 @@ const Transporte = () => {
       <ThreeRulesSection />
       <GoldenRuleSection />
       <TransportTabsSection />
+      <TransportCalculator />
       <AppsSection />
       <ChecklistSection />
       <FAQSection />
