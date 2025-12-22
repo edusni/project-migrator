@@ -118,7 +118,7 @@ const Grachtengordel = () => {
           "Strategic Urban and Real Estate Intelligence Report – 2026 Scenario",
           "Strategisch Stedelijk en Vastgoed Inlichtingenrapport – Scenario 2026"
         )}
-        icon={<Landmark className="h-12 w-12" />}
+        icon={Landmark}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">
