@@ -72,6 +72,11 @@ const Transporte = () => {
         title={t("Como se Locomover em Amsterdam (2026)", "Getting Around Amsterdam (2026)", "Vervoer in Amsterdam (2026)")} 
         description={t("O guia para não se perder, não levar multa e não ser atropelado", "The guide to not get lost, fined, or run over", "De gids om niet te verdwalen, geen boete te krijgen en niet aangereden te worden")}
         backgroundImage={amsterdamBikesImg}
+        readTime={t("6 min de leitura", "6 min read", "6 min lezen")}
+        quickStats={[
+          { value: "€5,50", label: t("Schiphol → Centro", "Schiphol → Center", "Schiphol → Centrum") },
+          { value: t("Grátis", "Free", "Gratis"), label: "ferries" },
+        ]}
       />
 
       <ThreeRulesSection />
