@@ -2,8 +2,9 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { MapPin, Star } from "lucide-react";
+import { useSiteImages, getSiteImageUrl } from "@/hooks/useSiteImage";
 
-// Import coffeeshop images
+// Import coffeeshop images (fallbacks)
 import bulldogImg from "@/assets/coffeeshop-bulldog.png";
 import greyAreaImg from "@/assets/coffeeshop-grey-area.png";
 import dampkringImg from "@/assets/coffeeshop-dampkring.png";
@@ -13,7 +14,6 @@ import siberieImg from "@/assets/coffeeshop-siberie.png";
 import tweedeKamerImg from "@/assets/coffeeshop-tweede-kamer.png";
 import ibizaImg from "@/assets/coffeeshop-ibiza.png";
 import amsterdamImg from "@/assets/coffeeshop-amsterdam.png";
-
 interface FamousCoffeeshop {
   id: string;
   name: string;
@@ -124,6 +124,11 @@ const profileLabels = {
 
 export function FamousGallerySection() {
   const { language } = useLanguage();
+  const { data: imageMap } = useSiteImages();
+
+  // Helper to get dynamic image URL
+  const getImage = (imageKey: string, fallback: string) => 
+    getSiteImageUrl(imageKey, fallback, imageMap);
 
   const content = language === "nl" ? {
     title: "Galerij: Beroemde Coffeeshops van Amsterdam",
@@ -156,7 +161,7 @@ export function FamousGallerySection() {
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <img
-                  src={shop.image}
+                  src={getImage(`coffeeshop-${shop.id}`, shop.image)}
                   alt={shop.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

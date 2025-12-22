@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import amsterdamHero from "@/assets/amsterdam-hero-new.webp";
+import amsterdamHeroFallback from "@/assets/amsterdam-hero-new.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
-
+import { useSiteImage } from "@/hooks/useSiteImage";
 const quickStats = {
   pt: [
     { icon: Euro, value: "40%", label: "economia vs turista comum" },
@@ -53,6 +53,9 @@ export function HeroSection() {
   
   // Prefetch critical routes on idle
   usePrefetchCriticalRoutes();
+  
+  // Get dynamic image URL
+  const amsterdamHero = useSiteImage('hero-amsterdam', amsterdamHeroFallback);
   
   const { scrollYProgress } = useScroll({
     target: ref,

@@ -2,8 +2,9 @@ import { AnimatedSection } from "@/components/ui/animated-section";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Language } from "@/hooks/useLanguage";
+import { useSiteImages, getSiteImageUrl } from "@/hooks/useSiteImage";
 
-// Import images
+// Import images (fallbacks)
 import stroopwafelImg from "@/assets/food-stroopwafel.png";
 import haringImg from "@/assets/food-haring.png";
 import bitterballenImg from "@/assets/food-bitterballen.png";
@@ -11,7 +12,6 @@ import poffertjesImg from "@/assets/food-poffertjes.png";
 import feboImg from "@/assets/food-febo.png";
 import rijsttafelImg from "@/assets/food-rijsttafel.png";
 import browncafeImg from "@/assets/food-browncafe.png";
-
 interface FoodItem {
   id: string;
   name: { pt: string; en: string; nl: string };
@@ -117,6 +117,12 @@ const t = (pt: string, en: string, nl: string, language: Language) => {
 };
 
 export function FoodGallerySection({ language }: FoodGallerySectionProps) {
+  const { data: imageMap } = useSiteImages();
+
+  // Helper to get dynamic image URL
+  const getImage = (imageKey: string, fallback: string) => 
+    getSiteImageUrl(imageKey, fallback, imageMap);
+
   return (
     <section className="py-10 sm:py-12 md:py-16">
       <AnimatedSection>
@@ -141,7 +147,7 @@ export function FoodGallerySection({ language }: FoodGallerySectionProps) {
             <Card className="overflow-hidden group hover:shadow-xl transition-all duration-300 h-full flex flex-col">
               <div className="relative h-40 sm:h-48 overflow-hidden">
                 <img
-                  src={item.image}
+                  src={getImage(`food-${item.id}`, item.image)}
                   alt={getText(item.name, language)}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />

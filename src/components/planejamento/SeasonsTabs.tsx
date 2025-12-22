@@ -4,13 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { AnimateOnScroll } from "@/hooks/useInView";
 import { Language } from "@/hooks/useLanguage";
+import { useSiteImages, getSiteImageUrl } from "@/hooks/useSiteImage";
 
-// Season images
+// Season images (fallbacks)
 import springImg from "@/assets/season-spring.webp";
 import summerImg from "@/assets/season-summer.webp";
 import autumnImg from "@/assets/season-autumn.webp";
 import winterImg from "@/assets/season-winter.webp";
-
 interface SeasonsTabsProps {
   language: Language;
 }
@@ -22,8 +22,14 @@ const t = (pt: string, en: string, nl: string, language: Language) => {
 };
 
 export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
+  const { data: imageMap } = useSiteImages();
+
+  // Helper to get dynamic image URL
+  const getImage = (imageKey: string, fallback: string) => 
+    getSiteImageUrl(imageKey, fallback, imageMap);
+
   const seasons = [
-    { 
+    {
       icon: Leaf, 
       name: t("Primavera", "Spring", "Lente", language),
       period: t("Março - Maio", "March - May", "Maart - Mei", language), 
@@ -163,7 +169,7 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
               <div className="flex flex-col lg:flex-row">
                 <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
                   <img 
-                    src={springImg} 
+                    src={getImage('season-spring', springImg)} 
                     alt="Amsterdam na primavera com tulipas" 
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -212,7 +218,7 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
               <div className="flex flex-col lg:flex-row-reverse">
                 <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
                   <img 
-                    src={summerImg} 
+                    src={getImage('season-summer', summerImg)} 
                     alt="Amsterdam no verão com terraços" 
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -258,7 +264,7 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
               <div className="flex flex-col lg:flex-row">
                 <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
                   <img 
-                    src={autumnImg} 
+                    src={getImage('season-autumn', autumnImg)} 
                     alt="Amsterdam no outono com folhas douradas" 
                     className="w-full h-full object-cover"
                     loading="lazy"
@@ -303,7 +309,7 @@ export const SeasonsTabs = ({ language }: SeasonsTabsProps) => {
               <div className="flex flex-col lg:flex-row-reverse">
                 <div className="hidden lg:block lg:w-[280px] lg:shrink-0">
                   <img 
-                    src={winterImg} 
+                    src={getImage('season-winter', winterImg)} 
                     alt="Amsterdam no inverno com luzes de Natal" 
                     className="w-full h-full object-cover"
                     loading="lazy"
