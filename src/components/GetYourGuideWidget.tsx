@@ -11,20 +11,7 @@ interface GetYourGuideAvailabilityWidgetProps {
   className?: string;
 }
 
-// Load script once globally
-let scriptLoaded = false;
-
-const loadGYGScript = () => {
-  if (!scriptLoaded && !document.querySelector('script[src*="getyourguide.com"]')) {
-    const script = document.createElement("script");
-    script.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
-    script.async = true;
-    script.dataset.gygPartnerId = "RSSK3KX";
-    document.body.appendChild(script);
-    scriptLoaded = true;
-  }
-};
-
+// Script is loaded globally in index.html, just need to init widgets
 const initWidgets = () => {
   if ((window as any).GetYourGuideWidgets) {
     (window as any).GetYourGuideWidgets.init();
@@ -36,9 +23,8 @@ export function GetYourGuideWidget({ className = "" }: GetYourGuideCityWidgetPro
   const localeCode = language === "nl" ? "nl-NL" : language === "en" ? "en-US" : "pt-BR";
 
   useEffect(() => {
-    loadGYGScript();
     initWidgets();
-    const timeout = setTimeout(initWidgets, 1000);
+    const timeout = setTimeout(initWidgets, 500);
     return () => clearTimeout(timeout);
   }, [language]);
 
@@ -64,9 +50,8 @@ export function GetYourGuideAvailability({
   const localeCode = language === "nl" ? "nl-NL" : language === "en" ? "en-US" : "pt-BR";
 
   useEffect(() => {
-    loadGYGScript();
     initWidgets();
-    const timeout = setTimeout(initWidgets, 1000);
+    const timeout = setTimeout(initWidgets, 500);
     return () => clearTimeout(timeout);
   }, [language, tourId]);
 
