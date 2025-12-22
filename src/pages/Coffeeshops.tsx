@@ -736,6 +736,8 @@ const Coffeeshops = () => {
         items={content.faq.items}
       />
       
+      <RelatedBlogPostsSection currentPath="/coffeeshops" />
+      
       <RelatedPagesSection 
         currentPath="/coffeeshops"
         suggestedPaths={["/gastronomia", "/transporte", "/hospedagem", "/atracoes"]}
