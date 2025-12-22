@@ -28,6 +28,7 @@ const DePijp = lazy(() => import("./pages/DePijp"));
 const Jordaan = lazy(() => import("./pages/Jordaan"));
 const Binnenstad = lazy(() => import("./pages/Binnenstad"));
 const Grachtengordel = lazy(() => import("./pages/Grachtengordel"));
+const AmsterdamWest = lazy(() => import("./pages/AmsterdamWest"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -64,6 +65,7 @@ const LocalePageRoutes = () => (
       <Route path="jordaan" element={<Jordaan />} />
       <Route path="binnenstad" element={<Binnenstad />} />
       <Route path="grachtengordel" element={<Grachtengordel />} />
+      <Route path="amsterdam-west" element={<AmsterdamWest />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
@@ -108,6 +110,7 @@ const App = () => (
             <Route path="/jordaan" element={<Navigate to="/pt/jordaan" replace />} />
             <Route path="/binnenstad" element={<Navigate to="/pt/binnenstad" replace />} />
             <Route path="/grachtengordel" element={<Navigate to="/pt/grachtengordel" replace />} />
+            <Route path="/amsterdam-west" element={<Navigate to="/pt/amsterdam-west" replace />} />
             
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
