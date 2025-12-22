@@ -21,6 +21,8 @@ interface Post {
   id: string;
   title: string;
   slug: string;
+  slug_en: string | null;
+  slug_nl: string | null;
   content: string;
   excerpt: string | null;
   featured_image: string | null;
@@ -46,6 +48,8 @@ interface Post {
 
 interface AdjacentPost {
   slug: string;
+  slug_en: string | null;
+  slug_nl: string | null;
   title: string;
   title_en: string | null;
   title_nl: string | null;
@@ -110,12 +114,19 @@ const BlogPost = () => {
       setIsLoading(true);
       setTranslatedContent(null);
 
-      const { data, error } = await supabase
+      // Try to find post by native slug first (for EN/NL), then fallback to PT slug
+      let data = null;
+      let error = null;
+
+      // First, try exact slug match (works for PT)
+      const ptResult = await supabase
         .from("blog_posts")
         .select(`
           id,
           title,
           slug,
+          slug_en,
+          slug_nl,
           content,
           excerpt,
           featured_image,
@@ -141,6 +152,85 @@ const BlogPost = () => {
         .eq("status", "published")
         .maybeSingle();
 
+      if (ptResult.data) {
+        data = ptResult.data;
+      } else {
+        // Try EN slug
+        const enResult = await supabase
+          .from("blog_posts")
+          .select(`
+            id,
+            title,
+            slug,
+            slug_en,
+            slug_nl,
+            content,
+            excerpt,
+            featured_image,
+            read_time_minutes,
+            published_at,
+            meta_title,
+            meta_description,
+            meta_keywords,
+            title_en,
+            title_nl,
+            content_en,
+            content_nl,
+            excerpt_en,
+            excerpt_nl,
+            blog_categories (
+              name,
+              emoji,
+              color,
+              slug
+            )
+          `)
+          .eq("slug_en", slug)
+          .eq("status", "published")
+          .maybeSingle();
+
+        if (enResult.data) {
+          data = enResult.data;
+        } else {
+          // Try NL slug
+          const nlResult = await supabase
+            .from("blog_posts")
+            .select(`
+              id,
+              title,
+              slug,
+              slug_en,
+              slug_nl,
+              content,
+              excerpt,
+              featured_image,
+              read_time_minutes,
+              published_at,
+              meta_title,
+              meta_description,
+              meta_keywords,
+              title_en,
+              title_nl,
+              content_en,
+              content_nl,
+              excerpt_en,
+              excerpt_nl,
+              blog_categories (
+                name,
+                emoji,
+                color,
+                slug
+              )
+            `)
+            .eq("slug_nl", slug)
+            .eq("status", "published")
+            .maybeSingle();
+
+          data = nlResult.data;
+          error = nlResult.error;
+        }
+      }
+
       if (error) {
         console.error("Error fetching post:", error);
       }
@@ -153,7 +243,7 @@ const BlogPost = () => {
         const [prevResult, nextResult] = await Promise.all([
           supabase
             .from("blog_posts")
-            .select("slug, title, title_en, title_nl, featured_image")
+            .select("slug, slug_en, slug_nl, title, title_en, title_nl, featured_image")
             .eq("status", "published")
             .lt("published_at", data.published_at)
             .order("published_at", { ascending: false })
@@ -161,7 +251,7 @@ const BlogPost = () => {
             .maybeSingle(),
           supabase
             .from("blog_posts")
-            .select("slug, title, title_en, title_nl, featured_image")
+            .select("slug, slug_en, slug_nl, title, title_en, title_nl, featured_image")
             .eq("status", "published")
             .gt("published_at", data.published_at)
             .order("published_at", { ascending: true })
@@ -452,7 +542,12 @@ const BlogPost = () => {
                       <Button
                         variant="outline"
                         className="w-full h-auto min-h-[70px] p-4 flex flex-col items-start text-left group hover:border-primary/50 transition-all"
-                        onClick={() => navigate(getLocalizedPath(locale, `/blog/${prevPost.slug}`))}
+                        onClick={() => {
+                          const prevSlug = locale === "en" && prevPost.slug_en ? prevPost.slug_en : 
+                                           locale === "nl" && prevPost.slug_nl ? prevPost.slug_nl : 
+                                           prevPost.slug;
+                          navigate(getLocalizedPath(locale, `/blog/${prevSlug}`));
+                        }}
                       >
                         <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
                           <ChevronLeft className="w-3 h-3" />
@@ -473,7 +568,12 @@ const BlogPost = () => {
                       <Button
                         variant="outline"
                         className="w-full h-auto min-h-[70px] p-4 flex flex-col items-end text-right group hover:border-primary/50 transition-all"
-                        onClick={() => navigate(getLocalizedPath(locale, `/blog/${nextPost.slug}`))}
+                        onClick={() => {
+                          const nextSlug = locale === "en" && nextPost.slug_en ? nextPost.slug_en : 
+                                           locale === "nl" && nextPost.slug_nl ? nextPost.slug_nl : 
+                                           nextPost.slug;
+                          navigate(getLocalizedPath(locale, `/blog/${nextSlug}`));
+                        }}
                       >
                         <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
                           {texts.nextPost}
