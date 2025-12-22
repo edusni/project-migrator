@@ -2,6 +2,7 @@ import { Train, MapPin, CreditCard } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/hooks/useLanguage";
 import { prices2026 } from "@/data/attractions2026";
+import { AffiliateGVBBanner } from "@/components/AffiliateGVBBanner";
 
 const t = (pt: string, en: string, nl: string, language: string) => {
   if (language === "nl") return nl;
@@ -81,6 +82,8 @@ export function TransportSection() {
               </CardContent>
             </Card>
           </div>
+
+          <AffiliateGVBBanner className="mt-8" />
         </div>
       </div>
     </section>

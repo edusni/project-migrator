@@ -2,6 +2,7 @@ import { Smartphone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimateOnScroll } from "@/hooks/useInView";
 import { Language } from "@/hooks/useLanguage";
+import { AffiliateGVBBanner } from "@/components/AffiliateGVBBanner";
 
 interface TransportSectionProps {
   language: Language;
@@ -217,6 +218,10 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
               </div>
             </CardContent>
           </Card>
+        </AnimateOnScroll>
+
+        <AnimateOnScroll delay={300}>
+          <AffiliateGVBBanner className="max-w-6xl mx-auto mt-10" />
         </AnimateOnScroll>
       </div>
     </section>
