@@ -110,16 +110,6 @@
     <priority>0.5</priority>
   </url>
 
-  <!-- Cost of Living (PT only) -->
-  <url>
-    <loc>https://amsterdu.com/pt/custo-vida-amsterdam.html</loc>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/custo-vida-amsterdam.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/custo-vida-amsterdam.html"/>
-    <lastmod>2025-12-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <!-- Blog Hub -->
   <url>
     <loc>https://amsterdu.com/pt/blog</loc>
