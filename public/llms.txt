@@ -1,6 +1,6 @@
 # Amsterdu - The Brutally Honest Amsterdam Guide
 # https://amsterdu.com
-# Last updated: 2025-12-17
+# Last updated: 2025-12-22
 
 > Amsterdu is a comprehensive trilingual travel guide for Amsterdam, written by "Du" - a Brazilian who knows the city deeply through multiple visits and local friendships. The guide focuses on practical, honest information including real costs, tourist traps to avoid, and local secrets. Content is available in Portuguese (primary), English, and Dutch.
 
@@ -12,44 +12,41 @@
 
 ## Primary Content (Portuguese - pt-BR)
 
-- [Página Inicial](https://amsterdu.com/pt): Guia completo de Amsterdam 2026 com dicas práticas, custos reais e armadilhas turísticas a evitar.
-- [Planejamento](https://amsterdu.com/pt/planejamento): Como planejar sua viagem - melhor época, documentos, orçamento, roteiros testados.
-- [Hospedagem](https://amsterdu.com/pt/hospedagem): Onde ficar em Amsterdam - melhores bairros (Jordaan, De Pijp, Noord), preços reais com impostos 2026.
-- [Atrações](https://amsterdu.com/pt/atracoes): O que fazer - museus (Van Gogh, Rijksmuseum, Anne Frank), parques, experiências com mapa interativo.
-- [Transporte](https://amsterdu.com/pt/transporte): Como se locomover - metrô, tram, bike, ferry, OVpay, Schiphol ao centro.
-- [Gastronomia](https://amsterdu.com/pt/gastronomia): Onde comer - comida holandesa (stroopwafel, bitterballen), restaurantes, foodhallen.
-- [Coffeeshops](https://amsterdu.com/pt/coffeeshops): Guia completo - regras 2026, preços, melhores opções, o que turistas precisam saber.
-- [Arredores](https://amsterdu.com/pt/arredores): Bate-voltas - Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn.
-- [Custo de Vida](https://amsterdu.com/pt/custo-vida-amsterdam): Quanto custa morar em Amsterdam - aluguel, seguro saúde, utilidades, orçamento mensal.
-- [Sobre](https://amsterdu.com/pt/sobre): Quem é o Du e por que o Amsterdu existe.
+- [Página Inicial](https://amsterdu.com/pt/index.html): Guia completo de Amsterdam 2026 com dicas práticas, custos reais e armadilhas turísticas a evitar.
+- [Planejamento](https://amsterdu.com/pt/planejamento.html): Como planejar sua viagem - melhor época, documentos, orçamento, roteiros testados.
+- [Hospedagem](https://amsterdu.com/pt/hospedagem.html): Onde ficar em Amsterdam - melhores bairros (Jordaan, De Pijp, Noord), preços reais com impostos 2026.
+- [Atrações](https://amsterdu.com/pt/atracoes.html): O que fazer - museus (Van Gogh, Rijksmuseum, Anne Frank), parques, experiências com mapa interativo.
+- [Transporte](https://amsterdu.com/pt/transporte.html): Como se locomover - metrô, tram, bike, ferry, OVpay, Schiphol ao centro.
+- [Gastronomia](https://amsterdu.com/pt/gastronomia.html): Onde comer - comida holandesa (stroopwafel, bitterballen), restaurantes, foodhallen.
+- [Coffeeshops](https://amsterdu.com/pt/coffeeshops.html): Guia completo - regras 2026, preços, melhores opções, o que turistas precisam saber.
+- [Arredores](https://amsterdu.com/pt/arredores.html): Bate-voltas - Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn.
+- [Sobre](https://amsterdu.com/pt/sobre.html): Quem é o Du e por que o Amsterdu existe.
 - [Blog](https://amsterdu.com/pt/blog): Histórias pessoais e dicas exclusivas.
 
 ## English Content (en)
 
-- [Home](https://amsterdu.com/en): Complete Amsterdam 2026 guide with practical tips, real costs, and tourist traps to avoid.
-- [Planning](https://amsterdu.com/en/planejamento): Trip planning - best time, documents, budget, tested itineraries.
-- [Accommodation](https://amsterdu.com/en/hospedagem): Where to stay - best neighborhoods, real prices with 2026 taxes.
-- [Attractions](https://amsterdu.com/en/atracoes): What to do - museums, parks, experiences with interactive map.
-- [Transport](https://amsterdu.com/en/transporte): Getting around - metro, tram, bike, ferry, OVpay.
-- [Food](https://amsterdu.com/en/gastronomia): Where to eat - Dutch food, restaurants, avoiding tourist traps.
-- [Coffeeshops](https://amsterdu.com/en/coffeeshops): Complete guide - 2026 rules, prices, best options.
-- [Day Trips](https://amsterdu.com/en/arredores): Excursions - Zaanse Schans, Keukenhof, Haarlem, Rotterdam.
-- [Cost of Living](https://amsterdu.com/en/custo-vida-amsterdam): Living costs in Amsterdam - rent, health insurance, utilities.
-- [About](https://amsterdu.com/en/sobre): Who is Du and why Amsterdu exists.
+- [Home](https://amsterdu.com/en/index.html): Complete Amsterdam 2026 guide with practical tips, real costs, and tourist traps to avoid.
+- [Planning](https://amsterdu.com/en/planning.html): Trip planning - best time, documents, budget, tested itineraries.
+- [Accommodation](https://amsterdu.com/en/accommodation.html): Where to stay - best neighborhoods, real prices with 2026 taxes.
+- [Attractions](https://amsterdu.com/en/attractions.html): What to do - museums, parks, experiences with interactive map.
+- [Transport](https://amsterdu.com/en/transport.html): Getting around - metro, tram, bike, ferry, OVpay.
+- [Food](https://amsterdu.com/en/food.html): Where to eat - Dutch food, restaurants, avoiding tourist traps.
+- [Coffeeshops](https://amsterdu.com/en/coffeeshops.html): Complete guide - 2026 rules, prices, best options.
+- [Day Trips](https://amsterdu.com/en/daytrips.html): Excursions - Zaanse Schans, Keukenhof, Haarlem, Rotterdam.
+- [About](https://amsterdu.com/en/about.html): Who is Du and why Amsterdu exists.
 - [Blog](https://amsterdu.com/en/blog): Personal stories and exclusive tips.
 
 ## Dutch Content (nl-NL)
 
-- [Home](https://amsterdu.com/nl): Complete Amsterdam gids 2026 met praktische tips en eerlijke kosteninformatie.
-- [Planning](https://amsterdu.com/nl/planejamento): Reisplanning - beste tijd, documenten, budget.
-- [Accommodatie](https://amsterdu.com/nl/hospedagem): Waar verblijven - beste wijken, echte prijzen.
-- [Bezienswaardigheden](https://amsterdu.com/nl/atracoes): Wat te doen - musea, parken, ervaringen.
-- [Vervoer](https://amsterdu.com/nl/transporte): Rondkomen - metro, tram, fiets, veer.
-- [Eten](https://amsterdu.com/nl/gastronomia): Waar eten - Nederlandse gerechten, restaurants.
-- [Coffeeshops](https://amsterdu.com/nl/coffeeshops): Complete gids - regels 2026, prijzen.
-- [Dagtrips](https://amsterdu.com/nl/arredores): Uitstapjes - Zaanse Schans, Keukenhof, Haarlem.
-- [Kosten](https://amsterdu.com/nl/custo-vida-amsterdam): Levenskosten in Amsterdam.
-- [Over](https://amsterdu.com/nl/sobre): Wie is Du en waarom Amsterdu bestaat.
+- [Home](https://amsterdu.com/nl/index.html): Complete Amsterdam gids 2026 met praktische tips en eerlijke kosteninformatie.
+- [Planning](https://amsterdu.com/nl/planning.html): Reisplanning - beste tijd, documenten, budget.
+- [Accommodatie](https://amsterdu.com/nl/accommodation.html): Waar verblijven - beste wijken, echte prijzen.
+- [Bezienswaardigheden](https://amsterdu.com/nl/attractions.html): Wat te doen - musea, parken, ervaringen.
+- [Vervoer](https://amsterdu.com/nl/transport.html): Rondkomen - metro, tram, fiets, veer.
+- [Eten](https://amsterdu.com/nl/food.html): Waar eten - Nederlandse gerechten, restaurants.
+- [Coffeeshops](https://amsterdu.com/nl/coffeeshops.html): Complete gids - regels 2026, prijzen.
+- [Dagtrips](https://amsterdu.com/nl/daytrips.html): Uitstapjes - Zaanse Schans, Keukenhof, Haarlem.
+- [Over](https://amsterdu.com/nl/about.html): Wie is Du en waarom Amsterdu bestaat.
 - [Blog](https://amsterdu.com/nl/blog): Persoonlijke verhalen en tips.
 
 ## Key Information
