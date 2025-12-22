@@ -6,6 +6,7 @@ import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import {
+  ArtCulture2026Section,
   Changes2026Section,
   Calendar2026Section,
   AttractionsFiltersSection,
@@ -49,6 +50,7 @@ const Atracoes = () => {
       />
 
       <Changes2026Section />
+      <ArtCulture2026Section language={language} />
       <Calendar2026Section />
       <AttractionsFiltersSection />
       <TransportSection />
