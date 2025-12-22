@@ -3,8 +3,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Train } from "lucide-react";
 import { Language } from "@/hooks/useLanguage";
+import { useSiteImages, getSiteImageUrl } from "@/hooks/useSiteImage";
 
-// Import images
+// Import images (fallbacks)
 import zaanseSchansImg from "@/assets/daytrip-zaanse-schans.png";
 import clogsImg from "@/assets/daytrip-clogs.png";
 import keukenhofImg from "@/assets/daytrip-keukenhof.png";
@@ -15,7 +16,6 @@ import delftImg from "@/assets/daytrip-delft.png";
 import rotterdamImg from "@/assets/daytrip-rotterdam.png";
 import markenImg from "@/assets/daytrip-marken.png";
 import muiderslotImg from "@/assets/daytrip-muiderslot.png";
-
 interface Destination {
   id: string;
   name: { pt: string; en: string; nl: string };
@@ -161,6 +161,12 @@ const t = (pt: string, en: string, nl: string, language: Language) => {
 };
 
 export function DestinationsGallerySection({ language }: DestinationsGallerySectionProps) {
+  const { data: imageMap } = useSiteImages();
+
+  // Helper to get dynamic image URL
+  const getImage = (imageKey: string, fallback: string) => 
+    getSiteImageUrl(imageKey, fallback, imageMap);
+
   return (
     <section className="py-8 sm:py-12 md:py-16">
       <AnimatedSection>
@@ -185,7 +191,7 @@ export function DestinationsGallerySection({ language }: DestinationsGallerySect
             <Card className="overflow-hidden group hover:shadow-xl transition-all duration-300 h-full flex flex-col">
               <div className="relative h-40 sm:h-44 lg:h-48 overflow-hidden">
                 <img
-                  src={dest.image}
+                  src={getImage(`daytrip-${dest.id}`, dest.image)}
                   alt={getText(dest.name, language)}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
