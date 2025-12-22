@@ -4,6 +4,7 @@ import { Euro, Home, Heart, Zap, Wifi, Trash2, Droplets, ShoppingCart, Bike, Use
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { CostOfLivingCalculator } from "@/components/custo-de-vida/CostOfLivingCalculator";
@@ -693,6 +694,8 @@ const CustoDeVida = () => {
           </AnimatedSection>
         </div>
       </section>
+
+      <RelatedBlogPostsSection currentPath="/custo-vida-amsterdam" />
 
       <RelatedPagesSection
         currentPath="/custo-vida-amsterdam"

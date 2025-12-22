@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { PageLayout } from "@/components/PageLayout";
 import { SEOHead } from "@/components/SEOHead";
@@ -8,8 +8,9 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
+import { getParentPage, ParentPageInfo } from "@/data/blogPostsMapping";
 
-import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, ChevronLeft, ChevronRight, Home, ChevronRight as ChevronRightIcon } from "lucide-react";
 import { format } from "date-fns";
 import { ptBR, enUS, nl } from "date-fns/locale";
 import { useLanguage } from "@/hooks/useLanguage";
@@ -400,8 +401,22 @@ const BlogPost = () => {
     ? format(new Date(post.published_at), "d MMMM yyyy", { locale: dateLocale })
     : null;
 
-  // Generate breadcrumbs for SEO
-  const breadcrumbs = [
+  // Get parent page for breadcrumbs
+  const parentPage = getParentPage(post.blog_categories?.slug || null, post.slug);
+  
+  const getParentTitle = (p: ParentPageInfo) => {
+    if (language === "nl") return p.titleNl;
+    if (language === "en") return p.titleEn;
+    return p.titlePt;
+  };
+
+  // Generate breadcrumbs for SEO (includes parent page if available)
+  const breadcrumbs = parentPage ? [
+    { name: language === "nl" ? "Home" : language === "en" ? "Home" : "Início", url: `https://amsterdu.com/${locale}` },
+    { name: getParentTitle(parentPage), url: `https://amsterdu.com${parentPage.path}` },
+    { name: "Blog", url: `https://amsterdu.com/${locale}/blog` },
+    { name: translatedContent?.title || post.title, url: `https://amsterdu.com/${locale}/blog/${post.slug}` },
+  ] : [
     { name: language === "nl" ? "Home" : language === "en" ? "Home" : "Início", url: `https://amsterdu.com/${locale}` },
     { name: "Blog", url: `https://amsterdu.com/${locale}/blog` },
     { name: translatedContent?.title || post.title, url: `https://amsterdu.com/${locale}/blog/${post.slug}` },
@@ -425,22 +440,48 @@ const BlogPost = () => {
       <article className="py-4 sm:py-6 lg:py-12">
         <div className="container px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            {/* Back button */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="mb-3 sm:mb-4 lg:mb-6"
+            {/* Visual Breadcrumbs */}
+            <motion.nav
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mb-4 sm:mb-6"
+              aria-label="Breadcrumb"
             >
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => navigate(getLocalizedPath(locale, "/blog"))}
-                className="text-muted-foreground hover:text-foreground -ml-2 min-h-[44px] text-sm sm:text-base"
-              >
-                <ArrowLeft className="mr-1.5 sm:mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                {texts.back}
-              </Button>
-            </motion.div>
+              <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
+                <li className="flex items-center">
+                  <Link to="/" className="hover:text-foreground transition-colors flex items-center gap-1">
+                    <Home className="w-3.5 h-3.5" />
+                    <span className="hidden sm:inline">{language === "nl" ? "Home" : language === "en" ? "Home" : "Início"}</span>
+                  </Link>
+                </li>
+                {parentPage && (
+                  <>
+                    <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                    <li>
+                      <Link 
+                        to={parentPage.path} 
+                        className="hover:text-foreground transition-colors"
+                      >
+                        {getParentTitle(parentPage)}
+                      </Link>
+                    </li>
+                  </>
+                )}
+                <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                <li>
+                  <Link 
+                    to={getLocalizedPath(locale, "/blog")} 
+                    className="hover:text-foreground transition-colors"
+                  >
+                    Blog
+                  </Link>
+                </li>
+                <ChevronRightIcon className="w-3.5 h-3.5 flex-shrink-0" />
+                <li className="text-foreground font-medium truncate max-w-[200px] sm:max-w-none">
+                  {translatedContent?.title || post.title}
+                </li>
+              </ol>
+            </motion.nav>
 
             {/* Featured image */}
             {post.featured_image && (
