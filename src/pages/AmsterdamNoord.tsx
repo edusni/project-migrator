@@ -4,7 +4,6 @@ import { SEOHead } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
   AccordionContent,
@@ -554,342 +553,315 @@ const AmsterdamNoord = () => {
         description={t.intro}
       />
 
-      <div className="container px-4 py-8 md:py-12">
+      <div className="container px-4 py-8 md:py-12 space-y-16">
         {/* Introduction */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto mb-12"
+          className="max-w-4xl mx-auto"
         >
           <p className="text-lg text-muted-foreground leading-relaxed">
             {t.intro}
           </p>
         </motion.div>
 
-        {/* Tabs */}
-        <Tabs defaultValue="neighborhoods" className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
-            <TabsTrigger value="neighborhoods" className="gap-2">
-              <MapPin className="w-4 h-4 hidden sm:inline" />
-              {t.neighborhoods}
-            </TabsTrigger>
-            <TabsTrigger value="transport" className="gap-2">
-              <Ship className="w-4 h-4 hidden sm:inline" />
-              {t.transport}
-            </TabsTrigger>
-            <TabsTrigger value="housing" className="gap-2">
-              <Euro className="w-4 h-4 hidden sm:inline" />
-              {t.housing}
-            </TabsTrigger>
-            <TabsTrigger value="culture" className="gap-2">
-              <Sparkles className="w-4 h-4 hidden sm:inline" />
-              {t.culture}
-            </TabsTrigger>
-            <TabsTrigger value="tips" className="gap-2">
-              <CheckCircle2 className="w-4 h-4 hidden sm:inline" />
-              {t.tips}
-            </TabsTrigger>
-            <TabsTrigger value="faq" className="gap-2">
-              <AlertTriangle className="w-4 h-4 hidden sm:inline" />
-              {t.faq}
-            </TabsTrigger>
-          </TabsList>
+        {/* Neighborhoods Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <MapPin className="w-7 h-7 text-primary" />
+            {t.neighborhoods}
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {t.neighborhoodsList.map((neighborhood, index) => (
+              <motion.div
+                key={neighborhood.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
+                  {neighborhood.image && (
+                    <div className="aspect-video w-full overflow-hidden">
+                      <img
+                        src={neighborhood.image}
+                        alt={neighborhood.name}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                  <CardHeader>
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="flex items-center gap-3">
+                        <div className="p-2 rounded-lg bg-primary/10">
+                          <neighborhood.icon className="w-5 h-5 text-primary" />
+                        </div>
+                        <CardTitle className="text-lg">{neighborhood.name}</CardTitle>
+                      </div>
+                      <Badge className={`${getStatusColor(neighborhood.status)} text-white text-xs`}>
+                        {neighborhood.status}
+                      </Badge>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <p className="text-sm text-muted-foreground">
+                      {neighborhood.description}
+                    </p>
+                    <div className="space-y-2">
+                      {neighborhood.highlights.map((highlight, i) => (
+                        <div key={i} className="flex items-start gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                          <span>{highlight}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="pt-2 border-t">
+                      <div className="flex items-center gap-2 text-sm">
+                        <Users className="w-4 h-4 text-muted-foreground" />
+                        <span className="text-muted-foreground">
+                          {language === "nl" ? "Ideaal voor:" : language === "en" ? "Ideal for:" : "Ideal para:"} {neighborhood.idealFor}
+                        </span>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-          {/* Neighborhoods Tab */}
-          <TabsContent value="neighborhoods">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {t.neighborhoodsList.map((neighborhood, index) => (
-                <motion.div
-                  key={neighborhood.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="h-full hover:shadow-lg transition-shadow overflow-hidden">
-                    {neighborhood.image && (
-                      <div className="aspect-video w-full overflow-hidden">
-                        <img
-                          src={neighborhood.image}
-                          alt={neighborhood.name}
-                          className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                          loading="lazy"
+        {/* Transport Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 flex items-center gap-3">
+            <Ship className="w-7 h-7 text-primary" />
+            {t.transportInfo.title}
+          </h2>
+          <p className="text-muted-foreground mb-8">{t.transportInfo.subtitle}</p>
+
+          <div className="grid gap-6 md:grid-cols-2 mb-8">
+            {t.transportInfo.items.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <div className="p-3 rounded-xl bg-primary/10">
+                        <item.icon className="w-6 h-6 text-primary" />
+                      </div>
+                      <CardTitle className="text-lg">{item.title}</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{item.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Ferry Routes Visual */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Ship className="w-5 h-5" />
+                {language === "nl" ? "Pontroutes" : language === "en" ? "Ferry Routes" : "Rotas de Ferry"}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-4 sm:grid-cols-3">
+                <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
+                  <div className="font-semibold text-blue-600">F2 - IJplein</div>
+                  <div className="text-sm text-muted-foreground">Centraal Station ↔ IJplein</div>
+                  <div className="text-xs mt-1">~3 min</div>
+                </div>
+                <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
+                  <div className="font-semibold text-green-600">F3 - Buiksloterweg</div>
+                  <div className="text-sm text-muted-foreground">Centraal Station ↔ Buiksloterweg</div>
+                  <div className="text-xs mt-1">~5 min</div>
+                </div>
+                <div className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/20">
+                  <div className="font-semibold text-orange-600">F4 - NDSM</div>
+                  <div className="text-sm text-muted-foreground">Centraal Station ↔ NDSM</div>
+                  <div className="text-xs mt-1">~15 min</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Housing Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <Euro className="w-7 h-7 text-primary" />
+            {t.housingInfo.title}
+          </h2>
+
+          <div className="grid gap-6 lg:grid-cols-2">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5" />
+                  {language === "nl" ? "Marktoverzicht" : language === "en" ? "Market Overview" : "Visão do Mercado"}
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <div className="p-4 rounded-lg bg-primary/5 border">
+                    <div className="text-sm text-muted-foreground mb-1">
+                      {language === "nl" ? "Prijsklasse" : language === "en" ? "Price Range" : "Faixa de Preço"}
+                    </div>
+                    <div className="text-2xl font-bold text-primary">
+                      {t.housingInfo.priceRange}
+                    </div>
+                  </div>
+                  <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
+                    <div className="text-sm text-muted-foreground mb-1">
+                      {language === "nl" ? "Verwachte groei" : language === "en" ? "Projected Growth" : "Crescimento Projetado"}
+                    </div>
+                    <div className="text-2xl font-bold text-emerald-600">
+                      {t.housingInfo.growth}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  {t.housingInfo.highlights.map((highlight, index) => (
+                    <div key={index} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Price Comparison */}
+            <Card>
+              <CardHeader>
+                <CardTitle>
+                  {language === "nl" ? "Prijsvergelijking per Buurt" : language === "en" ? "Price Comparison by Neighborhood" : "Comparação de Preços por Bairro"}
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  {[
+                    { name: "Overhoeks", price: "€6.500-6.900/m²", bar: 95 },
+                    { name: "NDSM", price: "€5.800-6.400/m²", bar: 85 },
+                    { name: "Buiksloterham", price: "€5.500-6.200/m²", bar: 80 },
+                    { name: "Nieuwendam", price: "€5.200-5.800/m²", bar: 72 },
+                    { name: "Buikslotermeer", price: "€4.800-5.500/m²", bar: 68 },
+                  ].map((item) => (
+                    <div key={item.name} className="space-y-1">
+                      <div className="flex justify-between text-sm">
+                        <span className="font-medium">{item.name}</span>
+                        <span className="text-muted-foreground">{item.price}</span>
+                      </div>
+                      <div className="h-2 bg-muted rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-primary rounded-full"
+                          style={{ width: `${item.bar}%` }}
                         />
                       </div>
-                    )}
-                    <CardHeader>
-                      <div className="flex items-start justify-between gap-2">
-                        <div className="flex items-center gap-3">
-                          <div className="p-2 rounded-lg bg-primary/10">
-                            <neighborhood.icon className="w-5 h-5 text-primary" />
-                          </div>
-                          <CardTitle className="text-lg">{neighborhood.name}</CardTitle>
-                        </div>
-                        <Badge className={`${getStatusColor(neighborhood.status)} text-white text-xs`}>
-                          {neighborhood.status}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-sm text-muted-foreground">
-                        {neighborhood.description}
-                      </p>
-                      <div className="space-y-2">
-                        {neighborhood.highlights.map((highlight, i) => (
-                          <div key={i} className="flex items-start gap-2 text-sm">
-                            <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
-                            <span>{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="pt-2 border-t">
-                        <div className="flex items-center gap-2 text-sm">
-                          <Users className="w-4 h-4 text-muted-foreground" />
-                          <span className="text-muted-foreground">
-                            {language === "nl" ? "Ideaal voor:" : language === "en" ? "Ideal for:" : "Ideal para:"} {neighborhood.idealFor}
-                          </span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
-
-          {/* Transport Tab */}
-          <TabsContent value="transport">
-            <div className="space-y-8">
-              <div className="text-center mb-8">
-                <h2 className="text-2xl font-heading font-bold mb-2">
-                  {t.transportInfo.title}
-                </h2>
-                <p className="text-muted-foreground">{t.transportInfo.subtitle}</p>
-              </div>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                {t.transportInfo.items.map((item, index) => (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="h-full">
-                      <CardHeader>
-                        <div className="flex items-center gap-3">
-                          <div className="p-3 rounded-xl bg-primary/10">
-                            <item.icon className="w-6 h-6 text-primary" />
-                          </div>
-                          <CardTitle className="text-lg">{item.title}</CardTitle>
-                        </div>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Ferry Routes Visual */}
-              <Card className="mt-8">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <Ship className="w-5 h-5" />
-                    {language === "nl" ? "Pontroutes" : language === "en" ? "Ferry Routes" : "Rotas de Ferry"}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="grid gap-4 sm:grid-cols-3">
-                    <div className="p-4 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                      <div className="font-semibold text-blue-600">F2 - IJplein</div>
-                      <div className="text-sm text-muted-foreground">Centraal Station ↔ IJplein</div>
-                      <div className="text-xs mt-1">~3 min</div>
                     </div>
-                    <div className="p-4 rounded-lg bg-green-500/10 border border-green-500/20">
-                      <div className="font-semibold text-green-600">F3 - Buiksloterweg</div>
-                      <div className="text-sm text-muted-foreground">Centraal Station ↔ Buiksloterweg</div>
-                      <div className="text-xs mt-1">~5 min</div>
-                    </div>
-                    <div className="p-4 rounded-lg bg-orange-500/10 border border-orange-500/20">
-                      <div className="font-semibold text-orange-600">F4 - NDSM</div>
-                      <div className="text-sm text-muted-foreground">Centraal Station ↔ NDSM</div>
-                      <div className="text-xs mt-1">~15 min</div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
 
-          {/* Housing Tab */}
-          <TabsContent value="housing">
-            <div className="space-y-8">
-              <Card>
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <TrendingUp className="w-5 h-5" />
-                    {t.housingInfo.title}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-6">
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="p-4 rounded-lg bg-primary/5 border">
-                      <div className="text-sm text-muted-foreground mb-1">
-                        {language === "nl" ? "Prijsklasse" : language === "en" ? "Price Range" : "Faixa de Preço"}
+        {/* Culture Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <Sparkles className="w-7 h-7 text-primary" />
+            {t.cultureInfo.title}
+          </h2>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {t.cultureInfo.events.map((event, index) => (
+              <motion.div
+                key={event.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full">
+                  <CardContent className="pt-6">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-xl bg-primary/10">
+                        <Calendar className="w-6 h-6 text-primary" />
                       </div>
-                      <div className="text-2xl font-bold text-primary">
-                        {t.housingInfo.priceRange}
+                      <div>
+                        <h3 className="font-semibold">{event.name}</h3>
+                        <p className="text-sm text-muted-foreground">{event.date}</p>
+                        <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground">
+                          <MapPin className="w-3 h-3" />
+                          {event.location}
+                        </div>
                       </div>
                     </div>
-                    <div className="p-4 rounded-lg bg-emerald-500/5 border border-emerald-500/20">
-                      <div className="text-sm text-muted-foreground mb-1">
-                        {language === "nl" ? "Verwachte groei" : language === "en" ? "Projected Growth" : "Crescimento Projetado"}
-                      </div>
-                      <div className="text-2xl font-bold text-emerald-600">
-                        {t.housingInfo.growth}
-                      </div>
-                    </div>
-                  </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-                  <div className="space-y-3">
-                    {t.housingInfo.highlights.map((highlight, index) => (
-                      <div key={index} className="flex items-start gap-3">
-                        <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                        <span>{highlight}</span>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+        {/* Tips Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <CheckCircle2 className="w-7 h-7 text-primary" />
+            {t.tipsSection.title}
+          </h2>
 
-              {/* Price Comparison */}
-              <Card>
-                <CardHeader>
-                  <CardTitle>
-                    {language === "nl" ? "Prijsvergelijking per Buurt" : language === "en" ? "Price Comparison by Neighborhood" : "Comparação de Preços por Bairro"}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    {[
-                      { name: "Overhoeks", price: "€6.500-6.900/m²", bar: 95 },
-                      { name: "NDSM", price: "€5.800-6.400/m²", bar: 85 },
-                      { name: "Buiksloterham", price: "€5.500-6.200/m²", bar: 80 },
-                      { name: "Nieuwendam", price: "€5.200-5.800/m²", bar: 72 },
-                      { name: "Buikslotermeer", price: "€4.800-5.500/m²", bar: 68 },
-                    ].map((item) => (
-                      <div key={item.name} className="space-y-1">
-                        <div className="flex justify-between text-sm">
-                          <span className="font-medium">{item.name}</span>
-                          <span className="text-muted-foreground">{item.price}</span>
-                        </div>
-                        <div className="h-2 bg-muted rounded-full overflow-hidden">
-                          <div
-                            className="h-full bg-primary rounded-full"
-                            style={{ width: `${item.bar}%` }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </TabsContent>
+          <div className="grid gap-6 md:grid-cols-2">
+            {t.tipsSection.tips.map((tip, index) => (
+              <motion.div
+                key={tip.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full">
+                  <CardHeader>
+                    <CardTitle className="text-lg flex items-center gap-2">
+                      <CheckCircle2 className="w-5 h-5 text-primary" />
+                      {tip.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-muted-foreground">{tip.description}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-          {/* Culture Tab */}
-          <TabsContent value="culture">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-heading font-bold text-center mb-8">
-                {t.cultureInfo.title}
-              </h2>
+        {/* FAQ Section */}
+        <section className="max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <AlertTriangle className="w-7 h-7 text-primary" />
+            {language === "nl" ? "Veelgestelde Vragen" : language === "en" ? "Frequently Asked Questions" : "Perguntas Frequentes"}
+          </h2>
 
-              <div className="grid gap-4 sm:grid-cols-2">
-                {t.cultureInfo.events.map((event, index) => (
-                  <motion.div
-                    key={event.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="h-full">
-                      <CardContent className="pt-6">
-                        <div className="flex items-start gap-4">
-                          <div className="p-3 rounded-xl bg-primary/10">
-                            <Calendar className="w-6 h-6 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="font-semibold">{event.name}</h3>
-                            <p className="text-sm text-muted-foreground">{event.date}</p>
-                            <div className="flex items-center gap-1 mt-1 text-xs text-muted-foreground">
-                              <MapPin className="w-3 h-3" />
-                              {event.location}
-                            </div>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* Tips Tab */}
-          <TabsContent value="tips">
-            <div className="space-y-6">
-              <h2 className="text-2xl font-heading font-bold text-center mb-8">
-                {t.tipsSection.title}
-              </h2>
-
-              <div className="grid gap-6 md:grid-cols-2">
-                {t.tipsSection.tips.map((tip, index) => (
-                  <motion.div
-                    key={tip.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                  >
-                    <Card className="h-full">
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <CheckCircle2 className="w-5 h-5 text-primary" />
-                          {tip.title}
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-muted-foreground">{tip.description}</p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </TabsContent>
-
-          {/* FAQ Tab */}
-          <TabsContent value="faq">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-2xl font-heading font-bold text-center mb-8">
-                {language === "nl" ? "Veelgestelde Vragen" : language === "en" ? "Frequently Asked Questions" : "Perguntas Frequentes"}
-              </h2>
-
-              <Accordion type="single" collapsible className="w-full">
-                {t.faqItems.map((item, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </div>
-          </TabsContent>
-        </Tabs>
+          <Accordion type="single" collapsible className="w-full">
+            {t.faqItems.map((item, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
       </div>
     </PageLayout>
   );

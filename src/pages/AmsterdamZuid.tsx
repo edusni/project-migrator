@@ -4,7 +4,6 @@ import { SEOHead } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Accordion,
   AccordionContent,
@@ -558,12 +557,12 @@ const AmsterdamZuid = () => {
         description={c.subtitle}
       />
 
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-12 space-y-16">
         {/* Introduction */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto mb-16"
+          className="max-w-4xl mx-auto"
         >
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-8">
@@ -574,262 +573,210 @@ const AmsterdamZuid = () => {
           </Card>
         </motion.div>
 
-        {/* Main Tabs */}
-        <Tabs defaultValue="neighborhoods" className="max-w-6xl mx-auto">
-          <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8">
-            <TabsTrigger value="neighborhoods" className="gap-2">
-              <MapPin className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.neighborhoods}</span>
-            </TabsTrigger>
-            <TabsTrigger value="transport" className="gap-2">
-              <Train className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.transport}</span>
-            </TabsTrigger>
-            <TabsTrigger value="housing" className="gap-2">
-              <Euro className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.housing}</span>
-            </TabsTrigger>
-            <TabsTrigger value="infrastructure" className="gap-2">
-              <Construction className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.infrastructure}</span>
-            </TabsTrigger>
-            <TabsTrigger value="tips" className="gap-2">
-              <Sparkles className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.tips}</span>
-            </TabsTrigger>
-            <TabsTrigger value="faq" className="gap-2">
-              <Users className="w-4 h-4" />
-              <span className="hidden sm:inline">{c.faq}</span>
-            </TabsTrigger>
-          </TabsList>
-
-          {/* Neighborhoods Tab */}
-          <TabsContent value="neighborhoods">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {c.neighborhoodsList.map((neighborhood, index) => (
-                <motion.div
-                  key={neighborhood.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="h-full hover:shadow-lg transition-all duration-300 overflow-hidden group">
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={neighborhood.image} 
-                        alt={neighborhood.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="flex items-center gap-2 mb-2">
-                          <neighborhood.icon className="w-5 h-5 text-white" />
-                          <h3 className="text-xl font-bold text-white">{neighborhood.name}</h3>
+        {/* Neighborhoods Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <MapPin className="w-7 h-7 text-primary" />
+            {c.neighborhoods}
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {c.neighborhoodsList.map((neighborhood, index) => (
+              <motion.div
+                key={neighborhood.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="h-full hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                  <div className="relative h-48 overflow-hidden">
+                    <img 
+                      src={neighborhood.image} 
+                      alt={neighborhood.name}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="flex items-center gap-2 mb-2">
+                        <neighborhood.icon className="w-5 h-5 text-white" />
+                        <h3 className="text-xl font-bold text-white">{neighborhood.name}</h3>
+                      </div>
+                      <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                        {neighborhood.status}
+                      </Badge>
+                    </div>
+                  </div>
+                  <CardContent className="p-6">
+                    <p className="text-muted-foreground mb-4">{neighborhood.description}</p>
+                    <div className="space-y-2 mb-4">
+                      {neighborhood.highlights.map((highlight, i) => (
+                        <div key={i} className="flex items-start gap-2 text-sm">
+                          <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                          <span>{highlight}</span>
                         </div>
-                        <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
-                          {neighborhood.status}
-                        </Badge>
-                      </div>
+                      ))}
                     </div>
-                    <CardContent className="p-6">
-                      <p className="text-muted-foreground mb-4">{neighborhood.description}</p>
-                      <div className="space-y-2 mb-4">
-                        {neighborhood.highlights.map((highlight, i) => (
-                          <div key={i} className="flex items-start gap-2 text-sm">
-                            <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-                            <span>{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                      <div className="pt-4 border-t">
-                        <p className="text-sm text-muted-foreground">
-                          <strong>{language === "nl" ? "Ideaal voor:" : language === "en" ? "Ideal for:" : "Ideal para:"}</strong> {neighborhood.idealFor}
-                        </p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </TabsContent>
+                    <div className="pt-4 border-t">
+                      <p className="text-sm text-muted-foreground">
+                        <strong>{language === "nl" ? "Ideaal voor:" : language === "en" ? "Ideal for:" : "Ideal para:"}</strong> {neighborhood.idealFor}
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-          {/* Transport Tab */}
-          <TabsContent value="transport">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Train className="w-6 h-6 text-primary" />
-                  {c.transportInfo.title}
-                </CardTitle>
-                <p className="text-muted-foreground">{c.transportInfo.subtitle}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-6 md:grid-cols-2">
-                  {c.transportInfo.items.map((item, index) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex gap-4 p-4 rounded-lg bg-muted/50"
-                    >
-                      <div className="p-3 rounded-full bg-primary/10 h-fit">
-                        <item.icon className="w-6 h-6 text-primary" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-1">{item.title}</h4>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+        {/* Transport Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 flex items-center gap-3">
+            <Train className="w-7 h-7 text-primary" />
+            {c.transportInfo.title}
+          </h2>
+          <p className="text-muted-foreground mb-8">{c.transportInfo.subtitle}</p>
+          <div className="grid gap-6 md:grid-cols-2">
+            {c.transportInfo.items.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="flex gap-4 p-4 rounded-lg bg-muted/50"
+              >
+                <div className="p-3 rounded-full bg-primary/10 h-fit">
+                  <item.icon className="w-6 h-6 text-primary" />
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-          {/* Housing Tab */}
-          <TabsContent value="housing">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Euro className="w-6 h-6 text-primary" />
-                  {c.housingInfo.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-6 md:grid-cols-2 mb-8">
-                  <div className="p-6 rounded-lg bg-primary/10 border border-primary/20">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Home className="w-5 h-5 text-primary" />
-                      <span className="text-sm font-medium text-muted-foreground">
-                        {language === "nl" ? "Prijsklasse" : language === "en" ? "Price Range" : "Faixa de Preço"}
-                      </span>
-                    </div>
-                    <p className="text-2xl font-bold text-primary">{c.housingInfo.priceRange}</p>
+        {/* Housing Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <Euro className="w-7 h-7 text-primary" />
+            {c.housingInfo.title}
+          </h2>
+          <Card>
+            <CardContent className="p-6">
+              <div className="grid gap-6 md:grid-cols-2 mb-8">
+                <div className="p-6 rounded-lg bg-primary/10 border border-primary/20">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Home className="w-5 h-5 text-primary" />
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {language === "nl" ? "Prijsklasse" : language === "en" ? "Price Range" : "Faixa de Preço"}
+                    </span>
                   </div>
-                  <div className="p-6 rounded-lg bg-green-500/10 border border-green-500/20">
-                    <div className="flex items-center gap-2 mb-2">
-                      <TrendingUp className="w-5 h-5 text-green-600" />
-                      <span className="text-sm font-medium text-muted-foreground">
-                        {language === "nl" ? "Verwachte Groei" : language === "en" ? "Expected Growth" : "Crescimento Esperado"}
-                      </span>
-                    </div>
-                    <p className="text-2xl font-bold text-green-600">{c.housingInfo.growth}</p>
+                  <p className="text-2xl font-bold text-primary">{c.housingInfo.priceRange}</p>
+                </div>
+                <div className="p-6 rounded-lg bg-green-500/10 border border-green-500/20">
+                  <div className="flex items-center gap-2 mb-2">
+                    <TrendingUp className="w-5 h-5 text-green-600" />
+                    <span className="text-sm font-medium text-muted-foreground">
+                      {language === "nl" ? "Verwachte Groei" : language === "en" ? "Expected Growth" : "Crescimento Esperado"}
+                    </span>
                   </div>
+                  <p className="text-2xl font-bold text-green-600">{c.housingInfo.growth}</p>
                 </div>
-                <div className="space-y-3">
-                  {c.housingInfo.highlights.map((highlight, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
-                    >
-                      <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
-                      <span>{highlight}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </div>
+              <div className="space-y-3">
+                {c.housingInfo.highlights.map((highlight, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="flex items-start gap-3 p-3 rounded-lg bg-muted/50"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 shrink-0" />
+                    <span>{highlight}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </section>
 
-          {/* Infrastructure Tab */}
-          <TabsContent value="infrastructure">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Construction className="w-6 h-6 text-primary" />
-                  {c.infrastructureInfo.title}
-                </CardTitle>
-                <p className="text-muted-foreground">{c.infrastructureInfo.subtitle}</p>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  {c.infrastructureInfo.items.map((item, index) => (
-                    <motion.div
-                      key={item.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="flex gap-4 p-4 rounded-lg border bg-card"
-                    >
-                      <div className={`p-3 rounded-full h-fit ${
-                        item.icon === AlertTriangle ? "bg-amber-500/10" : "bg-primary/10"
-                      }`}>
-                        <item.icon className={`w-6 h-6 ${
-                          item.icon === AlertTriangle ? "text-amber-500" : "text-primary"
-                        }`} />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold mb-1">{item.title}</h4>
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+        {/* Infrastructure Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4 flex items-center gap-3">
+            <Construction className="w-7 h-7 text-primary" />
+            {c.infrastructureInfo.title}
+          </h2>
+          <p className="text-muted-foreground mb-8">{c.infrastructureInfo.subtitle}</p>
+          <div className="space-y-4">
+            {c.infrastructureInfo.items.map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="flex gap-4 p-4 rounded-lg border bg-card"
+              >
+                <div className={`p-3 rounded-full h-fit ${
+                  item.icon === AlertTriangle ? "bg-amber-500/10" : "bg-primary/10"
+                }`}>
+                  <item.icon className={`w-6 h-6 ${
+                    item.icon === AlertTriangle ? "text-amber-500" : "text-primary"
+                  }`} />
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-
-          {/* Tips Tab */}
-          <TabsContent value="tips">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Sparkles className="w-6 h-6 text-primary" />
-                  {c.tipsSection.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-4 md:grid-cols-2">
-                  {c.tipsSection.tips.map((tip, index) => (
-                    <motion.div
-                      key={tip.title}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                      className="p-6 rounded-lg bg-gradient-to-br from-muted/50 to-muted border"
-                    >
-                      <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-primary" />
-                        {tip.title}
-                      </h4>
-                      <p className="text-muted-foreground">{tip.description}</p>
-                    </motion.div>
-                  ))}
+                <div>
+                  <h4 className="font-semibold mb-1">{item.title}</h4>
+                  <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
+              </motion.div>
+            ))}
+          </div>
+        </section>
 
-          {/* FAQ Tab */}
-          <TabsContent value="faq">
-            <Card>
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="w-6 h-6 text-primary" />
-                  {c.faq}
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <Accordion type="single" collapsible className="w-full">
-                  {c.faqItems.map((item, index) => (
-                    <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger className="text-left">
-                        {item.question}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground">
-                        {item.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </CardContent>
-            </Card>
-          </TabsContent>
-        </Tabs>
+        {/* Tips Section */}
+        <section className="max-w-6xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <Sparkles className="w-7 h-7 text-primary" />
+            {c.tipsSection.title}
+          </h2>
+          <div className="grid gap-4 md:grid-cols-2">
+            {c.tipsSection.tips.map((tip, index) => (
+              <motion.div
+                key={tip.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                className="p-6 rounded-lg bg-gradient-to-br from-muted/50 to-muted border"
+              >
+                <h4 className="font-semibold text-lg mb-2 flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-primary" />
+                  {tip.title}
+                </h4>
+                <p className="text-muted-foreground">{tip.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="max-w-3xl mx-auto">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold mb-8 flex items-center gap-3">
+            <Users className="w-7 h-7 text-primary" />
+            {c.faq}
+          </h2>
+          <Accordion type="single" collapsible className="w-full">
+            {c.faqItems.map((item, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="text-left">
+                  {item.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground">
+                  {item.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </section>
 
         {/* Summary Table */}
         <motion.div
