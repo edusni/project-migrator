@@ -25,6 +25,7 @@ const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const CustoDeVida = lazy(() => import("./pages/CustoDeVida"));
 const DePijp = lazy(() => import("./pages/DePijp"));
+const Jordaan = lazy(() => import("./pages/Jordaan"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -58,6 +59,7 @@ const LocalePageRoutes = () => (
       <Route path="admin/blog" element={<AdminBlog />} />
       <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
       <Route path="de-pijp" element={<DePijp />} />
+      <Route path="jordaan" element={<Jordaan />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
@@ -99,6 +101,7 @@ const App = () => (
             <Route path="/blog" element={<Navigate to="/pt/blog" replace />} />
             <Route path="/custo-vida-amsterdam" element={<Navigate to="/pt/custo-vida-amsterdam" replace />} />
             <Route path="/de-pijp" element={<Navigate to="/pt/de-pijp" replace />} />
+            <Route path="/jordaan" element={<Navigate to="/pt/jordaan" replace />} />
             
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />

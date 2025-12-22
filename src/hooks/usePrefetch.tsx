@@ -12,6 +12,7 @@ const routeImports = {
   blog: () => import("@/pages/Blog"),
   sobre: () => import("@/pages/Sobre"),
   "de-pijp": () => import("@/pages/DePijp"),
+  jordaan: () => import("@/pages/Jordaan"),
 } as const;
 
 type RouteKey = keyof typeof routeImports;
