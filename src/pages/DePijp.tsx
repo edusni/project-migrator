@@ -3,6 +3,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import heroDePijp from "@/assets/hero-de-pijp.webp";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
@@ -11,6 +12,7 @@ import { SEOHead } from "@/components/SEOHead";
 
 const DePijp = () => {
   const { language, t } = useLanguage();
+  const heroImage = useSiteImage("hero-de-pijp", heroDePijp);
 
   const content = {
     pt: {
@@ -322,7 +324,7 @@ const DePijp = () => {
         title={c.title}
         description={c.subtitle}
         quickStats={stats}
-        backgroundImage={heroDePijp}
+        backgroundImage={heroImage}
       />
 
       <div className="container py-12 space-y-16">

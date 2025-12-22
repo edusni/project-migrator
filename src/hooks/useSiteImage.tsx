@@ -5,17 +5,23 @@ import { supabase } from '@/integrations/supabase/client';
 const fetchSiteImages = async () => {
   const { data, error } = await supabase
     .from('site_images')
-    .select('image_key, storage_path, original_path');
+    .select('image_key, storage_path, original_path, updated_at');
   
   if (error) {
     console.error('Error fetching site images:', error);
     return {};
   }
   
-  // Create a map of image_key to storage_path (or null if not updated)
+  // Create a map of image_key to a cache-busted URL (or null if not updated)
   const imageMap: Record<string, string | null> = {};
   data?.forEach(img => {
-    imageMap[img.image_key] = img.storage_path;
+    if (!img.storage_path) {
+      imageMap[img.image_key] = null;
+      return;
+    }
+
+    const sep = img.storage_path.includes('?') ? '&' : '?';
+    imageMap[img.image_key] = `${img.storage_path}${sep}v=${encodeURIComponent(img.updated_at)}`;
   });
   
   return imageMap;
@@ -25,8 +31,11 @@ export const useSiteImages = () => {
   return useQuery({
     queryKey: ['site-images'],
     queryFn: fetchSiteImages,
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    // We want hero swaps to reflect quickly after admin uploads.
+    staleTime: 0,
     gcTime: 1000 * 60 * 30, // 30 minutes
+    refetchOnMount: true,
+    refetchOnWindowFocus: true,
   });
 };
 

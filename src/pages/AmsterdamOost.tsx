@@ -1,4 +1,5 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +23,7 @@ import ijburgImg from "@/assets/neighborhood-ijburg.webp";
 
 const AmsterdamOost = () => {
   const { language } = useLanguage();
+  const heroImage = useSiteImage("hero-amsterdam-oost", heroAmsterdamOost);
 
   const t = (pt: string, en: string, nl: string) => {
     if (language === "pt") return pt;
@@ -258,7 +260,7 @@ const AmsterdamOost = () => {
           "Van de kunstmatige eilanden van IJburg tot historische dokken: de definitieve gids voor het veranderende Oosten"
         )}
         icon={Waves}
-        backgroundImage={heroAmsterdamOost}
+        backgroundImage={heroImage}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

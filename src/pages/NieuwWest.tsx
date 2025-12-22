@@ -2,6 +2,7 @@ import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { SEOHead } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -33,6 +34,7 @@ import heroNieuwWest from "@/assets/hero-nieuw-west.webp";
 
 const NieuwWest = () => {
   const { language } = useLanguage();
+  const heroImage = useSiteImage("hero-nieuw-west", heroNieuwWest);
 
   const content = {
     pt: {
@@ -330,7 +332,7 @@ const NieuwWest = () => {
         icon={Building2}
         title={c.title}
         description={c.subtitle}
-        backgroundImage={heroNieuwWest}
+        backgroundImage={heroImage}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

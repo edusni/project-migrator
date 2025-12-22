@@ -1,4 +1,5 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/ui/animated-section";
@@ -44,6 +45,7 @@ import {
 
 const Binnenstad = () => {
   const { language } = useLanguage();
+  const heroImage = useSiteImage("hero-binnenstad", heroBinnenstad);
 
   const t = (pt: string, en: string, nl: string) => {
     switch (language) {
@@ -135,7 +137,7 @@ const Binnenstad = () => {
           "Amsterdam's historic center: Dam, Central Station, Kalverstraat and Spui - complete analysis for residents and investors",
           "Het historische centrum van Amsterdam: Dam, Centraal Station, Kalverstraat en Spui - complete analyse voor bewoners en investeerders"
         )}
-        backgroundImage={heroBinnenstad}
+        backgroundImage={heroImage}
       />
 
       <div className="container mx-auto px-4 py-12">
