@@ -1,3 +1,4 @@
+export { ArtCulture2026Section } from "./ArtCulture2026Section";
 export { Changes2026Section } from "./Changes2026Section";
 export { Calendar2026Section } from "./Calendar2026Section";
 export { AttractionsFiltersSection } from "./AttractionsFiltersSection";
