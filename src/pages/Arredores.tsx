@@ -4,6 +4,7 @@ import { MapPin } from "lucide-react";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { AffiliateBanner } from "@/components/AffiliateLinks";
 import {
   IntroSection,
   QuickPickSection,
@@ -620,6 +621,14 @@ const Arredores = () => {
       />
       <TipsSection title={content.tips.title} items={content.tips.items} />
       <RankingSection title={content.ranking.title} items={content.ranking.items} />
+
+      {/* Affiliate Section */}
+      <section className="py-8 lg:py-12">
+        <div className="container max-w-4xl">
+          <AffiliateBanner type="zaanseSchans" />
+        </div>
+      </section>
+
       <FAQSection title={content.faq.title} items={content.faq.items} />
       
       <RelatedPagesSection 
