@@ -26,7 +26,7 @@ const urlToRouteKey: Record<string, RouteKey> = {
   "/arredores": "arredores",
   "/blog": "blog",
   "/sobre": "sobre",
-  "/custo-vida-amsterdam": "planejamento", // Maps to planejamento as it's related
+  "/custo-vida-amsterdam": "planejamento",
 };
 
 // All navigation items for mobile
