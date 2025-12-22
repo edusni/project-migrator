@@ -23,6 +23,7 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
+const AdminImages = lazy(() => import("./pages/AdminImages"));
 const CustoDeVida = lazy(() => import("./pages/CustoDeVida"));
 const DePijp = lazy(() => import("./pages/DePijp"));
 const Jordaan = lazy(() => import("./pages/Jordaan"));
@@ -66,6 +67,7 @@ const LocalePageRoutes = () => (
       <Route path="blog/:slug" element={<BlogPost />} />
       <Route path="admin/login" element={<AdminLogin />} />
       <Route path="admin/blog" element={<AdminBlog />} />
+      <Route path="admin/images" element={<AdminImages />} />
       <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
       <Route path="de-pijp" element={<DePijp />} />
       <Route path="jordaan" element={<Jordaan />} />

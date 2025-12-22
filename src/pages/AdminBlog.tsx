@@ -16,7 +16,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Plus, Save, Eye, Trash2, LogOut, Image, FileText, 
   MessageSquare, Settings, Loader2, ArrowLeft, Edit,
-  Check, X, PenLine
+  Check, X, PenLine, ImageIcon
 } from "lucide-react";
 import { toast } from "sonner";
 import { WysiwygEditor } from "@/components/blog/WysiwygEditor";
@@ -859,6 +859,10 @@ const AdminBlog = () => {
         <div className="flex items-center justify-between mb-8">
           <h1 className="font-heading text-2xl lg:text-3xl font-bold">{texts.title}</h1>
           <div className="flex gap-2">
+            <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/admin/images"))}>
+              <ImageIcon className="mr-2 h-4 w-4" />
+              {language === "nl" ? "Afbeeldingen" : language === "pt" ? "Imagens" : "Images"}
+            </Button>
             <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/blog"))}>
               <Eye className="mr-2 h-4 w-4" />
               {language === "nl" ? "Bekijk blog" : language === "pt" ? "Ver blog" : "View blog"}
