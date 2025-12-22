@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useLanguage } from "@/hooks/useLanguage";
 import { attractions2026 } from "@/data/attractions2026";
+import { AffiliateGrid } from "@/components/AffiliateLinks";
 
 export function AttractionsByAreaSection() {
   const { language } = useLanguage();
@@ -62,6 +63,8 @@ export function AttractionsByAreaSection() {
               </TabsContent>
             ))}
           </Tabs>
+
+          <AffiliateGrid types={["rijksmuseum", "canalCruise"]} className="mt-10" />
         </div>
       </div>
     </section>

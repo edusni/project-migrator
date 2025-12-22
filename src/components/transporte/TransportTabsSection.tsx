@@ -2,7 +2,7 @@ import { Check, AlertTriangle, X, Plane } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { useLanguage } from "@/hooks/useLanguage";
-import { AffiliateGVBBanner } from "@/components/AffiliateGVBBanner";
+import { AffiliateBanner } from "@/components/AffiliateLinks";
 
 const t = (pt: string, en: string, nl: string, language: string) => {
   if (language === "nl") return nl;
@@ -108,7 +108,7 @@ export function TransportTabsSection() {
                       language
                     )}
                   </p>
-                  <AffiliateGVBBanner className="mt-6" />
+                  <AffiliateBanner type="gvb" className="mt-6" />
                 </div>
 
                 <div className="bg-amber-50 dark:bg-amber-950/30 p-5 lg:p-6 rounded-lg">
