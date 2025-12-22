@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { GetYourGuideAvailability, GYG_TOUR_IDS } from "@/components/GetYourGuideWidget";
 import {
   ThreeRulesSection,
   GoldenRuleSection,
@@ -83,6 +84,17 @@ const Transporte = () => {
       <ThreeRulesSection />
       <GoldenRuleSection />
       <TransportTabsSection />
+      
+      {/* GVB Ticket Widget */}
+      <section className="py-8 lg:py-12 bg-muted/30">
+        <div className="container max-w-4xl">
+          <h3 className="text-xl lg:text-2xl font-heading font-bold text-center mb-6">
+            {t("Compre seu GVB Pass Online", "Buy Your GVB Pass Online", "Koop je GVB Pas Online")}
+          </h3>
+          <GetYourGuideAvailability tourId={GYG_TOUR_IDS.gvbTransport} />
+        </div>
+      </section>
+      
       <TransportCalculator />
       <AppsSection />
       <ChecklistSection />

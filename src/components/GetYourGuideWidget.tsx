@@ -1,46 +1,50 @@
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/hooks/useLanguage";
 
-interface GetYourGuideWidgetProps {
+interface GetYourGuideCityWidgetProps {
   className?: string;
 }
 
-export function GetYourGuideWidget({ className = "" }: GetYourGuideWidgetProps) {
-  const { language } = useLanguage();
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scriptLoaded = useRef(false);
+interface GetYourGuideAvailabilityWidgetProps {
+  tourId: string;
+  variant?: "horizontal" | "vertical";
+  className?: string;
+}
 
+// Load script once globally
+let scriptLoaded = false;
+
+const loadGYGScript = () => {
+  if (!scriptLoaded && !document.querySelector('script[src*="getyourguide.com"]')) {
+    const script = document.createElement("script");
+    script.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
+    script.async = true;
+    script.dataset.gygPartnerId = "RSSK3KX";
+    document.body.appendChild(script);
+    scriptLoaded = true;
+  }
+};
+
+const initWidgets = () => {
+  if ((window as any).GetYourGuideWidgets) {
+    (window as any).GetYourGuideWidgets.init();
+  }
+};
+
+export function GetYourGuideWidget({ className = "" }: GetYourGuideCityWidgetProps) {
+  const { language } = useLanguage();
   const localeCode = language === "nl" ? "nl-NL" : language === "en" ? "en-US" : "pt-BR";
 
   useEffect(() => {
-    // Load the GetYourGuide script if not already loaded
-    if (!scriptLoaded.current && !document.querySelector('script[src*="getyourguide.com"]')) {
-      const script = document.createElement("script");
-      script.src = "https://widget.getyourguide.com/dist/pa.umd.production.min.js";
-      script.async = true;
-      script.dataset.gygPartnerId = "RSSK3KX";
-      document.body.appendChild(script);
-      scriptLoaded.current = true;
-    }
-
-    // Re-initialize widgets when language changes
-    const initWidgets = () => {
-      if ((window as any).GetYourGuideWidgets) {
-        (window as any).GetYourGuideWidgets.init();
-      }
-    };
-
-    // Try to init immediately and after a short delay
+    loadGYGScript();
     initWidgets();
     const timeout = setTimeout(initWidgets, 1000);
-
     return () => clearTimeout(timeout);
   }, [language]);
 
   return (
     <div className={`gyg-widget-container ${className}`}>
       <div
-        ref={containerRef}
         data-gyg-href="https://widget.getyourguide.com/default/city.frame"
         data-gyg-location-id="36"
         data-gyg-locale-code={localeCode}
@@ -50,3 +54,53 @@ export function GetYourGuideWidget({ className = "" }: GetYourGuideWidgetProps) 
     </div>
   );
 }
+
+export function GetYourGuideAvailability({ 
+  tourId, 
+  variant = "horizontal", 
+  className = "" 
+}: GetYourGuideAvailabilityWidgetProps) {
+  const { language } = useLanguage();
+  const localeCode = language === "nl" ? "nl-NL" : language === "en" ? "en-US" : "pt-BR";
+
+  useEffect(() => {
+    loadGYGScript();
+    initWidgets();
+    const timeout = setTimeout(initWidgets, 1000);
+    return () => clearTimeout(timeout);
+  }, [language, tourId]);
+
+  return (
+    <div className={`gyg-availability-widget ${className}`}>
+      <div
+        data-gyg-href="https://widget.getyourguide.com/default/availability.frame"
+        data-gyg-tour-id={tourId}
+        data-gyg-locale-code={localeCode}
+        data-gyg-currency="EUR"
+        data-gyg-widget="availability"
+        data-gyg-variant={variant}
+        data-gyg-partner-id="RSSK3KX"
+      >
+        <span className="text-xs text-muted-foreground">
+          Powered by{" "}
+          <a 
+            target="_blank" 
+            rel="sponsored noopener" 
+            href="https://www.getyourguide.com/amsterdam-l36/"
+            className="text-amsterdam-orange hover:underline"
+          >
+            GetYourGuide
+          </a>
+        </span>
+      </div>
+    </div>
+  );
+}
+
+// Tour IDs for common products
+export const GYG_TOUR_IDS = {
+  gvbTransport: "131313",
+  rijksmuseum: "7135",
+  zaanseSchans: "110032",
+  canalCruise: "396132",
+};
