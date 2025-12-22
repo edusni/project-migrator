@@ -347,6 +347,11 @@ const CustoDeVida = () => {
         title={c.heroTitle}
         description={c.heroSubtitle}
         backgroundImage={amsterdamBikesImg}
+        readTime={language === "nl" ? "10 min lezen" : language === "pt" ? "10 min de leitura" : "10 min read"}
+        quickStats={[
+          { value: "€1.940", label: language === "nl" ? "gem. huur" : language === "pt" ? "aluguel médio" : "avg rent" },
+          { value: language === "nl" ? "Calculator" : language === "pt" ? "Calculadora" : "Calculator", label: language === "nl" ? "inbegrepen" : language === "pt" ? "inclusa" : "included" },
+        ]}
       />
 
       {/* Intro Section */}

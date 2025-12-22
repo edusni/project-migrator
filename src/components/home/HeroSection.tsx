@@ -1,11 +1,50 @@
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin, Euro, Clock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import amsterdamHero from "@/assets/amsterdam-hero-new.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
+
+const quickStats = {
+  pt: [
+    { icon: Euro, value: "40%", label: "economia vs turista comum" },
+    { icon: Clock, value: "5 min", label: "para planejar cada dia" },
+    { icon: MapPin, value: "50+", label: "dicas testadas" },
+  ],
+  en: [
+    { icon: Euro, value: "40%", label: "savings vs regular tourist" },
+    { icon: Clock, value: "5 min", label: "to plan each day" },
+    { icon: MapPin, value: "50+", label: "tested tips" },
+  ],
+  nl: [
+    { icon: Euro, value: "40%", label: "besparing vs gewone toerist" },
+    { icon: Clock, value: "5 min", label: "om elke dag te plannen" },
+    { icon: MapPin, value: "50+", label: "geteste tips" },
+  ],
+};
+
+const quickLinks = {
+  pt: [
+    { href: "/planejamento", label: "Planejamento", emoji: "📋" },
+    { href: "/hospedagem", label: "Onde Ficar", emoji: "🏨" },
+    { href: "/coffeeshops", label: "Coffeeshops", emoji: "🌿" },
+    { href: "/custo-vida-amsterdam", label: "Custo de Vida", emoji: "💰" },
+  ],
+  en: [
+    { href: "/planning", label: "Planning", emoji: "📋" },
+    { href: "/accommodation", label: "Where to Stay", emoji: "🏨" },
+    { href: "/coffeeshops", label: "Coffeeshops", emoji: "🌿" },
+    { href: "/cost-of-living", label: "Cost of Living", emoji: "💰" },
+  ],
+  nl: [
+    { href: "/planning", label: "Planning", emoji: "📋" },
+    { href: "/accommodation", label: "Waar Verblijven", emoji: "🏨" },
+    { href: "/coffeeshops", label: "Coffeeshops", emoji: "🌿" },
+    { href: "/kosten-van-levensonderhoud", label: "Kosten", emoji: "💰" },
+  ],
+};
 
 export function HeroSection() {
   const { language } = useLanguage();
@@ -24,8 +63,11 @@ export function HeroSection() {
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
+  const stats = quickStats[language] || quickStats.pt;
+  const links = quickLinks[language] || quickLinks.pt;
+
   return (
-    <section ref={ref} className="relative min-h-[70vh] sm:min-h-[80vh] lg:min-h-[85vh] flex items-center justify-center overflow-hidden">
+    <section ref={ref} className="relative min-h-[85vh] sm:min-h-[90vh] lg:min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated Background with Parallax */}
       <motion.div 
         style={{ y: backgroundY }}
@@ -81,11 +123,24 @@ export function HeroSection() {
         style={{ y: textY, opacity }}
         className="relative z-10 container px-4 sm:px-6 lg:px-8 text-center py-8 sm:py-12 lg:py-16"
       >
+        {/* Badge */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 mb-6"
+        >
+          <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="text-sm font-medium text-primary-foreground">
+            {language === "nl" ? "Bijgewerkt voor 2026" : language === "pt" ? "Atualizado para 2026" : "Updated for 2026"}
+          </span>
+        </motion.div>
+
         {/* Title with staggered animation - mobile-first typography */}
         <motion.h1 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
           className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground mb-4 sm:mb-6"
         >
           AmsterDu
@@ -94,7 +149,7 @@ export function HeroSection() {
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-primary font-semibold mb-4 sm:mb-6 max-w-4xl mx-auto leading-snug sm:leading-tight"
         >
           {language === "nl" 
@@ -107,34 +162,38 @@ export function HeroSection() {
         <motion.p 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="text-sm sm:text-base lg:text-lg text-primary-foreground/80 max-w-3xl mx-auto mb-6 sm:mb-8 lg:mb-10 leading-relaxed"
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          className="text-sm sm:text-base lg:text-lg text-primary-foreground/80 max-w-3xl mx-auto mb-8 leading-relaxed"
         >
           {language === "nl"
-            ? 'Amsterdam in 2026 blijft een geweldige stad, maar is meer "gereguleerd" en duurder door druk tegen massatoerisme. Als je zonder plan komt, betaal je veel voor de basis en riskeer je domme ongemakken.'
+            ? "Amsterdam in 2026 is meer \"gereguleerd\" en duurder. Zonder plan betaal je te veel en riskeer je boetes."
             : language === "pt"
-              ? 'Amsterdam em 2026 continua sendo uma cidade incrível, mas está mais "regulada" e mais cara por causa de pressão contra turismo de massa. Se você chega sem plano, você paga caro para ver o básico e ainda corre risco de perrengue bobo.'
-              : 'Amsterdam in 2026 remains an incredible city, but it\'s more "regulated" and expensive due to pressure against mass tourism. If you arrive without a plan, you pay a lot to see the basics and risk silly mishaps.'}
+              ? "Amsterdam em 2026 está mais \"regulada\" e mais cara. Sem plano, você paga caro e corre risco de perrengue."
+              : "Amsterdam in 2026 is more \"regulated\" and expensive. Without a plan, you overpay and risk mishaps."}
         </motion.p>
 
-        <motion.p 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="text-sm sm:text-base lg:text-lg text-primary-foreground/70 mb-6 sm:mb-8 lg:mb-10 px-2"
-        >
-          {language === "nl"
-            ? "Het idee hier is simpel: je praktische beslissingen geven vóór de reis en praktische shortcuts tijdens de reis."
-            : language === "pt"
-              ? "A ideia aqui é simples: te dar decisões práticas antes da viagem e atalhos práticos durante a viagem."
-              : "The idea here is simple: give you practical decisions before the trip and practical shortcuts during the trip."}
-        </motion.p>
-
-        {/* Animated CTA Button - touch-friendly sizing */}
+        {/* Quick Stats */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.8, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-8"
+        >
+          {stats.map((stat, index) => (
+            <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-background/10 backdrop-blur-sm">
+              <stat.icon className="w-5 h-5 text-primary" />
+              <span className="text-xl font-bold text-primary-foreground">{stat.value}</span>
+              <span className="text-sm text-primary-foreground/70">{stat.label}</span>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Primary CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="mb-8"
         >
           <Link to="/planejamento" className="inline-block" {...getPrefetchProps("planejamento")}>
             <motion.div
@@ -144,13 +203,35 @@ export function HeroSection() {
             >
               <Button 
                 size="lg" 
-                className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg rounded-xl shadow-glow hover:shadow-xl transition-all duration-300 min-h-[48px] min-w-[200px]"
+                className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl shadow-glow hover:shadow-xl transition-all duration-300"
               >
                 {language === "nl" ? "Begin met Plannen" : language === "pt" ? "Comece a Planejar" : "Start Planning"}
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
             </motion.div>
           </Link>
+        </motion.div>
+
+        {/* Quick Links - Interactive above the fold */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-wrap justify-center gap-3"
+        >
+          <span className="text-sm text-primary-foreground/60 self-center mr-2">
+            {language === "nl" ? "Of ga direct naar:" : language === "pt" ? "Ou vá direto para:" : "Or jump to:"}
+          </span>
+          {links.map((link, index) => (
+            <Link 
+              key={index} 
+              to={link.href}
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-background/10 hover:bg-background/20 border border-primary-foreground/10 hover:border-primary-foreground/20 text-primary-foreground/90 hover:text-primary-foreground text-sm font-medium transition-all duration-200"
+            >
+              <span>{link.emoji}</span>
+              <span>{link.label}</span>
+            </Link>
+          ))}
         </motion.div>
       </motion.div>
       

@@ -64,6 +64,11 @@ const Hospedagem = () => {
         title={language === "nl" ? "Accommodatiegids 2026" : language === "pt" ? "Guia de Hospedagem 2026" : "2026 Accommodation Guide"} 
         description={language === "nl" ? "Alles wat verandert en wat je moet weten" : language === "pt" ? "Tudo o que muda e o que você precisa saber" : "Everything that's changing and what you need to know"}
         backgroundImage={hofjeImg}
+        readTime={language === "nl" ? "8 min lezen" : language === "pt" ? "8 min de leitura" : "8 min read"}
+        quickStats={[
+          { value: "7", label: language === "nl" ? "wijken vergeleken" : language === "pt" ? "bairros comparados" : "areas compared" },
+          { value: "€80-250", label: language === "nl" ? "per nacht" : language === "pt" ? "por noite" : "per night" },
+        ]}
       />
 
       <TaxChangesSection />
