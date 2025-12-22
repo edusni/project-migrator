@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User, Euro, ChevronDown } from "lucide-react";
+import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User, Euro, ChevronDown, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 // Route key mapping for prefetch
-type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre";
+type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre" | "de-pijp";
 
 const urlToRouteKey: Record<string, RouteKey> = {
   "/planejamento": "planejamento",
@@ -27,6 +27,7 @@ const urlToRouteKey: Record<string, RouteKey> = {
   "/blog": "blog",
   "/sobre": "sobre",
   "/custo-vida-amsterdam": "planejamento",
+  "/de-pijp": "de-pijp",
 };
 
 // All navigation items for mobile
@@ -48,6 +49,7 @@ const allNavItems = [
 const planningItems = [
   { titleKey: "nav.planning", url: "/planejamento", icon: Calendar },
   { titleKey: "nav.accommodation", url: "/hospedagem", icon: Hotel },
+  { titleKey: "nav.dePijp", url: "/de-pijp", icon: Building2 },
   { titleKey: "nav.transport", url: "/transporte", icon: Train },
   { titleKey: "nav.costOfLiving", url: "/custo-vida-amsterdam", icon: Euro },
 ];
