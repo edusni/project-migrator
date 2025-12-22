@@ -1,9 +1,10 @@
-import { Palette, Calendar, Ticket, MapPin, ExternalLink, Sparkles } from "lucide-react";
+import { Palette, Calendar, Ticket, ArrowRight, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Link } from "react-router-dom";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 
 interface ArtCulture2026SectionProps {
   language: string;
@@ -150,8 +151,17 @@ const content = {
   }
 };
 
+const blogSlugs = {
+  pt: 'amsterdam-2026-guia-definitivo-arte-cultura-jubileu',
+  en: 'amsterdam-2026-definitive-guide-art-culture-jubilee',
+  nl: 'amsterdam-2026-definitieve-gids-kunst-cultuur-jubileum'
+};
+
 export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) {
   const c = content[language as keyof typeof content] || content.pt;
+  const { getLocalizedPath } = useLocaleNavigation();
+  const slug = blogSlugs[language as keyof typeof blogSlugs] || blogSlugs.pt;
+  const blogUrl = getLocalizedPath(language as 'pt' | 'en' | 'nl', `/blog/${slug}`);
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/30">
@@ -224,22 +234,18 @@ export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) 
             </CardContent>
           </Card>
 
-          {/* CTA - Link to blog post (placeholder for now) */}
+          {/* CTA - Link to blog post */}
           <div className="text-center">
-            <div className="inline-flex flex-col items-center gap-2 p-6 rounded-xl bg-muted/50 border border-border/50">
-              <p className="text-sm text-muted-foreground">{c.ctaSubtext}</p>
+            <Link to={blogUrl}>
               <Button 
                 size="lg" 
-                className="group"
-                disabled
+                className="group bg-primary hover:bg-primary/90"
               >
                 {c.ctaText}
-                <ExternalLink className="ml-2 w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <p className="text-xs text-muted-foreground mt-1">
-                {language === "nl" ? "Binnenkort beschikbaar" : language === "pt" ? "Em breve" : "Coming soon"}
-              </p>
-            </div>
+            </Link>
+            <p className="text-sm text-muted-foreground mt-3">{c.ctaSubtext}</p>
           </div>
         </AnimatedSection>
       </div>
