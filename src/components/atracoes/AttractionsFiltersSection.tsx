@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/hooks/useLanguage";
 import { attractions2026 } from "@/data/attractions2026";
-import { AttractionsMap } from "@/components/AttractionsMap";
+import { LazyAttractionsMap } from "@/components/LazyComponents";
 
 export function AttractionsFiltersSection() {
   const { language } = useLanguage();
@@ -179,7 +179,7 @@ export function AttractionsFiltersSection() {
           {/* Map View */}
           {viewMode === "map" && (
             <div className="mb-8 relative">
-              <AttractionsMap attractions={filteredAttractions} />
+              <LazyAttractionsMap attractions={filteredAttractions} />
             </div>
           )}
 
