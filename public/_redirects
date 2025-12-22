@@ -1,3 +1,26 @@
+# 301 Redirects - URLs com case diferente (Google indexou variações)
+/Atracoes /pt/atracoes.html 301
+/Coffeeshops /pt/coffeeshops.html 301
+/Hospedagem /pt/hospedagem.html 301
+/Sobre /pt/sobre.html 301
+/Transporte /pt/transporte.html 301
+/Galeria /pt/index.html 301
+/Privacidade /pt/index.html 301
+/Cookies /pt/index.html 301
+
+# URLs antigas sem prefixo de idioma
+/atracoes /pt/atracoes.html 301
+/coffeeshops /pt/coffeeshops.html 301
+/hospedagem /pt/hospedagem.html 301
+/sobre /pt/sobre.html 301
+/transporte /pt/transporte.html 301
+/gastronomia /pt/gastronomia.html 301
+/arredores /pt/arredores.html 301
+/planejamento /pt/planejamento.html 301
+/galeria /pt/index.html 301
+/custo-vida-amsterdam /pt/custo-de-vida.html 301
+/o-que-fazer-amsterdam /pt/atracoes.html 301
+
 # 301 Redirects para preservar SEO de URLs antigas (slugs PT antigos)
 /onde-ficar-amsterdam /pt/hospedagem.html 301
 /quem-e-o-du /pt/sobre.html 301
