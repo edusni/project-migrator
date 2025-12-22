@@ -4,6 +4,7 @@ import { Train } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import {
   ThreeRulesSection,
   GoldenRuleSection,
@@ -79,6 +80,8 @@ const Transporte = () => {
       <AppsSection />
       <ChecklistSection />
       <FAQSection />
+
+      <RelatedBlogPostsSection currentPath="/transporte" />
       
       <RelatedPagesSection 
         currentPath="/transporte"

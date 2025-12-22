@@ -4,6 +4,7 @@ import { UtensilsCrossed } from "lucide-react";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import foodHeroImg from "@/assets/food-stroopwafel.png";
 import {
   IntroSection,
@@ -533,6 +534,8 @@ const Gastronomia = () => {
         title={content.faq.title} 
         items={content.faq.items} 
       />
+
+      <RelatedBlogPostsSection currentPath="/gastronomia" />
       
       <RelatedPagesSection 
         currentPath="/gastronomia"

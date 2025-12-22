@@ -4,6 +4,7 @@ import { Hotel } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import {
   TaxChangesSection,
   HowToChooseSection,
@@ -72,6 +73,8 @@ const Hospedagem = () => {
       <GoldenRulesSection />
       <MarketNumbersSection />
       <FAQSection />
+
+      <RelatedBlogPostsSection currentPath="/hospedagem" />
       
       <RelatedPagesSection 
         currentPath="/hospedagem"

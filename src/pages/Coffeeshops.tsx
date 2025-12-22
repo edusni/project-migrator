@@ -4,6 +4,7 @@ import { Leaf } from "lucide-react";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import coffeeshopHeroImg from "@/assets/coffeeshop-neon.png";
 import {
   IntroSection,
@@ -728,7 +729,7 @@ const Coffeeshops = () => {
 
       <FamousGallerySection />
 
-      <BlogPostsSection language={language} />
+      <RelatedBlogPostsSection currentPath="/coffeeshops" />
       
       <FAQSection 
         title={content.faq.title}
