@@ -419,12 +419,8 @@ const Weesp = () => {
 
         {/* Related Pages */}
         <RelatedPagesSection
-          currentPath="weesp"
-          relatedPages={[
-            { path: "zuidoost", labelKey: "nav.zuidoost" },
-            { path: "amsterdam-oost", labelKey: "nav.amsterdamOost" },
-            { path: "hospedagem", labelKey: "nav.hospedagem" }
-          ]}
+          currentPath="/weesp"
+          suggestedPaths={["/zuidoost", "/amsterdam-oost", "/hospedagem"]}
         />
       </div>
     </PageLayout>
