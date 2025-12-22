@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User, Euro, ChevronDown, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -76,6 +76,12 @@ export function Header() {
   const location = useLocation();
   const { prefetchRoute } = usePrefetch();
 
+  // Helper to get locale-prefixed URL
+  const getLocalizedUrl = useCallback((url: string) => {
+    if (url === "/") return `/${language}`;
+    return `/${language}${url}`;
+  }, [language]);
+
   // Prefetch handler for nav items
   const handlePrefetch = (url: string) => {
     const routeKey = urlToRouteKey[url];
@@ -92,8 +98,9 @@ export function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Check if current path matches any item in group (locale-aware)
   const isInGroup = (items: typeof planningItems) => 
-    items.some(item => location.pathname === item.url);
+    items.some(item => location.pathname === getLocalizedUrl(item.url) || location.pathname === item.url);
 
   return (
     <header 
@@ -105,7 +112,7 @@ export function Header() {
     >
       <div className="container flex h-14 sm:h-16 items-center justify-between px-4 sm:px-6">
         {/* Logo - touch-friendly */}
-        <Link to="/" className="flex items-center gap-2 group min-h-[44px] min-w-[44px]">
+        <Link to={getLocalizedUrl("/")} className="flex items-center gap-2 group min-h-[44px] min-w-[44px]">
           <div className="relative">
             <span className="text-lg sm:text-xl md:text-2xl font-heading font-bold text-foreground tracking-tight">
               Amster<span className="text-primary">du</span>
@@ -118,7 +125,7 @@ export function Header() {
         <nav className="hidden lg:flex items-center gap-1">
           {/* Home */}
           <NavLink
-            to="/"
+            to={getLocalizedUrl("/")}
             className={({ isActive }) =>
               `flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-out-expo
               ${isActive 
@@ -154,11 +161,11 @@ export function Header() {
               {planningItems.map((item) => (
                 <DropdownMenuItem key={item.url} asChild>
                   <Link
-                    to={item.url}
+                    to={getLocalizedUrl(item.url)}
                     onMouseEnter={() => handlePrefetch(item.url)}
                     onFocus={() => handlePrefetch(item.url)}
                     className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
-                      location.pathname === item.url ? "bg-primary/10 text-primary" : ""
+                      location.pathname === getLocalizedUrl(item.url) ? "bg-primary/10 text-primary" : ""
                     }`}
                   >
                     <item.icon className="w-4 h-4" />
@@ -192,11 +199,11 @@ export function Header() {
               {exploreItems.map((item) => (
                 <DropdownMenuItem key={item.url} asChild>
                   <Link
-                    to={item.url}
+                    to={getLocalizedUrl(item.url)}
                     onMouseEnter={() => handlePrefetch(item.url)}
                     onFocus={() => handlePrefetch(item.url)}
                     className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
-                      location.pathname === item.url ? "bg-primary/10 text-primary" : ""
+                      location.pathname === getLocalizedUrl(item.url) ? "bg-primary/10 text-primary" : ""
                     }`}
                   >
                     <item.icon className="w-4 h-4" />
@@ -209,7 +216,7 @@ export function Header() {
 
           {/* Sobre */}
           <NavLink
-            to="/sobre"
+            to={getLocalizedUrl("/sobre")}
             onMouseEnter={() => handlePrefetch("/sobre")}
             onFocus={() => handlePrefetch("/sobre")}
             className={({ isActive }) =>
@@ -226,7 +233,7 @@ export function Header() {
 
           {/* Blog */}
           <NavLink
-            to="/blog"
+            to={getLocalizedUrl("/blog")}
             onMouseEnter={() => handlePrefetch("/blog")}
             onFocus={() => handlePrefetch("/blog")}
             className={({ isActive }) =>
@@ -258,7 +265,7 @@ export function Header() {
               <div className="flex flex-col h-full bg-background">
                 {/* Mobile Header */}
                 <div className="p-6 border-b border-border/50">
-                  <Link to="/" className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
+                  <Link to={getLocalizedUrl("/")} className="flex items-center gap-2" onClick={() => setIsOpen(false)}>
                     <span className="text-2xl font-heading font-bold text-foreground tracking-tight">
                       Amster<span className="text-primary">du</span>
                     </span>
@@ -271,7 +278,7 @@ export function Header() {
                   <div className="flex flex-col px-3">
                     {/* Home */}
                     <NavLink
-                      to="/"
+                      to={getLocalizedUrl("/")}
                       onClick={() => setIsOpen(false)}
                       className={({ isActive }) =>
                         `flex items-center gap-3 px-4 py-3.5 rounded-xl font-medium transition-all duration-200
@@ -281,7 +288,7 @@ export function Header() {
                         }`
                       }
                     >
-                      <div className={`p-2 rounded-lg ${location.pathname === "/" ? "bg-primary/20" : "bg-muted"}`}>
+                      <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl("/") ? "bg-primary/20" : "bg-muted"}`}>
                         <Home className="w-4 h-4" />
                       </div>
                       <span>{t("nav.home")}</span>
@@ -296,7 +303,7 @@ export function Header() {
                     {planningItems.map((item, index) => (
                       <NavLink
                         key={item.url}
-                        to={item.url}
+                        to={getLocalizedUrl(item.url)}
                         onClick={() => setIsOpen(false)}
                         onTouchStart={() => handlePrefetch(item.url)}
                         onMouseEnter={() => handlePrefetch(item.url)}
@@ -309,7 +316,7 @@ export function Header() {
                           }`
                         }
                       >
-                        <div className={`p-2 rounded-lg ${location.pathname === item.url ? "bg-primary/20" : "bg-muted"}`}>
+                        <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl(item.url) ? "bg-primary/20" : "bg-muted"}`}>
                           <item.icon className="w-4 h-4" />
                         </div>
                         <span>{t(item.titleKey)}</span>
@@ -325,7 +332,7 @@ export function Header() {
                     {exploreItems.map((item, index) => (
                       <NavLink
                         key={item.url}
-                        to={item.url}
+                        to={getLocalizedUrl(item.url)}
                         onClick={() => setIsOpen(false)}
                         onTouchStart={() => handlePrefetch(item.url)}
                         onMouseEnter={() => handlePrefetch(item.url)}
@@ -338,7 +345,7 @@ export function Header() {
                           }`
                         }
                       >
-                        <div className={`p-2 rounded-lg ${location.pathname === item.url ? "bg-primary/20" : "bg-muted"}`}>
+                        <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl(item.url) ? "bg-primary/20" : "bg-muted"}`}>
                           <item.icon className="w-4 h-4" />
                         </div>
                         <span>{t(item.titleKey)}</span>
@@ -352,7 +359,7 @@ export function Header() {
                       </span>
                     </div>
                     <NavLink
-                      to="/sobre"
+                      to={getLocalizedUrl("/sobre")}
                       onClick={() => setIsOpen(false)}
                       onTouchStart={() => handlePrefetch("/sobre")}
                       onMouseEnter={() => handlePrefetch("/sobre")}
@@ -364,13 +371,13 @@ export function Header() {
                         }`
                       }
                     >
-                      <div className={`p-2 rounded-lg ${location.pathname === "/sobre" ? "bg-primary/20" : "bg-muted"}`}>
+                      <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl("/sobre") ? "bg-primary/20" : "bg-muted"}`}>
                         <User className="w-4 h-4" />
                       </div>
                       <span>{t("nav.about")}</span>
                     </NavLink>
                     <NavLink
-                      to="/blog"
+                      to={getLocalizedUrl("/blog")}
                       onClick={() => setIsOpen(false)}
                       onTouchStart={() => handlePrefetch("/blog")}
                       onMouseEnter={() => handlePrefetch("/blog")}
@@ -382,7 +389,7 @@ export function Header() {
                         }`
                       }
                     >
-                      <div className={`p-2 rounded-lg ${location.pathname === "/blog" ? "bg-primary/20" : "bg-muted"}`}>
+                      <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl("/blog") ? "bg-primary/20" : "bg-muted"}`}>
                         <PenLine className="w-4 h-4" />
                       </div>
                       <span>{t("nav.blog")}</span>
