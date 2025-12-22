@@ -444,18 +444,18 @@ export const seoData = {
   },
   hospedagem: {
     pt: {
-      title: "Onde Ficar em Amsterdam 2026: Melhores Bairros + Preços Reais",
-      description: "Descubra os melhores bairros para se hospedar em Amsterdam. Jordaan, De Pijp, Noord: qual escolher? Preços atualizados, dicas de economia e erros a evitar.",
-      keywords: "onde ficar em amsterdam, melhores bairros amsterdam, onde se hospedar em amsterdam, hotéis amsterdam, airbnb amsterdam, hospedagem amsterdam 2026, jordaan, de pijp, amsterdam noord, melhores bairros para se hospedar em amsterdam",
+      title: "Onde Ficar em Amsterdam 2026: Guia dos 7 Melhores Bairros",
+      description: "⭐ Jordaan, De Pijp ou Noord? Compare bairros com preços reais (€80-250/noite). Evite zonas turísticas caras. Mapa + dicas de quem mora lá →",
+      keywords: "onde ficar em amsterdam, melhores bairros amsterdam, onde se hospedar em amsterdam, hotéis amsterdam, airbnb amsterdam, hospedagem amsterdam 2026, jordaan, de pijp, amsterdam noord, melhores bairros para se hospedar em amsterdam, best zone to stay in amsterdam, best area to stay near area of jordaan",
     },
     en: {
-      title: "Where to Stay in Amsterdam 2026: Best Areas + Real Prices",
-      description: "Discover the best neighborhoods to stay in Amsterdam. Jordaan, De Pijp, Noord: which to choose? Updated prices, money-saving tips and mistakes to avoid.",
-      keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord, best neighborhoods amsterdam",
+      title: "Where to Stay in Amsterdam 2026: Best 7 Neighborhoods Guide",
+      description: "⭐ Jordaan, De Pijp or Noord? Compare areas with real prices (€80-250/night). Avoid overpriced tourist zones. Map + insider tips →",
+      keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord, best neighborhoods amsterdam, best zone to stay in amsterdam",
     },
     nl: {
-      title: "Waar Verblijven in Amsterdam 2026: Beste Wijken + Echte Prijzen",
-      description: "Ontdek de beste wijken om te verblijven in Amsterdam. Jordaan, De Pijp, Noord: welke kiezen? Actuele prijzen, bespaartips en fouten om te vermijden.",
+      title: "Waar Verblijven in Amsterdam 2026: Gids voor de 7 Beste Wijken",
+      description: "⭐ Jordaan, De Pijp of Noord? Vergelijk wijken met echte prijzen (€80-250/nacht). Vermijd te dure toeristenzones. Kaart + insider tips →",
       keywords: "waar verblijven amsterdam, beste wijken amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodatie 2026, jordaan, de pijp, amsterdam noord, beste buurten amsterdam",
     },
   },
@@ -495,18 +495,18 @@ export const seoData = {
   },
   transporte: {
     pt: {
-      title: "Como se Locomover em Amsterdam 2026: Guia de Transporte",
-      description: "Transporte em Amsterdam explicado: metrô, tram, bike, ferry e OVpay. Como ir de Schiphol ao centro, quanto custa e os erros que custam caro. Guia completo.",
+      title: "Transporte Amsterdam 2026: Metrô, Tram, Bike + Como Economizar",
+      description: "🚋 Schiphol → Centro por €5,50. OVpay ou bilhete? Bike grátis! Evite multas de €50. Guia com mapas e dicas de morador →",
       keywords: "transporte amsterdam, como se locomover em amsterdam, como andar amsterdam, ovpay, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro 2026, amsterdam transporte público",
     },
     en: {
-      title: "How to Get Around Amsterdam 2026: Transport Guide",
-      description: "Amsterdam transport explained: metro, tram, bike, ferry and OVpay. How to get from Schiphol to center, costs and expensive mistakes to avoid. Complete guide.",
+      title: "Amsterdam Transport 2026: Metro, Tram, Bike + How to Save",
+      description: "🚋 Schiphol → Center for €5.50. OVpay or ticket? Free bikes! Avoid €50 fines. Guide with maps and local tips →",
       keywords: "amsterdam transport, getting around amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam bike, schiphol center 2026, amsterdam public transport",
     },
     nl: {
-      title: "Hoe Kom Je Rond in Amsterdam 2026: Vervoersgids",
-      description: "Amsterdam vervoer uitgelegd: metro, tram, fiets, veer en OVpay. Hoe van Schiphol naar centrum, kosten en dure fouten om te vermijden. Complete gids.",
+      title: "Amsterdam Vervoer 2026: Metro, Tram, Fiets + Hoe te Besparen",
+      description: "🚋 Schiphol → Centrum voor €5,50. OVpay of kaartje? Gratis fietsen! Vermijd €50 boetes. Gids met kaarten en lokale tips →",
       keywords: "amsterdam vervoer, rondkomen amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam fiets, schiphol centrum 2026, amsterdam openbaar vervoer",
     },
   },
@@ -580,18 +580,18 @@ export const seoData = {
   },
   custoDeVida: {
     pt: {
-      title: "Custo de Vida em Amsterdam 2026: Quanto Custa Morar?",
-      description: "Custo de vida real em Amsterdam 2026: aluguel, seguro saúde, supermercado, transporte. Orçamento mensal detalhado para singles e casais. Sem ilusões.",
-      keywords: "custo de vida amsterdam, quanto custa morar em amsterdam, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam",
+      title: "Custo de Vida Amsterdam 2026: Aluguel, Salário e Orçamento Real",
+      description: "💰 Aluguel médio €1.800. Salário mínimo €2.070. Vale a pena? Calculadora interativa + planilha de gastos mensais reais →",
+      keywords: "custo de vida amsterdam, quanto custa morar em amsterdam, custo de vida em amsterdam, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam, amsterdam custo de vida, cost of living amsterdam, living costs in amsterdam, amsterdam cost of living",
     },
     en: {
-      title: "Cost of Living in Amsterdam 2026: How Much to Live?",
-      description: "Real cost of living in Amsterdam 2026: rent, health insurance, groceries, transport. Detailed monthly budget for singles and couples. No illusions.",
-      keywords: "cost of living amsterdam, how much to live amsterdam, amsterdam rent, amsterdam salary, living netherlands 2026, amsterdam budget",
+      title: "Cost of Living Amsterdam 2026: Rent, Salary & Real Budget",
+      description: "💰 Average rent €1,800. Minimum wage €2,070. Worth it? Interactive calculator + real monthly expenses breakdown →",
+      keywords: "cost of living amsterdam, cost of living in amsterdam, amsterdam cost of living, how much to live amsterdam, amsterdam rent, average rent in amsterdam, amsterdam salary, living netherlands 2026, amsterdam budget, living costs in amsterdam, living expenses amsterdam, amsterdam living cost, is amsterdam expensive to live",
     },
     nl: {
-      title: "Kosten van Levensonderhoud Amsterdam 2026: Hoeveel om te Wonen?",
-      description: "Echte kosten van levensonderhoud in Amsterdam 2026: huur, zorgverzekering, boodschappen, vervoer. Gedetailleerd maandelijks budget voor singles en stellen. Geen illusies.",
+      title: "Kosten Levensonderhoud Amsterdam 2026: Huur, Salaris & Echt Budget",
+      description: "💰 Gemiddelde huur €1.800. Minimumloon €2.070. De moeite waard? Interactieve calculator + echte maandelijkse uitgaven →",
       keywords: "kosten levensonderhoud amsterdam, hoeveel kost wonen amsterdam, amsterdam huur, amsterdam salaris, wonen nederland 2026, amsterdam budget",
     },
   },
