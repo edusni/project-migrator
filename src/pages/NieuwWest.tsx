@@ -520,12 +520,8 @@ const NieuwWest = () => {
 
         {/* Related Pages */}
         <RelatedPagesSection
-          currentPath="nieuw-west"
-          relatedPages={[
-            { path: "amsterdam-west", labelKey: "nav.amsterdamWest" },
-            { path: "amsterdam-zuid", labelKey: "nav.amsterdamZuid" },
-            { path: "hospedagem", labelKey: "nav.hospedagem" }
-          ]}
+          currentPath="/nieuw-west"
+          suggestedPaths={["/amsterdam-west", "/amsterdam-zuid", "/hospedagem"]}
         />
       </div>
     </PageLayout>
