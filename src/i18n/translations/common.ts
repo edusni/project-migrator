@@ -15,6 +15,7 @@ export const commonTranslations: TranslationModule = {
   "nav.dePijp": { pt: "Bairro De Pijp", en: "De Pijp Area", nl: "Wijk De Pijp" },
   "nav.jordaan": { pt: "Bairro Jordaan", en: "Jordaan Area", nl: "Wijk Jordaan" },
   "nav.binnenstad": { pt: "Centro (Binnenstad)", en: "City Center", nl: "Binnenstad" },
+  "nav.grachtengordel": { pt: "Grachtengordel", en: "Canal Belt", nl: "Grachtengordel" },
   "nav.gallery": { pt: "Galeria", en: "Gallery", nl: "Galerij" },
   "nav.blog": { pt: "Blog", en: "Blog", nl: "Blog" },
 
