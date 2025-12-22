@@ -4,6 +4,7 @@ import { Star } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import {
   Changes2026Section,
   Calendar2026Section,
@@ -56,6 +57,8 @@ const Atracoes = () => {
       <FreeActivitiesSection />
       <ItinerariesSection />
       <FAQSection />
+      
+      <RelatedBlogPostsSection currentPath="/atracoes" />
       
       <RelatedPagesSection 
         currentPath="/atracoes"

@@ -9,6 +9,7 @@ const footerLinks = {
     { href: "/hospedagem", labelKey: "nav.accommodation" },
     { href: "/atracoes", labelKey: "nav.attractions" },
     { href: "/transporte", labelKey: "nav.transport" },
+    { href: "/custo-vida-amsterdam", labelKey: "nav.costOfLiving" },
   ],
   experience: [
     { href: "/gastronomia", labelKey: "nav.food" },
