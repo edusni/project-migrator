@@ -1,5 +1,5 @@
 import { Store } from "lucide-react";
-import CoffeeshopExplorer from "@/components/CoffeeshopExplorer";
+import { LazyCoffeeshopExplorer } from "@/components/LazyComponents";
 
 interface ExplorerSectionProps {
   language: string;
@@ -18,7 +18,7 @@ export const ExplorerSection = ({ language }: ExplorerSectionProps) => {
             ? "27 coffeeshops organizados por bairro com filtros de preço, perfil e especialidade"
             : "27 coffeeshops organized by neighborhood with price, profile and specialty filters"}
         </p>
-        <CoffeeshopExplorer />
+        <LazyCoffeeshopExplorer />
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import { Map } from "lucide-react";
-import DayTripsMap from "@/components/DayTripsMap";
+import { LazyDayTripsMap } from "@/components/LazyComponents";
 
 interface MapSectionProps {
   language: string;
@@ -20,7 +20,7 @@ export const MapSection = ({ language }: MapSectionProps) => {
             ? "Bekijk alle bestemmingen en hun reistijden vanaf Amsterdam"
             : "Visualize all destinations and their travel times from Amsterdam"}
         </p>
-        <DayTripsMap />
+        <LazyDayTripsMap />
       </div>
     </section>
   );
