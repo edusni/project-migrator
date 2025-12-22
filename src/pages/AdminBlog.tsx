@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import DOMPurify from "dompurify";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -833,7 +834,7 @@ const AdminBlog = () => {
                     {/* Content */}
                     <div className="blog-content max-w-none">
                       {getPreviewContent() ? (
-                        <div dangerouslySetInnerHTML={{ __html: getPreviewContent() }} />
+                        <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(getPreviewContent()) }} />
                       ) : (
                         <p className="text-muted-foreground italic">
                           {language === "pt" 

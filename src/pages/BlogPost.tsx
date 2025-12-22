@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import DOMPurify from "dompurify";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { PageLayout } from "@/components/PageLayout";
@@ -563,7 +564,7 @@ const BlogPost = () => {
               ) : (
                 <div 
                   className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:scroll-mt-20"
-                  dangerouslySetInnerHTML={{ __html: translatedContent?.content || post.content }}
+                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(translatedContent?.content || post.content) }}
                 />
               )}
             </motion.div>
