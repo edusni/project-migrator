@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Getting Around Amsterdam 2026: Tram, Metro, Bike & GVB Pass | Amsterdu</title>
-    <meta name="description" content="Complete Amsterdam transport guide 2026. Tram, metro, bike rental, GVB passes, and how to get from Schiphol Airport. Prices, tips, and common mistakes.">
+    <title>Getting Around Amsterdam 2026: Complete Transport Guide | Amsterdu</title>
+    <meta name="description" content="Definitive Amsterdam transport guide 2026. Tram, metro, free ferries, OVpay, bike rental, GVB passes and regional tickets. Updated prices, money-saving tips and critical mistakes.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Du">
     
@@ -15,7 +15,7 @@
     <link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/transporte.html">
     
     <meta property="og:title" content="Getting Around Amsterdam 2026 | Amsterdu">
-    <meta property="og:description" content="Complete transport guide: tram, metro, bike, and how to save with GVB passes.">
+    <meta property="og:description" content="Definitive transport guide: tram, metro, ferry, bike and how to actually save money.">
     <meta property="og:url" content="https://amsterdu.com/en/transport.html">
     <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
     <meta property="og:type" content="article">
@@ -26,30 +26,45 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1a1a1a; background: #fff; }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #1a1a1a; background: #fff; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 0; text-align: center; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #F97316; }
+        .lead { font-size: 1.15rem; font-style: italic; color: #ccc; max-width: 700px; margin: 0 auto; }
         .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
         .breadcrumb a { color: #F97316; }
         main { padding: 40px 0; }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1rem; border-left: 4px solid #F97316; padding-left: 15px; }
-        h3 { font-size: 1.25rem; color: #F97316; margin: 20px 0 10px; }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1.5rem; border-left: 4px solid #F97316; padding-left: 15px; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -8px; left: 15px; width: 60px; height: 3px; background: linear-gradient(90deg, #F97316, transparent); }
+        h3 { font-size: 1.25rem; color: #F97316; margin: 25px 0 12px; display: flex; align-items: center; gap: 8px; }
+        h4 { font-size: 1.1rem; color: #1a1a1a; margin: 20px 0 10px; border-left: 3px solid #F97316; padding-left: 12px; }
         p { margin-bottom: 1rem; color: #444; }
-        ul { margin-left: 20px; margin-bottom: 1rem; }
+        ul, ol { margin-left: 20px; margin-bottom: 1rem; }
         li { padding: 5px 0; color: #444; }
         a { color: #F97316; }
         .card { background: #f9f9f9; padding: 25px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px; }
-        .highlight { background: #fff3e6; border-left: 4px solid #F97316; padding: 15px 20px; margin: 20px 0; }
-        .danger { background: #fee; border-left: 4px solid #e53e3e; padding: 15px 20px; margin: 20px 0; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #f9f9f9; }
-        .badge { display: inline-block; background: #F97316; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; }
+        .highlight { background: linear-gradient(135deg, #fff3e6, #fff9f0); border-left: 4px solid #F97316; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .danger { background: linear-gradient(135deg, #fee, #fff5f5); border-left: 4px solid #e53e3e; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .tip { background: linear-gradient(135deg, #e6f7ff, #f0faff); border-left: 4px solid #0284c7; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; font-weight: 600; }
+        tr:hover { background: #fafafa; }
+        .badge { display: inline-block; background: #F97316; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 12px; }
+        .badge-green { background: #10b981; }
+        .badge-blue { background: #0284c7; }
+        .toc { background: #f9f9f9; padding: 25px 30px; border-radius: 12px; margin-bottom: 40px; }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .toc li:last-child { border-bottom: none; }
+        .toc a { text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
         footer { background: #1a1a1a; color: white; padding: 30px 0; text-align: center; margin-top: 60px; }
         footer a { color: #F97316; }
-        @media (max-width: 768px) { h1 { font-size: 1.75rem; } table { font-size: 0.9rem; } }
+        @media (max-width: 768px) { h1 { font-size: 1.75rem; } table { font-size: 0.85rem; } th, td { padding: 10px 12px; } .lead { font-size: 1rem; } }
     </style>
     
     <script type="application/ld+json">
@@ -59,176 +74,566 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "How do I get from Schiphol Airport to Amsterdam city center?",
+                "name": "How does OVpay work in Amsterdam?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Train is the best option: 15-20 minutes to Central Station, €5.50 one-way. Runs 24/7 (less frequent at night). Taxi costs €40-50. Uber/Bolt are cheaper at €25-35."
+                    "text": "OVpay lets you use contactless debit/credit cards directly at validators. Check-in when entering and check-out when leaving. The system charges all trips at once, overnight."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Should I buy a GVB day pass in Amsterdam?",
+                "name": "What's the best transport pass in Amsterdam 2026?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "GVB 24h pass costs €9. Worth it if you take 3+ trips (single trip is €3.40). For 2-3 days, the multi-day pass offers better value. Most tourists can walk/bike instead."
+                    "text": "For urban tourists: GVB 72h pass (€21.50) if taking 3+ trips/day. For regional exploration (windmills, tulips, beaches): Amsterdam & Region Travel Ticket (€40.50 for 3 days). For 1-2 trips/day: OVpay pay-as-you-go is cheaper."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Is Amsterdam bike-friendly for tourists?",
+                "name": "Are Amsterdam ferries really free?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Yes, but it requires confidence. Dutch cyclists are fast and don't slow down for tourists. Bike rental costs €12-15/day. Always use hand signals and stay in bike lanes."
+                    "text": "Yes! The ferries departing from behind Central Station are 100% free for pedestrians, cyclists and scooters. The F3 ferry to Buiksloterweg operates 24 hours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What's the fine for cycling without lights in Amsterdam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The fine for cycling without lights at night is €60-70. Using a phone while cycling costs €140. Police conduct frequent checks, especially in autumn and winter."
                 }
             }
         ]
     }
     </script>
-    
 </head>
 <body>
     <header>
         <div class="container">
             <p class="breadcrumb"><a href="/en/index.html">Home</a> → Transport</p>
             <h1>Getting Around Amsterdam 2026</h1>
-            <p>Tram, metro, bike, ferry — everything you need to navigate the city like a local.</p>
+            <p class="lead">Everything about trams, metro, free ferries, OVpay, bikes and regional passes. A guide that goes beyond the basics — because you deserve to know what locals know.</p>
         </div>
     </header>
     
     <main class="container">
+        <nav class="toc">
+            <h3>📍 In This Guide</h3>
+            <ul>
+                <li><a href="#philosophy">1. Amsterdam's Mobility Philosophy</a></li>
+                <li><a href="#gvb">2. GVB Network: Trams, Metro & Buses</a></li>
+                <li><a href="#ferries">3. Free Ferries: The Open Secret</a></li>
+                <li><a href="#ovpay">4. OVpay & Ticketing: The Complete System</a></li>
+                <li><a href="#airport">5. From Schiphol Airport to the City</a></li>
+                <li><a href="#bike">6. Cycling: The Culture and the Rules</a></li>
+                <li><a href="#regional">7. Regional Passes: Windmills, Tulips & Beaches</a></li>
+                <li><a href="#pr">8. Park and Ride: For Those Driving In</a></li>
+                <li><a href="#verdict">9. Financial Verdict: Which Pass to Choose?</a></li>
+            </ul>
+        </nav>
+
         <div class="highlight">
-            <strong>The Golden Rule:</strong> Amsterdam is small. The city center is very walkable (30 min from Central to Vondelpark). Don't over-rely on public transport!
+            <strong>🎯 The Golden Rule:</strong> Amsterdam is not a car city. It was intentionally designed for pedestrians and cyclists at the top of the mobility hierarchy, followed by public transport. Trying to navigate by car here is expensive, stressful and unnecessary. Embrace the system — it works.
         </div>
         
-        <section>
-            <h2>From Schiphol Airport</h2>
+        <section id="philosophy">
+            <h2>1. Amsterdam's Mobility Philosophy</h2>
+            
+            <p>Before discussing tram lines and ticket prices, you need to understand something fundamental: transport in Amsterdam isn't just logistics. It's the result of decades of urban planning focused on <strong>deprioritizing private cars</strong>.</p>
+            
+            <p>The city operates under a clear hierarchy:</p>
+            <ol>
+                <li><strong>Pedestrians and cyclists</strong> — at the top of the pyramid</li>
+                <li><strong>Mass public transport</strong> — trams and metro</li>
+                <li><strong>Private motor vehicles</strong> — peripheral role, restricted by aggressive policies</li>
+            </ol>
+            
+            <p>Visitors who try to navigate with a car-centric mindset will encounter deliberately imposed physical and financial barriers (parking at €7.50/hour downtown, closed streets, low-emission zones). In contrast, those who embrace the GVB-managed public system and cycling culture discover a fluidity of movement rarely achieved in similarly dense cities.</p>
+            
+            <div class="tip">
+                <strong>💡 What Changed in 2025/2026:</strong> The full implementation of OVpay (direct contactless payment) and the complete electrification of the bus and ferry fleet have transformed the travel experience into a continuous flow, where boundaries between different transport modes are minimized by technology.
+            </div>
+        </section>
+        
+        <section id="gvb">
+            <h2>2. The GVB Network: Trams, Metro & Buses</h2>
+            
+            <p>GVB (Gemeentelijk Vervoerbedrijf) operates the public transport monopoly within Amsterdam's municipal limits. The network is integrated: trams, metro, buses and ferries work with the same ticket.</p>
+            
+            <h3>🚃 Tram System (Electric Streetcars)</h3>
+            
+            <p>Trams are Amsterdam's most iconic and <em>functional</em> transport mode. Unlike streetcar systems in other cities that became tourist attractions, here they're the main surface transport — especially in the canal ring and 19th-century neighborhoods where digging metro tunnels is geologically impossible.</p>
+            
+            <h4>Infrastructure & Operation</h4>
+            <ul>
+                <li><strong>Fleet:</strong> Modern low-floor vehicles (Siemens Combino and CAF 15G)</li>
+                <li><strong>Frequency:</strong> 4 to 10 minutes during the day</li>
+                <li><strong>Hours:</strong> ~06:00 to ~00:30</li>
+                <li><strong>Lines:</strong> 15 lines covering the entire city</li>
+            </ul>
+            
+            <div class="danger">
+                <strong>⚠️ Critical Boarding Rule:</strong> On most trams, entry is only allowed through the doors at either end (front near the driver, rear where there's a conductor). Middle doors are exclusively for exiting — sensors and physical barriers prevent entry. Trying to board through the wrong door results in audible reprimands and delays.
+            </div>
+            
+            <h4>Strategic Lines for Tourists</h4>
+            <div class="card">
+                <p><strong>Line 2:</strong> The cultural artery. Departs from Central Station, crosses Dam Square, runs along the canals, passes Museumplein (Rijksmuseum, Van Gogh) and continues through Vondelpark. Often cited as one of Europe's most beautiful tram lines.</p>
+            </div>
+            <div class="card">
+                <p><strong>Line 5:</strong> Connects Central to Jordaan and Leidseplein (nightlife hub), continuing to Amstelveen.</p>
+            </div>
+            <div class="card">
+                <p><strong>Line 26:</strong> The only "fast tram" line connecting the center to IJburg district (artificial islands). Views of modern residential architecture.</p>
+            </div>
+            
+            <h3>🚇 Amsterdam Metro</h3>
+            
+            <p>Historically secondary to trams, the metro underwent a radical transformation with the North-South Line (Noord/Zuidlijn - M52). It's now the backbone for fast inter-district travel.</p>
+            
+            <h4>The Line 52 Revolution</h4>
+            <p>Before M52, Amsterdam Noord was isolated by the IJ waterway. Now, the line connects Amsterdam Zuid (Zuidas financial district) to Amsterdam Noord in about 15 minutes, passing under the historic center. For tourists staying in Noord, this line is the umbilical cord to attractions.</p>
+            
+            <p><strong>Complete system:</strong> 5 lines (M50, M51, M52, M53, M54). Outside the central ring, mostly surface-level operation.</p>
+            
+            <div class="tip">
+                <strong>💡 Important:</strong> All metro stations have access barriers (turnstiles) requiring validation on entry AND exit.
+            </div>
+            
+            <h3>🚌 Bus Network</h3>
+            
+            <p>GVB buses serve two roles: daytime feeders for tangential routes and nighttime mobility guardians.</p>
+            
+            <h4>Night Network (Nachtbus)</h4>
+            <p>After 00:30, when trams and metro close, the night bus network (lines prefixed with 'N') takes over. Operates until ~07:00.</p>
+            
+            <div class="highlight">
+                <strong>2025 Update:</strong> GVB daily and multi-day passes (24h to 168h) now include unlimited night bus access, eliminating the need for extra tickets. For pay-as-you-go, the night fare is fixed at €5.60 per trip.
+            </div>
+        </section>
+        
+        <section id="ferries">
+            <h2>3. Free Ferries: The Open Secret</h2>
+            
+            <p>Amsterdam's ferries are a positive anomaly in European transport: high-frequency connections, <strong>100% free</strong> for pedestrians, cyclists and scooters. They function as mobile bridges across the IJ.</p>
+            
+            <h3>⛴️ Essential Routes</h3>
+            
+            <p>Ferries depart from the terminal directly behind Central Station (IJ-zijde). No turnstiles or ticket checks — boarding is free.</p>
+            
+            <table>
+                <tr>
+                    <th>Line</th>
+                    <th>Destination</th>
+                    <th>Frequency (Peak)</th>
+                    <th>Time</th>
+                    <th>Operation</th>
+                </tr>
+                <tr>
+                    <td><strong>F3</strong></td>
+                    <td>Buiksloterweg (EYE, A'DAM)</td>
+                    <td>4-6 min</td>
+                    <td>~5 min</td>
+                    <td><span class="badge badge-green">24 Hours</span></td>
+                </tr>
+                <tr>
+                    <td><strong>F4</strong></td>
+                    <td>NDSM Werf</td>
+                    <td>15-30 min</td>
+                    <td>~14 min</td>
+                    <td>07:00 - 00:00</td>
+                </tr>
+                <tr>
+                    <td><strong>F2</strong></td>
+                    <td>IJplein</td>
+                    <td>7-15 min</td>
+                    <td>~5 min</td>
+                    <td>06:00 - 00:00</td>
+                </tr>
+            </table>
+            
+            <div class="card">
+                <h4>🎯 Golden Tip: F4 as a Free Tour</h4>
+                <p>The F4 route to NDSM is longer (~14 min) and works as a free mini-cruise through the harbor, with panoramic skyline views. The destination is a former shipyard turned post-industrial cultural hub, with street art, artist studios and restaurants.</p>
+            </div>
+        </section>
+        
+        <section id="ovpay">
+            <h2>4. OVpay & Ticketing: The Complete System</h2>
+            
+            <p>2025 marks OVpay's consolidation as the dominant standard, coexisting with the legacy OV-chipkaart. The complexity lies in the absolute requirement for double validation (check-in and check-out).</p>
+            
+            <h3>💳 OVpay: Direct Contactless Payment</h3>
+            
+            <p>The system eliminates barriers for tourists, allowing direct use of debit cards (Maestro, V PAY, Mastercard, Visa), credit cards, and digital wallets (Apple Pay, Google Wallet).</p>
+            
+            <h4>How It Works</h4>
+            <ol>
+                <li><strong>Check-in:</strong> Tap your card at the validator when entering. Beep + green light confirm.</li>
+                <li><strong>Check-out:</strong> Tap the same card when leaving. Two beeps confirm and the display shows the cost.</li>
+                <li><strong>Billing:</strong> The system aggregates all trips and charges overnight (look for "NLOV" code in your statement).</li>
+            </ol>
+            
+            <div class="danger">
+                <strong>⚠️ Critical OVpay Risks:</strong>
+                <ul>
+                    <li><strong>Incomplete Trip:</strong> Forgetting to check-out = maximum "boarding fare" charge (€4.00 urban, €20.00 on trains).</li>
+                    <li><strong>Physical vs. Digital Card:</strong> The system treats your plastic card and the same card in Apple Pay as SEPARATE identities. Entering with physical and exiting with phone = two penalty charges.</li>
+                    <li><strong>Card Clash:</strong> Tapping your whole wallet may cause one card to register entry and another exit = duplicate charges.</li>
+                </ul>
+            </div>
+            
+            <h3>📊 Pay-As-You-Go Fares 2025/2026</h3>
+            
+            <table>
+                <tr>
+                    <th>Component</th>
+                    <th>Cost</th>
+                </tr>
+                <tr>
+                    <td>Base Fare (fixed per trip)</td>
+                    <td>€1.12</td>
+                </tr>
+                <tr>
+                    <td>Per km Rate</td>
+                    <td>€0.207</td>
+                </tr>
+                <tr>
+                    <td>1-hour Ticket (with transfers)</td>
+                    <td>€3.40</td>
+                </tr>
+                <tr>
+                    <td>Night Bus (pay-as-you-go)</td>
+                    <td>€5.60</td>
+                </tr>
+            </table>
+            
+            <h3>🎫 GVB Multi-Day Passes (2025)</h3>
+            
+            <p>For visitors, time-based passes are the most rational choice, eliminating per-trip cost anxiety. Valid on GVB trams, buses (day and night) and metro. <strong>Not valid</strong> on regional trains (NS) or regional buses (Connexxion/EBS).</p>
+            
+            <table>
+                <tr>
+                    <th>Duration</th>
+                    <th>Price</th>
+                    <th>Cost/Day</th>
+                    <th>Validity</th>
+                </tr>
+                <tr>
+                    <td>24 hours</td>
+                    <td>€9.50</td>
+                    <td>€9.50</td>
+                    <td>Consecutive hours from 1st check-in</td>
+                </tr>
+                <tr>
+                    <td>48 hours</td>
+                    <td>€15.50</td>
+                    <td>€7.75</td>
+                    <td>Consecutive hours</td>
+                </tr>
+                <tr>
+                    <td>72 hours</td>
+                    <td>€21.50</td>
+                    <td>€7.17</td>
+                    <td>Consecutive hours</td>
+                </tr>
+                <tr>
+                    <td>96 hours</td>
+                    <td>€27.00</td>
+                    <td>€6.75</td>
+                    <td>Consecutive hours</td>
+                </tr>
+                <tr>
+                    <td>120 hours</td>
+                    <td>€34.00</td>
+                    <td>€6.80</td>
+                    <td>Consecutive hours</td>
+                </tr>
+                <tr>
+                    <td>168 hours (7 days)</td>
+                    <td>€42.50</td>
+                    <td>€6.07</td>
+                    <td>Consecutive hours</td>
+                </tr>
+            </table>
+            
+            <div class="tip">
+                <strong>💡 Children (4-11 years):</strong> Specific day ticket ("Dagkaart kind") for €5.00. The 34% OVpay discount requires complex registration with photo — the paper ticket is the practical solution.
+            </div>
+        </section>
+        
+        <section id="airport">
+            <h2>5. From Schiphol Airport to the City</h2>
+            
+            <p>Schiphol is ~17 km from the center. Your modal choice should be based on your hotel location, as options serve different city axes.</p>
+            
+            <h3>🚆 Train (NS - Nederlandse Spoorwegen)</h3>
+            
+            <div class="card">
+                <span class="badge">Recommended</span>
+                <p><strong>For:</strong> Medieval Center, Red Light District, Jordaan, Central Station area</p>
+                <ul>
+                    <li><strong>Where:</strong> Station in Schiphol Plaza basement</li>
+                    <li><strong>Frequency:</strong> Every 4-10 minutes</li>
+                    <li><strong>Time:</strong> 14 to 17 minutes</li>
+                    <li><strong>Cost:</strong> ~€5.20 (2nd class) + €1.00 surcharge if buying disposable ticket at machine</li>
+                </ul>
+                <p><strong>Tip:</strong> Use OVpay directly at the turnstile to avoid the €1.00 surcharge.</p>
+            </div>
+            
+            <h3>🚌 Amsterdam Airport Express (Bus 397)</h3>
+            
+            <div class="card">
+                <p><strong>For:</strong> Museumplein, Leidseplein, Rijksmuseum, south/west zone</p>
+                <ul>
+                    <li><strong>Where:</strong> Platform B17, opposite Schiphol Plaza</li>
+                    <li><strong>Cost:</strong> €6.50 (one-way) or €11.75 (return)</li>
+                    <li><strong>Time:</strong> 30-40 minutes (depends on traffic)</li>
+                    <li><strong>Payment:</strong> Card on board (no cash)</li>
+                </ul>
+                <p><strong>Not included</strong> in regular GVB pass.</p>
+            </div>
+            
+            <h3>🚕 Taxi & Apps</h3>
             
             <table>
                 <tr>
                     <th>Option</th>
-                    <th>Time</th>
                     <th>Cost</th>
-                    <th>Best For</th>
+                    <th>Time</th>
+                    <th>Note</th>
                 </tr>
                 <tr>
-                    <td>🚆 Train</td>
-                    <td>15-20 min</td>
-                    <td>€5.50</td>
-                    <td>Most travelers (runs 24/7)</td>
-                </tr>
-                <tr>
-                    <td>🚕 Taxi</td>
+                    <td>TCA (Official)</td>
+                    <td>€45-60</td>
                     <td>25-40 min</td>
-                    <td>€40-50</td>
-                    <td>Groups, late night with luggage</td>
+                    <td>Official queue outside Schiphol Plaza</td>
                 </tr>
                 <tr>
-                    <td>📱 Uber/Bolt</td>
+                    <td>Uber/Bolt</td>
+                    <td>€35-50</td>
                     <td>25-40 min</td>
-                    <td>€25-35</td>
-                    <td>Cheaper than taxi, app-based</td>
-                </tr>
-                <tr>
-                    <td>🚌 Bus 397</td>
-                    <td>30-45 min</td>
-                    <td>€6.50</td>
-                    <td>If hotel is near Rijksmuseum</td>
+                    <td>Specific pickup point (exit B or garages)</td>
                 </tr>
             </table>
-            
-            <p><strong>Pro tip:</strong> Train tickets can be bought at yellow machines or with contactless card directly at gates. Don't wait in line at ticket counters!</p>
-        </section>
-        
-        <section>
-            <h2>Public Transport (GVB)</h2>
-            
-            <div class="card">
-                <h3>🚃 Tram</h3>
-                <p>The backbone of Amsterdam transport. 15 lines covering the city. Most useful: lines 2, 5, 13, 17 connect major attractions.</p>
-                <p><strong>Tip:</strong> Enter through any door, tap your card at the reader. Don't forget to check out when leaving!</p>
-            </div>
-            
-            <div class="card">
-                <h3>🚇 Metro</h3>
-                <p>4 lines, mostly useful for Noord (52) and Southeast (50, 51, 54). Not essential for tourists staying central.</p>
-            </div>
-            
-            <div class="card">
-                <h3>⛴️ Ferry</h3>
-                <p><strong>FREE!</strong> Connects Central Station to Noord. Great for NDSM, A'DAM Lookout, EYE Film Museum. Bikes allowed.</p>
-            </div>
-            
-            <h3>GVB Pass Options</h3>
-            <table>
-                <tr>
-                    <th>Pass</th>
-                    <th>Price</th>
-                    <th>Worth It If...</th>
-                </tr>
-                <tr>
-                    <td>Single trip</td>
-                    <td>€3.40</td>
-                    <td>1-2 trips only</td>
-                </tr>
-                <tr>
-                    <td>24-hour</td>
-                    <td>€9.00</td>
-                    <td>3+ trips in one day</td>
-                </tr>
-                <tr>
-                    <td>48-hour</td>
-                    <td>€15.00</td>
-                    <td>Exploring far neighborhoods</td>
-                </tr>
-                <tr>
-                    <td>72-hour</td>
-                    <td>€21.00</td>
-                    <td>Best value for active tourists</td>
-                </tr>
-            </table>
-        </section>
-        
-        <section>
-            <h2>Biking in Amsterdam</h2>
-            
-            <div class="card">
-                <span class="badge">Local's Choice</span>
-                <h3>🚲 Bike Rental</h3>
-                <p><strong>Price:</strong> €12-15/day | <strong>Deposit:</strong> €50-100 or ID</p>
-                <p>The Dutch way to travel. Faster than tram for short distances. Rental shops everywhere — avoid tourist-trap prices near Central Station.</p>
-            </div>
             
             <div class="danger">
-                <strong>⚠️ Bike Safety Rules:</strong>
+                <strong>⚠️ Avoid:</strong> Taxi drivers who approach you INSIDE the terminal are often illegal and charge abusive fares.
+            </div>
+        </section>
+        
+        <section id="bike">
+            <h2>6. Cycling: The Culture and the Rules</h2>
+            
+            <p>Amsterdam has more bicycles than residents. The infrastructure reflects this priority — but for tourists, cycling requires knowledge of both written and unwritten rules.</p>
+            
+            <h3>🚲 Infrastructure & Hierarchy</h3>
+            
+            <p>Bike lanes (fietspaden) are physically separated from car lanes and sidewalks. They're <strong>high-speed expressways</strong>, not leisurely paths.</p>
+            
+            <ul>
+                <li><strong>Priority:</strong> Cyclists have priority over cars at right-turn intersections</li>
+                <li><strong>Yield:</strong> Always yield to trams and pedestrians at crossings</li>
+                <li><strong>Signaling:</strong> Hand signals before turning are mandatory. Sudden stops without warning = chain collisions</li>
+            </ul>
+            
+            <div class="danger">
+                <strong>⚠️ Fines That Hurt:</strong>
                 <ul>
-                    <li>Stay in bike lanes (red pavement)</li>
-                    <li>Use hand signals when turning</li>
-                    <li>Never stop suddenly in traffic</li>
-                    <li>Lock your bike ALWAYS (theft is common)</li>
-                    <li>Don't walk in bike lanes — locals will NOT slow down</li>
+                    <li><strong>No lights at night:</strong> €60-70 (white front, red rear required)</li>
+                    <li><strong>Using phone:</strong> €140</li>
+                    <li><strong>Cycling in pedestrian area:</strong> €60+</li>
                 </ul>
+                <p>Police conduct frequent checks, especially in autumn/winter.</p>
+            </div>
+            
+            <h3>⚡ Critical Danger: Tram Tracks</h3>
+            
+            <p>Cross tram tracks <strong>always at a perpendicular angle (90°)</strong>. Crossing at a shallow angle causes bike wheels (especially thin tires) to get stuck in the groove, resulting in immediate dangerous falls.</p>
+            
+            <h3>🔒 Rental & Insurance</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>MacBike</h4>
+                    <p>Red bikes with advertising plates. Signals you're a tourist (locals will be more cautious). Ubiquitous.</p>
+                    <p><strong>Cost:</strong> ~€17.50/day</p>
+                </div>
+                <div class="card">
+                    <h4>Black Bikes</h4>
+                    <p>Black traditional Dutch-style bikes, no advertising. Allows pickup/return at different locations.</p>
+                    <p><strong>Cost:</strong> ~€17.50/day (online discounts)</p>
+                </div>
+            </div>
+            
+            <div class="highlight">
+                <strong>About Theft:</strong> Bike theft is endemic. Rental shops require deposits (€50-150) and ID. Theft insurance is optional (~€3-5/day) but <strong>highly recommended</strong>. Even with insurance, if the bike is stolen and you can't present both lock keys (proof it was locked), you'll be charged the full value (~€450+).
+            </div>
+            
+            <h3>🅿️ Parking & Removal</h3>
+            
+            <p>The city removes bikes parked outside racks in designated areas (especially Central Station and Leidseplein). Recovery from Fietsdepot costs €22.50+ and requires key + ID.</p>
+            
+            <p><strong>Tip:</strong> Underground garages (e.g., under Central Station) are <strong>free for the first 24 hours</strong>.</p>
+        </section>
+        
+        <section id="regional">
+            <h2>7. Regional Passes: Windmills, Tulips & Beaches</h2>
+            
+            <p>To visit windmills, tulip fields or beaches, the urban GVB pass is insufficient. You need passes that unify multiple operators.</p>
+            
+            <h3>🎫 Amsterdam & Region Travel Ticket (ARTT)</h3>
+            
+            <div class="card">
+                <span class="badge badge-blue">The Super-Pass</span>
+                <p><strong>Coverage:</strong> GVB (Amsterdam) + Connexxion + EBS + NS (regional trains)</p>
+                <p><strong>Destinations included:</strong></p>
+                <ul>
+                    <li>Schiphol Airport</li>
+                    <li>Zaanse Schans (Windmills)</li>
+                    <li>Keukenhof (Tulips - buses 852/858/850)</li>
+                    <li>Haarlem</li>
+                    <li>Zandvoort (Beach)</li>
+                    <li>Volendam, Edam and Marken</li>
+                </ul>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Duration</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>1 day</td>
+                    <td>€21.00</td>
+                </tr>
+                <tr>
+                    <td>2 days</td>
+                    <td>€31.50</td>
+                </tr>
+                <tr>
+                    <td>3 days</td>
+                    <td>€40.50</td>
+                </tr>
+            </table>
+            
+            <p><strong>Worth it?</strong> One round trip to Keukenhof or Zaanse Schans already justifies most of the daily pass cost.</p>
+            
+            <h3>🎫 Amsterdam Travel Ticket (ATT)</h3>
+            
+            <div class="card">
+                <p><strong>Coverage:</strong> Schiphol-Central train + Bus 397 + entire GVB network</p>
+                <p><strong>Does not cover:</strong> Regional buses to windmills or beaches</p>
+            </div>
+            
+            <table>
+                <tr>
+                    <th>Duration</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td>1 day</td>
+                    <td>€18.00</td>
+                </tr>
+                <tr>
+                    <td>2 days</td>
+                    <td>€24.00</td>
+                </tr>
+                <tr>
+                    <td>3 days</td>
+                    <td>€30.00</td>
+                </tr>
+            </table>
+            
+            <p>Ideal for short visits when you want to cover the airport transfer without buying the more expensive ARTT.</p>
+        </section>
+        
+        <section id="pr">
+            <h2>8. Park and Ride (P+R): For Those Driving In</h2>
+            
+            <p>Driving into the center is prohibitive — street parking can cost €7.50/hour. The smart solution is the P+R system.</p>
+            
+            <h3>How It Works</h3>
+            
+            <ol>
+                <li>Park at peripheral garages (RAI, Johan Cruijff ArenA, Zeeburg, Sloterdijk)</li>
+                <li>Take public transport to the center</li>
+                <li>Validate your return trip in the center</li>
+                <li>Pay parking at the machine using the same card</li>
+            </ol>
+            
+            <table>
+                <tr>
+                    <th>Condition</th>
+                    <th>Cost (24h)</th>
+                </tr>
+                <tr>
+                    <td>Entry before 10am (weekdays)</td>
+                    <td>€6.00</td>
+                </tr>
+                <tr>
+                    <td>Entry after 10am or weekends</td>
+                    <td>€1.00</td>
+                </tr>
+            </table>
+            
+            <div class="highlight">
+                <strong>P+R Golden Rule:</strong> Your last return validation MUST be in the city center to activate the parking discount.
+            </div>
+        </section>
+        
+        <section id="verdict">
+            <h2>9. Financial Verdict: Which Pass to Choose?</h2>
+            
+            <p>Your ticket choice defines your transport budget. Here's the analysis by profile:</p>
+            
+            <table>
+                <tr>
+                    <th>Profile</th>
+                    <th>Recommendation</th>
+                    <th>Cost (3 days)</th>
+                    <th>Reasoning</th>
+                </tr>
+                <tr>
+                    <td><strong>Intensive Cultural</strong></td>
+                    <td>I amsterdam City Card</td>
+                    <td>€108.00</td>
+                    <td>Includes expensive museums (€20+) + GVB transport. Worth it if visiting 3+ paid attractions/day.</td>
+                </tr>
+                <tr>
+                    <td><strong>Regional Explorer</strong></td>
+                    <td>Amsterdam & Region Travel Ticket</td>
+                    <td>€40.50</td>
+                    <td>Covers airport, windmills, tulips, beaches and city. Best geographic flexibility.</td>
+                </tr>
+                <tr>
+                    <td><strong>Urban Budget</strong></td>
+                    <td>GVB Multi-Day + Single Train</td>
+                    <td>~€27.00</td>
+                    <td>GVB 72h (€21.50) + Schiphol train (€5.20). Cheapest if not leaving the city.</td>
+                </tr>
+                <tr>
+                    <td><strong>Minimalist</strong></td>
+                    <td>OVpay (pay-as-you-go)</td>
+                    <td>Variable</td>
+                    <td>For 1-2 trips/day. Per-trip cost (~€1.50-€2.50) can be less than daily pass.</td>
+                </tr>
+            </table>
+            
+            <div class="highlight">
+                <strong>🎯 Final Summary:</strong> Amsterdam's mobility in 2025/2026 is a mature, technologically advanced and deeply integrated system. The secret is to abandon the car, embrace OVpay for short trips, and strategically use regional passes to explore beyond the central canals.
             </div>
         </section>
         
         <section>
-            <h2>Transport Apps</h2>
+            <h2>📱 Essential Apps</h2>
             <ul>
                 <li><strong>9292:</strong> Official Dutch public transport planner. Best for routes and times.</li>
                 <li><strong>GVB:</strong> Buy tickets, see real-time arrivals. Essential for tram/metro.</li>
-                <li><strong>NS:</strong> Dutch railways. For trains to Schiphol, day trips.</li>
-                <li><strong>Uber/Bolt:</strong> Ride-hailing. Cheaper than taxis.</li>
+                <li><strong>NS:</strong> Dutch railways. For trains to Schiphol and day trips.</li>
+                <li><strong>Uber/Bolt:</strong> Ride-hailing. Generally cheaper than official taxis.</li>
                 <li><strong>Donkey Republic:</strong> Bike sharing. Unlock via app, return at any station.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Common Transport Mistakes</h2>
-            <ul>
-                <li><strong>Not checking out:</strong> Tap card when entering AND leaving. Fines are €50+.</li>
-                <li><strong>Walking in bike lanes:</strong> Red pavement = bikes only. Locals won't stop!</li>
-                <li><strong>Buying single tickets:</strong> Day passes are cheaper if taking 3+ trips.</li>
-                <li><strong>Taxis at Central Station:</strong> Often overcharge tourists. Use apps instead.</li>
-                <li><strong>Renting bikes at tourist traps:</strong> Walk 5 minutes from Central for better prices.</li>
             </ul>
         </section>
         
@@ -239,6 +644,7 @@
                 <li><a href="/en/planning.html">Trip Planning</a></li>
                 <li><a href="/en/attractions.html">Attractions</a></li>
                 <li><a href="/en/accommodation.html">Where to Stay</a></li>
+                <li><a href="/en/daytrips.html">Day Trips</a></li>
             </ul>
         </section>
     </main>
