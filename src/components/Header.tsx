@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 // Route key mapping for prefetch
-type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre" | "de-pijp" | "jordaan" | "binnenstad" | "grachtengordel" | "amsterdam-west" | "amsterdam-oost" | "amsterdam-noord" | "amsterdam-zuid";
+type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre" | "de-pijp" | "jordaan" | "binnenstad" | "grachtengordel" | "amsterdam-west" | "amsterdam-oost" | "amsterdam-noord" | "amsterdam-zuid" | "nieuw-west" | "zuidoost" | "weesp";
 
 const urlToRouteKey: Record<string, RouteKey> = {
   "/planejamento": "planejamento",
@@ -35,6 +35,9 @@ const urlToRouteKey: Record<string, RouteKey> = {
   "/amsterdam-oost": "amsterdam-oost",
   "/amsterdam-noord": "amsterdam-noord",
   "/amsterdam-zuid": "amsterdam-zuid",
+  "/nieuw-west": "nieuw-west",
+  "/zuidoost": "zuidoost",
+  "/weesp": "weesp",
 };
 
 // All navigation items for mobile
@@ -64,6 +67,9 @@ const planningItems = [
   { titleKey: "nav.amsterdamOost", url: "/amsterdam-oost", icon: Building2 },
   { titleKey: "nav.amsterdamNoord", url: "/amsterdam-noord", icon: Building2 },
   { titleKey: "nav.amsterdamZuid", url: "/amsterdam-zuid", icon: Building2 },
+  { titleKey: "nav.nieuwWest", url: "/nieuw-west", icon: Building2 },
+  { titleKey: "nav.zuidoost", url: "/zuidoost", icon: Building2 },
+  { titleKey: "nav.weesp", url: "/weesp", icon: Building2 },
   { titleKey: "nav.transport", url: "/transporte", icon: Train },
   { titleKey: "nav.costOfLiving", url: "/custo-vida-amsterdam", icon: Euro },
 ];
