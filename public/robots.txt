@@ -1,46 +1,13 @@
 # Amsterdu - robots.txt
 # https://amsterdu.com
 
-# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Google
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 1
+# Sitemap
+Sitemap: https://amsterdu.com/sitemap.xml
 
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Googlebot-Video
-Allow: /
-
-# Bing
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Yahoo
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-# DuckDuckGo
-User-agent: DuckDuckBot
-Allow: /
-
-# Baidu
-User-agent: Baiduspider
-Allow: /
-Crawl-delay: 2
-
-# Yandex
-User-agent: Yandex
-Allow: /
-Crawl-delay: 2
-
-# AI Crawlers - see llms.txt for structured content
+# AI Crawlers
 User-agent: GPTBot
 Allow: /
 
@@ -59,7 +26,7 @@ Allow: /
 User-agent: Cohere-ai
 Allow: /
 
-# Social Media Bots
+# Social Media Crawlers
 User-agent: Twitterbot
 Allow: /
 
@@ -78,14 +45,8 @@ Allow: /
 User-agent: TelegramBot
 Allow: /
 
-# Disallow bad bots
-User-agent: AhrefsBot
-Disallow: /
-
+# Block aggressive scrapers
 User-agent: MJ12bot
-Disallow: /
-
-User-agent: SemrushBot
 Disallow: /
 
 User-agent: DotBot
@@ -94,11 +55,5 @@ Disallow: /
 User-agent: BLEXBot
 Disallow: /
 
-# Sitemap location
-Sitemap: https://amsterdu.com/sitemap.xml
-
-# AI Crawlers - Static HTML versions with full content (no JavaScript required)
-# Portuguese: https://amsterdu.com/llm.html
-# English: https://amsterdu.com/llm-en.html
-# Dutch: https://amsterdu.com/llm-nl.html
-# Structured content overview: https://amsterdu.com/llms.txt
+# Host
+Host: amsterdu.com
