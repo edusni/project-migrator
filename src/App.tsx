@@ -6,7 +6,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { AuthProvider } from "@/hooks/useAuth";
 import { LocaleRouter } from "@/components/LocaleRouter";
-import { RedirectHandler } from "@/components/RedirectHandler";
 import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
 import { lazy, Suspense } from "react";
 
@@ -71,7 +70,6 @@ const App = () => (
           <Sonner />
         <BrowserRouter>
           <ScrollToTopOnNavigate />
-          <RedirectHandler />
           <Routes>
             {/* Root redirect to locale-prefixed route */}
             <Route path="/" element={<LocaleRouter />} />
