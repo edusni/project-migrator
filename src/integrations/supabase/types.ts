@@ -105,6 +105,8 @@ export type Database = {
           published_at: string | null
           read_time_minutes: number | null
           slug: string
+          slug_en: string | null
+          slug_nl: string | null
           status: Database["public"]["Enums"]["post_status"]
           title: string
           title_en: string | null
@@ -130,6 +132,8 @@ export type Database = {
           published_at?: string | null
           read_time_minutes?: number | null
           slug: string
+          slug_en?: string | null
+          slug_nl?: string | null
           status?: Database["public"]["Enums"]["post_status"]
           title: string
           title_en?: string | null
@@ -155,6 +159,8 @@ export type Database = {
           published_at?: string | null
           read_time_minutes?: number | null
           slug?: string
+          slug_en?: string | null
+          slug_nl?: string | null
           status?: Database["public"]["Enums"]["post_status"]
           title?: string
           title_en?: string | null
