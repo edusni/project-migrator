@@ -549,13 +549,13 @@ const AmsterdamZuid = () => {
       <SEOHead
         title={c.title}
         description={c.intro}
-        canonicalPath="/amsterdam-zuid"
         keywords="Amsterdam Zuid 2026, De Pijp, Museumkwartier, Zuidas, Rivierenbuurt, Buitenveldert, Zuidasdok, woningmarkt Amsterdam"
       />
 
       <PageHero
+        icon={Building2}
         title={c.title}
-        subtitle={c.subtitle}
+        description={c.subtitle}
       />
 
       <div className="container mx-auto px-4 py-12">
