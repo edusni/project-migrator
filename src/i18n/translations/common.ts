@@ -16,6 +16,7 @@ export const commonTranslations: TranslationModule = {
   "nav.jordaan": { pt: "Bairro Jordaan", en: "Jordaan Area", nl: "Wijk Jordaan" },
   "nav.binnenstad": { pt: "Centro (Binnenstad)", en: "City Center", nl: "Binnenstad" },
   "nav.grachtengordel": { pt: "Grachtengordel", en: "Canal Belt", nl: "Grachtengordel" },
+  "nav.amsterdamWest": { pt: "Amsterdam West", en: "Amsterdam West", nl: "Amsterdam West" },
   "nav.gallery": { pt: "Galeria", en: "Gallery", nl: "Galerij" },
   "nav.blog": { pt: "Blog", en: "Blog", nl: "Blog" },
 
