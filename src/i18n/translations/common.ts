@@ -12,6 +12,7 @@ export const commonTranslations: TranslationModule = {
   "nav.coffeeshops": { pt: "Coffeeshops", en: "Coffeeshops", nl: "Coffeeshops" },
   "nav.daytrips": { pt: "Arredores", en: "Day Trips", nl: "Dagtrips" },
   "nav.costOfLiving": { pt: "Custo de Vida", en: "Cost of Living", nl: "Kosten" },
+  "nav.dePijp": { pt: "Bairro De Pijp", en: "De Pijp Area", nl: "Wijk De Pijp" },
   "nav.gallery": { pt: "Galeria", en: "Gallery", nl: "Galerij" },
   "nav.blog": { pt: "Blog", en: "Blog", nl: "Blog" },
 
