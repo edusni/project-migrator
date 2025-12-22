@@ -11,6 +11,14 @@ import {
 } from "lucide-react";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 
+// Neighborhood images
+import oosterparkbuurtImg from "@/assets/neighborhood-oosterparkbuurt.webp";
+import indischeBuurtImg from "@/assets/neighborhood-indische-buurt.webp";
+import watergraafsmeerImg from "@/assets/neighborhood-watergraafsmeer.webp";
+import oostelijkHavengebiedImg from "@/assets/neighborhood-oostelijk-havengebied.webp";
+import sluisbuurtImg from "@/assets/neighborhood-sluisbuurt.webp";
+import ijburgImg from "@/assets/neighborhood-ijburg.webp";
+
 const AmsterdamOost = () => {
   const { language } = useLanguage();
 
@@ -24,6 +32,7 @@ const AmsterdamOost = () => {
     {
       name: "Oosterparkbuurt",
       emoji: "🏛️",
+      image: oosterparkbuurtImg,
       description: t(
         "Bairro histórico com o icônico Oosterpark, vida cultural vibrante e arquitetura do século XIX",
         "Historic neighborhood with iconic Oosterpark, vibrant cultural life and 19th century architecture",
@@ -36,6 +45,7 @@ const AmsterdamOost = () => {
     {
       name: "Indische Buurt",
       emoji: "🌶️",
+      image: indischeBuurtImg,
       description: t(
         "O 'hotspot' de Oost: gentrificação acelerada, Javastraat trendy e gastronomia multicultural",
         "The 'hotspot' of Oost: accelerated gentrification, trendy Javastraat and multicultural gastronomy",
@@ -48,6 +58,7 @@ const AmsterdamOost = () => {
     {
       name: "Watergraafsmeer",
       emoji: "🌳",
+      image: watergraafsmeerImg,
       description: t(
         "A 'cidade-jardim' de Oost: casas com jardim, famílias e o Science Park da UvA",
         "The 'garden city' of Oost: houses with gardens, families and UvA Science Park",
@@ -60,6 +71,7 @@ const AmsterdamOost = () => {
     {
       name: "Oostelijk Havengebied",
       emoji: "🚢",
+      image: oostelijkHavengebiedImg,
       description: t(
         "Antigas docas transformadas em arquitetura icônica: Java, KNSM, Borneo e Sporenburg",
         "Former docks transformed into iconic architecture: Java, KNSM, Borneo and Sporenburg",
@@ -72,6 +84,7 @@ const AmsterdamOost = () => {
     {
       name: "Zeeburgereiland & Sluisbuurt",
       emoji: "🏗️",
+      image: sluisbuurtImg,
       description: t(
         "O futuro vertical de Amsterdam: torres residenciais, estudantes e urbanismo inovador",
         "Amsterdam's vertical future: residential towers, students and innovative urbanism",
@@ -84,6 +97,7 @@ const AmsterdamOost = () => {
     {
       name: "IJburg",
       emoji: "🏝️",
+      image: ijburgImg,
       description: t(
         "Ilhas artificiais no IJmeer: praias urbanas, famílias jovens e Strandeiland em construção",
         "Artificial islands in IJmeer: urban beaches, young families and Strandeiland under construction",
@@ -279,13 +293,25 @@ const AmsterdamOost = () => {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {neighborhoods.map((neighborhood) => (
-              <Card key={neighborhood.name} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
+              <Card key={neighborhood.name} className="hover:shadow-lg transition-shadow overflow-hidden">
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={neighborhood.image} 
+                    alt={neighborhood.name}
+                    className="w-full h-full object-cover transition-transform hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute top-2 right-2">
+                    <Badge variant="secondary" className="bg-background/90 backdrop-blur-sm">
+                      {neighborhood.vibe}
+                    </Badge>
+                  </div>
+                </div>
+                <CardHeader className="pb-2">
                   <CardTitle className="flex items-center gap-2">
                     <span className="text-2xl">{neighborhood.emoji}</span>
                     {neighborhood.name}
                   </CardTitle>
-                  <Badge variant="secondary">{neighborhood.vibe}</Badge>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <p className="text-muted-foreground text-sm">{neighborhood.description}</p>
