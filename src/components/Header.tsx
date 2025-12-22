@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 // Route key mapping for prefetch
-type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre" | "de-pijp" | "jordaan" | "binnenstad";
+type RouteKey = "planejamento" | "hospedagem" | "atracoes" | "transporte" | "gastronomia" | "coffeeshops" | "arredores" | "blog" | "sobre" | "de-pijp" | "jordaan" | "binnenstad" | "grachtengordel";
 
 const urlToRouteKey: Record<string, RouteKey> = {
   "/planejamento": "planejamento",
@@ -30,6 +30,7 @@ const urlToRouteKey: Record<string, RouteKey> = {
   "/de-pijp": "de-pijp",
   "/jordaan": "jordaan",
   "/binnenstad": "binnenstad",
+  "/grachtengordel": "grachtengordel",
 };
 
 // All navigation items for mobile
@@ -54,6 +55,7 @@ const planningItems = [
   { titleKey: "nav.dePijp", url: "/de-pijp", icon: Building2 },
   { titleKey: "nav.jordaan", url: "/jordaan", icon: Building2 },
   { titleKey: "nav.binnenstad", url: "/binnenstad", icon: Building2 },
+  { titleKey: "nav.grachtengordel", url: "/grachtengordel", icon: Building2 },
   { titleKey: "nav.transport", url: "/transporte", icon: Train },
   { titleKey: "nav.costOfLiving", url: "/custo-vida-amsterdam", icon: Euro },
 ];
