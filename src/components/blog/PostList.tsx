@@ -15,6 +15,8 @@ interface Post {
   id: string;
   title: string;
   slug: string;
+  slug_en: string | null;
+  slug_nl: string | null;
   excerpt: string | null;
   featured_image: string | null;
   read_time_minutes: number | null;
@@ -49,6 +51,8 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
           id,
           title,
           slug,
+          slug_en,
+          slug_nl,
           excerpt,
           featured_image,
           read_time_minutes,
@@ -138,7 +142,14 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
         ? post.excerpt_nl 
         : post.excerpt;
     
-    return { ...post, title, excerpt };
+    // Use native slug for each language
+    const slug = language === 'en' && post.slug_en 
+      ? post.slug_en 
+      : language === 'nl' && post.slug_nl 
+        ? post.slug_nl 
+        : post.slug;
+    
+    return { ...post, title, excerpt, slug };
   };
 
   return (
