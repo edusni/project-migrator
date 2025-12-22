@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import heroAmsterdamWest from "@/assets/hero-amsterdam-west.webp";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
@@ -152,6 +153,7 @@ const AmsterdamWest = () => {
           "Uitgebreide Analyse van Stedelijke Transformatie, Woondynamiek en Regionaal Perspectief – 2026"
         )}
         icon={MapPin}
+        backgroundImage={heroAmsterdamWest}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

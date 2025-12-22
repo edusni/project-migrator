@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import heroGrachtengordel from "@/assets/hero-grachtengordel.webp";
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
@@ -119,6 +120,7 @@ const Grachtengordel = () => {
           "Strategisch Stedelijk en Vastgoed Inlichtingenrapport – Scenario 2026"
         )}
         icon={Landmark}
+        backgroundImage={heroGrachtengordel}
       />
 
       <div className="container mx-auto px-4 py-12 space-y-16">

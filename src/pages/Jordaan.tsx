@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import heroJordaan from "@/assets/hero-jordaan.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { 
@@ -101,6 +102,7 @@ const Jordaan = () => {
           "Amsterdam's most iconic historic neighborhood: charm, culture and the challenges of living in an open-air museum",
           "De meest iconische historische wijk van Amsterdam: charme, cultuur en de uitdagingen van wonen in een openluchtmuseum"
         )}
+        backgroundImage={heroJordaan}
       />
 
       <div className="container mx-auto px-4 py-12">
