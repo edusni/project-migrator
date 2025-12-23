@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, Mail, Heart } from "lucide-react";
+import { Instagram, Facebook, Mail, Heart } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion } from "framer-motion";
 
@@ -23,9 +23,9 @@ const footerLinks = {
 };
 
 const socialLinks = [
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Mail, href: "#", label: "Email" },
+  { icon: Instagram, href: "https://www.instagram.com/_amsterdu", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61583847475181", label: "Facebook" },
+  { icon: Mail, href: "mailto:contato@amsterdu.com", label: "Email" },
 ];
 
 const containerVariants = {
