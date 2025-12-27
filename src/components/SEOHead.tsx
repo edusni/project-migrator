@@ -580,19 +580,19 @@ export const seoData = {
   },
   custoDeVida: {
     pt: {
-      title: "Custo de Vida Amsterdam 2026: Aluguel, Salário e Orçamento Real",
-      description: "💰 Aluguel médio €1.800. Salário mínimo €2.070. Vale a pena? Calculadora interativa + planilha de gastos mensais reais →",
-      keywords: "custo de vida amsterdam, quanto custa morar em amsterdam, custo de vida em amsterdam, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam, amsterdam custo de vida, cost of living amsterdam, living costs in amsterdam, amsterdam cost of living",
+      title: "Custo de Vida em Amsterdam 2026: aluguel, contas, impostos e quanto precisa por mês",
+      description: "Veja quanto custa morar em Amsterdam em 2026 com números reais: aluguel médio €1.940, seguro saúde, energia, mercado, transporte (GVB) e impostos municipais. Inclui calculadora e 2 cenários (solteiro e casal).",
+      keywords: "custo de vida amsterdam, custo de vida em amsterdam, quanto custa morar em amsterdam, custo de vida amsterdam 2026, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam, amsterdam custo de vida, cost of living amsterdam, living costs in amsterdam",
     },
     en: {
-      title: "Cost of Living Amsterdam 2026: Rent, Salary & Real Budget",
-      description: "💰 Average rent €1,800. Minimum wage €2,070. Worth it? Interactive calculator + real monthly expenses breakdown →",
+      title: "Cost of Living Amsterdam 2026: Rent, Bills, Taxes & Monthly Budget",
+      description: "See how much it costs to live in Amsterdam in 2026 with real numbers: average rent €1,940, health insurance, energy, groceries, transport (GVB) and municipal taxes. Includes calculator and 2 scenarios (single and couple).",
       keywords: "cost of living amsterdam, cost of living in amsterdam, amsterdam cost of living, how much to live amsterdam, amsterdam rent, average rent in amsterdam, amsterdam salary, living netherlands 2026, amsterdam budget, living costs in amsterdam, living expenses amsterdam, amsterdam living cost, is amsterdam expensive to live",
     },
     nl: {
-      title: "Kosten Levensonderhoud Amsterdam 2026: Huur, Salaris & Echt Budget",
-      description: "💰 Gemiddelde huur €1.800. Minimumloon €2.070. De moeite waard? Interactieve calculator + echte maandelijkse uitgaven →",
-      keywords: "kosten levensonderhoud amsterdam, hoeveel kost wonen amsterdam, amsterdam huur, amsterdam salaris, wonen nederland 2026, amsterdam budget",
+      title: "Kosten Levensonderhoud Amsterdam 2026: Huur, Rekeningen, Belastingen & Maandbudget",
+      description: "Bekijk hoeveel het kost om in Amsterdam te wonen in 2026 met echte cijfers: gemiddelde huur €1.940, zorgverzekering, energie, boodschappen, vervoer (GVB) en gemeentelijke heffingen. Inclusief calculator en 2 scenario's.",
+      keywords: "kosten levensonderhoud amsterdam, hoeveel kost wonen amsterdam, amsterdam huur, amsterdam salaris, wonen nederland 2026, amsterdam budget, gemiddelde huur amsterdam",
     },
   },
 };
