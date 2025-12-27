@@ -1,6 +1,8 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Euro, Home, Heart, Zap, Wifi, Trash2, Droplets, ShoppingCart, Bike, Users, User, Calculator, AlertTriangle, Lightbulb } from "lucide-react";
+import { Euro, Home, Heart, Zap, Wifi, Trash2, Droplets, ShoppingCart, Bike, Users, User, Calculator, AlertTriangle, Lightbulb, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
@@ -12,6 +14,8 @@ import amsterdamBikesImg from "@/assets/amsterdam-bikes.webp";
 
 const CustoDeVida = () => {
   const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
+  const locale = getCurrentLocale();
   const seo = seoData.custoDeVida[language];
 
   const content = {
@@ -383,8 +387,32 @@ const CustoDeVida = () => {
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-4">
               {c.intro.title}
             </h2>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-6">
               {c.intro.text}
+            </p>
+            
+            {/* Link to detailed blog post - SEO: differentiate pillar from post */}
+            <Link 
+              to={getLocalizedPath(locale, "/blog/custo-vida-amsterdam-2026")}
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-lg transition-colors border border-primary/20"
+            >
+              <span>
+                {language === "nl" 
+                  ? "Voorbeelden per profiel: alleenstaand, stel, gezin, student"
+                  : language === "pt"
+                  ? "Exemplos por perfil: solteiro, casal, família, estudante"
+                  : "Examples by profile: single, couple, family, student"
+                }
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {language === "nl"
+                ? "Gedetailleerde cases met budgetten en tips voor verschillende situaties"
+                : language === "pt"
+                ? "Cases detalhados com orçamentos e dicas para diferentes situações"
+                : "Detailed cases with budgets and tips for different situations"
+              }
             </p>
           </AnimatedSection>
         </div>
