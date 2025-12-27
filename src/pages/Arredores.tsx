@@ -21,11 +21,12 @@ import zaanseSchansImg from "@/assets/daytrip-zaanse-schans.png";
 const getContent = (lang: Language) => {
   const content = {
     pt: {
-      title: "Bate-voltas de Amsterdam",
-      description: "A Holanda é pequena, os trens funcionam bem e dá para sair de Amsterdam e voltar no mesmo dia com conforto",
+      title: "Bate-voltas de Amsterdam em 2026",
+      description: "Guia completo com tempo porta a porta, lotação e estratégias",
       intro: "A diferença entre um bate-volta incrível e um bate-volta frustrante quase sempre é esta: escolher destinos pelo tempo de deslocamento real (porta a porta) e pela lotação esperada.",
+      pillarIntro: "Este guia traz todos os destinos de bate-volta (day trip) saindo de Amsterdam, com tempos reais porta a porta, estratégia anti multidão, mapa interativo e o que você precisa reservar antes.",
       quickPick: {
-        title: "Como Escolher em 30 Segundos",
+        title: "Como escolher o melhor bate-volta saindo de Amsterdam",
         items: [
           { condition: "Primeira vez na Holanda e pouco tempo", dest: "Haarlem ou Utrecht", reason: "fáceis, rápidas, bonitas" },
           { condition: "Primavera (março a maio)", dest: "Keukenhof", reason: "dia de semana, cedo" },
@@ -41,7 +42,7 @@ const getContent = (lang: Language) => {
         bike: "De Bike"
       },
       classics: {
-        title: "Os Clássicos",
+        title: "Bate-voltas clássicos perto de Amsterdam",
         subtitle: "Destinos famosos, muito procurados. Aqui, horário é tudo.",
         items: [
           {
@@ -91,7 +92,7 @@ const getContent = (lang: Language) => {
         ]
       },
       miniAms: {
-        title: "Mini-Amsterdams",
+        title: "Cidades perto de Amsterdam para bate-volta",
         subtitle: "Históricas, fáceis, com menos pressão turística. Aqui o ganho é previsibilidade: bate e volta sem stress.",
         items: [
           {
@@ -131,7 +132,7 @@ const getContent = (lang: Language) => {
         ]
       },
       modern: {
-        title: "Moderno e Arrojado",
+        title: "Bate-volta para Rotterdam saindo de Amsterdam",
         subtitle: "Para quem quer a 'anti-Amsterdam'.",
         item: {
           name: "Rotterdam",
@@ -147,7 +148,7 @@ const getContent = (lang: Language) => {
         }
       },
       bike: {
-        title: "De Bike",
+        title: "Bate-volta de bike saindo de Amsterdam",
         subtitle: "Bate-voltas que parecem viagem. A Holanda é plana, mas vento e clima mudam o jogo.",
         items: [
           {
@@ -171,7 +172,7 @@ const getContent = (lang: Language) => {
         ]
       },
       tips: {
-        title: "Dicas Gerais (As que Realmente Evitam Erros)",
+        title: "Dicas para bate-voltas de Amsterdam (As que Realmente Evitam Erros)",
         items: [
           { icon: "📅", title: "Dia útil quase sempre ganha", text: "Menos filas, menos excursão, menos estresse." },
           { icon: "⏰", title: "Comece cedo", text: "Você compra 'silêncio' com 1 hora de antecedência." },
@@ -180,14 +181,14 @@ const getContent = (lang: Language) => {
         ]
       },
       ranking: {
-        title: "Ranking Prático (Para Ajudar a Decisão)",
+        title: "Qual o melhor bate-volta de Amsterdam? (Ranking Prático)",
         items: [
-          { condition: "Só 1 dia livre", dest: "Haarlem" },
+          { condition: "Só 1 dia livre", dest: "Haarlem (15 min de trem, centro compacto)" },
           { condition: "Primavera", dest: "Keukenhof (cedo, dia útil)" },
-          { condition: "Cultura urbana e energia jovem", dest: "Utrecht" },
-          { condition: "Arquitetura", dest: "Rotterdam" },
+          { condition: "Cultura urbana e energia jovem", dest: "Utrecht (25 min de trem)" },
+          { condition: "Arquitetura", dest: "Rotterdam (40 min de trem)" },
           { condition: "Cartão-postal com moinhos", dest: "Zaanse Schans (checar regras 2026)" },
-          { condition: "Evitar com pouco tempo", dest: "Giethoorn" }
+          { condition: "Evitar com pouco tempo", dest: "Giethoorn (2h só de ida)" }
         ]
       },
       faq: {
@@ -205,11 +206,12 @@ const getContent = (lang: Language) => {
       }
     },
     en: {
-      title: "Day Trips from Amsterdam",
-      description: "The Netherlands is small, trains work well and you can leave Amsterdam and return the same day comfortably",
+      title: "Day Trips from Amsterdam in 2026",
+      description: "Complete guide with door-to-door times, crowds and strategies",
       intro: "The difference between an amazing day trip and a frustrating one almost always comes down to: choosing destinations by real travel time (door to door) and expected crowds.",
+      pillarIntro: "This guide covers all day trip destinations from Amsterdam, with real door-to-door times, anti-crowd strategies, interactive map and what you need to book in advance.",
       quickPick: {
-        title: "How to Choose in 30 Seconds",
+        title: "How to choose the best day trip from Amsterdam",
         items: [
           { condition: "First time in the Netherlands and short on time", dest: "Haarlem or Utrecht", reason: "easy, quick, beautiful" },
           { condition: "Spring (March to May)", dest: "Keukenhof", reason: "weekday, early" },
@@ -225,7 +227,7 @@ const getContent = (lang: Language) => {
         bike: "By Bike"
       },
       classics: {
-        title: "The Classics",
+        title: "Classic day trips near Amsterdam",
         subtitle: "Famous destinations, very popular. Here, timing is everything.",
         items: [
           {
@@ -275,7 +277,7 @@ const getContent = (lang: Language) => {
         ]
       },
       miniAms: {
-        title: "Mini-Amsterdams",
+        title: "Cities near Amsterdam for day trips",
         subtitle: "Historic, easy, with less tourist pressure. Here the gain is predictability: day trip without stress.",
         items: [
           {
@@ -315,7 +317,7 @@ const getContent = (lang: Language) => {
         ]
       },
       modern: {
-        title: "Modern and Bold",
+        title: "Day trip to Rotterdam from Amsterdam",
         subtitle: "For those who want the 'anti-Amsterdam'.",
         item: {
           name: "Rotterdam",
@@ -331,7 +333,7 @@ const getContent = (lang: Language) => {
         }
       },
       bike: {
-        title: "By Bike",
+        title: "Day trips by bike from Amsterdam",
         subtitle: "Day trips that feel like travel. The Netherlands is flat, but wind and weather change the game.",
         items: [
           {
@@ -355,7 +357,7 @@ const getContent = (lang: Language) => {
         ]
       },
       tips: {
-        title: "General Tips (The Ones That Really Prevent Mistakes)",
+        title: "Day trip tips from Amsterdam (The Ones That Really Prevent Mistakes)",
         items: [
           { icon: "📅", title: "Weekdays almost always win", text: "Fewer queues, fewer tours, less stress." },
           { icon: "⏰", title: "Start early", text: "You buy 'silence' with 1 hour of advance." },
@@ -364,14 +366,14 @@ const getContent = (lang: Language) => {
         ]
       },
       ranking: {
-        title: "Practical Ranking (To Help Decide)",
+        title: "What is the best day trip from Amsterdam? (Practical Ranking)",
         items: [
-          { condition: "Only 1 free day", dest: "Haarlem" },
+          { condition: "Only 1 free day", dest: "Haarlem (15 min by train, compact center)" },
           { condition: "Spring", dest: "Keukenhof (early, weekday)" },
-          { condition: "Urban culture and young energy", dest: "Utrecht" },
-          { condition: "Architecture", dest: "Rotterdam" },
+          { condition: "Urban culture and young energy", dest: "Utrecht (25 min by train)" },
+          { condition: "Architecture", dest: "Rotterdam (40 min by train)" },
           { condition: "Postcard with windmills", dest: "Zaanse Schans (check 2026 rules)" },
-          { condition: "Avoid with little time", dest: "Giethoorn" }
+          { condition: "Avoid with little time", dest: "Giethoorn (2h one way)" }
         ]
       },
       faq: {
@@ -389,11 +391,12 @@ const getContent = (lang: Language) => {
       }
     },
     nl: {
-      title: "Dagtrips vanuit Amsterdam",
-      description: "Nederland is klein, de treinen werken goed en je kunt gemakkelijk een dagje weg en dezelfde dag terug",
+      title: "Dagtrips vanuit Amsterdam in 2026",
+      description: "Complete gids met deur-tot-deur reistijden, drukte en strategieën",
       intro: "Het verschil tussen een geweldige dagtrip en een frustrerende komt bijna altijd neer op: bestemmingen kiezen op basis van echte reistijd (van deur tot deur) en verwachte drukte.",
+      pillarIntro: "Deze gids behandelt alle dagtripbestemmingen vanuit Amsterdam, met echte deur-tot-deur reistijden, anti-drukte strategieën, interactieve kaart en wat je van tevoren moet boeken.",
       quickPick: {
-        title: "Hoe Kiezen in 30 Seconden",
+        title: "Hoe kies je de beste dagtrip vanuit Amsterdam",
         items: [
           { condition: "Eerste keer in Nederland en weinig tijd", dest: "Haarlem of Utrecht", reason: "makkelijk, snel, mooi" },
           { condition: "Lente (maart tot mei)", dest: "Keukenhof", reason: "doordeweeks, vroeg" },
@@ -409,7 +412,7 @@ const getContent = (lang: Language) => {
         bike: "Per Fiets"
       },
       classics: {
-        title: "De Klassiekers",
+        title: "Klassieke dagtrips bij Amsterdam",
         subtitle: "Beroemde bestemmingen, erg populair. Hier is timing alles.",
         items: [
           {
@@ -459,7 +462,7 @@ const getContent = (lang: Language) => {
         ]
       },
       miniAms: {
-        title: "Mini-Amsterdams",
+        title: "Steden bij Amsterdam voor dagtrips",
         subtitle: "Historisch, makkelijk, met minder toeristendruk. Hier is de winst voorspelbaarheid: dagtrip zonder stress.",
         items: [
           {
@@ -499,7 +502,7 @@ const getContent = (lang: Language) => {
         ]
       },
       modern: {
-        title: "Modern en Gedurfd",
+        title: "Dagtrip naar Rotterdam vanuit Amsterdam",
         subtitle: "Voor wie het 'anti-Amsterdam' wil.",
         item: {
           name: "Rotterdam",
@@ -515,7 +518,7 @@ const getContent = (lang: Language) => {
         }
       },
       bike: {
-        title: "Per Fiets",
+        title: "Dagtrips per fiets vanuit Amsterdam",
         subtitle: "Dagtrips die als reizen aanvoelen. Nederland is vlak, maar wind en weer veranderen het spel.",
         items: [
           {
@@ -539,7 +542,7 @@ const getContent = (lang: Language) => {
         ]
       },
       tips: {
-        title: "Algemene Tips (Die Echt Fouten Voorkomen)",
+        title: "Dagtriptips vanuit Amsterdam (Die Echt Fouten Voorkomen)",
         items: [
           { icon: "📅", title: "Doordeweeks wint bijna altijd", text: "Minder rijen, minder tours, minder stress." },
           { icon: "⏰", title: "Begin vroeg", text: "Je koopt 'stilte' met 1 uur voorsprong." },
@@ -548,14 +551,14 @@ const getContent = (lang: Language) => {
         ]
       },
       ranking: {
-        title: "Praktische Ranglijst (Om te Helpen Beslissen)",
+        title: "Wat is de beste dagtrip vanuit Amsterdam? (Praktische Ranglijst)",
         items: [
-          { condition: "Maar 1 vrije dag", dest: "Haarlem" },
+          { condition: "Maar 1 vrije dag", dest: "Haarlem (15 min per trein, compact centrum)" },
           { condition: "Lente", dest: "Keukenhof (vroeg, doordeweeks)" },
-          { condition: "Stedelijke cultuur en jonge energie", dest: "Utrecht" },
-          { condition: "Architectuur", dest: "Rotterdam" },
+          { condition: "Stedelijke cultuur en jonge energie", dest: "Utrecht (25 min per trein)" },
+          { condition: "Architectuur", dest: "Rotterdam (40 min per trein)" },
           { condition: "Ansichtkaart met molens", dest: "Zaanse Schans (check 2026 regels)" },
-          { condition: "Vermijden met weinig tijd", dest: "Giethoorn" }
+          { condition: "Vermijden met weinig tijd", dest: "Giethoorn (2 uur enkele reis)" }
         ]
       },
       faq: {
@@ -608,7 +611,7 @@ const Arredores = () => {
 
       <DestinationsGallerySection language={language} />
 
-      <IntroSection intro={content.intro} />
+      <IntroSection intro={content.intro} pillarIntro={content.pillarIntro} />
       <QuickPickSection title={content.quickPick.title} items={content.quickPick.items} />
       <MapSection language={language} />
       <DestinationTabsSection 
