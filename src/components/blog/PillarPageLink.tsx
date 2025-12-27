@@ -35,12 +35,12 @@ const pillarLinkTexts: Record<string, { pt: string; en: string; nl: string; desc
     descNl: "Bekijk alle pasprijzen, bereken je uitgaven en controleer de checklist voor je reis"
   },
   "custo-vida-amsterdam-2026": {
-    pt: "Custo de Vida 2026: calculadora e números reais",
-    en: "Cost of Living 2026: calculator and real numbers",
-    nl: "Kosten 2026: calculator en echte cijfers",
-    descPt: "Simule seu orçamento mensal com dados atualizados",
-    descEn: "Simulate your monthly budget with updated data",
-    descNl: "Simuleer je maandelijks budget met bijgewerkte gegevens"
+    pt: "Custo de Vida 2026: calculadora e números oficiais",
+    en: "Cost of Living 2026: calculator and official numbers",
+    nl: "Kosten 2026: calculator en officiële cijfers",
+    descPt: "Simule seu orçamento com a calculadora e veja as fontes dos dados (NIBUD, Gemeente, Waternet)",
+    descEn: "Simulate your budget with the calculator and see data sources (NIBUD, Gemeente, Waternet)",
+    descNl: "Simuleer je budget met de calculator en bekijk de bronnen (NIBUD, Gemeente, Waternet)"
   }
 };
 
