@@ -27,12 +27,12 @@ const pillarLinkTexts: Record<string, { pt: string; en: string; nl: string; desc
     descNl: "Begrijp de regels van 2026 en vergelijk alle wijken"
   },
   "como-se-locomover-em-amsterdam-em-2026": {
-    pt: "Transporte 2026: OVpay, multas e aeroporto",
-    en: "Transport 2026: OVpay, fines and airport",
-    nl: "Vervoer 2026: OVpay, boetes en luchthaven",
-    descPt: "Guia completo com calculadora de custos e todas as regras",
-    descEn: "Complete guide with cost calculator and all rules",
-    descNl: "Complete gids met kostencalculator en alle regels"
+    pt: "Transporte 2026: preços, calculadora e checklist completo",
+    en: "Transport 2026: prices, calculator and complete checklist",
+    nl: "Vervoer 2026: prijzen, calculator en complete checklist",
+    descPt: "Veja todos os preços de passes, calcule seu gasto e confira o checklist antes de viajar",
+    descEn: "See all pass prices, calculate your spending and check the list before traveling",
+    descNl: "Bekijk alle pasprijzen, bereken je uitgaven en controleer de checklist voor je reis"
   },
   "custo-vida-amsterdam-2026": {
     pt: "Custo de Vida 2026: calculadora e números reais",
