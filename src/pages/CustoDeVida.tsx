@@ -17,7 +17,8 @@ const CustoDeVida = () => {
   const content = {
     nl: {
       heroTitle: "Kosten van Levensonderhoud in Amsterdam 2026",
-      heroSubtitle: "Hoeveel kost het echt om in de Nederlandse hoofdstad te wonen?",
+      heroSubtitle: "Huur, rekeningen, belastingen en hoeveel je per maand nodig hebt",
+      quickAnswer: "In 2026 heeft een alleenstaande volwassene in Amsterdam ongeveer €2.885/maand nodig voor een comfortabel basisbestaan (zonder luxe), en een stel ongeveer €3.608/maand. Huur is de grootste variabele. Hieronder zie je de berekening per categorie en kun je simuleren met de calculator.",
       intro: {
         title: "De Waarheid Over Wonen in Amsterdam",
         text: "Veel mensen dromen ervan om aan de grachten van Amsterdam te wonen, maar financiële planning gaat veel verder dan valuta omrekenen. Voor 2026 laat het scenario energiestabilisatie zien maar hoge druk op huurprijzen. In deze Amsterdu gids openen we de \"zwarte doos\" van uitgaven: van huur tot afvalbelasting die niemand je vertelt voordat je verhuist."
@@ -90,10 +91,12 @@ const CustoDeVida = () => {
       },
       summary: {
         title: "De Eindstand: Definitief Budget",
-        subtitle: "We hebben twee realistische scenario's voorbereid om de totale kosten van levensonderhoud in 2026 te visualiseren. Onthoud: waarden voor een comfortabele levensstijl, zonder buitensporige luxe, maar zonder te moeten worstelen.",
-        singleTitle: "Scenario A: Alleenstaand",
+        subtitle: "We hebben twee realistische scenario's voorbereid om de totale kosten van levensonderhoud in 2026 te visualiseren. Waarden voor een comfortabele levensstijl, zonder buitensporige luxe, maar zonder te worstelen.",
+        excludes: "Niet inbegrepen: frequente vrije tijd, reizen, school/opvang, auto, sportschool.",
+        assumptions: "Aannames: vrije sector appartement ~70m² + standaard verzekering + NIBUD boodschappen + fiets met af en toe OV.",
+        singleTitle: "Scenario A: Alleenstaand (2026)",
         singleDesc: "Alleen wonen in een vrije sector appartement",
-        coupleTitle: "Scenario B: Stel",
+        coupleTitle: "Scenario B: Stel (2026)",
         coupleDesc: "Twee volwassenen, één appartement"
       },
       conclusion: {
@@ -108,7 +111,8 @@ const CustoDeVida = () => {
     },
     pt: {
       heroTitle: "Custo de Vida em Amsterdam 2026",
-      heroSubtitle: "Quanto custa realmente morar na capital da Holanda?",
+      heroSubtitle: "Aluguel, contas, impostos e quanto você precisa por mês",
+      quickAnswer: "Em 2026, um adulto morando sozinho em Amsterdam precisa de cerca de €2.885/mês para viver com conforto básico (sem luxo), e um casal cerca de €3.608/mês. O aluguel é a maior variável. Abaixo você vê o cálculo por categoria e pode simular na calculadora.",
       intro: {
         title: "A Verdade Sobre Morar em Amsterdam",
         text: "Muita gente sonha em morar nos canais de Amsterdam, mas o planejamento financeiro vai muito além de converter Reais em Euros. Para 2026, o cenário é de estabilização na energia, mas pressão alta nos aluguéis. Neste guia do Amsterdu, abrimos a \"caixa preta\" das despesas: do aluguel às taxas de lixo que ninguém te conta antes de mudar."
@@ -181,10 +185,12 @@ const CustoDeVida = () => {
       },
       summary: {
         title: "Resumo da Ópera: O Orçamento Final",
-        subtitle: "Preparamos dois cenários realistas para você visualizar o custo total de vida em 2026. Lembrando: valores para um padrão de vida confortável, sem luxos excessivos, mas sem passar aperto.",
-        singleTitle: "Cenário A: Solteiro",
+        subtitle: "Preparamos dois cenários realistas para você visualizar o custo total de vida em 2026. Valores para um padrão de vida confortável, sem luxos excessivos, mas sem passar aperto.",
+        excludes: "Não inclui: lazer frequente, viagens, escola/creche, carro, academia.",
+        assumptions: "Assumimos: apê vrije sector ~70m² + seguro padrão + mercado NIBUD + bike com transporte eventual.",
+        singleTitle: "Cenário A: Solteiro (2026)",
         singleDesc: "Morando sozinho em um apê de mercado livre",
-        coupleTitle: "Cenário B: Casal",
+        coupleTitle: "Cenário B: Casal (2026)",
         coupleDesc: "Dois adultos, um apartamento"
       },
       conclusion: {
@@ -199,7 +205,8 @@ const CustoDeVida = () => {
     },
     en: {
       heroTitle: "Cost of Living in Amsterdam 2026",
-      heroSubtitle: "How much does it really cost to live in the Netherlands capital?",
+      heroSubtitle: "Rent, bills, taxes and how much you need per month",
+      quickAnswer: "In 2026, a single adult living in Amsterdam needs around €2,885/month for basic comfort (no luxury), and a couple around €3,608/month. Rent is the biggest variable. Below you'll see the breakdown by category and can simulate with the calculator.",
       intro: {
         title: "The Truth About Living in Amsterdam",
         text: "Many people dream of living on Amsterdam's canals, but financial planning goes far beyond converting currencies. For 2026, the scenario shows energy stabilization but high pressure on rents. In this Amsterdu guide, we open the \"black box\" of expenses: from rent to waste fees that nobody tells you before moving."
@@ -272,10 +279,12 @@ const CustoDeVida = () => {
       },
       summary: {
         title: "The Bottom Line: Final Budget",
-        subtitle: "We prepared two realistic scenarios for you to visualize the total cost of living in 2026. Remember: values for a comfortable lifestyle, without excessive luxuries, but without struggling.",
-        singleTitle: "Scenario A: Single",
+        subtitle: "We prepared two realistic scenarios for you to visualize the total cost of living in 2026. Values for a comfortable lifestyle, without excessive luxuries, but without struggling.",
+        excludes: "Not included: frequent leisure, travel, school/daycare, car, gym.",
+        assumptions: "Assumptions: vrije sector apartment ~70m² + standard insurance + NIBUD groceries + bike with occasional public transport.",
+        singleTitle: "Scenario A: Single (2026)",
         singleDesc: "Living alone in a free market apartment",
-        coupleTitle: "Scenario B: Couple",
+        coupleTitle: "Scenario B: Couple (2026)",
         coupleDesc: "Two adults, one apartment"
       },
       conclusion: {
@@ -353,6 +362,19 @@ const CustoDeVida = () => {
           { value: language === "nl" ? "Calculator" : language === "pt" ? "Calculadora" : "Calculator", label: language === "nl" ? "inbegrepen" : language === "pt" ? "inclusa" : "included" },
         ]}
       />
+
+      {/* Quick Answer - SEO Priority */}
+      <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/20">
+        <div className="container max-w-4xl">
+          <AnimatedSection>
+            <div className="p-4 md:p-6 bg-card rounded-xl border border-primary/30 shadow-sm">
+              <p className="text-base md:text-lg text-foreground leading-relaxed font-medium">
+                {c.quickAnswer}
+              </p>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
 
       {/* Intro Section */}
       <section className="py-12 md:py-16 bg-background">
@@ -605,7 +627,17 @@ const CustoDeVida = () => {
             <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground mb-2">
               {c.summary.title}
             </h2>
-            <p className="text-muted-foreground mb-8">{c.summary.subtitle}</p>
+            <p className="text-muted-foreground mb-4">{c.summary.subtitle}</p>
+            
+            {/* Exclusions and Assumptions */}
+            <div className="mb-8 p-4 bg-amber-500/10 rounded-lg border border-amber-500/20">
+              <p className="text-sm text-amber-700 dark:text-amber-300 mb-2">
+                <strong>{c.summary.excludes}</strong>
+              </p>
+              <p className="text-sm text-muted-foreground">
+                {c.summary.assumptions}
+              </p>
+            </div>
 
             <div className="grid gap-8 md:grid-cols-2">
               {/* Single Budget */}
@@ -679,6 +711,30 @@ const CustoDeVida = () => {
             <p className="text-muted-foreground mb-8">{c.calculator.subtitle}</p>
             
             <CostOfLivingCalculator language={language} />
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Sources Section - E-E-A-T */}
+      <section className="py-12 md:py-16 bg-muted/30">
+        <div className="container max-w-4xl">
+          <AnimatedSection>
+            <h2 className="text-xl md:text-2xl font-heading font-bold text-foreground mb-4">
+              {language === "nl" ? "Bronnen en Methodologie (2026)" : language === "pt" ? "Fontes e Metodologia (2026)" : "Sources and Methodology (2026)"}
+            </h2>
+            <div className="bg-card rounded-xl border border-border p-5">
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• <strong>{language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent"}:</strong> {language === "nl" ? "Gemiddelde vrije sector Q4 2024/Q1 2025 (Pararius, Funda, NVM)" : language === "pt" ? "Média mercado livre Q4 2024/Q1 2025 (Pararius, Funda, NVM)" : "Free market average Q4 2024/Q1 2025 (Pararius, Funda, NVM)"}</li>
+                <li>• <strong>{language === "nl" ? "Boodschappen" : language === "pt" ? "Mercado" : "Groceries"}:</strong> {language === "nl" ? "NIBUD Budgethandboek 2024" : language === "pt" ? "NIBUD Budgethandboek 2024" : "NIBUD Budgethandboek 2024"}</li>
+                <li>• <strong>{language === "nl" ? "Zorgverzekering" : language === "pt" ? "Seguro Saúde" : "Health Insurance"}:</strong> {language === "nl" ? "Zorgverzekeraars, Independer (jan. 2025)" : language === "pt" ? "Zorgverzekeraars, Independer (jan. 2025)" : "Zorgverzekeraars, Independer (Jan 2025)"}</li>
+                <li>• <strong>{language === "nl" ? "Energie" : language === "pt" ? "Energia" : "Energy"}:</strong> {language === "nl" ? "Energievergelijk.nl, ACM prijsplafond referentie" : language === "pt" ? "Energievergelijk.nl, referência teto de preços ACM" : "Energievergelijk.nl, ACM price cap reference"}</li>
+                <li>• <strong>{language === "nl" ? "Gemeentelijke heffingen" : language === "pt" ? "Impostos Municipais" : "Municipal Taxes"}:</strong> {language === "nl" ? "Gemeente Amsterdam, Waternet (tarieven 2025)" : language === "pt" ? "Gemeente Amsterdam, Waternet (tarifas 2025)" : "Gemeente Amsterdam, Waternet (2025 rates)"}</li>
+                <li>• <strong>{language === "nl" ? "Vervoer" : language === "pt" ? "Transporte" : "Transport"}:</strong> {language === "nl" ? "GVB officiële tarieven (jan. 2025)" : language === "pt" ? "GVB tarifas oficiais (jan. 2025)" : "GVB official rates (Jan 2025)"}</li>
+              </ul>
+              <p className="mt-4 text-xs text-muted-foreground/70">
+                {language === "nl" ? "Waarden zijn schattingen op basis van openbare bronnen en marktgemiddelden. Individuele kosten kunnen variëren." : language === "pt" ? "Valores são estimativas baseadas em fontes públicas e médias de mercado. Custos individuais podem variar." : "Values are estimates based on public sources and market averages. Individual costs may vary."}
+              </p>
+            </div>
           </AnimatedSection>
         </div>
       </section>
