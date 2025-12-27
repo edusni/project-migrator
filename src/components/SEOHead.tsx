@@ -563,19 +563,19 @@ export const seoData = {
   },
   sobre: {
     pt: {
-      title: "Quem é o Du? | A História por trás do Amsterdu",
-      description: "Conheça o Du: brasileiro apaixonado por Amsterdam, futuro morador da cidade. Descubra por que o Amsterdu existe e como ele pode ajudar sua viagem.",
-      keywords: "quem é du, amsterdu, sobre amsterdu, guia amsterdam, brasileiro amsterdam",
+      title: "Quem é o Du (criador do AmsterDu) | Guia sobre Amsterdam",
+      description: "Conheça Du, o criador do AmsterDu. Por que este guia sobre Amsterdam existe: método, experiência real e foco em reduzir risco e aumentar experiência.",
+      keywords: "quem é du, amsterdu, sobre amsterdu, guia amsterdam, brasileiro amsterdam, criador amsterdu",
     },
     en: {
-      title: "Who is Du? | The Story Behind Amsterdu",
-      description: "Meet Du: a Brazilian passionate about Amsterdam, future city resident. Discover why Amsterdu exists and how it can help your trip.",
-      keywords: "who is du, amsterdu, about amsterdu, amsterdam guide, brazilian amsterdam",
+      title: "Who is Du (creator of AmsterDu) | Amsterdam Guide",
+      description: "Meet Du, the creator of AmsterDu. Why this Amsterdam guide exists: method, real experience and focus on reducing risk and increasing experience.",
+      keywords: "who is du, amsterdu, about amsterdu, amsterdam guide, brazilian amsterdam, amsterdu creator",
     },
     nl: {
-      title: "Wie is Du? | Het Verhaal Achter Amsterdu",
-      description: "Maak kennis met Du: een Braziliaan met passie voor Amsterdam, toekomstig inwoner. Ontdek waarom Amsterdu bestaat en hoe het je reis kan helpen.",
-      keywords: "wie is du, amsterdu, over amsterdu, amsterdam gids, braziliaan amsterdam",
+      title: "Wie is Du (maker van AmsterDu) | Amsterdam Gids",
+      description: "Ontmoet Du, de maker van AmsterDu. Waarom deze Amsterdam gids bestaat: methode, echte ervaring en focus op risico verminderen en ervaring vergroten.",
+      keywords: "wie is du, amsterdu, over amsterdu, amsterdam gids, braziliaan amsterdam, amsterdu maker",
     },
   },
   custoDeVida: {
