@@ -124,10 +124,11 @@ export function SEOHead({
       if (section) updateMetaTag("article:section", section, "property");
     }
 
-    // Structured Data - Organization (always inject on homepage)
-    if (location.pathname === `/${locale}` || location.pathname === `/${locale}/`) {
-      injectOrganizationSchema();
-    }
+    // Structured Data - Organization (inject on ALL pages for brand recognition)
+    injectOrganizationSchema();
+    
+    // Structured Data - WebSite (inject on ALL pages for site recognition)
+    injectWebSiteSchema();
 
     // Structured Data - FAQ
     if (faqItems && faqItems.length > 0) {
@@ -169,6 +170,7 @@ export function SEOHead({
       removeSchemaById("breadcrumb-schema");
       removeSchemaById("article-schema");
       removeSchemaById("organization-schema");
+      removeSchemaById("website-schema");
       removeSchemaById("webpage-schema");
       removeHreflangLinks();
     };
@@ -248,20 +250,87 @@ function injectOrganizationSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://amsterdu.com/#organization",
     name: "Amsterdu",
+    alternateName: ["AmsterDu", "Amsterdu Guide", "Guia Amsterdu"],
     url: "https://amsterdu.com",
-    logo: "https://amsterdu.com/logo.png",
-    description: "The brutally honest Amsterdam guide. Practical tips, real costs, and local secrets.",
-    sameAs: [],
+    logo: {
+      "@type": "ImageObject",
+      url: "https://amsterdu.com/favicon.png",
+      width: 512,
+      height: 512,
+    },
+    image: "https://amsterdu.com/og-image.jpg",
+    description: "Amsterdu é o guia brutalmente honesto de Amsterdam. Dicas práticas, custos reais e segredos locais para 2026.",
+    slogan: "O guia brutalmente honesto de Amsterdam",
+    foundingDate: "2024",
+    knowsAbout: [
+      "Amsterdam",
+      "Amsterdam travel guide",
+      "Amsterdam tourism",
+      "Amsterdam coffeeshops",
+      "Amsterdam transport",
+      "Amsterdam accommodation",
+      "Netherlands travel",
+      "Day trips from Amsterdam",
+      "Cost of living Amsterdam"
+    ],
+    areaServed: {
+      "@type": "City",
+      name: "Amsterdam",
+      addressCountry: "NL"
+    },
     founder: {
       "@type": "Person",
+      "@id": "https://amsterdu.com/#founder",
       name: "Du",
       url: "https://amsterdu.com/pt/sobre",
+      jobTitle: "Founder & Content Creator",
+      knowsAbout: ["Amsterdam", "Travel", "Netherlands"]
     },
+    sameAs: [],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      availableLanguage: ["Portuguese", "English", "Dutch"]
+    }
   };
 
   const script = document.createElement("script");
   script.id = "organization-schema";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+// Inject WebSite schema for site-wide recognition
+function injectWebSiteSchema() {
+  removeSchemaById("website-schema");
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://amsterdu.com/#website",
+    name: "Amsterdu",
+    alternateName: "AmsterDu",
+    url: "https://amsterdu.com",
+    description: "O guia brutalmente honesto de Amsterdam para 2026",
+    inLanguage: ["pt-BR", "en", "nl"],
+    publisher: {
+      "@id": "https://amsterdu.com/#organization"
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: "https://amsterdu.com/pt/blog?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const script = document.createElement("script");
+  script.id = "website-schema";
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(schema);
   document.head.appendChild(script);
