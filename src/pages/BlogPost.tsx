@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
+import { PillarPageLink } from "@/components/blog/PillarPageLink";
 import { getParentPage, ParentPageInfo } from "@/data/blogPostsMapping";
 
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, ChevronLeft, ChevronRight, Home, ChevronRight as ChevronRightIcon } from "lucide-react";
@@ -562,10 +563,17 @@ const BlogPost = () => {
                   <div className="animate-pulse">{texts.translating}</div>
                 </div>
               ) : (
-                <div 
-                  className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:scroll-mt-20"
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(translatedContent?.content || post.content) }}
-                />
+                <>
+                  <div 
+                    className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:scroll-mt-20"
+                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(translatedContent?.content || post.content) }}
+                  />
+                  
+                  {/* Link back to pillar page - SEO: resolve cannibalization */}
+                  {parentPage && (
+                    <PillarPageLink parentPage={parentPage} postSlug={post.slug} />
+                  )}
+                </>
               )}
             </motion.div>
 

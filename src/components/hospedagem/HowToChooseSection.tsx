@@ -1,9 +1,13 @@
-import { Clock, Volume2, Train, Users, Home, Calculator } from "lucide-react";
+import { Clock, Volume2, Train, Users, Home, Calculator, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 
 export function HowToChooseSection() {
   const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
+  const locale = getCurrentLocale();
 
   const t = (pt: string, en: string, nl: string) => 
     language === "nl" ? nl : language === "pt" ? pt : en;
@@ -132,6 +136,30 @@ export function HowToChooseSection() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+
+          {/* Link to detailed blog post - SEO: differentiate pillar from post */}
+          <div className="mt-10 text-center">
+            <Link 
+              to={getLocalizedPath(locale, "/blog/onde-ficar-amsterdam-guia-bairros-honesto")}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-lg transition-colors border border-primary/20"
+            >
+              <span>
+                {t(
+                  "Guia prático: onde ficar por perfil de viagem (2026)",
+                  "Practical guide: where to stay by travel profile (2026)",
+                  "Praktische gids: waar te verblijven per reisprofiel (2026)"
+                )}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="mt-2 text-sm text-muted-foreground">
+              {t(
+                "Comparação detalhada de bairros para primeira viagem, família, vida noturna e mais",
+                "Detailed neighborhood comparison for first trip, family, nightlife and more",
+                "Gedetailleerde wijkvergelijking voor eerste reis, familie, nachtleven en meer"
+              )}
+            </p>
           </div>
         </div>
       </div>
