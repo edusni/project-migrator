@@ -495,19 +495,19 @@ export const seoData = {
   },
   transporte: {
     pt: {
-      title: "Transporte Amsterdam 2026: Metrô, Tram, Bike + Como Economizar",
-      description: "🚋 Schiphol → Centro por €5,50. OVpay ou bilhete? Bike grátis! Evite multas de €50. Guia com mapas e dicas de morador →",
-      keywords: "transporte amsterdam, como se locomover em amsterdam, como andar amsterdam, ovpay, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro 2026, amsterdam transporte público",
+      title: "Como se Locomover em Amsterdam em 2026: transporte, OVpay, multas e aeroporto",
+      description: "Guia prático para se locomover em Amsterdam em 2026: tram, metrô, trens, balsas grátis, OVpay/contactless, passes GVB, regras de bicicleta e como ir do aeroporto sem multa.",
+      keywords: "como se locomover em amsterdam, transporte amsterdam, transporte público amsterdam, ovpay amsterdam, como ir do aeroporto ao centro amsterdam, multas bicicleta amsterdam, transporte amsterdam 2026, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro, ferries amsterdam",
     },
     en: {
-      title: "Amsterdam Transport 2026: Metro, Tram, Bike + How to Save",
-      description: "🚋 Schiphol → Center for €5.50. OVpay or ticket? Free bikes! Avoid €50 fines. Guide with maps and local tips →",
-      keywords: "amsterdam transport, getting around amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam bike, schiphol center 2026, amsterdam public transport",
+      title: "Getting Around Amsterdam 2026: Transport, OVpay, Fines & Airport",
+      description: "Practical guide to getting around Amsterdam in 2026: tram, metro, trains, free ferries, OVpay/contactless, GVB passes, bike rules and how to get from the airport without fines.",
+      keywords: "getting around amsterdam, amsterdam public transport, ovpay amsterdam, schiphol to amsterdam center, amsterdam bike rules, amsterdam transport 2026, tram amsterdam, metro amsterdam, amsterdam bike, free ferries amsterdam",
     },
     nl: {
-      title: "Amsterdam Vervoer 2026: Metro, Tram, Fiets + Hoe te Besparen",
-      description: "🚋 Schiphol → Centrum voor €5,50. OVpay of kaartje? Gratis fietsen! Vermijd €50 boetes. Gids met kaarten en lokale tips →",
-      keywords: "amsterdam vervoer, rondkomen amsterdam, ovpay, amsterdam tram, amsterdam metro, amsterdam fiets, schiphol centrum 2026, amsterdam openbaar vervoer",
+      title: "Vervoer in Amsterdam 2026: Transport, OVpay, Boetes & Luchthaven",
+      description: "Praktische gids om je te verplaatsen in Amsterdam in 2026: tram, metro, treinen, gratis veerboten, OVpay/contactloos, GVB-passen, fietsregels en hoe je vanaf de luchthaven komt zonder boetes.",
+      keywords: "vervoer amsterdam, openbaar vervoer amsterdam, ovpay amsterdam, schiphol naar centrum amsterdam, fietsregels amsterdam, amsterdam vervoer 2026, tram amsterdam, metro amsterdam, gratis veerboten amsterdam",
     },
   },
   coffeeshops: {
