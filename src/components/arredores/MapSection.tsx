@@ -11,7 +11,7 @@ export const MapSection = ({ language }: MapSectionProps) => {
       <div className="container max-w-6xl">
         <h2 className="text-2xl md:text-3xl lg:text-4xl font-heading font-bold text-center mb-2 flex items-center justify-center gap-2">
           <Map className="h-6 w-6 md:h-7 md:w-7" />
-          {language === "pt" ? "Mapa dos Destinos" : language === "nl" ? "Bestemmingskaart" : "Destinations Map"}
+          {language === "pt" ? "Mapa dos bate-voltas a partir de Amsterdam" : language === "nl" ? "Kaart van dagtrips vanuit Amsterdam" : "Map of day trips from Amsterdam"}
         </h2>
         <p className="text-center text-muted-foreground mb-8 md:mb-10 text-base md:text-lg">
           {language === "pt" 

@@ -529,19 +529,19 @@ export const seoData = {
   },
   arredores: {
     pt: {
-      title: "Bate-Volta Amsterdam 2026: 10 Melhores Passeios de 1 Dia",
-      description: "Melhores bate-voltas de Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. Como ir, quanto custa e se vale a pena. Guia prático testado.",
-      keywords: "bate volta amsterdam, bate e volta de amsterdam, bate volta de amsterdam, passeios amsterdam, cidades perto de amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+      title: "Bate-voltas de Amsterdam em 2026: melhores destinos, tempos e dicas",
+      description: "Os melhores bate-voltas saindo de Amsterdam em 2026, com tempos reais de deslocamento, mapa, estratégias anti multidão e o que vale reservar.",
+      keywords: "bate volta amsterdam, bate e volta de amsterdam, day trip amsterdam, melhores bate-voltas amsterdam, zaanse schans como ir, keukenhof 2026, haarlem bate volta, utrecht day trip, rotterdam amsterdam, giethoorn vale a pena, cidades perto de amsterdam, passeios amsterdam 2026",
     },
     en: {
-      title: "Amsterdam Day Trips 2026: 10 Best One-Day Excursions",
-      description: "Best day trips from Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. How to go, costs and if it's worth it. Tested practical guide.",
-      keywords: "amsterdam day trips, day trips from amsterdam, amsterdam excursions, cities near amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+      title: "Day Trips from Amsterdam 2026: Best Destinations, Times & Tips",
+      description: "The best day trips from Amsterdam in 2026, with real travel times, maps, anti-crowd strategies and what to book in advance.",
+      keywords: "day trips amsterdam, day trips from amsterdam, amsterdam day trip, best day trips amsterdam, zaanse schans how to go, keukenhof 2026, haarlem day trip, utrecht day trip, rotterdam amsterdam, giethoorn worth it, cities near amsterdam, amsterdam excursions 2026",
     },
     nl: {
-      title: "Amsterdam Dagtrips 2026: 10 Beste Eendaagse Uitjes",
-      description: "Beste dagtrips vanuit Amsterdam: Zaanse Schans, Keukenhof, Haarlem, Rotterdam, Giethoorn. Hoe te gaan, kosten en of het de moeite waard is. Geteste praktische gids.",
-      keywords: "amsterdam dagtrips, dagtrips vanuit amsterdam, amsterdam excursies, steden bij amsterdam, zaanse schans, keukenhof, haarlem, utrecht, rotterdam, giethoorn 2026",
+      title: "Dagtrips vanaf Amsterdam 2026: Beste Bestemmingen, Reistijden & Tips",
+      description: "De beste dagtrips vanuit Amsterdam in 2026, met echte reistijden, kaarten, anti-drukte strategieën en wat je moet reserveren.",
+      keywords: "dagtrips amsterdam, dagtrips vanuit amsterdam, amsterdam dagtrip, beste dagtrips amsterdam, zaanse schans hoe te komen, keukenhof 2026, haarlem dagtrip, utrecht dagtrip, rotterdam amsterdam, giethoorn de moeite waard, steden bij amsterdam, amsterdam excursies 2026",
     },
   },
   blog: {
