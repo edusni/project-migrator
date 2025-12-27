@@ -41,14 +41,27 @@ const Atracoes = () => {
       />
       <PageHero
         icon={Star}
-        title={language === "nl" ? "Wat te Doen in Amsterdam 2026" : language === "pt" ? "O Que Fazer em Amsterdam 2026" : "What to Do in Amsterdam 2026"}
+        title={language === "nl" ? "Wat te Doen in Amsterdam in 2026" : language === "pt" ? "O Que Fazer em Amsterdam em 2026" : "What to Do in Amsterdam in 2026"}
         description={language === "nl" 
-          ? "Echte gids met kaart, filters en tips van mensen die de stad kennen. Geen gelul." 
+          ? "Guia Completo met Kaarten, Filters en Routes" 
           : language === "pt" 
-            ? "Guia real com mapa, filtros e dicas de quem entende a cidade. Sem enrolação." 
-            : "Real guide with map, filters and tips from those who know the city. No fluff."}
+            ? "Guia Completo com Mapas, Filtros e Roteiros" 
+            : "Complete Guide with Maps, Filters and Itineraries"}
         backgroundImage={adamLookoutImg}
       />
+      
+      {/* Intro paragraph - pillar page declaration */}
+      <section className="py-6 md:py-8 bg-muted/30 border-b">
+        <div className="container max-w-4xl">
+          <p className="text-sm md:text-base lg:text-lg text-muted-foreground leading-relaxed">
+            {language === "nl" 
+              ? "Dit is de complete gids over wat te doen in Amsterdam in 2026: attracties, ervaringen, interactieve kaarten, filters per wijk, kant-en-klare routes en strategieën om wachtrijen en onnodige uitgaven te vermijden."
+              : language === "pt" 
+                ? "Este é o guia completo do que fazer em Amsterdam em 2026: atrações, experiências, mapas interativos, filtros por bairro, roteiros prontos e estratégias para evitar filas e gastos desnecessários."
+                : "This is the complete guide to what to do in Amsterdam in 2026: attractions, experiences, interactive maps, neighborhood filters, ready itineraries and strategies to avoid queues and unnecessary expenses."}
+          </p>
+        </div>
+      </section>
 
       <Changes2026Section />
       <ArtCulture2026Section language={language} />

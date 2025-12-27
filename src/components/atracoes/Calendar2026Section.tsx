@@ -12,7 +12,7 @@ export function Calendar2026Section() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-heading font-bold mb-8 flex items-center gap-3">
             <Calendar className="w-8 h-8 lg:w-10 lg:h-10 text-amsterdam-orange" />
-            {language === "nl" ? "Kalender 2026: Drukke Dagen" : language === "pt" ? "Calendário 2026: Dias que Lotam" : "2026 Calendar: Busy Days"}
+            {language === "nl" ? "Evenementen en Belangrijke Data in Amsterdam 2026" : language === "pt" ? "Eventos e Datas Importantes em Amsterdam 2026" : "Events and Important Dates in Amsterdam 2026"}
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="border-amsterdam-orange/20">

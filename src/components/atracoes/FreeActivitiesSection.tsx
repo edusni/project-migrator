@@ -16,7 +16,7 @@ export function FreeActivitiesSection() {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-xl sm:text-2xl lg:text-5xl font-heading font-bold mb-6 sm:mb-8 lg:mb-10 flex items-center gap-2 sm:gap-3">
             <Euro className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-green-600 flex-shrink-0" />
-            <span className="leading-tight">{t("O Que Fazer de Graça (Sem Cair no Óbvio)", "What to Do for Free (Without the Obvious)", "Wat Gratis Te Doen (Zonder het Voor de Hand Liggende)")}</span>
+            <span className="leading-tight">{t("Atividades Gratuitas em Amsterdam em 2026", "Free Activities in Amsterdam 2026", "Gratis Activiteiten in Amsterdam 2026")}</span>
           </h2>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">

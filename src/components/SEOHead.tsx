@@ -478,19 +478,19 @@ export const seoData = {
   },
   atracoes: {
     pt: {
-      title: "Atrações Amsterdam 2026: O Que Fazer + Mapa Interativo",
-      description: "Guia completo de atrações em Amsterdam. Museus, parques, experiências: descubra o que vale a pena. Com filtros por preço, área e tipo. Mapa interativo incluso.",
-      keywords: "atrações amsterdam, o que fazer em amsterdam, atrações em amsterdam, museus amsterdam, van gogh museum, rijksmuseum, anne frank house, parques amsterdam 2026, atividades amsterdam, coisas para fazer em amsterdam",
+      title: "O Que Fazer em Amsterdam em 2026: Atrações, Roteiros e Dicas Locais",
+      description: "Descubra o que fazer em Amsterdam em 2026: atrações imperdíveis, experiências gratuitas, mapas por bairro, filtros inteligentes e roteiros prontos sem ciladas.",
+      keywords: "o que fazer em amsterdam 2026, atrações amsterdam, roteiro amsterdam 3 dias, mapa atrações amsterdam, museus amsterdam 2026, van gogh museum, rijksmuseum, anne frank house, experiências gratuitas amsterdam, pontos turísticos amsterdam, roteiro amsterdam 5 dias, eventos amsterdam 2026",
     },
     en: {
-      title: "Amsterdam Attractions 2026: What to Do + Interactive Map",
-      description: "Complete Amsterdam attractions guide. Museums, parks, experiences: discover what's worth it. With filters by price, area and type. Interactive map included.",
-      keywords: "amsterdam attractions, what to do amsterdam, amsterdam museums, van gogh museum, rijksmuseum, anne frank house, amsterdam parks 2026, amsterdam activities, things to do amsterdam",
+      title: "What to Do in Amsterdam 2026: Attractions, Itineraries & Local Tips",
+      description: "Discover what to do in Amsterdam in 2026: must-see attractions, free experiences, neighborhood maps, smart filters and ready itineraries without tourist traps.",
+      keywords: "what to do amsterdam 2026, amsterdam attractions, amsterdam 3 day itinerary, amsterdam attractions map, amsterdam museums 2026, van gogh museum, rijksmuseum, anne frank house, free things amsterdam, amsterdam sightseeing, amsterdam 5 day itinerary, amsterdam events 2026",
     },
     nl: {
-      title: "Amsterdam Bezienswaardigheden 2026: Wat te Doen + Interactieve Kaart",
-      description: "Complete Amsterdam attracties gids. Musea, parken, ervaringen: ontdek wat de moeite waard is. Met filters op prijs, gebied en type. Interactieve kaart inbegrepen.",
-      keywords: "amsterdam bezienswaardigheden, wat te doen amsterdam, amsterdam musea, van gogh museum, rijksmuseum, anne frank huis, amsterdam parken 2026, amsterdam activiteiten, dingen om te doen amsterdam",
+      title: "Wat te Doen in Amsterdam 2026: Attracties, Routes & Lokale Tips",
+      description: "Ontdek wat te doen in Amsterdam in 2026: must-see attracties, gratis ervaringen, wijkkaarten, slimme filters en kant-en-klare routes zonder toeristenvallen.",
+      keywords: "wat te doen amsterdam 2026, amsterdam bezienswaardigheden, amsterdam 3 dagen route, amsterdam attracties kaart, amsterdam musea 2026, van gogh museum, rijksmuseum, anne frank huis, gratis activiteiten amsterdam, amsterdam bezichtigen, amsterdam 5 dagen route, amsterdam evenementen 2026",
     },
   },
   transporte: {

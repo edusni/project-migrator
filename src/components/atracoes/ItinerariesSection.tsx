@@ -15,7 +15,7 @@ export function ItinerariesSection() {
         <div className="max-w-7xl mx-auto px-4 lg:px-8">
           <h2 className="text-3xl lg:text-5xl font-heading font-bold mb-10 flex items-center gap-3">
             <Calendar className="w-8 h-8 lg:w-10 lg:h-10 text-amsterdam-orange" />
-            {t("Roteiros Prontos 2026", "Ready Itineraries 2026", "Kant-en-klare Routes 2026")}
+            {t("Roteiros de Amsterdam em 2026 (3, 5 e 7 dias)", "Amsterdam Itineraries 2026 (3, 5 and 7 days)", "Amsterdam Routes 2026 (3, 5 en 7 dagen)")}
           </h2>
 
           <div className="grid md:grid-cols-3 gap-6">
