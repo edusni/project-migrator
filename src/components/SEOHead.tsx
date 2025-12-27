@@ -461,19 +461,19 @@ export const seoData = {
   },
   gastronomia: {
     pt: {
-      title: "O Que Comer em Amsterdam 2026: Guia de Comida Holandesa",
-      description: "Onde comer em Amsterdam sem cair em armadilha turística. Stroopwafel, bitterballen, rijsttafel: o que provar e onde encontrar. Preços e dicas locais.",
-      keywords: "onde comer amsterdam, o que comer em amsterdam, comida holandesa, stroopwafel, bitterballen, rijsttafel, restaurantes amsterdam, gastronomia amsterdam 2026, foodhallen",
+      title: "Onde Comer em Amsterdam em 2026: Comida Típica, Armadilhas e Dicas Locais",
+      description: "Saiba onde comer em Amsterdam em 2026. Comida típica holandesa, mercados, brown cafés, rijsttafel indonésio e como evitar armadilhas turísticas.",
+      keywords: "onde comer amsterdam 2026, o que comer em amsterdam, comida tipica holandesa, comida de rua amsterdam, stroopwafel, bitterballen, rijsttafel, restaurantes amsterdam, gastronomia amsterdam 2026, foodhallen, brown cafe amsterdam, armadilhas turisticas amsterdam",
     },
     en: {
-      title: "What to Eat in Amsterdam 2026: Dutch Food Guide",
-      description: "Where to eat in Amsterdam without falling into tourist traps. Stroopwafel, bitterballen, rijsttafel: what to try and where to find it. Prices and local tips.",
-      keywords: "where to eat amsterdam, what to eat amsterdam, dutch food, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam food 2026, foodhallen",
+      title: "Where to Eat in Amsterdam 2026: Dutch Food, Traps & Local Tips",
+      description: "Find out where to eat in Amsterdam in 2026. Typical Dutch food, markets, brown cafés, Indonesian rijsttafel and how to avoid tourist traps.",
+      keywords: "where to eat amsterdam 2026, what to eat amsterdam, typical dutch food, amsterdam street food, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam food 2026, foodhallen, brown cafe amsterdam, tourist traps amsterdam",
     },
     nl: {
-      title: "Wat te Eten in Amsterdam 2026: Nederlandse Eetgids",
-      description: "Waar eten in Amsterdam zonder in toeristenvallen te trappen. Stroopwafel, bitterballen, rijsttafel: wat proberen en waar te vinden. Prijzen en lokale tips.",
-      keywords: "waar eten amsterdam, wat eten amsterdam, nederlandse gerechten, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam eten 2026, foodhallen",
+      title: "Waar Eten in Amsterdam 2026: Nederlandse Gerechten, Valkuilen & Lokale Tips",
+      description: "Ontdek waar je in 2026 moet eten in Amsterdam. Typisch Nederlandse gerechten, markten, bruine kroegen, Indonesische rijsttafel en hoe je toeristenvallen vermijdt.",
+      keywords: "waar eten amsterdam 2026, wat eten amsterdam, typisch nederlandse gerechten, amsterdam straateten, stroopwafel, bitterballen, rijsttafel, amsterdam restaurants, amsterdam eten 2026, foodhallen, bruine kroeg amsterdam, toeristenvallen amsterdam",
     },
   },
   atracoes: {

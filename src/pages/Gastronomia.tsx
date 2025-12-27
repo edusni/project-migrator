@@ -21,9 +21,10 @@ import {
 const getContent = (lang: Language) => {
   const content = {
     pt: {
-      title: "Gastronomia em Amsterdam",
-      description: "Onde comer em Amsterdam: o guia sem papo furado",
+      title: "Onde Comer em Amsterdam em 2026",
+      description: "Guia Gastronômico Sem Papo Furado",
       intro: "Amsterdam não é só batata e queijo. A cidade tem um ecossistema de comida bem específico: mercados de rua, cafés históricos, herança indonésia e uma cena moderna que valoriza ingredientes locais e sazonalidade.",
+      eeat: "Guia atualizado para 2026, baseado em observação local, cultura gastronômica holandesa e práticas reais de consumo em Amsterdam.",
       goldenRule: {
         title: "A regra que evita 80% das decepções",
         text: "Se o lugar precisa te convencer na porta (foto plastificada do prato, alguém chamando na rua, cardápio em 8 idiomas na Damrak), quase sempre você paga caro por comida mediana. Anda 2 ruas para dentro do bairro e a média de qualidade sobe."
@@ -37,10 +38,10 @@ const getContent = (lang: Language) => {
         ]
       },
       tabs: {
-        street: "Comida de Rua",
-        dinner: "Jantar Sério",
-        drinks: "Bebidas",
-        foodhalls: "Food Halls"
+        street: "Comida de Rua em Amsterdam",
+        dinner: "Onde Jantar Bem em Amsterdam",
+        drinks: "Bebidas Típicas de Amsterdam",
+        foodhalls: "Food Halls em Amsterdam"
       },
       streetFood: [
         {
@@ -135,7 +136,7 @@ const getContent = (lang: Language) => {
         }
       },
       traps: {
-        title: "Zonas de Perigo: Armadilhas Turísticas",
+        title: "Armadilhas Turísticas para Comer em Amsterdam",
         items: [
           { icon: "🧇", text: "Waffle gigante com Nutella e montanha de doce — fotogênico, caro e raramente memorável." },
           { icon: "🍽️", text: "Restaurante genérico colado na Damrak e Leidseplein — alta chance de preço inflado e cozinha sem cuidado." },
@@ -169,9 +170,10 @@ const getContent = (lang: Language) => {
       }
     },
     en: {
-      title: "Food in Amsterdam",
-      description: "Where to eat in Amsterdam: the no-nonsense guide",
+      title: "Where to Eat in Amsterdam 2026",
+      description: "The No-Nonsense Food Guide",
       intro: "Amsterdam isn't just fries and cheese. The city has a specific food ecosystem: street markets, historic cafés, Indonesian heritage, and a modern scene that values local ingredients and seasonality.",
+      eeat: "Updated guide for 2026, based on local observation, Dutch food culture and real consumption practices in Amsterdam.",
       goldenRule: {
         title: "The rule that avoids 80% of disappointments",
         text: "If the place needs to convince you at the door (laminated food photos, someone calling you from the street, menu in 8 languages on Damrak), you almost always pay too much for mediocre food. Walk 2 streets into the neighborhood and quality average rises."
@@ -185,10 +187,10 @@ const getContent = (lang: Language) => {
         ]
       },
       tabs: {
-        street: "Street Food",
-        dinner: "Serious Dinner",
-        drinks: "Drinks",
-        foodhalls: "Food Halls"
+        street: "Amsterdam Street Food",
+        dinner: "Where to Dine Well in Amsterdam",
+        drinks: "Typical Amsterdam Drinks",
+        foodhalls: "Amsterdam Food Halls"
       },
       streetFood: [
         {
@@ -317,9 +319,10 @@ const getContent = (lang: Language) => {
       }
     },
     nl: {
-      title: "Eten in Amsterdam",
-      description: "Waar eten in Amsterdam: de nuchtere gids",
+      title: "Waar Eten in Amsterdam 2026",
+      description: "De Nuchtere Eetgids",
       intro: "Amsterdam is niet alleen patat en kaas. De stad heeft een specifiek voedsel-ecosysteem: straatmarkten, historische cafés, Indonesische erfenis en een moderne scene die lokale ingrediënten en seizoensgebondenheid waardeert.",
+      eeat: "Bijgewerkte gids voor 2026, gebaseerd op lokale observatie, Nederlandse eetcultuur en echte consumptiepraktijken in Amsterdam.",
       goldenRule: {
         title: "De regel die 80% van de teleurstellingen voorkomt",
         text: "Als de zaak je bij de deur moet overtuigen (gelamineerde foto's van gerechten, iemand die je van de straat roept, menu in 8 talen op de Damrak), betaal je bijna altijd te veel voor middelmatig eten. Loop 2 straten de wijk in en de gemiddelde kwaliteit stijgt."
@@ -333,10 +336,10 @@ const getContent = (lang: Language) => {
         ]
       },
       tabs: {
-        street: "Straateten",
-        dinner: "Serieus Diner",
-        drinks: "Dranken",
-        foodhalls: "Foodhallen"
+        street: "Straateten in Amsterdam",
+        dinner: "Waar Goed Dineren in Amsterdam",
+        drinks: "Typische Amsterdamse Dranken",
+        foodhalls: "Foodhallen in Amsterdam"
       },
       streetFood: [
         {
@@ -499,7 +502,7 @@ const Gastronomia = () => {
 
       <FoodGallerySection language={language} />
 
-      <IntroSection intro={content.intro} />
+      <IntroSection intro={content.intro} eeat={content.eeat} />
       
       <GoldenRuleSection 
         title={content.goldenRule.title} 
