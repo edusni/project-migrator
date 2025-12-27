@@ -20,10 +20,13 @@ const Blog = () => {
   const locale = getCurrentLocale();
 
   const content = language === "nl" ? {
-    heroTitle: "Du's Blog",
-    heroSubtitle: "Verhalen over mijn toekomstige leven in Amsterdam",
+    heroTitle: "Du's Blog over Amsterdam",
+    heroSubtitle: "Echte verhalen van iemand die de stad in thuis verandert",
     intro: "Hier deel ik mijn echte reis: de verhuizing, ontdekkingen, tegenslagen en overwinningen van iemand die Amsterdam van favoriete bestemming in thuis verandert.",
+    authorityParagraph: "Deze blog bevat diepgaande gidsen, praktische analyses en echte verhalen over wonen, reizen en plannen in Amsterdam in 2026. Alles gebaseerd op directe ervaring, toegepast onderzoek en vergelijking tussen verwachting en werkelijkheid.",
     postsTitle: "Laatste posts",
+    categoriesTitle: "Waar deze blog over gaat",
+    categoriesSubtitle: "Praktische content en echte verhalen over wonen, reizen en wennen aan Amsterdam in 2026.",
     categories: [
       { emoji: "✈️", title: "Verhuizen", desc: "Het proces van Brazilië verlaten en opnieuw beginnen" },
       { emoji: "🏠", title: "Wonen", desc: "Een appartement vinden, bureaucratie, tegenslagen" },
@@ -33,13 +36,17 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflecties", desc: "Wat ik leerde, wat veranderde, wat me verraste" },
     ],
     followJourney: "Volg de reis",
-    followJourneyDesc: "Verken de complete Amsterdam-gids terwijl ik mijn reisverhalen deel.",
+    followJourneyDesc: "Verken de Complete Amsterdam Gids 2026",
+    followJourneySubDesc: "Plan je reis of verhuizing met minder risico en meer duidelijkheid.",
     exploreGuide: "Verken de Gids",
   } : language === "pt" ? {
-    heroTitle: "Blog do Du",
-    heroSubtitle: "Histórias da minha futura vida em Amsterdam",
+    heroTitle: "Blog do Du sobre Amsterdam",
+    heroSubtitle: "Histórias reais de quem está transformando a cidade em casa",
     intro: "Aqui vou compartilhar minha jornada real: a mudança, as descobertas, os perrengues e as conquistas de alguém que está transformando Amsterdam de destino favorito em casa.",
+    authorityParagraph: "Este blog reúne guias aprofundados, análises práticas e relatos reais sobre viver, circular e planejar Amsterdam em 2026. Tudo parte de experiência direta, pesquisa aplicada e comparação entre expectativa e realidade.",
     postsTitle: "Últimos posts",
+    categoriesTitle: "Sobre o que este blog fala",
+    categoriesSubtitle: "Conteúdos práticos e relatos reais sobre morar, viajar e se adaptar a Amsterdam em 2026.",
     categories: [
       { emoji: "✈️", title: "Mudança", desc: "O processo de sair do Brasil e começar vida nova" },
       { emoji: "🏠", title: "Moradia", desc: "Encontrar apartamento, burocracias, perrengues" },
@@ -49,13 +56,17 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflexões", desc: "O que aprendi, o que mudou, o que surpreendeu" },
     ],
     followJourney: "Acompanhe a jornada",
-    followJourneyDesc: "Explore o guia completo de Amsterdam enquanto compartilho minhas histórias.",
+    followJourneyDesc: "Explore o Guia Completo de Amsterdam 2026",
+    followJourneySubDesc: "Planeje sua viagem ou mudança com menos risco e mais clareza.",
     exploreGuide: "Explorar o Guia",
   } : {
-    heroTitle: "Du's Blog",
-    heroSubtitle: "Stories from my future life in Amsterdam",
+    heroTitle: "Du's Blog about Amsterdam",
+    heroSubtitle: "Real stories from someone turning the city into home",
     intro: "Here I'll share my real journey: the move, discoveries, struggles and wins of someone turning Amsterdam from favorite destination into home.",
+    authorityParagraph: "This blog features in-depth guides, practical analyses and real stories about living, traveling and planning Amsterdam in 2026. All based on direct experience, applied research and comparison between expectation and reality.",
     postsTitle: "Latest posts",
+    categoriesTitle: "What this blog is about",
+    categoriesSubtitle: "Practical content and real stories about living, traveling and adapting to Amsterdam in 2026.",
     categories: [
       { emoji: "✈️", title: "Moving", desc: "The process of leaving Brazil and starting fresh" },
       { emoji: "🏠", title: "Housing", desc: "Finding an apartment, bureaucracy, struggles" },
@@ -65,7 +76,8 @@ const Blog = () => {
       { emoji: "❤️", title: "Reflections", desc: "What I learned, what changed, what surprised me" },
     ],
     followJourney: "Follow the journey",
-    followJourneyDesc: "Explore the complete Amsterdam guide while I share my travel stories.",
+    followJourneyDesc: "Explore the Complete Amsterdam Guide 2026",
+    followJourneySubDesc: "Plan your trip or move with less risk and more clarity.",
     exploreGuide: "Explore the Guide",
   };
 
@@ -96,6 +108,9 @@ const Blog = () => {
                   {content.intro}
                 </p>
               </div>
+              <p className="mt-4 text-sm md:text-base text-muted-foreground/80 text-center md:text-left">
+                {content.authorityParagraph}
+              </p>
             </AnimatedSection>
           </div>
         </div>
@@ -122,14 +137,10 @@ const Blog = () => {
           <div className="max-w-7xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
               <h2 className="text-xl sm:text-2xl lg:text-4xl font-heading font-bold text-center mb-3 sm:mb-4">
-                {language === "nl" ? "Wat je hier vindt" : language === "pt" ? "O que você vai encontrar aqui" : "What you'll find here"}
+                {content.categoriesTitle}
               </h2>
               <p className="text-muted-foreground text-center mb-8 sm:mb-10 max-w-2xl mx-auto text-sm sm:text-base">
-                {language === "nl" 
-                  ? "Onderwerpen die ik verken in mijn verhuis- en aanpassingsreis"
-                  : language === "pt" 
-                    ? "Temas que vou explorar na minha jornada de mudança e adaptação"
-                    : "Topics I'll explore in my moving and adaptation journey"}
+                {content.categoriesSubtitle}
               </p>
             </AnimatedSection>
 
@@ -167,7 +178,12 @@ const Blog = () => {
           <div className="max-w-3xl mx-auto px-4 lg:px-8">
             <AnimatedSection>
               <div className="text-center">
-                <p className="text-muted-foreground mb-4">{content.followJourneyDesc}</p>
+                <h3 className="text-lg sm:text-xl font-heading font-bold mb-2">
+                  {content.followJourneyDesc}
+                </h3>
+                <p className="text-muted-foreground mb-4 text-sm sm:text-base">
+                  {content.followJourneySubDesc}
+                </p>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}

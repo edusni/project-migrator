@@ -546,19 +546,19 @@ export const seoData = {
   },
   blog: {
     pt: {
-      title: "Blog do Du: Vida em Amsterdam e Dicas de Brasileiro",
-      description: "Blog pessoal do Du: histórias reais sobre morar em Amsterdam, mudança do Brasil, dicas exclusivas e reflexões sobre a vida holandesa. Sem filtro.",
-      keywords: "blog amsterdam, brasileiro em amsterdam, morar em amsterdam, vida holandesa, dicas amsterdam, experiências amsterdam",
+      title: "Blog do Du sobre Amsterdam | Guias, Histórias e Dicas 2026",
+      description: "Guias aprofundados, análises práticas e relatos reais sobre viver, circular e planejar Amsterdam em 2026. Por quem está transformando a cidade em casa.",
+      keywords: "blog amsterdam, morar em amsterdam, vida em amsterdam, brasileiro em amsterdam, dicas amsterdam 2026, guia amsterdam, custo de vida amsterdam, transporte amsterdam, experiências amsterdam",
     },
     en: {
-      title: "Du's Blog: Life in Amsterdam and Brazilian Tips",
-      description: "Du's personal blog: real stories about living in Amsterdam, moving from Brazil, exclusive tips and reflections on Dutch life. No filter.",
-      keywords: "amsterdam blog, brazilian in amsterdam, living in amsterdam, dutch life, amsterdam tips, amsterdam experiences",
+      title: "Du's Blog about Amsterdam | Guides, Stories & Tips 2026",
+      description: "In-depth guides, practical analyses and real stories about living, traveling and planning Amsterdam in 2026. From someone turning the city into home.",
+      keywords: "amsterdam blog, living in amsterdam, amsterdam life, expat amsterdam, amsterdam tips 2026, amsterdam guide, cost of living amsterdam, amsterdam transport, amsterdam experiences",
     },
     nl: {
-      title: "Du's Blog: Leven in Amsterdam en Braziliaanse Tips",
-      description: "Du's persoonlijke blog: echte verhalen over wonen in Amsterdam, verhuizen uit Brazilië, exclusieve tips en reflecties over het Nederlandse leven. Geen filter.",
-      keywords: "amsterdam blog, braziliaan in amsterdam, wonen in amsterdam, nederlands leven, amsterdam tips, amsterdam ervaringen",
+      title: "Du's Blog over Amsterdam | Gidsen, Verhalen & Tips 2026",
+      description: "Diepgaande gidsen, praktische analyses en echte verhalen over wonen, reizen en plannen in Amsterdam in 2026. Van iemand die de stad in thuis verandert.",
+      keywords: "amsterdam blog, wonen in amsterdam, amsterdams leven, expat amsterdam, amsterdam tips 2026, amsterdam gids, kosten levensonderhoud amsterdam, amsterdam vervoer, amsterdam ervaringen",
     },
   },
   sobre: {
