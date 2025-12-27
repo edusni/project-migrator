@@ -1,4 +1,5 @@
-import { Smartphone } from "lucide-react";
+import { Smartphone, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimateOnScroll } from "@/hooks/useInView";
 import { Language } from "@/hooks/useLanguage";
@@ -214,9 +215,27 @@ export const TransportSection = ({ language }: TransportSectionProps) => {
                       "Kinderen 4-11: GRATIS vervoer met volwassene t/m 3 jan 2027!"
                     , language)}
                   </p>
-                </div>
               </div>
-            </CardContent>
+            </div>
+            
+            {/* Hub Link to Transport page */}
+            <div className="mt-6 text-center">
+              <Link 
+                to="/transporte"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-amsterdam-blue/10 hover:bg-amsterdam-blue/20 text-amsterdam-blue font-medium rounded-lg transition-colors border border-amsterdam-blue/20"
+              >
+                <span>
+                  {t(
+                    "Guia completo de transporte: preços, multas e calculadora",
+                    "Complete transport guide: prices, fines and calculator",
+                    "Complete vervoersgids: prijzen, boetes en calculator",
+                    language
+                  )}
+                </span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
+          </CardContent>
           </Card>
         </AnimateOnScroll>
 

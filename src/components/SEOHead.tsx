@@ -427,19 +427,19 @@ export const seoData = {
   },
   planejamento: {
     pt: {
-      title: "Como Planejar Viagem para Amsterdam 2026 (Passo a Passo)",
-      description: "Planeje Amsterdam sem erro: melhor época, documentos, orçamento real, roteiros testados. Tudo que você precisa saber antes de ir. Guia atualizado 2026.",
-      keywords: "planejar viagem amsterdam, quando ir amsterdam, quanto custa amsterdam, documentos amsterdam, roteiro amsterdam, orçamento amsterdam 2026, viagem holanda",
+      title: "Planejar Amsterdam 2026: custos reais, impostos, documentos e roteiros",
+      description: "Veja quanto custa viajar para Amsterdam em 2026 com VAT 21% e taxa turística 12,5%, melhores meses para ir, documentos Schengen, EES/ETIAS e roteiros prontos.",
+      keywords: "quanto custa viajar para amsterdam 2026, amsterdam 2026 impostos hotel, documentos para amsterdam 2026, roteiro amsterdam 3 dias 2026, ovpay amsterdam como usar, planejar viagem amsterdam, quando ir amsterdam, orçamento amsterdam 2026, viagem holanda, schengen brasil, etias 2026",
     },
     en: {
-      title: "How to Plan Your Amsterdam Trip 2026 (Step by Step)",
-      description: "Plan Amsterdam without mistakes: best time, documents, real budget, tested itineraries. Everything you need to know. Updated guide 2026.",
-      keywords: "amsterdam trip planning, when to visit amsterdam, amsterdam cost, amsterdam documents, amsterdam itinerary, amsterdam budget 2026, netherlands travel",
+      title: "Plan Amsterdam 2026: Real Costs, Taxes, Documents & Itineraries",
+      description: "See how much it costs to travel to Amsterdam in 2026 with 21% VAT and 12.5% tourist tax, best months to visit, Schengen documents, EES/ETIAS and ready itineraries.",
+      keywords: "how much amsterdam trip 2026, amsterdam 2026 hotel taxes, documents for amsterdam 2026, amsterdam 3 day itinerary 2026, ovpay amsterdam how to use, amsterdam trip planning, when to visit amsterdam, amsterdam budget 2026, netherlands travel, schengen visa, etias 2026",
     },
     nl: {
-      title: "Hoe Plan Je Je Amsterdam Reis 2026 (Stap voor Stap)",
-      description: "Plan Amsterdam zonder fouten: beste tijd, documenten, echt budget, geteste routes. Alles wat je moet weten. Bijgewerkte gids 2026.",
-      keywords: "amsterdam reis plannen, wanneer naar amsterdam, amsterdam kosten, amsterdam documenten, amsterdam route, amsterdam budget 2026, nederland reizen",
+      title: "Amsterdam Plannen 2026: Echte Kosten, Belastingen, Documenten & Routes",
+      description: "Bekijk wat een reis naar Amsterdam kost in 2026 met 21% BTW en 12,5% toeristenbelasting, beste maanden, Schengen-documenten, EES/ETIAS en kant-en-klare routes.",
+      keywords: "amsterdam reis kosten 2026, amsterdam 2026 hotel belastingen, documenten voor amsterdam 2026, amsterdam 3 dagen route 2026, ovpay amsterdam gebruiken, amsterdam reis plannen, wanneer naar amsterdam, amsterdam budget 2026, nederland reizen, schengen visum, etias 2026",
     },
   },
   hospedagem: {

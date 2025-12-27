@@ -1,6 +1,7 @@
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
-import { Calendar } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
@@ -99,6 +100,25 @@ const Planejamento = () => {
         )}
         backgroundImage={oosterparkImg}
       />
+
+      {/* Quick Summary - "Em 20 segundos" */}
+      <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/20">
+        <div className="container max-w-4xl">
+          <div className="p-4 md:p-6 bg-card rounded-xl border border-primary/30 shadow-sm">
+            <h2 className="font-bold text-lg mb-4 text-foreground">
+              {t("Em 20 segundos:", "In 20 seconds:", "In 20 seconden:")}
+            </h2>
+            <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
+              <li>• <strong>{t("Impostos 2026:", "2026 Taxes:", "Belastingen 2026:")}</strong> {t("hospedagem tem VAT 21% + taxa turística 12,5%", "accommodation has 21% VAT + 12.5% tourist tax", "accommodatie heeft 21% BTW + 12,5% toeristenbelasting")}</li>
+              <li>• <strong>{t("Melhor época:", "Best time:", "Beste tijd:")}</strong> {t("setembro e início de outubro (menos fila + clima bom)", "September and early October (fewer queues + good weather)", "september en begin oktober (minder rijen + goed weer)")}</li>
+              <li>• <strong>Schiphol → Centraal:</strong> {t("~17 min de trem", "~17 min by train", "~17 min met de trein")}</li>
+              <li>• <strong>{t("Transporte:", "Transport:", "Vervoer:")}</strong> OVpay {t("com check-in/check-out obrigatório", "with mandatory check-in/check-out", "met verplicht in-/uitchecken")}</li>
+              <li>• <strong>{t("Brasileiros:", "Brazilians:", "Brazilianen:")}</strong> 90/180 Schengen, {t("seguro mínimo €30.000", "minimum insurance €30,000", "minimale verzekering €30.000")}</li>
+              <li>• <strong>ETIAS:</strong> {t("previsto para fim de 2026 (checar antes da compra)", "expected late 2026 (check before booking)", "verwacht eind 2026 (controleer voor boeking)")}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
 
       <SectionNav
         sections={sections}
