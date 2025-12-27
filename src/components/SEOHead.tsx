@@ -444,19 +444,19 @@ export const seoData = {
   },
   hospedagem: {
     pt: {
-      title: "Onde Ficar em Amsterdam 2026: Guia dos 7 Melhores Bairros",
-      description: "⭐ Jordaan, De Pijp ou Noord? Compare bairros com preços reais (€80-250/noite). Evite zonas turísticas caras. Mapa + dicas de quem mora lá →",
-      keywords: "onde ficar em amsterdam, melhores bairros amsterdam, onde se hospedar em amsterdam, hotéis amsterdam, airbnb amsterdam, hospedagem amsterdam 2026, jordaan, de pijp, amsterdam noord, melhores bairros para se hospedar em amsterdam, best zone to stay in amsterdam, best area to stay near area of jordaan",
+      title: "Hospedagem em Amsterdam 2026: impostos, Airbnb, bairros e preço final (sem pegadinhas)",
+      description: "Veja o que muda em 2026: VAT 21%, imposto turístico 12,5%, taxa de day tourist €15, regras de Airbnb (30 noites/ano) e quais bairros valem para seu perfil. Inclui calculadora do preço real.",
+      keywords: "onde ficar em amsterdam, hospedagem amsterdam 2026, melhores bairros amsterdam, onde se hospedar em amsterdam, hotéis amsterdam, airbnb amsterdam, taxa turistica amsterdam 2026, imposto hospedagem amsterdam, jordaan, de pijp, amsterdam noord, best zone to stay in amsterdam",
     },
     en: {
-      title: "Where to Stay in Amsterdam 2026: Best 7 Neighborhoods Guide",
-      description: "⭐ Jordaan, De Pijp or Noord? Compare areas with real prices (€80-250/night). Avoid overpriced tourist zones. Map + insider tips →",
-      keywords: "where to stay amsterdam, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodation 2026, jordaan, de pijp, amsterdam noord, best neighborhoods amsterdam, best zone to stay in amsterdam",
+      title: "Amsterdam Accommodation 2026: Taxes, Airbnb, Areas & Final Price (No Hidden Fees)",
+      description: "See what changes in 2026: 21% VAT, 12.5% tourist tax, €15 day tourist fee, Airbnb rules (30 nights/year) and which areas are best for your profile. Includes real price calculator.",
+      keywords: "where to stay amsterdam, amsterdam accommodation 2026, best areas amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam tourist tax 2026, amsterdam accommodation tax, jordaan, de pijp, amsterdam noord, best zone to stay in amsterdam",
     },
     nl: {
-      title: "Waar Verblijven in Amsterdam 2026: Gids voor de 7 Beste Wijken",
-      description: "⭐ Jordaan, De Pijp of Noord? Vergelijk wijken met echte prijzen (€80-250/nacht). Vermijd te dure toeristenzones. Kaart + insider tips →",
-      keywords: "waar verblijven amsterdam, beste wijken amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam accommodatie 2026, jordaan, de pijp, amsterdam noord, beste buurten amsterdam",
+      title: "Accommodatie Amsterdam 2026: Belastingen, Airbnb, Wijken & Eindprijs (Geen Verrassingen)",
+      description: "Bekijk wat verandert in 2026: 21% BTW, 12,5% toeristenbelasting, €15 dagtoeristentaks, Airbnb-regels (30 nachten/jaar) en welke wijken het beste bij je passen. Inclusief echte prijscalculator.",
+      keywords: "waar overnachten amsterdam, amsterdam accommodatie 2026, beste wijken amsterdam, amsterdam hotels, amsterdam airbnb, amsterdam toeristenbelasting 2026, jordaan, de pijp, amsterdam noord",
     },
   },
   gastronomia: {
