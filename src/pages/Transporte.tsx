@@ -81,6 +81,21 @@ const Transporte = () => {
         ]}
       />
 
+      {/* Quick Answer Section - SEO optimized intro */}
+      <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/20">
+        <div className="container max-w-4xl">
+          <div className="p-4 md:p-6 bg-card rounded-xl border border-primary/30 shadow-sm">
+            <p className="text-base md:text-lg text-foreground leading-relaxed font-medium">
+              {t(
+                "Em 2026, se locomover em Amsterdam exige entender três coisas: prioridade do tram, domínio absoluto das bicicletas e o sistema de check-in/check-out com OVpay. Errar nisso gera multa, cobrança extra ou susto. Este guia mostra como circular sem se perder nem gastar à toa.",
+                "In 2026, getting around Amsterdam requires understanding three things: tram priority, absolute dominance of bicycles, and the OVpay check-in/check-out system. Getting these wrong means fines, extra charges, or close calls. This guide shows how to get around without getting lost or overspending.",
+                "In 2026 vereist vervoer in Amsterdam begrip van drie dingen: tramprioriteit, absolute dominantie van fietsen en het OVpay in-/uitchecksysteem. Fouten hierin leiden tot boetes, extra kosten of schrikmomenten. Deze gids laat zien hoe je rondkomt zonder te verdwalen of te veel uit te geven."
+              )}
+            </p>
+          </div>
+        </div>
+      </section>
+
       <ThreeRulesSection />
       <GoldenRuleSection />
       <TransportTabsSection />
