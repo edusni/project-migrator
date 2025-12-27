@@ -512,19 +512,19 @@ export const seoData = {
   },
   coffeeshops: {
     pt: {
-      title: "Coffeeshops Amsterdam 2026: Guia Completo + Regras e Preços",
-      description: "Tudo sobre coffeeshops em Amsterdam: como funcionam, regras 2026, preços de cannabis, melhores opções e o que turistas precisam saber. Guia sem julgamento.",
-      keywords: "coffeeshops amsterdam, coffeeshop guide, como funciona coffeeshop, regras coffeeshop 2026, melhores coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2026, maconha em amsterdam, amsterdam coffeeshop cannabis prices 2026",
+      title: "Regras de Coffeeshops em Amsterdam (Turistas) 2026: onde pode fumar e como evitar multa",
+      description: "Entenda as regras de coffeeshops em Amsterdam em 2026: idade, limite de compra (5g), onde é proibido fumar (multa até €100) e etiqueta para não passar perrengue. Lista por bairros.",
+      keywords: "regras coffeeshop amsterdam turista, coffeeshops amsterdam 2026, onde fumar amsterdam, multa fumar amsterdam, limite 5g coffeeshop, coffeeshop rules tourists, melhores coffeeshops amsterdam, bulldog, dampkring, grey area, katsu, amsterdam weed prices 2026",
     },
     en: {
-      title: "Amsterdam Coffeeshops 2026: Complete Guide + Rules & Prices",
-      description: "Everything about Amsterdam coffeeshops: how they work, 2026 rules, cannabis prices, best options and what tourists need to know. Judgment-free guide.",
-      keywords: "amsterdam coffeeshops, coffeeshop guide, how coffeeshops work, coffeeshop rules 2026, best coffeeshops amsterdam, bulldog, dampkring, amsterdam weed, amsterdam weed prices 2026, amsterdam coffeeshop cannabis prices 2026",
+      title: "Amsterdam Coffeeshop Rules for Tourists 2026: Where to Smoke & How to Avoid Fines",
+      description: "Understand Amsterdam coffeeshop rules in 2026: age, purchase limit (5g), where smoking is banned (up to €100 fine) and etiquette to avoid trouble. List by neighborhood.",
+      keywords: "amsterdam coffeeshop rules tourists, coffeeshops amsterdam 2026, where to smoke amsterdam, amsterdam smoking fine, 5g limit coffeeshop, best coffeeshops amsterdam, bulldog, dampkring, grey area, amsterdam weed prices 2026",
     },
     nl: {
-      title: "Amsterdam Coffeeshops 2026: Complete Gids + Regels & Prijzen",
-      description: "Alles over Amsterdam coffeeshops: hoe ze werken, regels 2026, cannabis prijzen, beste opties en wat toeristen moeten weten. Oordeelvrije gids.",
-      keywords: "amsterdam coffeeshops, coffeeshop gids, hoe werken coffeeshops, coffeeshop regels 2026, beste coffeeshops amsterdam, bulldog, dampkring, amsterdam wiet, amsterdam wiet prijzen 2026",
+      title: "Coffeeshop Regels Amsterdam voor Toeristen 2026: Waar Roken & Boetes Vermijden",
+      description: "Begrijp de coffeeshopregels in Amsterdam 2026: leeftijd, aankooplimiet (5g), waar roken verboden is (boete tot €100) en etiquette om problemen te vermijden. Lijst per wijk.",
+      keywords: "amsterdam coffeeshop regels toeristen, coffeeshops amsterdam 2026, waar roken amsterdam, amsterdam rookboete, 5g limiet coffeeshop, beste coffeeshops amsterdam, bulldog, dampkring, grey area",
     },
   },
   arredores: {

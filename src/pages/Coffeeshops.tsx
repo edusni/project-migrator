@@ -16,16 +16,17 @@ import {
   GlossarySection,
   FAQSection,
   FamousGallerySection,
-  BlogPostsSection
+  BlogPostsSection,
+  NeighborhoodListSection
 } from "@/components/coffeeshops";
 
 // Helper function for trilingual content
 const getContent = (lang: Language) => {
   const content = {
     pt: {
-      title: "Coffeeshops em Amsterdam 2026",
-      description: "Guia responsável para entender regras, etiqueta e como evitar multa e dor de cabeça",
-      intro: "A cultura de coffeeshops é MUITO mais complexa, matizada e burocrática do que a maioria imagina. É uma cultura enraizada num pragmatismo holandês único, numa história de redução de danos.",
+      title: "Regras de Coffeeshops em Amsterdam 2026",
+      description: "Onde pode fumar, limite de compra e como evitar multa de até €100",
+      intro: "Turista pode entrar em coffeeshop em Amsterdam em 2026, desde que tenha 18+ e documento. O limite é 5g por pessoa, e fumar na rua em áreas centrais como Red Light District pode gerar multa de até €100. Neste guia você vê onde pode, onde não pode e como consumir sem dor de cabeça.",
       whatIs: {
         title: "O que um coffeeshop é (e o que ele não é)",
         text: "Coffeeshop, em Amsterdam, é um estabelecimento licenciado para vender cannabis sob regras de tolerância. A cannabis NÃO vira 'totalmente legal' por causa disso. O sistema existe para redução de danos e separar o mercado de cannabis do mercado de drogas mais perigosas.",
@@ -232,9 +233,9 @@ const getContent = (lang: Language) => {
       }
     },
     en: {
-      title: "Coffeeshops in Amsterdam 2026",
-      description: "Responsible guide to understanding rules, etiquette and how to avoid fines and headaches",
-      intro: "Coffeeshop culture is MUCH more complex, nuanced and bureaucratic than most imagine. It's a culture rooted in unique Dutch pragmatism, in a history of harm reduction.",
+      title: "Amsterdam Coffeeshop Rules 2026",
+      description: "Where you can smoke, purchase limits and how to avoid fines up to €100",
+      intro: "Tourists can enter coffeeshops in Amsterdam in 2026, as long as they're 18+ with valid ID. The limit is 5g per person, and smoking on the street in central areas like the Red Light District can result in fines up to €100. In this guide you'll see where you can, where you can't, and how to consume without trouble.",
       whatIs: {
         title: "What a coffeeshop is (and what it isn't)",
         text: "A coffeeshop in Amsterdam is a licensed establishment to sell cannabis under tolerance rules. Cannabis does NOT become 'fully legal' because of this. The system exists for harm reduction and to separate the cannabis market from more dangerous drug markets.",
@@ -441,9 +442,9 @@ const getContent = (lang: Language) => {
       }
     },
     nl: {
-      title: "Coffeeshops in Amsterdam 2026",
-      description: "Verantwoorde gids voor het begrijpen van regels, etiquette en het vermijden van boetes en problemen",
-      intro: "De coffeeshopcultuur is VEEL complexer, genuanceerder en bureaucratischer dan de meesten denken. Het is een cultuur geworteld in uniek Nederlands pragmatisme, in een geschiedenis van harm reduction.",
+      title: "Amsterdam Coffeeshop Regels 2026",
+      description: "Waar je mag roken, aankooplimieten en hoe boetes tot €100 te vermijden",
+      intro: "Toeristen mogen coffeeshops in Amsterdam bezoeken in 2026, zolang ze 18+ zijn met geldig ID. De limiet is 5g per persoon, en roken op straat in centrale gebieden zoals de Wallen kan boetes tot €100 opleveren. In deze gids zie je waar wel, waar niet en hoe je zonder problemen kunt consumeren.",
       whatIs: {
         title: "Wat een coffeeshop is (en wat het niet is)",
         text: "Een coffeeshop in Amsterdam is een gelicentieerde zaak om cannabis te verkopen onder gedoogregels. Cannabis wordt NIET 'volledig legaal' hierdoor. Het systeem bestaat voor harm reduction en om de cannabismarkt te scheiden van gevaarlijkere drugsmarkten.",
@@ -683,12 +684,7 @@ const Coffeeshops = () => {
 
       <IntroSection intro={content.intro} />
       
-      <WhatIsSection 
-        title={content.whatIs.title}
-        text={content.whatIs.text}
-        warning={content.whatIs.warning}
-      />
-      
+      {/* SEO Priority: Rules first - what tourists need to know immediately */}
       <TouristsAllowedSection 
         title={content.tourists.title}
         yes={content.tourists.yes}
@@ -706,6 +702,13 @@ const Coffeeshops = () => {
         language={language}
       />
       
+      {/* Context sections after the key rules */}
+      <WhatIsSection 
+        title={content.whatIs.title}
+        text={content.whatIs.text}
+        warning={content.whatIs.warning}
+      />
+      
       <ExplorerSection language={language} />
       
       <MainTabsSection
@@ -721,6 +724,9 @@ const Coffeeshops = () => {
         history={content.history}
         language={language}
       />
+      
+      {/* SEO-friendly static list of coffeeshops by neighborhood */}
+      <NeighborhoodListSection language={language} />
       
       <GlossarySection 
         title={content.glossary.title}
