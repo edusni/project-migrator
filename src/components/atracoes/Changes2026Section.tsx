@@ -28,14 +28,14 @@ export function Changes2026Section() {
       <div className="container px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <AnimatedSection>
-            <motion.h3 
+            <motion.h2 
               className="font-bold text-amber-800 dark:text-amber-200 text-lg sm:text-xl lg:text-2xl mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3"
               animate={{ scale: [1, 1.02, 1] }}
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             >
               <AlertTriangle className="w-5 h-5 sm:w-6 sm:h-6 lg:w-8 lg:h-8 flex-shrink-0" />
-              💣 {language === "nl" ? "Wat verandert in 2026" : language === "pt" ? "O que mudou para 2026" : "What changed for 2026"}
-            </motion.h3>
+              {language === "nl" ? "Wat Verandert in Amsterdam in 2026" : language === "pt" ? "O Que Mudou em Amsterdam em 2026" : "What Changed in Amsterdam in 2026"}
+            </motion.h2>
           </AnimatedSection>
 
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">

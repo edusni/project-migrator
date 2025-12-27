@@ -85,7 +85,7 @@ export function AttractionsFiltersSection() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 sm:mb-8">
             <h2 className="text-xl sm:text-2xl lg:text-5xl font-heading font-bold flex items-center gap-2 sm:gap-3">
               <Filter className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-amsterdam-orange flex-shrink-0" />
-              {t("Mapa + Filtros Inteligentes", "Map + Smart Filters", "Kaart + Slimme Filters")}
+              {t("Mapa das Atrações de Amsterdam (com Filtros)", "Amsterdam Attractions Map (with Filters)", "Kaart van Amsterdam Attracties (met Filters)")}
             </h2>
             <div className="flex gap-2">
               <Button
