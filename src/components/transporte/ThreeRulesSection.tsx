@@ -1,5 +1,8 @@
 import { useLanguage } from "@/hooks/useLanguage";
+import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { AnimatedSection, StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 
 const t = (pt: string, en: string, nl: string, language: string) => {
@@ -10,6 +13,8 @@ const t = (pt: string, en: string, nl: string, language: string) => {
 
 export function ThreeRulesSection() {
   const { language } = useLanguage();
+  const { getLocalizedPath, getCurrentLocale } = useLocaleNavigation();
+  const locale = getCurrentLocale();
 
   const rules = [
     {
@@ -61,6 +66,32 @@ export function ThreeRulesSection() {
               </StaggerItem>
             ))}
           </StaggerContainer>
+
+          {/* Link to detailed blog post - SEO: differentiate pillar from post */}
+          <div className="mt-8 text-center">
+            <Link 
+              to={getLocalizedPath(locale, "/blog/como-se-locomover-em-amsterdam-em-2026")}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white dark:bg-black/30 hover:bg-red-100 dark:hover:bg-red-900/30 text-red-700 dark:text-red-300 font-medium rounded-lg transition-colors border border-red-200 dark:border-red-800"
+            >
+              <span>
+                {t(
+                  "Guia narrativo: erros comuns e como evitar cada um",
+                  "Narrative guide: common mistakes and how to avoid each",
+                  "Verhalende gids: veelgemaakte fouten en hoe je ze vermijdt",
+                  language
+                )}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <p className="mt-2 text-sm text-red-600/70 dark:text-red-400/70">
+              {t(
+                "Exemplos reais de turistas, com dicas por perfil de viagem",
+                "Real examples from tourists, with tips by travel profile",
+                "Echte voorbeelden van toeristen, met tips per reisprofiel",
+                language
+              )}
+            </p>
+          </div>
         </div>
       </div>
     </section>
