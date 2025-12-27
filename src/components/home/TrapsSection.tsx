@@ -118,10 +118,10 @@ export function TrapsSection() {
   ];
 
   const sectionTitle = language === "nl" 
-    ? "De 7 valkuilen waar toeristen het meest intrappen" 
+    ? "Veelgemaakte fouten in Amsterdam (en hoe te vermijden in 2026)" 
     : language === "pt" 
-      ? "As 7 armadilhas que mais pegam brasileiro" 
-      : "The 7 traps that catch tourists most";
+      ? "Erros comuns em Amsterdam (e como evitar em 2026)" 
+      : "Common mistakes in Amsterdam (and how to avoid in 2026)";
 
   const filterText = language === "nl" ? "Zonder filter" : language === "pt" ? "Sem filtro" : "No filter";
 

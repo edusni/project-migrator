@@ -8,7 +8,7 @@ export function ChecklistSection() {
   const { language } = useLanguage();
 
   const checklist = language === "nl" ? {
-    title: "Begin hier: de checklist die 80% van de fouten voorkomt",
+    title: "Plan je reis naar Amsterdam in 2026 (Praktische checklist)",
     sections: [
       {
         question: "1) Hoeveel dagen heb je echt?",
@@ -32,7 +32,7 @@ export function ChecklistSection() {
       }
     ]
   } : language === "pt" ? {
-    title: "Comece por aqui: o checklist que evita 80% dos erros",
+    title: "Planeje sua viagem para Amsterdam em 2026 (Checklist prático)",
     sections: [
       {
         question: "1) Quantos dias você tem de verdade?",
@@ -56,7 +56,7 @@ export function ChecklistSection() {
       }
     ]
   } : {
-    title: "Start here: the checklist that avoids 80% of mistakes",
+    title: "Plan your trip to Amsterdam in 2026 (Practical checklist)",
     sections: [
       {
         question: "1) How many days do you really have?",

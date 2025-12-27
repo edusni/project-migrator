@@ -33,6 +33,20 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroSection />
+        
+        {/* SEO Scope Paragraph */}
+        <section className="py-6 lg:py-8 bg-muted/30 border-b border-border">
+          <div className="container max-w-4xl">
+            <p className="text-sm md:text-base text-muted-foreground leading-relaxed text-center">
+              {language === "nl"
+                ? "AmsterDu is een complete en actuele gids voor wie naar Amsterdam reist of er wil wonen in 2026. Hier vind je praktische beslissingen over accommodatie, vervoer, kosten, attracties, cannabis, dagtochten en echte regels van de stad — met focus op onnodige uitgaven, boetes en toeristenvalkuilen vermijden."
+                : language === "pt"
+                  ? "O AmsterDu é um guia completo e atualizado para quem vai viajar ou planejar a vida em Amsterdam em 2026. Aqui você encontra decisões práticas sobre hospedagem, transporte, custos, atrações, cannabis, bate-voltas e regras reais da cidade — com foco em evitar gastos desnecessários, multas e armadilhas turísticas."
+                  : "AmsterDu is a complete and updated guide for anyone traveling to or planning life in Amsterdam in 2026. Here you'll find practical decisions about accommodation, transport, costs, attractions, cannabis, day trips and real city rules — focused on avoiding unnecessary expenses, fines and tourist traps."}
+            </p>
+          </div>
+        </section>
+        
         <Changes2026Section />
         <ChecklistSection />
         <GuideSectionsGrid />

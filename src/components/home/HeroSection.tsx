@@ -144,9 +144,13 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-          className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-primary-foreground mb-4 sm:mb-6"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-primary-foreground mb-4 sm:mb-6"
         >
-          AmsterDu
+          {language === "nl" 
+            ? "Amsterdam Gids 2026 – AmsterDu" 
+            : language === "pt" 
+              ? "Guia de Amsterdam 2026 – AmsterDu" 
+              : "Amsterdam Guide 2026 – AmsterDu"}
         </motion.h1>
         
         <motion.p 

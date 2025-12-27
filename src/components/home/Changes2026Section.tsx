@@ -27,7 +27,7 @@ export function Changes2026Section() {
     {
       emoji: "💰",
       title: "Custo de hospedagem pesa mais",
-      desc: "Amsterdam aplica 12,5% de imposto turístico sobre hospedagem. Isso entra no seu orçamento de forma direta."
+      desc: "Amsterdam aplica 12,5% de imposto turístico sobre hospedagem em 2026, impactando diretamente hotéis, Airbnbs e estadias longas."
     },
     {
       emoji: "🚭",
