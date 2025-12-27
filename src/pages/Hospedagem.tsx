@@ -71,6 +71,22 @@ const Hospedagem = () => {
         ]}
       />
 
+      {/* Quick Answer Section - SEO optimized intro */}
+      <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/20">
+        <div className="container max-w-4xl">
+          <div className="p-4 md:p-6 bg-card rounded-xl border border-primary/30 shadow-sm">
+            <p className="text-base md:text-lg text-foreground leading-relaxed font-medium">
+              {language === "nl" 
+                ? "In 2026 verandert er veel aan overnachten in Amsterdam: BTW van 21% + toeristenbelasting van 12,5% over het tarief. Dat betekent ~33% extra bovenop de basisprijs. Daarnaast: Airbnb-limiet van 30 nachten/jaar (mogelijk 15 in het centrum), en een nieuwe €15 dagtoeristentaks voor wie niet overnacht. Hieronder leg ik alles uit + welke wijk bij jouw profiel past."
+                : language === "pt"
+                ? "Em 2026, hospedar-se em Amsterdam ficou mais caro e regulado: VAT de 21% + imposto turístico de 12,5% sobre a diária. Na prática, isso adiciona ~33% ao preço base. Além disso: limite de 30 noites/ano no Airbnb (pode cair para 15 no centro), e nova taxa de €15 para day tourists. Abaixo explico tudo + qual bairro combina com seu perfil."
+                : "In 2026, staying in Amsterdam got more expensive and regulated: 21% VAT + 12.5% tourist tax on the rate. In practice, that adds ~33% to the base price. Plus: 30 nights/year Airbnb limit (may drop to 15 in the center), and a new €15 day tourist fee. Below I explain everything + which area fits your profile."
+              }
+            </p>
+          </div>
+        </div>
+      </section>
+
       <TaxChangesSection />
       <HowToChooseSection />
       <AccommodationTypesSection />
