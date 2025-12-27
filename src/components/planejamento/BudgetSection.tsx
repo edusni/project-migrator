@@ -1,3 +1,5 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { AnimateOnScroll } from "@/hooks/useInView";
 import { Language } from "@/hooks/useLanguage";
@@ -189,6 +191,38 @@ export const BudgetSection = ({ language }: BudgetSectionProps) => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+          
+          {/* Hub Links to child pages */}
+          <div className="flex flex-wrap justify-center gap-4 mt-10">
+            <Link 
+              to="/hospedagem"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-lg transition-colors border border-primary/20"
+            >
+              <span>
+                {t(
+                  "Hospedagem 2026: impostos e preço final",
+                  "Accommodation 2026: taxes and final price",
+                  "Accommodatie 2026: belastingen en eindprijs",
+                  language
+                )}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link 
+              to="/custo-vida-amsterdam"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary/10 hover:bg-primary/20 text-primary font-medium rounded-lg transition-colors border border-primary/20"
+            >
+              <span>
+                {t(
+                  "Custo de vida em Amsterdam 2026",
+                  "Cost of living in Amsterdam 2026",
+                  "Kosten van levensonderhoud Amsterdam 2026",
+                  language
+                )}
+              </span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </AnimateOnScroll>
       </div>
