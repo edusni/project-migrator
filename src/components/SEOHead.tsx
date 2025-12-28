@@ -33,9 +33,13 @@ function getPathWithoutLocale(pathname: string): string {
   return pathname.replace(/^\/(pt|en|nl)/, "") || "";
 }
 
-// Get alternate URLs for hreflang
+// Get alternate URLs for hreflang (normalized: lowercase, no trailing slash)
 function getAlternateUrls(pathname: string) {
-  const cleanPath = getPathWithoutLocale(pathname);
+  // Normalize: lowercase, remove trailing slash
+  const cleanPath = getPathWithoutLocale(pathname)
+    .toLowerCase()
+    .replace(/\/+$/, '');
+  
   return {
     pt: `https://amsterdu.com/pt${cleanPath}`,
     en: `https://amsterdu.com/en${cleanPath}`,
@@ -70,9 +74,16 @@ export function SEOHead({
   const location = useLocation();
   const { language } = useLanguage();
   const locale = getLocaleFromPath(location.pathname);
-  const canonicalUrl = `https://amsterdu.com${location.pathname}`;
+  
+  // Normalize pathname: lowercase, no trailing slash (except root)
+  const normalizedPath = location.pathname
+    .toLowerCase()
+    .replace(/\/+$/, '') || '/';
+  
+  // Canonical URL always lowercase, no trailing slash, https
+  const canonicalUrl = `https://amsterdu.com${normalizedPath}`;
   const fullTitle = title.includes("Amsterdu") ? title : `${title} | Amsterdu`;
-  const alternateUrls = getAlternateUrls(location.pathname);
+  const alternateUrls = getAlternateUrls(normalizedPath);
   const htmlLang = getHtmlLang(locale);
   const inLanguage = htmlLang;
 
