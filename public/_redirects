@@ -1,4 +1,9 @@
 # ===================================================================
+# SITEMAP - Redireciona para edge function dinâmica
+# ===================================================================
+/sitemap.xml https://lguwbgthckwsixmuvurx.supabase.co/functions/v1/sitemap 200!
+
+# ===================================================================
 # CANONICALIZATION REDIRECTS - URLs maiúsculas → minúsculas
 # Todas as variações de case devem apontar para versão canônica
 # ===================================================================
