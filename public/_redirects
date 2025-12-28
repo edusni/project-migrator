@@ -1,93 +1,180 @@
-# 301 Redirects - URLs com case diferente (Google indexou variações)
-/Atracoes /pt/atracoes.html 301
-/Coffeeshops /pt/coffeeshops.html 301
-/Hospedagem /pt/hospedagem.html 301
-/Sobre /pt/sobre.html 301
-/Transporte /pt/transporte.html 301
-/Galeria /pt/index.html 301
-/Privacidade /pt/index.html 301
-/Cookies /pt/index.html 301
+# ===================================================================
+# CANONICALIZATION REDIRECTS - URLs maiúsculas → minúsculas
+# Todas as variações de case devem apontar para versão canônica
+# ===================================================================
 
-# URLs antigas sem prefixo de idioma
-/atracoes /pt/atracoes.html 301
-/coffeeshops /pt/coffeeshops.html 301
-/hospedagem /pt/hospedagem.html 301
-/sobre /pt/sobre.html 301
-/transporte /pt/transporte.html 301
-/gastronomia /pt/gastronomia.html 301
-/arredores /pt/arredores.html 301
-/planejamento /pt/planejamento.html 301
-/galeria /pt/index.html 301
-/custo-vida-amsterdam /pt/custo-de-vida.html 301
-/o-que-fazer-amsterdam /pt/atracoes.html 301
+# PT - Variações maiúsculas → minúsculas
+/Atracoes /pt/atracoes.html 301!
+/ATRACOES /pt/atracoes.html 301!
+/Coffeeshops /pt/coffeeshops.html 301!
+/COFFEESHOPS /pt/coffeeshops.html 301!
+/Hospedagem /pt/hospedagem.html 301!
+/HOSPEDAGEM /pt/hospedagem.html 301!
+/Sobre /pt/sobre.html 301!
+/SOBRE /pt/sobre.html 301!
+/Transporte /pt/transporte.html 301!
+/TRANSPORTE /pt/transporte.html 301!
+/Gastronomia /pt/gastronomia.html 301!
+/GASTRONOMIA /pt/gastronomia.html 301!
+/Arredores /pt/arredores.html 301!
+/ARREDORES /pt/arredores.html 301!
+/Planejamento /pt/planejamento.html 301!
+/PLANEJAMENTO /pt/planejamento.html 301!
+/Galeria /pt/index.html 301!
+/Privacidade /pt/index.html 301!
+/Cookies /pt/index.html 301!
 
-# 301 Redirects para preservar SEO de URLs antigas (slugs PT antigos)
-/onde-ficar-amsterdam /pt/hospedagem.html 301
-/quem-e-o-du /pt/sobre.html 301
-/bate-volta-amsterdam /pt/arredores.html 301
-/coffeeshops-amsterdam /pt/coffeeshops.html 301
-/transporte-amsterdam /pt/transporte.html 301
-/onde-comer-amsterdam /pt/gastronomia.html 301
-/planejamento-viagem /pt/planejamento.html 301
+# ===================================================================
+# LEGACY URLs - URLs antigas sem prefixo de idioma → canônicas
+# ===================================================================
+/atracoes /pt/atracoes.html 301!
+/coffeeshops /pt/coffeeshops.html 301!
+/hospedagem /pt/hospedagem.html 301!
+/sobre /pt/sobre.html 301!
+/transporte /pt/transporte.html 301!
+/gastronomia /pt/gastronomia.html 301!
+/arredores /pt/arredores.html 301!
+/planejamento /pt/planejamento.html 301!
+/galeria /pt/index.html 301!
+/custo-vida-amsterdam /pt/custo-de-vida.html 301!
+/o-que-fazer-amsterdam /pt/atracoes.html 301!
+/onde-ficar-amsterdam /pt/hospedagem.html 301!
+/quem-e-o-du /pt/sobre.html 301!
+/bate-volta-amsterdam /pt/arredores.html 301!
+/coffeeshops-amsterdam /pt/coffeeshops.html 301!
+/transporte-amsterdam /pt/transporte.html 301!
+/onde-comer-amsterdam /pt/gastronomia.html 301!
+/planejamento-viagem /pt/planejamento.html 301!
 
-# PT URLs sem .html -> com .html (padronização SEO)
-/pt /pt/index.html 301
-/pt/ /pt/index.html 301
-/pt/planejamento /pt/planejamento.html 301
-/pt/hospedagem /pt/hospedagem.html 301
-/pt/atracoes /pt/atracoes.html 301
-/pt/transporte /pt/transporte.html 301
-/pt/gastronomia /pt/gastronomia.html 301
-/pt/coffeeshops /pt/coffeeshops.html 301
-/pt/arredores /pt/arredores.html 301
-/pt/sobre /pt/sobre.html 301
-/pt/custo-de-vida /pt/custo-de-vida.html 301
+# ===================================================================
+# PT URLs - Sem .html → com .html (padronização SEO)
+# ===================================================================
+/pt /pt/index.html 301!
+/pt/ /pt/index.html 301!
+/pt/planejamento /pt/planejamento.html 301!
+/pt/planejamento/ /pt/planejamento.html 301!
+/pt/hospedagem /pt/hospedagem.html 301!
+/pt/hospedagem/ /pt/hospedagem.html 301!
+/pt/atracoes /pt/atracoes.html 301!
+/pt/atracoes/ /pt/atracoes.html 301!
+/pt/transporte /pt/transporte.html 301!
+/pt/transporte/ /pt/transporte.html 301!
+/pt/gastronomia /pt/gastronomia.html 301!
+/pt/gastronomia/ /pt/gastronomia.html 301!
+/pt/coffeeshops /pt/coffeeshops.html 301!
+/pt/coffeeshops/ /pt/coffeeshops.html 301!
+/pt/arredores /pt/arredores.html 301!
+/pt/arredores/ /pt/arredores.html 301!
+/pt/sobre /pt/sobre.html 301!
+/pt/sobre/ /pt/sobre.html 301!
+/pt/custo-de-vida /pt/custo-de-vida.html 301!
+/pt/custo-de-vida/ /pt/custo-de-vida.html 301!
+/pt/de-pijp /pt/de-pijp.html 301!
+/pt/de-pijp/ /pt/de-pijp.html 301!
 
-# EN URLs sem .html -> com .html (slugs nativos)
-/en /en/index.html 301
-/en/ /en/index.html 301
-/en/planning /en/planning.html 301
-/en/accommodation /en/accommodation.html 301
-/en/transport /en/transport.html 301
-/en/attractions /en/attractions.html 301
-/en/food /en/food.html 301
-/en/coffeeshops /en/coffeeshops.html 301
-/en/daytrips /en/daytrips.html 301
-/en/about /en/about.html 301
-/en/cost-of-living /en/cost-of-living.html 301
+# PT - Variações maiúsculas com prefixo
+/pt/Atracoes /pt/atracoes.html 301!
+/pt/Coffeeshops /pt/coffeeshops.html 301!
+/pt/Hospedagem /pt/hospedagem.html 301!
+/pt/Sobre /pt/sobre.html 301!
+/pt/Transporte /pt/transporte.html 301!
+/pt/Gastronomia /pt/gastronomia.html 301!
+/pt/Arredores /pt/arredores.html 301!
+/pt/Planejamento /pt/planejamento.html 301!
 
-# EN URLs antigas com slugs PT -> slugs nativos .html
-/en/planejamento /en/planning.html 301
-/en/hospedagem /en/accommodation.html 301
-/en/transporte /en/transport.html 301
-/en/atracoes /en/attractions.html 301
-/en/gastronomia /en/food.html 301
-/en/arredores /en/daytrips.html 301
-/en/sobre /en/about.html 301
-/en/custo-de-vida /en/cost-of-living.html 301
+# ===================================================================
+# EN URLs - Sem .html → com .html (slugs nativos)
+# ===================================================================
+/en /en/index.html 301!
+/en/ /en/index.html 301!
+/en/planning /en/planning.html 301!
+/en/planning/ /en/planning.html 301!
+/en/accommodation /en/accommodation.html 301!
+/en/accommodation/ /en/accommodation.html 301!
+/en/transport /en/transport.html 301!
+/en/transport/ /en/transport.html 301!
+/en/attractions /en/attractions.html 301!
+/en/attractions/ /en/attractions.html 301!
+/en/food /en/food.html 301!
+/en/food/ /en/food.html 301!
+/en/coffeeshops /en/coffeeshops.html 301!
+/en/coffeeshops/ /en/coffeeshops.html 301!
+/en/daytrips /en/daytrips.html 301!
+/en/daytrips/ /en/daytrips.html 301!
+/en/about /en/about.html 301!
+/en/about/ /en/about.html 301!
+/en/cost-of-living /en/cost-of-living.html 301!
+/en/cost-of-living/ /en/cost-of-living.html 301!
+/en/de-pijp /en/de-pijp.html 301!
+/en/de-pijp/ /en/de-pijp.html 301!
 
-# NL URLs sem .html -> com .html (slugs nativos)
-/nl /nl/index.html 301
-/nl/ /nl/index.html 301
-/nl/planning /nl/planning.html 301
-/nl/accommodation /nl/accommodation.html 301
-/nl/transport /nl/transport.html 301
-/nl/attractions /nl/attractions.html 301
-/nl/food /nl/food.html 301
-/nl/coffeeshops /nl/coffeeshops.html 301
-/nl/daytrips /nl/daytrips.html 301
-/nl/about /nl/about.html 301
-/nl/kosten-van-levensonderhoud /nl/kosten-van-levensonderhoud.html 301
+# EN - URLs antigas com slugs PT → slugs nativos
+/en/planejamento /en/planning.html 301!
+/en/hospedagem /en/accommodation.html 301!
+/en/transporte /en/transport.html 301!
+/en/atracoes /en/attractions.html 301!
+/en/gastronomia /en/food.html 301!
+/en/arredores /en/daytrips.html 301!
+/en/sobre /en/about.html 301!
+/en/custo-de-vida /en/cost-of-living.html 301!
 
-# NL URLs antigas com slugs PT -> slugs nativos .html
-/nl/planejamento /nl/planning.html 301
-/nl/hospedagem /nl/accommodation.html 301
-/nl/transporte /nl/transport.html 301
-/nl/atracoes /nl/attractions.html 301
-/nl/gastronomia /nl/food.html 301
-/nl/arredores /nl/daytrips.html 301
-/nl/sobre /nl/about.html 301
-/nl/custo-de-vida /nl/kosten-van-levensonderhoud.html 301
+# EN - Variações maiúsculas
+/en/Planning /en/planning.html 301!
+/en/Accommodation /en/accommodation.html 301!
+/en/Transport /en/transport.html 301!
+/en/Attractions /en/attractions.html 301!
+/en/Food /en/food.html 301!
+/en/Coffeeshops /en/coffeeshops.html 301!
+/en/Daytrips /en/daytrips.html 301!
+/en/About /en/about.html 301!
 
+# ===================================================================
+# NL URLs - Sem .html → com .html (slugs nativos)
+# ===================================================================
+/nl /nl/index.html 301!
+/nl/ /nl/index.html 301!
+/nl/planning /nl/planning.html 301!
+/nl/planning/ /nl/planning.html 301!
+/nl/accommodation /nl/accommodation.html 301!
+/nl/accommodation/ /nl/accommodation.html 301!
+/nl/transport /nl/transport.html 301!
+/nl/transport/ /nl/transport.html 301!
+/nl/attractions /nl/attractions.html 301!
+/nl/attractions/ /nl/attractions.html 301!
+/nl/food /nl/food.html 301!
+/nl/food/ /nl/food.html 301!
+/nl/coffeeshops /nl/coffeeshops.html 301!
+/nl/coffeeshops/ /nl/coffeeshops.html 301!
+/nl/daytrips /nl/daytrips.html 301!
+/nl/daytrips/ /nl/daytrips.html 301!
+/nl/about /nl/about.html 301!
+/nl/about/ /nl/about.html 301!
+/nl/kosten-van-levensonderhoud /nl/kosten-van-levensonderhoud.html 301!
+/nl/kosten-van-levensonderhoud/ /nl/kosten-van-levensonderhoud.html 301!
+/nl/de-pijp /nl/de-pijp.html 301!
+/nl/de-pijp/ /nl/de-pijp.html 301!
+
+# NL - URLs antigas com slugs PT → slugs nativos
+/nl/planejamento /nl/planning.html 301!
+/nl/hospedagem /nl/accommodation.html 301!
+/nl/transporte /nl/transport.html 301!
+/nl/atracoes /nl/attractions.html 301!
+/nl/gastronomia /nl/food.html 301!
+/nl/arredores /nl/daytrips.html 301!
+/nl/sobre /nl/about.html 301!
+/nl/custo-de-vida /nl/kosten-van-levensonderhoud.html 301!
+
+# NL - Variações maiúsculas
+/nl/Planning /nl/planning.html 301!
+/nl/Accommodation /nl/accommodation.html 301!
+/nl/Transport /nl/transport.html 301!
+/nl/Attractions /nl/attractions.html 301!
+/nl/Food /nl/food.html 301!
+/nl/Coffeeshops /nl/coffeeshops.html 301!
+/nl/Daytrips /nl/daytrips.html 301!
+/nl/About /nl/about.html 301!
+
+# ===================================================================
 # SPA fallback (React app para rotas dinâmicas como /blog)
+# ===================================================================
 /* /index.html 200
