@@ -8,3 +8,6 @@ verify_jwt = false
 
 [functions.translate-blog]
 verify_jwt = true
+
+[functions.generate-static-html]
+verify_jwt = false
