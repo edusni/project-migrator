@@ -505,47 +505,52 @@ const BlogPost = () => {
               </motion.div>
             )}
 
-            {/* Header */}
+            {/* Header - visual mais vibrante */}
             <motion.header
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mb-6 sm:mb-8"
+              className="mb-8 sm:mb-10 text-center sm:text-left"
             >
-              {/* Category */}
+              {/* Category badge colorido */}
               {post.blog_categories && (
                 <Badge 
-                  className="mb-3 sm:mb-4 text-white text-xs sm:text-sm px-2.5 py-1"
-                  style={{ backgroundColor: post.blog_categories.color || '#3b82f6' }}
+                  className="mb-4 sm:mb-5 text-white text-sm font-bold px-4 py-1.5 shadow-lg"
+                  style={{ 
+                    backgroundColor: post.blog_categories.color || 'hsl(24 90% 50%)',
+                    boxShadow: `0 4px 14px ${post.blog_categories.color || 'hsl(24 90% 50%)'}40`
+                  }}
                 >
-                  {post.blog_categories.emoji} {post.blog_categories.name}
+                  <span className="mr-1.5">{post.blog_categories.emoji}</span>
+                  {post.blog_categories.name}
                 </Badge>
               )}
 
-              <h1 className="font-heading text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-3 lg:mb-4 leading-tight">
+              <h1 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 lg:mb-6 leading-tight bg-gradient-to-r from-foreground via-foreground to-foreground/80 bg-clip-text">
                 {translatedContent?.title || post.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm text-muted-foreground">
+              {/* Meta com badges coloridas */}
+              <div className="flex flex-wrap items-center justify-center sm:justify-start gap-3 sm:gap-4">
                 {publishedDate && (
-                  <span className="flex items-center gap-1">
-                    <Calendar className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary/10 text-secondary text-sm font-medium">
+                    <Calendar className="w-4 h-4 flex-shrink-0" />
                     <span className="whitespace-nowrap">{publishedDate}</span>
                   </span>
                 )}
                 {post.read_time_minutes && (
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium">
+                    <Clock className="w-4 h-4 flex-shrink-0" />
                     <span className="whitespace-nowrap">{post.read_time_minutes} {texts.minRead}</span>
                   </span>
                 )}
                 <Button 
-                  variant="ghost" 
+                  variant="outline" 
                   size="sm" 
                   onClick={handleShare} 
-                  className="h-8 sm:h-9 px-2 sm:px-3 min-h-[36px] text-xs sm:text-sm"
+                  className="rounded-full px-4 text-sm hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
                 >
-                  <Share2 className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1" />
+                  <Share2 className="w-4 h-4 mr-1.5" />
                   {texts.share}
                 </Button>
               </div>
@@ -577,21 +582,21 @@ const BlogPost = () => {
               )}
             </motion.div>
 
-            {/* Post Navigation */}
+            {/* Post Navigation - visual melhorado */}
             {(prevPost || nextPost) && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 }}
-                className="mb-8 sm:mb-10 lg:mb-12"
+                className="mb-10 sm:mb-12 lg:mb-14"
               >
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Previous Post */}
                   <div className="col-span-1 min-w-0">
                     {prevPost && (
-                      <Button
-                        variant="outline"
-                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-start text-left min-w-0 overflow-hidden whitespace-normal group hover:border-primary/50 transition-all"
+                      <motion.button
+                        whileHover={{ scale: 1.02, x: -4 }}
+                        className="w-full h-auto min-h-[90px] p-5 flex flex-col items-start text-left min-w-0 overflow-hidden whitespace-normal group bg-gradient-to-br from-card to-accent/30 border-2 border-transparent hover:border-primary/30 rounded-xl shadow-md hover:shadow-lg transition-all"
                         onClick={() => {
                           const prevSlug =
                             locale === "en" && prevPost.slug_en
@@ -602,27 +607,27 @@ const BlogPost = () => {
                           navigate(getLocalizedPath(locale, `/blog/${prevSlug}`));
                         }}
                       >
-                        <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
-                          <ChevronLeft className="w-3 h-3" />
+                        <span className="text-xs text-primary font-bold flex items-center gap-1 mb-2">
+                          <ChevronLeft className="w-4 h-4" />
                           {texts.prevPost}
                         </span>
-                        <span className="font-medium text-sm leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
+                        <span className="font-heading font-bold text-base leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
                           {locale === "en" && prevPost.title_en
                             ? prevPost.title_en
                             : locale === "nl" && prevPost.title_nl
                               ? prevPost.title_nl
                               : prevPost.title}
                         </span>
-                      </Button>
+                      </motion.button>
                     )}
                   </div>
 
                   {/* Next Post */}
                   <div className="col-span-1 min-w-0">
                     {nextPost && (
-                      <Button
-                        variant="outline"
-                        className="w-full h-auto min-h-[70px] p-4 flex flex-col items-end text-right min-w-0 overflow-hidden whitespace-normal group hover:border-primary/50 transition-all"
+                      <motion.button
+                        whileHover={{ scale: 1.02, x: 4 }}
+                        className="w-full h-auto min-h-[90px] p-5 flex flex-col items-end text-right min-w-0 overflow-hidden whitespace-normal group bg-gradient-to-bl from-card to-accent/30 border-2 border-transparent hover:border-primary/30 rounded-xl shadow-md hover:shadow-lg transition-all"
                         onClick={() => {
                           const nextSlug =
                             locale === "en" && nextPost.slug_en
@@ -633,18 +638,18 @@ const BlogPost = () => {
                           navigate(getLocalizedPath(locale, `/blog/${nextSlug}`));
                         }}
                       >
-                        <span className="text-xs text-muted-foreground flex items-center gap-1 mb-2">
+                        <span className="text-xs text-primary font-bold flex items-center gap-1 mb-2">
                           {texts.nextPost}
-                          <ChevronRight className="w-3 h-3" />
+                          <ChevronRight className="w-4 h-4" />
                         </span>
-                        <span className="font-medium text-sm leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
+                        <span className="font-heading font-bold text-base leading-snug break-words whitespace-normal line-clamp-2 group-hover:text-primary transition-colors">
                           {locale === "en" && nextPost.title_en
                             ? nextPost.title_en
                             : locale === "nl" && nextPost.title_nl
                               ? nextPost.title_nl
                               : nextPost.title}
                         </span>
-                      </Button>
+                      </motion.button>
                     )}
                   </div>
                 </div>
