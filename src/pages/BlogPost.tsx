@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import DOMPurify from "dompurify";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { PageLayout } from "@/components/PageLayout";
@@ -10,6 +9,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { CommentForm } from "@/components/blog/CommentForm";
 import { CommentsList } from "@/components/blog/CommentsList";
 import { PillarPageLink } from "@/components/blog/PillarPageLink";
+import { AnimatedBlogContent } from "@/components/blog/AnimatedBlogContent";
 import { getParentPage, ParentPageInfo } from "@/data/blogPostsMapping";
 
 import { ArrowLeft, ArrowRight, Calendar, Clock, Share2, ChevronLeft, ChevronRight, Home, ChevronRight as ChevronRightIcon } from "lucide-react";
@@ -556,27 +556,42 @@ const BlogPost = () => {
               </div>
             </motion.header>
 
-            {/* Content */}
+            {/* Content - com animações */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mb-8 sm:mb-10 lg:mb-12"
+              className="mb-10 sm:mb-12 lg:mb-16"
             >
               {isTranslating ? (
-                <div className="text-center py-6 sm:py-8 text-muted-foreground text-sm sm:text-base">
-                  <div className="animate-pulse">{texts.translating}</div>
+                <div className="text-center py-8 sm:py-12">
+                  <motion.div 
+                    className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-primary/10 text-primary font-medium"
+                    animate={{ scale: [1, 1.02, 1] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  >
+                    <motion.span
+                      animate={{ rotate: 360 }}
+                      transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                    >
+                      ⚡
+                    </motion.span>
+                    {texts.translating}
+                  </motion.div>
                 </div>
               ) : (
                 <>
-                  <div 
-                    className="prose prose-sm sm:prose-base lg:prose-lg max-w-none prose-headings:scroll-mt-20"
-                    dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(translatedContent?.content || post.content) }}
-                  />
+                  <AnimatedBlogContent content={translatedContent?.content || post.content} />
                   
                   {/* Link back to pillar page - SEO: resolve cannibalization */}
                   {parentPage && (
-                    <PillarPageLink parentPage={parentPage} postSlug={post.slug} />
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 }}
+                    >
+                      <PillarPageLink parentPage={parentPage} postSlug={post.slug} />
+                    </motion.div>
                   )}
                 </>
               )}

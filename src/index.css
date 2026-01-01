@@ -654,4 +654,188 @@
   .blog-content em {
     @apply italic;
   }
+
+  /* ========================================
+     BLOG ANIMATIONS - Amsterdu Style
+     ======================================== */
+  
+  /* Animação de entrada para headings */
+  @keyframes slideInHeading {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .animate-heading {
+    animation: slideInHeading 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Animação de entrada para parágrafos */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+  
+  .animate-paragraph {
+    animation: fadeInUp 0.5s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Animação de entrada para items de lista */
+  @keyframes slideInListItem {
+    from {
+      opacity: 0;
+      transform: translateX(-20px) scale(0.98);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+    }
+  }
+  
+  .animate-list-item {
+    animation: slideInListItem 0.4s ease-out forwards;
+    opacity: 0;
+  }
+  
+  /* Animação para blockquotes */
+  @keyframes expandBlockquote {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+      border-left-width: 0;
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+      border-left-width: 4px;
+    }
+  }
+  
+  .animate-blockquote {
+    animation: expandBlockquote 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Animação para imagens */
+  @keyframes scaleInImage {
+    from {
+      opacity: 0;
+      transform: scale(0.9) translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+  
+  .animate-image {
+    animation: scaleInImage 0.7s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Animação para tabelas */
+  @keyframes fadeInTable {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-table {
+    animation: fadeInTable 0.6s cubic-bezier(0.25, 0.4, 0.25, 1) forwards;
+    opacity: 0;
+  }
+  
+  /* Efeito hover para links no blog */
+  .animated-prose a {
+    position: relative;
+    transition: color 0.3s ease;
+  }
+  
+  .animated-prose a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.5));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+  }
+  
+  .animated-prose a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  
+  /* Efeito parallax suave para elementos do blog */
+  .animated-prose h2,
+  .animated-prose h3 {
+    transition: transform 0.3s ease;
+  }
+  
+  .animated-prose h2:hover,
+  .animated-prose h3:hover {
+    transform: translateX(4px);
+  }
+  
+  /* Efeito glow para imagens no hover */
+  .animated-prose img {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  
+  .animated-prose img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px hsl(var(--primary) / 0.15);
+  }
+  
+  /* Efeito hover para blockquotes */
+  .animated-prose blockquote {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .animated-prose blockquote:hover {
+    transform: translateX(8px);
+    box-shadow: -4px 0 20px hsl(var(--primary) / 0.1);
+  }
+  
+  /* Efeito hover para items de lista */
+  .animated-prose li {
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  
+  .animated-prose li:hover {
+    transform: translateX(4px);
+  }
+  
+  /* Números ordenados pulsando suavemente */
+  .animated-prose ol li::before {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .animated-prose ol li:hover::before {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px hsl(var(--primary) / 0.4);
+  }
 }
