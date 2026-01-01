@@ -8,16 +8,19 @@ import { Table } from '@tiptap/extension-table';
 import { TableRow } from '@tiptap/extension-table-row';
 import { TableCell } from '@tiptap/extension-table-cell';
 import { TableHeader } from '@tiptap/extension-table-header';
+import { Color } from '@tiptap/extension-color';
+import { TextStyle } from '@tiptap/extension-text-style';
 import { 
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
   List, ListOrdered, Quote, Link2, Image as ImageIcon,
   AlignLeft, AlignCenter, AlignRight, Heading1, Heading2, Heading3,
-  Undo, Redo, Code, Table as TableIcon
+  Undo, Redo, Code, Table as TableIcon, Palette
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toggle } from '@/components/ui/toggle';
 import { Separator } from '@/components/ui/separator';
-import { useCallback, useEffect } from 'react';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { useCallback, useEffect, useState } from 'react';
 
 interface WysiwygEditorProps {
   content: string;
@@ -25,12 +28,41 @@ interface WysiwygEditorProps {
   placeholder?: string;
 }
 
+const TEXT_COLORS = [
+  { name: 'Preto', value: '#000000' },
+  { name: 'Cinza escuro', value: '#4B5563' },
+  { name: 'Cinza', value: '#9CA3AF' },
+  { name: 'Vermelho', value: '#DC2626' },
+  { name: 'Laranja', value: '#EA580C' },
+  { name: 'Amarelo', value: '#CA8A04' },
+  { name: 'Verde', value: '#16A34A' },
+  { name: 'Azul', value: '#2563EB' },
+  { name: 'Roxo', value: '#9333EA' },
+  { name: 'Rosa', value: '#DB2777' },
+];
+
 export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorProps) => {
+  const [colorOpen, setColorOpen] = useState(false);
+  
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         heading: {
           levels: [1, 2, 3],
+        },
+        orderedList: {
+          HTMLAttributes: {
+            class: 'list-decimal',
+          },
+          keepMarks: true,
+          keepAttributes: true,
+        },
+        bulletList: {
+          HTMLAttributes: {
+            class: 'list-disc',
+          },
+          keepMarks: true,
+          keepAttributes: true,
         },
       }),
       Link.configure({
@@ -48,6 +80,8 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
         types: ['heading', 'paragraph'],
       }),
       Underline,
+      TextStyle,
+      Color,
       Table.configure({
         resizable: true,
         HTMLAttributes: {
@@ -101,14 +135,26 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
     editor?.chain().focus().insertTable({ rows: 3, cols: 3, withHeaderRow: true }).run();
   }, [editor]);
 
+  const setColor = useCallback((color: string) => {
+    editor?.chain().focus().setColor(color).run();
+    setColorOpen(false);
+  }, [editor]);
+
+  const removeColor = useCallback(() => {
+    editor?.chain().focus().unsetColor().run();
+    setColorOpen(false);
+  }, [editor]);
+
   if (!editor) {
     return null;
   }
 
+  const currentColor = editor.getAttributes('textStyle').color;
+
   return (
     <div className="border rounded-lg overflow-hidden bg-background">
-      {/* Toolbar */}
-      <div className="border-b bg-muted/50 p-2 flex flex-wrap gap-1 items-center">
+      {/* Toolbar - sticky */}
+      <div className="border-b bg-muted/50 p-2 flex flex-wrap gap-1 items-center sticky top-0 z-10">
         {/* Undo/Redo */}
         <Button
           variant="ghost"
@@ -193,6 +239,48 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           <Code className="h-4 w-4" />
         </Toggle>
 
+        {/* Text Color */}
+        <Popover open={colorOpen} onOpenChange={setColorOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 relative"
+              title="Cor do texto"
+            >
+              <Palette className="h-4 w-4" />
+              {currentColor && (
+                <div 
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full"
+                  style={{ backgroundColor: currentColor }}
+                />
+              )}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-2" align="start">
+            <div className="grid grid-cols-5 gap-1">
+              {TEXT_COLORS.map((color) => (
+                <button
+                  key={color.value}
+                  className="w-6 h-6 rounded border border-border hover:scale-110 transition-transform"
+                  style={{ backgroundColor: color.value }}
+                  onClick={() => setColor(color.value)}
+                  title={color.name}
+                />
+              ))}
+            </div>
+            <Separator className="my-2" />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full text-xs"
+              onClick={removeColor}
+            >
+              Remover cor
+            </Button>
+          </PopoverContent>
+        </Popover>
+
         <Separator orientation="vertical" className="h-6 mx-1" />
 
         {/* Alignment */}
@@ -273,7 +361,7 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
       </div>
 
       {/* Editor content */}
-      <div className="wysiwyg-editor">
+      <div className="wysiwyg-editor max-h-[600px] overflow-y-auto">
         <EditorContent editor={editor} />
       </div>
 
@@ -322,14 +410,29 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           line-height: 1.7;
         }
         
-        .wysiwyg-editor .ProseMirror ul,
-        .wysiwyg-editor .ProseMirror ol {
+        .wysiwyg-editor .ProseMirror ul {
+          list-style-type: disc;
           padding-left: 1.5rem;
           margin-bottom: 1rem;
         }
         
+        .wysiwyg-editor .ProseMirror ol {
+          list-style-type: decimal;
+          padding-left: 1.5rem;
+          margin-bottom: 1rem;
+          counter-reset: none;
+        }
+        
+        .wysiwyg-editor .ProseMirror ol li {
+          display: list-item;
+        }
+        
         .wysiwyg-editor .ProseMirror li {
           margin-bottom: 0.25rem;
+        }
+        
+        .wysiwyg-editor .ProseMirror li p {
+          margin-bottom: 0;
         }
         
         .wysiwyg-editor .ProseMirror blockquote {
