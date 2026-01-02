@@ -369,7 +369,13 @@
   
   /* Listas com visual colorido */
   .prose ul {
-    @apply mb-10 space-y-4 pl-0 list-none;
+    @apply mb-10 space-y-4 pl-0;
+    list-style: none !important;
+  }
+  
+  .prose ul li::marker {
+    display: none !important;
+    content: none !important;
   }
   
   .prose ul li {
@@ -397,8 +403,14 @@
   }
   
   .prose ol {
-    @apply mb-10 space-y-5 pl-0 list-none;
+    @apply mb-10 space-y-5 pl-0;
+    list-style: none !important;
     counter-reset: list-counter;
+  }
+  
+  .prose ol li::marker {
+    display: none !important;
+    content: none !important;
   }
   
   .prose ol li {
