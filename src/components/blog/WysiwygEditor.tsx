@@ -152,9 +152,9 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
   const currentColor = editor.getAttributes('textStyle').color;
 
   return (
-    <div className="border rounded-lg overflow-hidden bg-background">
-      {/* Toolbar - sticky */}
-      <div className="border-b bg-muted/50 p-2 flex flex-wrap gap-1 items-center sticky top-0 z-10">
+    <div className="border rounded-lg bg-background flex flex-col max-h-[80vh]">
+      {/* Toolbar - sticky at top of editor */}
+      <div className="border-b bg-muted/50 p-2 flex flex-wrap gap-1 items-center flex-shrink-0 sticky top-0 z-20 shadow-sm">
         {/* Undo/Redo */}
         <Button
           variant="ghost"
@@ -360,8 +360,8 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
         </Button>
       </div>
 
-      {/* Editor content */}
-      <div className="wysiwyg-editor max-h-[600px] overflow-y-auto">
+      {/* Editor content - scrollable area */}
+      <div className="wysiwyg-editor flex-1 overflow-y-auto min-h-0">
         <EditorContent editor={editor} />
       </div>
 
