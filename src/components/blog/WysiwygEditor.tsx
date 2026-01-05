@@ -177,9 +177,10 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
   const currentColor = editor.getAttributes('textStyle').color;
 
   return (
-    <div className="border rounded-lg bg-background flex flex-col max-h-[80vh]">
-      {/* Toolbar - sticky at top of editor */}
-      <div className="border-b bg-muted/50 p-2 flex flex-wrap gap-1 items-center flex-shrink-0 sticky top-0 z-20 shadow-sm">
+    <div className="border rounded-lg bg-background flex flex-col" style={{ maxHeight: '70vh' }}>
+      {/* Toolbar - multiple rows for all buttons */}
+      <div className="border-b bg-muted/50 p-2 flex-shrink-0 sticky top-0 z-20 shadow-sm">
+        <div className="flex flex-wrap gap-1 items-center">
         {/* Undo/Redo */}
         <Button
           variant="ghost"
@@ -452,10 +453,11 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
         >
           <TableIcon className="h-4 w-4" />
         </Button>
+        </div>
       </div>
 
       {/* Editor content - scrollable area */}
-      <div className="wysiwyg-editor flex-1 overflow-y-auto min-h-0">
+      <div className="wysiwyg-editor flex-1 overflow-y-auto" style={{ minHeight: '300px', maxHeight: 'calc(70vh - 80px)' }}>
         <EditorContent editor={editor} />
       </div>
 
