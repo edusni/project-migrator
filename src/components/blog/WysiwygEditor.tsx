@@ -4,6 +4,7 @@ import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
 import TextAlign from '@tiptap/extension-text-align';
 import Underline from '@tiptap/extension-underline';
+import Highlight from '@tiptap/extension-highlight';
 import { Table } from '@tiptap/extension-table';
 import { TableRow } from '@tiptap/extension-table-row';
 import { TableCell } from '@tiptap/extension-table-cell';
@@ -14,6 +15,7 @@ import {
   Bold, Italic, Underline as UnderlineIcon, Strikethrough,
   List, ListOrdered, Quote, Link2, Image as ImageIcon,
   AlignLeft, AlignCenter, AlignRight, Heading1, Heading2, Heading3,
+  Heading4, Heading5, Heading6, Highlighter,
   Undo, Redo, Code, Table as TableIcon, Palette
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -41,14 +43,24 @@ const TEXT_COLORS = [
   { name: 'Rosa', value: '#DB2777' },
 ];
 
+const HIGHLIGHT_COLORS = [
+  { name: 'Amarelo', value: '#FEF08A' },
+  { name: 'Verde', value: '#BBF7D0' },
+  { name: 'Azul', value: '#BFDBFE' },
+  { name: 'Rosa', value: '#FBCFE8' },
+  { name: 'Laranja', value: '#FED7AA' },
+  { name: 'Roxo', value: '#DDD6FE' },
+];
+
 export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorProps) => {
   const [colorOpen, setColorOpen] = useState(false);
+  const [highlightOpen, setHighlightOpen] = useState(false);
   
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
         heading: {
-          levels: [1, 2, 3],
+          levels: [1, 2, 3, 4, 5, 6],
         },
         orderedList: {
           HTMLAttributes: {
@@ -82,6 +94,9 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
       Underline,
       TextStyle,
       Color,
+      Highlight.configure({
+        multicolor: true,
+      }),
       Table.configure({
         resizable: true,
         HTMLAttributes: {
@@ -145,6 +160,16 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
     setColorOpen(false);
   }, [editor]);
 
+  const setHighlight = useCallback((color: string) => {
+    editor?.chain().focus().toggleHighlight({ color }).run();
+    setHighlightOpen(false);
+  }, [editor]);
+
+  const removeHighlight = useCallback(() => {
+    editor?.chain().focus().unsetHighlight().run();
+    setHighlightOpen(false);
+  }, [editor]);
+
   if (!editor) {
     return null;
   }
@@ -182,6 +207,7 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           size="sm"
           pressed={editor.isActive('heading', { level: 1 })}
           onPressedChange={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+          title="Título 1 (H1)"
         >
           <Heading1 className="h-4 w-4" />
         </Toggle>
@@ -189,6 +215,7 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           size="sm"
           pressed={editor.isActive('heading', { level: 2 })}
           onPressedChange={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          title="Título 2 (H2)"
         >
           <Heading2 className="h-4 w-4" />
         </Toggle>
@@ -196,8 +223,33 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           size="sm"
           pressed={editor.isActive('heading', { level: 3 })}
           onPressedChange={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+          title="Título 3 (H3)"
         >
           <Heading3 className="h-4 w-4" />
+        </Toggle>
+        <Toggle
+          size="sm"
+          pressed={editor.isActive('heading', { level: 4 })}
+          onPressedChange={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+          title="Título 4 (H4)"
+        >
+          <Heading4 className="h-4 w-4" />
+        </Toggle>
+        <Toggle
+          size="sm"
+          pressed={editor.isActive('heading', { level: 5 })}
+          onPressedChange={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+          title="Título 5 (H5)"
+        >
+          <Heading5 className="h-4 w-4" />
+        </Toggle>
+        <Toggle
+          size="sm"
+          pressed={editor.isActive('heading', { level: 6 })}
+          onPressedChange={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+          title="Título 6 (H6)"
+        >
+          <Heading6 className="h-4 w-4" />
         </Toggle>
 
         <Separator orientation="vertical" className="h-6 mx-1" />
@@ -277,6 +329,48 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
               onClick={removeColor}
             >
               Remover cor
+            </Button>
+          </PopoverContent>
+        </Popover>
+
+        {/* Highlight */}
+        <Popover open={highlightOpen} onOpenChange={setHighlightOpen}>
+          <PopoverTrigger asChild>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="h-8 w-8 relative"
+              title="Destaque (Highlight)"
+            >
+              <Highlighter className="h-4 w-4" />
+              {editor.isActive('highlight') && (
+                <div 
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full bg-yellow-300"
+                />
+              )}
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-auto p-2" align="start">
+            <p className="text-xs text-muted-foreground mb-2">Cores de destaque:</p>
+            <div className="grid grid-cols-3 gap-1">
+              {HIGHLIGHT_COLORS.map((color) => (
+                <button
+                  key={color.value}
+                  className="w-8 h-6 rounded border border-border hover:scale-110 transition-transform text-xs"
+                  style={{ backgroundColor: color.value }}
+                  onClick={() => setHighlight(color.value)}
+                  title={color.name}
+                />
+              ))}
+            </div>
+            <Separator className="my-2" />
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full text-xs"
+              onClick={removeHighlight}
+            >
+              Remover destaque
             </Button>
           </PopoverContent>
         </Popover>
@@ -403,6 +497,38 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
           font-weight: 600;
           margin-top: 1rem;
           margin-bottom: 0.5rem;
+        }
+        
+        .wysiwyg-editor .ProseMirror h4 {
+          font-size: 1.1rem;
+          font-weight: 600;
+          margin-top: 0.875rem;
+          margin-bottom: 0.5rem;
+          color: hsl(var(--primary));
+        }
+        
+        .wysiwyg-editor .ProseMirror h5 {
+          font-size: 1rem;
+          font-weight: 600;
+          margin-top: 0.75rem;
+          margin-bottom: 0.375rem;
+          text-transform: uppercase;
+          letter-spacing: 0.05em;
+          color: hsl(var(--muted-foreground));
+        }
+        
+        .wysiwyg-editor .ProseMirror h6 {
+          font-size: 0.875rem;
+          font-weight: 600;
+          margin-top: 0.5rem;
+          margin-bottom: 0.25rem;
+          font-style: italic;
+          color: hsl(var(--muted-foreground));
+        }
+        
+        .wysiwyg-editor .ProseMirror mark {
+          padding: 0.125rem 0.25rem;
+          border-radius: 0.125rem;
         }
         
         .wysiwyg-editor .ProseMirror p {
