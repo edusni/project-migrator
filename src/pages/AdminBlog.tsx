@@ -855,88 +855,172 @@ const AdminBlog = () => {
 
   // Main admin dashboard
   return (
-    <div className="min-h-screen bg-muted/30 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-muted/30 via-background to-muted/50 py-8">
       <div className="container">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="font-heading text-2xl lg:text-3xl font-bold">{texts.title}</h1>
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/admin/images"))}>
-              <ImageIcon className="mr-2 h-4 w-4" />
-              {language === "nl" ? "Afbeeldingen" : language === "pt" ? "Imagens" : "Images"}
-            </Button>
-            <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/blog"))}>
-              <Eye className="mr-2 h-4 w-4" />
-              {language === "nl" ? "Bekijk blog" : language === "pt" ? "Ver blog" : "View blog"}
-            </Button>
-            <Button variant="ghost" onClick={signOut}>
-              <LogOut className="mr-2 h-4 w-4" />
-              {texts.logout}
-            </Button>
+        {/* Header with gradient accent */}
+        <div className="relative mb-8">
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent rounded-2xl blur-xl" />
+          <div className="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 shadow-lg">
+            <div className="flex items-center gap-3">
+              <div className="p-3 rounded-xl bg-gradient-to-br from-primary to-primary/70 text-primary-foreground shadow-lg shadow-primary/25">
+                <FileText className="w-6 h-6" />
+              </div>
+              <div>
+                <h1 className="font-heading text-2xl lg:text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text">{texts.title}</h1>
+                <p className="text-sm text-muted-foreground">
+                  {posts.length} {language === "pt" ? "artigos" : language === "nl" ? "artikelen" : "articles"} • {comments.filter(c => !c.approved).length} {language === "pt" ? "pendentes" : language === "nl" ? "in behandeling" : "pending"}
+                </p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/admin/images"))} className="shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+                <ImageIcon className="mr-2 h-4 w-4" />
+                {language === "nl" ? "Afbeeldingen" : language === "pt" ? "Imagens" : "Images"}
+              </Button>
+              <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/blog"))} className="shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+                <Eye className="mr-2 h-4 w-4" />
+                {language === "nl" ? "Bekijk blog" : language === "pt" ? "Ver blog" : "View blog"}
+              </Button>
+              <Button variant="ghost" onClick={signOut} className="text-muted-foreground hover:text-destructive transition-colors">
+                <LogOut className="mr-2 h-4 w-4" />
+                {texts.logout}
+              </Button>
+            </div>
           </div>
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="mb-6">
-            <TabsTrigger value="posts" className="gap-2">
+          <TabsList className="mb-6 p-1 bg-card/80 backdrop-blur-sm border border-border/50 shadow-md">
+            <TabsTrigger value="posts" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md transition-all">
               <FileText className="w-4 h-4" />
               {texts.posts}
+              <Badge variant="secondary" className="ml-1 bg-muted text-muted-foreground">
+                {posts.length}
+              </Badge>
             </TabsTrigger>
-            <TabsTrigger value="comments" className="gap-2">
+            <TabsTrigger value="comments" className="gap-2 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-md transition-all">
               <MessageSquare className="w-4 h-4" />
               {texts.comments}
               {comments.filter(c => !c.approved).length > 0 && (
-                <Badge variant="destructive" className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                <Badge variant="destructive" className="ml-1 h-5 min-w-5 px-1.5 flex items-center justify-center text-xs animate-pulse">
                   {comments.filter(c => !c.approved).length}
                 </Badge>
               )}
             </TabsTrigger>
           </TabsList>
 
-          <TabsContent value="posts">
+          <TabsContent value="posts" className="animate-fade-in">
             <div className="flex justify-end mb-4">
-              <Button onClick={handleNewPost}>
+              <Button onClick={handleNewPost} className="shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 transition-all hover:-translate-y-0.5 bg-gradient-to-r from-primary to-primary/90">
                 <Plus className="mr-2 h-4 w-4" />
                 {texts.newPost}
               </Button>
             </div>
 
             {posts.length === 0 ? (
-              <Card>
-                <CardContent className="py-12 text-center text-muted-foreground">
-                  {texts.noPosts}
+              <Card className="border-dashed border-2">
+                <CardContent className="py-16 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
+                    <FileText className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <p className="text-muted-foreground mb-4">{texts.noPosts}</p>
+                  <Button variant="outline" onClick={handleNewPost}>
+                    <Plus className="mr-2 h-4 w-4" />
+                    {texts.newPost}
+                  </Button>
                 </CardContent>
               </Card>
             ) : (
-              <div className="space-y-3">
-                {posts.map((post) => (
-                  <Card key={post.id} className="hover:shadow-md transition-shadow">
-                    <CardContent className="p-4 flex items-center gap-4">
-                      {post.featured_image && (
-                        <img
-                          src={post.featured_image}
-                          alt={post.title}
-                          className="w-20 h-14 object-cover rounded"
-                        />
-                      )}
-                      <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-medium truncate">{post.title}</h3>
-                          <Badge variant={post.status === "published" ? "default" : "secondary"}>
-                            {post.status === "published" ? texts.published : post.status === "draft" ? texts.draft : texts.archived}
-                          </Badge>
-                          {post.featured && <Badge variant="outline">★</Badge>}
+              <div className="grid gap-4">
+                {posts.map((post, index) => (
+                  <Card 
+                    key={post.id} 
+                    className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-border/50 bg-card/80 backdrop-blur-sm"
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <CardContent className="p-0">
+                      <div className="flex items-stretch">
+                        {/* Image section with overlay */}
+                        <div className="relative w-32 sm:w-40 flex-shrink-0 overflow-hidden">
+                          {post.featured_image ? (
+                            <>
+                              <img
+                                src={post.featured_image}
+                                alt={post.title}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-card/80" />
+                            </>
+                          ) : (
+                            <div className="w-full h-full min-h-[80px] bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center">
+                              <ImageIcon className="w-8 h-8 text-muted-foreground/50" />
+                            </div>
+                          )}
+                          {/* Status badge overlay */}
+                          <div className="absolute top-2 left-2">
+                            <Badge 
+                              variant={post.status === "published" ? "default" : "secondary"}
+                              className={post.status === "published" 
+                                ? "bg-green-500/90 hover:bg-green-500 text-white shadow-sm" 
+                                : "bg-amber-500/90 hover:bg-amber-500 text-white shadow-sm"
+                              }
+                            >
+                              {post.status === "published" ? "✓" : "○"} {post.status === "published" ? texts.published : post.status === "draft" ? texts.draft : texts.archived}
+                            </Badge>
+                          </div>
                         </div>
-                        <p className="text-sm text-muted-foreground truncate">
-                          {post.blog_categories?.emoji} {post.blog_categories?.name || "No category"}
-                        </p>
-                      </div>
-                      <div className="flex gap-2">
-                        <Button variant="ghost" size="icon" onClick={() => handleEditPost(post)}>
-                          <Edit className="w-4 h-4" />
-                        </Button>
-                        <Button variant="ghost" size="icon" onClick={() => handleDeletePost(post.id)}>
-                          <Trash2 className="w-4 h-4 text-destructive" />
-                        </Button>
+                        
+                        {/* Content section */}
+                        <div className="flex-1 p-4 flex items-center gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <h3 className="font-heading font-semibold text-lg truncate group-hover:text-primary transition-colors">{post.title}</h3>
+                              {post.featured && (
+                                <Badge variant="outline" className="border-amber-400 text-amber-600 bg-amber-50 dark:bg-amber-950/30 flex-shrink-0">
+                                  ★ {language === "pt" ? "Destaque" : language === "nl" ? "Uitgelicht" : "Featured"}
+                                </Badge>
+                              )}
+                            </div>
+                            <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                              {post.blog_categories && (
+                                <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">
+                                  {post.blog_categories.emoji} {post.blog_categories.name}
+                                </span>
+                              )}
+                              {post.read_time_minutes && (
+                                <span className="text-xs">📖 {post.read_time_minutes} min</span>
+                              )}
+                              {/* Translation indicators */}
+                              <div className="flex gap-1">
+                                {post.content_en && <span className="text-xs opacity-60">🇬🇧</span>}
+                                {post.content_nl && <span className="text-xs opacity-60">🇳🇱</span>}
+                              </div>
+                            </div>
+                            {post.excerpt && (
+                              <p className="text-sm text-muted-foreground mt-1.5 line-clamp-1 max-w-lg">{post.excerpt}</p>
+                            )}
+                          </div>
+                          
+                          {/* Actions */}
+                          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => handleEditPost(post)}
+                              className="h-9 w-9 rounded-full hover:bg-primary/10 hover:text-primary"
+                            >
+                              <Edit className="w-4 h-4" />
+                            </Button>
+                            <Button 
+                              variant="ghost" 
+                              size="icon" 
+                              onClick={() => handleDeletePost(post.id)}
+                              className="h-9 w-9 rounded-full hover:bg-destructive/10 hover:text-destructive"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </Button>
+                          </div>
+                        </div>
                       </div>
                     </CardContent>
                   </Card>
@@ -945,38 +1029,71 @@ const AdminBlog = () => {
             )}
           </TabsContent>
 
-          <TabsContent value="comments">
+          <TabsContent value="comments" className="animate-fade-in">
             {comments.length === 0 ? (
-              <Card>
-                <CardContent className="py-12 text-center text-muted-foreground">
-                  {texts.noComments}
+              <Card className="border-dashed border-2">
+                <CardContent className="py-16 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
+                    <MessageSquare className="w-8 h-8 text-muted-foreground" />
+                  </div>
+                  <p className="text-muted-foreground">{texts.noComments}</p>
                 </CardContent>
               </Card>
             ) : (
-              <div className="space-y-3">
-                {comments.map((comment) => (
-                  <Card key={comment.id} className={!comment.approved ? "border-amber-500/50" : ""}>
+              <div className="grid gap-4">
+                {comments.map((comment, index) => (
+                  <Card 
+                    key={comment.id} 
+                    className={`group overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg ${
+                      !comment.approved 
+                        ? "border-l-4 border-l-amber-500 bg-amber-50/50 dark:bg-amber-950/10" 
+                        : "border-l-4 border-l-green-500 bg-card/80"
+                    }`}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
                     <CardContent className="p-4">
                       <div className="flex items-start gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="font-medium">{comment.author_name}</span>
-                            {comment.author_email && (
-                              <span className="text-sm text-muted-foreground">({comment.author_email})</span>
-                            )}
-                            {!comment.approved && <Badge variant="outline">Pending</Badge>}
-                          </div>
-                          <p className="text-sm text-muted-foreground mb-2">
-                            On: {comment.blog_posts?.title}
-                          </p>
-                          <p className="text-sm">{comment.content}</p>
+                        {/* Avatar placeholder */}
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary/20 to-primary/10 flex items-center justify-center flex-shrink-0">
+                          <span className="font-heading font-bold text-primary">
+                            {comment.author_name.charAt(0).toUpperCase()}
+                          </span>
                         </div>
+                        
+                        <div className="flex-1 min-w-0">
+                          <div className="flex flex-wrap items-center gap-2 mb-1">
+                            <span className="font-semibold">{comment.author_name}</span>
+                            {comment.author_email && (
+                              <span className="text-xs text-muted-foreground bg-muted px-2 py-0.5 rounded-full">
+                                {comment.author_email}
+                              </span>
+                            )}
+                            {!comment.approved && (
+                              <Badge variant="outline" className="border-amber-400 text-amber-600 bg-amber-100 dark:bg-amber-950/50 text-xs">
+                                ⏳ {language === "pt" ? "Pendente" : language === "nl" ? "In behandeling" : "Pending"}
+                              </Badge>
+                            )}
+                            {comment.approved && (
+                              <Badge variant="outline" className="border-green-400 text-green-600 bg-green-100 dark:bg-green-950/50 text-xs">
+                                ✓ {language === "pt" ? "Aprovado" : language === "nl" ? "Goedgekeurd" : "Approved"}
+                              </Badge>
+                            )}
+                          </div>
+                          <p className="text-xs text-muted-foreground mb-2 flex items-center gap-1">
+                            <FileText className="w-3 h-3" />
+                            {comment.blog_posts?.title}
+                          </p>
+                          <p className="text-sm bg-muted/50 p-3 rounded-lg border border-border/50 italic">
+                            "{comment.content}"
+                          </p>
+                        </div>
+                        
                         {!comment.approved && (
-                          <div className="flex gap-2">
+                          <div className="flex flex-col gap-1">
                             <Button
                               size="icon"
                               variant="ghost"
-                              className="text-green-600 hover:text-green-700"
+                              className="h-9 w-9 rounded-full bg-green-100 hover:bg-green-200 text-green-600 dark:bg-green-950/50 dark:hover:bg-green-950"
                               onClick={() => handleCommentAction(comment.id, true)}
                             >
                               <Check className="w-4 h-4" />
@@ -984,7 +1101,7 @@ const AdminBlog = () => {
                             <Button
                               size="icon"
                               variant="ghost"
-                              className="text-destructive"
+                              className="h-9 w-9 rounded-full bg-red-100 hover:bg-red-200 text-red-600 dark:bg-red-950/50 dark:hover:bg-red-950"
                               onClick={() => handleCommentAction(comment.id, false)}
                             >
                               <X className="w-4 h-4" />
