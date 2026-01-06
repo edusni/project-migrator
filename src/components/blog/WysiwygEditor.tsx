@@ -177,9 +177,15 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
   const currentColor = editor.getAttributes('textStyle').color;
 
   return (
-    <div className="border rounded-lg bg-background flex flex-col" style={{ maxHeight: '70vh' }}>
-      {/* Toolbar - multiple rows for all buttons */}
-      <div className="border-b bg-muted/50 p-2 flex-shrink-0 sticky top-0 z-20 shadow-sm">
+    <div className="border rounded-lg bg-background flex flex-col max-h-[70vh] overflow-hidden">
+      {/* Toolbar */}
+      <div
+        className="border-b bg-muted/50 p-2 flex-shrink-0 shadow-sm"
+        onMouseDown={(e) => {
+          const target = e.target as HTMLElement;
+          if (target.closest('button')) e.preventDefault();
+        }}
+      >
         <div className="flex flex-wrap gap-1 items-center">
         {/* Undo/Redo */}
         <Button
@@ -310,7 +316,14 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-2" align="start">
+          <PopoverContent
+            className="w-auto p-2"
+            align="start"
+            onMouseDown={(e) => {
+              const target = e.target as HTMLElement;
+              if (target.closest('button')) e.preventDefault();
+            }}
+          >
             <div className="grid grid-cols-5 gap-1">
               {TEXT_COLORS.map((color) => (
                 <button
@@ -346,12 +359,19 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
               <Highlighter className="h-4 w-4" />
               {editor.isActive('highlight') && (
                 <div 
-                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full bg-yellow-300"
+                  className="absolute bottom-1 left-1/2 -translate-x-1/2 w-4 h-1 rounded-full bg-primary"
                 />
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-2" align="start">
+          <PopoverContent
+            className="w-auto p-2"
+            align="start"
+            onMouseDown={(e) => {
+              const target = e.target as HTMLElement;
+              if (target.closest('button')) e.preventDefault();
+            }}
+          >
             <p className="text-xs text-muted-foreground mb-2">Cores de destaque:</p>
             <div className="grid grid-cols-3 gap-1">
               {HIGHLIGHT_COLORS.map((color) => (
@@ -457,7 +477,7 @@ export const WysiwygEditor = ({ content, onChange, placeholder }: WysiwygEditorP
       </div>
 
       {/* Editor content - scrollable area */}
-      <div className="wysiwyg-editor flex-1 overflow-y-auto" style={{ minHeight: '300px', maxHeight: 'calc(70vh - 80px)' }}>
+      <div className="wysiwyg-editor flex-1 overflow-y-auto min-h-0">
         <EditorContent editor={editor} />
       </div>
 
