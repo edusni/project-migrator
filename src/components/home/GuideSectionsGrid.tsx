@@ -61,6 +61,13 @@ export function GuideSectionsGrid() {
       title: "Ongemakken & Boetes in Amsterdam",
       desc: "Een korte, directe sectie met de meest voorkomende boetes en hoe je geen statistiek wordt.",
       link: "/transporte#multas"
+    },
+    {
+      emoji: "🎧",
+      title: "Amsterdu Soundscapes",
+      desc: "Ontspan met de geluiden van Amsterdam: grachten, parken, regen en koffiehuizen.",
+      link: "/amsterdusoundscapes",
+      external: true
     }
   ] : language === "pt" ? [
     {
@@ -116,6 +123,13 @@ export function GuideSectionsGrid() {
       title: "Perrengues e Multas em Amsterdam",
       desc: "Uma seção curta e direta com as multas mais comuns e como não virar estatística.",
       link: "/transporte#multas"
+    },
+    {
+      emoji: "🎧",
+      title: "Amsterdu Soundscapes",
+      desc: "Relaxe com os sons de Amsterdam: canais, parques, chuva e cafeterias.",
+      link: "/amsterdusoundscapes",
+      external: true
     }
   ] : [
     {
@@ -171,6 +185,13 @@ export function GuideSectionsGrid() {
       title: "Mishaps & Fines in Amsterdam",
       desc: "A short, direct section with the most common fines and how not to become a statistic.",
       link: "/transporte#multas"
+    },
+    {
+      emoji: "🎧",
+      title: "Amsterdu Soundscapes",
+      desc: "Relax with the sounds of Amsterdam: canals, parks, rain and coffee shops.",
+      link: "/amsterdusoundscapes",
+      external: true
     }
   ];
 
@@ -194,34 +215,66 @@ export function GuideSectionsGrid() {
           <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
             {sections.map((section) => (
               <StaggerItem key={section.link}>
-                <Link to={section.link} className="block">
-                  <motion.div
-                    whileHover={{ 
-                      scale: 1.02, 
-                      y: -4,
-                      transition: { type: "spring", stiffness: 400, damping: 17 }
-                    }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30 active:bg-muted/50">
-                      <CardContent className="p-5 sm:p-6">
-                        <motion.span 
-                          className="text-3xl sm:text-4xl mb-3 sm:mb-4 block"
-                          whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
-                          transition={{ duration: 0.4 }}
-                        >
-                          {section.emoji}
-                        </motion.span>
-                        <h3 className="font-heading font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
-                          {section.title}
-                        </h3>
-                        <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
-                          {section.desc}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Link>
+                {(section as any).external ? (
+                  <a href={section.link} target="_blank" rel="noopener noreferrer" className="block">
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.02, 
+                        y: -4,
+                        transition: { type: "spring", stiffness: 400, damping: 17 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30 active:bg-muted/50 bg-gradient-to-br from-primary/5 to-transparent">
+                        <CardContent className="p-5 sm:p-6">
+                          <motion.span 
+                            className="text-3xl sm:text-4xl mb-3 sm:mb-4 block"
+                            whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                            transition={{ duration: 0.4 }}
+                          >
+                            {section.emoji}
+                          </motion.span>
+                          <h3 className="font-heading font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors flex items-center gap-2">
+                            {section.title}
+                            <span className="text-xs text-muted-foreground">↗</span>
+                          </h3>
+                          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                            {section.desc}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </a>
+                ) : (
+                  <Link to={section.link} className="block">
+                    <motion.div
+                      whileHover={{ 
+                        scale: 1.02, 
+                        y: -4,
+                        transition: { type: "spring", stiffness: 400, damping: 17 }
+                      }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Card className="h-full group hover:shadow-xl transition-shadow duration-300 border-border/50 hover:border-primary/30 active:bg-muted/50">
+                        <CardContent className="p-5 sm:p-6">
+                          <motion.span 
+                            className="text-3xl sm:text-4xl mb-3 sm:mb-4 block"
+                            whileHover={{ scale: 1.2, rotate: [0, -10, 10, 0] }}
+                            transition={{ duration: 0.4 }}
+                          >
+                            {section.emoji}
+                          </motion.span>
+                          <h3 className="font-heading font-bold text-lg sm:text-xl mb-2 group-hover:text-primary transition-colors">
+                            {section.title}
+                          </h3>
+                          <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+                            {section.desc}
+                          </p>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  </Link>
+                )}
               </StaggerItem>
             ))}
           </StaggerContainer>
