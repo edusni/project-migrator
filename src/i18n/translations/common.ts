@@ -25,6 +25,7 @@ export const commonTranslations: TranslationModule = {
   "nav.weesp": { pt: "Weesp", en: "Weesp", nl: "Weesp" },
   "nav.gallery": { pt: "Galeria", en: "Gallery", nl: "Galerij" },
   "nav.blog": { pt: "Blog", en: "Blog", nl: "Blog" },
+  "nav.soundscapes": { pt: "Soundscapes", en: "Soundscapes", nl: "Soundscapes" },
 
   // Common UI
   "common.readMore": { pt: "Ler mais", en: "Read more", nl: "Lees meer" },

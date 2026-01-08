@@ -4,6 +4,13 @@
 /sitemap.xml https://lguwbgthckwsixmuvurx.supabase.co/functions/v1/sitemap 200!
 
 # ===================================================================
+# AMSTERDU SOUNDSCAPES - Redirect para projeto externo
+# ===================================================================
+/amsterdusoundscapes https://amsterdu-ambient-soundscapes-d0973a06.base44.app/ 301!
+/amsterdu-soundscapes https://amsterdu-ambient-soundscapes-d0973a06.base44.app/ 301!
+/soundscapes https://amsterdu-ambient-soundscapes-d0973a06.base44.app/ 301!
+
+# ===================================================================
 # CANONICALIZATION REDIRECTS - URLs maiúsculas → minúsculas
 # Todas as variações de case devem apontar para versão canônica
 # ===================================================================

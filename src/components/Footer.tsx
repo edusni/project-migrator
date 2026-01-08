@@ -26,6 +26,7 @@ const footerLinks = {
     { href: "/gastronomia", labelKey: "nav.food" },
     { href: "/coffeeshops", labelKey: "nav.coffeeshops" },
     { href: "/arredores", labelKey: "nav.daytrips" },
+    { href: "/amsterdusoundscapes", labelKey: "nav.soundscapes", external: true },
     { href: "/blog", labelKey: "nav.blog" },
   ],
   about: [
@@ -138,12 +139,23 @@ export function Footer() {
             <ul className="space-y-1 sm:space-y-2">
               {footerLinks.experience.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    to={link.href}
-                    className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
-                  >
-                    {t(link.labelKey)}
-                  </Link>
+                  {(link as any).external ? (
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
+                    >
+                      {t(link.labelKey)} ↗
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.href}
+                      className="text-secondary-foreground/80 hover:text-primary transition-colors duration-200 text-sm inline-block py-1 min-h-[32px] hover:translate-x-1 transform transition-transform"
+                    >
+                      {t(link.labelKey)}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

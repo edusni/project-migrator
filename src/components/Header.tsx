@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User, Euro, ChevronDown, Building2 } from "lucide-react";
+import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin, PenLine, User, Euro, ChevronDown, Building2, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
@@ -79,6 +79,7 @@ const exploreItems = [
   { titleKey: "nav.food", url: "/gastronomia", icon: UtensilsCrossed },
   { titleKey: "nav.coffeeshops", url: "/coffeeshops", icon: Leaf },
   { titleKey: "nav.daytrips", url: "/arredores", icon: MapPin },
+  { titleKey: "nav.soundscapes", url: "/amsterdusoundscapes", icon: Headphones, external: true },
 ];
 
 export function Header() {
