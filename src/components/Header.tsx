@@ -79,7 +79,7 @@ const exploreItems = [
   { titleKey: "nav.food", url: "/gastronomia", icon: UtensilsCrossed },
   { titleKey: "nav.coffeeshops", url: "/coffeeshops", icon: Leaf },
   { titleKey: "nav.daytrips", url: "/arredores", icon: MapPin },
-  { titleKey: "nav.soundscapes", url: "/amsterdusoundscapes", icon: Headphones, external: true },
+  { titleKey: "nav.soundscapes", url: "https://amsterdu-ambient-soundscapes-d0973a06.base44.app/", icon: Headphones, external: true },
 ];
 
 export function Header() {
@@ -211,17 +211,30 @@ export function Header() {
             >
               {exploreItems.map((item) => (
                 <DropdownMenuItem key={item.url} asChild>
-                  <Link
-                    to={getLocalizedUrl(item.url)}
-                    onMouseEnter={() => handlePrefetch(item.url)}
-                    onFocus={() => handlePrefetch(item.url)}
-                    className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
-                      location.pathname === getLocalizedUrl(item.url) ? "bg-primary/10 text-primary" : ""
-                    }`}
-                  >
-                    <item.icon className="w-4 h-4" />
-                    <span>{t(item.titleKey)}</span>
-                  </Link>
+                  {(item as any).external ? (
+                    <a
+                      href={item.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 px-3 py-2.5 cursor-pointer"
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span>{t(item.titleKey)}</span>
+                      <span className="ml-auto text-xs text-muted-foreground">↗</span>
+                    </a>
+                  ) : (
+                    <Link
+                      to={getLocalizedUrl(item.url)}
+                      onMouseEnter={() => handlePrefetch(item.url)}
+                      onFocus={() => handlePrefetch(item.url)}
+                      className={`flex items-center gap-3 px-3 py-2.5 cursor-pointer ${
+                        location.pathname === getLocalizedUrl(item.url) ? "bg-primary/10 text-primary" : ""
+                      }`}
+                    >
+                      <item.icon className="w-4 h-4" />
+                      <span>{t(item.titleKey)}</span>
+                    </Link>
+                  )}
                 </DropdownMenuItem>
               ))}
             </DropdownMenuContent>
@@ -343,26 +356,44 @@ export function Header() {
                       </span>
                     </div>
                     {exploreItems.map((item, index) => (
-                      <NavLink
-                        key={item.url}
-                        to={getLocalizedUrl(item.url)}
-                        onClick={() => setIsOpen(false)}
-                        onTouchStart={() => handlePrefetch(item.url)}
-                        onMouseEnter={() => handlePrefetch(item.url)}
-                        style={{ animationDelay: `${(index + 4) * 0.03}s` }}
-                        className={({ isActive }) =>
-                          `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 animate-fade-in
-                          ${isActive 
-                            ? "bg-primary/10 text-primary" 
-                            : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                          }`
-                        }
-                      >
-                        <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl(item.url) ? "bg-primary/20" : "bg-muted"}`}>
-                          <item.icon className="w-4 h-4" />
-                        </div>
-                        <span>{t(item.titleKey)}</span>
-                      </NavLink>
+                      (item as any).external ? (
+                        <a
+                          key={item.url}
+                          href={item.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => setIsOpen(false)}
+                          style={{ animationDelay: `${(index + 4) * 0.03}s` }}
+                          className="flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 animate-fade-in text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        >
+                          <div className="p-2 rounded-lg bg-muted">
+                            <item.icon className="w-4 h-4" />
+                          </div>
+                          <span>{t(item.titleKey)}</span>
+                          <span className="ml-auto text-xs text-muted-foreground">↗</span>
+                        </a>
+                      ) : (
+                        <NavLink
+                          key={item.url}
+                          to={getLocalizedUrl(item.url)}
+                          onClick={() => setIsOpen(false)}
+                          onTouchStart={() => handlePrefetch(item.url)}
+                          onMouseEnter={() => handlePrefetch(item.url)}
+                          style={{ animationDelay: `${(index + 4) * 0.03}s` }}
+                          className={({ isActive }) =>
+                            `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-200 animate-fade-in
+                            ${isActive 
+                              ? "bg-primary/10 text-primary" 
+                              : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                            }`
+                          }
+                        >
+                          <div className={`p-2 rounded-lg ${location.pathname === getLocalizedUrl(item.url) ? "bg-primary/20" : "bg-muted"}`}>
+                            <item.icon className="w-4 h-4" />
+                          </div>
+                          <span>{t(item.titleKey)}</span>
+                        </NavLink>
+                      )
                     ))}
 
                     {/* Mais Group */}

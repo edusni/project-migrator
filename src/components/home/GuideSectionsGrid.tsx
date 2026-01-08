@@ -66,7 +66,7 @@ export function GuideSectionsGrid() {
       emoji: "🎧",
       title: "Amsterdu Soundscapes",
       desc: "Ontspan met de geluiden van Amsterdam: grachten, parken, regen en koffiehuizen.",
-      link: "/amsterdusoundscapes",
+      link: "https://amsterdu-ambient-soundscapes-d0973a06.base44.app/",
       external: true
     }
   ] : language === "pt" ? [
@@ -128,7 +128,7 @@ export function GuideSectionsGrid() {
       emoji: "🎧",
       title: "Amsterdu Soundscapes",
       desc: "Relaxe com os sons de Amsterdam: canais, parques, chuva e cafeterias.",
-      link: "/amsterdusoundscapes",
+      link: "https://amsterdu-ambient-soundscapes-d0973a06.base44.app/",
       external: true
     }
   ] : [
@@ -190,7 +190,7 @@ export function GuideSectionsGrid() {
       emoji: "🎧",
       title: "Amsterdu Soundscapes",
       desc: "Relax with the sounds of Amsterdam: canals, parks, rain and coffee shops.",
-      link: "/amsterdusoundscapes",
+      link: "https://amsterdu-ambient-soundscapes-d0973a06.base44.app/",
       external: true
     }
   ];
