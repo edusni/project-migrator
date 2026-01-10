@@ -79,7 +79,7 @@ const exploreItems = [
   { titleKey: "nav.food", url: "/gastronomia", icon: UtensilsCrossed },
   { titleKey: "nav.coffeeshops", url: "/coffeeshops", icon: Leaf },
   { titleKey: "nav.daytrips", url: "/arredores", icon: MapPin },
-  { titleKey: "nav.soundscapes", url: "/amsterdusoundscapes", icon: Headphones, external: true },
+  { titleKey: "nav.soundscapes", url: "/soundscape", icon: Headphones, external: true },
 ];
 
 export function Header() {
