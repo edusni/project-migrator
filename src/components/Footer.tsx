@@ -26,7 +26,7 @@ const footerLinks = {
     { href: "/gastronomia", labelKey: "nav.food" },
     { href: "/coffeeshops", labelKey: "nav.coffeeshops" },
     { href: "/arredores", labelKey: "nav.daytrips" },
-    { href: "https://amsterdu-ambient-soundscapes-d0973a06.base44.app/", labelKey: "nav.soundscapes", external: true },
+    { href: "/amsterdusoundscapes", labelKey: "nav.soundscapes", external: true },
     { href: "/blog", labelKey: "nav.blog" },
   ],
   about: [
