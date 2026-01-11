@@ -4,16 +4,11 @@
 /sitemap.xml https://lguwbgthckwsixmuvurx.supabase.co/functions/v1/sitemap 200!
 
 # ===================================================================
-# AMSTERDU SOUNDSCAPES - Cloudflare Worker handles /soundscape
-# These redirects only serve as fallback if Cloudflare Worker is not configured
-# Once Cloudflare Worker is active, these can be removed
+# AMSTERDU SOUNDSCAPES - Legacy redirects to internal page
 # ===================================================================
-/soundscape/* https://amsterdu-ambient-soundscapes-d0973a06.base44.app/:splat 200!
-/soundscape https://amsterdu-ambient-soundscapes-d0973a06.base44.app/ 200!
-# Legacy redirects
-/amsterdusoundscapes /soundscape 301!
-/amsterdu-soundscapes /soundscape 301!
-/soundscapes /soundscape 301!
+/amsterdusoundscapes /pt/soundscape 301!
+/amsterdu-soundscapes /pt/soundscape 301!
+/soundscapes /pt/soundscape 301!
 
 # ===================================================================
 # CANONICALIZATION REDIRECTS - URLs maiúsculas → minúsculas
