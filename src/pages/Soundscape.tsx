@@ -114,6 +114,22 @@ const Soundscape = () => {
               {t.listenOn}
             </h2>
             
+            {/* Artist Profile */}
+            <div className="mb-12 rounded-xl overflow-hidden shadow-lg bg-card border border-border/50">
+              <iframe 
+                style={{ borderRadius: '12px' }}
+                src="https://open.spotify.com/embed/artist/41b3qFSMQGI1UKVVNjBYiE?utm_source=generator&theme=0" 
+                width="100%" 
+                height="352" 
+                frameBorder="0" 
+                allowFullScreen 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"
+                title="Amsterdu Soundscapes Artist"
+              />
+            </div>
+
+            {/* Albums */}
             <div className="grid gap-8 md:grid-cols-2">
               <div className="rounded-xl overflow-hidden shadow-lg bg-card border border-border/50">
                 <iframe 
