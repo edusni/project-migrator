@@ -133,6 +133,7 @@ const App = () => (
             <Route path="/nieuw-west" element={<Navigate to="/pt/nieuw-west" replace />} />
             <Route path="/zuidoost" element={<Navigate to="/pt/zuidoost" replace />} />
             <Route path="/weesp" element={<Navigate to="/pt/weesp" replace />} />
+            <Route path="/soundscape" element={<Navigate to="/pt/soundscape" replace />} />
             
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
