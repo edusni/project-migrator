@@ -36,6 +36,7 @@ const AmsterdamZuid = lazy(() => import("./pages/AmsterdamZuid"));
 const NieuwWest = lazy(() => import("./pages/NieuwWest"));
 const Zuidoost = lazy(() => import("./pages/Zuidoost"));
 const Weesp = lazy(() => import("./pages/Weesp"));
+const Soundscape = lazy(() => import("./pages/Soundscape"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -80,6 +81,7 @@ const LocalePageRoutes = () => (
       <Route path="nieuw-west" element={<NieuwWest />} />
       <Route path="zuidoost" element={<Zuidoost />} />
       <Route path="weesp" element={<Weesp />} />
+      <Route path="soundscape" element={<Soundscape />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
