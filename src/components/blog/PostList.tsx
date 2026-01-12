@@ -4,6 +4,7 @@ import { PostCard } from "./PostCard";
 import { StaggerContainer, StaggerItem } from "@/components/ui/animated-section";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useLanguage } from "@/hooks/useLanguage";
+import { motion } from "framer-motion";
 
 interface Category {
   name: string;
@@ -103,23 +104,58 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-        {[1, 2, 3].map((i) => (
-          <div key={i} className="space-y-2 sm:space-y-3">
-            <Skeleton className="aspect-video rounded-lg" />
-            <Skeleton className="h-5 sm:h-6 w-3/4" />
-            <Skeleton className="h-3 sm:h-4 w-full" />
-            <Skeleton className="h-3 sm:h-4 w-1/2" />
+      <div className="space-y-8">
+        {/* Featured skeleton */}
+        <div className="rounded-2xl overflow-hidden bg-card shadow-lg">
+          <div className="md:flex">
+            <Skeleton className="aspect-[16/10] md:w-[55%]" />
+            <div className="p-6 md:p-8 md:w-[45%] space-y-4">
+              <Skeleton className="h-6 w-24 rounded-full" />
+              <Skeleton className="h-10 w-full" />
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-3/4" />
+              <div className="flex gap-4 pt-2">
+                <Skeleton className="h-4 w-20" />
+                <Skeleton className="h-4 w-16" />
+              </div>
+            </div>
           </div>
-        ))}
+        </div>
+        {/* Grid skeletons */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="rounded-xl overflow-hidden bg-card shadow-lg">
+              <Skeleton className="aspect-[16/10]" />
+              <div className="p-5 space-y-3">
+                <Skeleton className="h-5 w-full" />
+                <Skeleton className="h-4 w-full" />
+                <Skeleton className="h-4 w-2/3" />
+                <div className="flex gap-3 pt-1">
+                  <Skeleton className="h-3 w-16" />
+                  <Skeleton className="h-3 w-12" />
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
 
   if (posts.length === 0) {
     return (
-      <div className="text-center py-12 text-muted-foreground">
-        <p>{emptyMessage}</p>
+      <div className="text-center py-16 px-6">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-md mx-auto"
+        >
+          <span className="text-6xl mb-4 block">✍️</span>
+          <h3 className="text-xl font-heading font-bold mb-2 text-foreground">
+            {language === "nl" ? "Binnenkort beschikbaar" : language === "pt" ? "Em breve" : "Coming soon"}
+          </h3>
+          <p className="text-muted-foreground">{emptyMessage}</p>
+        </motion.div>
       </div>
     );
   }
@@ -153,21 +189,27 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-10">
       {/* Featured post */}
       {featuredPost && (
-        <PostCard 
-          post={{
-            ...getLocalizedPost(featuredPost),
-            category: featuredPost.blog_categories
-          }} 
-          featured 
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <PostCard 
+            post={{
+              ...getLocalizedPost(featuredPost),
+              category: featuredPost.blog_categories
+            }} 
+            featured 
+          />
+        </motion.div>
       )}
 
       {/* Regular posts grid */}
       {regularPosts.length > 0 && (
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {regularPosts.map((post) => (
             <StaggerItem key={post.id}>
               <PostCard 
