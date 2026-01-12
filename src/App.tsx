@@ -134,6 +134,9 @@ const App = () => (
             <Route path="/zuidoost" element={<Navigate to="/pt/zuidoost" replace />} />
             <Route path="/weesp" element={<Navigate to="/pt/weesp" replace />} />
             <Route path="/soundscape" element={<Navigate to="/pt/soundscape" replace />} />
+            <Route path="/admin/login" element={<Navigate to="/pt/admin/login" replace />} />
+            <Route path="/admin/blog" element={<Navigate to="/pt/admin/blog" replace />} />
+            <Route path="/admin/images" element={<Navigate to="/pt/admin/images" replace />} />
             
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
