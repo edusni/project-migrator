@@ -187,6 +187,17 @@
 /nl/About /nl/about.html 301!
 
 # ===================================================================
+# ADDITIONAL LEGACY URLs - Mais variações antigas
+# ===================================================================
+/de-pijp /pt/de-pijp.html 301!
+/custo-de-vida /pt/custo-de-vida.html 301!
+
+# ===================================================================
 # SPA fallback (React app para rotas dinâmicas como /blog)
 # ===================================================================
-/* /index.html 200
+/pt/* /index.html 200
+/en/* /index.html 200
+/nl/* /index.html 200
+
+# Fallback geral - redireciona para home se não encontrar
+/* /pt/index.html 301
