@@ -22,18 +22,18 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
   const checkAdminRole = async (userId: string) => {
     try {
-      const { data, error } = await supabase
-        .from("user_roles")
-        .select("role")
-        .eq("user_id", userId)
-        .eq("role", "admin")
-        .maybeSingle();
+      // Prefer server-side role checks to avoid RLS recursion/permissions issues
+      const { data, error } = await supabase.rpc("has_role", {
+        _role: "admin",
+        _user_id: userId,
+      });
 
       if (error) {
         console.error("Error checking admin role:", error);
         return false;
       }
-      return !!data;
+
+      return Boolean(data);
     } catch (err) {
       console.error("Error in checkAdminRole:", err);
       return false;
@@ -41,41 +41,49 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
 
   useEffect(() => {
-    // Get initial session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        // Defer admin check with setTimeout to avoid deadlock
-        setTimeout(() => {
-          checkAdminRole(session.user.id).then(setIsAdmin);
-        }, 0);
+    let isMounted = true;
+
+    const applySession = (nextSession: Session | null) => {
+      if (!isMounted) return;
+
+      setSession(nextSession);
+      setUser(nextSession?.user ?? null);
+
+      if (!nextSession?.user) {
+        setIsAdmin(false);
+        setIsLoading(false);
+        return;
       }
-      
-      setIsLoading(false);
+
+      // Keep loading true until the admin-role check completes
+      setIsLoading(true);
+
+      // Defer any backend calls to avoid auth state change deadlocks
+      setTimeout(() => {
+        checkAdminRole(nextSession.user.id).then((admin) => {
+          if (!isMounted) return;
+          setIsAdmin(admin);
+          setIsLoading(false);
+        });
+      }, 0);
+    };
+
+    // Listen for auth changes FIRST
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+      applySession(nextSession);
     });
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => {
-        setSession(session);
-        setUser(session?.user ?? null);
-        
-        if (session?.user) {
-          // Defer admin check with setTimeout to avoid deadlock
-          setTimeout(() => {
-            checkAdminRole(session.user.id).then(setIsAdmin);
-          }, 0);
-        } else {
-          setIsAdmin(false);
-        }
-        
-        setIsLoading(false);
-      }
-    );
+    // THEN get initial session
+    supabase.auth.getSession().then(({ data: { session: initialSession } }) => {
+      applySession(initialSession);
+    });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      isMounted = false;
+      subscription.unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string) => {
