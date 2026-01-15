@@ -13,6 +13,7 @@ import {
   FAQSection,
   getHomeFaqItems,
   NeighborhoodsMap,
+  SoundscapePreview,
 } from "@/components/home";
 
 const Index = () => {
@@ -52,6 +53,7 @@ const Index = () => {
         <ChecklistSection />
         <GuideSectionsGrid />
         <NeighborhoodsMap />
+        <SoundscapePreview />
         <TrapsSection />
         
         {/* GetYourGuide Widget */}

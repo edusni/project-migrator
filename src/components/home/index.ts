@@ -5,3 +5,4 @@ export { GuideSectionsGrid } from "./GuideSectionsGrid";
 export { TrapsSection } from "./TrapsSection";
 export { FAQSection, getHomeFaqItems } from "./FAQSection";
 export { NeighborhoodsMap } from "./NeighborhoodsMap";
+export { SoundscapePreview } from "./SoundscapePreview";
