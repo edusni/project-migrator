@@ -17,4 +17,13 @@ export const homeTranslations: TranslationModule = {
   "hero.bestNeighborhoods": { pt: "Melhores bairros", en: "Best neighborhoods", nl: "Beste buurten" },
   "hero.gettingAround": { pt: "Como se locomover", en: "Getting Around", nl: "Vervoer" },
   "hero.tramBikeMetro": { pt: "Tram, bike, metrô", en: "Tram, bike, metro", nl: "Tram, fiets, metro" },
+  
+  // Welcome Video Section
+  "welcomeVideo.title": { pt: "Bem-vindo ao Amsterdu", en: "Welcome to Amsterdu", nl: "Welkom bij Amsterdu" },
+  "welcomeVideo.description": { 
+    pt: "Conheça nosso guia virtual que vai te acompanhar em toda sua jornada por Amsterdam",
+    en: "Meet our virtual guide who will accompany you throughout your journey in Amsterdam",
+    nl: "Maak kennis met onze virtuele gids die je begeleidt tijdens je reis door Amsterdam"
+  },
+  "welcomeVideo.aiCharacter": { pt: "Personagem IA", en: "AI Character", nl: "AI-personage" },
 };

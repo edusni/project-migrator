@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useLanguage } from "@/hooks/useLanguage";
+import { translations } from "@/i18n/translations";
 import { Play, Pause, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -50,18 +51,21 @@ export function WelcomeVideoSection() {
     }
   };
 
+  const t = (key: string) => {
+    const translation = translations[key];
+    if (!translation) return key;
+    return translation[language] || translation.pt || key;
+  };
+
   const getTitle = () => {
-    if (!video) return "";
-    if (language === "en") return video.title_en || video.title;
-    if (language === "nl") return video.title_nl || video.title;
-    return video.title;
+    // Use translation as default, override with DB value if set
+    const dbTitle = language === "en" ? video?.title_en : language === "nl" ? video?.title_nl : video?.title;
+    return dbTitle || t("welcomeVideo.title");
   };
 
   const getDescription = () => {
-    if (!video) return "";
-    if (language === "en") return video.description_en || video.description;
-    if (language === "nl") return video.description_nl || video.description;
-    return video.description;
+    const dbDesc = language === "en" ? video?.description_en : language === "nl" ? video?.description_nl : video?.description;
+    return dbDesc || t("welcomeVideo.description");
   };
 
   const togglePlay = () => {
@@ -188,7 +192,7 @@ export function WelcomeVideoSection() {
           <div className="mt-6 text-center">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              {language === "nl" ? "AI-personage" : language === "en" ? "AI Character" : "Personagem IA"}
+              {t("welcomeVideo.aiCharacter")}
             </span>
           </div>
         </motion.div>
