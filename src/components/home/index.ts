@@ -4,3 +4,4 @@ export { ChecklistSection } from "./ChecklistSection";
 export { GuideSectionsGrid } from "./GuideSectionsGrid";
 export { TrapsSection } from "./TrapsSection";
 export { FAQSection, getHomeFaqItems } from "./FAQSection";
+export { NeighborhoodsMap } from "./NeighborhoodsMap";
