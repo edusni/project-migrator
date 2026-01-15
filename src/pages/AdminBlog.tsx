@@ -5,6 +5,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -855,7 +856,13 @@ const AdminBlog = () => {
 
   // Main admin dashboard
   return (
-    <div className="min-h-screen bg-gradient-to-br from-muted/30 via-background to-muted/50 py-8">
+    <>
+      <SEOHead 
+        title="Admin Blog | Amsterdu"
+        description="Admin blog management page"
+        noindex={true}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-muted/30 via-background to-muted/50 py-8">
       <div className="container">
         {/* Header with gradient accent */}
         <div className="relative mb-8">
@@ -1118,6 +1125,7 @@ const AdminBlog = () => {
         </Tabs>
       </div>
     </div>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -242,7 +243,13 @@ export default function AdminImages() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEOHead 
+        title="Admin Imagens | Amsterdu"
+        description="Admin image management page"
+        noindex={true}
+      />
+      <div className="min-h-screen bg-background">
       <header className="border-b bg-card">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
@@ -382,5 +389,6 @@ export default function AdminImages() {
         </Tabs>
       </main>
     </div>
+    </>
   );
 }
