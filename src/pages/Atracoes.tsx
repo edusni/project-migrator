@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import { GetYourGuideWidget } from "@/components/GetYourGuideWidget";
 import {
   ArtCulture2026Section,
@@ -84,6 +85,8 @@ const Atracoes = () => {
       </section>
       
       <FAQSection />
+      
+      <RelatedContent currentPage="atracoes" />
       
       <RelatedBlogPostsSection currentPath="/atracoes" />
       

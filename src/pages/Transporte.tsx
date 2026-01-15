@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import { GetYourGuideAvailability, GYG_TOUR_IDS } from "@/components/GetYourGuideWidget";
 import {
   ThreeRulesSection,
@@ -115,6 +116,8 @@ const Transporte = () => {
       <ChecklistSection />
       <FAQSection />
 
+      <RelatedContent currentPage="transporte" />
+      
       <RelatedBlogPostsSection currentPath="/transporte" />
       
       <RelatedPagesSection 

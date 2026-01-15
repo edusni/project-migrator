@@ -5,6 +5,7 @@ import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { AffiliateBanner } from "@/components/AffiliateLinks";
+import { RelatedContent } from "@/components/RelatedContent";
 import {
   IntroSection,
   QuickPickSection,
@@ -633,6 +634,8 @@ const Arredores = () => {
       </section>
 
       <FAQSection title={content.faq.title} items={content.faq.items} />
+      
+      <RelatedContent currentPage="arredores" />
       
       <RelatedPagesSection 
         currentPath="/arredores"

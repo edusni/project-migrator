@@ -5,6 +5,7 @@ import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import foodHeroImg from "@/assets/food-stroopwafel.png";
 import {
   IntroSection,
@@ -538,6 +539,8 @@ const Gastronomia = () => {
         items={content.faq.items} 
       />
 
+      <RelatedContent currentPage="gastronomia" />
+      
       <RelatedBlogPostsSection currentPath="/gastronomia" />
       
       <RelatedPagesSection 
