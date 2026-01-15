@@ -4,6 +4,7 @@ import { Menu, Home, Calendar, Hotel, Star, Train, UtensilsCrossed, Leaf, MapPin
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { useLanguage } from "@/hooks/useLanguage";
 import { usePrefetch } from "@/hooks/usePrefetch";
 import { GlobalSearch, SearchTrigger } from "@/components/GlobalSearch";
@@ -289,9 +290,10 @@ export function Header() {
           </NavLink>
         </nav>
 
-        {/* Search + Language Switcher + Mobile Menu */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Search + Theme + Language Switcher + Mobile Menu */}
+        <div className="flex items-center gap-1 sm:gap-2">
           <SearchTrigger onClick={() => setSearchOpen(true)} />
+          <ThemeToggle />
           <LanguageSwitcher />
           
           {/* Mobile Navigation - touch-friendly button */}

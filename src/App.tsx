@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/hooks/useLanguage";
 import { AuthProvider } from "@/hooks/useAuth";
+import { ThemeProvider } from "@/hooks/useTheme";
 import { LocaleRouter } from "@/components/LocaleRouter";
 import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
 import { lazy, Suspense } from "react";
@@ -89,13 +90,14 @@ const LocalePageRoutes = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-        <BrowserRouter>
-          <ScrollToTopOnNavigate />
+    <ThemeProvider>
+      <LanguageProvider>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+          <BrowserRouter>
+            <ScrollToTopOnNavigate />
           <Routes>
             {/* Root redirect to locale-prefixed route */}
             <Route path="/" element={<LocaleRouter />} />
@@ -141,10 +143,11 @@ const App = () => (
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
-    </LanguageProvider>
+          </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
+      </LanguageProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
