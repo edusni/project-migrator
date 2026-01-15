@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
+import { SEOHead } from "@/components/SEOHead";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -101,7 +102,13 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20 flex items-center justify-center p-4">
+    <>
+      <SEOHead 
+        title="Admin Login | Amsterdu"
+        description="Admin login page"
+        noindex={true}
+      />
+      <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-accent/20 flex items-center justify-center p-4">
       <div className="w-full max-w-md">
         <Card className="border-border/50 shadow-xl">
           <CardHeader className="text-center pb-2">
@@ -189,6 +196,7 @@ const AdminLogin = () => {
         </Card>
       </div>
     </div>
+    </>
   );
 };
 
