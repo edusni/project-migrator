@@ -725,4 +725,339 @@
     <priority>0.6</priority>
   </url>
 
+  <!-- ==================== NEIGHBORHOOD PAGES ==================== -->
+  
+  <!-- Jordaan -->
+  <url>
+    <loc>https://amsterdu.com/pt/jordaan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/jordaan"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/jordaan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/jordaan"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/jordaan</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/jordaan"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/jordaan"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Grachtengordel (Canal Ring) -->
+  <url>
+    <loc>https://amsterdu.com/pt/grachtengordel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/grachtengordel"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/grachtengordel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/grachtengordel"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/grachtengordel</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/grachtengordel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/grachtengordel"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Binnenstad (City Center) -->
+  <url>
+    <loc>https://amsterdu.com/pt/binnenstad</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/binnenstad"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/binnenstad</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/binnenstad"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/binnenstad</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/binnenstad"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/binnenstad"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Amsterdam Noord -->
+  <url>
+    <loc>https://amsterdu.com/pt/amsterdam-noord</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/amsterdam-noord</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/amsterdam-noord</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-noord"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-noord"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Amsterdam Oost -->
+  <url>
+    <loc>https://amsterdu.com/pt/amsterdam-oost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/amsterdam-oost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/amsterdam-oost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-oost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-oost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Amsterdam West -->
+  <url>
+    <loc>https://amsterdu.com/pt/amsterdam-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/amsterdam-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/amsterdam-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Amsterdam Zuid -->
+  <url>
+    <loc>https://amsterdu.com/pt/amsterdam-zuid</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/amsterdam-zuid</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/amsterdam-zuid</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/amsterdam-zuid"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/amsterdam-zuid"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Zuidoost -->
+  <url>
+    <loc>https://amsterdu.com/pt/zuidoost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/zuidoost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/zuidoost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/zuidoost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/zuidoost</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/zuidoost"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/zuidoost"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Nieuw-West -->
+  <url>
+    <loc>https://amsterdu.com/pt/nieuw-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/nieuw-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/nieuw-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/nieuw-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/nieuw-west</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/nieuw-west"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/nieuw-west"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Weesp -->
+  <url>
+    <loc>https://amsterdu.com/pt/weesp</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/weesp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/weesp"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/weesp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/weesp"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/en/weesp</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/weesp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/weesp"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/weesp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/weesp"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://amsterdu.com/nl/weesp</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/weesp"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/weesp"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/weesp"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/weesp"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- ==================== SOUNDSCAPE ==================== -->
+  
+  <url>
+    <loc>https://amsterdu.com/pt/soundscape</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/soundscape"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://amsterdu.com/en/soundscape"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/soundscape"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/soundscape"/>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>
