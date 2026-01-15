@@ -6,6 +6,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { useLanguage } from "@/hooks/useLanguage";
 import { usePrefetch } from "@/hooks/usePrefetch";
+import { GlobalSearch, SearchTrigger } from "@/components/GlobalSearch";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -85,9 +86,22 @@ const exploreItems = [
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const { t, language } = useLanguage();
   const location = useLocation();
   const { prefetchRoute } = usePrefetch();
+
+  // Global keyboard shortcut for search (Cmd/Ctrl + K)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   // Helper to get locale-prefixed URL
   const getLocalizedUrl = useCallback((url: string) => {
@@ -275,8 +289,9 @@ export function Header() {
           </NavLink>
         </nav>
 
-        {/* Language Switcher + Mobile Menu */}
+        {/* Search + Language Switcher + Mobile Menu */}
         <div className="flex items-center gap-2 sm:gap-3">
+          <SearchTrigger onClick={() => setSearchOpen(true)} />
           <LanguageSwitcher />
           
           {/* Mobile Navigation - touch-friendly button */}
@@ -452,6 +467,9 @@ export function Header() {
           </Sheet>
         </div>
       </div>
+
+      {/* Global Search Dialog */}
+      <GlobalSearch isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
