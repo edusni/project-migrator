@@ -25,6 +25,30 @@ export function WelcomeVideoSection() {
   const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Autoplay on viewport enter, pause on exit
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    const container = containerRef.current;
+    if (!videoElement || !container) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoElement.play().catch(() => {});
+          } else {
+            videoElement.pause();
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [video]);
 
   useEffect(() => {
     fetchVideo();
@@ -122,7 +146,7 @@ export function WelcomeVideoSection() {
           )}
 
           {/* Video Player */}
-          <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video group">
+          <div ref={containerRef} className="relative rounded-2xl overflow-hidden shadow-2xl bg-black aspect-video group">
             <video
               ref={videoRef}
               src={video.video_url}
@@ -186,14 +210,6 @@ export function WelcomeVideoSection() {
                 </Button>
               </div>
             </div>
-          </div>
-
-          {/* AI Character badge */}
-          <div className="mt-6 text-center">
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              {t("welcomeVideo.aiCharacter")}
-            </span>
           </div>
         </motion.div>
       </div>
