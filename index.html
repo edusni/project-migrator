@@ -35,8 +35,10 @@
     <link rel="preconnect" href="https://c.basemaps.cartocdn.com" crossorigin />
     <link rel="preconnect" href="https://d.basemaps.cartocdn.com" crossorigin />
     
-    <!-- Preload critical LCP image with highest priority -->
-    <link rel="preload" href="/amsterdam-hero.webp" as="image" type="image/webp" fetchpriority="high" />
+    <!-- Preconnect for GetYourGuide widget (high priority) -->
+    <link rel="preconnect" href="https://cdn.getyourguide.com" crossorigin />
+    
+    <!-- Note: Hero image is bundled by Vite with hash, preload happens via fetchpriority="high" in component -->
     
     <!-- DNS Prefetch for external resources (fallback for browsers without preconnect) -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -97,7 +99,28 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- GetYourGuide Analytics -->
-    <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="RSSK3KX"></script>
+    <!-- Defer GetYourGuide Analytics to not block LCP -->
+    <script>
+      // Load GetYourGuide widget after page is interactive
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() {
+          var s = document.createElement('script');
+          s.src = 'https://widget.getyourguide.com/dist/pa.umd.production.min.js';
+          s.dataset.gygPartnerId = 'RSSK3KX';
+          s.async = true;
+          s.defer = true;
+          document.body.appendChild(s);
+        });
+      } else {
+        setTimeout(function() {
+          var s = document.createElement('script');
+          s.src = 'https://widget.getyourguide.com/dist/pa.umd.production.min.js';
+          s.dataset.gygPartnerId = 'RSSK3KX';
+          s.async = true;
+          s.defer = true;
+          document.body.appendChild(s);
+        }, 2000);
+      }
+    </script>
   </body>
 </html>
