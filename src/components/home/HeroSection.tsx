@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import amsterdamHeroFallback from "@/assets/amsterdam-hero-new.webp";
+import amsterdamHeroDesktop from "@/assets/amsterdam-hero-new.webp";
+import amsterdamHeroMobile from "@/assets/amsterdam-hero-mobile.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
 import { useSiteImage } from "@/hooks/useSiteImage";
 const quickStats = {
@@ -54,8 +55,8 @@ export function HeroSection() {
   // Prefetch critical routes on idle
   usePrefetchCriticalRoutes();
   
-  // Get dynamic image URL
-  const amsterdamHero = useSiteImage('hero-amsterdam', amsterdamHeroFallback);
+  // Get dynamic image URL (fallback to desktop for CMS)
+  const amsterdamHero = useSiteImage('hero-amsterdam', amsterdamHeroDesktop);
   
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -76,21 +77,35 @@ export function HeroSection() {
         style={{ y: backgroundY }}
         className="absolute inset-0 bg-gradient-to-br from-secondary via-secondary/95 to-secondary/85" 
       />
-      {/* LCP-optimized hero image as real img element */}
+      {/* LCP-optimized hero image with responsive srcset */}
       <motion.div 
         style={{ y: backgroundY }}
         className="absolute inset-0"
       >
-        <img
-          src={amsterdamHero}
-          alt="Amsterdam canal with traditional Dutch houses, bicycles and tulips"
-          width={1920}
-          height={1080}
-          loading="eager"
-          decoding="sync"
-          fetchPriority="high"
-          className="w-full h-full object-cover opacity-20"
-        />
+        <picture>
+          {/* Mobile: serve smaller image for faster LCP */}
+          <source 
+            media="(max-width: 768px)" 
+            srcSet={amsterdamHeroMobile}
+            type="image/webp"
+          />
+          {/* Desktop: serve full-size image */}
+          <source 
+            media="(min-width: 769px)" 
+            srcSet={amsterdamHero}
+            type="image/webp"
+          />
+          <img
+            src={amsterdamHero}
+            alt="Amsterdam canal with traditional Dutch houses, bicycles and tulips"
+            width={1920}
+            height={1080}
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
+            className="w-full h-full object-cover opacity-20"
+          />
+        </picture>
       </motion.div>
       
       {/* Noise texture overlay */}
