@@ -1,47 +1,20 @@
-# Cache static assets for 1 year (immutable)
+# Vite build assets (hashed filenames) - 1 year cache
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache images for 1 year
-*.webp
+# Hero images in public folder - 1 year cache
+/amsterdam-hero.webp
   Cache-Control: public, max-age=31536000, immutable
 
-*.png
+/og-image.jpg
   Cache-Control: public, max-age=31536000, immutable
 
-*.jpg
+# Favicons - 1 year cache
+/favicon.png
   Cache-Control: public, max-age=31536000, immutable
 
-*.jpeg
+/apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
-
-*.svg
-  Cache-Control: public, max-age=31536000, immutable
-
-*.ico
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache fonts for 1 year
-*.woff
-  Cache-Control: public, max-age=31536000, immutable
-
-*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache CSS and JS for 1 year (Vite adds hash to filenames)
-*.css
-  Cache-Control: public, max-age=31536000, immutable
-
-*.js
-  Cache-Control: public, max-age=31536000, immutable
-
-# Cache HTML for 1 hour (needs to be fresh for SPA routing)
-*.html
-  Cache-Control: public, max-age=3600, must-revalidate
-
-# Root index - short cache
-/
-  Cache-Control: public, max-age=3600, must-revalidate
 
 # Service worker - no cache
 /sw.js
@@ -50,20 +23,35 @@
 /registerSW.js
   Cache-Control: no-cache, no-store, must-revalidate
 
-# Manifest - medium cache
+# Manifest - 1 day cache
 /manifest.webmanifest
   Cache-Control: public, max-age=86400
 
-# Sitemap and robots - medium cache
+# SEO files - 1 day cache
 /sitemap.xml
   Cache-Control: public, max-age=86400
 
 /robots.txt
   Cache-Control: public, max-age=86400
 
-# LLM files - medium cache
 /llms.txt
   Cache-Control: public, max-age=86400
 
-/llm*.html
-  Cache-Control: public, max-age=86400
+# Static HTML pages - 1 hour cache
+/en/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/nl/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/pt/*
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/llm-en.html
+  Cache-Control: public, max-age=3600
+
+/llm-nl.html
+  Cache-Control: public, max-age=3600
+
+/llm.html
+  Cache-Control: public, max-age=3600
