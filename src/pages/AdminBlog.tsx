@@ -18,7 +18,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Plus, Save, Eye, Trash2, LogOut, Image, FileText, 
   MessageSquare, Settings, Loader2, ArrowLeft, Edit,
-  Check, X, PenLine, ImageIcon
+  Check, X, PenLine, ImageIcon, Video
 } from "lucide-react";
 import { toast } from "sonner";
 import { WysiwygEditor } from "@/components/blog/WysiwygEditor";
@@ -880,6 +880,10 @@ const AdminBlog = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2">
+              <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/admin/video"))} className="shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+                <Video className="mr-2 h-4 w-4" />
+                {language === "nl" ? "Video" : language === "pt" ? "Vídeo" : "Video"}
+              </Button>
               <Button variant="outline" onClick={() => navigate(getLocalizedPath(locale, "/admin/images"))} className="shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
                 <ImageIcon className="mr-2 h-4 w-4" />
                 {language === "nl" ? "Afbeeldingen" : language === "pt" ? "Imagens" : "Images"}
