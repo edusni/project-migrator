@@ -188,7 +188,7 @@ export function HeroSection() {
         >
           {stats.map((stat, index) => (
             <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-xl bg-background/10 backdrop-blur-sm">
-              <stat.icon className="w-5 h-5 text-primary" />
+              <stat.icon className="w-5 h-5 text-primary" aria-hidden="true" />
               <span className="text-xl font-bold text-primary-foreground">{stat.value}</span>
               <span className="text-sm text-primary-foreground/70">{stat.label}</span>
             </div>
@@ -211,9 +211,10 @@ export function HeroSection() {
               <Button 
                 size="lg" 
                 className="group bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-xl shadow-glow hover:shadow-xl transition-all duration-300"
+                aria-label={language === "nl" ? "Begin met Plannen - Start uw Amsterdam reis" : language === "pt" ? "Comece a Planejar - Inicie sua viagem para Amsterdam" : "Start Planning - Begin your Amsterdam trip"}
               >
                 {language === "nl" ? "Begin met Plannen" : language === "pt" ? "Comece a Planejar" : "Start Planning"}
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
               </Button>
             </motion.div>
           </Link>

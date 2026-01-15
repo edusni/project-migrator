@@ -170,15 +170,16 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
+                aria-label={language === "pt" ? "Abrir menu Planejar" : language === "nl" ? "Open Plan menu" : "Open Plan menu"}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-out-expo
                 ${isInGroup(planningItems)
                   ? "bg-primary/10 text-primary" 
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
               >
-                <Calendar className="w-4 h-4" />
+                <Calendar className="w-4 h-4" aria-hidden="true" />
                 <span>{language === "pt" ? "Planejar" : "Plan"}</span>
-                <ChevronDown className="w-3 h-3 ml-0.5" />
+                <ChevronDown className="w-3 h-3 ml-0.5" aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 
@@ -208,15 +209,16 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button
+                aria-label={language === "pt" ? "Abrir menu Explorar" : language === "nl" ? "Open Ontdek menu" : "Open Explore menu"}
                 className={`flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200 ease-out-expo
                 ${isInGroup(exploreItems)
                   ? "bg-primary/10 text-primary" 
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                 }`}
               >
-                <Star className="w-4 h-4" />
+                <Star className="w-4 h-4" aria-hidden="true" />
                 <span>{language === "pt" ? "Explorar" : "Explore"}</span>
-                <ChevronDown className="w-3 h-3 ml-0.5" />
+                <ChevronDown className="w-3 h-3 ml-0.5" aria-hidden="true" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent 

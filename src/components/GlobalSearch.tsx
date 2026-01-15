@@ -405,10 +405,10 @@ export function SearchTrigger({ onClick }: { onClick: () => void }) {
   return (
     <button
       onClick={onClick}
-      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/50 hover:bg-muted border border-border/50 transition-colors text-muted-foreground hover:text-foreground text-sm"
+      className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-muted/50 hover:bg-muted border border-border/50 transition-colors text-muted-foreground hover:text-foreground text-sm min-h-[44px]"
       aria-label={uiTranslations.openSearch[language]}
     >
-      <Search className="w-4 h-4" />
+      <Search className="w-4 h-4" aria-hidden="true" />
       <span className="hidden sm:inline">{language === "pt" ? "Buscar" : language === "en" ? "Search" : "Zoeken"}</span>
       <kbd className="hidden md:inline-flex h-5 items-center gap-1 rounded border border-border bg-background px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
         <span className="text-xs">⌘</span>K
