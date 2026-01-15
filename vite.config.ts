@@ -49,14 +49,53 @@ export default defineConfig(({ mode }) => ({
         // Cache strategies for different asset types
         runtimeCaching: [
           {
-            // Cache images with CacheFirst strategy (long TTL)
+            // HTML pages - NetworkFirst to always get fresh content
+            urlPattern: /\.html$/i,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "pages-cache",
+              networkTimeoutSeconds: 5,
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60, // 1 hour
+              },
+            },
+          },
+          {
+            // Videos - NetworkFirst to always get fresh content
+            urlPattern: /\.(?:mp4|webm|ogg|mov)$/i,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "videos-cache",
+              networkTimeoutSeconds: 10,
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24, // 1 day
+              },
+            },
+          },
+          {
+            // Supabase storage - NetworkFirst for dynamic content
+            urlPattern: /^https:\/\/.*\.supabase\.co\/storage\//,
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "storage-cache",
+              networkTimeoutSeconds: 10,
+              expiration: {
+                maxEntries: 50,
+                maxAgeSeconds: 60 * 60, // 1 hour
+              },
+            },
+          },
+          {
+            // Cache images with StaleWhileRevalidate (update in background)
             urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/i,
-            handler: "CacheFirst",
+            handler: "StaleWhileRevalidate",
             options: {
               cacheName: "images-cache",
               expiration: {
                 maxEntries: 100,
-                maxAgeSeconds: 60 * 60 * 24 * 30, // 30 days
+                maxAgeSeconds: 60 * 60 * 24 * 7, // 7 days
               },
             },
           },
@@ -117,11 +156,15 @@ export default defineConfig(({ mode }) => ({
             },
           },
         ],
-        // Precache important assets
-        globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff2}"],
+        // Precache important assets (exclude videos to save space)
+        globPatterns: ["**/*.{js,css,html,ico,png,svg,woff2}"],
+        // Don't precache large files
+        maximumFileSizeToCacheInBytes: 3 * 1024 * 1024, // 3MB max
         // Skip waiting to activate new SW immediately
         skipWaiting: true,
         clientsClaim: true,
+        // Clean old caches
+        cleanupOutdatedCaches: true,
       },
     }),
   ].filter(Boolean),
