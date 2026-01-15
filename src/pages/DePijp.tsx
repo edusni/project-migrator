@@ -1,13 +1,13 @@
 import { Building2, Euro, Home, Train, Users, GraduationCap, ShoppingBag, AlertTriangle, CheckCircle, Info, MapPin, Clock, Bike, TreeDeciduous } from "lucide-react";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
+import { RelatedContent } from "@/components/RelatedContent";
 import heroDePijp from "@/assets/hero-de-pijp.webp";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useSiteImage } from "@/hooks/useSiteImage";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
 import { SEOHead } from "@/components/SEOHead";
 
 const DePijp = () => {
@@ -610,38 +610,8 @@ const DePijp = () => {
           </Card>
         </section>
 
-        {/* Related Links */}
-        <section className="max-w-4xl mx-auto">
-          <h3 className="text-xl font-heading font-bold mb-4">
-            {language === "pt" ? "Continue Lendo" : language === "en" ? "Continue Reading" : "Verder Lezen"}
-          </h3>
-          <div className="grid sm:grid-cols-2 gap-4">
-            <Link to="/hospedagem" className="p-4 border rounded-lg hover:border-primary/50 hover:bg-muted/50 transition-colors">
-              <div className="flex items-center gap-3">
-                <Home className="w-5 h-5 text-primary" />
-                <span>{language === "pt" ? "Guia de Hospedagem" : language === "en" ? "Accommodation Guide" : "Accommodatiegids"}</span>
-              </div>
-            </Link>
-            <Link to="/custo-vida-amsterdam" className="p-4 border rounded-lg hover:border-primary/50 hover:bg-muted/50 transition-colors">
-              <div className="flex items-center gap-3">
-                <Euro className="w-5 h-5 text-primary" />
-                <span>{language === "pt" ? "Custo de Vida" : language === "en" ? "Cost of Living" : "Kosten van Levensonderhoud"}</span>
-              </div>
-            </Link>
-            <Link to="/transporte" className="p-4 border rounded-lg hover:border-primary/50 hover:bg-muted/50 transition-colors">
-              <div className="flex items-center gap-3">
-                <Train className="w-5 h-5 text-primary" />
-                <span>{language === "pt" ? "Transporte" : language === "en" ? "Transport" : "Vervoer"}</span>
-              </div>
-            </Link>
-            <Link to="/gastronomia" className="p-4 border rounded-lg hover:border-primary/50 hover:bg-muted/50 transition-colors">
-              <div className="flex items-center gap-3">
-                <ShoppingBag className="w-5 h-5 text-primary" />
-                <span>{language === "pt" ? "Gastronomia" : language === "en" ? "Food Guide" : "Eetgids"}</span>
-              </div>
-            </Link>
-          </div>
-        </section>
+        {/* Related Content */}
+        <RelatedContent currentPage="de-pijp" maxItems={4} />
       </div>
     </PageLayout>
   );

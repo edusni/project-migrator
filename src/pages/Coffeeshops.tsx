@@ -3,7 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { Leaf } from "lucide-react";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
-import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import coffeeshopHeroImg from "@/assets/coffeeshop-neon.png";
 import {
@@ -744,10 +744,7 @@ const Coffeeshops = () => {
       
       <RelatedBlogPostsSection currentPath="/coffeeshops" />
       
-      <RelatedPagesSection 
-        currentPath="/coffeeshops"
-        suggestedPaths={["/gastronomia", "/transporte", "/hospedagem", "/atracoes"]}
-      />
+      <RelatedContent currentPage="coffeeshops" maxItems={4} />
     </PageLayout>
   );
 };
