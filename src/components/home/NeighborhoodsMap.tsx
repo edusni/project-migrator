@@ -1,16 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/hooks/useLanguage";
-import L from "leaflet";
-import "leaflet/dist/leaflet.css";
+import { MapPin } from "lucide-react";
+import { useInView } from "@/hooks/useInView";
 
 interface Neighborhood {
   id: string;
   name: string;
   path: string;
   color: string;
-  coordinates: [number, number]; // [lat, lng]
+  coordinates: [number, number];
   description: {
     pt: string;
     en: string;
@@ -158,133 +158,196 @@ const translations = {
     title: "Explore os Bairros",
     subtitle: "Clique em um bairro para descobrir seu guia completo",
     clickToExplore: "Clique para explorar",
+    goToNeighborhood: "Ir para guia de",
+    loadingMap: "Carregando mapa...",
   },
   en: {
     title: "Explore the Neighborhoods",
     subtitle: "Click on a neighborhood to discover its complete guide",
     clickToExplore: "Click to explore",
+    goToNeighborhood: "Go to guide for",
+    loadingMap: "Loading map...",
   },
   nl: {
     title: "Ontdek de Wijken",
     subtitle: "Klik op een wijk om de complete gids te ontdekken",
     clickToExplore: "Klik om te verkennen",
+    goToNeighborhood: "Ga naar gids voor",
+    loadingMap: "Kaart laden...",
   },
 };
 
-export const NeighborhoodsMap = () => {
-  const { language } = useLanguage();
-  const navigate = useNavigate();
+// Map skeleton for loading state
+const MapSkeleton = ({ message }: { message: string }) => (
+  <div className="w-full h-[300px] lg:h-[400px] rounded-t-2xl bg-muted/50 flex items-center justify-center">
+    <div className="text-center">
+      <MapPin className="w-8 h-8 text-muted-foreground/50 mx-auto mb-2 animate-pulse" />
+      <p className="text-sm text-muted-foreground">{message}</p>
+    </div>
+  </div>
+);
+
+// Lazy loaded map component
+const LeafletMap = ({ 
+  neighborhoods, 
+  language, 
+  t, 
+  onNavigate,
+  onSelectNeighborhood 
+}: { 
+  neighborhoods: Neighborhood[];
+  language: string;
+  t: typeof translations.pt;
+  onNavigate: (path: string) => void;
+  onSelectNeighborhood: (id: string | null) => void;
+}) => {
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<L.Map | null>(null);
-  const [selectedNeighborhood, setSelectedNeighborhood] = useState<string | null>(null);
-  const t = translations[language];
-
-  const handleNavigate = (path: string) => {
-    navigate(`/${language}${path}`);
-  };
 
   useEffect(() => {
-    if (!mapContainer.current || map.current) return;
+    // Dynamically import Leaflet only when needed
+    const initMap = async () => {
+      if (!mapContainer.current || map.current) return;
+      
+      const L = (await import("leaflet")).default;
+      await import("leaflet/dist/leaflet.css");
 
-    // Initialize map centered on Amsterdam
-    map.current = L.map(mapContainer.current, {
-      center: [52.3676, 4.9041],
-      zoom: 11.5,
-      zoomControl: true,
-      scrollWheelZoom: false,
-    });
-
-    // Add tile layer with a clean style
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-      subdomains: 'abcd',
-      maxZoom: 19
-    }).addTo(map.current);
-
-    // Add markers for each neighborhood
-    neighborhoods.forEach((neighborhood) => {
-      const markerIcon = L.divIcon({
-        className: 'custom-marker',
-        html: `
-          <div style="
-            width: 32px;
-            height: 32px;
-            background-color: ${neighborhood.color};
-            border: 3px solid white;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: transform 0.2s;
-          ">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-        `,
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32],
+      map.current = L.map(mapContainer.current, {
+        center: [52.3676, 4.9041],
+        zoom: 11.5,
+        zoomControl: true,
+        scrollWheelZoom: false,
       });
 
-      const marker = L.marker(neighborhood.coordinates, { icon: markerIcon })
-        .addTo(map.current!);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+      }).addTo(map.current);
 
-      // Create popup content
-      const popupContent = `
-        <div style="min-width: 180px; font-family: system-ui, sans-serif;">
-          <h3 style="margin: 0 0 4px; font-size: 14px; font-weight: 600; color: ${neighborhood.color};">
-            ${neighborhood.name}
-          </h3>
-          <p style="margin: 0 0 8px; font-size: 12px; color: #666;">
-            ${neighborhood.description[language]}
-          </p>
-          <button 
-            onclick="window.dispatchEvent(new CustomEvent('navigateNeighborhood', { detail: '${neighborhood.path}' }))"
-            style="
-              background: ${neighborhood.color};
-              color: white;
-              border: none;
-              padding: 6px 12px;
-              border-radius: 6px;
-              font-size: 12px;
-              font-weight: 500;
+      neighborhoods.forEach((neighborhood) => {
+        const markerIcon = L.divIcon({
+          className: 'custom-marker',
+          html: `
+            <div style="
+              width: 32px;
+              height: 32px;
+              background-color: ${neighborhood.color};
+              border: 3px solid white;
+              border-radius: 50%;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+              display: flex;
+              align-items: center;
+              justify-content: center;
               cursor: pointer;
-              width: 100%;
-            "
-          >
-            ${t.clickToExplore} →
-          </button>
-        </div>
-      `;
+              transition: transform 0.2s;
+            " role="button" aria-label="${t.goToNeighborhood} ${neighborhood.name}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" aria-hidden="true">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+          `,
+          iconSize: [32, 32],
+          iconAnchor: [16, 32],
+          popupAnchor: [0, -32],
+        });
 
-      marker.bindPopup(popupContent, {
-        closeButton: true,
-        className: 'custom-popup',
+        const marker = L.marker(neighborhood.coordinates, { icon: markerIcon })
+          .addTo(map.current!);
+
+        const popupContent = `
+          <div style="min-width: 180px; font-family: system-ui, sans-serif;">
+            <h3 style="margin: 0 0 4px; font-size: 14px; font-weight: 600; color: ${neighborhood.color};">
+              ${neighborhood.name}
+            </h3>
+            <p style="margin: 0 0 8px; font-size: 12px; color: #666;">
+              ${neighborhood.description[language as keyof typeof neighborhood.description]}
+            </p>
+            <button 
+              onclick="window.dispatchEvent(new CustomEvent('navigateNeighborhood', { detail: '${neighborhood.path}' }))"
+              style="
+                background: ${neighborhood.color};
+                color: white;
+                border: none;
+                padding: 6px 12px;
+                border-radius: 6px;
+                font-size: 12px;
+                font-weight: 500;
+                cursor: pointer;
+                width: 100%;
+              "
+              aria-label="${t.goToNeighborhood} ${neighborhood.name}"
+            >
+              ${t.clickToExplore} →
+            </button>
+          </div>
+        `;
+
+        marker.bindPopup(popupContent, {
+          closeButton: true,
+          className: 'custom-popup',
+        });
+
+        marker.on('click', () => {
+          onSelectNeighborhood(neighborhood.id);
+        });
       });
 
-      marker.on('click', () => {
-        setSelectedNeighborhood(neighborhood.id);
-      });
-    });
+      const handleNavigation = (e: CustomEvent) => {
+        onNavigate(e.detail);
+      };
+      window.addEventListener('navigateNeighborhood', handleNavigation as EventListener);
 
-    // Listen for navigation events from popup buttons
-    const handleNavigation = (e: CustomEvent) => {
-      handleNavigate(e.detail);
+      return () => {
+        window.removeEventListener('navigateNeighborhood', handleNavigation as EventListener);
+      };
     };
-    window.addEventListener('navigateNeighborhood', handleNavigation as EventListener);
+
+    initMap();
 
     return () => {
-      window.removeEventListener('navigateNeighborhood', handleNavigation as EventListener);
       if (map.current) {
         map.current.remove();
         map.current = null;
       }
     };
-  }, [language, t.clickToExplore]);
+  }, [language, t.clickToExplore, t.goToNeighborhood, neighborhoods, onNavigate, onSelectNeighborhood]);
+
+  return (
+    <>
+      <div 
+        ref={mapContainer} 
+        className="w-full h-[300px] lg:h-[400px] rounded-t-2xl"
+        role="application"
+        aria-label={translations[language as keyof typeof translations].title}
+      />
+      <style>{`
+        .custom-popup .leaflet-popup-content-wrapper {
+          border-radius: 12px;
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .custom-popup .leaflet-popup-tip {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .custom-marker:hover > div {
+          transform: scale(1.1);
+        }
+      `}</style>
+    </>
+  );
+};
+
+export const NeighborhoodsMap = () => {
+  const { language } = useLanguage();
+  const navigate = useNavigate();
+  const [selectedNeighborhood, setSelectedNeighborhood] = useState<string | null>(null);
+  const { ref, isInView } = useInView<HTMLDivElement>({ threshold: 0.1, triggerOnce: true });
+  const t = translations[language];
+
+  const handleNavigate = (path: string) => {
+    navigate(`/${language}${path}`);
+  };
 
   return (
     <section className="py-12 lg:py-20 bg-gradient-to-b from-background to-muted/30">
@@ -304,27 +367,36 @@ export const NeighborhoodsMap = () => {
         </motion.div>
 
         <motion.div
+          ref={ref}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
           className="relative bg-card rounded-2xl border shadow-lg overflow-hidden"
         >
-          {/* Map container */}
-          <div 
-            ref={mapContainer} 
-            className="w-full h-[400px] lg:h-[500px] rounded-t-2xl"
-          />
+          {/* Lazy loaded map */}
+          {isInView ? (
+            <LeafletMap 
+              neighborhoods={neighborhoods}
+              language={language}
+              t={t}
+              onNavigate={handleNavigate}
+              onSelectNeighborhood={setSelectedNeighborhood}
+            />
+          ) : (
+            <MapSkeleton message={t.loadingMap} />
+          )}
 
           {/* Legend */}
           <div className="p-4 lg:p-6 bg-card/95 backdrop-blur-sm border-t">
-            <div className="flex flex-wrap justify-center gap-2 lg:gap-3">
+            <div className="flex flex-wrap justify-center gap-2 lg:gap-3" role="navigation" aria-label={t.title}>
               {neighborhoods.slice(0, 6).map((neighborhood) => (
                 <motion.button
                   key={neighborhood.id}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleNavigate(neighborhood.path)}
+                  aria-label={`${t.goToNeighborhood} ${neighborhood.name}`}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:shadow-md ${
                     selectedNeighborhood === neighborhood.id ? 'ring-2 ring-offset-2' : ''
                   }`}
@@ -337,6 +409,7 @@ export const NeighborhoodsMap = () => {
                   <span
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: neighborhood.color }}
+                    aria-hidden="true"
                   />
                   {neighborhood.name}
                 </motion.button>
@@ -349,6 +422,7 @@ export const NeighborhoodsMap = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => handleNavigate(neighborhood.path)}
+                  aria-label={`${t.goToNeighborhood} ${neighborhood.name}`}
                   className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-medium transition-all hover:shadow-md ${
                     selectedNeighborhood === neighborhood.id ? 'ring-2 ring-offset-2' : ''
                   }`}
@@ -361,6 +435,7 @@ export const NeighborhoodsMap = () => {
                   <span
                     className="w-2 h-2 rounded-full"
                     style={{ backgroundColor: neighborhood.color }}
+                    aria-hidden="true"
                   />
                   {neighborhood.name}
                 </motion.button>
@@ -369,20 +444,6 @@ export const NeighborhoodsMap = () => {
           </div>
         </motion.div>
       </div>
-
-      {/* Custom styles for Leaflet popups */}
-      <style>{`
-        .custom-popup .leaflet-popup-content-wrapper {
-          border-radius: 12px;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .custom-popup .leaflet-popup-tip {
-          box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-        .custom-marker:hover > div {
-          transform: scale(1.1);
-        }
-      `}</style>
     </section>
   );
 };

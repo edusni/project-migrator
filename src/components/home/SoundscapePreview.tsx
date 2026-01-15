@@ -151,8 +151,9 @@ export const SoundscapePreview = () => {
                 size="lg"
                 className="flex-1 gap-2"
                 onClick={() => window.open('https://open.spotify.com/artist/41b3qFSMQGI1UKVVNjBYiE', '_blank')}
+                aria-label={`${t.listenNow} - Spotify`}
               >
-                <Play className="w-4 h-4" />
+                <Play className="w-4 h-4" aria-hidden="true" />
                 {t.listenNow}
               </Button>
               
@@ -161,8 +162,9 @@ export const SoundscapePreview = () => {
                 variant="outline"
                 className="flex-1 gap-2"
                 onClick={() => navigate(`/${language}/soundscape`)}
+                aria-label={t.explorePage}
               >
-                <Headphones className="w-4 h-4" />
+                <Headphones className="w-4 h-4" aria-hidden="true" />
                 {t.explorePage}
               </Button>
             </div>
