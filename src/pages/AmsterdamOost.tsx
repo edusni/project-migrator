@@ -12,6 +12,7 @@ import {
   Clock, Euro, Users, Shield, Construction, Bike
 } from "lucide-react";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 
 // Neighborhood images
 import oosterparkbuurtImg from "@/assets/neighborhood-oosterparkbuurt.webp";
@@ -682,6 +683,8 @@ const AmsterdamOost = () => {
           </div>
         </section>
 
+        <RelatedContent currentPage="amsterdam-oost" />
+        
         <RelatedPagesSection 
           currentPath="/amsterdam-oost"
           suggestedPaths={["/amsterdam-west", "/hospedagem", "/transporte", "/planejamento"]}

@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import heroWeesp from "@/assets/hero-weesp.webp";
 
 const Weesp = () => {
@@ -420,6 +421,8 @@ const Weesp = () => {
         </section>
 
         {/* Related Pages */}
+        <RelatedContent currentPage="weesp" />
+        
         <RelatedPagesSection
           currentPath="/weesp"
           suggestedPaths={["/zuidoost", "/amsterdam-oost", "/hospedagem"]}

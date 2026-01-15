@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import heroNieuwWest from "@/assets/hero-nieuw-west.webp";
 
 const NieuwWest = () => {
@@ -521,6 +522,8 @@ const NieuwWest = () => {
         </section>
 
         {/* Related Pages */}
+        <RelatedContent currentPage="nieuw-west" />
+        
         <RelatedPagesSection
           currentPath="/nieuw-west"
           suggestedPaths={["/amsterdam-west", "/amsterdam-zuid", "/hospedagem"]}

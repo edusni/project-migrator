@@ -33,6 +33,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { RelatedContent } from "@/components/RelatedContent";
 
 // Import neighborhood images
 import neighborhoodNdsm from "@/assets/neighborhood-ndsm.webp";
@@ -866,6 +867,8 @@ const AmsterdamNoord = () => {
             ))}
           </Accordion>
         </section>
+
+        <RelatedContent currentPage="amsterdam-noord" />
       </div>
     </PageLayout>
   );
