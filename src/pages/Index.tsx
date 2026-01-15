@@ -12,6 +12,7 @@ import {
   TrapsSection,
   FAQSection,
   getHomeFaqItems,
+  NeighborhoodsMap,
 } from "@/components/home";
 
 const Index = () => {
@@ -50,6 +51,7 @@ const Index = () => {
         <Changes2026Section />
         <ChecklistSection />
         <GuideSectionsGrid />
+        <NeighborhoodsMap />
         <TrapsSection />
         
         {/* GetYourGuide Widget */}
