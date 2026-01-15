@@ -34,6 +34,7 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { RelatedContent } from "@/components/RelatedContent";
 
 // Import neighborhood images
 import neighborhoodDePijp from "@/assets/neighborhood-de-pijp.webp";
@@ -843,6 +844,8 @@ const AmsterdamZuid = () => {
             </CardContent>
           </Card>
         </motion.div>
+
+        <RelatedContent currentPage="amsterdam-zuid" />
       </div>
     </PageLayout>
   );

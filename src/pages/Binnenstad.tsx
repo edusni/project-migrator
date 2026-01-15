@@ -42,6 +42,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { RelatedContent } from "@/components/RelatedContent";
 
 const Binnenstad = () => {
   const { language } = useLanguage();
@@ -600,6 +601,8 @@ const Binnenstad = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+
+        <RelatedContent currentPage="binnenstad" />
       </div>
     </PageLayout>
   );

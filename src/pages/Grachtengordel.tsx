@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import { SEOHead } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 
 const Grachtengordel = () => {
   const { language } = useLanguage();
@@ -681,6 +682,7 @@ const Grachtengordel = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+        <RelatedContent currentPage="grachtengordel" />
         <RelatedPagesSection currentPath="/grachtengordel" />
       </div>
     </PageLayout>

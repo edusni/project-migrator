@@ -29,6 +29,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { RelatedContent } from "@/components/RelatedContent";
 
 const Jordaan = () => {
   const { language } = useLanguage();
@@ -386,6 +387,8 @@ const Jordaan = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+
+        <RelatedContent currentPage="jordaan" />
       </div>
     </PageLayout>
   );

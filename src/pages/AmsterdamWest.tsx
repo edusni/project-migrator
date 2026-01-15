@@ -26,6 +26,7 @@ import {
 } from "lucide-react";
 import { SEOHead } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
+import { RelatedContent } from "@/components/RelatedContent";
 
 const AmsterdamWest = () => {
   const { language } = useLanguage();
@@ -653,6 +654,7 @@ const AmsterdamWest = () => {
           </Card>
         </AnimatedSection>
 
+        <RelatedContent currentPage="amsterdam-west" />
         <RelatedPagesSection currentPath="/amsterdam-west" />
       </div>
     </PageLayout>

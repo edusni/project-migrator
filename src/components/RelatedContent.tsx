@@ -96,6 +96,48 @@ const allPages = {
     url: "/amsterdam-noord",
     color: "from-slate-500/20 to-slate-600/10",
   },
+  "amsterdam-west": {
+    icon: Building2,
+    title: { pt: "Amsterdam West", en: "Amsterdam West", nl: "Amsterdam West" },
+    description: { pt: "Criativo e em transformação", en: "Creative and transforming", nl: "Creatief en in transformatie" },
+    url: "/amsterdam-west",
+    color: "from-violet-500/20 to-violet-600/10",
+  },
+  "amsterdam-oost": {
+    icon: Building2,
+    title: { pt: "Amsterdam Oost", en: "Amsterdam East", nl: "Amsterdam Oost" },
+    description: { pt: "Diverso e em expansão", en: "Diverse and expanding", nl: "Divers en groeiend" },
+    url: "/amsterdam-oost",
+    color: "from-rose-500/20 to-rose-600/10",
+  },
+  "amsterdam-zuid": {
+    icon: Building2,
+    title: { pt: "Amsterdam Zuid", en: "Amsterdam South", nl: "Amsterdam Zuid" },
+    description: { pt: "Elegante e internacional", en: "Elegant and international", nl: "Elegant en internationaal" },
+    url: "/amsterdam-zuid",
+    color: "from-emerald-500/20 to-emerald-600/10",
+  },
+  "nieuw-west": {
+    icon: Building2,
+    title: { pt: "Nieuw-West", en: "Nieuw-West", nl: "Nieuw-West" },
+    description: { pt: "Multicultural e acessível", en: "Multicultural and affordable", nl: "Multicultureel en betaalbaar" },
+    url: "/nieuw-west",
+    color: "from-lime-500/20 to-lime-600/10",
+  },
+  "zuidoost": {
+    icon: Building2,
+    title: { pt: "Zuidoost", en: "Zuidoost", nl: "Zuidoost" },
+    description: { pt: "Vibrante e cosmopolita", en: "Vibrant and cosmopolitan", nl: "Bruisend en kosmopolitisch" },
+    url: "/zuidoost",
+    color: "from-fuchsia-500/20 to-fuchsia-600/10",
+  },
+  "weesp": {
+    icon: Building2,
+    title: { pt: "Weesp", en: "Weesp", nl: "Weesp" },
+    description: { pt: "Vila histórica charmosa", en: "Charming historic village", nl: "Charmant historisch dorp" },
+    url: "/weesp",
+    color: "from-sky-500/20 to-sky-600/10",
+  },
 };
 
 // Define contextual relationships between pages
