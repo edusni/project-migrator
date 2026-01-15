@@ -2,19 +2,55 @@
   publish = "dist"
   command = "npm run build"
 
-# Cache static assets with content hashes for 1 year
+# Assets com hash (JS, CSS, imagens) - cache 1 ano
 [[headers]]
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache hero image for 1 year
+# Service Worker - sem cache
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/registerSW.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# HTML - sem cache para atualizações imediatas
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/en/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/nl/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/pt/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Imagens na raiz pública - cache 1 ano
 [[headers]]
   for = "/amsterdam-hero.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Cache other public images
 [[headers]]
   for = "/og-image.jpg"
   [headers.values]
@@ -30,39 +66,7 @@
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
-# Service worker - no cache
-[[headers]]
-  for = "/sw.js"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-
-[[headers]]
-  for = "/registerSW.js"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-
-# HTML files - short cache with revalidation
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
-
-[[headers]]
-  for = "/en/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
-
-[[headers]]
-  for = "/nl/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
-
-[[headers]]
-  for = "/pt/*"
-  [headers.values]
-    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
-
-# SEO files - daily cache
+# SEO files - cache 1 dia
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
@@ -78,7 +82,7 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
-# Manifest - daily cache
+# Manifest - cache 1 dia
 [[headers]]
   for = "/manifest.webmanifest"
   [headers.values]
