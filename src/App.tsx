@@ -8,6 +8,7 @@ import { AuthProvider } from "@/hooks/useAuth";
 import { ThemeProvider } from "@/hooks/useTheme";
 import { LocaleRouter } from "@/components/LocaleRouter";
 import { ScrollToTopOnNavigate } from "@/components/ScrollToTopOnNavigate";
+import { ServiceWorkerUpdater } from "@/components/ServiceWorkerUpdater";
 import { lazy, Suspense } from "react";
 
 // Lazy load all pages for code splitting
@@ -98,6 +99,7 @@ const App = () => (
           <TooltipProvider>
             <Toaster />
             <Sonner />
+            <ServiceWorkerUpdater />
           <BrowserRouter>
             <ScrollToTopOnNavigate />
           <Routes>
