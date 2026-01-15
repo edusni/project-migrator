@@ -1,33 +1,44 @@
-# Vite build assets (hashed filenames) - 1 year cache
+# Assets com hash (JS, CSS, imagens) - cache 1 ano
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Hero images in public folder - 1 year cache
+# Service Worker - sem cache
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+/registerSW.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# HTML - sem cache para atualizações imediatas
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/en/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/nl/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/pt/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Imagens na raiz pública - cache 1 ano
 /amsterdam-hero.webp
   Cache-Control: public, max-age=31536000, immutable
 
 /og-image.jpg
   Cache-Control: public, max-age=31536000, immutable
 
-# Favicons - 1 year cache
 /favicon.png
   Cache-Control: public, max-age=31536000, immutable
 
 /apple-touch-icon.png
   Cache-Control: public, max-age=31536000, immutable
 
-# Service worker - no cache
-/sw.js
-  Cache-Control: no-cache, no-store, must-revalidate
-
-/registerSW.js
-  Cache-Control: no-cache, no-store, must-revalidate
-
-# Manifest - 1 day cache
-/manifest.webmanifest
-  Cache-Control: public, max-age=86400
-
-# SEO files - 1 day cache
+# SEO files - cache 1 dia
 /sitemap.xml
   Cache-Control: public, max-age=86400
 
@@ -37,21 +48,6 @@
 /llms.txt
   Cache-Control: public, max-age=86400
 
-# Static HTML pages - 1 hour cache
-/en/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
-/nl/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
-/pt/*
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
-
-/llm-en.html
-  Cache-Control: public, max-age=3600
-
-/llm-nl.html
-  Cache-Control: public, max-age=3600
-
-/llm.html
-  Cache-Control: public, max-age=3600
+# Manifest - cache 1 dia
+/manifest.webmanifest
+  Cache-Control: public, max-age=86400
