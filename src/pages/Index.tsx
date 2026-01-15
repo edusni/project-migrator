@@ -15,6 +15,7 @@ import {
   NeighborhoodsMap,
   SoundscapePreview,
 } from "@/components/home";
+import { WelcomeVideoSection } from "@/components/home/WelcomeVideoSection";
 
 const Index = () => {
   const { language } = useLanguage();
@@ -35,6 +36,7 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <HeroSection />
+        <WelcomeVideoSection />
         
         {/* SEO Scope Paragraph */}
         <section className="py-6 lg:py-8 bg-muted/30 border-b border-border">

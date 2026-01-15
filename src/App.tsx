@@ -25,6 +25,7 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const AdminLogin = lazy(() => import("./pages/AdminLogin"));
 const AdminBlog = lazy(() => import("./pages/AdminBlog"));
 const AdminImages = lazy(() => import("./pages/AdminImages"));
+const AdminVideo = lazy(() => import("./pages/AdminVideo"));
 const CustoDeVida = lazy(() => import("./pages/CustoDeVida"));
 const DePijp = lazy(() => import("./pages/DePijp"));
 const Jordaan = lazy(() => import("./pages/Jordaan"));
@@ -70,6 +71,7 @@ const LocalePageRoutes = () => (
       <Route path="admin/login" element={<AdminLogin />} />
       <Route path="admin/blog" element={<AdminBlog />} />
       <Route path="admin/images" element={<AdminImages />} />
+      <Route path="admin/video" element={<AdminVideo />} />
       <Route path="custo-vida-amsterdam" element={<CustoDeVida />} />
       <Route path="de-pijp" element={<DePijp />} />
       <Route path="jordaan" element={<Jordaan />} />
@@ -139,6 +141,7 @@ const App = () => (
             <Route path="/admin/login" element={<Navigate to="/pt/admin/login" replace />} />
             <Route path="/admin/blog" element={<Navigate to="/pt/admin/blog" replace />} />
             <Route path="/admin/images" element={<Navigate to="/pt/admin/images" replace />} />
+            <Route path="/admin/video" element={<Navigate to="/pt/admin/video" replace />} />
             
             {/* Catch-all 404 */}
             <Route path="*" element={<NotFound />} />

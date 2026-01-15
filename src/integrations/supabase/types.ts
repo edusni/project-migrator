@@ -177,6 +177,48 @@ export type Database = {
           },
         ]
       }
+      home_video: {
+        Row: {
+          created_at: string
+          description: string | null
+          description_en: string | null
+          description_nl: string | null
+          id: string
+          is_active: boolean | null
+          title: string | null
+          title_en: string | null
+          title_nl: string | null
+          updated_at: string
+          video_url: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          description_nl?: string | null
+          id?: string
+          is_active?: boolean | null
+          title?: string | null
+          title_en?: string | null
+          title_nl?: string | null
+          updated_at?: string
+          video_url: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          description_en?: string | null
+          description_nl?: string | null
+          id?: string
+          is_active?: boolean | null
+          title?: string | null
+          title_en?: string | null
+          title_nl?: string | null
+          updated_at?: string
+          video_url?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           email: string
