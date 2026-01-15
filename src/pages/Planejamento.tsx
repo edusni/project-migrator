@@ -6,6 +6,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
+import { RelatedContent } from "@/components/RelatedContent";
 import { useState, useEffect, useRef } from "react";
 import {
   CostCalculator,
@@ -156,6 +157,8 @@ const Planejamento = () => {
       </div>
 
       <PlanejamentoFAQSection />
+      
+      <RelatedContent currentPage="planejamento" />
       
       <RelatedBlogPostsSection currentPath="/planejamento" />
       
