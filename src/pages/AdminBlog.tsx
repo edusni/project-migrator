@@ -474,9 +474,9 @@ const AdminBlog = () => {
           description="Admin blog management page - Loading"
           noindex={true}
         />
-        <div className="min-h-screen flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center">
           <Loader2 className="w-8 h-8 animate-spin text-primary" />
-        </div>
+        </main>
       </>
     );
   }
@@ -489,9 +489,9 @@ const AdminBlog = () => {
           description="Admin blog management page - Access denied"
           noindex={true}
         />
-        <div className="min-h-screen flex items-center justify-center">
+        <main className="min-h-screen flex items-center justify-center">
           <p>{texts.noAccess}</p>
-        </div>
+        </main>
       </>
     );
   }
@@ -519,7 +519,7 @@ const AdminBlog = () => {
         description="Admin blog post editor"
         noindex={true}
       />
-      <div className="min-h-screen bg-muted/30 py-8">
+      <main className="min-h-screen bg-muted/30 py-8">
         <div className="container max-w-5xl">
           <div className="flex items-center justify-between mb-6">
             <Button variant="ghost" onClick={() => { setIsCreating(false); setEditorTab("edit"); }}>
@@ -870,7 +870,7 @@ const AdminBlog = () => {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </main>
       </>
     );
   }
@@ -883,7 +883,7 @@ const AdminBlog = () => {
         description="Admin blog management page"
         noindex={true}
       />
-      <div className="min-h-screen bg-gradient-to-br from-muted/30 via-background to-muted/50 py-8">
+      <main className="min-h-screen bg-gradient-to-br from-muted/30 via-background to-muted/50 py-8">
       <div className="container">
         {/* Header with gradient accent */}
         <div className="relative mb-8">
@@ -1149,7 +1149,7 @@ const AdminBlog = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </div>
+    </main>
     </>
   );
 };
