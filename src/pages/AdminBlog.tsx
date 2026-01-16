@@ -468,17 +468,31 @@ const AdminBlog = () => {
 
   if (authLoading || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-primary" />
-      </div>
+      <>
+        <SEOHead 
+          title="Admin Blog | Amsterdu"
+          description="Admin blog management page - Loading"
+          noindex={true}
+        />
+        <div className="min-h-screen flex items-center justify-center">
+          <Loader2 className="w-8 h-8 animate-spin text-primary" />
+        </div>
+      </>
     );
   }
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p>{texts.noAccess}</p>
-      </div>
+      <>
+        <SEOHead 
+          title="Admin Blog | Amsterdu"
+          description="Admin blog management page - Access denied"
+          noindex={true}
+        />
+        <div className="min-h-screen flex items-center justify-center">
+          <p>{texts.noAccess}</p>
+        </div>
+      </>
     );
   }
 
@@ -499,6 +513,12 @@ const AdminBlog = () => {
   // Post editor view
   if (isCreating) {
     return (
+      <>
+      <SEOHead 
+        title={editingPost ? `Editar: ${editingPost.title} | Amsterdu Admin` : "Novo Post | Amsterdu Admin"}
+        description="Admin blog post editor"
+        noindex={true}
+      />
       <div className="min-h-screen bg-muted/30 py-8">
         <div className="container max-w-5xl">
           <div className="flex items-center justify-between mb-6">
@@ -851,6 +871,7 @@ const AdminBlog = () => {
           </Card>
         </div>
       </div>
+      </>
     );
   }
 
