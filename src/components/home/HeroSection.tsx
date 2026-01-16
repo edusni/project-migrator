@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import amsterdamHeroDesktop from "@/assets/amsterdam-hero-new.webp";
-import amsterdamHeroMobile from "@/assets/amsterdam-hero-mobile.webp";
+import amsterdamHeroMobile from "@/assets/amsterdam-hero-mobile-optimized.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
 import { useSiteImage } from "@/hooks/useSiteImage";
 const quickStats = {
@@ -101,7 +101,7 @@ export function HeroSection() {
             width={1920}
             height={1080}
             loading="eager"
-            decoding="sync"
+            decoding="async"
             fetchPriority="high"
             className="w-full h-full object-cover opacity-20"
           />
