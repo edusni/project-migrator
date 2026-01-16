@@ -4,6 +4,7 @@ import { Newsletter } from "@/components/Newsletter";
 import { SEOHead, seoData } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
 import { GetYourGuideWidget } from "@/components/GetYourGuideWidget";
+import { LazySection } from "@/components/ui/lazy-section";
 import {
   HeroSection,
   Changes2026Section,
@@ -53,23 +54,43 @@ const Index = () => {
         
         <Changes2026Section />
         <ChecklistSection />
-        <GuideSectionsGrid />
-        <NeighborhoodsMap />
-        <SoundscapePreview />
-        <TrapsSection />
+        
+        {/* Lazy-loaded sections below the fold */}
+        <LazySection minHeight="400px" rootMargin="200px">
+          <GuideSectionsGrid />
+        </LazySection>
+        
+        <LazySection minHeight="500px" rootMargin="200px">
+          <NeighborhoodsMap />
+        </LazySection>
+        
+        <LazySection minHeight="300px" rootMargin="200px">
+          <SoundscapePreview />
+        </LazySection>
+        
+        <LazySection minHeight="400px" rootMargin="200px">
+          <TrapsSection />
+        </LazySection>
         
         {/* GetYourGuide Widget */}
-        <section className="py-12 lg:py-16 bg-muted/30">
-          <div className="container max-w-6xl">
-            <h2 className="text-2xl lg:text-3xl font-heading font-bold text-center mb-6">
-              {language === "nl" ? "Populaire Tours & Activiteiten" : language === "en" ? "Popular Tours & Activities" : "Tours e Atividades Populares"}
-            </h2>
-            <GetYourGuideWidget />
-          </div>
-        </section>
+        <LazySection minHeight="300px" rootMargin="200px">
+          <section className="py-12 lg:py-16 bg-muted/30">
+            <div className="container max-w-6xl">
+              <h2 className="text-2xl lg:text-3xl font-heading font-bold text-center mb-6">
+                {language === "nl" ? "Populaire Tours & Activiteiten" : language === "en" ? "Popular Tours & Activities" : "Tours e Atividades Populares"}
+              </h2>
+              <GetYourGuideWidget />
+            </div>
+          </section>
+        </LazySection>
         
-        <FAQSection />
-        <Newsletter />
+        <LazySection minHeight="400px" rootMargin="200px">
+          <FAQSection />
+        </LazySection>
+        
+        <LazySection minHeight="200px" rootMargin="200px">
+          <Newsletter />
+        </LazySection>
       </main>
       <Footer />
     </div>
