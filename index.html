@@ -98,14 +98,27 @@
         document.body.insertBefore(ns, document.body.firstChild);
       }
       
-      // Load analytics after page becomes interactive
-      if (document.readyState === 'complete') {
-        setTimeout(loadAnalytics, 100);
-      } else {
-        window.addEventListener('load', function() {
+      // Load analytics after user interaction or 5 seconds, whichever comes first
+      // This significantly improves FCP and LCP by deferring heavy GTM scripts
+      var analyticsLoaded = false;
+      function triggerAnalytics() {
+        if (analyticsLoaded) return;
+        analyticsLoaded = true;
+        // Use requestIdleCallback for better performance
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(loadAnalytics, { timeout: 3000 });
+        } else {
           setTimeout(loadAnalytics, 100);
-        });
+        }
       }
+      
+      // Load on first user interaction (scroll, click, touch)
+      ['scroll', 'click', 'touchstart', 'keydown'].forEach(function(event) {
+        document.addEventListener(event, triggerAnalytics, { once: true, passive: true });
+      });
+      
+      // Fallback: load after 5 seconds if no interaction
+      setTimeout(triggerAnalytics, 5000);
       
       // Load GetYourGuide widget after page is interactive
       if ('requestIdleCallback' in window) {
