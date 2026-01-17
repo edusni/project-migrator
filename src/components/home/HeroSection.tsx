@@ -5,7 +5,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import amsterdamHeroDesktop from "@/assets/amsterdam-hero-new.webp";
-import amsterdamHeroMobile from "@/assets/amsterdam-hero-mobile-optimized.webp";
+import amsterdamHeroMobile from "@/assets/amsterdam-hero-mobile-compressed.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
 import { useSiteImage } from "@/hooks/useSiteImage";
 const quickStats = {
