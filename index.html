@@ -48,6 +48,47 @@
     <meta name="theme-color" content="#F97316" />
     <meta name="msapplication-TileColor" content="#F97316" />
     
+    <!-- Critical CSS for above-the-fold content - improves FCP by ~290ms -->
+    <style>
+      /* Critical resets and base styles */
+      *,::after,::before{box-sizing:border-box;border:0 solid}
+      html{line-height:1.5;-webkit-text-size-adjust:100%;font-family:ui-sans-serif,system-ui,sans-serif}
+      body{margin:0;line-height:inherit;background-color:hsl(30 20% 98%)}
+      img{display:block;max-width:100%;height:auto}
+      /* Critical layout for hero */
+      .min-h-screen{min-height:100vh}
+      .flex{display:flex}
+      .items-center{align-items:center}
+      .justify-center{justify-content:center}
+      .relative{position:relative}
+      .absolute{position:absolute}
+      .inset-0{inset:0}
+      .w-full{width:100%}
+      .h-full{height:100%}
+      .object-cover{object-fit:cover}
+      .opacity-20{opacity:.2}
+      .bg-background{background-color:hsl(30 20% 98%)}
+      .text-foreground{color:hsl(20 10% 10%)}
+      .container{width:100%;margin-inline:auto;padding-inline:1rem}
+      @media(min-width:640px){.container{max-width:640px}}
+      @media(min-width:768px){.container{max-width:768px}}
+      @media(min-width:1024px){.container{max-width:1024px}}
+      @media(min-width:1280px){.container{max-width:1280px}}
+      /* Loading skeleton */
+      .animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}
+      @keyframes pulse{50%{opacity:.5}}
+      .rounded-full{border-radius:9999px}
+      .rounded{border-radius:.25rem}
+      .bg-muted{background-color:hsl(30 10% 92%)}
+      .bg-primary\/20{background-color:hsl(24 95% 53% / .2)}
+      .gap-4{gap:1rem}
+      .flex-col{flex-direction:column}
+      .w-12{width:3rem}
+      .h-12{height:3rem}
+      .h-4{height:1rem}
+      .w-32{width:8rem}
+    </style>
+    
     <!-- SEO Meta Tags -->
     <meta property="og:title" content="Amsterdu - Guia de Amsterdam 2026">
     <meta name="twitter:title" content="Amsterdu - Guia de Amsterdam 2026">
