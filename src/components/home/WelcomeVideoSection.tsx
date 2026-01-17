@@ -24,6 +24,7 @@ export function WelcomeVideoSection() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [videoError, setVideoError] = useState<string | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -37,13 +38,15 @@ export function WelcomeVideoSection() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            videoElement.play().catch(() => {});
+            videoElement.play().catch((err) => {
+              console.error("Video play error:", err);
+            });
           } else {
             videoElement.pause();
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     observer.observe(container);
@@ -151,17 +154,24 @@ export function WelcomeVideoSection() {
               ref={videoRef}
               src={video.video_url}
               className="w-full h-full object-cover"
-              muted={isMuted}
+              muted
               playsInline
               preload="auto"
               autoPlay
+              loop
               onEnded={handleVideoEnd}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onError={(e) => {
+                console.error("Video error:", e);
+                setVideoError("Erro ao carregar vídeo");
+              }}
               onLoadedData={() => {
-                // Ensure video plays when data is loaded
+                console.log("Video loaded, attempting to play");
                 if (videoRef.current) {
-                  videoRef.current.play().catch(() => {});
+                  videoRef.current.play().catch((err) => {
+                    console.error("Play failed:", err);
+                  });
                 }
               }}
             />
