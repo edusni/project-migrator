@@ -84,7 +84,7 @@ export function HeroSection() {
         className="absolute inset-0"
       >
         <picture>
-          {/* Mobile: serve smaller image for faster LCP */}
+          {/* Mobile: serve smaller image from public folder for LCP discoverability */}
           <source 
             media="(max-width: 768px)" 
             srcSet={amsterdamHeroMobile}
@@ -96,8 +96,9 @@ export function HeroSection() {
             srcSet={amsterdamHero}
             type="image/webp"
           />
+          {/* Fallback uses mobile image to match preload in index.html */}
           <img
-            src={amsterdamHero}
+            src={amsterdamHeroMobile}
             alt="Amsterdam canal with traditional Dutch houses, bicycles and tulips"
             width={1920}
             height={1080}
