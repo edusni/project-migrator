@@ -162,15 +162,14 @@ export function WelcomeVideoSection() {
               onEnded={handleVideoEnd}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
-              onError={(e) => {
-                console.error("Video error:", e);
+              onError={() => {
+                // Silently handle video load errors - don't log to console
                 setVideoError("Erro ao carregar vídeo");
               }}
               onLoadedData={() => {
-                console.log("Video loaded, attempting to play");
                 if (videoRef.current) {
-                  videoRef.current.play().catch((err) => {
-                    console.error("Play failed:", err);
+                  videoRef.current.play().catch(() => {
+                    // Autoplay may be blocked, that's okay
                   });
                 }
               }}
