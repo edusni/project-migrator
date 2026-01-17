@@ -52,26 +52,37 @@ export function usePrefetch() {
   return { prefetchRoute, prefetchRoutes, getPrefetchProps };
 }
 
-// Prefetch critical routes on idle
+// Prefetch critical routes after page is fully loaded and idle
 export function usePrefetchCriticalRoutes() {
   useEffect(() => {
     const prefetchCritical = () => {
       // Prefetch most accessed routes after initial render
       const criticalRoutes: RouteKey[] = ["planejamento", "hospedagem", "atracoes"];
       
-      criticalRoutes.forEach((route) => {
-        if (!prefetchedRoutes.has(route)) {
-          prefetchedRoutes.add(route);
-          routeImports[route]();
-        }
+      // Stagger prefetching to avoid blocking the main thread
+      criticalRoutes.forEach((route, index) => {
+        setTimeout(() => {
+          if (!prefetchedRoutes.has(route)) {
+            prefetchedRoutes.add(route);
+            routeImports[route]();
+          }
+        }, index * 500); // 500ms between each prefetch
       });
     };
 
-    // Use requestIdleCallback if available, otherwise setTimeout
-    if ("requestIdleCallback" in window) {
-      (window as any).requestIdleCallback(prefetchCritical, { timeout: 2000 });
-    } else {
-      setTimeout(prefetchCritical, 1000);
-    }
+    // Delay prefetching significantly to avoid impacting LCP and initial load
+    // Wait for page to be fully loaded first
+    const startPrefetch = () => {
+      if ("requestIdleCallback" in window) {
+        (window as any).requestIdleCallback(prefetchCritical, { timeout: 5000 });
+      } else {
+        setTimeout(prefetchCritical, 3000);
+      }
+    };
+
+    // Wait 3 seconds after component mount to start prefetching
+    const timeoutId = setTimeout(startPrefetch, 3000);
+    
+    return () => clearTimeout(timeoutId);
   }, []);
 }
