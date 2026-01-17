@@ -15,6 +15,7 @@ export default defineConfig(({ mode }) => ({
     mode === "development" && componentTagger(),
     VitePWA({
       registerType: "autoUpdate",
+      injectRegister: null, // Don't inject - we'll register manually after page load
       includeAssets: ["favicon.png", "apple-touch-icon.png", "og-image.jpg"],
       manifest: {
         name: "Amsterdu - Guia de Amsterdam 2026",
