@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
+  build: {
+    sourcemap: true, // Enable source maps for production debugging
+  },
   plugins: [
     react(),
     mode === "development" && componentTagger(),
