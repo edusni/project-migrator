@@ -187,11 +187,12 @@ export function WelcomeVideoSection() {
                 variant="secondary"
                 className="rounded-full w-20 h-20 bg-white/90 hover:bg-white text-primary shadow-lg"
                 onClick={togglePlay}
+                aria-label={isPlaying ? t("welcomeVideo.pause") : t("welcomeVideo.play")}
               >
                 {isPlaying ? (
-                  <Pause className="w-8 h-8" />
+                  <Pause className="w-8 h-8" aria-hidden="true" />
                 ) : (
-                  <Play className="w-8 h-8 ml-1" />
+                  <Play className="w-8 h-8 ml-1" aria-hidden="true" />
                 )}
               </Button>
             </div>
@@ -206,11 +207,12 @@ export function WelcomeVideoSection() {
                   variant="ghost"
                   className="text-white hover:bg-white/20"
                   onClick={togglePlay}
+                  aria-label={isPlaying ? t("welcomeVideo.pause") : t("welcomeVideo.play")}
                 >
                   {isPlaying ? (
-                    <Pause className="w-5 h-5" />
+                    <Pause className="w-5 h-5" aria-hidden="true" />
                   ) : (
-                    <Play className="w-5 h-5" />
+                    <Play className="w-5 h-5" aria-hidden="true" />
                   )}
                 </Button>
                 
@@ -219,11 +221,12 @@ export function WelcomeVideoSection() {
                   variant="ghost"
                   className="text-white hover:bg-white/20"
                   onClick={toggleMute}
+                  aria-label={isMuted ? t("welcomeVideo.unmute") : t("welcomeVideo.mute")}
                 >
                   {isMuted ? (
-                    <VolumeX className="w-5 h-5" />
+                    <VolumeX className="w-5 h-5" aria-hidden="true" />
                   ) : (
-                    <Volume2 className="w-5 h-5" />
+                    <Volume2 className="w-5 h-5" aria-hidden="true" />
                   )}
                 </Button>
               </div>

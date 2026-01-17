@@ -26,4 +26,8 @@ export const homeTranslations: TranslationModule = {
     nl: "Maak kennis met onze virtuele gids die je begeleidt tijdens je reis door Amsterdam"
   },
   "welcomeVideo.aiCharacter": { pt: "Personagem IA", en: "AI Character", nl: "AI-personage" },
+  "welcomeVideo.play": { pt: "Reproduzir vídeo", en: "Play video", nl: "Video afspelen" },
+  "welcomeVideo.pause": { pt: "Pausar vídeo", en: "Pause video", nl: "Video pauzeren" },
+  "welcomeVideo.mute": { pt: "Silenciar vídeo", en: "Mute video", nl: "Video dempen" },
+  "welcomeVideo.unmute": { pt: "Ativar som", en: "Unmute video", nl: "Geluid inschakelen" },
 };
