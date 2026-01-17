@@ -52,37 +52,56 @@ export function usePrefetch() {
   return { prefetchRoute, prefetchRoutes, getPrefetchProps };
 }
 
-// Prefetch critical routes after page is fully loaded and idle
+// Prefetch critical routes ONLY on user interaction, not automatically
+// This prevents loading unused JavaScript on initial page load
 export function usePrefetchCriticalRoutes() {
   useEffect(() => {
-    const prefetchCritical = () => {
-      // Prefetch most accessed routes after initial render
-      const criticalRoutes: RouteKey[] = ["planejamento", "hospedagem", "atracoes"];
+    // Only prefetch after significant user interaction to avoid impacting performance metrics
+    // We no longer auto-prefetch - instead rely on hover/focus prefetching from usePrefetch hook
+    let hasInteracted = false;
+    
+    const handleInteraction = () => {
+      if (hasInteracted) return;
+      hasInteracted = true;
       
-      // Stagger prefetching to avoid blocking the main thread
-      criticalRoutes.forEach((route, index) => {
-        setTimeout(() => {
-          if (!prefetchedRoutes.has(route)) {
-            prefetchedRoutes.add(route);
-            routeImports[route]();
-          }
-        }, index * 500); // 500ms between each prefetch
-      });
-    };
-
-    // Delay prefetching significantly to avoid impacting LCP and initial load
-    // Wait for page to be fully loaded first
-    const startPrefetch = () => {
+      // Remove listeners after first interaction
+      cleanup();
+      
+      // Wait for idle time before prefetching
+      const prefetchCritical = () => {
+        const criticalRoutes: RouteKey[] = ["planejamento", "hospedagem", "atracoes"];
+        
+        // Stagger prefetching with longer delays
+        criticalRoutes.forEach((route, index) => {
+          setTimeout(() => {
+            if (!prefetchedRoutes.has(route)) {
+              prefetchedRoutes.add(route);
+              routeImports[route]();
+            }
+          }, index * 1000); // 1 second between each prefetch
+        });
+      };
+      
+      // Only prefetch during idle time, with a 10 second timeout
       if ("requestIdleCallback" in window) {
-        (window as any).requestIdleCallback(prefetchCritical, { timeout: 5000 });
+        (window as any).requestIdleCallback(prefetchCritical, { timeout: 10000 });
       } else {
-        setTimeout(prefetchCritical, 3000);
+        setTimeout(prefetchCritical, 5000);
       }
     };
-
-    // Wait 3 seconds after component mount to start prefetching
-    const timeoutId = setTimeout(startPrefetch, 3000);
     
-    return () => clearTimeout(timeoutId);
+    // Listen for user scroll (indicates they're engaged with the page)
+    const events = ['scroll', 'touchstart'] as const;
+    events.forEach(event => {
+      window.addEventListener(event, handleInteraction, { once: true, passive: true });
+    });
+    
+    const cleanup = () => {
+      events.forEach(event => {
+        window.removeEventListener(event, handleInteraction);
+      });
+    };
+    
+    return cleanup;
   }, []);
 }
