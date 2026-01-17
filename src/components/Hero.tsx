@@ -78,6 +78,11 @@ export function Hero() {
         <img 
           src={heroImage} 
           alt="Amsterdam canals" 
+          width={1920}
+          height={1080}
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
           className="w-full h-[120%] object-cover object-center"
         />
       </motion.div>
