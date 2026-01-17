@@ -153,9 +153,17 @@ export function WelcomeVideoSection() {
               className="w-full h-full object-cover"
               muted={isMuted}
               playsInline
+              preload="auto"
+              autoPlay
               onEnded={handleVideoEnd}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onLoadedData={() => {
+                // Ensure video plays when data is loaded
+                if (videoRef.current) {
+                  videoRef.current.play().catch(() => {});
+                }
+              }}
             />
 
             {/* Overlay with play button */}
