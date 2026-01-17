@@ -3,42 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GT-NNZWR8PL');</script>
-    <!-- End Google Tag Manager -->
-    
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5WH76PBF4"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-P5WH76PBF4');
-    </script>
-    <!-- End Google Analytics 4 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     
     <!-- Preconnect to critical origins FIRST (must be before preloads) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://lguwbgthckwsixmuvurx.supabase.co" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
-    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
     
-    <!-- Preconnect for map tiles (CartoDB/Leaflet) -->
-    <link rel="preconnect" href="https://a.basemaps.cartocdn.com" crossorigin />
-    <link rel="preconnect" href="https://b.basemaps.cartocdn.com" crossorigin />
-    <link rel="preconnect" href="https://c.basemaps.cartocdn.com" crossorigin />
-    <link rel="preconnect" href="https://d.basemaps.cartocdn.com" crossorigin />
-    
-    <!-- Preconnect for GetYourGuide widget (high priority) -->
-    <link rel="preconnect" href="https://cdn.getyourguide.com" crossorigin />
-    
-    <!-- Note: Hero image is bundled by Vite with hash, preload happens via fetchpriority="high" in component -->
+    <!-- Preload critical fonts for faster FCP -->
+    <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqU.woff2" as="font" type="font/woff2" crossorigin />
     
     <!-- DNS Prefetch for external resources (fallback for browsers without preconnect) -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -47,16 +20,10 @@
     <link rel="dns-prefetch" href="//a.basemaps.cartocdn.com" />
     <link rel="dns-prefetch" href="//cdn.getyourguide.com" />
     <link rel="dns-prefetch" href="//widget.getyourguide.com" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
     
-    <!-- Preconnect for GetYourGuide -->
-    <link rel="preconnect" href="https://widget.getyourguide.com" crossorigin />
-    
-    <!-- Preload critical fonts -->
-    <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqU.woff2" as="font" type="font/woff2" crossorigin />
-    
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    
-    <!-- Primary Meta Tags - Dynamic values injected by SEOHead component -->
+    <!-- Primary Meta Tags -->
     <title>Amsterdu - Guia de Amsterdam 2026</title>
     <meta name="author" content="Amsterdu" />
     <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -78,29 +45,65 @@
     <meta name="theme-color" content="#F97316" />
     <meta name="msapplication-TileColor" content="#F97316" />
     
-    <!-- Note: All dynamic meta tags (description, keywords, og:*, twitter:*, canonical, hreflang, structured data) 
-         are injected by the SEOHead React component based on current route and language -->
+    <!-- SEO Meta Tags -->
     <meta property="og:title" content="Amsterdu - Guia de Amsterdam 2026">
-  <meta name="twitter:title" content="Amsterdu - Guia de Amsterdam 2026">
-  <meta name="description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
-  <meta property="og:description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
-  <meta name="twitter:description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
-  <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
-  <meta name="twitter:image" content="https://amsterdu.com/og-image.jpg">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta property="og:type" content="website">
-</head>
+    <meta name="twitter:title" content="Amsterdu - Guia de Amsterdam 2026">
+    <meta name="description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
+    <meta property="og:description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
+    <meta name="twitter:description" content="Amsterdam em 2026 está mais cara e mais regulada. O AmsterDu é o guia brutalmente honesto para planejar sua viagem sem cair em armadilhas turísticas.">
+    <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
+    <meta name="twitter:image" content="https://amsterdu.com/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:type" content="website">
+  </head>
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GT-NNZWR8PL"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     
-    <!-- Defer GetYourGuide Analytics to not block LCP -->
+    <!-- Defer ALL analytics scripts to after page load for faster FCP -->
     <script>
+      // Load analytics after first paint to improve FCP
+      function loadAnalytics() {
+        // Google Tag Manager
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GT-NNZWR8PL');
+        
+        // Google Analytics 4
+        var ga = document.createElement('script');
+        ga.async = true;
+        ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-P5WH76PBF4';
+        document.head.appendChild(ga);
+        ga.onload = function() {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-P5WH76PBF4');
+        };
+        
+        // GTM noscript fallback
+        var ns = document.createElement('noscript');
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://www.googletagmanager.com/ns.html?id=GT-NNZWR8PL';
+        iframe.height = '0';
+        iframe.width = '0';
+        iframe.style.cssText = 'display:none;visibility:hidden';
+        ns.appendChild(iframe);
+        document.body.insertBefore(ns, document.body.firstChild);
+      }
+      
+      // Load analytics after page becomes interactive
+      if (document.readyState === 'complete') {
+        setTimeout(loadAnalytics, 100);
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(loadAnalytics, 100);
+        });
+      }
+      
       // Load GetYourGuide widget after page is interactive
       if ('requestIdleCallback' in window) {
         requestIdleCallback(function() {
