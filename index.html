@@ -13,6 +13,26 @@
     <!-- Preload critical fonts for faster FCP -->
     <link rel="preload" href="https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mPb54C_k3HqU.woff2" as="font" type="font/woff2" crossorigin />
     
+    <!-- Async load non-critical CSS to avoid render blocking -->
+    <script>
+      // Helper to async load CSS after critical inline styles
+      (function() {
+        var loadDeferredStyles = function() {
+          var links = document.querySelectorAll("link[data-async-css]");
+          links.forEach(function(link) {
+            link.media = "all";
+          });
+        };
+        if (window.requestIdleCallback) {
+          requestIdleCallback(loadDeferredStyles);
+        } else if (document.readyState === "complete") {
+          loadDeferredStyles();
+        } else {
+          window.addEventListener("load", loadDeferredStyles);
+        }
+      })();
+    </script>
+    
     <!-- Preload LCP hero image for faster rendering - must match exact URL used in HeroSection -->
     <link rel="preload" href="/hero-mobile.webp" as="image" type="image/webp" fetchpriority="high" />
     
