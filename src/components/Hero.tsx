@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import heroImage from "@/assets/amsterdam-hero-optimized.webp";
+// Use public path for LCP image to enable preloading in HTML
+const heroImage = "/amsterdam-hero-optimized.webp";
 
 export function Hero() {
   const { t, language } = useLanguage();

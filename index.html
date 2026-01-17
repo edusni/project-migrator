@@ -33,8 +33,9 @@
       })();
     </script>
     
-    <!-- Preload LCP hero image for faster rendering - must match exact URL used in HeroSection -->
-    <link rel="preload" href="/hero-mobile.webp" as="image" type="image/webp" fetchpriority="high" />
+    <!-- Preload LCP hero images for faster rendering -->
+    <link rel="preload" href="/amsterdam-hero-optimized.webp" as="image" type="image/webp" fetchpriority="high" />
+    <link rel="preload" href="/hero-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
     
     <!-- DNS Prefetch for external resources (fallback for browsers without preconnect) -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
