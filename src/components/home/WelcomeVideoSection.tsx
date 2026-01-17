@@ -119,8 +119,8 @@ export function WelcomeVideoSection() {
     }
   };
 
-  // Don't render if no video or still loading
-  if (isLoading || !video) {
+  // Don't render if no video, still loading, or video failed to load
+  if (isLoading || !video || videoError) {
     return null;
   }
 
