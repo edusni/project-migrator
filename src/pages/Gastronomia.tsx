@@ -15,7 +15,8 @@ import {
   FoodGallerySection,
   TouristTrapsSection,
   PracticalRulesSection,
-  FAQSection
+  FAQSection,
+  UniqueExperiences2026Section
 } from "@/components/gastronomia";
 
 // Helper function for trilingual content
@@ -523,6 +524,8 @@ const Gastronomia = () => {
         foodhalls={content.foodhalls}
         language={language}
       />
+      
+      <UniqueExperiences2026Section language={language} />
       
       <TouristTrapsSection 
         title={content.traps.title} 
