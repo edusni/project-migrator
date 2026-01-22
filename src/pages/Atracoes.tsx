@@ -120,6 +120,7 @@ const Atracoes = () => {
       </section>
 
       <Changes2026Section />
+      <Calendar2026Section />
       <ArtCulture2026Section language={language} />
       <Events2026Section />
       <AttractionsFiltersSection />
