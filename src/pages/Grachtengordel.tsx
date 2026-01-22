@@ -28,6 +28,7 @@ import {
 import { SEOHead } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedContent } from "@/components/RelatedContent";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 
 const Grachtengordel = () => {
   const { language } = useLanguage();
@@ -682,6 +683,9 @@ const Grachtengordel = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Grachtengordel" variant="living" />
+
         <RelatedContent currentPage="grachtengordel" />
         <RelatedPagesSection currentPath="/grachtengordel" />
       </div>

@@ -3,6 +3,7 @@ import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroBinnenstad from "@/assets/hero-binnenstad.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -601,6 +602,8 @@ const Binnenstad = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Binnenstad" variant="living" />
 
         <RelatedContent currentPage="binnenstad" />
       </div>

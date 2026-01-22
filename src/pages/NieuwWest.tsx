@@ -31,6 +31,7 @@ import {
 import { motion } from "framer-motion";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedContent } from "@/components/RelatedContent";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroNieuwWest from "@/assets/hero-nieuw-west.webp";
 
 const NieuwWest = () => {
@@ -520,6 +521,9 @@ const NieuwWest = () => {
             </CardContent>
           </Card>
         </section>
+
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Nieuw-West" variant="living" />
 
         {/* Related Pages */}
         <RelatedContent currentPage="nieuw-west" />

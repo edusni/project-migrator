@@ -3,6 +3,7 @@ import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { AnimatedSection } from "@/components/ui/animated-section";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroJordaan from "@/assets/hero-jordaan.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -387,6 +388,8 @@ const Jordaan = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Jordaan" variant="living" />
 
         <RelatedContent currentPage="jordaan" />
       </div>
