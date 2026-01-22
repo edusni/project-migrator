@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wie is Du (maker van AmsterDu) | Amsterdam Gids</title>
-    <meta name="description" content="Ontmoet Du, de maker van AmsterDu. Waarom deze Amsterdam gids bestaat: methode, echte ervaring en focus op risico verminderen en ervaring vergroten.">
+    <meta name="description" content="Ik ben Du. AmsterDu bestaat om risico te verminderen en ervaring te vergroten — geen romantisering van Amsterdam, maar echte kosten, deur-tot-deur tijden en regels die op straat werken.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Du">
     
@@ -14,8 +14,8 @@
     <link rel="alternate" hreflang="pt-BR" href="https://amsterdu.com/pt/sobre.html">
     <link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/sobre.html">
     
-    <meta property="og:title" content="Over Amsterdu | Amsterdu">
-    <meta property="og:description" content="Ontmoet Du, de maker van de eerlijke Amsterdam gids.">
+    <meta property="og:title" content="Wie is Du (maker van AmsterDu)">
+    <meta property="og:description" content="Risico verminderen, ervaring vergroten. De eerlijke Amsterdam gids.">
     <meta property="og:url" content="https://amsterdu.com/nl/about.html">
     <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
     <meta property="og:type" content="article">
@@ -26,25 +26,34 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1a1a1a; background: #fff; }
-        .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #1a1a1a; background: #fff; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
         header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 0; text-align: center; }
-        h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #F97316; }
+        h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #F97316; }
+        .subtitle { font-size: 1.2rem; opacity: 0.9; }
         .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
         .breadcrumb a { color: #F97316; }
         main { padding: 40px 0; }
         section { margin-bottom: 40px; }
-        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1rem; border-left: 4px solid #F97316; padding-left: 15px; }
-        h3 { font-size: 1.25rem; color: #F97316; margin: 20px 0 10px; }
-        p { margin-bottom: 1rem; color: #444; }
+        h2 { font-size: 1.5rem; color: #F97316; margin-bottom: 1rem; }
+        p { margin-bottom: 1rem; color: #444; font-size: 1.1rem; }
         ul { margin-left: 20px; margin-bottom: 1rem; }
         li { padding: 5px 0; color: #444; }
         a { color: #F97316; }
+        .highlight { background: #fff3e6; border-left: 4px solid #F97316; padding: 20px; margin: 30px 0; border-radius: 0 8px 8px 0; }
+        .highlight p { margin-bottom: 0; font-weight: 600; font-size: 1.15rem; }
         .card { background: #f9f9f9; padding: 25px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px; }
-        .highlight { background: #fff3e6; border-left: 4px solid #F97316; padding: 15px 20px; margin: 20px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin: 30px 0; }
+        .cta-section { background: #f9f9f9; padding: 30px; border-radius: 12px; text-align: center; margin-top: 40px; }
+        .cta-section h2 { margin-bottom: 0.5rem; }
+        .cta-hint { font-style: italic; color: #666; margin-bottom: 1.5rem; }
+        .cta-buttons { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; }
+        .cta-buttons a { background: #F97316; color: white; padding: 15px 25px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: background 0.2s; }
+        .cta-buttons a:hover { background: #ea580c; }
+        .cta-buttons span { display: block; font-size: 0.85rem; font-weight: 400; opacity: 0.9; margin-top: 4px; }
         footer { background: #1a1a1a; color: white; padding: 30px 0; text-align: center; margin-top: 60px; }
         footer a { color: #F97316; }
-        @media (max-width: 768px) { h1 { font-size: 1.75rem; } }
+        @media (max-width: 768px) { h1 { font-size: 1.75rem; } p { font-size: 1rem; } .cta-buttons { flex-direction: column; } }
     </style>
     
     <script type="application/ld+json">
@@ -60,105 +69,99 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "AboutPage",
-        "name": "Over Amsterdu",
-        "description": "Leer meer over Du en de missie achter Amsterdu",
+        "@type": "Person",
+        "name": "Du",
         "url": "https://amsterdu.com/nl/about.html",
-        "mainEntity": {
-            "@type": "Person",
-            "name": "Du",
-            "description": "Braziliaanse content creator en Amsterdam-liefhebber",
-            "knowsAbout": ["Amsterdam", "Reizen", "Nederland", "Toerisme"]
-        }
+        "description": "Maker van Amsterdu — de gids die risico vermindert en ervaring vergroot in Amsterdam",
+        "nationality": "Brazilian",
+        "knowsAbout": ["Amsterdam", "Reizen", "Nederland", "Nederlandse Cultuur", "Toerisme"]
     }
     </script>
+    
 </head>
 <body>
     <header>
         <div class="container">
             <p class="breadcrumb"><a href="/nl/index.html">Home</a> → Over</p>
-            <h1>Over Amsterdu</h1>
-            <p>De eerlijke Amsterdam gids — van iemand die de stad echt kent.</p>
+            <h1>Wie is Du</h1>
+            <p class="subtitle">Maker van AmsterDu</p>
         </div>
     </header>
     
     <main class="container">
         <section>
-            <h2>Hoi! Ik ben Du</h2>
-            <p>Ik ben een Braziliaan die verliefd werd op Amsterdam en binnenkort de stad mijn thuis mag noemen. Niet de typische toeristen-verliefdheid — ik werd gefascineerd door hoe de stad werkt, de uitdagingen, de cultuurschokken en de ongeschreven regels die geen enkele reisgids je vertelt.</p>
-            <p>Amsterdu ontstond uit frustratie. Na tientallen keren bezoeken en talloze uren research, besefte ik dat de meeste Amsterdam-gidsen ofwel verouderd waren, ofwel gevuld met oppervlakkige informatie die je nergens mee hielp.</p>
-        </section>
-        
-        <section>
-            <h2>Waarom "Brutaal Eerlijk"?</h2>
-            <p>Ik noem dit een "brutaal eerlijke" gids omdat ik je vertel wat andere gidsen niet doen:</p>
-            <ul>
-                <li><strong>De echte kosten:</strong> Die 33%+ belastingen die niemand noemt? Ik leg ze uit.</li>
-                <li><strong>De valkuilen:</strong> Toeristenvallen, oplichters, veelgemaakte fouten — ik waarschuw je.</li>
-                <li><strong>De nuance:</strong> "Is Giethoorn het waard?" — Ja, maar alleen onder bepaalde voorwaarden die ik uitleg.</li>
-                <li><strong>De updates:</strong> 2026 brengt nieuwe regels. Ik hou het actueel.</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Mijn Benadering</h2>
-            <div class="card">
-                <h3>Research</h3>
-                <p>Ik baseer niets op aannames. Ik praat met locals, test aanbevelingen zelf, en update informatie wanneer dingen veranderen.</p>
-            </div>
-            <div class="card">
-                <h3>Praktisch</h3>
-                <p>Geen vage "bezoek dit mooie museum." In plaats daarvan: wanneer te boeken, hoeveel het echt kost, hoe lang het duurt, en of het de moeite waard is voor jouw situatie.</p>
-            </div>
-            <div class="card">
-                <h3>Eerlijk</h3>
-                <p>Als iets overrated is, zeg ik het. Als iets geweldig is, leg ik uit waarom. Geen gesponsorde content die mijn oordeel beïnvloedt.</p>
-            </div>
-        </section>
-        
-        <section>
-            <h2>Voor Wie is Amsterdu?</h2>
-            <ul>
-                <li><strong>Eerste bezoekers:</strong> Die de klassiekers willen doen zonder in valkuilen te trappen</li>
-                <li><strong>Terugkerende reizigers:</strong> Die voorbij de oppervlakte willen en verborgen parels zoeken</li>
-                <li><strong>Nederlanders:</strong> Die hun eigen stad willen herontdekken met frisse ogen</li>
-                <li><strong>Potentiële expats:</strong> Die overwegen naar Amsterdam te verhuizen</li>
-                <li><strong>Planners:</strong> Die het graag goed willen doen en vooruit willen denken</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Wat Maakt Deze Gids Anders?</h2>
+            <p><strong>Ik ben Du.</strong></p>
+            
+            <p>AmsterDu is ontstaan om een simpele reden: Amsterdam is geweldig, maar heeft valkuilen die tijd en geld kosten. Boetes voor onzin, restaurants gemaakt voor toeristen, routes die perfect lijken maar op dag twee uitputtend worden.</p>
+            
             <div class="highlight">
-                <p><strong>Geen affiliate links die mijn aanbevelingen beïnvloeden.</strong> Als ik een hotel of restaurant aanraad, is het omdat ik erin geloof, niet omdat ik een commissie krijg.</p>
+                <p>Ik schrijf niet om de stad te romantiseren. Ik schrijf om risico te verminderen en ervaring te vergroten.</p>
             </div>
+        </section>
+        
+        <section>
+            <h2>Wat ik hier doe</h2>
+            
+            <p>"Giswerk" omzetten in praktische beslissingen.</p>
+            
+            <p>In de praktijk betekent dit:</p>
+            
             <ul>
-                <li>Geschreven door een buitenstaander met insider-kennis</li>
-                <li>Regelmatig geüpdatet met nieuwe regels en veranderingen</li>
-                <li>Beschikbaar in drie talen (PT, EN, NL)</li>
-                <li>Gefocust op praktische beslissingen, niet alleen inspiratie</li>
+                <li>echte reistijd deur tot deur vergelijken (niet alleen "lijkt dichtbij op de kaart")</li>
+                <li>eindkosten tonen (met belastingen en regels)</li>
+                <li>aangeven waar drukte het verschil maakt (juist moment vs. valkuil)</li>
+                <li>regels uitleggen op een manier die je op straat kunt toepassen</li>
             </ul>
         </section>
         
         <section>
-            <h2>Contact</h2>
-            <p>Heb je vragen, suggesties of feedback? Ik hoor graag van je:</p>
-            <ul>
-                <li><strong>E-mail:</strong> hoi@amsterdu.com</li>
-                <li><strong>Instagram:</strong> @amsterdu</li>
-            </ul>
-            <p>Bedankt voor het lezen. Ik hoop dat deze gids je helpt om Amsterdam op de beste manier te beleven — slim, bewust en authentiek.</p>
+            <h2>Ik breng drie dingen samen</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>🔍 Nieuwsgierigheid</h3>
+                    <p>Om verder te gaan dan het voor de hand liggende.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>📊 Methode</h3>
+                    <p>Om te testen en vergelijken voordat ik aanbeveel.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>💬 Eerlijkheid</h3>
+                    <p>Om te zeggen wanneer iets mooi is, maar je tijd niet waard.</p>
+                </div>
+            </div>
         </section>
         
         <section>
-            <h2>Begin met Plannen</h2>
+            <h2>Voor wie is AmsterDu</h2>
+            
             <ul>
-                <li><a href="/nl/index.html">Amsterdam Gids Home</a></li>
-                <li><a href="/nl/planning.html">Reis Planning</a></li>
-                <li><a href="/nl/accommodation.html">Waar Overnachten</a></li>
-                <li><a href="/nl/attractions.html">Bezienswaardigheden</a></li>
+                <li>✓ Gaat naar Amsterdam en wil toeristenvallen vermijden</li>
+                <li>✓ Wil het waarom van keuzes begrijpen</li>
+                <li>✓ Wil tijd en geld met intentie besteden</li>
+                <li>✓ Wil geen star schema</li>
             </ul>
+            
+            <p>Alles wat je hier ziet volgt dit principe: <strong>minder improvisatie, meer duidelijkheid.</strong></p>
         </section>
+        
+        <section style="text-align: center; margin: 50px 0;">
+            <p style="font-size: 1.5rem; font-weight: bold; color: #F97316;">Welkom bij AmsterDu.</p>
+            <p style="color: #666;">— Du</p>
+        </section>
+        
+        <div class="cta-section">
+            <h2>Klaar om te beginnen?</h2>
+            <p class="cta-hint">Begin met wat de meeste problemen geeft: accommodatie en vervoer.</p>
+            <div class="cta-buttons">
+                <a href="/nl/planning.html">📅 Planning<span>Beter plannen</span></a>
+                <a href="/nl/accommodation.html">🏨 Accommodatie<span>Goed slapen</span></a>
+                <a href="/nl/attractions.html">🎨 Attracties<span>Meer doen in minder tijd</span></a>
+            </div>
+        </div>
     </main>
     
     <footer>
