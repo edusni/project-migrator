@@ -20,33 +20,34 @@ import {
   NeighborhoodListSection
 } from "@/components/coffeeshops";
 
-// Helper function for trilingual content
+// Helper function for trilingual content - Updated 2026
 const getContent = (lang: Language) => {
   const content = {
     pt: {
       title: "Regras de Coffeeshops em Amsterdam 2026",
-      description: "Onde pode fumar, limite de compra e como evitar multa de até €100",
-      intro: "Turista pode entrar em coffeeshop em Amsterdam em 2026, desde que tenha 18+ e documento. O limite é 5g por pessoa, e fumar na rua em áreas centrais como Red Light District pode gerar multa de até €100. Neste guia você vê onde pode, onde não pode e como consumir sem dor de cabeça.",
+      description: "Onde pode fumar, limite de compra (5g) e como evitar multa de até €100",
+      intro: "Amsterdam continua sendo uma das únicas cidades holandesas onde turistas de 18 anos ou mais podem comprar e consumir cannabis em coffeeshops. A cannabis permanece ilegal, mas é tolerada em pequenos volumes sob um conjunto de regras conhecido como gedoogbeleid. Entender essas regras é fundamental para evitar multas de até €100 nas áreas centrais e para consumir com segurança.",
       whatIs: {
         title: "O que um coffeeshop é (e o que ele não é)",
         text: "Coffeeshop, em Amsterdam, é um estabelecimento licenciado para vender cannabis sob regras de tolerância. A cannabis NÃO vira 'totalmente legal' por causa disso. O sistema existe para redução de danos e separar o mercado de cannabis do mercado de drogas mais perigosas.",
         warning: "É descriminalizada e TOLERADA (Gedoogbeleid) sob condições estritas — não legalizada!"
       },
       tourists: {
-        title: "Turistas Podem Comprar?",
+        title: "Quem Pode Comprar e Quanto",
         yes: "SIM, Turistas São Permitidos!",
-        desc: "Em Amsterdam, isso costuma ser permitido. A regra de residência (ingezetenencriterium) varia por município na Holanda, mas Amsterdam optou CONSCIENTEMENTE por NÃO implementar esta proibição.",
-        requirements: "Idade mínima: 18 anos. Leve documento com foto (passaporte resolve)."
+        desc: "A regra do residente (ingezetenencriterium) obriga que apenas residentes holandeses possam comprar cannabis. Essa norma foi estabelecida nacionalmente em 2013, mas cada município decide se a aplica. Amsterdam NÃO aplica o requisito de residência, o que significa que visitantes maiores de idade podem comprar cannabis legalmente.",
+        requirements: "Idade mínima: 18 anos. Limite de compra: 5g por pessoa/dia. Documento obrigatório (passaporte ou cartão de identidade)."
       },
       streetRule: {
-        title: "A Regra Mais Importante de 2026: Onde Você NÃO Pode Fumar",
-        text: "Desde maio de 2023, Amsterdam apertou o consumo em áreas centrais, começando pelo Red Light District.",
+        title: "Onde é Permitido e Onde é Proibido Fumar",
+        text: "Desde maio de 2023 o município de Amsterdam implantou um banimento de fumar cannabis nas ruas em áreas turísticas sensíveis. A polícia adota abordagem educativa: em caso de desobediência, o fumante recebe um aviso; persistindo, pode ser multado.",
         fine: "Multa: até €100!",
-        zones: ["Red Light District (De Wallen)", "Praça Dam", "Damrak", "Nieuwmarkt"],
+        zones: ["Red Light District (De Wallen)", "Dam", "Damrak", "Nieuwmarkt"],
         implication: "O lugar mais seguro para consumir no centro é DENTRO do coffeeshop (se houver lounge) ou em local privado permitido.",
         checklist: [
           "Não fume na rua no Red Light District",
-          "Se quiser consumir, prefira lounge do coffeeshop ou local privado permitido"
+          "Consumo dentro do coffeeshop ou em propriedade privada",
+          "Muitos coffeeshops oferecem misturas de ervas sem tabaco como alternativa"
         ]
       },
       gedoogbeleid: {
@@ -69,7 +70,7 @@ const getContent = (lang: Language) => {
         },
         experiment: {
           title: "Wietexperiment (2026)",
-          text: "A Holanda vem testando uma cadeia mais regulada em cidades participantes, com fases e expansão. Isso é relevante para entender por que o tema muda com o tempo, mas não é uma regra 'igual para Amsterdam inteira'."
+          text: "O governo está testando um Experimento de Cadeia de Suprimento Regulada, em que produtores licenciados fornecem cannabis regulamentada para coffeeshops em alguns municípios participantes. A fase experimental começou em 2025. Amsterdam NÃO participa deste experimento até o momento."
         }
       },
       terminology: {
@@ -82,14 +83,14 @@ const getContent = (lang: Language) => {
         ]
       },
       etiquette: {
-        title: "Etiqueta do Coffeeshop",
+        title: "Etiqueta do Coffeeshop (Como Se Comportar)",
         steps: [
-          { num: "1", title: "A Porta", desc: "Tenha sua identificação pronta (passaporte). Entrada estritamente 18+." },
-          { num: "2", title: "O Balcão", desc: "Aproxime-se do balcão onde a cannabis é vendida. O 'budtender' é seu GUIA!" },
-          { num: "3", title: "O Menu", desc: "Peça para ver o menu. Dividido por: Weed, Hash, Edibles, Pre-rolled." },
-          { num: "4", title: "O Pedido", desc: "NÃO apenas aponte para um nome! Diga ao budtender os EFEITOS que procura: 'Algo relaxante para a noite' ou 'Sou iniciante, o que você recomenda?'" },
-          { num: "5", title: "A Compra", desc: "Limite legal: 5g por pessoa/dia. Dinheiro é mais seguro (alguns aceitam cartão)." },
-          { num: "6", title: "A Estadia", desc: "Se planeja ficar, vá ao balcão do BAR e compre uma bebida. É de boa educação!" }
+          { num: "1", title: "Documento Pronto", desc: "Sempre mostre seu passaporte ou carteira de identidade ao entrar. Entrada estritamente 18+." },
+          { num: "2", title: "Use o Budtender", desc: "Explique o efeito desejado; não peça apenas pela variedade. O funcionário vai sugerir algo compatível." },
+          { num: "3", title: "Compre Algo", desc: "Os lounges funcionam como cafés – é educado pedir uma bebida se for ficar." },
+          { num: "4", title: "Não Misture Tabaco", desc: "Fumar tabaco dentro de coffeeshops é ilegal. Use apenas cannabis ou misturas de ervas permitidas." },
+          { num: "5", title: "Respeite o Limite", desc: "5g por pessoa. Guardar grandes quantidades pode gerar problemas e é ilegal." },
+          { num: "6", title: "Não Tire Fotos", desc: "Muitos clientes preferem discrição; fotografia é mal vista." }
         ],
         dos: [
           "Compre Algo (REGRA Nº 1!) — coffeeshops são NEGÓCIOS, não salas públicas",
@@ -110,7 +111,7 @@ const getContent = (lang: Language) => {
       edibles: {
         title: "Edibles (Space Cakes): A Parte que Mais Dá Ruim",
         warning: "O risco não é 'overdose fatal'. O risco é ansiedade, pânico, desorientação e uma experiência horrível por dose alta sem perceber.",
-        problem: "Fumar: Efeito quase IMEDIATO (5-10 min). Edibles: Precisam ser DIGERIDOS. Efeito leva 20 minutos a 2 HORAS!",
+        problem: "Fumar: Efeito quase IMEDIATO (5-10 min). Edibles: Precisam ser DIGERIDOS. Efeito leva 30 minutos a 2 HORAS!",
         mistake: "O Erro Clássico: Comer mais após 30 minutos porque 'não está funcionando'. Resultado: paranoia e ansiedade EXTREMA.",
         rules: [
           "Comece com uma porção PEQUENA (1/4 de um brownie)",
@@ -219,43 +220,44 @@ const getContent = (lang: Language) => {
       faq: {
         title: "Perguntas Frequentes",
         items: [
-          { q: "Maconha é legal em Amsterdam?", a: "Não no sentido simples de 'legalizada'. O que existe é tolerância sob regras. Isso permite a operação de coffeeshops, mas ainda há limites e fiscalização." },
-          { q: "Turista pode comprar em coffeeshops?", a: "Em Amsterdam, sim. A regra de residência varia por município, mas Amsterdam não implementou essa proibição. Leve documento e siga as regras." },
-          { q: "Posso fumar na rua?", a: "No centro e no Red Light District, a cidade restringiu o consumo em espaços públicos e a multa pode chegar a €100. Prefira consumir em locais apropriados." },
-          { q: "Posso fumar tabaco dentro do coffeeshop?", a: "NÃO! É ilegal fumar tabaco em qualquer estabelecimento público na Holanda. Se você misturar (fazer um 'spliff'), será convidado a se retirar." },
+          { q: "Maconha é legal em Amsterdam?", a: "Não. A posse e venda de pequenas quantidades de cannabis são toleradas mediante respeito às regras do gedoogbeleid." },
+          { q: "Turista pode comprar em coffeeshops?", a: "Sim, Amsterdam não aplica o critério de residência. Basta ter 18 anos e apresentar documento de identidade." },
+          { q: "Quanto posso comprar?", a: "Até 5g por pessoa/dia." },
+          { q: "Posso fumar na rua?", a: "No Red Light District, Dam, Damrak e Nieuwmarkt não – a multa pode chegar a €100. Nas demais áreas, ainda é comum ver consumo em espaços abertos, mas é mais seguro usar o lounge do coffeeshop ou um local privado." },
+          { q: "Posso fumar tabaco dentro do coffeeshop?", a: "Não. A legislação antitabaco proíbe fumar tabaco em locais fechados; use cannabis pura ou misturas autorizadas." },
+          { q: "Quais bairros têm melhores coffeeshops?", a: "O Centro (Centrum) concentra muitos estabelecimentos, mas tende a ser mais caro e turístico. Bairros como Jordaan, De Pijp, Oud-West e Oost oferecem ambientes mais tranquilos, preços melhores e atendimento mais local." },
+          { q: "Posso pagar com cartão?", a: "A maioria dos coffeeshops aceita pagamentos em dinheiro; alguns aceitam cartão de débito local (pin). Leve dinheiro para evitar surpresas." },
+          { q: "E se eu levar cannabis para outro país?", a: "É ilegal transportar cannabis para fora da Holanda. Você pode ser punido em controles fronteiriços de seu país de destino." },
           { q: "Qual é o maior erro com space cake?", a: "Repetir dose cedo demais. Comestível pode demorar bem mais para 'bater'. Coma 1/4, espere 90 minutos e veja como se sente." },
-          { q: "Quanto posso comprar?", a: "O limite é 5g por pessoa por dia em coffeeshops tolerados." },
-          { q: "Dá para pagar no cartão?", a: "Varia. Alguns aceitam cartão, outros preferem dinheiro. Tenha as duas opções." },
-          { q: "Posso levar para outro país?", a: "NÃO conte com isso. Regras de fronteira e aeroportos são outra categoria de risco. Consuma onde é permitido e não transporte." },
-          { q: "Quais são os melhores coffeeshops?", a: "Depende do que você busca. Para iniciantes: Katsu, Coffeeshop Amsterdam. Para qualidade premium: Grey Area, Boerejongens. Para relaxar: Siberië, Paradox." },
           { q: "O que é um 'brown café'?", a: "É um bar tradicional holandês (não um coffeeshop!). Serve álcool, café e petiscos. Nada a ver com cannabis." }
         ]
       }
     },
     en: {
       title: "Amsterdam Coffeeshop Rules 2026",
-      description: "Where you can smoke, purchase limits and how to avoid fines up to €100",
-      intro: "Tourists can enter coffeeshops in Amsterdam in 2026, as long as they're 18+ with valid ID. The limit is 5g per person, and smoking on the street in central areas like the Red Light District can result in fines up to €100. In this guide you'll see where you can, where you can't, and how to consume without trouble.",
+      description: "Where you can smoke, purchase limits (5g) and how to avoid fines up to €100",
+      intro: "Amsterdam remains one of the only Dutch cities where tourists aged 18 and over can buy and consume cannabis in coffeeshops. Cannabis remains illegal, but is tolerated in small quantities under a set of rules known as gedoogbeleid. Understanding these rules is essential to avoid fines up to €100 in central areas and to consume safely.",
       whatIs: {
         title: "What a coffeeshop is (and what it isn't)",
         text: "A coffeeshop in Amsterdam is a licensed establishment to sell cannabis under tolerance rules. Cannabis does NOT become 'fully legal' because of this. The system exists for harm reduction and to separate the cannabis market from more dangerous drug markets.",
         warning: "It's decriminalized and TOLERATED (Gedoogbeleid) under strict conditions — not legalized!"
       },
       tourists: {
-        title: "Can Tourists Buy?",
+        title: "Who Can Buy and How Much",
         yes: "YES, Tourists Are Allowed!",
-        desc: "In Amsterdam, this is usually permitted. The residency rule (ingezetenencriterium) varies by municipality in the Netherlands, but Amsterdam CONSCIOUSLY chose NOT to implement this ban.",
-        requirements: "Minimum age: 18. Bring photo ID (passport works)."
+        desc: "The residency rule (ingezetenencriterium) requires that only Dutch residents can buy cannabis. This rule was established nationally in 2013, but each municipality decides whether to apply it. Amsterdam does NOT apply the residency requirement, meaning adult visitors can legally purchase cannabis.",
+        requirements: "Minimum age: 18. Purchase limit: 5g per person/day. Valid ID required (passport or identity card)."
       },
       streetRule: {
-        title: "The Most Important Rule of 2026: Where You CAN'T Smoke",
-        text: "Since May 2023, Amsterdam tightened consumption in central areas, starting with the Red Light District.",
+        title: "Where Smoking is Allowed and Prohibited",
+        text: "Since May 2023, the municipality of Amsterdam implemented a ban on smoking cannabis on streets in sensitive tourist areas. Police take an educational approach: in case of disobedience, the smoker receives a warning; if persistent, they can be fined.",
         fine: "Fine: up to €100!",
         zones: ["Red Light District (De Wallen)", "Dam Square", "Damrak", "Nieuwmarkt"],
         implication: "The safest place to consume in the center is INSIDE the coffeeshop (if there's a lounge) or in a permitted private location.",
         checklist: [
           "Don't smoke on the street in the Red Light District",
-          "If you want to consume, prefer coffeeshop lounge or permitted private location"
+          "Consume inside the coffeeshop or on private property",
+          "Many coffeeshops offer tobacco-free herbal mixes as alternatives"
         ]
       },
       gedoogbeleid: {
@@ -278,7 +280,7 @@ const getContent = (lang: Language) => {
         },
         experiment: {
           title: "Wietexperiment (2026)",
-          text: "The Netherlands has been testing a more regulated chain in participating cities, with phases and expansion. This is relevant to understand why the topic changes over time, but it's not a rule 'equal for all of Amsterdam'."
+          text: "The government is testing a Regulated Supply Chain Experiment, where licensed producers supply regulated cannabis to coffeeshops in some participating municipalities. The experimental phase started in 2025. Amsterdam is NOT participating in this experiment so far."
         }
       },
       terminology: {
@@ -291,14 +293,14 @@ const getContent = (lang: Language) => {
         ]
       },
       etiquette: {
-        title: "Coffeeshop Etiquette",
+        title: "Coffeeshop Etiquette (How to Behave)",
         steps: [
-          { num: "1", title: "The Door", desc: "Have your ID ready (passport). Entry strictly 18+." },
-          { num: "2", title: "The Counter", desc: "Approach the counter where cannabis is sold. The 'budtender' is your GUIDE!" },
-          { num: "3", title: "The Menu", desc: "Ask to see the menu. Divided by: Weed, Hash, Edibles, Pre-rolled." },
-          { num: "4", title: "The Order", desc: "DON'T just point at a name! Tell the budtender the EFFECTS you're looking for: 'Something relaxing for the evening' or 'I'm a beginner, what do you recommend?'" },
-          { num: "5", title: "The Purchase", desc: "Legal limit: 5g per person/day. Cash is safer (some accept cards)." },
-          { num: "6", title: "The Stay", desc: "If you plan to stay, go to the BAR counter and buy a drink. It's good etiquette!" }
+          { num: "1", title: "ID Ready", desc: "Always show your passport or ID card when entering. Entry strictly 18+." },
+          { num: "2", title: "Use the Budtender", desc: "Explain the desired effect; don't just ask for the strain. The staff will suggest something suitable." },
+          { num: "3", title: "Buy Something", desc: "Lounges work like cafés – it's polite to order a drink if you're staying." },
+          { num: "4", title: "Don't Mix Tobacco", desc: "Smoking tobacco inside coffeeshops is illegal. Use only pure cannabis or permitted herbal mixes." },
+          { num: "5", title: "Respect the Limit", desc: "5g per person. Carrying large quantities can cause problems and is illegal." },
+          { num: "6", title: "Don't Take Photos", desc: "Many customers prefer discretion; photography is frowned upon." }
         ],
         dos: [
           "Buy Something (RULE #1!) — coffeeshops are BUSINESSES, not public lounges",
@@ -319,7 +321,7 @@ const getContent = (lang: Language) => {
       edibles: {
         title: "Edibles (Space Cakes): The Part That Goes Wrong Most",
         warning: "The risk isn't 'fatal overdose'. The risk is anxiety, panic, disorientation and a horrible experience from unknowingly taking too high a dose.",
-        problem: "Smoking: Effect almost IMMEDIATE (5-10 min). Edibles: Need to be DIGESTED. Effect takes 20 minutes to 2 HOURS!",
+        problem: "Smoking: Effect almost IMMEDIATE (5-10 min). Edibles: Need to be DIGESTED. Effect takes 30 minutes to 2 HOURS!",
         mistake: "The Classic Mistake: Eating more after 30 minutes because 'it's not working'. Result: paranoia and EXTREME anxiety.",
         rules: [
           "Start with a SMALL portion (1/4 of a brownie)",
@@ -428,43 +430,44 @@ const getContent = (lang: Language) => {
       faq: {
         title: "Frequently Asked Questions",
         items: [
-          { q: "Is marijuana legal in Amsterdam?", a: "Not in the simple sense of 'legalized'. What exists is tolerance under rules. This allows coffeeshop operation, but there are still limits and enforcement." },
-          { q: "Can tourists buy at coffeeshops?", a: "In Amsterdam, yes. The residency rule varies by municipality, but Amsterdam didn't implement this ban. Bring ID and follow the rules." },
-          { q: "Can I smoke on the street?", a: "In the center and Red Light District, the city restricted consumption in public spaces and the fine can reach €100. Prefer appropriate locations." },
-          { q: "Can I smoke tobacco inside the coffeeshop?", a: "NO! It's illegal to smoke tobacco in any public establishment in the Netherlands. If you mix (make a 'spliff'), you'll be asked to leave." },
+          { q: "Is marijuana legal in Amsterdam?", a: "No. Possession and sale of small amounts of cannabis are tolerated under the gedoogbeleid rules." },
+          { q: "Can tourists buy at coffeeshops?", a: "Yes, Amsterdam does not apply the residency criterion. You just need to be 18 and present valid ID." },
+          { q: "How much can I buy?", a: "Up to 5g per person/day." },
+          { q: "Can I smoke on the street?", a: "In the Red Light District, Dam, Damrak and Nieuwmarkt, no – fines can reach €100. In other areas, public consumption is still common, but it's safer to use the coffeeshop lounge or a private location." },
+          { q: "Can I smoke tobacco inside the coffeeshop?", a: "No. Anti-tobacco legislation prohibits smoking tobacco indoors; use pure cannabis or authorized mixes." },
+          { q: "Which neighborhoods have the best coffeeshops?", a: "Centrum has many establishments but tends to be more expensive and touristy. Neighborhoods like Jordaan, De Pijp, Oud-West and Oost offer calmer environments, better prices and more local service." },
+          { q: "Can I pay by card?", a: "Most coffeeshops accept cash; some accept local debit cards (pin). Bring cash to avoid surprises." },
+          { q: "Can I take cannabis to another country?", a: "It's illegal to transport cannabis outside the Netherlands. You can be prosecuted at border controls in your destination country." },
           { q: "What's the biggest mistake with space cakes?", a: "Repeating the dose too early. Edibles can take much longer to 'hit'. Eat 1/4, wait 90 minutes and see how you feel." },
-          { q: "How much can I buy?", a: "The limit is 5g per person per day at tolerated coffeeshops." },
-          { q: "Can I pay by card?", a: "Varies. Some accept cards, others prefer cash. Have both options." },
-          { q: "Can I take it to another country?", a: "DON'T count on it. Border and airport rules are another category of risk. Consume where it's allowed and don't transport." },
-          { q: "What are the best coffeeshops?", a: "Depends on what you're looking for. For beginners: Katsu, Coffeeshop Amsterdam. For premium quality: Grey Area, Boerejongens. For relaxing: Siberië, Paradox." },
           { q: "What's a 'brown café'?", a: "It's a traditional Dutch bar (not a coffeeshop!). Serves alcohol, coffee and snacks. Nothing to do with cannabis." }
         ]
       }
     },
     nl: {
       title: "Amsterdam Coffeeshop Regels 2026",
-      description: "Waar je mag roken, aankooplimieten en hoe boetes tot €100 te vermijden",
-      intro: "Toeristen mogen coffeeshops in Amsterdam bezoeken in 2026, zolang ze 18+ zijn met geldig ID. De limiet is 5g per persoon, en roken op straat in centrale gebieden zoals de Wallen kan boetes tot €100 opleveren. In deze gids zie je waar wel, waar niet en hoe je zonder problemen kunt consumeren.",
+      description: "Waar je mag roken, aankooplimieten (5g) en hoe boetes tot €100 te vermijden",
+      intro: "Amsterdam blijft een van de weinige Nederlandse steden waar toeristen van 18 jaar en ouder cannabis kunnen kopen en consumeren in coffeeshops. Cannabis blijft illegaal, maar wordt in kleine hoeveelheden gedoogd onder een reeks regels bekend als het gedoogbeleid. Het begrijpen van deze regels is essentieel om boetes tot €100 in centrale gebieden te vermijden en veilig te consumeren.",
       whatIs: {
         title: "Wat een coffeeshop is (en wat het niet is)",
         text: "Een coffeeshop in Amsterdam is een gelicentieerde zaak om cannabis te verkopen onder gedoogregels. Cannabis wordt NIET 'volledig legaal' hierdoor. Het systeem bestaat voor harm reduction en om de cannabismarkt te scheiden van gevaarlijkere drugsmarkten.",
         warning: "Het is gedecriminaliseerd en GEDOOGD (Gedoogbeleid) onder strikte voorwaarden — niet gelegaliseerd!"
       },
       tourists: {
-        title: "Mogen Toeristen Kopen?",
+        title: "Wie Mag Kopen en Hoeveel",
         yes: "JA, Toeristen Zijn Welkom!",
-        desc: "In Amsterdam is dit meestal toegestaan. Het ingezetenencriterium varieert per gemeente in Nederland, maar Amsterdam heeft BEWUST gekozen om dit verbod NIET te implementeren.",
-        requirements: "Minimumleeftijd: 18 jaar. Neem een legitimatiebewijs mee (paspoort werkt)."
+        desc: "Het ingezetenencriterium vereist dat alleen Nederlandse ingezetenen cannabis mogen kopen. Deze regel werd in 2013 landelijk ingesteld, maar elke gemeente beslist of ze deze toepast. Amsterdam past het ingezetenencriterium NIET toe, wat betekent dat volwassen bezoekers legaal cannabis kunnen kopen.",
+        requirements: "Minimumleeftijd: 18 jaar. Aankooplimiet: 5g per persoon/dag. Geldig ID verplicht (paspoort of identiteitskaart)."
       },
       streetRule: {
-        title: "De Belangrijkste Regel van 2026: Waar Je NIET Mag Roken",
-        text: "Sinds mei 2023 heeft Amsterdam het gebruik in centrale gebieden aangescherpt, beginnend met de Wallen.",
+        title: "Waar Roken Toegestaan en Verboden Is",
+        text: "Sinds mei 2023 heeft de gemeente Amsterdam een verbod op het roken van cannabis op straat in gevoelige toeristische gebieden ingevoerd. De politie hanteert een educatieve aanpak: bij overtreding krijgt de roker een waarschuwing; bij volharding kan een boete worden opgelegd.",
         fine: "Boete: tot €100!",
         zones: ["Red Light District (De Wallen)", "Dam", "Damrak", "Nieuwmarkt"],
         implication: "De veiligste plek om in het centrum te consumeren is BINNEN de coffeeshop (als er een lounge is) of op een toegestane privélocatie.",
         checklist: [
           "Rook niet op straat in de Wallen",
-          "Als je wilt consumeren, kies voor coffeeshop lounge of toegestane privélocatie"
+          "Consumeer binnen in de coffeeshop of op privéterrein",
+          "Veel coffeeshops bieden tabaksvrije kruidenmengsels als alternatief"
         ]
       },
       gedoogbeleid: {
@@ -487,7 +490,7 @@ const getContent = (lang: Language) => {
         },
         experiment: {
           title: "Wietexperiment (2026)",
-          text: "Nederland test een meer gereguleerde keten in deelnemende gemeenten, met fases en uitbreiding. Dit is relevant om te begrijpen waarom het onderwerp verandert, maar het is geen regel 'gelijk voor heel Amsterdam'."
+          text: "De overheid test een Experiment Gesloten Coffeeshopketen, waarbij gelicentieerde producenten gereguleerde cannabis leveren aan coffeeshops in deelnemende gemeenten. De experimentele fase begon in 2025. Amsterdam doet tot nu toe NIET mee aan dit experiment."
         }
       },
       terminology: {
@@ -500,14 +503,14 @@ const getContent = (lang: Language) => {
         ]
       },
       etiquette: {
-        title: "Coffeeshop Etiquette",
+        title: "Coffeeshop Etiquette (Hoe Je Gedraagt)",
         steps: [
-          { num: "1", title: "De Deur", desc: "Heb je legitimatie klaar (paspoort). Toegang strikt 18+." },
-          { num: "2", title: "De Balie", desc: "Benader de balie waar cannabis wordt verkocht. De 'budtender' is je GIDS!" },
-          { num: "3", title: "Het Menu", desc: "Vraag om het menu. Verdeeld in: Wiet, Hasj, Edibles, Voorgedraaid." },
-          { num: "4", title: "De Bestelling", desc: "Wijs NIET alleen naar een naam! Vertel de budtender welke EFFECTEN je zoekt: 'Iets relaxends voor de avond' of 'Ik ben beginner, wat raad je aan?'" },
-          { num: "5", title: "De Aankoop", desc: "Wettelijke limiet: 5g per persoon/dag. Contant is veiliger (sommige accepteren pinpas)." },
-          { num: "6", title: "Het Verblijf", desc: "Als je wilt blijven, ga naar de BAR en koop een drankje. Dat hoort!" }
+          { num: "1", title: "ID Klaar", desc: "Toon altijd je paspoort of identiteitskaart bij binnenkomst. Toegang strikt 18+." },
+          { num: "2", title: "Gebruik de Budtender", desc: "Leg het gewenste effect uit; vraag niet alleen naar de soort. Het personeel zal iets passends suggereren." },
+          { num: "3", title: "Koop Iets", desc: "Lounges werken als cafés – het is beleefd om een drankje te bestellen als je blijft." },
+          { num: "4", title: "Geen Tabak Mengen", desc: "Tabak roken in coffeeshops is illegaal. Gebruik alleen pure cannabis of toegestane kruidenmengsels." },
+          { num: "5", title: "Respecteer de Limiet", desc: "5g per persoon. Grote hoeveelheden bij je hebben kan problemen veroorzaken en is illegaal." },
+          { num: "6", title: "Geen Foto's", desc: "Veel klanten geven de voorkeur aan discretie; fotografie wordt afgekeurd." }
         ],
         dos: [
           "Koop Iets (REGEL #1!) — coffeeshops zijn BEDRIJVEN, geen openbare lounges",
@@ -528,7 +531,7 @@ const getContent = (lang: Language) => {
       edibles: {
         title: "Edibles (Space Cakes): Het Deel Dat Het Vaakst Misgaat",
         warning: "Het risico is geen 'fatale overdosis'. Het risico is angst, paniek, desoriëntatie en een verschrikkelijke ervaring door onbewust te hoge dosering.",
-        problem: "Roken: Effect bijna DIRECT (5-10 min). Edibles: Moeten worden VERTEERD. Effect duurt 20 minuten tot 2 UUR!",
+        problem: "Roken: Effect bijna DIRECT (5-10 min). Edibles: Moeten worden VERTEERD. Effect duurt 30 minuten tot 2 UUR!",
         mistake: "De Klassieke Fout: Na 30 minuten meer eten omdat 'het niet werkt'. Resultaat: paranoia en EXTREME angst.",
         rules: [
           "Begin met een KLEINE portie (1/4 van een brownie)",
@@ -541,7 +544,7 @@ const getContent = (lang: Language) => {
             "Blijf KALM (het is tijdelijk!)",
             "Blijf op een VEILIGE plek (hotel of coffeeshop)",
             "Drink iets ZOETS (sap, frisdrank)",
-            "Adem diep en onthoud: Het gevoel GAT VOORBIJ"
+            "Adem diep en onthoud: Het gevoel GAAT VOORBIJ"
           ]
         }
       },
@@ -637,15 +640,15 @@ const getContent = (lang: Language) => {
       faq: {
         title: "Veelgestelde Vragen",
         items: [
-          { q: "Is marihuana legaal in Amsterdam?", a: "Niet in de simpele zin van 'gelegaliseerd'. Wat bestaat is tolerantie onder regels. Dit maakt coffeeshopwerking mogelijk, maar er zijn nog steeds limieten en handhaving." },
-          { q: "Mogen toeristen kopen bij coffeeshops?", a: "In Amsterdam, ja. Het ingezetenencriterium varieert per gemeente, maar Amsterdam heeft dit verbod niet geïmplementeerd. Neem ID mee en volg de regels." },
-          { q: "Mag ik op straat roken?", a: "In het centrum en de Wallen heeft de stad consumptie in openbare ruimtes beperkt en de boete kan oplopen tot €100. Kies voor gepaste locaties." },
-          { q: "Mag ik tabak roken in de coffeeshop?", a: "NEE! Het is illegaal om tabak te roken in openbare gelegenheden in Nederland. Als je mengt (een 'spliff' maakt), word je gevraagd te vertrekken." },
+          { q: "Is marihuana legaal in Amsterdam?", a: "Nee. Bezit en verkoop van kleine hoeveelheden cannabis worden gedoogd onder de regels van het gedoogbeleid." },
+          { q: "Mogen toeristen kopen bij coffeeshops?", a: "In Amsterdam, ja. Het ingezetenencriterium geldt niet in Amsterdam. Je hoeft alleen 18+ te zijn en geldig ID te tonen." },
+          { q: "Hoeveel mag ik kopen?", a: "Tot 5g per persoon/dag." },
+          { q: "Mag ik op straat roken?", a: "In de Wallen, Dam, Damrak en Nieuwmarkt niet – boetes kunnen oplopen tot €100. In andere gebieden is openbaar gebruik nog gebruikelijk, maar het is veiliger om de coffeeshop lounge of een privélocatie te gebruiken." },
+          { q: "Mag ik tabak roken in de coffeeshop?", a: "Nee. Antitabakswetgeving verbiedt het roken van tabak binnenshuis; gebruik pure cannabis of geautoriseerde mengsels." },
+          { q: "Welke wijken hebben de beste coffeeshops?", a: "Centrum heeft veel zaken maar is duurder en toeristischer. Wijken als Jordaan, De Pijp, Oud-West en Oost bieden rustigere omgevingen, betere prijzen en meer lokale service." },
+          { q: "Kan ik pinnen?", a: "De meeste coffeeshops accepteren contant; sommige accepteren lokale pinpassen. Neem contant mee om verrassingen te voorkomen." },
+          { q: "Kan ik cannabis meenemen naar een ander land?", a: "Het is illegaal om cannabis buiten Nederland te vervoeren. Je kunt worden vervolgd bij grenscontroles in je bestemmingsland." },
           { q: "Wat is de grootste fout met space cakes?", a: "Te vroeg herhalen. Edibles kunnen veel langer duren om 'aan te slaan'. Eet 1/4, wacht 90 minuten en kijk hoe je je voelt." },
-          { q: "Hoeveel mag ik kopen?", a: "De limiet is 5g per persoon per dag bij gedoogde coffeeshops." },
-          { q: "Kan ik pinnen?", a: "Varieert. Sommige accepteren pin, anderen hebben liever contant. Heb beide opties." },
-          { q: "Kan ik het meenemen naar een ander land?", a: "Reken er NIET op. Grens- en luchthavenregels zijn een andere categorie risico. Consumeer waar het is toegestaan en transporteer niet." },
-          { q: "Wat zijn de beste coffeeshops?", a: "Hangt af van wat je zoekt. Voor beginners: Katsu, Coffeeshop Amsterdam. Voor premium kwaliteit: Grey Area, Boerejongens. Voor ontspanning: Siberië, Paradox." },
           { q: "Wat is een 'bruin café'?", a: "Het is een traditionele Nederlandse kroeg (geen coffeeshop!). Serveert alcohol, koffie en hapjes. Niets met cannabis te maken." }
         ]
       }
@@ -741,8 +744,6 @@ const Coffeeshops = () => {
         title={content.faq.title}
         items={content.faq.items}
       />
-      
-      <RelatedBlogPostsSection currentPath="/coffeeshops" />
       
       <RelatedContent currentPage="coffeeshops" maxItems={4} />
     </PageLayout>
