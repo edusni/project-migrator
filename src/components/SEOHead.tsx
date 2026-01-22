@@ -7,6 +7,17 @@ interface FAQItem {
   answer: string;
 }
 
+interface EventItem {
+  name: string;
+  description: string;
+  startDate: string;
+  endDate: string;
+  location?: string;
+  organizer?: string;
+  organizerUrl?: string;
+  isAccessibleForFree?: boolean;
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -18,6 +29,7 @@ interface SEOHeadProps {
   author?: string;
   section?: string;
   faqItems?: FAQItem[];
+  eventItems?: EventItem[];
   breadcrumbs?: { name: string; url: string }[];
   noindex?: boolean;
 }
@@ -141,6 +153,7 @@ export function SEOHead({
   author = "Du",
   section,
   faqItems,
+  eventItems,
   breadcrumbs,
   noindex = false,
 }: SEOHeadProps) {
@@ -233,6 +246,11 @@ export function SEOHead({
       injectFAQSchema(faqItems, inLanguage);
     }
 
+    // Structured Data - Events
+    if (eventItems && eventItems.length > 0) {
+      injectEventSchema(eventItems, inLanguage);
+    }
+
     // Structured Data - Breadcrumbs
     if (breadcrumbs && breadcrumbs.length > 0) {
       injectBreadcrumbSchema(breadcrumbs, locale);
@@ -265,6 +283,7 @@ export function SEOHead({
     // Cleanup function
     return () => {
       removeSchemaById("faq-schema");
+      removeSchemaById("events-schema");
       removeSchemaById("breadcrumb-schema");
       removeSchemaById("article-schema");
       removeSchemaById("organization-schema");
@@ -272,7 +291,7 @@ export function SEOHead({
       removeSchemaById("webpage-schema");
       removeHreflangLinks();
     };
-  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, breadcrumbs, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
+  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, eventItems, breadcrumbs, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
 
   return null;
 }
@@ -487,6 +506,58 @@ function injectFAQSchema(faqItems: FAQItem[], inLanguage: string) {
 
   const script = document.createElement("script");
   script.id = "faq-schema";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+function injectEventSchema(eventItems: EventItem[], inLanguage: string) {
+  removeSchemaById("events-schema");
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: inLanguage === "pt-BR" ? "Eventos em Amsterdam 2026" : 
+          inLanguage === "nl-NL" ? "Amsterdam Evenementen 2026" : 
+          "Amsterdam Events 2026",
+    description: inLanguage === "pt-BR" ? "Principais eventos de Amsterdam em 2026" : 
+                 inLanguage === "nl-NL" ? "Grote Amsterdam evenementen in 2026" : 
+                 "Major Amsterdam events in 2026",
+    itemListElement: eventItems.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "Event",
+        name: item.name,
+        description: item.description,
+        startDate: item.startDate,
+        endDate: item.endDate,
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        eventStatus: "https://schema.org/EventScheduled",
+        location: {
+          "@type": "City",
+          name: item.location || "Amsterdam",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: item.location || "Amsterdam",
+            addressCountry: "NL"
+          }
+        },
+        ...(item.organizer && {
+          organizer: {
+            "@type": "Organization",
+            name: item.organizer,
+            ...(item.organizerUrl && { url: item.organizerUrl })
+          }
+        }),
+        image: "https://amsterdu.com/og-image.jpg",
+        ...(item.isAccessibleForFree !== undefined && { isAccessibleForFree: item.isAccessibleForFree })
+      }
+    })),
+  };
+
+  const script = document.createElement("script");
+  script.id = "events-schema";
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(schema);
   document.head.appendChild(script);
