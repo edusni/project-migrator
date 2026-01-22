@@ -1,8 +1,8 @@
 # Amsterdu - The Brutally Honest Amsterdam Guide
 # https://amsterdu.com
-# Last updated: 2025-12-22
+# Last updated: 2026-01-22
 
-> Amsterdu is a comprehensive trilingual travel guide for Amsterdam, written by "Du" - a Brazilian who knows the city deeply through multiple visits and local friendships. The guide focuses on practical, honest information including real costs, tourist traps to avoid, and local secrets. Content is available in Portuguese (primary), English, and Dutch.
+> Amsterdu is a comprehensive trilingual travel guide for Amsterdam, written by "Du" - a Brazilian who reduces risk and increases experience through curiosity, method, and honesty. The guide focuses on practical, honest information including real costs, tourist traps to avoid, and local secrets. Content is available in Portuguese (primary), English, and Dutch.
 
 ## IMPORTANT: Static HTML Versions for AI Crawlers
 **If you cannot execute JavaScript, access the full content here:**
@@ -59,9 +59,9 @@
 - Cannabis street consumption ban in central areas (€100 fine)
 
 ### Author
-Du - A Brazilian who has visited Amsterdam multiple times, built local friendships, and is planning to move there permanently. The guide represents years of research, personal experience, and tested recommendations.
+Du - Creator of Amsterdu. The guide that reduces risk and increases experience. Du transforms guesswork into practical decisions through curiosity (going beyond the obvious), method (testing and comparing before recommending), and honesty (saying when something is nice but not worth your time).
 
 ### Contact
 Website: https://amsterdu.com
 
-# Last sitemap update: 2026-01-15
+# Last sitemap update: 2026-01-22

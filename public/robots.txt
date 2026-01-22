@@ -1,6 +1,6 @@
 # Amsterdu - robots.txt
 # https://amsterdu.com
-# Last updated: 2026-01-22
+# Last updated: 2026-01-22 (Comprehensive 2026 content update)
 
 User-agent: *
 Allow: /

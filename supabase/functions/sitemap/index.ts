@@ -9,44 +9,48 @@ const corsHeaders = {
 
 // Prerendered HTML pages with specific last edit dates
 // UPDATE THESE DATES when you edit the corresponding pages!
+// Last comprehensive update: 2026-01-22
 const htmlPages: Record<string, string> = {
-  "en/index.html": "2025-01-22",
-  "en/planning.html": "2025-01-22",
-  "en/coffeeshops.html": "2025-01-22",
-  "en/attractions.html": "2025-01-22",
+  // English pages
+  "en/index.html": "2026-01-22",
+  "en/planning.html": "2026-01-22",
+  "en/coffeeshops.html": "2026-01-22",  // Updated with 2026 regulations
+  "en/attractions.html": "2026-01-22",
   "en/transport.html": "2026-01-22",
   "en/food.html": "2026-01-22",
-  "en/daytrips.html": "2025-01-22",
-  "en/about.html": "2025-01-22",
+  "en/daytrips.html": "2026-01-22",     // Updated with 2026 day trips guide
+  "en/about.html": "2026-01-22",        // Updated with new Du story
   "en/accommodation.html": "2026-01-22",
   "en/cost-of-living.html": "2026-01-22",
-  "en/de-pijp.html": "2025-01-22",
-  "en/weesp.html": "2025-01-22",
-  "nl/index.html": "2025-01-22",
-  "nl/planning.html": "2025-01-22",
-  "nl/coffeeshops.html": "2025-01-22",
-  "nl/attractions.html": "2025-01-22",
+  "en/de-pijp.html": "2026-01-22",
+  "en/weesp.html": "2026-01-22",
+  // Dutch pages
+  "nl/index.html": "2026-01-22",
+  "nl/planning.html": "2026-01-22",
+  "nl/coffeeshops.html": "2026-01-22",  // Updated with 2026 regulations
+  "nl/attractions.html": "2026-01-22",
   "nl/transport.html": "2026-01-22",
   "nl/food.html": "2026-01-22",
-  "nl/daytrips.html": "2025-01-22",
-  "nl/about.html": "2025-01-22",
+  "nl/daytrips.html": "2026-01-22",     // Updated with 2026 day trips guide
+  "nl/about.html": "2026-01-22",        // Updated with new Du story
   "nl/accommodation.html": "2026-01-22",
   "nl/kosten-van-levensonderhoud.html": "2026-01-22",
-  "nl/de-pijp.html": "2025-01-22",
-  "nl/weesp.html": "2025-01-22",
-  "nl/zuidoost.html": "2025-01-22",
-  "pt/index.html": "2025-01-22",
-  "pt/planejamento.html": "2025-01-22",
-  "pt/coffeeshops.html": "2025-01-22",
-  "pt/atracoes.html": "2025-01-22",
+  "nl/de-pijp.html": "2026-01-22",
+  "nl/weesp.html": "2026-01-22",
+  "nl/zuidoost.html": "2026-01-22",
+  // Portuguese pages
+  "pt/index.html": "2026-01-22",
+  "pt/planejamento.html": "2026-01-22",
+  "pt/coffeeshops.html": "2026-01-22",  // Updated with 2026 regulations
+  "pt/atracoes.html": "2026-01-22",     // Updated with 2026 calendar
   "pt/transporte.html": "2026-01-22",
   "pt/gastronomia.html": "2026-01-22",
-  "pt/arredores.html": "2025-01-22",
-  "pt/sobre.html": "2025-01-22",
+  "pt/arredores.html": "2026-01-22",    // Updated with 2026 day trips guide
+  "pt/sobre.html": "2026-01-22",        // Updated with new Du story
   "pt/hospedagem.html": "2026-01-22",
   "pt/custo-de-vida.html": "2026-01-22",
-  "pt/de-pijp.html": "2025-01-22",
-  "pt/weesp.html": "2025-01-22",
+  "pt/de-pijp.html": "2026-01-22",
+  "pt/weesp.html": "2026-01-22",
 };
 
 const baseUrl = "https://amsterdu.com";
