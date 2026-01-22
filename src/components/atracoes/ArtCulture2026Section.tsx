@@ -1,10 +1,7 @@
-import { Palette, Calendar, Ticket, ArrowRight, Sparkles } from "lucide-react";
+import { Palette, Calendar, Ticket, Sparkles } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/ui/animated-section";
-import { Link } from "react-router-dom";
-import { useLocaleNavigation } from "@/hooks/useLocaleNavigation";
 
 interface ArtCulture2026SectionProps {
   language: string;
@@ -12,156 +9,144 @@ interface ArtCulture2026SectionProps {
 
 const content = {
   pt: {
-    title: "Arte & Cultura 2026: O Ano do Jubileu",
-    subtitle: "Amsterdã celebra 750 anos com exposições históricas. Os museus abandonaram o 'básico' — prepare-se para diálogos trans-históricos e ousadia curatorial.",
-    badge: "750 Anos de Amsterdã",
+    title: "Arte & Cultura 2026",
+    subtitle: "Os museus de Amsterdã trazem exposições históricas este ano. Prepare-se para diálogos trans-históricos e ousadia curatorial nas principais instituições.",
+    badge: "Exposições 2026",
     highlights: [
       {
-        museum: "Rijksmuseum",
-        exhibition: "METAMORFOSES",
-        dates: "6 Fev – 25 Mai",
-        description: "Ticiano, Caravaggio e Rodin discutindo identidade e fluidez através de Ovídio.",
-        tag: "Imperdível",
-        color: "bg-amber-500"
+        title: "Metamorphoses – Rijksmuseum",
+        date: "6 fev – 25 mai 2026",
+        description: "Mais de 80 obras-primas de Caravaggio a Magritte, em colaboração com a Galleria Borghese.",
+        category: "Exposição",
+        categoryColor: "bg-amber-100 text-amber-800",
+        borderColor: "#f59e0b"
       },
       {
-        museum: "Van Gogh Museum",
-        exhibition: "YELLOW: Beyond Van Gogh's Colour",
-        dates: "13 Fev – 17 Mai",
-        description: "Olafur Eliasson cria experiência imersiva sobre o amarelo. Arte contemporânea + Van Gogh.",
-        tag: "Esgota Rápido",
-        color: "bg-yellow-500"
+        title: "Yellow. Beyond Van Gogh's Colour",
+        date: "13 fev – 17 mai 2026",
+        description: "Investigação sobre o amarelo para Van Gogh, com instalação inédita de Olafur Eliasson.",
+        category: "Van Gogh Museum",
+        categoryColor: "bg-yellow-100 text-yellow-800",
+        borderColor: "#eab308"
       },
       {
-        museum: "Stedelijk Museum",
-        exhibition: "YAYOI KUSAMA",
-        dates: "11 Set 2026 – 17 Jan 2027",
-        description: "Retrospectiva definitiva: 7 décadas + novas Infinity Rooms. O evento de maior hype do ano.",
-        tag: "Reserve Já",
-        color: "bg-pink-500"
+        title: "Yayoi Kusama – Retrospectiva",
+        date: "11 set 2026 – 17 jan 2027",
+        description: "Sete décadas de produção da artista japonesa, com novas Infinity Rooms.",
+        category: "Stedelijk Museum",
+        categoryColor: "bg-pink-100 text-pink-800",
+        borderColor: "#ec4899"
       },
       {
-        museum: "Oude Kerk",
-        exhibition: "Jesse Darling: Godsworth",
-        dates: "24 Abr – 27 Set",
-        description: "Vencedor do Turner Prize ocupa a igreja mais antiga da cidade no Red Light District.",
-        tag: "Vanguarda",
-        color: "bg-purple-500"
+        title: "Jesse Darling: Godsworth",
+        date: "24 abr – 27 set 2026",
+        description: "Primeira grande mostra do vencedor do Turner Prize na Holanda, na igreja mais antiga de Amsterdã.",
+        category: "Oude Kerk",
+        categoryColor: "bg-stone-100 text-stone-800",
+        borderColor: "#78716c"
       }
     ],
     tips: [
-      "Kusama: Assine a newsletter do Stedelijk para comprar assim que abrirem vendas",
-      "Van Gogh: Ingressos esgotam semanas antes — reserve ao confirmar viagem",
-      "I amsterdam City Card NÃO inclui Van Gogh — compre separado"
-    ],
-    ctaText: "Ver Guia Completo de Exposições 2026",
-    ctaSubtext: "Todas as exposições, datas e estratégia de ingressos"
+      "Stedelijk Kusama: assine a newsletter para ser avisado quando abrirem as vendas.",
+      "Van Gogh Museum: reserve com antecedência (não faz parte do I Amsterdam City Card).",
+      "Rijksmuseum Metamorphoses: compre ingresso com hora marcada; fluxo controlado.",
+      "Oude Kerk: ingressos mais fáceis, mas reserve online para evitar filas."
+    ]
   },
   en: {
-    title: "Art & Culture 2026: The Jubilee Year",
-    subtitle: "Amsterdam celebrates 750 years with historic exhibitions. Museums abandoned the 'basics' — prepare for trans-historical dialogues and curatorial boldness.",
-    badge: "Amsterdam 750 Years",
+    title: "Art & Culture 2026",
+    subtitle: "Amsterdam's museums bring historic exhibitions this year. Prepare for trans-historical dialogues and curatorial boldness at major institutions.",
+    badge: "2026 Exhibitions",
     highlights: [
       {
-        museum: "Rijksmuseum",
-        exhibition: "METAMORPHOSES",
-        dates: "6 Feb – 25 May",
-        description: "Titian, Caravaggio and Rodin discussing identity and fluidity through Ovid.",
-        tag: "Must-See",
-        color: "bg-amber-500"
+        title: "Metamorphoses – Rijksmuseum",
+        date: "Feb 6 – May 25, 2026",
+        description: "Over 80 masterpieces from Caravaggio to Magritte, in collaboration with Galleria Borghese.",
+        category: "Exhibition",
+        categoryColor: "bg-amber-100 text-amber-800",
+        borderColor: "#f59e0b"
       },
       {
-        museum: "Van Gogh Museum",
-        exhibition: "YELLOW: Beyond Van Gogh's Colour",
-        dates: "13 Feb – 17 May",
-        description: "Olafur Eliasson creates immersive experience about yellow. Contemporary art + Van Gogh.",
-        tag: "Sells Fast",
-        color: "bg-yellow-500"
+        title: "Yellow. Beyond Van Gogh's Colour",
+        date: "Feb 13 – May 17, 2026",
+        description: "Investigation into yellow for Van Gogh, featuring an unprecedented Olafur Eliasson installation.",
+        category: "Van Gogh Museum",
+        categoryColor: "bg-yellow-100 text-yellow-800",
+        borderColor: "#eab308"
       },
       {
-        museum: "Stedelijk Museum",
-        exhibition: "YAYOI KUSAMA",
-        dates: "11 Sep 2026 – 17 Jan 2027",
-        description: "Definitive retrospective: 7 decades + new Infinity Rooms. The most hyped event of the year.",
-        tag: "Book Now",
-        color: "bg-pink-500"
+        title: "Yayoi Kusama – Retrospective",
+        date: "Sep 11, 2026 – Jan 17, 2027",
+        description: "Seven decades of the Japanese artist's production, with new Infinity Rooms.",
+        category: "Stedelijk Museum",
+        categoryColor: "bg-pink-100 text-pink-800",
+        borderColor: "#ec4899"
       },
       {
-        museum: "Oude Kerk",
-        exhibition: "Jesse Darling: Godsworth",
-        dates: "24 Apr – 27 Sep",
-        description: "Turner Prize winner occupies the city's oldest church in the Red Light District.",
-        tag: "Avant-garde",
-        color: "bg-purple-500"
+        title: "Jesse Darling: Godsworth",
+        date: "Apr 24 – Sep 27, 2026",
+        description: "First major show by Turner Prize winner in the Netherlands, at Amsterdam's oldest church.",
+        category: "Oude Kerk",
+        categoryColor: "bg-stone-100 text-stone-800",
+        borderColor: "#78716c"
       }
     ],
     tips: [
-      "Kusama: Subscribe to Stedelijk newsletter to buy as soon as sales open",
-      "Van Gogh: Tickets sell out weeks in advance — book when you confirm your trip",
-      "I amsterdam City Card does NOT include Van Gogh — buy separately"
-    ],
-    ctaText: "See Complete 2026 Exhibitions Guide",
-    ctaSubtext: "All exhibitions, dates and ticket strategy"
+      "Stedelijk Kusama: subscribe to the newsletter to be notified when tickets open.",
+      "Van Gogh Museum: book in advance (not included in I Amsterdam City Card).",
+      "Rijksmuseum Metamorphoses: buy timed entry tickets; controlled flow.",
+      "Oude Kerk: tickets are easier, but book online to avoid queues."
+    ]
   },
   nl: {
-    title: "Kunst & Cultuur 2026: Het Jubileumjaar",
-    subtitle: "Amsterdam viert 750 jaar met historische tentoonstellingen. Musea lieten het 'basis' achter — bereid je voor op trans-historische dialogen en curatorische durf.",
-    badge: "Amsterdam 750 Jaar",
+    title: "Kunst & Cultuur 2026",
+    subtitle: "De musea van Amsterdam brengen dit jaar historische tentoonstellingen. Bereid je voor op trans-historische dialogen en curatorische durf bij grote instellingen.",
+    badge: "Tentoonstellingen 2026",
     highlights: [
       {
-        museum: "Rijksmuseum",
-        exhibition: "METAMORFOSEN",
-        dates: "6 Feb – 25 Mei",
-        description: "Titiaan, Caravaggio en Rodin bespreken identiteit en vloeibaarheid via Ovidius.",
-        tag: "Must-See",
-        color: "bg-amber-500"
+        title: "Metamorphoses – Rijksmuseum",
+        date: "6 feb – 25 mei 2026",
+        description: "Meer dan 80 meesterwerken van Caravaggio tot Magritte, in samenwerking met Galleria Borghese.",
+        category: "Tentoonstelling",
+        categoryColor: "bg-amber-100 text-amber-800",
+        borderColor: "#f59e0b"
       },
       {
-        museum: "Van Gogh Museum",
-        exhibition: "YELLOW: Beyond Van Gogh's Colour",
-        dates: "13 Feb – 17 Mei",
-        description: "Olafur Eliasson creëert een meeslepende ervaring over geel. Hedendaagse kunst + Van Gogh.",
-        tag: "Snel Uitverkocht",
-        color: "bg-yellow-500"
+        title: "Yellow. Beyond Van Gogh's Colour",
+        date: "13 feb – 17 mei 2026",
+        description: "Onderzoek naar geel voor Van Gogh, met een baanbrekende Olafur Eliasson-installatie.",
+        category: "Van Gogh Museum",
+        categoryColor: "bg-yellow-100 text-yellow-800",
+        borderColor: "#eab308"
       },
       {
-        museum: "Stedelijk Museum",
-        exhibition: "YAYOI KUSAMA",
-        dates: "11 Sep 2026 – 17 Jan 2027",
-        description: "Definitieve retrospectief: 7 decennia + nieuwe Infinity Rooms. Het meest gehypte evenement van het jaar.",
-        tag: "Boek Nu",
-        color: "bg-pink-500"
+        title: "Yayoi Kusama – Retrospectief",
+        date: "11 sep 2026 – 17 jan 2027",
+        description: "Zeven decennia van de Japanse kunstenaar, met nieuwe Infinity Rooms.",
+        category: "Stedelijk Museum",
+        categoryColor: "bg-pink-100 text-pink-800",
+        borderColor: "#ec4899"
       },
       {
-        museum: "Oude Kerk",
-        exhibition: "Jesse Darling: Godsworth",
-        dates: "24 Apr – 27 Sep",
-        description: "Turner Prize-winnaar bezet de oudste kerk van de stad in de Wallen.",
-        tag: "Avant-garde",
-        color: "bg-purple-500"
+        title: "Jesse Darling: Godsworth",
+        date: "24 apr – 27 sep 2026",
+        description: "Eerste grote show van Turner Prize-winnaar in Nederland, in de oudste kerk van Amsterdam.",
+        category: "Oude Kerk",
+        categoryColor: "bg-stone-100 text-stone-800",
+        borderColor: "#78716c"
       }
     ],
     tips: [
-      "Kusama: Abonneer op de Stedelijk nieuwsbrief om te kopen zodra de verkoop begint",
-      "Van Gogh: Tickets zijn weken van tevoren uitverkocht — boek wanneer je je reis bevestigt",
-      "I amsterdam City Card bevat GEEN Van Gogh — koop apart"
-    ],
-    ctaText: "Zie Complete Tentoonstellingsgids 2026",
-    ctaSubtext: "Alle tentoonstellingen, data en ticketstrategie"
+      "Stedelijk Kusama: abonneer je op de nieuwsbrief om te worden gewaarschuwd wanneer tickets beschikbaar zijn.",
+      "Van Gogh Museum: boek van tevoren (niet inbegrepen in I Amsterdam City Card).",
+      "Rijksmuseum Metamorphoses: koop tickets met tijdslot; gecontroleerde stroom.",
+      "Oude Kerk: tickets zijn makkelijker, maar boek online om rijen te vermijden."
+    ]
   }
-};
-
-const blogSlugs = {
-  pt: 'amsterdam-2026-guia-definitivo-arte-cultura-jubileu',
-  en: 'amsterdam-2026-definitive-guide-art-culture-jubilee',
-  nl: 'amsterdam-2026-definitieve-gids-kunst-cultuur-jubileum'
 };
 
 export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) {
   const c = content[language as keyof typeof content] || content.pt;
-  const { getLocalizedPath } = useLocaleNavigation();
-  const slug = blogSlugs[language as keyof typeof blogSlugs] || blogSlugs.pt;
-  const blogUrl = getLocalizedPath(language as 'pt' | 'en' | 'nl', `/blog/${slug}`);
 
   return (
     <section className="py-12 md:py-16 bg-gradient-to-b from-background to-muted/30">
@@ -188,23 +173,18 @@ export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) 
               <Card 
                 key={index} 
                 className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border-l-4"
-                style={{ borderLeftColor: item.color.replace('bg-', '').includes('amber') ? '#f59e0b' : 
-                         item.color.includes('yellow') ? '#eab308' :
-                         item.color.includes('pink') ? '#ec4899' : '#a855f7' }}
+                style={{ borderLeftColor: item.borderColor }}
               >
                 <CardContent className="p-5 md:p-6">
                   <div className="flex items-start justify-between gap-3 mb-3">
-                    <div>
-                      <p className="text-sm font-medium text-muted-foreground">{item.museum}</p>
-                      <h3 className="text-lg md:text-xl font-bold text-foreground">{item.exhibition}</h3>
-                    </div>
-                    <Badge className={`${item.color} text-white shrink-0`}>
-                      {item.tag}
+                    <h3 className="text-lg md:text-xl font-bold text-foreground">{item.title}</h3>
+                    <Badge className={`${item.categoryColor} shrink-0`}>
+                      {item.category}
                     </Badge>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                     <Calendar className="w-4 h-4" />
-                    {item.dates}
+                    {item.date}
                   </div>
                   <p className="text-sm md:text-base text-foreground/80">
                     {item.description}
@@ -215,7 +195,7 @@ export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) 
           </div>
 
           {/* Tips Box */}
-          <Card className="bg-primary/5 border-primary/20 mb-8">
+          <Card className="bg-primary/5 border-primary/20">
             <CardContent className="p-5 md:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Ticket className="w-5 h-5 text-primary" />
