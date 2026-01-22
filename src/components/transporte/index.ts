@@ -6,6 +6,7 @@ export { AppsSection } from "./AppsSection";
 export { ChecklistSection } from "./ChecklistSection";
 export { FAQSection } from "./FAQSection";
 export { HierarchySection } from "./HierarchySection";
+export { VervoerplanSection } from "./VervoerplanSection";
 export { TarifasOVpaySection } from "./TarifasOVpaySection";
 export { PassesMultidiasSection } from "./PassesMultidiasSection";
 export { PassesAeroportoSection } from "./PassesAeroportoSection";

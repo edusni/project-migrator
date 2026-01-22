@@ -9,6 +9,7 @@ import { RelatedContent } from "@/components/RelatedContent";
 import {
   ThreeRulesSection,
   HierarchySection,
+  VervoerplanSection,
   TarifasOVpaySection,
   PassesMultidiasSection,
   PassesAeroportoSection,
@@ -97,6 +98,7 @@ const Transporte = () => {
 
       <ThreeRulesSection />
       <HierarchySection />
+      <VervoerplanSection />
       <TarifasOVpaySection />
       <PassesMultidiasSection />
       <PassesAeroportoSection />
