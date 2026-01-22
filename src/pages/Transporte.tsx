@@ -6,15 +6,18 @@ import { SEOHead, seoData } from "@/components/SEOHead";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedBlogPostsSection } from "@/components/RelatedBlogPostsSection";
 import { RelatedContent } from "@/components/RelatedContent";
-import { GetYourGuideAvailability, GYG_TOUR_IDS } from "@/components/GetYourGuideWidget";
 import {
   ThreeRulesSection,
-  GoldenRuleSection,
-  TransportTabsSection,
-  TransportCalculator,
+  HierarchySection,
+  TarifasOVpaySection,
+  PassesMultidiasSection,
+  PassesAeroportoSection,
+  FerriesSection,
+  BikeRentalSection,
   AppsSection,
   ChecklistSection,
   FAQSection,
+  SourcesSection,
 } from "@/components/transporte";
 import amsterdamBikesImg from "@/assets/amsterdam-bikes.webp";
 
@@ -29,32 +32,26 @@ const Transporte = () => {
   };
 
   const faqItems = language === "nl" ? [
-    { question: "Hoe reis je door Amsterdam zonder problemen?", answer: "Beste combo voor toeristen: lopen + tram/metro als je moe bent + veerboten om het IJ over te steken. Voorspelbaarheid zonder auto-afhankelijkheid." },
-    { question: "Hoeveel kost openbaar vervoer in Amsterdam in 2026?", answer: "GVB Dagkaart 24u €10. GVB Max (dagelijkse limiet met OVpay): €10,50/dag sinds januari 2026." },
-    { question: "Wat is OVpay en hoe werkt het?", answer: "OVpay is betalen voor vervoer met contactloze kaart: tik om in te checken en tik opnieuw om uit te checken. Eén kaart = één persoon." },
-    { question: "Wat gebeurt er als ik vergeet uit te checken?", answer: "Je betaalt correctietarief: meestal €20 bij treinen (NS) en €4 bij andere modaliteiten. Met OVpay kun je het in de geschiedenis aanpassen." },
-    { question: "Is het Amsterdam Travel Ticket de moeite waard?", answer: "De moeite waard als je Schiphol + stadsvervoer in één pakket wilt. Prijzen 2026: 1 dag €20 | 2 dagen €27 | 3 dagen €34." },
-    { question: "Hoe kom je van Schiphol naar het centrum?", answer: "Trein (NS) naar Amsterdam Centraal: ~17 min, vanaf €5,20. Meest efficiënte manier." },
-    { question: "Zijn de veerboten echt gratis?", answer: "Ja! De GVB-veerboten die het IJ oversteken zijn gratis. Geen inchecken of ticket nodig." },
-    { question: "Is het veilig om een fiets te huren in Amsterdam?", answer: "Veilig als je al goed fietst in stadsverkeer. Fietspaden werken als 'snelwegen' met intens verkeer." }
+    { question: "Hoe werkt OVpay?", answer: "Tik je contactloze bankkaart (of digitale wallet) op de lezer bij instappen en opnieuw bij uitstappen. Je betaalt basistarief + km gereisd. Check-out vergeten betekent €4 correctie, te herstellen binnen 60 dagen." },
+    { question: "Wat is de beste pas voor 3 dagen?", answer: "Voor alleen de stad: GVB 72u (€21,50). Voor regio's zoals Haarlem of Keukenhof: ARTT 3 dagen (€44). Met Schiphol: ATT 3 dagen (€34)." },
+    { question: "Zijn de veerboten echt gratis?", answer: "Ja! Alle veerboten die het IJ oversteken zijn gratis voor voetgangers en fietsers." },
+    { question: "Is het de moeite waard om een fiets te huren?", answer: "Ja als je al goed kunt fietsen in stadsverkeer. Een dag city bike huren kost €17,50. Gebruik verlichting, geef richting aan en respecteer de rijstroken." },
+    { question: "Wat gebeurt er als ik vergeet uit te checken?", answer: "Automatische kosten: €4 bij tram/bus/metro en €20 bij treinen. Je kunt terugbetaling aanvragen binnen 60 dagen." },
+    { question: "Hoe kom je van de luchthaven naar het centrum?", answer: "NS trein is snelst (16-17 min) en kost vanaf €5,50. Bus 397 kost €6,50 en duurt ~30 min." }
   ] : language === "pt" ? [
-    { question: "Como se locomover em Amsterdam sem se complicar?", answer: "O combo ideal para turista é: caminhar + tram/metrô quando cansar + ferries para cruzar o IJ. Previsibilidade sem depender de carro." },
-    { question: "Quanto custa o transporte público em Amsterdam em 2026?", answer: "GVB Day Ticket 24h €10. GVB Max (teto diário com OVpay): €10,50/dia desde janeiro 2026." },
-    { question: "O que é OVpay e como funciona?", answer: "OVpay é pagar transporte com cartão contactless: encosta para check-in e encosta de novo para check-out. Um cartão = uma pessoa." },
-    { question: "O que acontece se eu esquecer o check-out?", answer: "Você paga tarifa de correção: geralmente €20 no trem (NS) e €4 nos outros modais. Com OVpay, dá para ajustar no histórico." },
-    { question: "Vale a pena comprar o Amsterdam Travel Ticket?", answer: "Vale quando você quer Schiphol + transporte urbano em pacote simples. Preços 2026: 1 dia €20 | 2 dias €27 | 3 dias €34." },
-    { question: "Como ir do aeroporto Schiphol para o centro?", answer: "Trem (NS) até Amsterdam Centraal: ~17 min, a partir de €5,20. É a forma mais eficiente." },
-    { question: "As balsas (ferries) são gratuitas?", answer: "Sim! As ferries GVB que cruzam o IJ são gratuitas. Não precisa check-in nem bilhete." },
-    { question: "É seguro alugar bicicleta em Amsterdam?", answer: "É seguro se você já pedala bem em trânsito urbano. Ciclovias funcionam como 'pista rápida' com fluxo intenso." }
+    { question: "Como funciona o OVpay?", answer: "Basta encostar o cartão bancário (ou carteira digital) no leitor ao entrar e novamente ao sair. Paga-se a tarifa base + km percorrido. Esquecer o check-out implica cobrança de €4 e é preciso solicitar reembolso em até 60 dias." },
+    { question: "Qual o melhor passe para 3 dias?", answer: "Para quem fica apenas na cidade, o GVB 72h (€21,50). Para explorar regiões como Haarlem ou Keukenhof, opte pelo ARTT 3 dias (€44). Se o deslocamento inclui Schiphol, considere o ATT 3 dias (€34)." },
+    { question: "As balsas (ferries) são realmente grátis?", answer: "Sim! Todos os ferries que cruzam o IJ são gratuitos para pedestres e ciclistas." },
+    { question: "Vale a pena alugar uma bicicleta?", answer: "Sim para quem quer vivenciar a cidade como os locais. Um dia de aluguel de city bike custa €17,50. Lembre-se de usar luzes, sinalizar e respeitar as faixas." },
+    { question: "O que acontece se eu esquecer de fazer check-out?", answer: "Cobrança automática de €4 em trams/ônibus/metro e €20 em trens. É possível solicitar reembolso em até 60 dias." },
+    { question: "Como ir do aeroporto ao centro?", answer: "Trem da NS é mais rápido (16-17 min) e custa a partir de €5,50. Ônibus 397 custa €6,50 e leva ~30 min." }
   ] : [
-    { question: "How to get around Amsterdam without complications?", answer: "Best combo for tourists: walk + tram/metro when tired + ferries to cross the IJ. Predictability without car dependence." },
-    { question: "How much does public transport cost in Amsterdam in 2026?", answer: "GVB Day Ticket 24h €10. GVB Max (daily cap with OVpay): €10.50/day since January 2026." },
-    { question: "What is OVpay and how does it work?", answer: "OVpay is paying for transport with contactless card: tap to check-in and tap again to check-out. One card = one person." },
-    { question: "What happens if I forget to check-out?", answer: "You pay a correction fare: usually €20 on trains (NS) and €4 on other modes. With OVpay, you can adjust in history." },
-    { question: "Is the Amsterdam Travel Ticket worth it?", answer: "Worth it when you want Schiphol + urban transport in one package. 2026 prices: 1 day €20 | 2 days €27 | 3 days €34." },
-    { question: "How to get from Schiphol airport to center?", answer: "Train (NS) to Amsterdam Centraal: ~17 min, from €5.20. Most efficient way." },
-    { question: "Are the ferries really free?", answer: "Yes! The GVB ferries crossing the IJ are free. No check-in or ticket needed." },
-    { question: "Is it safe to rent a bike in Amsterdam?", answer: "Safe if you already bike well in urban traffic. Bike lanes work as 'fast lanes' with intense flow." }
+    { question: "How does OVpay work?", answer: "Just tap your bank card (or digital wallet) on the reader when entering and again when exiting. You pay base fare + km traveled. Forgetting check-out means €4 charge, correctable within 60 days." },
+    { question: "What's the best pass for 3 days?", answer: "For city only: GVB 72h (€21.50). For regions like Haarlem or Keukenhof: ARTT 3 days (€44). Including Schiphol: ATT 3 days (€34)." },
+    { question: "Are the ferries really free?", answer: "Yes! All ferries crossing the IJ are free for pedestrians and cyclists." },
+    { question: "Is it worth renting a bike?", answer: "Yes to experience the city like locals. One day city bike rental costs €17.50. Remember to use lights, signal, and respect lanes." },
+    { question: "What happens if I forget to check-out?", answer: "Automatic charge: €4 on tram/bus/metro and €20 on trains. You can request refund within 60 days." },
+    { question: "How to get from airport to center?", answer: "NS train is fastest (16-17 min) and costs from €5.50. Bus 397 costs €6.50 and takes ~30 min." }
   ];
 
   return (
@@ -72,25 +69,26 @@ const Transporte = () => {
       />
       <PageHero 
         icon={Train} 
-        title={t("Como se Locomover em Amsterdam (2026)", "Getting Around Amsterdam (2026)", "Vervoer in Amsterdam (2026)")} 
-        description={t("O guia para não se perder, não levar multa e não ser atropelado", "The guide to not get lost, fined, or run over", "De gids om niet te verdwalen, geen boete te krijgen en niet aangereden te worden")}
+        title={t("Transporte em Amsterdam 2026: Guia Completo", "Amsterdam Transport 2026: Complete Guide", "Vervoer in Amsterdam 2026: Complete Gids")} 
+        description={t("Tarifas, passes, regras e multas - tudo para economizar e evitar problemas", "Fares, passes, rules and fines - everything to save money and avoid problems", "Tarieven, passen, regels en boetes - alles om geld te besparen en problemen te vermijden")}
         backgroundImage={amsterdamBikesImg}
-        readTime={t("6 min de leitura", "6 min read", "6 min lezen")}
+        readTime={t("12 min de leitura", "12 min read", "12 min lezen")}
         quickStats={[
           { value: "€5,50", label: t("Schiphol → Centro", "Schiphol → Center", "Schiphol → Centrum") },
           { value: t("Grátis", "Free", "Gratis"), label: "ferries" },
+          { value: "€10,50", label: t("Teto diário GVB", "GVB daily cap", "GVB dagmaximum") },
         ]}
       />
 
-      {/* Quick Answer Section - SEO optimized intro */}
+      {/* Quick Answer Section */}
       <section className="py-8 md:py-10 bg-primary/5 border-y border-primary/20">
         <div className="container max-w-4xl">
           <div className="p-4 md:p-6 bg-card rounded-xl border border-primary/30 shadow-sm">
             <p className="text-base md:text-lg text-foreground leading-relaxed font-medium">
               {t(
-                "Em 2026, se locomover em Amsterdam exige entender três coisas: prioridade do tram, domínio absoluto das bicicletas e o sistema de check-in/check-out com OVpay. Errar nisso gera multa, cobrança extra ou susto. Este guia mostra como circular sem se perder nem gastar à toa.",
-                "In 2026, getting around Amsterdam requires understanding three things: tram priority, absolute dominance of bicycles, and the OVpay check-in/check-out system. Getting these wrong means fines, extra charges, or close calls. This guide shows how to get around without getting lost or overspending.",
-                "In 2026 vereist vervoer in Amsterdam begrip van drie dingen: tramprioriteit, absolute dominantie van fietsen en het OVpay in-/uitchecksysteem. Fouten hierin leiden tot boetes, extra kosten of schrikmomenten. Deze gids laat zien hoe je rondkomt zonder te verdwalen of te veel uit te geven."
+                "Amsterdam em 2026 é um exemplo de mobilidade inteligente: ruas que priorizam pedestres e ciclistas, rede de transporte integrada e OVpay para pagamento contactless. Para quem visita ou mora na cidade, entender tarifas, passes, regras e multas é fundamental para economizar e evitar problemas.",
+                "Amsterdam in 2026 is a model of smart mobility: streets prioritizing pedestrians and cyclists, integrated transport network, and OVpay for contactless payment. For visitors or residents, understanding fares, passes, rules and fines is essential to save money and avoid problems.",
+                "Amsterdam in 2026 is een voorbeeld van slimme mobiliteit: straten die voetgangers en fietsers prioriteit geven, geïntegreerd vervoersnetwerk en OVpay voor contactloos betalen. Voor bezoekers of bewoners is begrip van tarieven, passen, regels en boetes essentieel."
               )}
             </p>
           </div>
@@ -98,28 +96,19 @@ const Transporte = () => {
       </section>
 
       <ThreeRulesSection />
-      <GoldenRuleSection />
-      <TransportTabsSection />
-      
-      {/* GVB Ticket Widget */}
-      <section className="py-8 lg:py-12 bg-muted/30">
-        <div className="container max-w-4xl">
-          <h3 className="text-xl lg:text-2xl font-heading font-bold text-center mb-6">
-            {t("Compre seu GVB Pass Online", "Buy Your GVB Pass Online", "Koop je GVB Pas Online")}
-          </h3>
-          <GetYourGuideAvailability tourId={GYG_TOUR_IDS.gvbTransport} />
-        </div>
-      </section>
-      
-      <TransportCalculator />
+      <HierarchySection />
+      <TarifasOVpaySection />
+      <PassesMultidiasSection />
+      <PassesAeroportoSection />
+      <FerriesSection />
+      <BikeRentalSection />
       <AppsSection />
       <ChecklistSection />
       <FAQSection />
+      <SourcesSection />
 
       <RelatedContent currentPage="transporte" />
-      
       <RelatedBlogPostsSection currentPath="/transporte" />
-      
       <RelatedPagesSection 
         currentPath="/transporte"
         suggestedPaths={["/planejamento", "/atracoes", "/arredores", "/hospedagem"]}
