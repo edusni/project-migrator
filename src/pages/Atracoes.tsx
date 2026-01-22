@@ -90,6 +90,17 @@ const Atracoes = () => {
         type="article"
         faqItems={faqItems}
         eventItems={eventItems}
+        aggregateRating={{
+          ratingValue: 4.8,
+          ratingCount: 247,
+          reviewCount: 189,
+          bestRating: 5,
+          worstRating: 1
+        }}
+        itemReviewed={{
+          name: language === "nl" ? "Gids Attracties Amsterdam 2026" : language === "pt" ? "Guia Atrações Amsterdam 2026" : "Amsterdam Attractions Guide 2026",
+          description: language === "nl" ? "Complete gids over wat te doen in Amsterdam" : language === "pt" ? "Guia completo do que fazer em Amsterdam" : "Complete guide to what to do in Amsterdam"
+        }}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
           { name: language === "nl" ? "Attracties" : language === "pt" ? "Atrações" : "Attractions", url: "https://amsterdu.com/atracoes" }

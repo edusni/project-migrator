@@ -18,6 +18,14 @@ interface EventItem {
   isAccessibleForFree?: boolean;
 }
 
+interface AggregateRatingItem {
+  ratingValue: number;
+  ratingCount: number;
+  reviewCount?: number;
+  bestRating?: number;
+  worstRating?: number;
+}
+
 interface SEOHeadProps {
   title: string;
   description: string;
@@ -31,6 +39,8 @@ interface SEOHeadProps {
   faqItems?: FAQItem[];
   eventItems?: EventItem[];
   breadcrumbs?: { name: string; url: string }[];
+  aggregateRating?: AggregateRatingItem;
+  itemReviewed?: { name: string; description?: string };
   noindex?: boolean;
 }
 
@@ -155,6 +165,8 @@ export function SEOHead({
   faqItems,
   eventItems,
   breadcrumbs,
+  aggregateRating,
+  itemReviewed,
   noindex = false,
 }: SEOHeadProps) {
   const location = useLocation();
@@ -280,6 +292,11 @@ export function SEOHead({
       });
     }
 
+    // Structured Data - AggregateRating (for reviews/ratings rich snippets)
+    if (aggregateRating && itemReviewed) {
+      injectAggregateRatingSchema(aggregateRating, itemReviewed, canonicalUrl);
+    }
+
     // Cleanup function
     return () => {
       removeSchemaById("faq-schema");
@@ -289,9 +306,10 @@ export function SEOHead({
       removeSchemaById("organization-schema");
       removeSchemaById("website-schema");
       removeSchemaById("webpage-schema");
+      removeSchemaById("aggregate-rating-schema");
       removeHreflangLinks();
     };
-  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, eventItems, breadcrumbs, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
+  }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, eventItems, breadcrumbs, aggregateRating, itemReviewed, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
 
   return null;
 }
@@ -638,6 +656,42 @@ function injectArticleSchema(data: {
 
   const script = document.createElement("script");
   script.id = "article-schema";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(schema);
+  document.head.appendChild(script);
+}
+
+// Inject AggregateRating schema for reviews/ratings rich snippets (star ratings in Google)
+function injectAggregateRatingSchema(
+  rating: { ratingValue: number; ratingCount: number; reviewCount?: number; bestRating?: number; worstRating?: number },
+  item: { name: string; description?: string },
+  url: string
+) {
+  removeSchemaById("aggregate-rating-schema");
+  
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "TravelGuide",
+    name: item.name,
+    description: item.description || "",
+    url: url,
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: rating.ratingValue,
+      bestRating: rating.bestRating || 5,
+      worstRating: rating.worstRating || 1,
+      ratingCount: rating.ratingCount,
+      reviewCount: rating.reviewCount || rating.ratingCount,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Amsterdu",
+      url: "https://amsterdu.com"
+    }
+  };
+
+  const script = document.createElement("script");
+  script.id = "aggregate-rating-schema";
   script.type = "application/ld+json";
   script.textContent = JSON.stringify(schema);
   document.head.appendChild(script);

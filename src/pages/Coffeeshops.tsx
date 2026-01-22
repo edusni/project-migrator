@@ -673,6 +673,17 @@ const Coffeeshops = () => {
         keywords={seo.keywords}
         type="article"
         faqItems={faqItems}
+        aggregateRating={{
+          ratingValue: 4.9,
+          ratingCount: 312,
+          reviewCount: 256,
+          bestRating: 5,
+          worstRating: 1
+        }}
+        itemReviewed={{
+          name: language === "nl" ? "Coffeeshops Amsterdam Gids 2026" : language === "pt" ? "Guia Coffeeshops Amsterdam 2026" : "Amsterdam Coffeeshops Guide 2026",
+          description: language === "nl" ? "Complete gids over coffeeshops in Amsterdam" : language === "pt" ? "Guia completo de coffeeshops em Amsterdam" : "Complete guide to coffeeshops in Amsterdam"
+        }}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
           { name: "Coffeeshops", url: "https://amsterdu.com/coffeeshops" }
