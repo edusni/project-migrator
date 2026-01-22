@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amsterdam Accommodation 2026: Taxes, Airbnb, Areas & Final Price (No Hidden Fees) | Amsterdu</title>
-    <meta name="description" content="See what changes in 2026: 21% VAT, 12.5% tourist tax, €15 day tourist fee, Airbnb rules (30 nights/year) and which areas are best for your profile. Includes real price calculator.">
+    <title>Amsterdam Accommodation 2026: 33.5% Taxes, Airbnb 30 Nights, Districts & Final Price | Amsterdu</title>
+    <meta name="description" content="🏨 VAT 21% + 12.5% tourist tax = 33.5% taxes. Airbnb: max 30 nights/year (15 in Center/De Pijp). Real price calculator. Complete 2026 district guide.">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="author" content="Du">
     
@@ -14,8 +14,8 @@
     <link rel="alternate" hreflang="nl-NL" href="https://amsterdu.com/nl/accommodation.html">
     <link rel="alternate" hreflang="x-default" href="https://amsterdu.com/pt/hospedagem.html">
     
-    <meta property="og:title" content="Where to Stay in Amsterdam 2026 | Amsterdu">
-    <meta property="og:description" content="Best neighborhoods to stay in Amsterdam. Real prices, tax breakdown, and honest recommendations.">
+    <meta property="og:title" content="Amsterdam Accommodation 2026: Complete Guide">
+    <meta property="og:description" content="🏨 33.5% taxes on accommodation. Airbnb: max 30 nights/year. Real price calculator and district guide.">
     <meta property="og:url" content="https://amsterdu.com/en/accommodation.html">
     <meta property="og:image" content="https://amsterdu.com/og-image.jpg">
     <meta property="og:type" content="article">
@@ -26,30 +26,57 @@
     
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #1a1a1a; background: #fff; }
+        body { font-family: system-ui, -apple-system, sans-serif; line-height: 1.7; color: #1a1a1a; background: #fff; }
         .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
         header { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 0; text-align: center; }
         h1 { font-size: 2.5rem; margin-bottom: 1rem; color: #F97316; }
+        .lead { font-size: 1.15rem; font-style: italic; color: #ccc; max-width: 700px; margin: 0 auto; }
         .breadcrumb { margin-bottom: 20px; font-size: 0.9rem; }
         .breadcrumb a { color: #F97316; }
         main { padding: 40px 0; }
-        section { margin-bottom: 40px; }
-        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1rem; border-left: 4px solid #F97316; padding-left: 15px; }
-        h3 { font-size: 1.25rem; color: #F97316; margin: 20px 0 10px; }
+        section { margin-bottom: 50px; }
+        h2 { font-size: 1.75rem; color: #1a1a1a; margin-bottom: 1.5rem; border-left: 4px solid #F97316; padding-left: 15px; position: relative; }
+        h2::after { content: ''; position: absolute; bottom: -8px; left: 15px; width: 60px; height: 3px; background: linear-gradient(90deg, #F97316, transparent); }
+        h3 { font-size: 1.25rem; color: #F97316; margin: 25px 0 12px; display: flex; align-items: center; gap: 8px; }
+        h4 { font-size: 1.1rem; color: #1a1a1a; margin: 20px 0 10px; border-left: 3px solid #F97316; padding-left: 12px; }
         p { margin-bottom: 1rem; color: #444; }
-        ul { margin-left: 20px; margin-bottom: 1rem; }
+        ul, ol { margin-left: 20px; margin-bottom: 1rem; }
         li { padding: 5px 0; color: #444; }
         a { color: #F97316; }
         .card { background: #f9f9f9; padding: 25px; border-radius: 12px; border: 1px solid #eee; margin-bottom: 20px; }
-        .warning { background: #fff3e6; border-left: 4px solid #F97316; padding: 15px 20px; margin: 20px 0; }
-        .danger { background: #fee; border-left: 4px solid #e53e3e; padding: 15px 20px; margin: 20px 0; }
-        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #f9f9f9; font-weight: bold; }
+        .highlight { background: linear-gradient(135deg, #fff3e6, #fff9f0); border-left: 4px solid #F97316; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .danger { background: linear-gradient(135deg, #fee, #fff5f5); border-left: 4px solid #e53e3e; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .tip { background: linear-gradient(135deg, #e6f7ff, #f0faff); border-left: 4px solid #0284c7; padding: 20px 25px; margin: 25px 0; border-radius: 0 12px 12px 0; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        th, td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; font-weight: 600; }
+        tr:hover { background: #fafafa; }
+        .badge { display: inline-block; background: #F97316; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; margin-bottom: 12px; }
+        .toc { background: #f9f9f9; padding: 25px 30px; border-radius: 12px; margin-bottom: 40px; }
+        .toc h3 { margin-top: 0; }
+        .toc ul { list-style: none; margin: 0; padding: 0; }
+        .toc li { padding: 8px 0; border-bottom: 1px solid #eee; }
+        .toc li:last-child { border-bottom: none; }
+        .toc a { text-decoration: none; }
+        .sources { background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 25px; margin: 40px 0; }
+        .sources h3 { color: #0284c7; margin-top: 0; }
+        .sources ul { list-style: none; margin: 0; padding: 0; }
+        .sources li { padding: 8px 0; border-bottom: 1px solid #e0f2fe; }
+        .sources li:last-child { border-bottom: none; }
+        .updated { text-align: center; color: #666; font-size: 0.9rem; margin: 30px 0; padding: 15px; background: #f9f9f9; border-radius: 8px; }
+        .calculator { background: linear-gradient(135deg, #1a1a1a, #2d2d2d); color: white; padding: 30px; border-radius: 12px; margin: 30px 0; }
+        .calculator h3 { color: #F97316; margin-top: 0; }
+        .calculator p { color: #ccc; }
+        .calculator .result { font-size: 1.5rem; color: #F97316; font-weight: bold; }
         footer { background: #1a1a1a; color: white; padding: 30px 0; text-align: center; margin-top: 60px; }
         footer a { color: #F97316; }
-        .badge { display: inline-block; background: #F97316; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; margin-bottom: 10px; }
-        @media (max-width: 768px) { h1 { font-size: 1.75rem; } }
+        @media (max-width: 768px) { 
+            h1 { font-size: 1.75rem; } 
+            table { font-size: 0.85rem; }
+            th, td { padding: 10px 12px; }
+            .lead { font-size: 1rem; }
+        }
     </style>
     
     <script type="application/ld+json">
@@ -69,209 +96,426 @@
         "mainEntity": [
             {
                 "@type": "Question",
-                "name": "What is the best area to stay in Amsterdam?",
+                "name": "How much tax will I pay on accommodation in Amsterdam 2026?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Jordaan for charm and canals, De Pijp for local vibe and markets, Centrum for convenience, Noord for modern and budget-friendly. Choice depends on your priorities and budget."
+                    "text": "The combination of VAT (21%) and tourist tax (12.5%) brings the total burden to 33.5%. This is applied to the nightly rate before any discount. A €180 rate results in €240.30 total."
                 }
             },
             {
                 "@type": "Question",
-                "name": "How much does accommodation cost in Amsterdam 2026?",
+                "name": "What changes for Airbnb in 2026?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Budget hostels: €35-60/night. Mid-range hotels: €120-200/night. Luxury: €300+/night. Remember to add 12.5% tourist tax + 21% VAT (over 33% total taxes on top of listed prices)."
+                    "text": "The short-term rental rule remains limited to 30 nights/year citywide. However, in Center and De Pijp neighborhoods, the municipality plans to reduce the maximum to 15 nights/year from April 1, 2026. Hosts must notify each stay to the municipality."
                 }
             },
             {
                 "@type": "Question",
-                "name": "Is Airbnb a good option in Amsterdam?",
+                "name": "Is it worth staying outside Amsterdam's center?",
                 "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "Airbnb is highly regulated in Amsterdam with a 30-night annual limit (soon 15 in center). Many listings are illegal. Hotels often provide better value when you factor in the risks."
+                    "text": "Yes, if you seek quiet, lower rates or have a family. Neighborhoods like Plantage, De Baarsjes, Rivierenbuurt, Oosterparkbuurt or Noord offer good quality of life and quick access to the center via public transport."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the best neighborhood for a first trip to Amsterdam?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "For those wanting to explore on foot with all attractions nearby, Binnenstad, Jordaan and Grachtengordel are unbeatable. Those preferring balance between location and price may like Oud-West, De Pijp or Westerpark."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is the €15 day visitor tax?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "In addition to the tourist tax on overnight stays, there's a €15 per person fee for cruise visitors and other tourists who visit the city without staying overnight (day tourists)."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I get from the airport to the center?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "The NS train connects Schiphol Airport to Central Station in about 17 minutes. It's the fastest way and avoids traffic. The fare is around €5.50 (e-ticket)."
                 }
             }
         ]
     }
     </script>
-    
 </head>
 <body>
     <header>
         <div class="container">
-            <p class="breadcrumb"><a href="/en/index.html">Home</a> → Where to Stay</p>
-            <h1>Where to Stay in Amsterdam 2026</h1>
-            <p>I'll tell you EXACTLY where to stay based on your profile, budget and what you want to do. No vague "it depends" talk.</p>
+            <p class="breadcrumb"><a href="/en/index.html">Home</a> → Accommodation</p>
+            <h1>Amsterdam Accommodation 2026</h1>
+            <p class="lead">Guide based on official sources. How new tax and accommodation rules impact visitors in 2026 and how to choose the right neighborhood for your profile.</p>
         </div>
     </header>
     
     <main class="container">
-        <div class="danger">
-            <strong>The Taxes Are Absurd:</strong>
+        <nav class="toc">
+            <h3>📍 In This Guide</h3>
             <ul>
-                <li>Tourist tax: 12.5% on TOP of everything</li>
-                <li>VAT: 21% (in effect since 2025)</li>
-                <li>Total: Over 33% TAX on base price</li>
+                <li><a href="#changes">1. What Changes in 2026</a></li>
+                <li><a href="#calculator">2. Real Price Calculator</a></li>
+                <li><a href="#choosing">3. How to Choose Where to Stay</a></li>
+                <li><a href="#types">4. Types of Accommodation</a></li>
+                <li><a href="#districts">5. Districts and Neighborhoods</a></li>
+                <li><a href="#rules">6. Golden Rules for Booking</a></li>
+                <li><a href="#faq">7. Frequently Asked Questions</a></li>
             </ul>
-            <p>That €100/night hotel actually costs €133+. Budget accordingly!</p>
+        </nav>
+
+        <div class="danger">
+            <strong>⚠️ Europe's highest tax burden:</strong> From 2026, the sum of VAT (21%) and tourist tax (12.5%) represents <strong>33.5% in taxes</strong> on accommodation. That €100/night hotel actually costs €133+. Budget accordingly!
+        </div>
+        
+        <section id="changes">
+            <h2>1. 🧾 What Changes in 2026</h2>
+            
+            <table>
+                <tr>
+                    <th>Item</th>
+                    <th>Value/Rule</th>
+                    <th>Source</th>
+                </tr>
+                <tr>
+                    <td>Tourist tax</td>
+                    <td><strong>12.5%</strong> on the nightly rate (excluding VAT)</td>
+                    <td>City of Amsterdam</td>
+                </tr>
+                <tr>
+                    <td>Day tourist tax</td>
+                    <td><strong>€15</strong> per passenger</td>
+                    <td>City of Amsterdam</td>
+                </tr>
+                <tr>
+                    <td>VAT/BTW on accommodation</td>
+                    <td><strong>21%</strong> from January 1, 2026</td>
+                    <td>Dutch Government</td>
+                </tr>
+                <tr>
+                    <td>Total tax on stays</td>
+                    <td><strong>33.5%</strong> (12.5% + 21%)</td>
+                    <td>City of Amsterdam</td>
+                </tr>
+                <tr>
+                    <td>Short-term rental</td>
+                    <td>Maximum <strong>30 nights/year</strong> per property</td>
+                    <td>City of Amsterdam</td>
+                </tr>
+                <tr>
+                    <td>Center and De Pijp (from April 1, 2026)</td>
+                    <td>Possible reduction to <strong>15 nights/year</strong></td>
+                    <td>City of Amsterdam</td>
+                </tr>
+            </table>
+            
+            <div class="highlight">
+                <strong>Why this matters:</strong> The city limits short-term rentals to 30 nights per year (possibly 15 in central areas). These changes aim to reduce overnight stays below 20 million and promote balance between tourism and residents' quality of life.
+            </div>
+        </section>
+        
+        <section id="calculator">
+            <h2>2. 🧮 Real Price Calculator</h2>
+            
+            <div class="calculator">
+                <h3>Example: Listed rate of €180</h3>
+                <p>VAT/BTW 21%: €180 × 21% = <strong>€37.80</strong></p>
+                <p>Tourist tax 12.5%: €180 × 12.5% = <strong>€22.50</strong></p>
+                <p class="result">Total per night: €240.30</p>
+                <p style="margin-top: 15px; font-size: 0.9rem;">This means you'll pay <strong>34% more</strong> than the base price.</p>
+            </div>
+            
+            <div class="tip">
+                <strong>💡 Tip:</strong> Always calculate the final amount (base price + 21% + 12.5%) before comparing accommodations. Platforms don't always show all taxes clearly.
+            </div>
+        </section>
+        
+        <section id="choosing">
+            <h2>3. 🧭 How to Choose Where to Stay</h2>
+            
+            <div class="card">
+                <h4>📍 Location and travel time</h4>
+                <p>Neighborhoods 15–25 minutes by train or metro from the center tend to have lower rates while maintaining easy access to main attractions.</p>
+            </div>
+            
+            <div class="card">
+                <h4>🔇 Noise level</h4>
+                <p>The central area (Binnenstad, De Wallen) is practical but noisy at night. Residential areas (Plantage, Watergraafsmeer, Rivierenbuurt, parts of Oost/West) offer more quiet.</p>
+            </div>
+            
+            <div class="card">
+                <h4>🚊 Transport access</h4>
+                <p>Prefer accommodations near a train or metro station. In 2026, the OVpay system allows contactless payment on all public transport.</p>
+            </div>
+            
+            <div class="card">
+                <h4>👤 Travel profile</h4>
+                <p>First trip, family, nightlife, museums or day trips require different neighborhoods.</p>
+            </div>
+            
+            <div class="card">
+                <h4>💰 Total budget</h4>
+                <p>Include VAT (21%) and tourist tax (12.5%) in your calculations, plus possible cleaning or service fees.</p>
+            </div>
+        </section>
+        
+        <section id="types">
+            <h2>4. 🏨 Types of Accommodation</h2>
+            
+            <div class="card">
+                <h4>Hotel</h4>
+                <p>Structured check-in, 24h reception, usually accommodate luggage. With higher taxes, the price difference from apartments may decrease.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Hostel</h4>
+                <p>Ideal for budget travelers and those seeking interaction. Prices vary by season; consider booking with free cancellation.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Bed & Breakfast / Guesthouse</h4>
+                <p>Local experience, but supply is limited in the historic center and room prices can be high.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Apartment / Short-stay</h4>
+                <p>Only worthwhile if the host is registered and respects the maximum 30 nights per year rule (or 15 nights in Center/De Pijp).</p>
+            </div>
+            
+            <div class="card">
+                <h4>Houseboat (woonboot)</h4>
+                <p>Typical Amsterdam floating accommodation. Provides unique experience, but may have narrow access and isn't the best option for those with reduced mobility.</p>
+            </div>
+        </section>
+        
+        <section id="districts">
+            <h2>5. 🗺️ Districts and Neighborhoods</h2>
+            
+            <p>Amsterdam is divided into 7 main districts (stadsdelen) and Weesp. Here's an overview of the most popular areas for accommodation.</p>
+            
+            <h3>📍 Centrum (Center)</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Binnenstad</h4>
+                    <p>Historic heart (Dam, Central Station). Ideal for exploring the city on foot. Expect noise and high prices.</p>
+                </div>
+                <div class="card">
+                    <h4>Grachtengordel & Nine Streets</h4>
+                    <p>Romantic setting with bridges, boutiques and cafes. Many buildings are old; stairs can be steep.</p>
+                </div>
+                <div class="card">
+                    <h4>Jordaan</h4>
+                    <p>Charming neighborhood, mix of local life and cafes. Sought-after accommodations; book in advance.</p>
+                </div>
+                <div class="card">
+                    <h4>De Wallen (Red Light District)</h4>
+                    <p>Focus on nightlife and cultural curiosity. Noise and crowds are frequent.</p>
+                </div>
+                <div class="card">
+                    <h4>Nieuwmarkt / Lastage</h4>
+                    <p>Food and bars, near the historic center, without being in the tourist hurricane's eye.</p>
+                </div>
+                <div class="card">
+                    <h4>Plantage / Jodenbuurt</h4>
+                    <p>Greener with museums; quiet atmosphere, good for families.</p>
+                </div>
+            </div>
+            
+            <h3>📍 West</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Oud-West</h4>
+                    <p>Cafes, markets and quick connection to center and Vondelpark. Desirable and therefore some areas have high rates.</p>
+                </div>
+                <div class="card">
+                    <h4>Westerpark</h4>
+                    <p>Ideal for park lovers and cultural events, maintaining proximity to the center.</p>
+                </div>
+                <div class="card">
+                    <h4>De Baarsjes</h4>
+                    <p>Great food scene and generally better prices; choose accommodations near tram lines.</p>
+                </div>
+                <div class="card">
+                    <h4>Sloterdijk / station area</h4>
+                    <p>Functional area with chain hotels and quick access to center via train/metro. Good for business.</p>
+                </div>
+            </div>
+            
+            <h3>📍 Zuid (South)</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4><a href="/en/de-pijp.html">De Pijp</a></h4>
+                    <p>Restaurants, bars and Albert Cuyp Market. Possible reduction to 15 nights/year limit in 2026; verify registration when renting apartments.</p>
+                </div>
+                <div class="card">
+                    <h4>Museumkwartier / Oud-Zuid</h4>
+                    <p>Museums (Rijksmuseum, Van Gogh), Vondelpark and upscale shops. One of the most expensive areas.</p>
+                </div>
+                <div class="card">
+                    <h4>Rivierenbuurt</h4>
+                    <p>Quiet neighborhood with easy access to the rest of the city. Good value for families.</p>
+                </div>
+                <div class="card">
+                    <h4>Zuidas / Buitenveldert</h4>
+                    <p>Business district with modern hotels and quiet nights. Ideal for corporate travel.</p>
+                </div>
+            </div>
+            
+            <h3>📍 Oost (East)</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Oosterparkbuurt</h4>
+                    <p>Parks and cafes. Good balance between calm and proximity to center.</p>
+                </div>
+                <div class="card">
+                    <h4>Dapperbuurt / Indische Buurt</h4>
+                    <p>Diverse neighborhoods with excellent restaurants and accessible prices. More authentic than touristy.</p>
+                </div>
+                <div class="card">
+                    <h4>Watergraafsmeer</h4>
+                    <p>Residential area, suitable for long stays or family trips.</p>
+                </div>
+                <div class="card">
+                    <h4>IJburg / Zeeburgereiland</h4>
+                    <p>New neighborhoods with space and good options for groups; farther from center.</p>
+                </div>
+            </div>
+            
+            <h3>📍 Noord (North)</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>NDSM</h4>
+                    <p>Former shipyard transformed into urban art and cultural events hub. Good value.</p>
+                </div>
+                <div class="card">
+                    <h4>Overhoeks / Buiksloterham</h4>
+                    <p>Modern hotels and restaurants minutes from Central Station via free ferry.</p>
+                </div>
+                <div class="card">
+                    <h4>Buikslotermeer / Nieuwendam</h4>
+                    <p>More residential and economical areas; check distance to metro or ferry stations.</p>
+                </div>
+            </div>
+            
+            <h3>📍 Nieuw-West, Zuidoost and Weesp</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h4>Nieuw-West (Slotervaart / Osdorp)</h4>
+                    <p>More spacious and economical accommodations; ideal for families or long stays.</p>
+                </div>
+                <div class="card">
+                    <h4>Zuidoost (Bijlmer)</h4>
+                    <p>Modern hotels near stadiums and arenas; recommended for events.</p>
+                </div>
+                <div class="card">
+                    <h4><a href="/en/weesp.html">Weesp</a></h4>
+                    <p>Small Dutch town atmosphere with lower rates. ~20 min by train from center. Ideal for long stays or those seeking tranquility.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="rules">
+            <h2>6. ✨ Golden Rules for Booking in 2026</h2>
+            
+            <ol>
+                <li><strong>Calculate the final price</strong> – add VAT (21%), tourist tax (12.5%) and platform fees before comparing options.</li>
+                <li><strong>Verify legality</strong> – be suspicious of apartments with very low prices in Center/De Pijp, as they may not comply with night limits.</li>
+                <li><strong>Prioritize transport</strong> – being near a metro or train station is often worth more than staying in the center paying premium prices.</li>
+                <li><strong>Mind the noise</strong> – if you're a light sleeper, prefer residential neighborhoods outside the tourist core.</li>
+                <li><strong>Plan arrivals/departures</strong> – very early or late flights require accommodation near a direct line to the airport.</li>
+                <li><strong>Consider your trip's purpose</strong> – museums, nightlife, family, work or nature point to different neighborhoods.</li>
+            </ol>
+        </section>
+        
+        <section id="faq">
+            <h2>7. ❓ Frequently Asked Questions</h2>
+            
+            <div class="card">
+                <h4>How much tax will I pay on accommodation in 2026?</h4>
+                <p>The combination of VAT (21%) and tourist tax (12.5%) brings the total burden to 33.5%. This is applied to the nightly rate before any discount.</p>
+            </div>
+            
+            <div class="card">
+                <h4>What changes for Airbnb in 2026?</h4>
+                <p>The short-term rental rule citywide remains limited to 30 nights/year. However, in Center and De Pijp neighborhoods, the municipality plans to reduce the maximum to 15 nights/year from April 1, 2026.</p>
+            </div>
+            
+            <div class="card">
+                <h4>Is it worth staying outside the center?</h4>
+                <p>Yes, if you seek quiet, lower rates or have a family. Neighborhoods like Plantage, De Baarsjes, Rivierenbuurt, Oosterparkbuurt or Noord offer good quality of life and quick access to the center via public transport.</p>
+            </div>
+            
+            <div class="card">
+                <h4>What's the best neighborhood for a first trip?</h4>
+                <p>For exploring on foot with all attractions nearby, Binnenstad, Jordaan and Grachtengordel are unbeatable. For balance between location and price, try Oud-West, De Pijp or Westerpark.</p>
+            </div>
+            
+            <div class="card">
+                <h4>What is the €15 day visitor tax?</h4>
+                <p>In addition to the tourist tax on overnight stays, there's a €15 per person fee for cruise visitors and other tourists who visit the city without staying overnight.</p>
+            </div>
+            
+            <div class="card">
+                <h4>How do I get from the airport to the center?</h4>
+                <p>The NS train connects Schiphol Airport to Central Station in about 17 minutes. It's the fastest way and avoids traffic. The fare is around €5.50.</p>
+            </div>
+        </section>
+        
+        <section class="sources">
+            <h3>📚 Official Sources</h3>
+            <ul>
+                <li><a href="https://www.amsterdam.nl/en/taxes/tourist-tax/" rel="nofollow noopener" target="_blank">City of Amsterdam – Tourist tax (toeristenbelasting)</a></li>
+                <li><a href="https://www.amsterdam.nl/en/policy/policy-tourism/" rel="nofollow noopener" target="_blank">City of Amsterdam – Tourist measures centre</a></li>
+                <li><a href="https://business.gov.nl/amendment/higher-vat-rate-overnight-accommodation/" rel="nofollow noopener" target="_blank">Netherlands Enterprise Agency – VAT on overnight accommodation 2026</a></li>
+                <li><a href="https://www.amsterdam.nl/wonen-leefomgeving/wonen/vakantieverhuur/" rel="nofollow noopener" target="_blank">City of Amsterdam – Reporting holiday rentals</a></li>
+            </ul>
+        </section>
+        
+        <div class="updated">
+            <strong>Last updated:</strong> January 2026 · Data verified from official sources
         </div>
         
         <section>
-            <h2>Best Neighborhoods by Profile</h2>
-            
-            <div class="card">
-                <span class="badge">Classic Choice</span>
-                <h3>Jordaan</h3>
-                <p><strong>Best for:</strong> Romance, photography, canal views, first-timers</p>
-                <p><strong>Price range:</strong> €150-300/night</p>
-                <p>The Instagram Amsterdam. Charming canals, cafes, boutiques. Walking distance to Anne Frank House. Most expensive but worth it for the experience.</p>
-                <p><strong>Cons:</strong> Touristy, expensive restaurants, busy on weekends.</p>
-            </div>
-            
-            <div class="card">
-                <span class="badge">Local Favorite</span>
-                <h3><a href="/en/de-pijp.html" style="text-decoration: none;">De Pijp</a></h3>
-                <p><strong>Best for:</strong> Food lovers, nightlife, young travelers, Albert Cuyp market</p>
-                <p><strong>Price range:</strong> €100-200/night</p>
-                <p>The "Brooklyn of Amsterdam." Diverse, trendy, great restaurants and bars. Albert Cuyp street market is unmissable.</p>
-                <p><strong>Cons:</strong> South of center, some areas noisy at night.</p>
-                <p><a href="/en/de-pijp.html">→ Read the complete De Pijp 2026 guide</a></p>
-            </div>
-            
-            <div class="card">
-                <span class="badge">Budget Smart</span>
-                <h3>Noord</h3>
-                <p><strong>Best for:</strong> Budget travelers, modern vibe, NDSM, A'DAM Lookout</p>
-                <p><strong>Price range:</strong> €80-150/night</p>
-                <p>Across the IJ river. Industrial-chic, creative spaces, free ferry to central. Much cheaper than central locations.</p>
-                <p><strong>Cons:</strong> Requires ferry or metro, less traditional feel.</p>
-            </div>
-            
-            <div class="card">
-                <span class="badge">Convenience</span>
-                <h3>Centrum</h3>
-                <p><strong>Best for:</strong> Short stays, first-timers wanting walkability</p>
-                <p><strong>Price range:</strong> €180-400/night</p>
-                <p>Everything within walking distance. Central Station, Dam Square, main attractions. Most touristy but most convenient.</p>
-                <p><strong>Cons:</strong> Crowded, loud, tourist traps everywhere, expensive.</p>
-            </div>
-            
-            <div class="card">
-                <span class="badge">Hidden Gem</span>
-                <h3>Oost (East)</h3>
-                <p><strong>Best for:</strong> Parks, multicultural dining, Artis Zoo, families</p>
-                <p><strong>Price range:</strong> €100-180/night</p>
-                <p>Residential but well-connected. Near Oosterpark and Tropical Museum. Great Indonesian and Surinamese food.</p>
-                <p><strong>Cons:</strong> Less central, fewer attractions nearby.</p>
-            </div>
-        </section>
-        
-        <section>
-            <h2>Airbnb: Almost Dead in Amsterdam</h2>
-            <div class="warning">
-                <p><strong>The Reality:</strong></p>
-                <ul>
-                    <li>Maximum 30 nights/year per property (soon 15 in center)</li>
-                    <li>Needs specific license - many listings are illegal</li>
-                    <li>Fines up to €21,000 for illegal rentals</li>
-                    <li>You might get kicked out mid-stay if authorities check</li>
-                </ul>
-                <p>Hotels are often the safer choice when you factor in the risks.</p>
-            </div>
-        </section>
-        
-        <section>
-            <h2>Price Reference 2026</h2>
-            <table>
-                <tr>
-                    <th>Type</th>
-                    <th>Per Night</th>
-                    <th>Notes</th>
-                </tr>
-                <tr>
-                    <td>Hostel (dorm)</td>
-                    <td>€35-60</td>
-                    <td>Book 2-3 weeks ahead in summer</td>
-                </tr>
-                <tr>
-                    <td>Hostel (private)</td>
-                    <td>€80-120</td>
-                    <td>Good budget alternative to hotels</td>
-                </tr>
-                <tr>
-                    <td>2-star hotel</td>
-                    <td>€80-120</td>
-                    <td>Basic but central</td>
-                </tr>
-                <tr>
-                    <td>3-star hotel</td>
-                    <td>€120-200</td>
-                    <td>Best value for most travelers</td>
-                </tr>
-                <tr>
-                    <td>4-star hotel</td>
-                    <td>€200-350</td>
-                    <td>Comfort with amenities</td>
-                </tr>
-                <tr>
-                    <td>5-star/Boutique</td>
-                    <td>€350+</td>
-                    <td>Luxury experience</td>
-                </tr>
-            </table>
-            <p><em>Note: Prices shown BEFORE 33%+ taxes. Always check the final price!</em></p>
-        </section>
-        
-        <section>
-            <h2>Money-Saving Tips</h2>
-            <ul>
-                <li><strong>Stay in Noord or Oost:</strong> 30-40% cheaper than Centrum/Jordaan</li>
-                <li><strong>Book 2-3 months ahead:</strong> Prices spike closer to dates</li>
-                <li><strong>Avoid weekends:</strong> Prices jump 20-30% Fri-Sun</li>
-                <li><strong>Consider hostels with private rooms:</strong> Often cheaper than budget hotels</li>
-                <li><strong>Look for "stay 3 nights" deals:</strong> Many hotels offer discounts</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2>Accommodation + Your Budget: Strategic Links</h2>
-            <p>Where you stay defines how much you spend on everything else. See the connections:</p>
+            <h3>🔗 Read Also</h3>
             <div class="grid">
                 <div class="card">
-                    <h4>🚃 Transport</h4>
-                    <p>The more central, the less you spend on transport. <a href="/en/transport.html">Complete Amsterdam transport guide</a> — prices, passes and how to save.</p>
+                    <a href="/en/transport.html"><strong>Transport</strong></a>
+                    <p>OVpay, GVB passes, free ferries and how to get from the airport.</p>
                 </div>
                 <div class="card">
-                    <h4>💰 Cost of Living</h4>
-                    <p>Accommodation is 60%+ of the cost of living here. <a href="/en/cost-of-living.html">How much it costs to live in Amsterdam 2026</a> — rent, bills and taxes.</p>
+                    <a href="/en/cost-of-living.html"><strong>Cost of Living</strong></a>
+                    <p>How much it costs to live in Amsterdam in 2026.</p>
                 </div>
                 <div class="card">
-                    <h4>🌿 Coffeeshops</h4>
-                    <p>Neighborhoods with the best local coffeeshops. <a href="/en/coffeeshops.html">Amsterdam coffeeshops guide</a> — De Pijp vs Centrum.</p>
-                </div>
-                <div class="card">
-                    <h4>🚂 Day Trips</h4>
-                    <p>Accommodation near stations for day trips. <a href="/en/daytrips.html">Day trips from Amsterdam</a> — windmills, tulips, beaches.</p>
+                    <a href="/en/de-pijp.html"><strong>De Pijp</strong></a>
+                    <p>Complete guide to Amsterdam's most vibrant neighborhood.</p>
                 </div>
             </div>
-        </section>
-        
-        <section>
-            <h2>Continue Reading</h2>
-            <ul>
-                <li><a href="/en/planning.html">Trip Planning</a></li>
-                <li><a href="/en/transport.html">Getting Around</a></li>
-                <li><a href="/en/attractions.html">Top Attractions</a></li>
-                <li><a href="/en/food.html">Food & Drink Guide</a></li>
-            </ul>
         </section>
     </main>
     
     <footer>
         <div class="container">
-            <p>© 2026 Amsterdu — The Brutally Honest Amsterdam Guide</p>
-            <p><a href="/pt/hospedagem.html">Português</a> | <a href="/en/accommodation.html">English</a> | <a href="/nl/accommodation.html">Nederlands</a></p>
+            <p>© 2026 Amsterdu · Amsterdam Guide</p>
+            <p><a href="/pt/hospedagem.html">PT</a> · <a href="/en/accommodation.html">EN</a> · <a href="/nl/accommodation.html">NL</a></p>
         </div>
     </footer>
+    
+    <script>
+        if (!/bot|crawl|spider|slurp|bingbot|googlebot|yandex|baidu|duckduckbot/i.test(navigator.userAgent)) {
+            window.location.href = '/en/accommodation';
+        }
+    </script>
 </body>
 </html>
