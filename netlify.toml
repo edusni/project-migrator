@@ -725,7 +725,60 @@
   to = "/index.html"
   status = 200
 
+# ===================================================================
+# Weesp e Zuidoost - Redirect para .html (arquivos estáticos existem)
+# ===================================================================
+[[redirects]]
+  from = "/pt/weesp"
+  to = "/pt/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/weesp/"
+  to = "/pt/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/weesp"
+  to = "/en/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/weesp/"
+  to = "/en/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/weesp"
+  to = "/nl/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/weesp/"
+  to = "/nl/weesp.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/zuidoost"
+  to = "/nl/zuidoost.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/zuidoost/"
+  to = "/nl/zuidoost.html"
+  status = 301
+  force = true
+
+# ===================================================================
 # Bairros (React SPA routes - não têm .html estático)
+# ===================================================================
 [[redirects]]
   from = "/pt/jordaan"
   to = "/index.html"
@@ -768,11 +821,6 @@
 
 [[redirects]]
   from = "/pt/zuidoost"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/pt/weesp"
   to = "/index.html"
   status = 200
 
@@ -827,11 +875,6 @@
   status = 200
 
 [[redirects]]
-  from = "/en/weesp"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
   from = "/en/soundscape"
   to = "/index.html"
   status = 200
@@ -873,16 +916,6 @@
 
 [[redirects]]
   from = "/nl/nieuw-west"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/nl/zuidoost"
-  to = "/index.html"
-  status = 200
-
-[[redirects]]
-  from = "/nl/weesp"
   to = "/index.html"
   status = 200
 
