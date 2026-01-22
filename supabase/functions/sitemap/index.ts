@@ -12,37 +12,41 @@ const corsHeaders = {
 const htmlPages: Record<string, string> = {
   "en/index.html": "2024-12-22",
   "en/planning.html": "2024-12-28", // Updated ETIAS info
-  "en/coffeeshops.html": "2024-12-27", // SEO optimizations
+  "en/coffeeshops.html": "2025-01-22", // CTR optimizations
   "en/attractions.html": "2024-12-22",
-  "en/transport.html": "2024-12-22",
+  "en/transport.html": "2025-01-22", // CTR optimizations
   "en/food.html": "2024-12-22",
   "en/daytrips.html": "2024-12-22",
   "en/about.html": "2024-12-22",
   "en/accommodation.html": "2024-12-22",
-  "en/cost-of-living.html": "2024-12-22",
+  "en/cost-of-living.html": "2025-01-22", // CTR optimizations
   "en/de-pijp.html": "2024-12-22",
+  "en/weesp.html": "2025-01-20",
   "nl/index.html": "2024-12-22",
   "nl/planning.html": "2024-12-28", // Updated ETIAS info
-  "nl/coffeeshops.html": "2024-12-27",
+  "nl/coffeeshops.html": "2025-01-22", // CTR optimizations
   "nl/attractions.html": "2024-12-22",
-  "nl/transport.html": "2024-12-22",
+  "nl/transport.html": "2025-01-22", // CTR optimizations
   "nl/food.html": "2024-12-22",
   "nl/daytrips.html": "2024-12-22",
   "nl/about.html": "2024-12-22",
   "nl/accommodation.html": "2024-12-22",
-  "nl/kosten-van-levensonderhoud.html": "2024-12-22",
+  "nl/kosten-van-levensonderhoud.html": "2025-01-22", // CTR optimizations
   "nl/de-pijp.html": "2024-12-22",
+  "nl/weesp.html": "2025-01-20",
+  "nl/zuidoost.html": "2025-01-20",
   "pt/index.html": "2024-12-22",
   "pt/planejamento.html": "2024-12-28", // Updated ETIAS info
-  "pt/coffeeshops.html": "2024-12-27",
+  "pt/coffeeshops.html": "2025-01-22", // CTR optimizations
   "pt/atracoes.html": "2024-12-22",
-  "pt/transporte.html": "2024-12-22",
+  "pt/transporte.html": "2025-01-22", // CTR optimizations
   "pt/gastronomia.html": "2024-12-22",
   "pt/arredores.html": "2024-12-22",
   "pt/sobre.html": "2024-12-22",
   "pt/hospedagem.html": "2024-12-22",
-  "pt/custo-de-vida.html": "2024-12-22",
+  "pt/custo-de-vida.html": "2025-01-22", // CTR optimizations
   "pt/de-pijp.html": "2024-12-22",
+  "pt/weesp.html": "2025-01-20",
 };
 
 const baseUrl = "https://amsterdu.com";
@@ -59,10 +63,10 @@ serve(async (req) => {
     const supabaseKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, supabaseKey);
 
-    // Fetch all published blog posts
+    // Fetch all published blog posts with native slugs
     const { data: posts, error } = await supabase
       .from("blog_posts")
-      .select("slug, updated_at, published_at")
+      .select("slug, slug_en, slug_nl, updated_at, published_at")
       .eq("status", "published")
       .order("published_at", { ascending: false });
 
@@ -412,24 +416,68 @@ serve(async (req) => {
     <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/de-pijp.html"/>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/de-pijp.html"/>
   </url>
+  <url>
+    <loc>${baseUrl}/pt/weesp.html</loc>
+    <lastmod>${getLastmod("pt/weesp.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/en/weesp.html</loc>
+    <lastmod>${getLastmod("en/weesp.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/nl/weesp.html</loc>
+    <lastmod>${getLastmod("nl/weesp.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
+  </url>
+  <url>
+    <loc>${baseUrl}/nl/zuidoost.html</loc>
+    <lastmod>${getLastmod("nl/zuidoost.html")}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/zuidoost.html"/>
+  </url>
 `;
 
-    // Add blog posts for each locale
+    // Add blog posts for each locale with native slugs
     if (posts && posts.length > 0) {
       for (const post of posts) {
         const lastmod = (post.updated_at || post.published_at || today).split("T")[0];
+        
+        // Get native slug for each locale
+        const getSlugForLocale = (locale: string): string => {
+          if (locale === "en" && post.slug_en) return post.slug_en;
+          if (locale === "nl" && post.slug_nl) return post.slug_nl;
+          return post.slug; // PT fallback
+        };
+        
         const locales = ["pt", "en", "nl"];
         
         for (const locale of locales) {
-          const url = `${baseUrl}/${locale}/blog/${post.slug}`;
+          const nativeSlug = getSlugForLocale(locale);
+          const url = `${baseUrl}/${locale}/blog/${nativeSlug}`;
           
           xml += `
   <url>
     <loc>${url}</loc>`;
           
-          // Add hreflang alternates
+          // Add hreflang alternates with native slugs
           for (const altLocale of locales) {
-            const altUrl = `${baseUrl}/${altLocale}/blog/${post.slug}`;
+            const altSlug = getSlugForLocale(altLocale);
+            const altUrl = `${baseUrl}/${altLocale}/blog/${altSlug}`;
             const hreflang = altLocale === "pt" ? "pt-BR" : altLocale === "nl" ? "nl-NL" : "en";
             xml += `
     <xhtml:link rel="alternate" hreflang="${hreflang}" href="${altUrl}"/>`;
