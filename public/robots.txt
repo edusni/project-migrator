@@ -1,13 +1,36 @@
 # Amsterdu - robots.txt
 # https://amsterdu.com
+# Last updated: 2025-01-22
 
 User-agent: *
 Allow: /
 
-# Sitemap
+# Explicitly allow all content directories
+Allow: /pt/
+Allow: /en/
+Allow: /nl/
+Allow: /blog/
+
+# Allow static assets (CSS, JS, images)
+Allow: /assets/
+Allow: /*.js$
+Allow: /*.css$
+Allow: /*.webp$
+Allow: /*.jpg$
+Allow: /*.png$
+Allow: /*.svg$
+
+# Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml
 
-# AI Crawlers
+# LLM context file
+# https://llmstxt.org/
+Allow: /llms.txt
+Allow: /llm.html
+Allow: /llm-en.html
+Allow: /llm-nl.html
+
+# AI Crawlers - Explicitly allowed
 User-agent: GPTBot
 Allow: /
 
@@ -24,6 +47,9 @@ User-agent: PerplexityBot
 Allow: /
 
 User-agent: Cohere-ai
+Allow: /
+
+User-agent: Google-Extended
 Allow: /
 
 # Social Media Crawlers
@@ -45,7 +71,14 @@ Allow: /
 User-agent: TelegramBot
 Allow: /
 
-# Block aggressive scrapers
+# SEO Tools - Allowed
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+# Block aggressive scrapers only
 User-agent: MJ12bot
 Disallow: /
 
@@ -55,5 +88,8 @@ Disallow: /
 User-agent: BLEXBot
 Disallow: /
 
-# Host
-Host: amsterdu.com
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+# Host declaration
+Host: https://amsterdu.com
