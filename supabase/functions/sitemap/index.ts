@@ -10,46 +10,69 @@ const corsHeaders = {
 // Prerendered HTML pages with specific last edit dates
 // UPDATE THESE DATES when you edit the corresponding pages!
 const htmlPages: Record<string, string> = {
-  "en/index.html": "2024-12-22",
-  "en/planning.html": "2024-12-28", // Updated ETIAS info
-  "en/coffeeshops.html": "2025-01-22", // CTR optimizations
-  "en/attractions.html": "2024-12-22",
-  "en/transport.html": "2025-01-22", // CTR optimizations
-  "en/food.html": "2024-12-22",
-  "en/daytrips.html": "2024-12-22",
-  "en/about.html": "2024-12-22",
-  "en/accommodation.html": "2024-12-22",
-  "en/cost-of-living.html": "2025-01-22", // CTR optimizations
-  "en/de-pijp.html": "2024-12-22",
-  "en/weesp.html": "2025-01-20",
-  "nl/index.html": "2024-12-22",
-  "nl/planning.html": "2024-12-28", // Updated ETIAS info
-  "nl/coffeeshops.html": "2025-01-22", // CTR optimizations
-  "nl/attractions.html": "2024-12-22",
-  "nl/transport.html": "2025-01-22", // CTR optimizations
-  "nl/food.html": "2024-12-22",
-  "nl/daytrips.html": "2024-12-22",
-  "nl/about.html": "2024-12-22",
-  "nl/accommodation.html": "2024-12-22",
-  "nl/kosten-van-levensonderhoud.html": "2025-01-22", // CTR optimizations
-  "nl/de-pijp.html": "2024-12-22",
-  "nl/weesp.html": "2025-01-20",
-  "nl/zuidoost.html": "2025-01-20",
-  "pt/index.html": "2024-12-22",
-  "pt/planejamento.html": "2024-12-28", // Updated ETIAS info
-  "pt/coffeeshops.html": "2025-01-22", // CTR optimizations
-  "pt/atracoes.html": "2024-12-22",
-  "pt/transporte.html": "2025-01-22", // CTR optimizations
-  "pt/gastronomia.html": "2024-12-22",
-  "pt/arredores.html": "2024-12-22",
-  "pt/sobre.html": "2024-12-22",
-  "pt/hospedagem.html": "2024-12-22",
-  "pt/custo-de-vida.html": "2025-01-22", // CTR optimizations
-  "pt/de-pijp.html": "2024-12-22",
-  "pt/weesp.html": "2025-01-20",
+  "en/index.html": "2025-01-22",
+  "en/planning.html": "2025-01-22",
+  "en/coffeeshops.html": "2025-01-22",
+  "en/attractions.html": "2025-01-22",
+  "en/transport.html": "2025-01-22",
+  "en/food.html": "2025-01-22",
+  "en/daytrips.html": "2025-01-22",
+  "en/about.html": "2025-01-22",
+  "en/accommodation.html": "2025-01-22",
+  "en/cost-of-living.html": "2025-01-22",
+  "en/de-pijp.html": "2025-01-22",
+  "en/weesp.html": "2025-01-22",
+  "nl/index.html": "2025-01-22",
+  "nl/planning.html": "2025-01-22",
+  "nl/coffeeshops.html": "2025-01-22",
+  "nl/attractions.html": "2025-01-22",
+  "nl/transport.html": "2025-01-22",
+  "nl/food.html": "2025-01-22",
+  "nl/daytrips.html": "2025-01-22",
+  "nl/about.html": "2025-01-22",
+  "nl/accommodation.html": "2025-01-22",
+  "nl/kosten-van-levensonderhoud.html": "2025-01-22",
+  "nl/de-pijp.html": "2025-01-22",
+  "nl/weesp.html": "2025-01-22",
+  "nl/zuidoost.html": "2025-01-22",
+  "pt/index.html": "2025-01-22",
+  "pt/planejamento.html": "2025-01-22",
+  "pt/coffeeshops.html": "2025-01-22",
+  "pt/atracoes.html": "2025-01-22",
+  "pt/transporte.html": "2025-01-22",
+  "pt/gastronomia.html": "2025-01-22",
+  "pt/arredores.html": "2025-01-22",
+  "pt/sobre.html": "2025-01-22",
+  "pt/hospedagem.html": "2025-01-22",
+  "pt/custo-de-vida.html": "2025-01-22",
+  "pt/de-pijp.html": "2025-01-22",
+  "pt/weesp.html": "2025-01-22",
 };
 
 const baseUrl = "https://amsterdu.com";
+
+// Helper function to generate URL entry with all hreflang alternates
+function generateUrlEntry(
+  ptPath: string,
+  enPath: string,
+  nlPath: string,
+  lastmod: string,
+  changefreq: string,
+  priority: string,
+  currentLoc: string
+): string {
+  return `
+  <url>
+    <loc>${currentLoc}</loc>
+    <lastmod>${lastmod}</lastmod>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/${ptPath}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/${enPath}"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/${nlPath}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/${ptPath}"/>
+  </url>`;
+}
 
 serve(async (req) => {
   // Handle CORS preflight
@@ -94,366 +117,111 @@ serve(async (req) => {
     <changefreq>weekly</changefreq>
     <priority>0.3</priority>
   </url>
-  <url>
-    <loc>${baseUrl}/llm.html</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/llm-en.html</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>${baseUrl}/llm-nl.html</loc>
-    <lastmod>${today}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.3</priority>
-  </url>
 
-  <!-- English HTML Pages -->
-  <url>
-    <loc>${baseUrl}/en/index.html</loc>
-    <lastmod>${getLastmod("en/index.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/index.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/index.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/index.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/planning.html</loc>
-    <lastmod>${getLastmod("en/planning.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/planning.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/planejamento.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/planning.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/coffeeshops.html</loc>
-    <lastmod>${getLastmod("en/coffeeshops.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/coffeeshops.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/attractions.html</loc>
-    <lastmod>${getLastmod("en/attractions.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/attractions.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/atracoes.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/attractions.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/transport.html</loc>
-    <lastmod>${getLastmod("en/transport.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/transport.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/transporte.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/transport.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/food.html</loc>
-    <lastmod>${getLastmod("en/food.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/food.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/gastronomia.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/food.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/daytrips.html</loc>
-    <lastmod>${getLastmod("en/daytrips.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/daytrips.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/arredores.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/daytrips.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/about.html</loc>
-    <lastmod>${getLastmod("en/about.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/sobre.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/about.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/accommodation.html</loc>
-    <lastmod>${getLastmod("en/accommodation.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/accommodation.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/hospedagem.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/accommodation.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/cost-of-living.html</loc>
-    <lastmod>${getLastmod("en/cost-of-living.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/cost-of-living.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/custo-de-vida.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/kosten-van-levensonderhoud.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/de-pijp.html</loc>
-    <lastmod>${getLastmod("en/de-pijp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/de-pijp.html"/>
-  </url>
+  <!-- ============================================= -->
+  <!-- HOME PAGES - All locales with x-default      -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/index.html", "en/index.html", "nl/index.html", getLastmod("pt/index.html"), "weekly", "1.0", `${baseUrl}/pt/index.html`)}
+  ${generateUrlEntry("pt/index.html", "en/index.html", "nl/index.html", getLastmod("en/index.html"), "weekly", "0.9", `${baseUrl}/en/index.html`)}
+  ${generateUrlEntry("pt/index.html", "en/index.html", "nl/index.html", getLastmod("nl/index.html"), "weekly", "0.9", `${baseUrl}/nl/index.html`)}
 
-  <!-- Dutch HTML Pages -->
-  <url>
-    <loc>${baseUrl}/nl/index.html</loc>
-    <lastmod>${getLastmod("nl/index.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/index.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/index.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/index.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/planning.html</loc>
-    <lastmod>${getLastmod("nl/planning.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/planning.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/planejamento.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/planning.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/coffeeshops.html</loc>
-    <lastmod>${getLastmod("nl/coffeeshops.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/coffeeshops.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/attractions.html</loc>
-    <lastmod>${getLastmod("nl/attractions.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/attractions.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/atracoes.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/attractions.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/transport.html</loc>
-    <lastmod>${getLastmod("nl/transport.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/transport.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/transporte.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/transport.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/food.html</loc>
-    <lastmod>${getLastmod("nl/food.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/food.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/gastronomia.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/food.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/daytrips.html</loc>
-    <lastmod>${getLastmod("nl/daytrips.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/daytrips.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/arredores.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/daytrips.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/about.html</loc>
-    <lastmod>${getLastmod("nl/about.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/sobre.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/about.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/accommodation.html</loc>
-    <lastmod>${getLastmod("nl/accommodation.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/accommodation.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/hospedagem.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/accommodation.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/kosten-van-levensonderhoud.html</loc>
-    <lastmod>${getLastmod("nl/kosten-van-levensonderhoud.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/cost-of-living.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/custo-de-vida.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/kosten-van-levensonderhoud.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/de-pijp.html</loc>
-    <lastmod>${getLastmod("nl/de-pijp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/de-pijp.html"/>
-  </url>
+  <!-- ============================================= -->
+  <!-- COFFEESHOPS - Priority cluster               -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/coffeeshops.html", "en/coffeeshops.html", "nl/coffeeshops.html", getLastmod("pt/coffeeshops.html"), "weekly", "0.9", `${baseUrl}/pt/coffeeshops.html`)}
+  ${generateUrlEntry("pt/coffeeshops.html", "en/coffeeshops.html", "nl/coffeeshops.html", getLastmod("en/coffeeshops.html"), "weekly", "0.8", `${baseUrl}/en/coffeeshops.html`)}
+  ${generateUrlEntry("pt/coffeeshops.html", "en/coffeeshops.html", "nl/coffeeshops.html", getLastmod("nl/coffeeshops.html"), "weekly", "0.8", `${baseUrl}/nl/coffeeshops.html`)}
 
-  <!-- Portuguese HTML Pages (Primary) -->
-  <url>
-    <loc>${baseUrl}/pt/index.html</loc>
-    <lastmod>${getLastmod("pt/index.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/index.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/index.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/index.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/pt/index.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/planejamento.html</loc>
-    <lastmod>${getLastmod("pt/planejamento.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/planning.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/planejamento.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/planning.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/coffeeshops.html</loc>
-    <lastmod>${getLastmod("pt/coffeeshops.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/coffeeshops.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/coffeeshops.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/atracoes.html</loc>
-    <lastmod>${getLastmod("pt/atracoes.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/attractions.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/atracoes.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/attractions.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/transporte.html</loc>
-    <lastmod>${getLastmod("pt/transporte.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/transport.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/transporte.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/transport.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/gastronomia.html</loc>
-    <lastmod>${getLastmod("pt/gastronomia.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/food.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/gastronomia.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/food.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/arredores.html</loc>
-    <lastmod>${getLastmod("pt/arredores.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/daytrips.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/arredores.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/daytrips.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/sobre.html</loc>
-    <lastmod>${getLastmod("pt/sobre.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/about.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/sobre.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/about.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/hospedagem.html</loc>
-    <lastmod>${getLastmod("pt/hospedagem.html")}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/accommodation.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/hospedagem.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/accommodation.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/custo-de-vida.html</loc>
-    <lastmod>${getLastmod("pt/custo-de-vida.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/cost-of-living.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/custo-de-vida.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/kosten-van-levensonderhoud.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/de-pijp.html</loc>
-    <lastmod>${getLastmod("pt/de-pijp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/de-pijp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/de-pijp.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/pt/weesp.html</loc>
-    <lastmod>${getLastmod("pt/weesp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/en/weesp.html</loc>
-    <lastmod>${getLastmod("en/weesp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
-  </url>
-  <url>
-    <loc>${baseUrl}/nl/weesp.html</loc>
-    <lastmod>${getLastmod("nl/weesp.html")}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/weesp.html"/>
-    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/weesp.html"/>
-  </url>
+  <!-- ============================================= -->
+  <!-- TRANSPORT - Priority cluster                 -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/transporte.html", "en/transport.html", "nl/transport.html", getLastmod("pt/transporte.html"), "weekly", "0.9", `${baseUrl}/pt/transporte.html`)}
+  ${generateUrlEntry("pt/transporte.html", "en/transport.html", "nl/transport.html", getLastmod("en/transport.html"), "weekly", "0.8", `${baseUrl}/en/transport.html`)}
+  ${generateUrlEntry("pt/transporte.html", "en/transport.html", "nl/transport.html", getLastmod("nl/transport.html"), "weekly", "0.8", `${baseUrl}/nl/transport.html`)}
+
+  <!-- ============================================= -->
+  <!-- COST OF LIVING - Priority cluster            -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/custo-de-vida.html", "en/cost-of-living.html", "nl/kosten-van-levensonderhoud.html", getLastmod("pt/custo-de-vida.html"), "monthly", "0.8", `${baseUrl}/pt/custo-de-vida.html`)}
+  ${generateUrlEntry("pt/custo-de-vida.html", "en/cost-of-living.html", "nl/kosten-van-levensonderhoud.html", getLastmod("en/cost-of-living.html"), "monthly", "0.7", `${baseUrl}/en/cost-of-living.html`)}
+  ${generateUrlEntry("pt/custo-de-vida.html", "en/cost-of-living.html", "nl/kosten-van-levensonderhoud.html", getLastmod("nl/kosten-van-levensonderhoud.html"), "monthly", "0.7", `${baseUrl}/nl/kosten-van-levensonderhoud.html`)}
+
+  <!-- ============================================= -->
+  <!-- ACCOMMODATION                                -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/hospedagem.html", "en/accommodation.html", "nl/accommodation.html", getLastmod("pt/hospedagem.html"), "weekly", "0.9", `${baseUrl}/pt/hospedagem.html`)}
+  ${generateUrlEntry("pt/hospedagem.html", "en/accommodation.html", "nl/accommodation.html", getLastmod("en/accommodation.html"), "weekly", "0.8", `${baseUrl}/en/accommodation.html`)}
+  ${generateUrlEntry("pt/hospedagem.html", "en/accommodation.html", "nl/accommodation.html", getLastmod("nl/accommodation.html"), "weekly", "0.8", `${baseUrl}/nl/accommodation.html`)}
+
+  <!-- ============================================= -->
+  <!-- PLANNING                                     -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/planejamento.html", "en/planning.html", "nl/planning.html", getLastmod("pt/planejamento.html"), "weekly", "0.9", `${baseUrl}/pt/planejamento.html`)}
+  ${generateUrlEntry("pt/planejamento.html", "en/planning.html", "nl/planning.html", getLastmod("en/planning.html"), "weekly", "0.8", `${baseUrl}/en/planning.html`)}
+  ${generateUrlEntry("pt/planejamento.html", "en/planning.html", "nl/planning.html", getLastmod("nl/planning.html"), "weekly", "0.8", `${baseUrl}/nl/planning.html`)}
+
+  <!-- ============================================= -->
+  <!-- ATTRACTIONS                                  -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/atracoes.html", "en/attractions.html", "nl/attractions.html", getLastmod("pt/atracoes.html"), "weekly", "0.9", `${baseUrl}/pt/atracoes.html`)}
+  ${generateUrlEntry("pt/atracoes.html", "en/attractions.html", "nl/attractions.html", getLastmod("en/attractions.html"), "weekly", "0.8", `${baseUrl}/en/attractions.html`)}
+  ${generateUrlEntry("pt/atracoes.html", "en/attractions.html", "nl/attractions.html", getLastmod("nl/attractions.html"), "weekly", "0.8", `${baseUrl}/nl/attractions.html`)}
+
+  <!-- ============================================= -->
+  <!-- FOOD                                         -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/gastronomia.html", "en/food.html", "nl/food.html", getLastmod("pt/gastronomia.html"), "weekly", "0.8", `${baseUrl}/pt/gastronomia.html`)}
+  ${generateUrlEntry("pt/gastronomia.html", "en/food.html", "nl/food.html", getLastmod("en/food.html"), "weekly", "0.7", `${baseUrl}/en/food.html`)}
+  ${generateUrlEntry("pt/gastronomia.html", "en/food.html", "nl/food.html", getLastmod("nl/food.html"), "weekly", "0.7", `${baseUrl}/nl/food.html`)}
+
+  <!-- ============================================= -->
+  <!-- DAYTRIPS                                     -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/arredores.html", "en/daytrips.html", "nl/daytrips.html", getLastmod("pt/arredores.html"), "weekly", "0.8", `${baseUrl}/pt/arredores.html`)}
+  ${generateUrlEntry("pt/arredores.html", "en/daytrips.html", "nl/daytrips.html", getLastmod("en/daytrips.html"), "weekly", "0.7", `${baseUrl}/en/daytrips.html`)}
+  ${generateUrlEntry("pt/arredores.html", "en/daytrips.html", "nl/daytrips.html", getLastmod("nl/daytrips.html"), "weekly", "0.7", `${baseUrl}/nl/daytrips.html`)}
+
+  <!-- ============================================= -->
+  <!-- ABOUT                                        -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/sobre.html", "en/about.html", "nl/about.html", getLastmod("pt/sobre.html"), "monthly", "0.5", `${baseUrl}/pt/sobre.html`)}
+  ${generateUrlEntry("pt/sobre.html", "en/about.html", "nl/about.html", getLastmod("en/about.html"), "monthly", "0.5", `${baseUrl}/en/about.html`)}
+  ${generateUrlEntry("pt/sobre.html", "en/about.html", "nl/about.html", getLastmod("nl/about.html"), "monthly", "0.5", `${baseUrl}/nl/about.html`)}
+
+  <!-- ============================================= -->
+  <!-- DE PIJP (Neighborhood)                       -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/de-pijp.html", "en/de-pijp.html", "nl/de-pijp.html", getLastmod("pt/de-pijp.html"), "monthly", "0.7", `${baseUrl}/pt/de-pijp.html`)}
+  ${generateUrlEntry("pt/de-pijp.html", "en/de-pijp.html", "nl/de-pijp.html", getLastmod("en/de-pijp.html"), "monthly", "0.6", `${baseUrl}/en/de-pijp.html`)}
+  ${generateUrlEntry("pt/de-pijp.html", "en/de-pijp.html", "nl/de-pijp.html", getLastmod("nl/de-pijp.html"), "monthly", "0.6", `${baseUrl}/nl/de-pijp.html`)}
+
+  <!-- ============================================= -->
+  <!-- WEESP (Neighborhood)                         -->
+  <!-- ============================================= -->
+  ${generateUrlEntry("pt/weesp.html", "en/weesp.html", "nl/weesp.html", getLastmod("pt/weesp.html"), "monthly", "0.6", `${baseUrl}/pt/weesp.html`)}
+  ${generateUrlEntry("pt/weesp.html", "en/weesp.html", "nl/weesp.html", getLastmod("en/weesp.html"), "monthly", "0.6", `${baseUrl}/en/weesp.html`)}
+  ${generateUrlEntry("pt/weesp.html", "en/weesp.html", "nl/weesp.html", getLastmod("nl/weesp.html"), "monthly", "0.6", `${baseUrl}/nl/weesp.html`)}
+
+  <!-- ============================================= -->
+  <!-- ZUIDOOST (NL only for now)                   -->
+  <!-- ============================================= -->
   <url>
     <loc>${baseUrl}/nl/zuidoost.html</loc>
     <lastmod>${getLastmod("nl/zuidoost.html")}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/zuidoost.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/nl/zuidoost.html"/>
   </url>
 `;
 
     // Add blog posts for each locale with native slugs
     if (posts && posts.length > 0) {
+      xml += `
+  <!-- ============================================= -->
+  <!-- BLOG POSTS - Dynamic content                 -->
+  <!-- ============================================= -->`;
+      
       for (const post of posts) {
         const lastmod = (post.updated_at || post.published_at || today).split("T")[0];
         
@@ -464,29 +232,29 @@ serve(async (req) => {
           return post.slug; // PT fallback
         };
         
-        const locales = ["pt", "en", "nl"];
+        const ptSlug = getSlugForLocale("pt");
+        const enSlug = getSlugForLocale("en");
+        const nlSlug = getSlugForLocale("nl");
+        
+        const locales = [
+          { code: "pt", slug: ptSlug, hreflang: "pt-BR" },
+          { code: "en", slug: enSlug, hreflang: "en" },
+          { code: "nl", slug: nlSlug, hreflang: "nl-NL" },
+        ];
         
         for (const locale of locales) {
-          const nativeSlug = getSlugForLocale(locale);
-          const url = `${baseUrl}/${locale}/blog/${nativeSlug}`;
+          const url = `${baseUrl}/${locale.code}/blog/${locale.slug}`;
           
           xml += `
   <url>
-    <loc>${url}</loc>`;
-          
-          // Add hreflang alternates with native slugs
-          for (const altLocale of locales) {
-            const altSlug = getSlugForLocale(altLocale);
-            const altUrl = `${baseUrl}/${altLocale}/blog/${altSlug}`;
-            const hreflang = altLocale === "pt" ? "pt-BR" : altLocale === "nl" ? "nl-NL" : "en";
-            xml += `
-    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${altUrl}"/>`;
-          }
-          xml += `
-    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/pt/blog/${post.slug}"/>
+    <loc>${url}</loc>
     <lastmod>${lastmod}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="${baseUrl}/pt/blog/${ptSlug}"/>
+    <xhtml:link rel="alternate" hreflang="en" href="${baseUrl}/en/blog/${enSlug}"/>
+    <xhtml:link rel="alternate" hreflang="nl-NL" href="${baseUrl}/nl/blog/${nlSlug}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="${baseUrl}/pt/blog/${ptSlug}"/>
   </url>`;
         }
       }

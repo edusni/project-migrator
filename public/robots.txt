@@ -11,14 +11,19 @@ Allow: /en/
 Allow: /nl/
 Allow: /blog/
 
-# Allow static assets (CSS, JS, images)
-Allow: /assets/
-Allow: /*.js$
-Allow: /*.css$
-Allow: /*.webp$
-Allow: /*.jpg$
-Allow: /*.png$
-Allow: /*.svg$
+# Block asset directories from indexing (saves crawl budget)
+Disallow: /assets/
+Disallow: /src/
+Disallow: /*.webp$
+Disallow: /*.jpg$
+Disallow: /*.png$
+Disallow: /*.svg$
+
+# Allow critical static files
+Allow: /favicon.ico
+Allow: /favicon.png
+Allow: /og-image.jpg
+Allow: /apple-touch-icon.png
 
 # Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml
@@ -52,33 +57,42 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# Social Media Crawlers
+# Social Media Crawlers - Allow only HTML pages
 User-agent: Twitterbot
 Allow: /
+Disallow: /assets/
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /assets/
 
 User-agent: LinkedInBot
 Allow: /
+Disallow: /assets/
 
 User-agent: Pinterest
 Allow: /
+Disallow: /assets/
 
 User-agent: WhatsApp
 Allow: /
+Disallow: /assets/
 
 User-agent: TelegramBot
 Allow: /
+Disallow: /assets/
 
-# SEO Tools - Allowed
+# SEO Tools - Allowed with rate limiting
 User-agent: AhrefsBot
 Allow: /
+Disallow: /assets/
+Crawl-delay: 10
 
 User-agent: SemrushBot
 Allow: /
+Disallow: /assets/
 
-# Block aggressive scrapers only
+# Block aggressive scrapers
 User-agent: MJ12bot
 Disallow: /
 
@@ -87,9 +101,6 @@ Disallow: /
 
 User-agent: BLEXBot
 Disallow: /
-
-User-agent: AhrefsBot
-Crawl-delay: 10
 
 # Host declaration
 Host: https://amsterdu.com
