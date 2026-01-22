@@ -2,6 +2,731 @@
   publish = "dist"
   command = "npm run build"
 
+# ===================================================================
+# REDIRECTS - Processados ANTES do SPA fallback
+# Ordem é crucial: mais específico primeiro
+# ===================================================================
+
+# Force HTTPS (if not already)
+[[redirects]]
+  from = "http://amsterdu.com/*"
+  to = "https://amsterdu.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.amsterdu.com/*"
+  to = "https://amsterdu.com/:splat"
+  status = 301
+  force = true
+
+# Force non-www (canonical domain)
+[[redirects]]
+  from = "https://www.amsterdu.com/*"
+  to = "https://amsterdu.com/:splat"
+  status = 301
+  force = true
+
+# Root → PT (canonical default locale)
+[[redirects]]
+  from = "/"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+# ===================================================================
+# LEGACY URLs sem prefixo de idioma → canônicas
+# ===================================================================
+[[redirects]]
+  from = "/coffeeshops-amsterdam"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/atracoes"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/coffeeshops"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/hospedagem"
+  to = "/pt/hospedagem.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/sobre"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transporte"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gastronomia"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/arredores"
+  to = "/pt/arredores.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/planejamento"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/custo-de-vida"
+  to = "/pt/custo-de-vida.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/de-pijp"
+  to = "/pt/de-pijp.html"
+  status = 301
+  force = true
+
+# Variações maiúsculas
+[[redirects]]
+  from = "/Atracoes"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Coffeeshops"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Hospedagem"
+  to = "/pt/hospedagem.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Sobre"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Transporte"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Gastronomia"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Arredores"
+  to = "/pt/arredores.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Planejamento"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+# ===================================================================
+# PT URLs - Normalização: sem .html → com .html
+# ===================================================================
+[[redirects]]
+  from = "/pt"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/planejamento"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/hospedagem"
+  to = "/pt/hospedagem.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/atracoes"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/transporte"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/gastronomia"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/coffeeshops"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/arredores"
+  to = "/pt/arredores.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/sobre"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/custo-de-vida"
+  to = "/pt/custo-de-vida.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/de-pijp"
+  to = "/pt/de-pijp.html"
+  status = 301
+  force = true
+
+# ===================================================================
+# EN URLs - Normalização: sem .html → com .html
+# ===================================================================
+[[redirects]]
+  from = "/en"
+  to = "/en/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/"
+  to = "/en/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/planning"
+  to = "/en/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/accommodation"
+  to = "/en/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/transport"
+  to = "/en/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/attractions"
+  to = "/en/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/food"
+  to = "/en/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/coffeeshops"
+  to = "/en/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/daytrips"
+  to = "/en/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/about"
+  to = "/en/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/cost-of-living"
+  to = "/en/cost-of-living.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/de-pijp"
+  to = "/en/de-pijp.html"
+  status = 301
+  force = true
+
+# EN - URLs com slugs PT → slugs nativos
+[[redirects]]
+  from = "/en/planejamento"
+  to = "/en/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/hospedagem"
+  to = "/en/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/transporte"
+  to = "/en/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/atracoes"
+  to = "/en/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/gastronomia"
+  to = "/en/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/arredores"
+  to = "/en/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/sobre"
+  to = "/en/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/custo-de-vida"
+  to = "/en/cost-of-living.html"
+  status = 301
+  force = true
+
+# ===================================================================
+# NL URLs - Normalização: sem .html → com .html
+# ===================================================================
+[[redirects]]
+  from = "/nl"
+  to = "/nl/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/"
+  to = "/nl/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/planning"
+  to = "/nl/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/accommodation"
+  to = "/nl/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/transport"
+  to = "/nl/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/attractions"
+  to = "/nl/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/food"
+  to = "/nl/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/coffeeshops"
+  to = "/nl/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/daytrips"
+  to = "/nl/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/about"
+  to = "/nl/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/kosten-van-levensonderhoud"
+  to = "/nl/kosten-van-levensonderhoud.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/de-pijp"
+  to = "/nl/de-pijp.html"
+  status = 301
+  force = true
+
+# NL - URLs com slugs PT → slugs nativos
+[[redirects]]
+  from = "/nl/planejamento"
+  to = "/nl/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/hospedagem"
+  to = "/nl/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/transporte"
+  to = "/nl/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/atracoes"
+  to = "/nl/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/gastronomia"
+  to = "/nl/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/arredores"
+  to = "/nl/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/sobre"
+  to = "/nl/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/custo-de-vida"
+  to = "/nl/kosten-van-levensonderhoud.html"
+  status = 301
+  force = true
+
+# ===================================================================
+# SOUNDSCAPES - Legacy redirects
+# ===================================================================
+[[redirects]]
+  from = "/amsterdusoundscapes"
+  to = "/pt/soundscape"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/amsterdu-soundscapes"
+  to = "/pt/soundscape"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/soundscapes"
+  to = "/pt/soundscape"
+  status = 301
+  force = true
+
+# ===================================================================
+# SITEMAP - Edge function dinâmica
+# ===================================================================
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "https://lguwbgthckwsixmuvurx.supabase.co/functions/v1/sitemap"
+  status = 200
+  force = true
+
+# ===================================================================
+# STATIC HTML FILES - Servir diretamente (NÃO usar SPA fallback)
+# ===================================================================
+[[redirects]]
+  from = "/pt/*.html"
+  to = "/pt/:splat.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/*.html"
+  to = "/en/:splat.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/*.html"
+  to = "/nl/:splat.html"
+  status = 200
+
+# ===================================================================
+# SPA FALLBACK - Apenas para rotas dinâmicas (blog, bairros, admin)
+# Deve vir DEPOIS de todos os redirects específicos
+# ===================================================================
+[[redirects]]
+  from = "/pt/blog/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/blog/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/blog/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/admin/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/admin/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/admin/*"
+  to = "/index.html"
+  status = 200
+
+# Bairros (React SPA routes)
+[[redirects]]
+  from = "/pt/jordaan"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/binnenstad"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/grachtengordel"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/amsterdam-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/amsterdam-oost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/amsterdam-noord"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/amsterdam-zuid"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/nieuw-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/zuidoost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/weesp"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/pt/soundscape"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/jordaan"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/binnenstad"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/grachtengordel"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/amsterdam-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/amsterdam-oost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/amsterdam-noord"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/amsterdam-zuid"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/nieuw-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/zuidoost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/weesp"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/soundscape"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/jordaan"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/binnenstad"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/grachtengordel"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/amsterdam-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/amsterdam-oost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/amsterdam-noord"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/amsterdam-zuid"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/nieuw-west"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/zuidoost"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/weesp"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/soundscape"
+  to = "/index.html"
+  status = 200
+
+# ===================================================================
+# CACHE HEADERS - Assets com hash recebem cache longo
+# ===================================================================
+
 # All hashed assets in /assets/ - cache 1 year (immutable)
 [[headers]]
   for = "/assets/*"
@@ -47,33 +772,29 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# HTML - sem cache para atualizações imediatas
+# HTML estático - cache curto com revalidação
 [[headers]]
-  for = "/*.html"
+  for = "/pt/*.html"
   [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
 
+[[headers]]
+  for = "/en/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/nl/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+# index.html SPA - sem cache
 [[headers]]
   for = "/index.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-[[headers]]
-  for = "/en/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/nl/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-[[headers]]
-  for = "/pt/*"
-  [headers.values]
-    Cache-Control = "public, max-age=0, must-revalidate"
-
-# Imagens na raiz pública - cache 1 ano (catch-all patterns)
+# Imagens na raiz pública - cache 1 ano
 [[headers]]
   for = "/*.webp"
   [headers.values]
@@ -92,6 +813,11 @@
 # Specific public root images
 [[headers]]
   for = "/amsterdam-hero.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/amsterdam-hero-optimized.webp"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
 
@@ -136,9 +862,3 @@
   for = "/manifest.webmanifest"
   [headers.values]
     Cache-Control = "public, max-age=86400"
-
-# SPA fallback
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200

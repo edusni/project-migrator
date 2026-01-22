@@ -1,32 +1,24 @@
 import { useEffect } from "react";
-import { useParams, useNavigate, useLocation, Outlet } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 
 const SUPPORTED_LOCALES: Language[] = ["pt", "en", "nl"];
-const DEFAULT_LOCALE: Language = "pt";
 
 export function LocaleRouter() {
   const { locale } = useParams<{ locale: string }>();
-  const navigate = useNavigate();
-  const location = useLocation();
   const { setLanguage } = useLanguage();
 
   useEffect(() => {
-    // Validate locale from URL
+    // Validate locale from URL and sync with context
     if (locale && SUPPORTED_LOCALES.includes(locale as Language)) {
       setLanguage(locale as Language);
-      // Update html lang attribute
+      // Update html lang attribute for accessibility and SEO
       document.documentElement.lang = locale === "pt" ? "pt-BR" : locale === "nl" ? "nl-NL" : "en";
     }
   }, [locale, setLanguage]);
 
-  // Redirect root to default locale (PT - fixed, not browser-based)
-  // This ensures consistent behavior for bots and users
-  useEffect(() => {
-    if (location.pathname === "/") {
-      navigate(`/${DEFAULT_LOCALE}`, { replace: true });
-    }
-  }, [location.pathname, navigate]);
+  // NOTE: Root "/" redirect is now handled server-side via netlify.toml
+  // This eliminates the 230ms client-side redirect delay
 
   return <Outlet />;
 }
