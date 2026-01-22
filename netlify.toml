@@ -153,7 +153,7 @@
   force = true
 
 # ===================================================================
-# PT URLs - Normalização: sem .html → com .html
+# PT URLs - Normalização: sem .html → com .html + trailing slash
 # ===================================================================
 [[redirects]]
   from = "/pt"
@@ -167,6 +167,68 @@
   status = 301
   force = true
 
+# Trailing slash removal (pages with most impressions first)
+[[redirects]]
+  from = "/pt/coffeeshops/"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/transporte/"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/hospedagem/"
+  to = "/pt/hospedagem.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/atracoes/"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/custo-de-vida/"
+  to = "/pt/custo-de-vida.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/gastronomia/"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/arredores/"
+  to = "/pt/arredores.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/planejamento/"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/sobre/"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/pt/de-pijp/"
+  to = "/pt/de-pijp.html"
+  status = 301
+  force = true
+
+# Without .html
 [[redirects]]
   from = "/pt/planejamento"
   to = "/pt/planejamento.html"
@@ -228,7 +290,7 @@
   force = true
 
 # ===================================================================
-# EN URLs - Normalização: sem .html → com .html
+# EN URLs - Normalização: sem .html → com .html + trailing slash
 # ===================================================================
 [[redirects]]
   from = "/en"
@@ -242,6 +304,68 @@
   status = 301
   force = true
 
+# Trailing slash removal
+[[redirects]]
+  from = "/en/coffeeshops/"
+  to = "/en/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/transport/"
+  to = "/en/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/accommodation/"
+  to = "/en/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/attractions/"
+  to = "/en/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/cost-of-living/"
+  to = "/en/cost-of-living.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/food/"
+  to = "/en/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/daytrips/"
+  to = "/en/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/planning/"
+  to = "/en/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/about/"
+  to = "/en/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/de-pijp/"
+  to = "/en/de-pijp.html"
+  status = 301
+  force = true
+
+# Without .html
 [[redirects]]
   from = "/en/planning"
   to = "/en/planning.html"
@@ -352,7 +476,7 @@
   force = true
 
 # ===================================================================
-# NL URLs - Normalização: sem .html → com .html
+# NL URLs - Normalização: sem .html → com .html + trailing slash
 # ===================================================================
 [[redirects]]
   from = "/nl"
@@ -366,6 +490,68 @@
   status = 301
   force = true
 
+# Trailing slash removal
+[[redirects]]
+  from = "/nl/coffeeshops/"
+  to = "/nl/coffeeshops.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/transport/"
+  to = "/nl/transport.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/accommodation/"
+  to = "/nl/accommodation.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/attractions/"
+  to = "/nl/attractions.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/kosten-van-levensonderhoud/"
+  to = "/nl/kosten-van-levensonderhoud.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/food/"
+  to = "/nl/food.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/daytrips/"
+  to = "/nl/daytrips.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/planning/"
+  to = "/nl/planning.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/about/"
+  to = "/nl/about.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/de-pijp/"
+  to = "/nl/de-pijp.html"
+  status = 301
+  force = true
+
+# Without .html
 [[redirects]]
   from = "/nl/planning"
   to = "/nl/planning.html"
@@ -506,26 +692,8 @@
   force = true
 
 # ===================================================================
-# STATIC HTML FILES - Servir diretamente (NÃO usar SPA fallback)
-# ===================================================================
-[[redirects]]
-  from = "/pt/*.html"
-  to = "/pt/:splat.html"
-  status = 200
-
-[[redirects]]
-  from = "/en/*.html"
-  to = "/en/:splat.html"
-  status = 200
-
-[[redirects]]
-  from = "/nl/*.html"
-  to = "/nl/:splat.html"
-  status = 200
-
-# ===================================================================
 # SPA FALLBACK - Apenas para rotas dinâmicas (blog, bairros, admin)
-# Deve vir DEPOIS de todos os redirects específicos
+# Arquivos .html estáticos serão servidos diretamente pelo Netlify
 # ===================================================================
 [[redirects]]
   from = "/pt/blog/*"
@@ -557,7 +725,7 @@
   to = "/index.html"
   status = 200
 
-# Bairros (React SPA routes)
+# Bairros (React SPA routes - não têm .html estático)
 [[redirects]]
   from = "/pt/jordaan"
   to = "/index.html"

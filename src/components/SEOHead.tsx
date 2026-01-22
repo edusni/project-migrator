@@ -33,17 +33,90 @@ function getPathWithoutLocale(pathname: string): string {
   return pathname.replace(/^\/(pt|en|nl)/, "") || "";
 }
 
-// Get alternate URLs for hreflang (normalized: lowercase, no trailing slash)
+// Static pages that should have .html extension in canonical/hreflang
+const STATIC_PAGE_SLUGS = [
+  'index', 'planejamento', 'planning', 'hospedagem', 'accommodation',
+  'atracoes', 'attractions', 'transporte', 'transport', 'gastronomia', 
+  'food', 'coffeeshops', 'arredores', 'daytrips', 'sobre', 'about',
+  'custo-de-vida', 'cost-of-living', 'kosten-van-levensonderhoud',
+  'de-pijp', 'weesp', 'zuidoost'
+];
+
+// Mapping for cross-locale page equivalents (PT slug → EN/NL slug)
+const PAGE_LOCALE_MAP: Record<string, Record<string, string>> = {
+  'planejamento': { en: 'planning', nl: 'planning' },
+  'hospedagem': { en: 'accommodation', nl: 'accommodation' },
+  'atracoes': { en: 'attractions', nl: 'attractions' },
+  'transporte': { en: 'transport', nl: 'transport' },
+  'gastronomia': { en: 'food', nl: 'food' },
+  'arredores': { en: 'daytrips', nl: 'daytrips' },
+  'sobre': { en: 'about', nl: 'about' },
+  'custo-de-vida': { en: 'cost-of-living', nl: 'kosten-van-levensonderhoud' },
+  // Pages with same slug in all locales
+  'coffeeshops': { en: 'coffeeshops', nl: 'coffeeshops' },
+  'de-pijp': { en: 'de-pijp', nl: 'de-pijp' },
+  'weesp': { en: 'weesp', nl: 'weesp' },
+  'zuidoost': { en: 'zuidoost', nl: 'zuidoost' },
+};
+
+// Get the correct slug for a given locale
+function getLocalizedSlug(slug: string, targetLocale: Language): string {
+  // If it's a PT slug, translate to target locale
+  if (PAGE_LOCALE_MAP[slug]) {
+    if (targetLocale === 'pt') return slug;
+    return PAGE_LOCALE_MAP[slug][targetLocale] || slug;
+  }
+  
+  // If it's an EN/NL slug, find the PT equivalent first
+  for (const [ptSlug, translations] of Object.entries(PAGE_LOCALE_MAP)) {
+    if (translations.en === slug || translations.nl === slug) {
+      if (targetLocale === 'pt') return ptSlug;
+      return translations[targetLocale] || slug;
+    }
+  }
+  
+  return slug;
+}
+
+// Determine if a path should have .html extension
+function shouldHaveHtmlExtension(path: string): boolean {
+  const cleanPath = path.replace(/^\//, '').replace(/\.html$/, '');
+  // Root/index pages
+  if (!cleanPath || cleanPath === 'index') return true;
+  // Check if it's a known static page
+  return STATIC_PAGE_SLUGS.some(slug => cleanPath === slug || cleanPath.endsWith(`/${slug}`));
+}
+
+// Get alternate URLs for hreflang with proper .html extensions and localized slugs
 function getAlternateUrls(pathname: string) {
-  // Normalize: lowercase, remove trailing slash
-  const cleanPath = getPathWithoutLocale(pathname)
+  // Get current locale and path without locale
+  const currentLocale = getLocaleFromPath(pathname);
+  let cleanPath = getPathWithoutLocale(pathname)
     .toLowerCase()
-    .replace(/\/+$/, '');
+    .replace(/\/+$/, '')  // Remove trailing slash
+    .replace(/\.html$/, ''); // Remove .html for processing
+  
+  // Extract the slug (last part of path)
+  const slug = cleanPath.replace(/^\//, '') || 'index';
+  const isStaticPage = shouldHaveHtmlExtension(cleanPath);
+  
+  // Build URLs for each locale with correct slugs
+  const buildUrl = (locale: Language): string => {
+    const localizedSlug = getLocalizedSlug(slug, locale);
+    const path = localizedSlug === 'index' ? '' : `/${localizedSlug}`;
+    const extension = isStaticPage ? '.html' : '';
+    
+    if (localizedSlug === 'index') {
+      return `https://amsterdu.com/${locale}/index.html`;
+    }
+    
+    return `https://amsterdu.com/${locale}${path}${extension}`;
+  };
   
   return {
-    pt: `https://amsterdu.com/pt${cleanPath}`,
-    en: `https://amsterdu.com/en${cleanPath}`,
-    nl: `https://amsterdu.com/nl${cleanPath}`,
+    pt: buildUrl('pt'),
+    en: buildUrl('en'),
+    nl: buildUrl('nl'),
   };
 }
 
@@ -75,15 +148,29 @@ export function SEOHead({
   const { language } = useLanguage();
   const locale = getLocaleFromPath(location.pathname);
   
-  // Normalize pathname: lowercase, no trailing slash (except root)
+  // Normalize pathname: lowercase, no trailing slash
   const normalizedPath = location.pathname
     .toLowerCase()
-    .replace(/\/+$/, '') || '/';
+    .replace(/\/+$/, '');
   
-  // Canonical URL always lowercase, no trailing slash, https
-  const canonicalUrl = `https://amsterdu.com${normalizedPath}`;
+  // For static pages, canonical should include .html extension
+  const pathWithoutLocale = getPathWithoutLocale(normalizedPath).replace(/\.html$/, '');
+  const slug = pathWithoutLocale.replace(/^\//, '') || 'index';
+  const isStaticPage = shouldHaveHtmlExtension(pathWithoutLocale);
+  
+  // Build canonical URL with proper extension
+  let canonicalUrl: string;
+  if (slug === 'index' || !pathWithoutLocale) {
+    canonicalUrl = `https://amsterdu.com/${locale}/index.html`;
+  } else if (isStaticPage) {
+    canonicalUrl = `https://amsterdu.com/${locale}/${slug}.html`;
+  } else {
+    // Dynamic pages (blog, neighborhoods as SPA routes) without .html
+    canonicalUrl = `https://amsterdu.com${normalizedPath}`;
+  }
+  
   const fullTitle = title.includes("Amsterdu") ? title : `${title} | Amsterdu`;
-  const alternateUrls = getAlternateUrls(normalizedPath);
+  const alternateUrls = getAlternateUrls(location.pathname);
   const htmlLang = getHtmlLang(locale);
   const inLanguage = htmlLang;
 
