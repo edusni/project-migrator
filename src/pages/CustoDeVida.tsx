@@ -749,6 +749,174 @@ const CustoDeVida = () => {
         </div>
       </section>
 
+      {/* Tips Section - Cost Reduction */}
+      <section className="py-12 md:py-16 bg-accent/5">
+        <div className="container max-w-4xl">
+          <AnimatedSection>
+            <div className="flex items-center gap-3 mb-2">
+              <Lightbulb className="w-8 h-8 text-accent" />
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-foreground">
+                {language === "nl" ? "Tips om Kosten te Verlagen" : language === "pt" ? "Dicas para Reduzir Despesas" : "Tips to Reduce Expenses"}
+              </h2>
+            </div>
+            <p className="text-muted-foreground mb-8">
+              {language === "nl" 
+                ? "Praktische strategieën om je maandelijkse uitgaven te verlagen zonder in te leveren op levenskwaliteit."
+                : language === "pt"
+                ? "Estratégias práticas para diminuir suas despesas mensais sem abrir mão da qualidade de vida."
+                : "Practical strategies to lower your monthly expenses without sacrificing quality of life."
+              }
+            </p>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              {/* Tip 1 - Live outside center */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">1</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Woon buiten de ring" : language === "pt" ? "More fora do anel central" : "Live outside the ring"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Wijken als Oost, West of Zuidoost bieden lagere huur en snelle metro/trein verbindingen. 15–20 min van centrum = 20–30% lagere huur."
+                          : language === "pt"
+                          ? "Bairros como Oost, West ou Zuidoost oferecem aluguéis menores e conexão rápida via metrô/trem. Morar 15–20 min do centro reduz o aluguel em 20–30%."
+                          : "Neighborhoods like Oost, West or Zuidoost offer lower rent and fast metro/train connections. Living 15–20 min from center reduces rent by 20–30%."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tip 2 - Used bicycle */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">2</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Koop een tweedehands fiets" : language === "pt" ? "Compre bicicleta usada" : "Buy a used bicycle"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Directe besparing op OV-kosten en snelste optie voor ritten tot 6 km. Gebruikte fietsen vanaf € 150. Let op: fietsen zonder licht = € 75+ boete."
+                          : language === "pt"
+                          ? "Economia imediata nas passagens e opção mais rápida para trajetos até 6 km. Modelos usados partem de € 150. Lembre: pedalar sem luz = multa de € 75+."
+                          : "Immediate savings on transit and fastest option for trips up to 6 km. Used models from € 150. Note: cycling without lights = € 75+ fine."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tip 3 - Negotiate energy */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">3</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Vergelijk energieleveranciers" : language === "pt" ? "Negocie fornecedoras de energia" : "Compare energy providers"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Officiële vergelijkers tonen variaties van tientallen euro's tussen contracten. Goed geïsoleerde huizen betalen veel minder. Check energielabels!"
+                          : language === "pt"
+                          ? "Comparadores oficiais mostram variação de dezenas de euros entre contratos. Casas bem isoladas gastam muito menos. Verifique etiquetas energéticas!"
+                          : "Official comparison sites show differences of dozens of euros between contracts. Well-insulated homes pay much less. Check energy labels!"
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tip 4 - Local markets */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">4</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Shop op buurtmarkten" : language === "pt" ? "Aproveite mercados de bairro" : "Shop at local markets"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Albert Cuyp, Dappermarkt, Ten Katemarkt – verse producten goedkoper dan internationale supermarktketens. Koken thuis bespaart flink."
+                          : language === "pt"
+                          ? "Albert Cuyp, Dappermarkt, Ten Katemarkt – produtos frescos e mais baratos que supermercados internacionais. Cozinhar em casa economiza muito."
+                          : "Albert Cuyp, Dappermarkt, Ten Katemarkt – fresh produce cheaper than international supermarket chains. Cooking at home saves a lot."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tip 5 - Installment taxes */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">5</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Spreiding gemeentelijke heffingen" : language === "pt" ? "Parcele os impostos municipais" : "Spread municipal taxes"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Zowel afvalstoffenheffing als waterschapsbelasting kunnen maandelijks betaald worden. Neem contact op met de Gemeente en AGV voor gespreide betaling."
+                          : language === "pt"
+                          ? "Tanto a taxa de lixo quanto as taxas de água podem ser pagas em parcelas mensais. Procure a Gemeente (prefeitura) e o AGV para solicitar o plano."
+                          : "Both waste tax and water tax can be paid in monthly installments. Contact the Municipality and AGV to request a payment plan."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Tip 6 - Property finish */}
+              <Card className="border-accent/20 hover:border-accent/40 transition-colors">
+                <CardContent className="pt-5">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center shrink-0">
+                      <span className="text-sm font-bold text-accent">6</span>
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-foreground mb-1">
+                        {language === "nl" ? "Check de oplevering" : language === "pt" ? "Verifique o acabamento do imóvel" : "Check property finish"}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        {language === "nl" 
+                          ? "Shell vs gestoffeerd maakt groot verschil in initiële investering. Bereken kosten voor vloer en verlichting vooraf om verrassingen te voorkomen."
+                          : language === "pt"
+                          ? "Shell vs semi-mobiliado altera muito seu investimento inicial. Calcular custos de piso e iluminação antecipadamente evita surpresas."
+                          : "Shell vs upholstered makes a big difference in initial investment. Calculate flooring and lighting costs upfront to avoid surprises."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
       {/* Sources Section - E-E-A-T */}
       <section className="py-12 md:py-16 bg-muted/30">
         <div className="container max-w-4xl">
