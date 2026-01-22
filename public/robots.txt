@@ -1,6 +1,6 @@
 # Amsterdu - robots.txt
 # https://amsterdu.com
-# Last updated: 2025-01-22
+# Last updated: 2026-01-22
 
 User-agent: *
 Allow: /
@@ -13,6 +13,10 @@ Allow: /blog/
 
 # IMPORTANT: Allow assets for proper rendering (CSS/JS/images needed for Googlebot)
 Allow: /assets/
+
+# Block admin routes from all crawlers (not public content)
+Disallow: /admin/
+Disallow: /*/admin/
 
 # Sitemap location
 Sitemap: https://amsterdu.com/sitemap.xml

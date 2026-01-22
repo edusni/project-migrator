@@ -35,6 +35,45 @@
   force = true
 
 # ===================================================================
+# ADMIN ROUTES - Redirect sem prefixo de idioma para /pt/admin/*
+# ===================================================================
+[[redirects]]
+  from = "/admin"
+  to = "/pt/admin/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/"
+  to = "/pt/admin/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/blog"
+  to = "/pt/admin/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/video"
+  to = "/pt/admin/video"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/images"
+  to = "/pt/admin/images"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/admin/*"
+  to = "/pt/admin/:splat"
+  status = 301
+  force = true
+
+# ===================================================================
 # LEGACY URLs sem prefixo de idioma → canônicas
 # ===================================================================
 [[redirects]]
