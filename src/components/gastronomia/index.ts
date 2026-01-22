@@ -6,3 +6,4 @@ export { FoodGallerySection } from "./FoodGallerySection";
 export { TouristTrapsSection } from "./TouristTrapsSection";
 export { PracticalRulesSection } from "./PracticalRulesSection";
 export { FAQSection } from "./FAQSection";
+export { UniqueExperiences2026Section } from "./UniqueExperiences2026Section";
