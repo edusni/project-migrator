@@ -11,6 +11,7 @@ import {
   ArtCulture2026Section,
   Changes2026Section,
   Calendar2026Section,
+  Events2026Section,
   AttractionsFiltersSection,
   TransportSection,
   PassesSection,
@@ -66,7 +67,7 @@ const Atracoes = () => {
 
       <Changes2026Section />
       <ArtCulture2026Section language={language} />
-      <Calendar2026Section />
+      <Events2026Section />
       <AttractionsFiltersSection />
       <TransportSection />
       <PassesSection />
