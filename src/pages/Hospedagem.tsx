@@ -14,6 +14,7 @@ import {
   GoldenRulesSection,
   MarketNumbersSection,
   FAQSection,
+  SourcesSection,
 } from "@/components/hospedagem";
 import hofjeImg from "@/assets/hofje-amsterdam.jpg";
 
@@ -95,6 +96,7 @@ const Hospedagem = () => {
       <GoldenRulesSection />
       <MarketNumbersSection />
       <FAQSection />
+      <SourcesSection />
 
       <RelatedContent currentPage="hospedagem" />
       
