@@ -103,7 +103,7 @@ export function CostOfLivingCalculator({ language }: CostOfLivingCalculatorProps
     const rent = rentBudget[0];
     
     // Bills calculation
-    const healthInsurance = isCouple ? 318 : 159; // € 159 per person
+    const healthInsurance = isCouple ? 314 : 157; // € 157 per person (€ 1.884/year)
     const energy = 172;
     const internet = 55; // internet + mobile
     const bills = healthInsurance + energy + internet;
