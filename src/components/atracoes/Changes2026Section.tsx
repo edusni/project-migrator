@@ -8,19 +8,22 @@ export function Changes2026Section() {
 
   const changes2026 = language === "nl" ? [
     "21% BTW + 12,5% toeristenbelasting = veel duurdere verblijven",
-    "Van Gogh €25 in 2026 en NIET in I amsterdam City Card",
-    "Anne Frank: tickets open dinsdag 10u, 6 weken van tevoren",
-    "WorldPride 2026: 25 jul - 8 aug (Canal Parade 1 aug)"
+    "Airbnb limiet: max 30 nachten/jaar (15 in Centrum & De Pijp vanaf april 2026)",
+    "Van Gogh €25, Anne Frank €16 — tijdige reservering verplicht",
+    "WorldPride 2026: 25 jul - 8 aug (Canal Parade 1 aug) — stad wordt OVERVOL",
+    "Grote tentoonstellingen: Kusama (Stedelijk), Metamorfosen (Rijksmuseum), Yellow (Van Gogh)"
   ] : language === "pt" ? [
     "IVA de 21% + taxa turística 12,5% = diárias bem mais caras",
-    "Van Gogh €25 em 2026 e NÃO está no I amsterdam City Card",
-    "Anne Frank: ingressos abrem terça 10h, 6 semanas antes",
-    "WorldPride 2026: 25 jul - 8 ago (Canal Parade 1º ago)"
+    "Limite Airbnb: máx 30 noites/ano (15 no Centrum e De Pijp desde abril 2026)",
+    "Van Gogh €25, Anne Frank €16 — reserva antecipada obrigatória",
+    "WorldPride 2026: 25 jul - 8 ago (Canal Parade 1º ago) — cidade vai LOTAR",
+    "Grandes exposições: Kusama (Stedelijk), Metamorphoses (Rijksmuseum), Yellow (Van Gogh)"
   ] : [
     "21% VAT + 12.5% tourist tax = much more expensive stays",
-    "Van Gogh €25 in 2026 and NOT in I amsterdam City Card",
-    "Anne Frank: tickets open Tuesday 10am, 6 weeks ahead",
-    "WorldPride 2026: Jul 25 - Aug 8 (Canal Parade Aug 1)"
+    "Airbnb limit: max 30 nights/year (15 in Centrum & De Pijp from April 2026)",
+    "Van Gogh €25, Anne Frank €16 — advance booking required",
+    "WorldPride 2026: Jul 25 - Aug 8 (Canal Parade Aug 1) — city will be PACKED",
+    "Major exhibitions: Kusama (Stedelijk), Metamorphoses (Rijksmuseum), Yellow (Van Gogh)"
   ];
 
   return (

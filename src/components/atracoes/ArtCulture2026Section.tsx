@@ -234,19 +234,6 @@ export function ArtCulture2026Section({ language }: ArtCulture2026SectionProps) 
             </CardContent>
           </Card>
 
-          {/* CTA - Link to blog post */}
-          <div className="text-center">
-            <Link to={blogUrl}>
-              <Button 
-                size="lg" 
-                className="group bg-primary hover:bg-primary/90"
-              >
-                {c.ctaText}
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
-            <p className="text-sm text-muted-foreground mt-3">{c.ctaSubtext}</p>
-          </div>
         </AnimatedSection>
       </div>
     </section>
