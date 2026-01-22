@@ -662,19 +662,19 @@ export const seoData = {
   },
   transporte: {
     pt: {
-      title: "Como se Locomover em Amsterdam em 2026: transporte, OVpay, multas e aeroporto",
-      description: "Guia prático para se locomover em Amsterdam em 2026: tram, metrô, trens, balsas grátis, OVpay/contactless, passes GVB, regras de bicicleta e como ir do aeroporto sem multa.",
-      keywords: "como se locomover em amsterdam, transporte amsterdam, transporte público amsterdam, ovpay amsterdam, como ir do aeroporto ao centro amsterdam, multas bicicleta amsterdam, transporte amsterdam 2026, tram amsterdam, metro amsterdam, bike amsterdam, schiphol centro, ferries amsterdam",
+      title: "Transporte Amsterdam 2026: OVpay ou OV-chipkaart? Preços, Multas e Schiphol",
+      description: "🚊 Bilhete €3,40, dia €8,50. OVpay ou OV-chipkaart? Schiphol→centro 15min por €5,90. Balsas grátis, regras bicicleta, multa €60. Guia atualizado 2026.",
+      keywords: "transporte amsterdam 2026, ovpay amsterdam, ov-chipkaart amsterdam, schiphol centro amsterdam, multas bicicleta amsterdam, tram amsterdam preço, metro amsterdam, bike amsterdam, ferries gratis amsterdam, como ir aeroporto amsterdam",
     },
     en: {
-      title: "Getting Around Amsterdam 2026: Transport, OVpay, Fines & Airport",
-      description: "Practical guide to getting around Amsterdam in 2026: tram, metro, trains, free ferries, OVpay/contactless, GVB passes, bike rules and how to get from the airport without fines.",
-      keywords: "getting around amsterdam, amsterdam public transport, ovpay amsterdam, schiphol to amsterdam center, amsterdam bike rules, amsterdam transport 2026, tram amsterdam, metro amsterdam, amsterdam bike, free ferries amsterdam",
+      title: "Amsterdam Transport 2026: OVpay vs OV-chipkaart? Tickets, Fines & Schiphol Guide",
+      description: "🚊 Single ticket €3.40, day pass €8.50. OVpay or OV-chipkaart? Schiphol→center in 15min for €5.90. Free ferries, bike rules, €60 metro fine. Complete 2026 guide.",
+      keywords: "amsterdam transport 2026, ovpay amsterdam, ov-chipkaart amsterdam, schiphol to amsterdam center, amsterdam bike fines, tram amsterdam price, metro amsterdam, free ferries amsterdam, amsterdam airport to center",
     },
     nl: {
-      title: "Vervoer in Amsterdam 2026: Transport, OVpay, Boetes & Luchthaven",
-      description: "Praktische gids om je te verplaatsen in Amsterdam in 2026: tram, metro, treinen, gratis veerboten, OVpay/contactloos, GVB-passen, fietsregels en hoe je vanaf de luchthaven komt zonder boetes.",
-      keywords: "vervoer amsterdam, openbaar vervoer amsterdam, ovpay amsterdam, schiphol naar centrum amsterdam, fietsregels amsterdam, amsterdam vervoer 2026, tram amsterdam, metro amsterdam, gratis veerboten amsterdam",
+      title: "Amsterdam Vervoer 2026: OVpay of OV-chipkaart? Prijzen, Boetes & Schiphol",
+      description: "🚊 Enkel €3,40, dagkaart €8,50. OVpay of OV-chipkaart? Schiphol→centrum 15min voor €5,90. Gratis ponten, fietsregels, €60 boete. Complete gids 2026.",
+      keywords: "amsterdam vervoer 2026, ovpay amsterdam, ov-chipkaart amsterdam, schiphol naar centrum amsterdam, fietsboetes amsterdam, tram amsterdam prijs, metro amsterdam, gratis ponten amsterdam",
     },
   },
   coffeeshops: {
@@ -747,19 +747,19 @@ export const seoData = {
   },
   custoDeVida: {
     pt: {
-      title: "Custo de Vida em Amsterdam 2026: aluguel, contas, impostos e quanto precisa por mês",
-      description: "Veja quanto custa morar em Amsterdam em 2026 com números reais: aluguel médio €1.940, seguro saúde, energia, mercado, transporte (GVB) e impostos municipais. Inclui calculadora e 2 cenários (solteiro e casal).",
-      keywords: "custo de vida amsterdam, custo de vida em amsterdam, quanto custa morar em amsterdam, custo de vida amsterdam 2026, aluguel amsterdam, salário amsterdam, morar holanda 2026, orçamento amsterdam, amsterdam custo de vida, cost of living amsterdam, living costs in amsterdam",
+      title: "Custo de Vida Amsterdam 2026: Quanto REALMENTE Precisa? €2.500-3.500/mês",
+      description: "💰 Números reais: aluguel €1.940+, seguro saúde €159, contas €172. Solteiro precisa €2.500-3.000/mês, casal €3.500+. Impostos 2026, calculadora e orçamento detalhado.",
+      keywords: "custo de vida amsterdam 2026, quanto custa morar amsterdam, aluguel amsterdam 2026, salário amsterdam, morar holanda 2026, orçamento amsterdam, custo mensal amsterdam, solteiro amsterdam, casal amsterdam",
     },
     en: {
-      title: "Cost of Living Amsterdam 2026: Rent, Bills, Taxes & Monthly Budget",
-      description: "See how much it costs to live in Amsterdam in 2026 with real numbers: average rent €1,940, health insurance, energy, groceries, transport (GVB) and municipal taxes. Includes calculator and 2 scenarios (single and couple).",
-      keywords: "cost of living amsterdam, cost of living in amsterdam, amsterdam cost of living, how much to live amsterdam, amsterdam rent, average rent in amsterdam, amsterdam salary, living netherlands 2026, amsterdam budget, living costs in amsterdam, living expenses amsterdam, amsterdam living cost, is amsterdam expensive to live",
+      title: "Cost of Living Amsterdam 2026: How Much Do You REALLY Need? €2,500-3,500/month",
+      description: "💰 Real numbers: rent €1,940+, health insurance €159, utilities €172. Single needs €2,500-3,000/mo, couples €3,500+. 2026 taxes, salary calculator, budget breakdown.",
+      keywords: "cost of living amsterdam 2026, how much to live amsterdam, amsterdam rent 2026, amsterdam salary, living netherlands 2026, amsterdam budget, monthly cost amsterdam, single amsterdam, couple amsterdam, is amsterdam expensive",
     },
     nl: {
-      title: "Kosten Levensonderhoud Amsterdam 2026: Huur, Rekeningen, Belastingen & Maandbudget",
-      description: "Bekijk hoeveel het kost om in Amsterdam te wonen in 2026 met echte cijfers: gemiddelde huur €1.940, zorgverzekering, energie, boodschappen, vervoer (GVB) en gemeentelijke heffingen. Inclusief calculator en 2 scenario's.",
-      keywords: "kosten levensonderhoud amsterdam, hoeveel kost wonen amsterdam, amsterdam huur, amsterdam salaris, wonen nederland 2026, amsterdam budget, gemiddelde huur amsterdam",
+      title: "Kosten Levensonderhoud Amsterdam 2026: Hoeveel Heb Je ECHT Nodig? €2.500-3.500/maand",
+      description: "💰 Echte cijfers: huur €1.940+, zorgverzekering €159, rekeningen €172. Alleenstaand €2.500-3.000/mnd, stel €3.500+. Belastingen 2026, calculator, budgetoverzicht.",
+      keywords: "kosten levensonderhoud amsterdam 2026, hoeveel kost wonen amsterdam, huur amsterdam 2026, salaris amsterdam, wonen nederland 2026, amsterdam budget, maandelijks kosten amsterdam",
     },
   },
 };
