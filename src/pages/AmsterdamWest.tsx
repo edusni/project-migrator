@@ -2,6 +2,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { useSiteImage } from "@/hooks/useSiteImage";
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import heroAmsterdamWest from "@/assets/hero-amsterdam-west.webp";
 import { AnimatedSection } from "@/components/ui/animated-section";
@@ -653,6 +654,9 @@ const AmsterdamWest = () => {
             </CardContent>
           </Card>
         </AnimatedSection>
+
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Amsterdam West" variant="living" />
 
         <RelatedContent currentPage="amsterdam-west" />
         <RelatedPagesSection currentPath="/amsterdam-west" />

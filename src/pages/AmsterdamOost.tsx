@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedContent } from "@/components/RelatedContent";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 
 // Neighborhood images
 import oosterparkbuurtImg from "@/assets/neighborhood-oosterparkbuurt.webp";
@@ -682,6 +683,9 @@ const AmsterdamOost = () => {
             </Card>
           </div>
         </section>
+
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Amsterdam Oost" variant="living" />
 
         <RelatedContent currentPage="amsterdam-oost" />
         

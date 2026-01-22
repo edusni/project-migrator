@@ -26,6 +26,7 @@ import {
 import { motion } from "framer-motion";
 import { RelatedPagesSection } from "@/components/RelatedPagesSection";
 import { RelatedContent } from "@/components/RelatedContent";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroWeesp from "@/assets/hero-weesp.webp";
 
 const Weesp = () => {
@@ -419,6 +420,9 @@ const Weesp = () => {
             </CardContent>
           </Card>
         </section>
+
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Weesp" variant="visiting" />
 
         {/* Related Pages */}
         <RelatedContent currentPage="weesp" />

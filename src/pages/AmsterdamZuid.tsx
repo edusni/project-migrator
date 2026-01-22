@@ -3,6 +3,7 @@ import { PageHero } from "@/components/PageHero";
 import { SEOHead } from "@/components/SEOHead";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useSiteImage } from "@/hooks/useSiteImage";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroAmsterdamZuid from "@/assets/hero-amsterdam-zuid.webp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -844,6 +845,8 @@ const AmsterdamZuid = () => {
             </CardContent>
           </Card>
         </motion.div>
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="Amsterdam Zuid" variant="living" />
 
         <RelatedContent currentPage="amsterdam-zuid" />
       </div>

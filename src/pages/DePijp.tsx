@@ -2,6 +2,7 @@ import { Building2, Euro, Home, Train, Users, GraduationCap, ShoppingBag, AlertT
 import { PageLayout } from "@/components/PageLayout";
 import { PageHero } from "@/components/PageHero";
 import { RelatedContent } from "@/components/RelatedContent";
+import { NeighborhoodStrategicLinks } from "@/components/NeighborhoodStrategicLinks";
 import heroDePijp from "@/assets/hero-de-pijp.webp";
 import { useLanguage } from "@/hooks/useLanguage";
 import { useSiteImage } from "@/hooks/useSiteImage";
@@ -609,6 +610,9 @@ const DePijp = () => {
             </CardContent>
           </Card>
         </section>
+
+        {/* Strategic Links */}
+        <NeighborhoodStrategicLinks neighborhoodName="De Pijp" variant="living" />
 
         {/* Related Content */}
         <RelatedContent currentPage="de-pijp" maxItems={4} />
