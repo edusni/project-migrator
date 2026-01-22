@@ -27,6 +27,59 @@ const Atracoes = () => {
   const { language } = useLanguage();
   const seo = seoData.atracoes[language];
   const faqItems = getAtracoesFaqItems(language);
+  
+  // Event items for JSON-LD schema
+  const eventItems = [
+    {
+      name: language === "nl" ? "Koningsdag 2026" : language === "pt" ? "Koningsdag 2026" : "King's Day 2026",
+      description: language === "nl" 
+        ? "Koningsdag viert de verjaardag van de Koning met vrijmarkten, versierde boten en muziek."
+        : language === "pt" 
+          ? "O Dia do Rei celebra o aniversário do rei com mercados de rua, barcos decorados e muita música."
+          : "King's Day celebrates the King's birthday with street markets, decorated boats and music.",
+      startDate: "2026-04-27",
+      endDate: "2026-04-27",
+      organizer: "Gemeente Amsterdam",
+      isAccessibleForFree: true
+    },
+    {
+      name: "WorldPride Amsterdam 2026",
+      description: language === "nl" 
+        ? "Voor het eerst organiseert Amsterdam WorldPride, een mega LGBTQIA+ evenement met ongeveer 500 activiteiten."
+        : language === "pt" 
+          ? "Pela primeira vez Amsterdam sediará o WorldPride, um megaevento LGBTQIA+ com aproximadamente 500 atividades."
+          : "For the first time Amsterdam will host WorldPride, a mega LGBTQIA+ event with approximately 500 activities.",
+      startDate: "2026-07-25",
+      endDate: "2026-08-08",
+      organizer: "Pride Amsterdam",
+      organizerUrl: "https://pride.amsterdam"
+    },
+    {
+      name: language === "nl" ? "Amsterdam Dance Event (ADE) 2026 - 30 Jaar" : language === "pt" ? "Amsterdam Dance Event (ADE) 2026 - 30 Anos" : "Amsterdam Dance Event (ADE) 2026 - 30th Anniversary",
+      description: language === "nl" 
+        ? "Het grootste elektronische muziekfestival en -conferentie ter wereld viert 30 jaar."
+        : language === "pt" 
+          ? "O maior festival e conferência de música eletrônica do mundo celebra 30 anos."
+          : "The world's largest electronic music festival and conference celebrates 30 years.",
+      startDate: "2026-10-21",
+      endDate: "2026-10-25",
+      organizer: "Amsterdam Dance Event",
+      organizerUrl: "https://www.amsterdam-dance-event.nl"
+    },
+    {
+      name: "Amsterdam Light Festival 2026/2027",
+      description: language === "nl" 
+        ? "De 15e editie van het festival verlicht de grachten en straten van Amsterdam met twintig lichtkunstwerken."
+        : language === "pt" 
+          ? "A 15ª edição do festival ilumina os canais e ruas de Amsterdam com vinte obras de arte em luz."
+          : "The 15th edition of the festival illuminates Amsterdam's canals and streets with twenty light art installations.",
+      startDate: "2026-11-26",
+      endDate: "2027-01-19",
+      organizer: "Stichting Amsterdam Light Festival",
+      organizerUrl: "https://amsterdamlightfestival.com",
+      isAccessibleForFree: true
+    }
+  ];
 
   return (
     <PageLayout>
@@ -36,6 +89,7 @@ const Atracoes = () => {
         keywords={seo.keywords}
         type="article"
         faqItems={faqItems}
+        eventItems={eventItems}
         breadcrumbs={[
           { name: "Home", url: "https://amsterdu.com" },
           { name: language === "nl" ? "Attracties" : language === "pt" ? "Atrações" : "Attractions", url: "https://amsterdu.com/atracoes" }
