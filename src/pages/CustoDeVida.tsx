@@ -24,9 +24,9 @@ const CustoDeVida = () => {
       heroTitle: "Kosten van Levensonderhoud in Amsterdam 2026",
       heroSubtitle: "Huur, rekeningen, belastingen en hoeveel je per maand nodig hebt",
       quickAnswer: "In 2026 heeft een alleenstaande volwassene in Amsterdam ongeveer €2.885/maand nodig voor een comfortabel basisbestaan (zonder luxe), en een stel ongeveer €3.608/maand. Huur is de grootste variabele. Hieronder zie je de berekening per categorie en kun je simuleren met de calculator.",
-      intro: {
-        title: "De Waarheid Over Wonen in Amsterdam",
-        text: "Veel mensen dromen ervan om aan de grachten van Amsterdam te wonen, maar financiële planning gaat veel verder dan valuta omrekenen. Voor 2026 laat het scenario energiestabilisatie zien maar hoge druk op huurprijzen. In deze Amsterdu gids openen we de \"zwarte doos\" van uitgaven: van huur tot afvalbelasting die niemand je vertelt voordat je verhuist."
+        intro: {
+        title: "Waarom Plannen Essentieel Is",
+        text: "Wonen in Amsterdam kan een droom zijn, maar in 2026 vereist het rigoureuze financiële planning. De stad combineert hoge salarissen en levenskwaliteit, maar ook dure huur, verplichte belastingen en privédiensten zoals zorgverzekering. Deze gids legt elke component van het budget van een bewoner uit, uitsluitend gebaseerd op officiële bronnen: vastgoedmarktrapporten, gemeente, verzekeraars, waterschappen, energiestatistieken en GVB."
       },
       housing: {
         title: "De Grote Boosdoener: Huisvesting (Huur)",
@@ -35,7 +35,7 @@ const CustoDeVida = () => {
           title: "De Echte Prijs (2026)",
           text: "Om een appartement met 1 of 2 slaapkamers (~70m²) in de vrije sector te krijgen, bereid je voor op iets rond de",
           value: "€ 1.940",
-          suffix: "maandelijks (gemiddeld € 27,75 per m²)"
+          suffix: "maandelijks (gemiddeld € 28,68 per m² - Pararius Q4 2025, +9,1% jaar-op-jaar)"
         },
         income: {
           title: "De Inkomensvalkuil (3x of 4x)",
@@ -51,14 +51,14 @@ const CustoDeVida = () => {
         subtitle: "Wat je niet kunt wegsnijden",
         health: {
           title: "Zorgverzekering",
-          text: "In Nederland is de verzekering privé en verplicht.",
-          value: "~€ 159/maand per volwassene",
+          text: "In Nederland is de verzekering privé en verplicht. De overheid meldt dat de gemiddelde premie 2026 € 1.884/jaar is.",
+          value: "~€ 157/maand per volwassene",
           warning: "Er is een verplicht eigen risico van € 385 per jaar. Je betaalt de eerste € 385 aan medische kosten uit eigen zak voordat de verzekering alles dekt (behalve huisartsbezoeken, die zijn gratis)."
         },
         energy: {
           title: "Energie (Elektriciteit en Gas)",
           value: "~€ 172/maand",
-          text: "Het gemiddelde voor een 1-2 persoons huishouden. Nieuwere huizen (met energielabel A of B) betalen minder; historische huizen in het centrum (met slechte isolatie) betalen meer."
+          text: "Volgens officiële statistieken is de gemiddelde jaarlijkse energierekening ~€ 2.065. Nieuwere huizen (energielabel A/B) betalen minder (~€ 1.400/jaar); historische huizen met slechte isolatie kunnen boven € 3.500/jaar komen."
         },
         internet: {
           title: "Internet en Mobiel",
@@ -117,10 +117,10 @@ const CustoDeVida = () => {
     pt: {
       heroTitle: "Custo de Vida em Amsterdam 2026",
       heroSubtitle: "Aluguel, contas, impostos e quanto você precisa por mês",
-      quickAnswer: "Em 2026, um adulto morando sozinho em Amsterdam precisa de cerca de €2.885/mês para viver com conforto básico (sem luxo), e um casal cerca de €3.608/mês. O aluguel é a maior variável. Abaixo você vê o cálculo por categoria e pode simular na calculadora.",
+      quickAnswer: "Em 2026, um adulto morando sozinho em Amsterdam precisa de cerca de €2.885–2.950/mês para viver com conforto básico (sem luxo), e um casal cerca de €3.600–3.620/mês. O aluguel é a maior variável. Abaixo você vê o cálculo por categoria e pode simular na calculadora.",
       intro: {
-        title: "A Verdade Sobre Morar em Amsterdam",
-        text: "Muita gente sonha em morar nos canais de Amsterdam, mas o planejamento financeiro vai muito além de converter Reais em Euros. Para 2026, o cenário é de estabilização na energia, mas pressão alta nos aluguéis. Neste guia do Amsterdu, abrimos a \"caixa preta\" das despesas: do aluguel às taxas de lixo que ninguém te conta antes de mudar."
+        title: "Por Que Planejar é Essencial",
+        text: "Morar em Amsterdam pode ser um sonho, mas em 2026 exige planejamento financeiro rigoroso. A cidade combina salários altos e qualidade de vida, mas também aluguel caro, impostos obrigatórios e serviços privados como o seguro‐saúde. Este guia explica cada componente do orçamento de um residente, com base exclusiva em fontes oficiais: relatórios de mercado imobiliário, prefeitura, seguradoras, autoridades de água, estatísticas de energia e da GVB."
       },
       housing: {
         title: "O Grande Vilão: Moradia (Aluguel)",
@@ -129,7 +129,7 @@ const CustoDeVida = () => {
           title: "O Preço Real (2026)",
           text: "Para conseguir um apartamento de 1 ou 2 quartos (~70m²) no mercado livre (vrije sector), prepare-se para algo em torno de",
           value: "€ 1.940",
-          suffix: "mensais (média de € 27,75 por m²)"
+          suffix: "mensais (média de € 28,68 por m² - Pararius Q4 2025, alta de 9,1% no ano)"
         },
         income: {
           title: "A Pegadinha da Renda (3x ou 4x)",
@@ -145,14 +145,14 @@ const CustoDeVida = () => {
         subtitle: "O que você não pode cortar",
         health: {
           title: "Seguro Saúde (Zorgverzekering)",
-          text: "Na Holanda, o seguro é privado e obrigatório.",
-          value: "~€ 159/mês por adulto",
+          text: "Na Holanda, o seguro é privado e obrigatório. O governo informa que o prêmio médio de 2026 é € 1.884/ano.",
+          value: "~€ 157/mês por adulto",
           warning: "Existe a franquia obrigatória (Eigen Risico) de € 385 por ano. Você paga os primeiros € 385 de gastos médicos do seu bolso antes do seguro cobrir tudo (exceto médico de família, que é grátis)."
         },
         energy: {
           title: "Energia (Luz e Gás)",
           value: "~€ 172/mês",
-          text: "A média para uma residência de 1-2 pessoas. Casas mais novas (com etiqueta energética A ou B) pagam menos; casas históricas no centro (com isolamento ruim) pagam mais."
+          text: "Segundo estatísticas oficiais, a conta média anual de energia é ~€ 2.065 (considerando 2.500 kWh de eletricidade e 900 m³ de gás). Casas novas (etiqueta A/B) pagam menos (~€ 1.400/ano); casas históricas mal isoladas podem passar de € 3.500/ano."
         },
         internet: {
           title: "Internet e Celular",
@@ -211,10 +211,10 @@ const CustoDeVida = () => {
     en: {
       heroTitle: "Cost of Living in Amsterdam 2026",
       heroSubtitle: "Rent, bills, taxes and how much you need per month",
-      quickAnswer: "In 2026, a single adult living in Amsterdam needs around €2,885/month for basic comfort (no luxury), and a couple around €3,608/month. Rent is the biggest variable. Below you'll see the breakdown by category and can simulate with the calculator.",
+      quickAnswer: "In 2026, a single adult living in Amsterdam needs around €2,885–2,950/month for basic comfort (no luxury), and a couple around €3,600–3,620/month. Rent is the biggest variable. Below you'll see the breakdown by category and can simulate with the calculator.",
       intro: {
-        title: "The Truth About Living in Amsterdam",
-        text: "Many people dream of living on Amsterdam's canals, but financial planning goes far beyond converting currencies. For 2026, the scenario shows energy stabilization but high pressure on rents. In this Amsterdu guide, we open the \"black box\" of expenses: from rent to waste fees that nobody tells you before moving."
+        title: "Why Planning is Essential",
+        text: "Living in Amsterdam can be a dream, but in 2026 it requires rigorous financial planning. The city combines high salaries and quality of life, but also expensive rent, mandatory taxes and private services like health insurance. This guide explains each component of a resident's budget, based exclusively on official sources: real estate market reports, municipality, insurers, water authorities, energy statistics and GVB."
       },
       housing: {
         title: "The Big Villain: Housing (Rent)",
@@ -223,7 +223,7 @@ const CustoDeVida = () => {
           title: "The Real Price (2026)",
           text: "To get a 1 or 2 bedroom apartment (~70m²) in the free market (vrije sector), prepare for something around",
           value: "€ 1,940",
-          suffix: "monthly (average of € 27.75 per m²)"
+          suffix: "monthly (average of € 28.68 per m² - Pararius Q4 2025, +9.1% year-over-year)"
         },
         income: {
           title: "The Income Catch (3x or 4x)",
@@ -239,14 +239,14 @@ const CustoDeVida = () => {
         subtitle: "What you can't cut",
         health: {
           title: "Health Insurance (Zorgverzekering)",
-          text: "In the Netherlands, insurance is private and mandatory.",
-          value: "~€ 159/month per adult",
+          text: "In the Netherlands, insurance is private and mandatory. The government reports the 2026 average premium is € 1,884/year.",
+          value: "~€ 157/month per adult",
           warning: "There's a mandatory deductible (Eigen Risico) of € 385 per year. You pay the first € 385 of medical expenses out of pocket before insurance covers everything (except GP visits, which are free)."
         },
         energy: {
           title: "Energy (Electricity and Gas)",
           value: "~€ 172/month",
-          text: "The average for a 1-2 person residence. Newer houses (with energy label A or B) pay less; historic houses in the center (with poor insulation) pay more."
+          text: "According to official statistics, the average annual energy bill is ~€ 2,065 (considering 2,500 kWh electricity and 900 m³ gas). Newer houses (label A/B) pay less (~€ 1,400/year); poorly insulated historic houses can exceed € 3,500/year."
         },
         internet: {
           title: "Internet and Mobile",
@@ -307,39 +307,44 @@ const CustoDeVida = () => {
   const c = content[language];
 
   const singleBudget = [
-    { label: language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent", value: 1940 },
-    { label: language === "nl" ? "Rekeningen (Energie/Net/Zorg)" : language === "pt" ? "Contas (Luz/Net/Saúde)" : "Bills (Energy/Net/Health)", value: 390 },
-    { label: language === "nl" ? "Boodschappen/Huis" : language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 450 },
-    { label: language === "nl" ? "Vervoer (Fiets + incidenteel)" : language === "pt" ? "Transporte (Bike + eventual)" : "Transport (Bike + occasional)", value: 50 },
-    { label: language === "nl" ? "Gemeentelijke Heffingen (gem.)" : language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 55 },
+    { label: language === "nl" ? "Huur (70m², vrije sector)" : language === "pt" ? "Aluguel (70m², mercado livre)" : "Rent (70m², free market)", value: 1940 },
+    { label: language === "nl" ? "Vaste Kosten (Energie + Internet + Tel)" : language === "pt" ? "Contas Fixas (Energia + Net + Tel)" : "Fixed Bills (Energy + Net + Tel)", value: 227 },
+    { label: language === "nl" ? "Zorgverzekering basis" : language === "pt" ? "Seguro Saúde básico" : "Basic Health Insurance", value: 157 },
+    { label: language === "nl" ? "Boodschappen/Huishouden" : language === "pt" ? "Supermercado/Casa" : "Groceries/Household", value: 443 },
+    { label: language === "nl" ? "Gemeentelijke Heffingen (Afval + Water)" : language === "pt" ? "Impostos Municipais (Lixo + Água)" : "Municipal Taxes (Waste + Water)", value: 52 },
+    { label: language === "nl" ? "Vervoer (GVB of Fiets)" : language === "pt" ? "Transporte (GVB ou Bike)" : "Transport (GVB or Bike)", value: 66 },
   ];
 
   const coupleBudget = [
-    { label: language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent", value: 1940 },
-    { label: language === "nl" ? "Rekeningen (Energie/Net/2x Zorg)" : language === "pt" ? "Contas (Luz/Net/2x Saúde)" : "Bills (Energy/Net/2x Health)", value: 560 },
-    { label: language === "nl" ? "Boodschappen/Huis" : language === "pt" ? "Mercado/Casa" : "Groceries/Home", value: 770 },
-    { label: language === "nl" ? "Vervoer (2 GVB passen)" : language === "pt" ? "Transporte (2 passes GVB)" : "Transport (2 GVB passes)", value: 258 },
-    { label: language === "nl" ? "Gemeentelijke Heffingen (gem.)" : language === "pt" ? "Impostos Municipais (média)" : "Municipal Taxes (avg)", value: 80 },
+    { label: language === "nl" ? "Huur (70m², vrije sector)" : language === "pt" ? "Aluguel (70m², mercado livre)" : "Rent (70m², free market)", value: 1940 },
+    { label: language === "nl" ? "Vaste Kosten (Energie + Internet + Tel)" : language === "pt" ? "Contas Fixas (Energia + Net + Tel)" : "Fixed Bills (Energy + Net + Tel)", value: 242 },
+    { label: language === "nl" ? "Zorgverzekering basis (2x)" : language === "pt" ? "Seguro Saúde básico (2x)" : "Basic Health Insurance (2x)", value: 314 },
+    { label: language === "nl" ? "Boodschappen/Huishouden" : language === "pt" ? "Supermercado/Casa" : "Groceries/Household", value: 771 },
+    { label: language === "nl" ? "Gemeentelijke Heffingen (Afval + Water)" : language === "pt" ? "Impostos Municipais (Lixo + Água)" : "Municipal Taxes (Waste + Water)", value: 78 },
+    { label: language === "nl" ? "Vervoer (2x GVB)" : language === "pt" ? "Transporte (2x GVB)" : "Transport (2x GVB)", value: 258 },
   ];
 
   const faqItems = language === "nl" ? [
-    { question: "Hoeveel kost het om te wonen in Amsterdam in 2026?", answer: "Voor een alleenstaande liggen de kosten van levensonderhoud in Amsterdam rond € 2.885/maand, inclusief huur, rekeningen, eten en vervoer. Voor een stel dat kosten deelt is het totaal ongeveer € 3.608/maand." },
-    { question: "Wat is het minimumsalaris om te huren in Amsterdam?", answer: "Makelaars eisen dat je bruto inkomen 3 tot 4 keer de huurwaarde is. Voor een appartement van € 1.900 moet je een inkomen van ongeveer € 6.000 bruto per maand aantonen." },
-    { question: "Hoeveel is de huur in Amsterdam 2026?", answer: "De gemiddelde huur voor een appartement met 1-2 slaapkamers (~70m²) in de vrije sector is € 1.940 per maand, gelijk aan € 27,75 per m²." },
-    { question: "Welke belastingen betalen huurders in Amsterdam?", answer: "Huurders betalen Afvalstoffenheffing (€ 352-469/jaar) en Zuiveringsheffing (€ 280-465/jaar), totaal € 60-70 per maand voor een stel." },
-    { question: "Hoeveel kost de zorgverzekering in Nederland in 2026?", answer: "Verplichte zorgverzekering kost ongeveer € 159/maand per volwassene, plus een verplicht eigen risico van € 385 per jaar." }
+    { question: "Hoeveel kost het om te wonen in Amsterdam in 2026?", answer: "Voor een alleenstaande liggen de kosten van levensonderhoud in Amsterdam rond € 2.885–2.950/maand, inclusief huur (€ 1.940), rekeningen, zorgverzekering, boodschappen en vervoer. Voor een stel dat kosten deelt is het totaal ongeveer € 3.600–3.620/maand." },
+    { question: "Wat is het minimumsalaris om te huren in Amsterdam?", answer: "Makelaars eisen dat je bruto inkomen 3 tot 4 keer de huurwaarde is. Voor een appartement van € 1.940 moet je een inkomen van ongeveer € 5.820–7.760 bruto per maand aantonen." },
+    { question: "Hoeveel is de huur in Amsterdam 2026?", answer: "Volgens het Pararius Q4 2025 rapport is de gemiddelde huur € 28,68 per m². Voor een 70m² appartement in de vrije sector betekent dit ~€ 1.940 per maand (+9,1% jaar-op-jaar)." },
+    { question: "Welke belastingen betalen huurders in Amsterdam?", answer: "Huurders betalen Afvalstoffenheffing (€ 352 alleenstaand / € 469 stel per jaar) en Waterschapsbelasting via AGV (€ 280 / € 465 per jaar), totaal € 52–78 per maand." },
+    { question: "Hoeveel kost de zorgverzekering in Nederland in 2026?", answer: "Volgens de Rijksoverheid is de gemiddelde premie € 1.884/jaar, oftewel ~€ 157/maand per volwassene, plus een verplicht eigen risico van € 385 per jaar." },
+    { question: "Hoeveel heb je nodig om comfortabel te leven in Amsterdam?", answer: "Een alleenstaande heeft ~€ 2.885/maand nodig, een stel ~€ 3.600/maand. Dit is voor een comfortabele levensstijl zonder luxe. Met de inkomensvereiste van makelaars (3-4x huur) moet een alleenstaande ~€ 5.800 bruto verdienen." }
   ] : language === "pt" ? [
-    { question: "Quanto custa morar em Amsterdam em 2026?", answer: "Para um solteiro, o custo de vida em Amsterdam fica em torno de € 2.885/mês, incluindo aluguel, contas, alimentação e transporte. Para um casal dividindo despesas, o total fica aproximadamente € 3.608/mês." },
-    { question: "Qual o salário mínimo necessário para alugar em Amsterdam?", answer: "As imobiliárias exigem que sua renda bruta seja 3 a 4 vezes o valor do aluguel. Para um apartamento de € 1.900, você precisa comprovar renda de aproximadamente € 6.000 brutos por mês." },
-    { question: "Quanto custa o aluguel em Amsterdam 2026?", answer: "O aluguel médio para um apartamento de 1-2 quartos (~70m²) no mercado livre é de € 1.940 por mês, equivalente a € 27,75 por m²." },
-    { question: "Quais são os impostos que inquilinos pagam em Amsterdam?", answer: "Inquilinos pagam Taxa de Lixo (€ 352-469/ano) e Taxa de Tratamento de Água (€ 280-465/ano), totalizando € 60-70 mensais para um casal." },
-    { question: "Quanto custa o seguro saúde na Holanda em 2026?", answer: "O seguro saúde obrigatório custa aproximadamente € 159/mês por adulto, mais uma franquia anual obrigatória (Eigen Risico) de € 385." }
+    { question: "Quanto custa morar em Amsterdam em 2026?", answer: "Para um solteiro, o custo de vida em Amsterdam fica em torno de € 2.885–2.950/mês, incluindo aluguel (€ 1.940), contas, seguro saúde, supermercado e transporte. Para um casal dividindo despesas, o total fica em torno de € 3.600–3.620/mês." },
+    { question: "Qual o salário mínimo necessário para alugar em Amsterdam?", answer: "As imobiliárias exigem que sua renda bruta seja 3 a 4 vezes o valor do aluguel. Para um apartamento de € 1.940, você precisa comprovar renda de aproximadamente € 5.820–7.760 brutos por mês." },
+    { question: "Quanto custa o aluguel em Amsterdam 2026?", answer: "Segundo o relatório Pararius Q4 2025, o aluguel médio é € 28,68 por m². Para um apartamento de 70m² no mercado livre, isso significa ~€ 1.940 por mês (alta de 9,1% no ano)." },
+    { question: "Quais são os impostos que inquilinos pagam em Amsterdam?", answer: "Inquilinos pagam Taxa de Lixo (€ 352 solteiro / € 469 casal por ano) e Taxa de Água via AGV (€ 280 / € 465 por ano), totalizando € 52–78 mensais." },
+    { question: "Quanto custa o seguro saúde na Holanda em 2026?", answer: "Segundo a Rijksoverheid, o prêmio médio é € 1.884/ano, ou seja ~€ 157/mês por adulto, mais uma franquia anual obrigatória (Eigen Risico) de € 385." },
+    { question: "Quanto precisa ganhar para viver bem em Amsterdam?", answer: "Um solteiro precisa de ~€ 2.885/mês, um casal ~€ 3.600/mês. Com a regra de renda das imobiliárias (3-4x aluguel), um solteiro deve ganhar ~€ 5.800 brutos. Casais podem combinar rendas." }
   ] : [
-    { question: "How much does it cost to live in Amsterdam in 2026?", answer: "For a single person, the cost of living in Amsterdam is around € 2,885/month, including rent, bills, food and transport. For a couple sharing expenses, the total is approximately € 3,608/month." },
-    { question: "What's the minimum salary needed to rent in Amsterdam?", answer: "Real estate agencies require your gross income to be 3 to 4 times the rent value. For an apartment of € 1,900, you need to prove an income of approximately € 6,000 gross per month." },
-    { question: "How much is rent in Amsterdam 2026?", answer: "The average rent for a 1-2 bedroom apartment (~70m²) in the free market is € 1,940 per month, equivalent to € 27.75 per m²." },
-    { question: "What taxes do tenants pay in Amsterdam?", answer: "Tenants pay Waste Tax (€ 352-469/year) and Water Treatment Tax (€ 280-465/year), totaling € 60-70 monthly for a couple." },
-    { question: "How much does health insurance cost in the Netherlands in 2026?", answer: "Mandatory health insurance costs approximately € 159/month per adult, plus a mandatory annual deductible (Eigen Risico) of € 385." }
+    { question: "How much does it cost to live in Amsterdam in 2026?", answer: "For a single person, the cost of living in Amsterdam is around € 2,885–2,950/month, including rent (€ 1,940), bills, health insurance, groceries and transport. For a couple sharing expenses, the total is around € 3,600–3,620/month." },
+    { question: "What's the minimum salary needed to rent in Amsterdam?", answer: "Real estate agencies require your gross income to be 3 to 4 times the rent value. For an apartment of € 1,940, you need to prove an income of approximately € 5,820–7,760 gross per month." },
+    { question: "How much is rent in Amsterdam 2026?", answer: "According to the Pararius Q4 2025 report, average rent is € 28.68 per m². For a 70m² free sector apartment, this means ~€ 1,940 per month (+9.1% year-over-year)." },
+    { question: "What taxes do tenants pay in Amsterdam?", answer: "Tenants pay Waste Tax (€ 352 single / € 469 couple per year) and Water Tax via AGV (€ 280 / € 465 per year), totaling € 52–78 monthly." },
+    { question: "How much does health insurance cost in the Netherlands in 2026?", answer: "According to Rijksoverheid, the average premium is € 1,884/year, or ~€ 157/month per adult, plus a mandatory annual deductible (Eigen Risico) of € 385." },
+    { question: "How much do you need to earn to live comfortably in Amsterdam?", answer: "A single person needs ~€ 2,885/month, a couple ~€ 3,600/month. With the income rule from agencies (3-4x rent), a single person should earn ~€ 5,800 gross. Couples can combine incomes." }
   ];
 
   return (
@@ -753,15 +758,16 @@ const CustoDeVida = () => {
             </h2>
             <div className="bg-card rounded-xl border border-border p-5">
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• <strong>{language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent"}:</strong> {language === "nl" ? "Gemiddelde vrije sector Q4 2024/Q1 2025 (Pararius, Funda, NVM)" : language === "pt" ? "Média mercado livre Q4 2024/Q1 2025 (Pararius, Funda, NVM)" : "Free market average Q4 2024/Q1 2025 (Pararius, Funda, NVM)"}</li>
-                <li>• <strong>{language === "nl" ? "Boodschappen" : language === "pt" ? "Mercado" : "Groceries"}:</strong> {language === "nl" ? "NIBUD Budgethandboek 2024" : language === "pt" ? "NIBUD Budgethandboek 2024" : "NIBUD Budgethandboek 2024"}</li>
-                <li>• <strong>{language === "nl" ? "Zorgverzekering" : language === "pt" ? "Seguro Saúde" : "Health Insurance"}:</strong> {language === "nl" ? "Zorgverzekeraars, Independer (jan. 2025)" : language === "pt" ? "Zorgverzekeraars, Independer (jan. 2025)" : "Zorgverzekeraars, Independer (Jan 2025)"}</li>
-                <li>• <strong>{language === "nl" ? "Energie" : language === "pt" ? "Energia" : "Energy"}:</strong> {language === "nl" ? "Energievergelijk.nl, ACM prijsplafond referentie" : language === "pt" ? "Energievergelijk.nl, referência teto de preços ACM" : "Energievergelijk.nl, ACM price cap reference"}</li>
-                <li>• <strong>{language === "nl" ? "Gemeentelijke heffingen" : language === "pt" ? "Impostos Municipais" : "Municipal Taxes"}:</strong> {language === "nl" ? "Gemeente Amsterdam, Waternet (tarieven 2025)" : language === "pt" ? "Gemeente Amsterdam, Waternet (tarifas 2025)" : "Gemeente Amsterdam, Waternet (2025 rates)"}</li>
-                <li>• <strong>{language === "nl" ? "Vervoer" : language === "pt" ? "Transporte" : "Transport"}:</strong> {language === "nl" ? "GVB officiële tarieven (jan. 2025)" : language === "pt" ? "GVB tarifas oficiais (jan. 2025)" : "GVB official rates (Jan 2025)"}</li>
+                <li>• <strong>{language === "nl" ? "Huur" : language === "pt" ? "Aluguel" : "Rent"}:</strong> {language === "nl" ? "Pararius Q4 2025 rapport – gemiddelde € 28,68/m² in Amsterdam (+9,1% jaar-op-jaar)" : language === "pt" ? "Relatório Pararius Q4 2025 – média € 28,68/m² em Amsterdam (+9,1% no ano)" : "Pararius Q4 2025 report – average € 28.68/m² in Amsterdam (+9.1% year-over-year)"}</li>
+                <li>• <strong>{language === "nl" ? "Boodschappen" : language === "pt" ? "Supermercado" : "Groceries"}:</strong> {language === "nl" ? "NIBUD via Nationale-Nederlanden – € 443 alleenstaand, € 771 stel per maand" : language === "pt" ? "NIBUD via Nationale-Nederlanden – € 443 solteiro, € 771 casal por mês" : "NIBUD via Nationale-Nederlanden – € 443 single, € 771 couple per month"}</li>
+                <li>• <strong>{language === "nl" ? "Zorgverzekering" : language === "pt" ? "Seguro Saúde" : "Health Insurance"}:</strong> {language === "nl" ? "Rijksoverheid – gemiddelde premie 2026 € 1.884/jaar (€ 157/maand)" : language === "pt" ? "Rijksoverheid – prêmio médio 2026 € 1.884/ano (€ 157/mês)" : "Rijksoverheid – 2026 average premium € 1,884/year (€ 157/month)"}</li>
+                <li>• <strong>{language === "nl" ? "Energie" : language === "pt" ? "Energia" : "Energy"}:</strong> {language === "nl" ? "Officiële statistieken – gemiddeld € 2.065/jaar (€ 172/maand) voor 2.500 kWh + 900 m³ gas" : language === "pt" ? "Estatísticas oficiais – média € 2.065/ano (€ 172/mês) para 2.500 kWh + 900 m³ de gás" : "Official statistics – average € 2,065/year (€ 172/month) for 2,500 kWh + 900 m³ gas"}</li>
+                <li>• <strong>{language === "nl" ? "Afvalstoffenheffing" : language === "pt" ? "Taxa de Lixo" : "Waste Tax"}:</strong> {language === "nl" ? "Gemeente Amsterdam 2026 – € 352 alleenstaand, € 469 meerpersoons per jaar" : language === "pt" ? "Prefeitura Amsterdam 2026 – € 352 solteiro, € 469 multipessoas por ano" : "Municipality Amsterdam 2026 – € 352 single, € 469 multi-person per year"}</li>
+                <li>• <strong>{language === "nl" ? "Waterschapsbelasting" : language === "pt" ? "Taxa de Água (AGV)" : "Water Tax (AGV)"}:</strong> {language === "nl" ? "Waterschap AGV 2026 – € 279,64 (1 VE) / € 465,22 (2+ VE) per jaar" : language === "pt" ? "Waterschap AGV 2026 – € 279,64 (1 VE) / € 465,22 (2+ VE) por ano" : "Waterschap AGV 2026 – € 279.64 (1 pollution unit) / € 465.22 (2+ units) per year"}</li>
+                <li>• <strong>{language === "nl" ? "Vervoer" : language === "pt" ? "Transporte" : "Transport"}:</strong> {language === "nl" ? "GVB Vrij – € 129/maand onbeperkt Amsterdam" : language === "pt" ? "GVB Vrij – € 129/mês ilimitado Amsterdam" : "GVB Vrij – € 129/month unlimited Amsterdam"}</li>
               </ul>
               <p className="mt-4 text-xs text-muted-foreground/70">
-                {language === "nl" ? "Waarden zijn schattingen op basis van openbare bronnen en marktgemiddelden. Individuele kosten kunnen variëren." : language === "pt" ? "Valores são estimativas baseadas em fontes públicas e médias de mercado. Custos individuais podem variar." : "Values are estimates based on public sources and market averages. Individual costs may vary."}
+                {language === "nl" ? "Waarden zijn schattingen gebaseerd op officiële bronnen en marktgemiddelden. Individuele kosten kunnen variëren afhankelijk van locatie, consumptie en levensstijl." : language === "pt" ? "Valores são estimativas baseadas em fontes oficiais e médias de mercado. Custos individuais podem variar conforme localização, consumo e estilo de vida." : "Values are estimates based on official sources and market averages. Individual costs may vary depending on location, consumption and lifestyle."}
               </p>
             </div>
           </AnimatedSection>
