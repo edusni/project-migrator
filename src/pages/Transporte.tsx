@@ -66,8 +66,8 @@ const Transporte = () => {
         type="article"
         faqItems={faqItems}
         breadcrumbs={[
-          { name: "Home", url: "https://amsterdu.com" },
-          { name: t("Transporte", "Transport", "Vervoer"), url: "https://amsterdu.com/transporte" }
+          { name: "Home", url: `https://amsterdu.com/${language === "en" ? "en" : language === "nl" ? "nl" : "pt"}/index.html` },
+          { name: t("Transporte", "Transport", "Vervoer"), url: `https://amsterdu.com/${language === "en" ? "en/transport" : language === "nl" ? "nl/transport" : "pt/transporte"}.html` }
         ]}
       />
       <PageHero 
