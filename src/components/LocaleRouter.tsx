@@ -1,12 +1,14 @@
 import { useEffect } from "react";
-import { useParams, Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { useLanguage, Language } from "@/hooks/useLanguage";
 
 const SUPPORTED_LOCALES: Language[] = ["pt", "en", "nl"];
 
 export function LocaleRouter() {
-  const { locale } = useParams<{ locale: string }>();
+  const location = useLocation();
   const { setLanguage } = useLanguage();
+
+  const locale = location.pathname.split("/")[1];
 
   useEffect(() => {
     // Validate locale from URL and sync with context
