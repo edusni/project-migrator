@@ -103,8 +103,8 @@ const App = () => (
           <BrowserRouter>
             <ScrollToTopOnNavigate />
           <Routes>
-            {/* Root redirect to locale-prefixed route */}
-            <Route path="/" element={<LocaleRouter />} />
+            {/* Root redirect to locale-prefixed route (preview/dev doesn't run Netlify redirects) */}
+            <Route path="/" element={<Navigate to="/pt" replace />} />
             
             {/* Locale-prefixed routes */}
             <Route path="/pt/*" element={<LocaleRouter />}>
