@@ -122,7 +122,28 @@
     <meta property="og:type" content="website">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Static content for crawlers that don't execute JavaScript -->
+      <header style="background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); color: white; padding: 60px 20px; text-align: center;">
+        <h1 style="font-size: 2.5rem; margin-bottom: 1rem; color: #F97316;">Guia de Amsterdam 2026 – AmsterDu</h1>
+        <p style="font-size: 1.25rem; opacity: 0.9; max-width: 700px; margin: 0 auto;">O guia brutalmente honesto para não gastar à toa, não cair em armadilha turística e não tomar multa.</p>
+      </header>
+      <main style="max-width: 1200px; margin: 0 auto; padding: 40px 20px;">
+        <p style="background: #f9f9f9; padding: 20px; border-radius: 8px; margin-bottom: 30px; text-align: center;">O AmsterDu é um guia completo e atualizado para quem vai viajar ou planejar a vida em Amsterdam em 2026. Aqui você encontra decisões práticas sobre hospedagem, transporte, custos, atrações, cannabis, bate-voltas e regras reais da cidade — com foco em evitar gastos desnecessários, multas e armadilhas turísticas.</p>
+        <nav>
+          <ul style="list-style: none; padding: 0;">
+            <li><a href="/pt/planejamento" style="color: #F97316;">Planejamento</a></li>
+            <li><a href="/pt/hospedagem" style="color: #F97316;">Hospedagem</a></li>
+            <li><a href="/pt/atracoes" style="color: #F97316;">Atrações</a></li>
+            <li><a href="/pt/transporte" style="color: #F97316;">Transporte</a></li>
+            <li><a href="/pt/gastronomia" style="color: #F97316;">Gastronomia</a></li>
+            <li><a href="/pt/coffeeshops" style="color: #F97316;">Coffeeshops</a></li>
+            <li><a href="/pt/arredores" style="color: #F97316;">Bate-voltas</a></li>
+            <li><a href="/pt/custo-vida-amsterdam" style="color: #F97316;">Custo de Vida</a></li>
+          </ul>
+        </nav>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
     
     <!-- Defer ALL analytics scripts to after page load for faster FCP -->
