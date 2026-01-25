@@ -76,6 +76,68 @@
 # ===================================================================
 # LEGACY URLs sem prefixo de idioma → canônicas
 # ===================================================================
+
+# URLs reportadas como soft 404 no Google Search Console (Jan 2026)
+[[redirects]]
+  from = "/galeria"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Galeria"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/quem-e-o-du"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Cookies"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/o-que-fazer-amsterdam"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transporte-amsterdam"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+# Variações case-insensitive das URLs legadas
+[[redirects]]
+  from = "/Quem-e-o-du"
+  to = "/pt/sobre.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/O-que-fazer-amsterdam"
+  to = "/pt/atracoes.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Transporte-amsterdam"
+  to = "/pt/transporte.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Coffeeshops-amsterdam"
+  to = "/pt/coffeeshops.html"
+  status = 301
+  force = true
 [[redirects]]
   from = "/coffeeshops-amsterdam"
   to = "/pt/coffeeshops.html"
