@@ -33,11 +33,11 @@ interface Post {
 }
 
 interface PostListProps {
-  categoryFilter?: string;
+  categorySlug?: string | null;
   limit?: number;
 }
 
-export const PostList = ({ categoryFilter, limit }: PostListProps) => {
+export const PostList = ({ categorySlug, limit }: PostListProps) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { language } = useLanguage();
@@ -74,10 +74,6 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
         .eq("status", "published")
         .order("published_at", { ascending: false });
 
-      if (categoryFilter) {
-        query = query.eq("blog_categories.slug", categoryFilter);
-      }
-
       if (limit) {
         query = query.limit(limit);
       }
@@ -87,14 +83,21 @@ export const PostList = ({ categoryFilter, limit }: PostListProps) => {
       if (error) {
         console.error("Error fetching posts:", error);
       } else {
-        setPosts(data || []);
+        // Filter by category slug on client side (Supabase nested filters are limited)
+        let filteredPosts = data || [];
+        if (categorySlug) {
+          filteredPosts = filteredPosts.filter(
+            (post) => post.blog_categories?.slug === categorySlug
+          );
+        }
+        setPosts(filteredPosts);
       }
       
       setIsLoading(false);
     };
 
     fetchPosts();
-  }, [categoryFilter, limit]);
+  }, [categorySlug, limit]);
 
   const emptyMessage = language === "nl"
     ? "Nog geen posts gepubliceerd. Binnenkort beschikbaar!"
