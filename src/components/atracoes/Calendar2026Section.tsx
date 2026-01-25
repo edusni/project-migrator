@@ -13,6 +13,8 @@ interface Event {
   emoji: string;
   startMonth: number;
   endMonth: number;
+  startYear: number;
+  endYear: number;
   startDay: number;
   endDay: number;
   color: string;
@@ -39,11 +41,44 @@ interface Event {
 
 const events2026: Event[] = [
   {
+    id: "light-festival",
+    name: "Light Festival",
+    emoji: "💡",
+    startMonth: 11, // Novembro 2025
+    endMonth: 1, // Janeiro 2026
+    startYear: 2025,
+    endYear: 2026,
+    startDay: 27,
+    endDay: 19,
+    color: "text-cyan-600",
+    bgColor: "bg-cyan-50 dark:bg-cyan-950/30",
+    borderColor: "border-cyan-400 dark:border-cyan-600",
+    description: {
+      pt: "Arte luminosa nos canais",
+      en: "Light art on the canals",
+      nl: "Lichtkunst op de grachten"
+    },
+    details: {
+      pt: "15ª edição! 20 obras de arte em luz. Acende às 17h30 diariamente.",
+      en: "15th edition! 20 light art installations. Lights on at 5:30pm daily.",
+      nl: "15e editie! 20 lichtkunstwerken. Lichten aan om 17:30 dagelijks."
+    },
+    tip: {
+      pt: "Grátis a pé! Tours de barco €15-35.",
+      en: "Free on foot! Boat tours €15-35.",
+      nl: "Gratis te voet! Boottochten €15-35."
+    },
+    url: "https://amsterdamlightfestival.com",
+    isFree: true
+  },
+  {
     id: "metamorphoses",
     name: "Metamorphoses",
     emoji: "🎨",
     startMonth: 2,
     endMonth: 5,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 6,
     endDay: 25,
     color: "text-amber-600",
@@ -72,6 +107,8 @@ const events2026: Event[] = [
     emoji: "🌻",
     startMonth: 2,
     endMonth: 5,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 13,
     endDay: 17,
     color: "text-yellow-600",
@@ -100,6 +137,8 @@ const events2026: Event[] = [
     emoji: "🌷",
     startMonth: 3,
     endMonth: 5,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 19,
     endDay: 10,
     color: "text-pink-600",
@@ -128,6 +167,8 @@ const events2026: Event[] = [
     emoji: "⛪",
     startMonth: 4,
     endMonth: 9,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 24,
     endDay: 27,
     color: "text-stone-600",
@@ -156,6 +197,8 @@ const events2026: Event[] = [
     emoji: "👑",
     startMonth: 4,
     endMonth: 4,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 27,
     endDay: 27,
     color: "text-orange-600",
@@ -184,6 +227,8 @@ const events2026: Event[] = [
     emoji: "🏳️‍🌈",
     startMonth: 7,
     endMonth: 8,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 25,
     endDay: 8,
     color: "text-pink-600",
@@ -212,6 +257,8 @@ const events2026: Event[] = [
     emoji: "♾️",
     startMonth: 9,
     endMonth: 1,
+    startYear: 2026,
+    endYear: 2027,
     startDay: 11,
     endDay: 17,
     color: "text-fuchsia-600",
@@ -240,6 +287,8 @@ const events2026: Event[] = [
     emoji: "🎧",
     startMonth: 10,
     endMonth: 10,
+    startYear: 2026,
+    endYear: 2026,
     startDay: 21,
     endDay: 25,
     color: "text-purple-600",
@@ -263,11 +312,13 @@ const events2026: Event[] = [
     url: "https://www.amsterdam-dance-event.nl"
   },
   {
-    id: "light-festival",
+    id: "light-festival-2026",
     name: "Light Festival",
     emoji: "💡",
     startMonth: 11,
     endMonth: 1,
+    startYear: 2026,
+    endYear: 2027,
     startDay: 26,
     endDay: 19,
     color: "text-cyan-600",
@@ -279,9 +330,9 @@ const events2026: Event[] = [
       nl: "Lichtkunst op de grachten"
     },
     details: {
-      pt: "15ª edição! 20 obras de arte em luz. Acende às 17h30 diariamente.",
-      en: "15th edition! 20 light art installations. Lights on at 5:30pm daily.",
-      nl: "15e editie! 20 lichtkunstwerken. Lichten aan om 17:30 dagelijks."
+      pt: "16ª edição! 20+ obras de arte em luz. Acende às 17h diariamente.",
+      en: "16th edition! 20+ light art installations. Lights on at 5pm daily.",
+      nl: "16e editie! 20+ lichtkunstwerken. Lichten aan om 17:00 dagelijks."
     },
     tip: {
       pt: "Grátis a pé! Tours de barco €15-35.",
@@ -313,12 +364,33 @@ export function Calendar2026Section() {
 
   const getEventsForMonth = (month: number) => {
     return events2026.filter(event => {
-      // Handle events that span into next year (like Light Festival and Kusama)
-      if (event.endMonth < event.startMonth) {
-        return month >= event.startMonth || month <= event.endMonth;
+      // For events in 2026, check if this month is within the event range
+      // Handle events that span across years
+      if (event.startYear === 2025 && event.endYear === 2026) {
+        // Event from 2025 into 2026 (e.g., Light Festival Nov 2025 - Jan 2026)
+        return month <= event.endMonth;
       }
+      if (event.startYear === 2026 && event.endYear === 2027) {
+        // Event from 2026 into 2027 (e.g., Kusama Sep 2026 - Jan 2027)
+        return month >= event.startMonth;
+      }
+      // Regular 2026 events
       return month >= event.startMonth && month <= event.endMonth;
     });
+  };
+
+  const formatEventDate = (event: Event) => {
+    const startMonthName = months[lang][event.startMonth - 1];
+    const endMonthName = months[lang][event.endMonth - 1];
+    
+    if (event.startMonth === event.endMonth && event.startDay === event.endDay) {
+      return `${event.startDay} ${startMonthName}`;
+    }
+    
+    const startYear = event.startYear !== 2026 ? ` ${event.startYear}` : "";
+    const endYear = event.endYear !== 2026 ? ` ${event.endYear}` : "";
+    
+    return `${event.startDay} ${startMonthName}${startYear} - ${event.endDay} ${endMonthName}${endYear}`;
   };
 
   const monthEvents = getEventsForMonth(activeMonth);
@@ -469,13 +541,7 @@ export function Calendar2026Section() {
                     {/* Date Display */}
                     <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
                       <Clock className="w-4 h-4" />
-                      <span>
-                        {event.startDay} {months[lang][event.startMonth - 1]}
-                        {event.startMonth !== event.endMonth || event.startDay !== event.endDay
-                          ? ` - ${event.endDay} ${months[lang][event.endMonth - 1]}`
-                          : ""}
-                        {event.endMonth < event.startMonth ? " 2027" : ""}
-                      </span>
+                      <span>{formatEventDate(event)}</span>
                     </div>
 
                     {/* Expanded Details */}
