@@ -2,17 +2,20 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/hooks/useLanguage";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface Category {
   id: string;
   name: string;
   slug: string;
   emoji: string | null;
+  color: string | null;
 }
 
 interface CategoryFilterProps {
   selected: string | null;
-  onSelect: (categoryId: string | null) => void;
+  onSelect: (slug: string | null) => void;
 }
 
 export const CategoryFilter = ({ selected, onSelect }: CategoryFilterProps) => {
@@ -25,7 +28,7 @@ export const CategoryFilter = ({ selected, onSelect }: CategoryFilterProps) => {
     const fetchCategories = async () => {
       const { data, error } = await supabase
         .from("blog_categories")
-        .select("id, name, slug, emoji")
+        .select("id, name, slug, emoji, color")
         .order("sort_order", { ascending: true });
 
       if (error) {
@@ -39,26 +42,38 @@ export const CategoryFilter = ({ selected, onSelect }: CategoryFilterProps) => {
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-2">
-      <Button
-        variant={selected === null ? "default" : "outline"}
-        size="sm"
+    <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
         onClick={() => onSelect(null)}
-        className="min-h-[40px] px-3 sm:px-4"
+        className={cn(
+          "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border",
+          selected === null
+            ? "bg-primary text-primary-foreground border-primary shadow-md"
+            : "bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
+        )}
       >
         {allLabel}
-      </Button>
-      
+      </motion.button>
+
       {categories.map((cat) => (
-        <Button
+        <motion.button
           key={cat.id}
-          variant={selected === cat.id ? "default" : "outline"}
-          size="sm"
-          onClick={() => onSelect(cat.id)}
-          className="min-h-[40px] px-3 sm:px-4"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => onSelect(cat.slug)}
+          className={cn(
+            "px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 border flex items-center gap-1.5",
+            selected === cat.slug
+              ? "text-white border-transparent shadow-md"
+              : "bg-card text-muted-foreground border-border hover:border-primary/50 hover:text-foreground"
+          )}
+          style={selected === cat.slug ? { backgroundColor: cat.color || 'hsl(var(--primary))' } : {}}
         >
-          {cat.emoji} {cat.name}
-        </Button>
+          <span>{cat.emoji}</span>
+          <span className="hidden sm:inline">{cat.name}</span>
+        </motion.button>
       ))}
     </div>
   );

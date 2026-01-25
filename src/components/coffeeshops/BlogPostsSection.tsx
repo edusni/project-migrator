@@ -34,7 +34,7 @@ export const BlogPostsSection = ({ language }: BlogPostsSectionProps) => {
         <p className="text-center text-muted-foreground mb-8 md:mb-10 max-w-2xl mx-auto text-base md:text-lg">
           {t.subtitle}
         </p>
-        <PostList categoryFilter="cannabis" limit={6} />
+        <PostList categorySlug="cannabis" limit={6} />
       </div>
     </section>
   );
