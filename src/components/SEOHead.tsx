@@ -292,10 +292,8 @@ export function SEOHead({
       });
     }
 
-    // Structured Data - AggregateRating (for reviews/ratings rich snippets)
-    if (aggregateRating && itemReviewed) {
-      injectAggregateRatingSchema(aggregateRating, itemReviewed, canonicalUrl);
-    }
+    // Note: AggregateRating schema removed - Google doesn't support review snippets
+    // for informational/travel guide content. Only valid for Product, Book, Course, etc.
 
     // Cleanup function
     return () => {
@@ -306,7 +304,7 @@ export function SEOHead({
       removeSchemaById("organization-schema");
       removeSchemaById("website-schema");
       removeSchemaById("webpage-schema");
-      removeSchemaById("aggregate-rating-schema");
+      // aggregate-rating-schema removed - not valid for travel guides
       removeHreflangLinks();
     };
   }, [title, description, keywords, image, type, publishedTime, modifiedTime, author, section, faqItems, eventItems, breadcrumbs, aggregateRating, itemReviewed, noindex, canonicalUrl, fullTitle, location.pathname, htmlLang, locale, inLanguage, alternateUrls]);
@@ -661,41 +659,11 @@ function injectArticleSchema(data: {
   document.head.appendChild(script);
 }
 
-// Inject AggregateRating schema for reviews/ratings rich snippets (star ratings in Google)
-function injectAggregateRatingSchema(
-  rating: { ratingValue: number; ratingCount: number; reviewCount?: number; bestRating?: number; worstRating?: number },
-  item: { name: string; description?: string },
-  url: string
-) {
-  removeSchemaById("aggregate-rating-schema");
-  
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "TravelGuide",
-    name: item.name,
-    description: item.description || "",
-    url: url,
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: rating.ratingValue,
-      bestRating: rating.bestRating || 5,
-      worstRating: rating.worstRating || 1,
-      ratingCount: rating.ratingCount,
-      reviewCount: rating.reviewCount || rating.ratingCount,
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Amsterdu",
-      url: "https://amsterdu.com"
-    }
-  };
-
-  const script = document.createElement("script");
-  script.id = "aggregate-rating-schema";
-  script.type = "application/ld+json";
-  script.textContent = JSON.stringify(schema);
-  document.head.appendChild(script);
-}
+// Note: AggregateRating schema function removed
+// Google Search does NOT support review snippets for travel/informational content.
+// Valid types for AggregateRating: Book, Course, Event, HowTo, LocalBusiness, 
+// Movie, Product, Recipe, SoftwareApplication - NOT TravelGuide or Article.
+// See: https://developers.google.com/search/docs/appearance/structured-data/review-snippet
 
 // Export helper for generating page-specific SEO data
 // Optimized for CTR with priority keywords from Search Console
