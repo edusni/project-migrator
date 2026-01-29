@@ -33,9 +33,9 @@
       })();
     </script>
     
-    <!-- Preload LCP hero images for faster rendering -->
-    <link rel="preload" href="/amsterdam-hero-optimized.webp" as="image" type="image/webp" fetchpriority="high" />
-    <link rel="preload" href="/hero-mobile.webp" as="image" type="image/webp" media="(max-width: 768px)" />
+    <!-- Preload LCP hero images for faster rendering - using optimized versions -->
+    <link rel="preload" href="/amsterdam-hero-optimized.webp" as="image" type="image/webp" fetchpriority="high" media="(min-width: 769px)" />
+    <link rel="preload" href="/hero-mobile-optimized.webp" as="image" type="image/webp" media="(max-width: 768px)" fetchpriority="high" />
     
     <!-- DNS Prefetch for external resources (fallback for browsers without preconnect) -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />

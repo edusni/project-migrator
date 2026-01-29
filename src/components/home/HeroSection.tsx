@@ -6,7 +6,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import amsterdamHeroDesktop from "@/assets/amsterdam-hero-new.webp";
 // Mobile hero image served from public folder for LCP discoverability (matches preload in index.html)
-const amsterdamHeroMobile = "/hero-mobile.webp";
+// Using optimized version for faster TTI
+const amsterdamHeroMobile = "/hero-mobile-optimized.webp";
 import { usePrefetch, usePrefetchCriticalRoutes } from "@/hooks/usePrefetch";
 import { useSiteImage } from "@/hooks/useSiteImage";
 const quickStats = {
