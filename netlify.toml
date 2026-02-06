@@ -77,10 +77,58 @@
 # LEGACY URLs sem prefixo de idioma → canônicas
 # ===================================================================
 
-# URLs reportadas como soft 404 no Google Search Console (Jan 2026)
+# URLs reportadas como soft 404 no Google Search Console (Jan/Fev 2026)
 [[redirects]]
   from = "/galeria"
   to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/onde-comer-amsterdam"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Onde-comer-amsterdam"
+  to = "/pt/gastronomia.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/planejamento-viagem"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Planejamento-viagem"
+  to = "/pt/planejamento.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Privacidade"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacidade"
+  to = "/pt/index.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/custo-vida-amsterdam"
+  to = "/pt/custo-de-vida.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/Custo-vida-amsterdam"
+  to = "/pt/custo-de-vida.html"
   status = 301
   force = true
 
@@ -793,7 +841,28 @@
   force = true
 
 # ===================================================================
-# SPA FALLBACK - Apenas para rotas dinâmicas (blog, bairros, admin)
+# BLOG - Redirect base para canonical (resolver duplicação)
+# ===================================================================
+[[redirects]]
+  from = "/pt/blog"
+  to = "/pt/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/en/blog"
+  to = "/pt/blog/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/nl/blog"
+  to = "/pt/blog/"
+  status = 301
+  force = true
+
+# ===================================================================
+# SPA FALLBACK - Apenas para rotas dinâmicas (blog posts, bairros, admin)
 # Arquivos .html estáticos serão servidos diretamente pelo Netlify
 # ===================================================================
 [[redirects]]
